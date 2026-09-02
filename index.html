@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAIST CPRL × 중학교 과학 심화 융합 교육과정 포털</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #7c3aed;
+      --secondary-dark: #6d28d9;
+      --accent: #06b6d4;
+      --dark: #0f172a;
+      --gray-dark: #1e293b;
+      --gray: #64748b;
+      --gray-light: #f8fafc;
+      --white: #ffffff;
+      --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      --card-hover: 0 20px 35px -5px rgba(0,0,0,0.15), 0 10px 15px -5px rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Pretendard", "Apple SD Gothic Neo", sans-serif;
+      background-color: #0b0f19;
+      color: #f1f5f9;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    /* Hero Banner */
+    .hero {
+      background: radial-gradient(circle at 50% -20%, #312e81 0%, #0f172a 60%, #020617 100%);
+      padding: 4.5rem 1.5rem 3.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #93c5fd;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ffffff, #93c5fd, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #94a3b8;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-title h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .section-title p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Course Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+    .course-card {
+      background: #131b2e;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--card-hover);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .card-top-bar {
+      height: 6px;
+      width: 100%;
+    }
+    .course-card.blue .card-top-bar { background: linear-gradient(90deg, #2563eb, #38bdf8); }
+    .course-card.purple .card-top-bar { background: linear-gradient(90deg, #7c3aed, #c084fc); }
+
+    .card-header-box {
+      padding: 2rem 2rem 1.25rem;
+    }
+    .course-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 0.35rem;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .course-card.blue .course-tag { background: rgba(37,99,235,0.2); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); }
+    .course-card.purple .course-tag { background: rgba(124,58,237,0.2); color: #c084fc; border: 1px solid rgba(192,132,252,0.3); }
+
+    .card-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+    .card-desc {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .feature-list {
+      padding: 1.25rem 2rem;
+      background: rgba(15, 23, 42, 0.5);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex: 1;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+    .feature-item:last-child { margin-bottom: 0; }
+    .feature-item strong { color: #f1f5f9; }
+
+    .card-actions {
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 0.65rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-blue {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+    }
+    .btn-blue:hover { background: #1d4ed8; }
+
+    .btn-purple {
+      background: #7c3aed;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(124,58,237,0.4);
+    }
+    .btn-purple:hover { background: #6d28d9; }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.05);
+      color: #cbd5e1;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      color: #ffffff;
+    }
+
+    /* Modal / Preview iframe */
+    .preview-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      padding: 1.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-modal.active { display: flex; }
+    .modal-content {
+      background: #0f172a;
+      width: 100%;
+      max-width: 1400px;
+      height: 90vh;
+      border-radius: 1rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-header {
+      padding: 0.75rem 1.25rem;
+      background: #1e293b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+    .modal-close:hover { color: white; background: rgba(255,255,255,0.1); }
+    iframe.preview-frame {
+      width: 100%;
+      flex: 1;
+      border: none;
+      background: white;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+    footer a { color: #94a3b8; text-decoration: none; }
+    footer a:hover { color: #38bdf8; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <span class="badge">KAIST 화학과 계산광동역학 연구실(CPRL) 연계</span>
+    <h1>중학교 과학·정보 심화 융합 교육과정 포털</h1>
+    <p>
+      교과서 속 원자와 빛, 컴퓨터 원리가 최첨단 KAIST 화학 연구실과 만나는 순간!<br>
+      발표 슬라이드, 상세 수업지도안, 학생활동지, 교재, 2022 개정 연계표를 하나의 웹사이트에서 간편하게 확인하세요.
+    </p>
+  </header>
+
+  <main class="container">
+    <div class="section-title">
+      <h2>🚀 교육과정 패키지 바로가기</h2>
+      <p>원하는 수업 모듈을 선택하여 온라인 강의 슬라이드 및 교수학습 자료를 열람하세요.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- Course 1 -->
+      <div class="course-card blue">
+        <div class="card-top-bar"></div>
+        <div class="card-header-box">
+          <span class="course-tag">모듈 01 · 광화학 & 디스플레이</span>
+          <h3 class="card-title">분자의 빛과 디스플레이의 과학:<br>형광·인광부터 KAIST OLED 혁신까지</h3>
+          <p class="card-desc">
+            자외선을 받으면 형광펜이 빛나는 원리(스토크스 이동)부터 전자의 스핀 상태, 그리고 스마트폰 OLED의 100% 효율을 달성한 KAIST CPRL의 '핫 엑시톤' 혁신을 탐구합니다.
+          </p>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature-item"><span>🎯</span> <strong>연계 과목:</strong> 중1 빛과 파동, 중2 물질의 구성, 중3 에너지</div>
+          <div class="feature-item"><span>📽️</span> <strong>강의 자료:</strong> 10개 슬라이드 뷰어 + 분자 형광 시뮬레이터</div>
+          <div class="feature-item"><span>📝</span> <strong>학습 자료:</strong> 3차시 수업지도안 + 인쇄용 활동지 + 학생 교재</div>
+          <div class="feature-item"><span>✨</span> <strong>핵심 개념:</strong> 들뜬 상태, 바닥 상태, 단일항, 삼중항, 핫 엑시톤</div>
+        </div>
+
+        <div class="card-actions">
+          <a href="01_빛과분자_OLED_수업패키지.html" class="btn btn-blue" target="_blank">
+            🚀 01 수업 패키지 열기 (새 창)
+          </a>
+          <button class="btn btn-outline" onclick="openPreview('01_빛과분자_OLED_수업패키지.html', '모듈 01: 분자의 빛과 디스플레이의 과학')">
+            🔍 웹페이지 바로 미리보기
+          </button>
+        </div>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-card purple">
+        <div class="card-top-bar"></div>
+        <div class="card-header-box">
+          <span class="course-tag">모듈 02 · 양자 컴퓨팅 & 계산 화학</span>
+          <h3 class="card-title">0과 1의 한계를 넘는 분자 탐험:<br>양자 컴퓨터와 계산 화학의 미래</h3>
+          <p class="card-desc">
+            슈퍼컴퓨터로도 풀 수 없는 분자의 지수 폭발 한계를 이해하고, 0과 1이 중첩되는 큐비트와 KAIST CPRL의 VQE 알고리즘으로 배터리·비료·신약 난제를 해결하는 미래를 탐구합니다.
+          </p>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature-item"><span>🎯</span> <strong>연계 과목:</strong> 중2 물질의 구성, 중3 과학기술, 정보 알고리즘</div>
+          <div class="feature-item"><span>📽️</span> <strong>강의 자료:</strong> 10개 슬라이드 뷰어 + 큐비트 & VQE 시뮬레이터</div>
+          <div class="feature-item"><span>📝</span> <strong>학습 자료:</strong> 3차시 수업지도안 + 인쇄용 활동지 + 학생 교재</div>
+          <div class="feature-item"><span>✨</span> <strong>핵심 개념:</strong> 지수 폭발, 큐비트, 중첩, VQE 알고리즘, 하이브리드</div>
+        </div>
+
+        <div class="card-actions">
+          <a href="02_양자컴퓨터_계산화학_수업패키지.html" class="btn btn-purple" target="_blank">
+            🚀 02 수업 패키지 열기 (새 창)
+          </a>
+          <button class="btn btn-outline" onclick="openPreview('02_양자컴퓨터_계산화학_수업패키지.html', '모듈 02: 양자 컴퓨터와 계산 화학')">
+            🔍 웹페이지 바로 미리보기
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Modal Preview -->
+  <div id="preview-modal" class="preview-modal" onclick="closePreview(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <span id="modal-title" style="font-weight:700; color:#f1f5f9; font-size:0.95rem;">미리보기</span>
+        <button class="modal-close" onclick="closePreview()">✕ 닫기</button>
+      </div>
+      <iframe id="preview-iframe" class="preview-frame" src=""></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      KAIST 화학과 계산광동역학 연구실(CPRL) × 2022 개정 중학교 과학·정보 심화 교육과정<br>
+      GitHub Repository: <a href="https://github.com/cordmin/KAIST" target="_blank">https://github.com/cordmin/KAIST</a>
+    </p>
+  </footer>
+
+  <script>
+    function openPreview(url, title) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('preview-iframe').src = url;
+      document.getElementById('preview-modal').classList.add('active');
+    }
+    function closePreview() {
+      document.getElementById('preview-modal').classList.remove('active');
+      document.getElementById('preview-iframe').src = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePreview();
+    });
+  </script>
+</body>
+</html>
