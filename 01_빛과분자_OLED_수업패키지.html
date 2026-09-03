@@ -3,122 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>분자의 빛과 디스플레이의 과학: 형광·인광부터 KAIST OLED 혁신까지</title>
+  <title>분자의 빛과 디스플레이의 과학: 2022 개정 중학교 과학 수업 패키지</title>
   <style>
     :root {
       --primary: #2563eb;
       --primary-dark: #1d4ed8;
-      --primary-light: #eff6ff;
-      --secondary: #7c3aed;
       --accent: #06b6d4;
       --dark: #0f172a;
-      --gray-dark: #334155;
-      --gray: #64748b;
-      --gray-light: #f1f5f9;
+      --sidebar-bg: #090d16;
+      --sidebar-border: rgba(255,255,255,0.08);
+      --main-bg: #f8fafc;
+      --text-main: #1e293b;
       --white: #ffffff;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-      --card-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --sidebar-w: 300px;
+      --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --card-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.08);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Pretendard", "Apple SD Gothic Neo", sans-serif;
-      background-color: #f8fafc;
-      color: var(--dark);
+      background-color: var(--main-bg);
+      color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #172554 100%);
-      color: var(--white);
-      padding: 1.5rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
+    .app-container {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      min-height: 100vh;
+      position: relative;
     }
-    .badge {
+
+    /* Sidebar */
+    .app-sidebar {
+      width: var(--sidebar-w);
+      background-color: var(--sidebar-bg);
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      border-right: 1px solid var(--sidebar-border);
+      position: fixed;
+      top: 0; bottom: 0; left: 0;
+      z-index: 100;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    body.sidebar-collapsed .app-sidebar { transform: translateX(-100%); }
+
+    .sidebar-brand {
+      padding: 1.5rem 1.25rem 1.25rem;
+      border-bottom: 1px solid var(--sidebar-border);
+      background: linear-gradient(180deg, rgba(30,27,75,0.6) 0%, transparent 100%);
+    }
+    .brand-badge {
       display: inline-block;
-      padding: 0.25rem 0.75rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 9999px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #93c5fd;
-      margin-bottom: 0.25rem;
+      background: rgba(56,189,248,0.15);
+      border: 1px solid rgba(56,189,248,0.3);
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
     }
-    h1.title {
-      font-size: 1.4rem;
+    .brand-title {
+      font-size: 1.2rem;
       font-weight: 800;
       background: linear-gradient(90deg, #ffffff, #93c5fd, #c4b5fd);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .subtitle {
-      font-size: 0.85rem;
-      color: #cbd5e1;
+    .brand-sub { font-size: 0.78rem; color: #94a3b8; margin-top: 0.2rem; }
+
+    .sidebar-section {
+      padding: 1.1rem 1.1rem 0.5rem;
+      border-bottom: 1px solid var(--sidebar-border);
     }
-    /* Tabs Navigation */
-    .nav-tabs {
-      display: flex;
-      background: rgba(15, 23, 42, 0.6);
-      padding: 0.35rem;
-      border-radius: 0.75rem;
-      gap: 0.35rem;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .tab-btn {
-      background: transparent;
-      border: none;
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: #94a3b8;
-      padding: 0.5rem 1rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Package Switcher */
+    .pkg-switch-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .pkg-switch-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .pkg-switch-btn:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.25);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .pkg-switch-btn.active {
+      background: linear-gradient(135deg, rgba(37,99,235,0.25) 0%, rgba(56,189,248,0.15) 100%);
+      border-color: #38bdf8;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    }
+    .pkg-icon {
+      font-size: 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
       border-radius: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    .pkg-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+    .pkg-title { font-size: 0.88rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .pkg-sub { font-size: 0.72rem; color: #94a3b8; margin-top: 0.15rem; }
+
+    /* Nav items */
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.35rem; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 0.6rem;
+      background: transparent;
+      border: 1px solid transparent;
+      color: #94a3b8;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
+      text-align: left;
       transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      width: 100%;
     }
-    .tab-btn:hover {
-      color: var(--white);
-      background: rgba(255,255,255,0.08);
+    .nav-item:hover { color: #ffffff; background: rgba(255,255,255,0.06); }
+    .nav-item.active {
+      color: #ffffff;
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
     }
-    .tab-btn.active {
-      color: var(--white);
-      background: var(--primary);
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
-    }
-    main.container {
-      max-width: 1400px;
-      margin: 1.5rem auto;
-      padding: 0 1.5rem 3rem;
-    }
-    .tab-pane {
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    .tab-pane.active { display: block; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    .nav-icon { font-size: 1.1rem; }
+    .nav-text { flex: 1; }
+    .nav-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.35rem;
+      background: rgba(255,255,255,0.1);
+      color: #cbd5e1;
     }
 
-    /* Card Layouts */
+    .sidebar-actions { display: flex; flex-direction: column; gap: 0.4rem; }
+    .action-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      color: #cbd5e1;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+    .action-btn:hover { background: rgba(255,255,255,0.08); color: #ffffff; }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 1.25rem 1.1rem;
+      border-top: 1px solid var(--sidebar-border);
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+    .sidebar-footer a { color: #94a3b8; text-decoration: none; }
+    .sidebar-footer a:hover { color: #38bdf8; text-decoration: underline; }
+
+    /* Main Area */
+    .app-main {
+      flex: 1;
+      margin-left: var(--sidebar-w);
+      transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    body.sidebar-collapsed .app-main { margin-left: 0; }
+
+    .app-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.75rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 1rem; }
+    .sidebar-toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .current-pkg-badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+    }
+    .current-tab-name { font-size: 1rem; font-weight: 800; color: #0f172a; margin-left: 0.5rem; }
+    .topbar-actions { display: flex; gap: 0.5rem; }
+    .topbar-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .content-container { padding: 1.75rem; max-width: 1400px; margin: 0 auto; width: 100%; }
+    .tab-pane { display: none; animation: fadeIn 0.25s ease; }
+    .tab-pane.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
     .card {
       background: var(--white);
       border-radius: 1rem;
@@ -134,882 +275,847 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #1e293b;
-      display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 0.5rem;
     }
+    .card-title { font-size: 1.25rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; }
 
-    /* Slides Presentation Mode Styles */
+    /* Slide Deck Layout */
     .slide-viewer {
       background: #090d16;
       border-radius: 1.25rem;
       overflow: hidden;
-      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
-      border: 1px solid #1e293b;
-      color: var(--white);
+      box-shadow: var(--card-shadow-lg);
+      display: flex;
+      flex-direction: column;
+      min-height: 640px;
       position: relative;
     }
     .slide-toolbar {
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(8px);
-      padding: 0.75rem 1.25rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 10;
     }
-    .slide-screen {
-      min-height: 580px;
-      padding: 3rem 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      background: radial-gradient(circle at 80% 20%, #1e1b4b 0%, #090d16 60%);
-    }
-    .slide-item {
-      display: none;
-      animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .slide-item.active { display: block; }
-    @keyframes slideIn {
-      from { opacity: 0; transform: scale(0.98) translateX(15px); }
-      to { opacity: 1; transform: scale(1) translateX(0); }
-    }
+    .slide-progress { height: 4px; background: rgba(255,255,255,0.1); width: 100%; }
+    .slide-progress-bar { height: 100%; background: linear-gradient(90deg, #2563eb, #38bdf8); width: 10%; transition: width 0.3s ease; }
+    .slide-screen { flex: 1; display: flex; padding: 2.5rem 3.5rem; color: var(--white); position: relative; overflow-y: auto; }
+    .slide-item { display: none; width: 100%; max-width: 1100px; margin: 0 auto; flex-direction: column; justify-content: center; animation: slideIn 0.3s ease; }
+    .slide-item.active { display: flex; }
+    @keyframes slideIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
     .slide-tag {
-      color: #38bdf8;
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
       font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-    .slide-h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 1.25rem;
-      background: linear-gradient(90deg, #ffffff, #bae6fd);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .slide-body {
-      font-size: 1.15rem;
-      color: #cbd5e1;
-      line-height: 1.7;
-      max-width: 950px;
-    }
-    .slide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.75rem;
-    }
-    .slide-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-      transition: all 0.2s;
-    }
-    .slide-card:hover {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(56, 189, 248, 0.4);
-      transform: translateY(-2px);
-    }
-    .slide-nav-btn {
-      background: rgba(255,255,255,0.1);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .slide-nav-btn:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-    .slide-nav-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-    .slide-progress {
-      height: 4px;
-      background: rgba(255,255,255,0.1);
-    }
-    .slide-progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, #38bdf8, #818cf8);
-      width: 10%;
-      transition: width 0.3s ease;
-    }
-
-    /* Interactive Simulator Card */
-    .sim-box {
-      background: #0f172a;
-      color: white;
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      margin: 1.25rem 0;
-      border: 1px solid #334155;
-    }
-    .sim-controls {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
+      background: rgba(37,99,235,0.25);
+      border: 1px solid rgba(56,189,248,0.4);
+      color: #38bdf8;
       margin-bottom: 1rem;
     }
-    .sim-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .sim-btn:hover { background: var(--primary-dark); }
-    .sim-btn.secondary { background: #475569; }
-    .sim-btn.secondary:hover { background: #334155; }
-    .sim-canvas {
-      width: 100%;
-      height: 260px;
-      background: #020617;
-      border-radius: 0.5rem;
-      border: 1px solid #1e293b;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Print styling */
-    .print-btn {
-      background: #e2e8f0;
-      border: 1px solid #cbd5e1;
-      padding: 0.4rem 0.8rem;
-      border-radius: 0.375rem;
+    .slide-h1 { font-size: 2.1rem; font-weight: 800; line-height: 1.3; margin-bottom: 1.25rem; color: #f8fafc; }
+    .slide-body { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 1.5rem; }
+    .slide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+    .slide-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; }
+    .slide-nav-btn {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.45rem 0.9rem;
+      border-radius: 0.4rem;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      color: #334155;
     }
-    .print-btn:hover { background: #cbd5e1; }
+    .slide-nav-btn:hover:not(:disabled) { background: #2563eb; }
+    .slide-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-    /* Tables & Grids */
-    table.data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: 0.9rem;
+    /* Simulator */
+    .sim-box { background: #0d1322; border: 1px solid #1e293b; border-radius: 1rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .sim-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .sim-btn {
+      background: #2563eb; color: white; border: none; padding: 0.6rem 1.1rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.9rem; cursor: pointer;
     }
-    table.data-table th {
-      background: #f1f5f9;
-      color: #1e293b;
-      font-weight: 700;
-      padding: 0.75rem;
-      border: 1px solid #e2e8f0;
-      text-align: left;
-    }
-    table.data-table td {
-      padding: 0.75rem;
-      border: 1px solid #e2e8f0;
-      vertical-align: top;
-    }
-    table.data-table tr:nth-child(even) { background: #f8fafc; }
-
-    /* Worksheet specific elements */
-    .worksheet-section {
-      background: #f8fafc;
-      border-left: 4px solid var(--primary);
-      padding: 1.25rem;
-      border-radius: 0 0.5rem 0.5rem 0;
-      margin: 1.25rem 0;
-    }
-    .answer-box {
-      border: 1.5px dashed #94a3b8;
-      background: var(--white);
-      border-radius: 0.5rem;
-      min-height: 80px;
-      padding: 0.75rem;
-      margin-top: 0.5rem;
-      color: #64748b;
-      font-style: italic;
+    .sim-btn:hover { background: #1d4ed8; }
+    .sim-btn.secondary { background: #475569; }
+    .sim-canvas {
+      width: 100%; height: 270px; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #090d16 100%);
+      border-radius: 0.75rem; position: relative; overflow: hidden; border: 1px solid #334155;
     }
 
-    /* Text Book styles */
-    .chapter-hero {
-      background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
-      padding: 2rem;
-      border-radius: 0.75rem;
-      border: 1px solid #dbeafe;
-      margin-bottom: 1.5rem;
-    }
-    .callout-box {
-      background: #fefce8;
-      border: 1px solid #fef08a;
-      border-left: 4px solid #eab308;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-      margin: 1.25rem 0;
-    }
-    .kaist-highlight {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-left: 4px solid #22c55e;
-      padding: 1.25rem;
-      border-radius: 0.5rem;
-      margin: 1.5rem 0;
+    /* Table & Print */
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+    .data-table th, .data-table td { border: 1px solid #e2e8f0; padding: 0.8rem 1rem; text-align: left; vertical-align: top; }
+    .data-table th { background-color: #f8fafc; font-weight: 700; color: #334155; }
+    .worksheet-section { border: 1px dashed #cbd5e1; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.25rem; background: #fafafa; }
+    .answer-box { border: 1px solid #94a3b8; border-radius: 0.4rem; background: white; padding: 0.75rem; min-height: 60px; margin-top: 0.5rem; }
+    .chapter-hero { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.75rem; border-radius: 0.75rem; border: 1px solid #bfdbfe; margin-bottom: 1.5rem; }
+    .callout-box { background: #fefce8; border: 1px solid #fef08a; border-left: 4px solid #eab308; padding: 1rem 1.25rem; border-radius: 0.5rem; margin: 1.25rem 0; }
+    .kaist-highlight { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #22c55e; padding: 1.25rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+
+    @media (max-width: 900px) {
+      .app-sidebar { transform: translateX(-100%); }
+      body.sidebar-open .app-sidebar { transform: translateX(0); }
+      .app-main { margin-left: 0 !important; }
+      .sidebar-overlay { display: none; position: fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,0.6); z-index:90; }
+      body.sidebar-open .sidebar-overlay { display: block; }
     }
 
     @media print {
-      header, .nav-tabs, .slide-toolbar, .print-btn, .sim-controls { display: none !important; }
+      .app-sidebar, .app-topbar, .sidebar-toggle-btn, .topbar-actions, .sim-controls, .slide-toolbar, .slide-progress { display: none !important; }
+      .app-main { margin-left: 0 !important; }
+      .content-container { padding: 0 !important; }
       .tab-pane { display: block !important; page-break-after: always; }
-      body { background: white; color: black; }
-      .card { box-shadow: none; border: 1px solid #ccc; }
+      body { background: white !important; color: black !important; }
+      .card { box-shadow: none !important; border: 1px solid #ccc !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Header & Nav -->
-  <header>
-    <div class="header-content">
-      <div>
-        <span class="badge">KAIST CPRL × 중학교 과학 심화 융합 교육과정</span>
-        <h1 class="title">분자의 빛과 디스플레이의 과학: 형광·인광부터 KAIST OLED 혁신까지</h1>
-        <p class="subtitle">계산광동역학(CPRL) 연구실 연계 심화 올인원(All-in-One) 교수학습 플랫폼</p>
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <div class="app-container">
+
+    <!-- ========================================== -->
+    <!-- LEFT SIDEBAR                               -->
+    <!-- ========================================== -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-badge">2022 개정 교육과정 매핑</span>
+        <h1 class="brand-title">🏛️ KAIST CPRL</h1>
+        <p class="brand-sub">중학교 과학·정보 융합 심화</p>
       </div>
-      <nav class="nav-tabs" role="tablist">
-        <button class="tab-btn active" onclick="switchTab('slides')">📽️ 발표 슬라이드</button>
-        <button class="tab-btn" onclick="switchTab('lesson-plan')">📋 상세 수업준비자료</button>
-        <button class="tab-btn" onclick="switchTab('worksheet')">📝 학생활동지</button>
-        <button class="tab-btn" onclick="switchTab('textbook')">📖 학생용 교재</button>
-        <button class="tab-btn" onclick="switchTab('curriculum')">🎯 2022 개정 교육과정 연계표</button>
-      </nav>
-    </div>
-  </header>
 
-  <main class="container">
+      <!-- 1-Click Package Switcher -->
+      <div class="sidebar-section">
+        <div class="section-label">
+          <span>수업 패키지 선택</span>
+          <span style="font-size:0.68rem; color:#38bdf8;">1-Click 전환</span>
+        </div>
+        <div class="pkg-switch-group">
+          <a href="01_빛과분자_OLED_수업패키지.html" class="pkg-switch-btn active">
+            <span class="pkg-icon">🌈</span>
+            <div class="pkg-info">
+              <span class="pkg-title">01. 분자의 빛 & OLED</span>
+              <span class="pkg-sub">중2 빛과파동·물질구성·전기</span>
+            </div>
+          </a>
+          <a href="02_양자컴퓨터_계산화학_수업패키지.html" class="pkg-switch-btn">
+            <span class="pkg-icon">⚛️</span>
+            <div class="pkg-info">
+              <span class="pkg-title">02. 양자컴퓨터·화학</span>
+              <span class="pkg-sub">중1~3 과학기술·화학·정보</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="sidebar-section">
+        <div class="section-label">학습 모듈 메뉴</div>
+        <nav class="sidebar-nav">
+          <button class="nav-item active" id="nav-btn-slides" onclick="switchTab('slides')">
+            <span class="nav-icon">📽️</span>
+            <span class="nav-text">발표 슬라이드</span>
+            <span class="nav-badge">10장</span>
+          </button>
+          <button class="nav-item" id="nav-btn-lesson-plan" onclick="switchTab('lesson-plan')">
+            <span class="nav-icon">📋</span>
+            <span class="nav-text">교사용 지도안</span>
+            <span class="nav-badge">4차시</span>
+          </button>
+          <button class="nav-item" id="nav-btn-worksheet" onclick="switchTab('worksheet')">
+            <span class="nav-icon">📝</span>
+            <span class="nav-text">학생활동지</span>
+            <span class="nav-badge">A4인쇄</span>
+          </button>
+          <button class="nav-item" id="nav-btn-textbook" onclick="switchTab('textbook')">
+            <span class="nav-icon">📖</span>
+            <span class="nav-text">학생용 읽기자료</span>
+            <span class="nav-badge">스토리</span>
+          </button>
+          <button class="nav-item" id="nav-btn-curriculum" onclick="switchTab('curriculum')">
+            <span class="nav-icon">🎯</span>
+            <span class="nav-text">2022 성취기준 연계표</span>
+            <span class="nav-badge">루브릭</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Tools -->
+      <div class="sidebar-section sidebar-actions">
+        <div class="section-label">수업 도구</div>
+        <button class="action-btn" onclick="window.print()">
+          <span>🖨️</span> 현재 탭 A4 출력
+        </button>
+        <button class="action-btn" onclick="toggleFullScreen()">
+          <span>🖥️</span> 슬라이드 전체화면
+        </button>
+        <button class="action-btn" onclick="toggleSidebar()">
+          <span id="collapse-icon">◀</span> 사이드바 접기 (넓게 보기)
+        </button>
+      </div>
+
+      <div class="sidebar-footer">
+        <p>KAIST 화학과 계산광동역학 연구실</p>
+        <p style="margin-top:0.25rem;"><a href="index.html">통합 메인 플랫폼 ↗</a></p>
+      </div>
+    </aside>
 
     <!-- ========================================== -->
-    <!-- TAB 1: 📽️ 발표자료 슬라이드 (Slide Mode) -->
+    <!-- MAIN CONTENT AREA                          -->
     <!-- ========================================== -->
-    <div id="slides" class="tab-pane active">
-      <div class="slide-viewer">
-        <div class="slide-toolbar">
-          <div style="display:flex; align-items:center; gap:0.75rem;">
-            <span style="font-size:0.85rem; font-weight:700; color:#94a3b8;">SLIDE DECK</span>
-            <span id="slide-num-badge" style="background:rgba(255,255,255,0.15); padding:0.2rem 0.6rem; border-radius:0.35rem; font-size:0.8rem; font-weight:700;">1 / 10</span>
-          </div>
-          <div style="display:flex; gap:0.5rem;">
-            <button class="slide-nav-btn" id="prev-btn" onclick="changeSlide(-1)" disabled>◀ 이전 (←)</button>
-            <button class="slide-nav-btn" id="next-btn" onclick="changeSlide(1)">다음 (→) ▶</button>
-            <button class="slide-nav-btn" onclick="toggleFullScreen()" style="background:#3b82f6;">전체화면</button>
+    <main class="app-main" id="app-main">
+      
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">
+            <span>☰</span>
+            <span class="toggle-text">메뉴</span>
+          </button>
+          <div class="current-context">
+            <span class="current-pkg-badge">모듈 01. 분자의 빛과 디스플레이의 과학</span>
+            <span class="current-tab-name" id="current-tab-name">발표 슬라이드</span>
           </div>
         </div>
-        <div class="slide-progress">
-          <div class="slide-progress-bar" id="slide-progress-bar"></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" onclick="toggleFullScreen()">🖥️ 전체화면</button>
+          <button class="topbar-btn" onclick="window.print()">🖨️ 인쇄하기</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- TAB 1: 📽️ 발표 슬라이드 -->
+        <div class="tab-pane active" id="tab-slides">
+          <div class="slide-viewer">
+            <div class="slide-toolbar">
+              <div style="display:flex; align-items:center; gap:0.75rem;">
+                <span style="font-size:0.85rem; font-weight:700; color:#94a3b8;">SLIDE DECK</span>
+                <span id="slide-num-badge" style="background:rgba(255,255,255,0.15); padding:0.2rem 0.6rem; border-radius:0.35rem; font-size:0.8rem; font-weight:700;">1 / 10</span>
+              </div>
+              <div style="display:flex; gap:0.5rem;">
+                <button class="slide-nav-btn" id="prev-btn" onclick="changeSlide(-1)" disabled>◀ 이전 (←)</button>
+                <button class="slide-nav-btn" id="next-btn" onclick="changeSlide(1)">다음 (→) ▶</button>
+                <button class="slide-nav-btn" onclick="toggleFullScreen()" style="background:#2563eb;">전체화면</button>
+              </div>
+            </div>
+            <div class="slide-progress">
+              <div class="slide-progress-bar" id="slide-progress-bar"></div>
+            </div>
+
+            <div class="slide-screen">
+              <!-- Slide 1 -->
+              <div class="slide-item active" data-slide="1">
+                <div class="slide-tag">[도입] 첨단 과학기술과 일상생활 · [9과01-02]</div>
+                <h1 class="slide-h1">어둠 속에서 빛나는 분자들,<br>내 손 안의 스마트폰 화면 속으로!</h1>
+                <p class="slide-body">
+                  보이지 않는 자외선 조명을 비추면 왜 투명한 토닉워터와 노란 비타민 음료가 눈부신 네온빛으로 빛날까요?<br>
+                  그리고 우리가 매일 보는 스마트폰(OLED)은 어떻게 스스로 빨강·초록·파랑 빛을 뿜어낼까요?<br>
+                  중학교 과학 교과서 속 <strong>원자와 전자, 빛과 에너지</strong>의 원리로 최첨단 디스플레이의 비밀을 밝혀봅시다!
+                </p>
+                <div class="slide-grid">
+                  <div class="slide-card">
+                    <div style="color:#38bdf8; font-weight:700; margin-bottom:0.3rem;">🔍 1단계: 신기한 빛 관찰</div>
+                    <div style="font-size:0.9rem;">자외선 램프로 찾는 형광 물질(비타민, 형광펜, 지폐의 비밀)</div>
+                  </div>
+                  <div class="slide-card">
+                    <div style="color:#818cf8; font-weight:700; margin-bottom:0.3rem;">⚛️ 2단계: 꼬마 전자의 계단 점프</div>
+                    <div style="font-size:0.9rem;">전자가 에너지를 먹고 뛰었다가 빛을 내며 착지하는 원리</div>
+                  </div>
+                  <div class="slide-card">
+                    <div style="color:#34d399; font-weight:700; margin-bottom:0.3rem;">🚀 3단계: KAIST 연구원의 구출 작전</div>
+                    <div style="font-size:0.9rem;">열로 버려지던 75%의 전자를 모두 빛으로 바꾼 한국의 OLED 혁신</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="slide-item" data-slide="2">
+                <div class="slide-tag">중2 &lt;빛과 파동&gt; · [9과10-03] 연계</div>
+                <h1 class="slide-h1">보이지 않는 빛(자외선) vs 보이는 빛(가시광선)</h1>
+                <p class="slide-body">빛은 파도처럼 출렁이며 나아갑니다. <strong>파장의 길이가 짧을수록 에너지가 강합니다!</strong></p>
+                <div class="slide-grid" style="margin-top:1.5rem;">
+                  <div class="slide-card" style="border-left: 4px solid #a855f7;">
+                    <h3 style="color:#c084fc; font-size:1.1rem; margin-bottom:0.5rem;">🟣 자외선 (UV, 눈에 보이지 않음)</h3>
+                    <p style="font-size:0.95rem; color:#cbd5e1;">파장이 매우 촘촘하고 짧음 (약 300~400 nm)<br><strong>에너지가 매우 셉니다!</strong> (살균 소독 및 피부 자극)</p>
+                  </div>
+                  <div class="slide-card" style="border-left: 4px solid #38bdf8;">
+                    <h3 style="color:#38bdf8; font-size:1.1rem; margin-bottom:0.5rem;">🌈 가시광선 (Visible, 눈에 보이는 무지개빛)</h3>
+                    <p style="font-size:0.95rem; color:#cbd5e1;">파장이 자외선보다 길음 (약 400~700 nm)<br><strong>자외선보다 에너지가 낮아</strong> 안전하게 관찰 가능</p>
+                  </div>
+                </div>
+                <div style="margin-top:1.5rem; padding:1.2rem; background:rgba(56,189,248,0.12); border-radius:0.5rem; border:1px solid rgba(56,189,248,0.3);">
+                  💡 <strong>생각해 볼 질문:</strong> 눈에 보이지 않는 고에너지 자외선을 쐬어주었는데, 왜 순한 가시광선 빛이 튀어나올까요? 차이 나는 에너지는 어디로 사라졌을까요?
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="slide-item" data-slide="3">
+                <div class="slide-tag">중2 &lt;물질의 구성&gt; · [9과11-02] [9과14-03] 연계</div>
+                <h1 class="slide-h1">전자의 트램펄린: 들뜬 상태와 바닥 상태</h1>
+                <p class="slide-body">물질을 이루는 원자 속에는 가벼운 <strong>전자</strong>들이 살고 있습니다. 전자는 에너지 계단을 오르내립니다!</p>
+                <div class="slide-grid">
+                  <div class="slide-card">
+                    <h4 style="color:#fcd34d;">1단계: 자외선 꿀꺽! (점프)</h4>
+                    <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.3rem;">평화롭던 1층(<strong>바닥 상태</strong>)의 전자가 고에너지 자외선을 먹고 3층(<strong>들뜬 상태</strong>)으로 번쩍 뛰어오릅니다.</p>
+                  </div>
+                  <div class="slide-card">
+                    <h4 style="color:#fb7185;">2단계: 부르르 떨림! (열 손실)</h4>
+                    <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.3rem;">3층은 너무 불안정해서 전자가 부르르 떨며(분자 진동) 에너지를 <strong>열</strong>로 조금 버립니다.</p>
+                  </div>
+                  <div class="slide-card">
+                    <h4 style="color:#4ade80;">3단계: 빛 뿜으며 착지! (형광)</h4>
+                    <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.3rem;">남은 에너지를 알록달록한 가시광선 빛으로 뿜어내며 다시 1층으로 안착합니다. 이것이 바로 <strong>형광</strong>입니다!</p>
+                  </div>
+                </div>
+                <p style="margin-top:1.5rem; font-size:1.05rem; color:#93c5fd; font-weight:600; text-align:center;">
+                  ✨ [에너지 전환 법칙]: 먹은 자외선 에너지 = 방출된 형광 빛에너지 + 떨림으로 흘린 열에너지
+                </p>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="slide-item" data-slide="4">
+                <div class="slide-tag">디지털 탐구 도구 · 인터랙티브 시뮬레이터</div>
+                <h1 class="slide-h1">🔬 전자의 에너지 계단 가상 실험실</h1>
+                <p class="slide-body">버튼을 눌러 광자를 쏘아보고, 전자가 어떻게 에너지를 받아 뛰고 빛을 내는지 직접 확인해 보세요!</p>
+                <div class="sim-box" style="margin-top:0.5rem;">
+                  <div class="sim-controls">
+                    <button class="sim-btn" onclick="triggerSimulator('fluorescence')">🟣 자외선 쏘기 (형광 방출 관찰)</button>
+                    <button class="sim-btn secondary" onclick="triggerSimulator('triplet')">🔄 삼중항 갇힘 (인광/야광 모드)</button>
+                    <button class="sim-btn secondary" onclick="triggerSimulator('hot-exciton')" style="background:#059669;">🚀 KAIST 핫 엑시톤 가동!</button>
+                    <span id="sim-status" style="margin-left:auto; color:#38bdf8; font-weight:700; align-self:center;">준비 완료: 버튼을 클릭하세요</span>
+                  </div>
+                  <div class="sim-canvas" id="sim-canvas">
+                    <div style="position:absolute; left:50px; top:35px; font-size:0.85rem; color:#f87171; font-weight:700;">3층: 들뜬 상태 (불안정) ───────────────────</div>
+                    <div style="position:absolute; left:50px; top:115px; font-size:0.85rem; color:#c084fc; font-weight:700;">2층: 삼중항 상태 (문 잠김) ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈</div>
+                    <div style="position:absolute; left:50px; top:205px; font-size:0.85rem; color:#38bdf8; font-weight:700;">1층: 바닥 상태 (가장 편안함) ─────────────────</div>
+                    
+                    <div id="sim-electron" style="position:absolute; left:260px; top:200px; width:22px; height:22px; background:#38bdf8; border-radius:50%; box-shadow:0 0 14px #38bdf8; transition:all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+                    <div id="sim-photon" style="position:absolute; left:40px; top:200px; font-size:1.2rem; opacity:0; transition:all 0.5s;">🟣 자외선(UV)</div>
+                    <div id="sim-emission" style="position:absolute; left:290px; top:110px; font-size:1.2rem; opacity:0; transition:all 0.5s;">🟢 형광 빛 방출!</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5 -->
+              <div class="slide-item" data-slide="5">
+                <div class="slide-tag">중2 &lt;물질의 구성&gt; [9과11-02] 심화 탐구</div>
+                <h1 class="slide-h1">형광펜 vs 야광 스티커: 전자의 팽이 회전(스핀)</h1>
+                <p class="slide-body">
+                  형광펜은 조명을 끄면 <strong>1억 분의 1초</strong> 만에 꺼지지만, 야광 스티커는 불을 꺼도 <strong>수 시간 동안</strong> 빛납니다. 그 이유는 원자 속 전자들의 회전 방향(스핀) 때문입니다.
+                </p>
+                <div class="slide-grid">
+                  <div class="slide-card" style="background:rgba(56,189,248,0.08); border-color:rgba(56,189,248,0.3);">
+                    <h3 style="color:#38bdf8; font-size:1.15rem;">✨ 마주보고 도는 전자쌍 (단일항, ↑↓) - 형광</h3>
+                    <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.5rem;">
+                      • 두 전자가 서로 반대 방향으로 사이좋게 회전.<br>
+                      • 바닥으로 내려가는 비상구가 <strong>활짝 열려 있음</strong>.<br>
+                      • <strong>1억 분의 1초</strong> 만에 순식간에 빛을 뿜고 꺼짐! (형광펜, 형광 조끼)
+                    </p>
+                  </div>
+                  <div class="slide-card" style="background:rgba(192,132,252,0.08); border-color:rgba(192,132,252,0.3);">
+                    <h3 style="color:#c084fc; font-size:1.15rem;">🌙 나란히 같은 쪽으로 도는 전자쌍 (삼중항, ↑↑) - 인광</h3>
+                    <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.5rem;">
+                      • 충돌하면서 전자 하나의 회전 방향이 뒤집힘.<br>
+                      • 규칙상 아래로 내려가는 비상구가 <strong>굳게 잠김</strong>.<br>
+                      • <strong>수 초~수 시간 동안 천천히 찔끔찔끔 방출</strong>! (야광 스티커)
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 6 -->
+              <div class="slide-item" data-slide="6">
+                <div class="slide-tag">중2 &lt;전기와 자기&gt; · [9과14-02] [9과14-03] 연계</div>
+                <h1 class="slide-h1">스마트폰 OLED 화면의 고민: 75% 배터리 도둑!</h1>
+                <p class="slide-body">
+                  스마트폰 디스플레이(OLED)는 빛을 쪼이는 대신, 배터리에서 나오는 <strong>전기(전류와 전자)</strong>를 유기 반도체 분자에 직접 밀어 넣어 빛을 만듭니다.
+                </p>
+                <div style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.35); border-radius:0.75rem; padding:1.5rem; margin-top:1rem;">
+                  <h3 style="color:#f87171; font-size:1.2rem; margin-bottom:0.6rem;">⚠️ 확률의 벽: 4개 중 3개가 난로가 된다? (25% vs 75%)</h3>
+                  <p style="color:#e2e8f0; font-size:1rem; line-height:1.8;">
+                    전기를 넣으면 분자들 속에 전자가 채워지는데,<br>
+                    • <strong>단 1개 (25%)</strong>만 빛을 잘 내는 <strong>단일항(마주보는 스핀)</strong>이 되어 시원하게 빛을 냅니다.<br>
+                    • <strong>무려 3개 (75%)</strong>는 문이 잠긴 <strong>삼중항(나란한 스핀)</strong>에 갇혀 빛을 내지 못합니다!<br>
+                    👉 이 75%의 분자들은 빛 대신 <strong>열</strong>을 내뿜어 스마트폰을 뜨겁게 달구고 배터리를 광속으로 갉아먹습니다.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 7 -->
+              <div class="slide-item" data-slide="7">
+                <div class="slide-tag">첨단 과학기술과 사회 · [9과01-02] KAIST 연구 성과</div>
+                <h1 class="slide-h1">KAIST의 해결책: 75%를 구출하는 두 가지 마법!</h1>
+                <p class="slide-body">
+                  KAIST 화학과 <strong>계산광동역학 연구실(CPRL / 이영민 교수팀)</strong>은 슈퍼컴퓨터 양자 시뮬레이션으로 갇혀버린 75%의 삼중항을 구출하는 기술을 밝혔습니다.
+                </p>
+                <div class="slide-grid">
+                  <div class="slide-card">
+                    <div style="font-weight:700; color:#38bdf8; font-size:1.1rem;">🔥 1. 핫 엑시톤 (Hot Exciton) 우회로</div>
+                    <p style="font-size:0.92rem; color:#cbd5e1; margin-top:0.5rem;">
+                      잠긴 문 앞에서 헤매지 않고, 에너지가 높은 옥상 계단에서 단일항으로 번개처럼 점프해 건너가는 <strong>초고속 공중 다리</strong>를 분자 구조 안에 설계했습니다!
+                    </p>
+                  </div>
+                  <div class="slide-card">
+                    <div style="font-weight:700; color:#34d399; font-size:1.1rem;">🌡️ 2. 열활성 지연형광 (TADF)</div>
+                    <p style="font-size:0.92rem; color:#cbd5e1; margin-top:0.5rem;">
+                      상온의 미세한 공기 열을 부채질하듯 흡수하여, 갇혀 있던 삼중항 전자를 단일항 계단으로 살짝 밀어 올려 빛으로 뿜어내게 만들었습니다.
+                    </p>
+                  </div>
+                </div>
+                <div style="margin-top:1.5rem; text-align:center; padding:1.1rem; background:rgba(34,197,94,0.15); border-radius:0.5rem; border:1px solid #22c55e;">
+                  🎉 <strong>결과:</strong> 버려지던 75%가 모두 빛으로 바뀌어 <strong>이론상 100% 발광 효율 달성!</strong> 배터리는 2배 오래가고 열은 사라집니다!
+                </div>
+              </div>
+
+              <!-- Slide 8 -->
+              <div class="slide-item" data-slide="8">
+                <div class="slide-tag">중2 &lt;빛과 파동&gt; [9과10-03] · 중3 &lt;과학과 나의 미래&gt; [9과23-01]</div>
+                <h1 class="slide-h1">빛의 삼원색(RGB)과 미래 디스플레이 분자 디자이너</h1>
+                <p class="slide-body">화면 속 모든 색은 <strong>빨강(R), 초록(G), 파랑(B)</strong> 세 가지 빛을 합성하여 만듭니다. 가장 만들기 어려운 것은 무엇일까요?</p>
+                <div class="slide-grid">
+                  <div class="slide-card" style="border-top: 4px solid #38bdf8;">
+                    <h4 style="color:#38bdf8;">🔵 파란색(Blue) OLED의 난제</h4>
+                    <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.4rem;">파란빛은 파장이 짧아 에너지가 가장 셉니다. 높은 에너지를 견디지 못하고 분자가 쉽게 망가져 수명이 짧습니다.</p>
+                  </div>
+                  <div class="slide-card" style="border-top: 4px solid #a855f7;">
+                    <h4 style="color:#c084fc;">💻 슈퍼컴퓨터 분자 설계</h4>
+                    <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.4rem;">화학자가 일일이 실험실에서 합성하지 않고, 컴퓨터로 먼저 튼튼하고 효율 좋은 분자를 시뮬레이션합니다.</p>
+                  </div>
+                  <div class="slide-card" style="border-top: 4px solid #34d399;">
+                    <h4 style="color:#34d399;">🌟 미래의 융합 과학자</h4>
+                    <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.4rem;">화학(분자), 물리(빛과 전기), 정보(컴퓨터)를 융합하여 인류의 눈을 밝히는 미래 직업 탐색!</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 9 -->
+              <div class="slide-item" data-slide="9">
+                <div class="slide-tag">배움 정리 & 형성평가</div>
+                <h1 class="slide-h1">오늘 배운 핵심 내용 3가지 쏙쏙 정리</h1>
+                <div style="display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;">
+                  <div class="slide-card">
+                    <strong style="color:#38bdf8;">1. 빛과 전자의 롤러코스터:</strong> 자외선을 먹은 전자는 들뜬 상태로 점프하고, 부르르 떨며 열을 조금 잃은 뒤 남은 에너지를 알록달록 형광으로 뿜으며 바닥 상태로 내려온다.
+                  </div>
+                  <div class="slide-card">
+                    <strong style="color:#c084fc;">2. 형광과 인광의 스핀 비밀:</strong> 마주보고 도는 전자쌍(단일항)은 바로 빛(형광)을 내지만, 같은 방향으로 도는 전자쌍(삼중항)은 문이 잠겨 오래 갇혀 있다(야광/인광).
+                  </div>
+                  <div class="slide-card">
+                    <strong style="color:#34d399;">3. OLED와 KAIST의 혁신:</strong> 전기를 넣으면 75%가 열로 낭비되는 문제를 KAIST 연구진이 핫 엑시톤 기술로 구출하여 100% 효율의 초절전 스마트폰 시대를 열었다.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 10 -->
+              <div class="slide-item" data-slide="10">
+                <div class="slide-tag">진로와 탐구의 시작</div>
+                <h1 class="slide-h1">여러분이 디자인할 미래의 빛은 무엇인가요?</h1>
+                <p class="slide-body" style="font-size:1.25rem; margin-top:2rem; line-height:1.9;">
+                  "우리가 교과서에서 배운 작은 원자와 전자, 빛의 합성이<br>
+                  지금 전 세계 수십억 명이 손에 쥔 스마트폰 화면을 바꾸고 있습니다.<br><br>
+                  <strong>돌돌 말리는 스크린, 유리창 디스플레이 속 분자들을 직접 설계해 볼까요?</strong>"
+                </p>
+                <div style="margin-top:2.5rem; text-align:center;">
+                  <button class="sim-btn" onclick="switchTab('worksheet')" style="font-size:1rem; padding:0.75rem 1.5rem;">📝 사이드바의 [학생활동지] 열고 탐구 시작하기</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="slide-screen" id="slide-container">
-
-          <!-- Slide 1 -->
-          <div class="slide-item active" data-slide="1">
-            <div class="slide-tag">단원 도입 · KAIST 첨단 연구 연계</div>
-            <h1 class="slide-h1">분자가 만드는 빛의 세계,<br>스마트폰 화면 속 화학의 마술</h1>
-            <p class="slide-body">
-              우리가 매일 손에 쥐고 있는 스마트폰 화면(OLED)은 어떻게 스스로 선명한 빛을 낼까요?<br>
-              자외선을 받으면 형광펜과 비타민 음료가 빛나는 비밀부터,<br>
-              <strong>KAIST 계산광동역학 연구실</strong>이 밝혀낸 <strong>100% 효율의 OLED 분자 설계 비결</strong>까지 탐험해 봅시다!
-            </p>
-            <div class="slide-grid">
-              <div class="slide-card">
-                <div style="color:#38bdf8; font-weight:700; margin-bottom:0.3rem;">🔍 1단계: 현상 관찰</div>
-                <div style="font-size:0.9rem;">형광펜과 비타민 B2 음료에 자외선(UV)을 비추면 왜 빛이 날까?</div>
+        <!-- TAB 2: 📋 교사용 지도안 -->
+        <div class="tab-pane" id="tab-lesson-plan">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="brand-badge" style="background:#dbeafe; color:#1e40af;">2022 개정 중학교 과학과 교수·학습 과정안</span>
+                <h2 class="card-title">📋 [교사용 지도안] 분자의 빛과 디스플레이의 과학</h2>
               </div>
-              <div class="slide-card">
-                <div style="color:#818cf8; font-weight:700; margin-bottom:0.3rem;">⚛️ 2단계: 분자 원리</div>
-                <div style="font-size:0.9rem;">전자의 에너지 계단(들뜬 상태)과 스핀(Spin)의 규칙</div>
-              </div>
-              <div class="slide-card">
-                <div style="color:#34d399; font-weight:700; margin-bottom:0.3rem;">🚀 3단계: 첨단 혁신</div>
-                <div style="font-size:0.9rem;">KAIST CPRL의 '핫 엑시톤' & 'TADF'로 100% OLED 만들기</div>
-              </div>
+              <button class="topbar-btn" onclick="window.print()">🖨️ 지도안 인쇄</button>
             </div>
-          </div>
 
-          <!-- Slide 2 -->
-          <div class="slide-item" data-slide="2">
-            <div class="slide-tag">빛과 에너지 기초 (중1 연계)</div>
-            <h1 class="slide-h1">보이지 않는 빛(자외선) vs 보이는 빛(가시광선)</h1>
-            <p class="slide-body">
-              빛은 파장의 길이에 따라 에너지가 다릅니다. <strong>파장이 짧을수록 에너지가 높습니다.</strong>
-            </p>
-            <div class="slide-grid" style="margin-top:2rem;">
-              <div class="slide-card" style="border-left: 4px solid #a855f7;">
-                <h3 style="color:#c084fc; font-size:1.1rem; margin-bottom:0.5rem;">🟣 자외선 (UV)</h3>
-                <p style="font-size:0.95rem; color:#cbd5e1;">파장이 약 300~400 나노미터(nm)로 짧음<br><strong>에너지가 매우 높음!</strong> (눈에 보이지 않음)</p>
-              </div>
-              <div class="slide-card" style="border-left: 4px solid #38bdf8;">
-                <h3 style="color:#38bdf8; font-size:1.1rem; margin-bottom:0.5rem;">🌈 가시광선 (Visible)</h3>
-                <p style="font-size:0.95rem; color:#cbd5e1;">파장이 약 400~700 나노미터(nm) (보라~빨강)<br><strong>자외선보다 에너지가 낮음</strong> (눈에 보임)</p>
-              </div>
-            </div>
-            <div style="margin-top:1.5rem; padding:1rem; background:rgba(56,189,248,0.1); border-radius:0.5rem; border:1px solid rgba(56,189,248,0.2);">
-              💡 <strong>핵심 질문:</strong> 자외선(고에너지)을 분자에 비췄는데, 왜 초록색이나 파란색 가시광선(저에너지)이 뿜어져 나올까요? 사라진 에너지는 어디로 갔을까요?
-            </div>
-          </div>
+            <table class="data-table">
+              <tr>
+                <th style="width:16%;">관련 단원</th>
+                <td>중학교 2학년 &lt;빛과 파동&gt;, &lt;물질의 구성&gt;, &lt;전기와 자기&gt; 융합 심화<br>(중1 &lt;과학과 인류의 지속가능한 삶&gt;, 중3 &lt;과학과 나의 미래&gt; 연계)</td>
+                <th style="width:14%;">권장 차시</th>
+                <td><strong>총 4차시 (차시당 45분 중학교 수업 기준)</strong><br>※ 90분 블록타임 2회 운영 가능</td>
+              </tr>
+              <tr>
+                <th>2022 개정 교육과정<br>공식 성취기준</th>
+                <td colspan="3">
+                  • <strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.<br>
+                  • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                  • <strong>[9과14-02]</strong> 전기 회로에서 전류를 모형으로 설명하고, 실험을 통해 저항, 전류, 전압 사이의 관계를 이끌어낼 수 있다.<br>
+                  &nbsp;&nbsp;<span style="color:#64748b; font-size:0.85rem;">*(성취기준 해설: 일상생활에 활용되는 다양한 물질의 저항이 다름을 도체와 부도체의 예를 들어 설명하고, 반도체를 소개한다.)*</span><br>
+                  • <strong>[9과14-03]</strong> 저항의 직렬연결과 병렬연결의 특징을 비교하고, 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.<br>
+                  • <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                  • <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
+                </td>
+              </tr>
+              <tr>
+                <th>수업 목표</th>
+                <td colspan="3">
+                  1. <strong>[지식·이해]</strong> 자외선과 가시광선의 에너지 차이를 알고, 원자 속 전자의 들뜬 상태와 바닥 상태 전이를 통해 형광이 발생하는 원리를 입자 모형으로 설명할 수 있다.<br>
+                  2. <strong>[과정·기능]</strong> 스마트폰 화면 속 RGB 서브픽셀과 일상 속 형광 물질을 관찰하고, 인터랙티브 시뮬레이터를 활용하여 전자의 스핀 상태 및 OLED 발광 효율 문제를 탐구할 수 있다.<br>
+                  3. <strong>[가치·태도]</strong> KAIST CPRL 연구실의 핫 엑시톤 메커니즘을 통해 첨단 기술이 일상에 미치는 영향을 체감하고 신소재 화학자 진로에 흥미를 갖는다.
+                </td>
+              </tr>
+            </table>
 
-          <!-- Slide 3 -->
-          <div class="slide-item" data-slide="3">
-            <div class="slide-tag">분자 에너지 모델 (중2 연계)</div>
-            <h1 class="slide-h1">전자의 점프: 들뜬 상태와 바닥 상태</h1>
-            <p class="slide-body">
-              분자 속 전자는 평소 가장 낮은 에너지 상태인 <strong>바닥 상태</strong>에 머뭅니다.
-            </p>
-            <div class="slide-grid">
-              <div class="slide-card">
-                <h4 style="color:#fcd34d;">1. 빛 흡수 (광자 점프)</h4>
-                <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.3rem;">자외선 광자를 흡수한 전자가 에너지가 높은 <strong>들뜬 상태</strong>로 수직 점프!</p>
-              </div>
-              <div class="slide-card">
-                <h4 style="color:#fb7185;">2. 분자의 진동 (열 손실)</h4>
-                <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.3rem;">들뜬 상태에서 분자가 부르르 떨며(진동) 에너지를 조금 잃고 안정화됨.</p>
-              </div>
-              <div class="slide-card">
-                <h4 style="color:#4ade80;">3. 형광 방출 (빛 방출)</h4>
-                <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.3rem;">남은 에너지를 빛으로 내뿜으며 다시 바닥 상태로 착지 → <strong>형광(Fluorescence)</strong></p>
-              </div>
+            <div class="callout-box" style="border-left: 4px solid #ef4444; background:#fef2f2; border-color:#fecaca;">
+              <strong style="color:#b91c1c;">🚨 [교육부 실험 안전 수칙 필수 준수]:</strong><br>
+              1. <strong>UV 램프 보안경 착용:</strong> 자외선(UV-A) 광원을 직접 눈으로 보거나 타인에게 비추지 않도록 보안경 착용 지도 및 암실 상자 활용.<br>
+              2. <strong>시약 안전:</strong> 음료류(토닉워터, 비타민)는 실험용이므로 마시지 않도록 사전 지도 및 폐액 분리 수거.
             </div>
-            <p style="margin-top:1.5rem; font-size:1.05rem; color:#93c5fd; font-weight:600;">
-              ✨ 결론: 흡수한 에너지 - 진동으로 잃은 열 = 방출된 형광 에너지 (스토크스 이동 법칙)
-            </p>
-          </div>
 
-          <!-- Slide 4 -->
-          <div class="slide-item" data-slide="4">
-            <div class="slide-tag">인터랙티브 실험실</div>
-            <h1 class="slide-h1">🔬 분자 형광 에너지 계단 시뮬레이터</h1>
-            <p class="slide-body">아래 버튼을 눌러 자외선 광자를 분자에 쏘아보고, 전자가 어떻게 이동하며 빛을 내는지 직접 확인하세요!</p>
+            <h3 style="margin: 1.5rem 0 0.75rem; color:#1e293b;">차시별 세부 교수·학습 지도 계획 (45분 단위 4차시)</h3>
             
-            <div class="sim-box" style="margin-top:1rem;">
-              <div class="sim-controls">
-                <button class="sim-btn" onclick="triggerSimulator('fluorescence')">🟣 자외선 광자 발사! (형광 방출)</button>
-                <button class="sim-btn secondary" onclick="triggerSimulator('triplet')">🔄 삼중항 변환 (인광 관찰)</button>
-                <button class="sim-btn secondary" onclick="triggerSimulator('hot-exciton')">🚀 KAIST 핫 엑시톤 점프!</button>
-                <span id="sim-status" style="margin-left:auto; color:#38bdf8; font-weight:700; align-self:center;">준비 완료: 버튼을 클릭하세요</span>
+            <!-- 1차시 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#2563eb; font-size:1.1rem; margin:0;">[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단 (45분)</h4>
+                <span class="badge" style="background:#eff6ff; color:#1d4ed8; font-size:0.8rem;">성취기준: [9과10-03]</span>
               </div>
-              <div class="sim-canvas" id="sim-canvas">
-                <div style="position:absolute; left:60px; top:40px; font-size:0.8rem; color:#94a3b8;">들뜬 상태 ─────</div>
-                <div style="position:absolute; left:60px; top:120px; font-size:0.8rem; color:#c084fc;">삼중항 상태 ┈┈┈</div>
-                <div style="position:absolute; left:60px; top:200px; font-size:0.8rem; color:#94a3b8;">바닥 상태 ─────</div>
-                
-                <div id="sim-electron" style="position:absolute; left:220px; top:200px; width:20px; height:20px; background:#38bdf8; border-radius:50%; box-shadow:0 0 12px #38bdf8; transition:all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
-                <div id="sim-photon" style="position:absolute; left:40px; top:200px; font-size:1.2rem; opacity:0; transition:all 0.5s;">🟣 UV</div>
-                <div id="sim-emission" style="position:absolute; left:250px; top:100px; font-size:1.2rem; opacity:0; transition:all 0.5s;">🟢 형광(빛)</div>
+              <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 자외선과 가시광선의 파장 및 에너지 관계를 비교하고, 일상 속 형광 물질을 관찰하여 형광 현상을 탐구할 수 있다.</p>
+              <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+                <thead>
+                  <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>도입<br>(5분)</strong></td>
+                    <td>• <strong>동기 유발:</strong> 암실 상자에서 블랙라이트(자외선)를 켰을 때 옷과 신발 끈이 눈부시게 빛나는 현상 시연<br>• <strong>학습 문제 제기:</strong> "왜 보이지 않는 빛을 비추었는데 눈부신 알록달록 빛이 나올까?"<br>• 학습 목표 및 안전 수칙 안내</td>
+                    <td>• 자외선 램프를 얼굴에 직접 비추지 않도록 주의 지도</td>
+                  </tr>
+                  <tr>
+                    <td><strong>전개<br>(32분)</strong></td>
+                    <td>• <strong>[탐구 활동 1] 자외선 형광 탐정단:</strong> 4인 1조로 토닉워터(퀴닌), 비타민(리보플라빈), 올리브유(엽록소), 지폐에 UV-A 조사 후 색상 변화 관찰 및 기록<br>• <strong>개념 형성:</strong> 자외선(300~400nm) vs 가시광선(400~700nm). 파장이 짧을수록 에너지가 셈을 직관적으로 학습<br>• <strong>질문 토의:</strong> 더 센 에너지(자외선)가 들어가서 순한 에너지(가시광선)가 나오는 이유와 차이 나는 에너지의 행방 추론</td>
+                    <td>• <strong>[안전]</strong> 보안경 착용 확인<br>• <strong>[과정평가]</strong> 관찰 결과의 정확한 기록 및 파장-에너지 관계 이해도 점검</td>
+                  </tr>
+                  <tr>
+                    <td><strong>정리<br>(8분)</strong></td>
+                    <td>• 모둠별 관찰 결과 공유 및 '형광(Fluorescence)' 개념 정의<br>• "사라진 에너지는 어디로 갔을까?" 질문으로 2차시(전자의 계단 점프) 예고</td>
+                    <td>• 활동지 1번 작성 점검</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 2차시 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#7c3aed; font-size:1.1rem; margin:0;">[2차시] 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환 (45분)</h4>
+                <span class="badge" style="background:#f5f3ff; color:#6d28d9; font-size:0.8rem;">성취기준: [9과11-02] [9과14-03]</span>
+              </div>
+              <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 원자 속 전자가 에너지를 흡수하여 들뜬 상태로 점프했다가 열과 형광 빛을 내며 바닥 상태로 복귀하는 과정을 입자 모형과 에너지 보존으로 설명할 수 있다.</p>
+              <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+                <thead>
+                  <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>도입<br>(5분)</strong></td>
+                    <td>• 전차시 복습: 자외선(센 에너지)과 가시광선(약한 에너지)의 차이 상기<br>• 트램펄린 비유: "사람이 높이 뛰었다가 내려올 때 무슨 일이 일어날까?"</td>
+                    <td>• 입자 모형의 시각적 비유 활용</td>
+                  </tr>
+                  <tr>
+                    <td><strong>전개<br>(32분)</strong></td>
+                    <td>• <strong>원자 모형 복습:</strong> 원자핵과 주위를 도는 가벼운 음(-)전하 전자<br>• <strong>전자의 에너지 계단 3단계:</strong><br>  1) 바닥 상태 전자가 자외선 광자를 먹고 3층 들뜬 상태로 점프<br>  2) 3층이 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 <strong>열</strong>로 방출<br>  3) 남은 에너지를 알록달록 <strong>가시광선 형광</strong>으로 뿜어내며 1층으로 착지<br>• <strong>시뮬레이션 탐구:</strong> 디지털 전자의 계단 점프 가상 실험실 조작 실습<br>• <strong>에너지 보존:</strong> [흡수한 자외선] = [방출된 형광빛] + [흘린 열에너지]</td>
+                    <td>• 수식 대신 '에너지 보존 계단 그림'으로 정성적 이해 유도<br>• <strong>[과정평가]</strong> 시뮬레이터 조작을 통해 전자의 상태 변화를 구두로 설명할 수 있는지 확인</td>
+                  </tr>
+                  <tr>
+                    <td><strong>정리<br>(8분)</strong></td>
+                    <td>• 전자의 에너지 계단 3단계 핵심 낱말 퀴즈<br>• 활동지 [활동 2] 전자의 점프와 사라진 에너지 서술형 문항 작성</td>
+                    <td>• 서술형 힌트 제공</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 3차시 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#059669; font-size:1.1rem; margin:0;">[3차시] 팽이 스핀의 비밀과 스마트폰 OLED의 75% 배터리 도둑 (45분)</h4>
+                <span class="badge" style="background:#ecfdf5; color:#047857; font-size:0.8rem;">성취기준: [9과11-02] [9과14-02] [9과14-03]</span>
+              </div>
+              <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 전자의 스핀 방향(단일항 vs 삼중항)에 따른 발광 차이를 이해하고, 전기 에너지를 사용하는 스마트폰 OLED의 75% 열 손실 문제를 분석할 수 있다.</p>
+              <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+                <thead>
+                  <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                </thead>
+                  <tbody>
+                  <tr>
+                    <td><strong>도입<br>(5분)</strong></td>
+                    <td>• 실물 비교: 형광펜(조명 끄면 즉시 꺼짐) vs 야광 스티커(불 꺼도 수 시간 동안 빛남)<br>• "왜 둘은 빛을 내뿜는 시간에 엄청난 차이가 날까?"</td>
+                    <td>• 실물 교구 조작으로 흥미 유발</td>
+                  </tr>
+                  <tr>
+                    <td><strong>전개<br>(32분)</strong></td>
+                    <td>• <strong>전자의 팽이 회전(스핀) 모형:</strong><br>  - 마주보고 도는 전자쌍 (단일항, ↑↓): 비상문 활짝 열려 1억 분의 1초 만에 형광 방출<br>  - 나란히 도는 전자쌍 (삼중항, ↑↑): 비상문 잠겨 천천히 갇혀서 인광 방출<br>• <strong>스마트폰 화면(OLED) 구동:</strong> 배터리의 전기(전류)를 유기 반도체 분자에 직접 주입 [9과14-02]<br>• <strong>75% 배터리 도둑의 충격적 확률:</strong><br>  - 전기를 넣으면 4개 중 <strong>단 1개(25%)만</strong> 단일항이 되어 빛을 냄<br>  - 무려 <strong>3개(75%)는</strong> 삼중항에 갇혀 빛 대신 <strong>열</strong>을 내뿜어 스마트폰을 뜨겁게 달굼!<br>• 스마트폰 소비 전력, 발열, 배터리 수명 저하의 과학적 원인 토의 [9과14-03]</td>
+                    <td>• 양자 스핀 수식 대신 '회전 팽이' 비유로 직관화<br>• <strong>[과정평가]</strong> 단일항과 삼중항의 차이를 전자의 회전 방향과 연결하여 구분하는지 평가</td>
+                  </tr>
+                  <tr>
+                    <td><strong>정리<br>(8분)</strong></td>
+                    <td>• 25% 발광 vs 75% 열 손실 딜레마 정리<br>• "갇혀서 열만 내는 75%의 전자를 구출할 방법은 없을까?" 질문으로 4차시 예고</td>
+                    <td>• 활동지 3번 연계</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 4차시 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#d97706; font-size:1.1rem; margin:0;">[4차시] KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너 (45분)</h4>
+                <span class="badge" style="background:#fffbeb; color:#b45309; font-size:0.8rem;">성취기준: [9과10-03] [9과01-02] [9과23-01]</span>
+              </div>
+              <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> KAIST CPRL의 핫 엑시톤 구출 메커니즘을 이해하고, 빛의 삼원색(RGB) 원리를 바탕으로 차세대 청색 OLED 분자 디자이너 프로젝트를 수행할 수 있다.</p>
+              <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+                <thead>
+                  <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>도입<br>(5분)</strong></td>
+                    <td>• 전차시 상기: 75%의 갇힌 전자를 구출하는 대한민국의 최첨단 과학 뉴스 소개 (KAIST CPRL 이영민 교수팀 연구 성과)</td>
+                    <td>• 첨단 과학 연구에 대한 자긍심 고취</td>
+                  </tr>
+                  <tr>
+                    <td><strong>전개<br>(32분)</strong></td>
+                    <td>• <strong>KAIST의 두 가지 구출 마법:</strong><br>  1) <strong>핫 엑시톤(Hot Exciton):</strong> 고에너지 옥상 우회로로 번개처럼 단일항으로 건너가는 초고속 구름다리<br>  2) <strong>TADF(열활성 지연형광):</strong> 주변 공기의 미세한 열을 흡수해 단일항으로 점프<br>  👉 <strong>결과: 75%를 구출하여 100% 발광 효율 달성!</strong><br>• <strong>빛의 삼원색과 영상 장치:</strong> 스마트폰 화면의 RGB 화소 관찰 [9과10-03]<br>• <strong>청색(Blue) OLED의 난제:</strong> 에너지가 너무 세서 쉽게 깨지는 파란색 분자의 수명 한계<br>• <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강한 나만의 고효율 파란색 발광 분자 및 롤러블 디스플레이 기획서 작성 [9과23-01]</td>
+                    <td>• 화학 분자 설계 + 물리 빛 합성 + 디스플레이 공학 융합 유도<br>• <strong>[산출물평가]</strong> 분자 디자이너 기획서 창의성 및 과학적 타당성 평가 (루브릭 적용)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>정리<br>(8분)</strong></td>
+                    <td>• 모둠별 분자 디자인 아이디어 1분 스피치 발표<br>• 3차원 루브릭 기반 학생 상호평가 및 단원 총정리, 미래 과학 기술 진로 로드맵 공유</td>
+                    <td>• 세특 기재용 관찰 기록 작성</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: 📝 학생활동지 -->
+        <div class="tab-pane" id="tab-worksheet">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="brand-badge" style="background:#fef3c7; color:#92400e;">중학생 탐구 활동지 (A4 출력용)</span>
+                <h2 class="card-title">📝 [탐구 활동지] 분자의 빛 여행: 형광부터 스마트폰 OLED까지</h2>
+              </div>
+              <button class="topbar-btn" onclick="window.print()">🖨️ 활동지 인쇄</button>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem; font-size:0.95rem;">
+              <span>중학교 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )학년 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )반 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )번</span>
+              <span>이름: ____________________</span>
+            </div>
+
+            <div class="worksheet-section">
+              <h3 style="color:#1e40af; font-size:1.05rem; margin-bottom:0.5rem;">[활동 1] 자외선 분자 탐정단 관찰표 [9과10-03] [9과11-02]</h3>
+              <table class="data-table" style="margin-top:0.6rem;">
+                <thead>
+                  <tr><th>탐구 대상</th><th>평상시 색깔</th><th>자외선(UV) 조사 시 색깔</th><th>빛을 내는 핵심 분자</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>토닉워터</strong></td><td>투명함</td><td><div class="answer-box" style="min-height:30px;">(푸른색 형광)</div></td><td>퀴닌 (Quinine) 분자</td></tr>
+                  <tr><td><strong>비타민 음료</strong></td><td>노란색</td><td><div class="answer-box" style="min-height:30px;"></div></td><td>비타민 B2 (리보플라빈)</td></tr>
+                  <tr><td><strong>올리브유</strong></td><td>연초록색</td><td><div class="answer-box" style="min-height:30px;"></div></td><td>엽록소 (클로로필)</td></tr>
+                  <tr><td><strong>만원권 지폐</strong></td><td>세종대왕 초상</td><td><div class="answer-box" style="min-height:30px;"></div></td><td>위조 방지 형광 인쇄</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="worksheet-section">
+              <h3 style="color:#1e40af; font-size:1.05rem; margin-bottom:0.5rem;">[활동 2] 전자의 에너지 계단과 사라진 에너지 [9과14-03]</h3>
+              <p style="font-weight:600; font-size:0.92rem;">Q1. 흡수한 자외선 에너지보다 방출된 형광 빛에너지가 더 작은 이유는 무엇일까요? '전자의 점프'와 '열에너지'라는 낱말을 넣어 설명해 보세요.</p>
+              <div class="answer-box" style="min-height:75px;"></div>
+            </div>
+
+            <div class="worksheet-section">
+              <h3 style="color:#1e40af; font-size:1.05rem; margin-bottom:0.5rem;">[활동 3] KAIST 75% 배터리 도둑 잡기 & 청색 OLED 디자이너 [9과01-02] [9과23-01]</h3>
+              <p style="font-weight:600; font-size:0.92rem;">Q2. 갇혀버린 75%의 삼중항 전자를 구출하기 위해 KAIST 연구진이 발견한 '핫 엑시톤'의 원리를 친구에게 설명하듯 쉽게 적어보세요.</p>
+              <div class="answer-box" style="min-height:75px;"></div>
+              <p style="font-weight:600; font-size:0.92rem; margin-top:0.75rem;">Q3. [미래 분자 디자이너] 쉽게 깨지는 파란색(Blue) OLED 분자를 튼튼하게 설계하기 위한 나만의 아이디어를 제안해 보세요.</p>
+              <div class="answer-box" style="min-height:80px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: 📖 학생용 읽기자료 -->
+        <div class="tab-pane" id="tab-textbook">
+          <div class="card">
+            <div class="chapter-hero">
+              <span class="brand-badge" style="background:#3b82f6; color:white;">중학생을 위한 첨단 과학 이야기</span>
+              <h2 style="font-size:1.5rem; font-weight:800; color:#1e3a8a; margin:0.4rem 0;">제1장. 빛을 품은 꼬마 전자들의 롤러코스터: 형광에서 OLED까지</h2>
+              <p style="color:#2563eb; font-size:0.9rem;">글: KAIST 계산광동역학 연구실(CPRL) × 중학교 과학교육팀</p>
+            </div>
+
+            <div style="font-size:1rem; line-height:1.85; color:#334155;">
+              <h3 style="color:#1e293b; margin:1.25rem 0 0.4rem; font-size:1.2rem;">1. 어둠 속에서 피어나는 신비로운 빛, 형광(Fluorescence)</h3>
+              <p>놀이공원의 유령의 집이나 방탈출 카페에 가본 적이 있나요? 보라색 자외선 조명(블랙라이트) 아래에 서면 흰 옷이나 형광펜 글씨가 눈이 부시도록 선명하게 빛나는 모습을 볼 수 있습니다. 평범해 보이던 편의점 토닉워터는 환상적인 사파이어빛 파란색으로 변하고, 노란 비타민 음료는 눈부신 네온 연두색으로 변신합니다.</p>
+              <p>왜 우리 눈에 보이지도 않는 자외선을 비추었는데 알록달록 아름다운 빛이 뿜어져 나오는 걸까요? 그 비밀은 바로 원자 속에 살고 있는 <strong>'꼬마 전자의 에너지 계단 점프'</strong>에 있습니다.</p>
+
+              <h3 style="color:#1e293b; margin:1.5rem 0 0.4rem; font-size:1.2rem;">2. 에너지 계단을 오르내리는 전자의 점프</h3>
+              <p>우리 주변의 모든 물질은 원자로 이루어져 있고, 원자 속에는 가볍고 날렵한 전자들이 살고 있습니다. 평소에 전자들은 에너지가 가장 낮고 편안한 1층, 즉 <strong>'바닥 상태'</strong>에서 얌전하게 낮잠을 자고 있습니다.</p>
+              <p>그런데 여기에 에너지가 매우 센 자외선 광자가 부딪히면, 전자는 이 에너지를 꿀꺽 삼키고 3층 높이의 <strong>'들뜬 상태'</strong>로 껑충 뛰어오릅니다. 하지만 3층은 너무 불안정해서 오래 머물 수 없습니다. 전자는 다시 편안한 1층으로 내려오고 싶어 합니다. 이때 3층에서 부르르 떨면서 약간의 에너지를 '열'로 버린 후, 남은 에너지를 한 줄기 영롱한 빛으로 뿜어내며 1층으로 착지합니다.</p>
+
+              <div class="kaist-highlight">
+                <h4 style="color:#166534; font-size:1.05rem; margin-bottom:0.3rem;">🏛️ KAIST 연구원 코너: 스마트폰 속에서 일어나는 75% 구출 작전</h4>
+                <p style="font-size:0.92rem; color:#14532d; line-height:1.7;">
+                  스마트폰 화면인 <strong>OLED(유기 발광 다이오드)</strong>는 자외선 대신 배터리의 전기를 사용합니다. 그런데 전기를 주면 마주보고 도는 전자(단일항)는 25%만 생기고, 나란히 도는 전자(삼중항)가 75%나 생겨 문이 잠겨 열만 뿜어냅니다.<br>
+                  <strong>KAIST 이영민 교수 연구팀(CPRL)</strong>은 슈퍼컴퓨터로 이 75%의 전자를 높은 옥상 우회로로 번개처럼 건너가게 만드는 <strong>'핫 엑시톤(Hot Exciton)'</strong> 고속도로를 설계하여 100% 효율의 스마트폰 화면 시대를 열었습니다!
+                </p>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Slide 5 -->
-          <div class="slide-item" data-slide="5">
-            <div class="slide-tag">물질의 심화 원리</div>
-            <h1 class="slide-h1">형광 vs 인광의 비밀: 전자의 스핀(Spin)</h1>
-            <p class="slide-body">
-              형광펜은 불을 끄면 바로 꺼지지만, 야광 스티커는 1시간 동안 은은하게 빛납니다. 그 비밀은 전자의 <strong>스핀(자전 방향)</strong>에 있습니다.
-            </p>
-            <div class="slide-grid">
-              <div class="slide-card" style="background:rgba(56,189,248,0.08); border-color:rgba(56,189,248,0.3);">
-                <h3 style="color:#38bdf8; font-size:1.2rem;">✨ 단일항 (Singlet, 서로 반대 스핀 ↑↓) - 형광</h3>
-                <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.5rem;">
-                  - 전자 쌍의 스핀 방향이 서로 반대.<br>
-                  - 바닥 상태로 떨어지는 문이 <strong>활짝 열려 있음</strong>.<br>
-                  - <strong>1억 분의 1초(0.00000001초)</strong> 만에 순식간에 빛 방출!
-                </p>
+        <!-- TAB 5: 🎯 성취기준 연계표 -->
+        <div class="tab-pane" id="tab-curriculum">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="brand-badge" style="background:#e0e7ff; color:#3730a3;">2022 개정 공식 표준 매핑</span>
+                <h2 class="card-title">🎯 2022 개정 교육과정 (중학교 과학) 성취기준 및 3차원 평가 루브릭</h2>
               </div>
-              <div class="slide-card" style="background:rgba(192,132,252,0.08); border-color:rgba(192,132,252,0.3);">
-                <h3 style="color:#c084fc; font-size:1.2rem;">🌙 삼중항 (Triplet, 나란한 스핀 ↑↑) - 인광/야광</h3>
-                <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.5rem;">
-                  - 스핀이 같은 방향으로 뒤집힘.<br>
-                  - 양자역학 규칙상 떨어지는 문이 <strong>잠겨 있음 (금지된 전이)</strong>.<br>
-                  - 문이 열릴 때까지 갇혀 있다가 <strong>수 초~수 시간 동안 천천히 방출</strong>.
-                </p>
-              </div>
+              <button class="topbar-btn" onclick="window.print()">🖨️ 연계표 인쇄</button>
             </div>
-          </div>
 
-          <!-- Slide 6 -->
-          <div class="slide-item" data-slide="6">
-            <div class="slide-tag">첨단 기술 연계 (디스플레이)</div>
-            <h1 class="slide-h1">스마트폰 디스플레이, OLED의 딜레마</h1>
-            <p class="slide-body">
-              스마트폰 화면(OLED)은 빛을 쪼이는 대신 <strong>전기(+ 전하와 - 전자)</strong>를 넣어 분자를 들뜨게 만듭니다.
-            </p>
-            <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:0.75rem; padding:1.5rem; margin-top:1.5rem;">
-              <h3 style="color:#f87171; font-size:1.2rem; margin-bottom:0.5rem;">⚠️ 스핀 통계의 벽: 25% vs 75%의 불공평한 확률</h3>
-              <p style="color:#e2e8f0; font-size:1rem; line-height:1.7;">
-                전기를 넣으면 4개의 분자 중<br>
-                • <strong>단 1개 (25%)</strong>만 빛을 잘 내는 <strong>단일항(Singlet)</strong>이 되고,<br>
-                • <strong>무려 3개 (75%)</strong>는 빛을 내지 못하는 <strong>삼중항(Triplet)</strong>으로 갇혀버립니다!<br>
-                → 이 75%의 삼중항은 빛 대신 <strong>열</strong>을 내뿜어 스마트폰을 뜨겁게 달구고 배터리를 소모시킵니다.
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:16%;">학년 / 영역</th>
+                  <th style="width:26%;">2022 개정 공식 성취기준</th>
+                  <th style="width:28%;">본 프로그램 연계 요소</th>
+                  <th style="width:30%;">3차원 성취수준 루브릭 (상 / 중 / 하)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>중2<br>(10) 빛과 파동</strong></td>
+                  <td><strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.</td>
+                  <td>• 자외선과 가시광선 파장/에너지 차이<br>• RGB 서브픽셀 빛의 합성 관찰<br>• 형광 물질의 특정 파장 방출</td>
+                  <td><strong>[상]</strong> 영상 장치가 RGB 합성으로 색을 표현함을 알고, 자외선 흡수 후 긴 파장의 가시광선을 방출하는 원리를 파장-에너지 관계와 연결하여 정확히 설명함.<br><strong>[중]</strong> 스마트폰 속 RGB 화소와 형광 방출 현상을 설명함.<br><strong>[하]</strong> 영상 장치가 빛으로 색을 표현함을 관찰함.</td>
+                </tr>
+                <tr>
+                  <td><strong>중2<br>(11) 물질의 구성</strong></td>
+                  <td>
+                    • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                    • <strong>[9과11-04]</strong> 물질을 이루는 입자는 원자, 분자, 이온 등으로 존재할 수 있음을 알고, 이온은 전하를 띠고 있음을 설명할 수 있다.
+                  </td>
+                  <td>• 전자의 에너지 계단(바닥 vs 들뜬 상태)<br>• 전자의 스핀 팽이 회전 모형</td>
+                  <td><strong>[상]</strong> 원자 속 전자가 에너지를 흡수해 들뜬 상태로 갔다가 빛을 내며 복귀하는 과정을 입자 모형으로 논리적으로 설명함.<br><strong>[중]</strong> 전자가 에너지를 얻거나 잃으며 상태가 변함을 모형으로 이해함.<br><strong>[하]</strong> 원자 속에 전자가 있음을 안다.</td>
+                </tr>
+                <tr>
+                  <td><strong>중2<br>(14) 전기와 자기</strong></td>
+                  <td>
+                    • <strong>[9과14-02]</strong> 전기 회로에서 전류를 모형으로 설명하고, 실험을 통해 저항, 전류, 전압 사이의 관계를 이끌어낼 수 있다.<br>
+                    &nbsp;&nbsp;<span style="color:#64748b; font-size:0.83rem;">*(성취기준 해설: 반도체 소개)*</span><br>
+                    • <strong>[9과14-03]</strong> 저항의 직렬연결과 병렬연결의 특징을 비교하고, 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.
+                  </td>
+                  <td>• 유기 반도체(OLED)의 전기→빛/열 전환<br>• 75% 열 손실과 에너지 절약 기술</td>
+                  <td><strong>[상]</strong> 디스플레이에서 전기가 빛과 열로 전환됨을 이해하고, 열로 낭비되는 에너지를 빛으로 바꿔 소비 전력을 줄이는 원리를 에너지 전환 관점에서 설명함.<br><strong>[중]</strong> 전기가 빛과 열로 전환됨을 설명함.<br><strong>[하]</strong> 전기로 빛을 만들 수 있음을 앎.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="margin-top:1.5rem; padding:1.25rem; background:#f8fafc; border-radius:0.5rem; border:1px solid #e2e8f0;">
+              <h4 style="color:#1e293b; margin-bottom:0.5rem;">💡 [교과 세부능력 및 특기사항(세특)] 기재 예시</h4>
+              <p style="font-size:0.92rem; color:#475569; line-height:1.75;">
+                <em>"빛의 파장과 에너지 관계를 바탕으로 형광 현상과 스토크스 이동의 원리를 에너지 보존 법칙과 연결하여 명쾌하게 설명함. 원자 모형 속 전자의 바닥 상태와 들뜬 상태 전이를 시각화하고, 스마트폰 OLED에서 75%의 열 손실 한계를 조사함. KAIST 계산광동역학 연구실의 '핫 엑시톤' 구출 메커니즘을 탐구한 뒤, 차세대 청색 OLED 분자 디자이너 활동에서 결합 안정성과 고효율을 고려한 창의적인 분자 구조를 고안하여 뛰어난 과학적 사고력과 융합 탐구 역량을 보임."</em>
               </p>
             </div>
           </div>
-
-          <!-- Slide 7 -->
-          <div class="slide-item" data-slide="7">
-            <div class="slide-tag">KAIST CPRL 연구 성과</div>
-            <h1 class="slide-h1">KAIST의 해결책: 핫 엑시톤 & TADF로 100% 효율 달성!</h1>
-            <p class="slide-body">
-              KAIST 화학과 <strong>계산광동역학 연구실(CPRL)</strong>은 컴퓨터 양자화학 시뮬레이션으로 버려지는 75%의 삼중항을 구출하는 마법의 경로를 규명했습니다.
-            </p>
-            <div class="slide-grid">
-              <div class="slide-card">
-                <div style="font-weight:700; color:#38bdf8;">🔥 핫 엑시톤 (Hot Exciton) 경로</div>
-                <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.4rem;">
-                  삼중항 중 높은 에너지를 가진 '에너지가 높은 삼중항'에서 단일항으로 번개처럼 점프하는 초고속 우회 고속도로를 설계!
-                </p>
-              </div>
-              <div class="slide-card">
-                <div style="font-weight:700; color:#34d399;">🌡️ 열활성 지연형광 (TADF)</div>
-                <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.4rem;">
-                  실온의 미세한 열에너지를 흡수하여 갇혀 있던 삼중항을 단일항으로 거꾸로 올려보내는(역계간교차, RISC) 분자 구조 최적화!
-                </p>
-              </div>
-            </div>
-            <div style="margin-top:1.5rem; text-align:center; padding:1rem; background:rgba(34,197,94,0.15); border-radius:0.5rem; border:1px solid #22c55e;">
-              🎉 <strong>결과:</strong> 버려지던 75%를 모두 빛으로 전환하여 <strong>이론상 100% 발광 효율</strong> 달성!
-            </div>
-          </div>
-
-          <!-- Slide 8 -->
-          <div class="slide-item" data-slide="8">
-            <div class="slide-tag">STEAM 진로 탐구</div>
-            <h1 class="slide-h1">내가 바로 미래 디스플레이 분자 디자이너!</h1>
-            <p class="slide-body">
-              특히 차세대 디스플레이에서 가장 만들기 어려운 것은 <strong>'청색(Blue) OLED'</strong>입니다. 고에너지를 버텨내야 하기 때문입니다.
-            </p>
-            <div class="slide-grid">
-              <div class="slide-card">
-                <h4 style="color:#38bdf8;">🎨 1. 색상 디자인</h4>
-                <p style="font-size:0.9rem; color:#cbd5e1;">분자의 벤젠고리 구조를 늘리거나 줄여 원하는 정확한 RGB 파장의 빛을 조율하기</p>
-              </div>
-              <div class="slide-card">
-                <h4 style="color:#fbbf24;">⚡ 2. 수명과 안정성</h4>
-                <p style="font-size:0.9rem; color:#cbd5e1;">높은 전기 에너지를 받아도 결합이 깨지지 않는 단단한 분자 뼈대 설계</p>
-              </div>
-              <div class="slide-card">
-                <h4 style="color:#34d399;">💻 3. 컴퓨터 시뮬레이션</h4>
-                <p style="font-size:0.9rem; color:#cbd5e1;">직접 합성하기 전, KAIST CPRL처럼 슈퍼컴퓨터로 발광 효율을 미리 예측</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 9 -->
-          <div class="slide-item" data-slide="9">
-            <div class="slide-tag">핵심 정리 & 퀴즈</div>
-            <h1 class="slide-h1">오늘 배운 핵심 3가지 총정리</h1>
-            <div style="display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;">
-              <div class="slide-card">
-                <strong>1. 형광의 원리:</strong> 분자가 자외선을 받아 들뜬 상태로 점프한 뒤, 진동으로 열을 조금 잃고 가시광선을 내뿜으며 바닥 상태로 돌아온다 (스토크스 이동).
-              </div>
-              <div class="slide-card">
-                <strong>2. 형광과 인광의 차이:</strong> 전자의 스핀 방향이 반대인 단일항은 즉시 빛(형광)을 내지만, 같은 방향인 삼중항은 천천히 빛(인광/야광)을 낸다.
-              </div>
-              <div class="slide-card">
-                <strong>3. KAIST OLED 혁신:</strong> 전기를 넣었을 때 낭비되던 75%의 삼중항을 핫 엑시톤과 TADF 기술로 구출하여 100% 효율의 디스플레이를 만든다.
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 10 -->
-          <div class="slide-item" data-slide="10">
-            <div class="slide-tag">수업 마무리</div>
-            <h1 class="slide-h1">빛나는 미래를 향한 질문</h1>
-            <p class="slide-body" style="font-size:1.3rem; margin-top:2rem; line-height:1.8;">
-              "우리가 교과서에서 배운 작은 원자와 전자의 운동이<br>
-              어떻게 전 세계인의 스마트폰과 첨단 디스플레이를 바꾸고 있는지 보셨나요?<br><br>
-              <strong>여러분이 설계하고 싶은 미래의 빛은 어떤 색깔인가요?</strong>"
-            </p>
-            <div style="margin-top:2.5rem;">
-              <span class="badge" style="font-size:0.9rem; padding:0.4rem 1rem;">다음 탭의 [학생활동지]를 열어 탐구 활동을 시작하세요!</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- TAB 2: 📋 상세 수업준비자료 (Teacher Guide) -->
-    <!-- ========================================== -->
-    <div id="lesson-plan" class="tab-pane">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <span class="badge" style="background:#dbeafe; color:#1e40af;">교사용 지도안</span>
-            <h2 class="card-title">📋 [상세 수업지도안] 분자의 빛과 디스플레이의 과학</h2>
-          </div>
-          <button class="print-btn" onclick="window.print()">🖨️ 지도안 인쇄</button>
-        </div>
-
-        <table class="data-table">
-          <tr>
-            <th style="width:15%;">단원명</th>
-            <td>중학교 과학 (빛과 파동 / 물질의 구성 / 에너지 전환과 보존) 융합 심화</td>
-            <th style="width:15%;">권장 차시</th>
-            <td>총 3차시 (차시당 45분) 또는 블록타임 135분</td>
-          </tr>
-          <tr>
-            <th>학습 목표</th>
-            <td colspan="3">
-              1. 분자가 빛(자외선)을 흡수하여 들뜬 상태가 된 후 형광을 방출하는 메커니즘과 에너지 보존 법칙을 설명할 수 있다.<br>
-              2. 전자의 스핀 상태(단일항과 삼중항)에 따른 형광과 인광의 차이를 모형과 비유를 통해 비교할 수 있다.<br>
-              3. 스마트폰 OLED의 발광 원리와 KAIST CPRL 연구실의 고효율 발광체 메커니즘(핫 엑시톤, TADF)을 첨단 과학기술과 연결하여 설명할 수 있다.
-            </td>
-          </tr>
-          <tr>
-            <th>준비물 및 교구</th>
-            <td colspan="3">
-              • <strong>실험 교구:</strong> 365nm 휴대용 UV-A 램프(모둠별 1개), 형광펜 3종, 비타민 B2 음료(비타500 등), 토닉워터, 올리브유, 백지 및 지폐, 시험관 및 비커, 암실 상자.<br>
-              • <strong>학습 자료:</strong> 학생활동지, 슬라이드 발표자료, 분자 시뮬레이션 뷰어(웹 브라우저 접속 가능 기기).
-            </td>
-          </tr>
-        </table>
-
-        <h3 style="margin: 1.5rem 0 0.75rem; color:#1e293b;">차시별 세부 교수·학습 흐름</h3>
-        
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
-          <h4 style="color:#2563eb; margin-bottom:0.5rem;">[1차시] 분자 형광 탐정단: 보이지 않는 빛이 만드는 화려한 세상</h4>
-          <ul style="padding-left:1.25rem; font-size:0.95rem; line-height:1.7;">
-            <li><strong>도입 (10분):</strong> 어두운 상자 속에서 토닉워터와 비타민 음료에 자외선(UV)을 비추는 깜짝 시연으로 호기심 유발. "왜 투명한 물이 파랗게 빛날까?"</li>
-            <li><strong>전개 (25분):</strong> 모둠별 4대 형광 물질 탐구 실험 (토닉워터, 비타민 음료, 올리브유, 복사용지). 흡수한 자외선 색상과 방출되는 형광 색상을 관찰 기록.</li>
-            <li><strong>정리 (10분):</strong> 파장과 빛 에너지의 관계 정리 (자외선 = 고에너지, 가시광선 = 저에너지). "사라진 에너지는 어디로 갔을까?" 발문 던지기.</li>
-          </ul>
-        </div>
-
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
-          <h4 style="color:#7c3aed; margin-bottom:0.5rem;">[2차시] 에너지 계단과 스핀의 마술: 형광 vs 인광의 비밀</h4>
-          <ul style="padding-left:1.25rem; font-size:0.95rem; line-height:1.7;">
-            <li><strong>도입 (10분):</strong> 형광펜과 야광 스티커의 불을 끈 후 지속 시간 비교. "왜 야광은 1시간 동안 빛날까?"</li>
-            <li><strong>전개 (25분):</strong> 전자의 에너지 계단 모델링. 
-              <br>- 빛 흡수(점프) → 분자 진동(열 손실) → 형광 방출(스토크스 이동).
-              <br>- 동전 2개 던지기 놀이를 통한 <strong>단일항(서로 반대 스핀 ↑↓, 25%)</strong>과 <strong>삼중항(나란한 스핀 ↑↑, 75%)</strong> 스핀 상태 비유.
-            </li>
-            <li><strong>정리 (10분):</strong> 형광(순식간)과 인광(천천히)의 차이를 문이 열려있는 방 vs 문이 잠겨있는 방으로 직관화.</li>
-          </ul>
-        </div>
-
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
-          <h4 style="color:#059669; margin-bottom:0.5rem;">[3차시] KAIST의 OLED 혁신과 미래 디스플레이 분자 디자인</h4>
-          <ul style="padding-left:1.25rem; font-size:0.95rem; line-height:1.7;">
-            <li><strong>도입 (10분):</strong> 스마트폰 분해 돋보기 관찰 (RGB 픽셀 배열 관찰). "스마트폰은 어떻게 빛을 낼까?"</li>
-            <li><strong>전개 (25분):</strong> OLED의 75% 열 손실 문제 소개 → KAIST CPRL 연구진의 핫 엑시톤 및 TADF 구출 작전 탐구.
-              <br>- 활동: [미래 청색 OLED 분자 디자이너] 활동지 작성.
-            </li>
-            <li><strong>정리 (10분):</strong> 모둠별 설계안 발표 및 첨단 화학 연구원의 역할 성찰.</li>
-          </ul>
-        </div>
-
-        <div class="callout-box">
-          <strong>⚠️ 교사용 실험 안전 및 지도 팁:</strong><br>
-          1. 365nm UV-A 램프는 비교적 안전하지만, <strong>학생들이 광원을 직접 눈으로 쳐다보지 않도록</strong> 보안경을 착용하거나 상자 안에서 관찰하게 지도하세요.<br>
-          2. 토닉워터에 함유된 퀴닌(Quinine)은 매우 강한 형광을 띱니다. 시중 마트에서 쉽게 구할 수 있는 '진로 토닉워터'를 사용하면 가장 선명합니다.
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- TAB 3: 📝 학생활동지 (Worksheet) -->
-    <!-- ========================================== -->
-    <div id="worksheet" class="tab-pane">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <span class="badge" style="background:#fef3c7; color:#92400e;">학생 탐구 활동지</span>
-            <h2 class="card-title">📝 [탐구 활동지] 분자의 빛 여행: 형광부터 스마트폰 OLED까지</h2>
-          </div>
-          <button class="print-btn" onclick="window.print()">🖨️ 활동지 인쇄하기</button>
-        </div>
-
-        <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem; font-size:0.95rem;">
-          <span>중학교 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )학년 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )반 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )번</span>
-          <span>이름: ____________________</span>
-        </div>
-
-        <div class="worksheet-section">
-          <h3 style="color:#1e40af; font-size:1.1rem; margin-bottom:0.5rem;">[활동 1] 자외선 분자 탐정단 실험 관찰기</h3>
-          <p style="font-size:0.9rem; color:#475569;">준비된 물질에 자외선(UV 램프)을 비추고 일어나는 변화를 기록해 봅시다.</p>
-          
-          <table class="data-table" style="margin-top:0.75rem;">
-            <thead>
-              <tr>
-                <th>탐구 물질</th>
-                <th>평상시 빛깔 (형광등 아래)</th>
-                <th>자외선(UV)을 비췄을 때 색깔</th>
-                <th>형광을 내는 핵심 분자</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>토닉워터</strong></td>
-                <td>투명함</td>
-                <td><div class="answer-box" style="min-height:35px;">(예: 푸른색 형광)</div></td>
-                <td>퀴닌 (Quinine)</td>
-              </tr>
-              <tr>
-                <td><strong>비타민 음료</strong></td>
-                <td>노란색</td>
-                <td><div class="answer-box" style="min-height:35px;"></div></td>
-                <td>비타민 B2 (리보플라빈)</td>
-              </tr>
-              <tr>
-                <td><strong>올리브유/시금치</strong></td>
-                <td>연초록색</td>
-                <td><div class="answer-box" style="min-height:35px;"></div></td>
-                <td>엽록소 (Chlorophyll)</td>
-              </tr>
-              <tr>
-                <td><strong>복사용지</strong></td>
-                <td>흰색</td>
-                <td><div class="answer-box" style="min-height:35px;"></div></td>
-                <td>형광증백제</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="worksheet-section">
-          <h3 style="color:#1e40af; font-size:1.1rem; margin-bottom:0.5rem;">[활동 2] 에너지 계단 추론: 사라진 에너지를 찾아라!</h3>
-          <p style="font-size:0.9rem; color:#475569;">
-            자외선(파장 365나노미터, 높은 에너지)을 흡수한 비타민 분자가 연두색 빛(파장 520나노미터, 낮은 에너지)을 내뿜었습니다.
-          </p>
-          <div style="margin-top:0.75rem;">
-            <p style="font-weight:600; font-size:0.95rem;">Q1. 흡수한 자외선 에너지보다 방출된 형광 에너지가 더 작은 이유는 무엇일까요? (에너지 보존 법칙을 사용하여 설명해 보세요)</p>
-            <div class="answer-box" style="min-height:70px;">
-              [작성 힌트: 분자가 높은 들뜬 상태에 도달한 후, 바닥으로 떨어지기 전에 분자 진동을 통해 어떤 형태로 에너지를 잃어버렸을까요?]
-            </div>
-          </div>
-        </div>
-
-        <div class="worksheet-section">
-          <h3 style="color:#1e40af; font-size:1.1rem; margin-bottom:0.5rem;">[활동 3] KAIST OLED 연구원 도전 과제: 75%의 미스터리 해결하기</h3>
-          <p style="font-size:0.9rem; color:#475569;">
-            스마트폰 OLED에 전기를 넣으면 <strong>단일항 분자 25%</strong>와 <strong>삼중항 분자 75%</strong>가 만들어집니다.
-          </p>
-          <div style="margin-top:0.75rem;">
-            <p style="font-weight:600; font-size:0.95rem;">Q2. 빛을 내지 못하고 갇혀버린 75%의 삼중항 분자를 구출하기 위해 KAIST 연구진이 제안한 '핫 엑시톤' 또는 'TADF' 아이디어를 자신의 말로 설명해 보세요.</p>
-            <div class="answer-box" style="min-height:80px;"></div>
-          </div>
-          <div style="margin-top:0.75rem;">
-            <p style="font-weight:600; font-size:0.95rem;">Q3. 내가 차세대 스마트폰용 '청색(Blue) OLED'를 개발하는 화학자라면, 분자를 설계할 때 어떤 점을 가장 중요하게 고려할 것인가요?</p>
-            <div class="answer-box" style="min-height:80px;"></div>
-          </div>
         </div>
 
       </div>
-    </div>
+    </main>
 
-    <!-- ========================================== -->
-    <!-- TAB 4: 📖 학생용 교재 (Textbook / Reader) -->
-    <!-- ========================================== -->
-    <div id="textbook" class="tab-pane">
-      <div class="card">
-        <div class="chapter-hero">
-          <span class="badge" style="background:#3b82f6; color:white;">중학생을 위한 첨단 화학 읽기자료</span>
-          <h2 style="font-size:1.6rem; font-weight:800; color:#1e3a8a; margin:0.5rem 0;">제1장. 빛을 품은 분자들의 속삭임: 형광에서 OLED까지</h2>
-          <p style="color:#3b82f6; font-size:0.95rem;">글: KAIST 계산광동역학 연구실(CPRL) 교육기획팀</p>
-        </div>
-
-        <div style="font-size:1.02rem; line-height:1.8; color:#334155;">
-          <h3 style="color:#1e293b; margin:1.5rem 0 0.5rem; font-size:1.25rem;">1. 어둠 속에서 피어나는 신비로운 빛, 형광(Fluorescence)</h3>
-          <p>
-            클럽이나 방탈출 카페에 가본 적이 있나요? 보라색 자외선 조명(블랙라이트) 아래에 서면 흰 옷이나 형광펜 글씨가 눈이 부시도록 선명하게 빛나는 모습을 볼 수 있습니다. 평범해 보이던 토닉워터는 환상적인 사파이어빛 파란색으로 변하고, 노란 비타민 음료는 눈부신 네온 연두색으로 변신합니다.
-          </p>
-          <p>
-            왜 눈에 보이지도 않는 자외선을 비추었는데 아름다운 색깔의 빛이 뿜어져 나오는 걸까요? 그 비밀은 바로 <strong>'분자 속 전자의 점프'</strong>에 있습니다.
-          </p>
-
-          <h3 style="color:#1e293b; margin:1.75rem 0 0.5rem; font-size:1.25rem;">2. 에너지 계단을 오르내리는 전자의 롤러코스터</h3>
-          <p>
-            물질을 이루는 가장 작은 단위인 분자 속에는 전자들이 살고 있습니다. 평소에 전자들은 에너지가 가장 낮고 편안한 1층, 즉 <strong>'바닥 상태'</strong>에 얌전히 머물러 있습니다. 
-          </p>
-          <p>
-            그런데 여기에 에너지가 매우 높은 자외선 광자가 쾅! 하고 부딪히면, 전자는 이 에너지를 꿀꺽 삼키고 3층 높이의 <strong>'들뜬 상태'</strong>로 번쩍 뛰어오릅니다. 하지만 3층은 너무 불안정해서 오래 머물 수 없습니다.
-          </p>
-          <p>
-            전자는 다시 1층으로 내려오고 싶어 합니다. 이때 3층에서 쿵쾅거리며 진동하다가 약간의 에너지를 '열'로 버린 후, 남은 에너지를 한 줄기 영롱한 빛으로 뿜어내며 1층으로 착지합니다. 처음에 먹은 에너지(자외선)보다 뱉어낸 에너지(가시광선)가 작기 때문에, 파장이 길어져 우리 눈에 보이는 알록달록한 형광이 되는 것입니다. 이를 발견자의 이름을 따 <strong>'스토크스 이동(Stokes Shift)'</strong>이라고 부릅니다.
-          </p>
-
-          <div class="kaist-highlight">
-            <h4 style="color:#166534; font-size:1.1rem; margin-bottom:0.3rem;">🏛️ KAIST 연구원 코너: 스마트폰 속에서 일어나는 분자의 춤</h4>
-            <p style="font-size:0.95rem; color:#14532d;">
-              스마트폰의 OLED(유기 발광 다이오드) 화면은 자외선 대신 <strong>배터리의 전기</strong>를 사용합니다. 전기가 들어가면 분자가 들뜨게 되고 빛을 냅니다. 그런데 자연의 법칙 때문에 전기를 넣으면 빛을 잘 내는 분자(단일항)는 25%만 생기고, 갇혀서 열만 내는 분자(삼중항)가 75%나 생깁니다.
-              <br><br>
-              <strong>KAIST 화학과 이영민 교수 연구실(CPRL)</strong>에서는 슈퍼컴퓨터를 이용해 이 갇혀버린 75%의 분자들을 빛으로 끄집어내는 <strong>'핫 엑시톤(Hot Exciton)'</strong> 고속도로를 찾아냈습니다. 덕분에 우리는 배터리가 오래가고 더욱 선명한 스마트폰 화면을 볼 수 있게 된 것입니다!
-            </p>
-          </div>
-
-          <h3 style="color:#1e293b; margin:1.75rem 0 0.5rem; font-size:1.25rem;">📚 쏙쏙 핵심 용어 사전</h3>
-          <ul style="padding-left:1.25rem; line-height:1.8;">
-            <li><strong>바닥 상태 (Ground State, 바닥 상태):</strong> 분자와 전자가 가장 에너지가 낮고 안정된 기본 상태.</li>
-            <li><strong>들뜬 상태 (Excited State, 들뜬 상태):</strong> 빛이나 전기에너지를 흡수하여 에너지가 높아진 불안정한 상태.</li>
-            <li><strong>스핀 (Spin):</strong> 전자가 팽이처럼 자전하면서 갖는 고유한 양자역학적 성질 (↑ 또는 ↓).</li>
-            <li><strong>단일항 (Singlet):</strong> 전자의 스핀이 서로 반대(↑↓)로 짝지어져 순식간에 빛(형광)을 내는 상태.</li>
-            <li><strong>삼중항 (Triplet):</strong> 전자의 스핀이 같은 방향(↑↑)으로 나란해져 빛을 내지 못하고 갇히기 쉬운 상태.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- TAB 5: 🎯 2022 개정 교육과정 연계표 -->
-    <!-- ========================================== -->
-    <div id="curriculum" class="tab-pane">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <span class="badge" style="background:#e0e7ff; color:#3730a3;">교육과정 표준 매핑</span>
-            <h2 class="card-title">🎯 2022 개정 교육과정 (중학교 과학) 성취기준 연계표</h2>
-          </div>
-          <button class="print-btn" onclick="window.print()">🖨️ 연계표 인쇄</button>
-        </div>
-
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th style="width:15%;">학년 / 영역</th>
-              <th style="width:25%;">2022 개정 교육과정 성취기준</th>
-              <th style="width:30%;">본 수업 프로그램 연계 요소</th>
-              <th style="width:30%;">평가 기준 (상 / 중 / 하)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>중학교 1~2학년<br>(물리와 화학)</strong></td>
-              <td>
-                <strong>[9과05-01]</strong> 빛의 반사와 굴절, 분산과 합성을 관찰하고 그 특징을 설명할 수 있다.<br>
-                <strong>[9과01-02]</strong> 원소의 구분을 불꽃반응과 선스펙트럼으로 설명할 수 있다.
-              </td>
-              <td>
-                • 자외선과 가시광선의 파장별 에너지 차이 이해<br>
-                • 형광펜, 비타민 음료의 자외선 흡수 및 가시광선 방출 스펙트럼 관찰<br>
-                • 분자 수준의 전자 전이 모델링
-              </td>
-              <td>
-                <strong>[상]</strong> 자외선 흡수와 형광 방출 과정을 에너지 준위 및 파장 변화와 연계하여 정확히 설명함.<br>
-                <strong>[중]</strong> 자외선을 흡수하여 가시광선이 방출되는 현상을 관찰하고 설명함.<br>
-                <strong>[하]</strong> 형광 물질이 자외선 아래에서 빛을 낸다는 사실을 확인함.
-              </td>
-            </tr>
-            <tr>
-              <td><strong>중학교 3학년<br>(에너지와 물질)</strong></td>
-              <td>
-                <strong>[9과09-02]</strong> 여러 가지 에너지 전환 과정을 이해하고 에너지가 보존됨을 설명할 수 있다.<br>
-                <strong>[9과03-03]</strong> 화학 반응에서 일어나는 에너지 출입을 설명할 수 있다.
-              </td>
-              <td>
-                • 스토크스 이동(빛에너지 → 진동/열에너지 + 형광)에서의 에너지 보존 법칙 확인<br>
-                • OLED 디스플레이에서의 전기 에너지 → 빛 에너지 전환 효율 분석
-              </td>
-              <td>
-                <strong>[상]</strong> 흡수된 빛 에너지와 방출된 형광 및 열에너지의 총합이 보존됨을 정량적·정성적으로 서술함.<br>
-                <strong>[중]</strong> 빛에너지가 열에너지와 다른 색깔의 빛으로 전환됨을 이해함.<br>
-                <strong>[하]</strong> 에너지가 한 형태에서 다른 형태로 바뀐다는 것을 말할 수 있음.
-              </td>
-            </tr>
-            <tr>
-              <td><strong>융합 역량<br>(STEAM & 진로)</strong></td>
-              <td>
-                <strong>[핵심역량]</strong> 과학적 사고력, 과학적 탐구력, 과학적 문제해결력, 과학기술과 사회의 관계 이해
-              </td>
-              <td>
-                • KAIST CPRL 연구실의 핫 엑시톤 & TADF 분자 설계 원리 탐구<br>
-                • 청색 OLED의 수명/효율 한계 극복을 위한 분자 디자이너 프로젝트
-              </td>
-              <td>
-                <strong>[상]</strong> 첨단 디스플레이 소재 개발에서 계산화학과 양자역학의 역할을 이해하고 창의적인 분자 설계안을 제시함.<br>
-                <strong>[중]</strong> OLED 효율을 높이기 위한 과학자들의 노력을 이해하고 발표함.<br>
-                <strong>[하]</strong> 스마트폰 화면에 화학 기술이 사용됨을 인지함.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div style="margin-top:1.5rem; padding:1.25rem; background:#f8fafc; border-radius:0.5rem; border:1px solid #e2e8f0;">
-          <h4 style="color:#1e293b; margin-bottom:0.5rem;">💡 교과 세부능력 및 특기사항(세특) 기재 예시 문구</h4>
-          <p style="font-size:0.92rem; color:#475569; line-height:1.7;">
-            <em>"자외선과 가시광선의 에너지 차이를 바탕으로 형광 현상과 스토크스 이동의 원리를 에너지 보존 법칙과 연결하여 탁월하게 설명함. KAIST 계산광동역학 연구실의 연구 사례를 조사하며 OLED의 단일항-삼중항 스핀 통계 한계를 극복하는 '핫 엑시톤' 메커니즘을 탐구하고, 미래 차세대 청색 발광 분자 디자이너 활동에서 창의적인 분자 구조와 효율 개선 방안을 발표하여 우수한 과학적 사고력과 융합 탐구 역량을 보임."</em>
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </main>
+  </div>
 
   <script>
-    // Tab switching logic
+    let activeTab = 'slides';
+    let isSidebarOpen = true;
+
+    const tabNames = {
+      'slides': '발표 슬라이드 (Slide Deck)',
+      'lesson-plan': '교사용 지도안 (Teacher Guide)',
+      'worksheet': '학생활동지 (Worksheet)',
+      'textbook': '학생용 읽기자료 (Textbook)',
+      'curriculum': '2022 성취기준 연계표 (Curriculum)'
+    };
+
     function switchTab(tabId) {
-      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      
-      document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      activeTab = tabId;
+      document.querySelectorAll('.sidebar-nav .nav-item').forEach(i => i.classList.remove('active'));
+      const activeBtn = document.getElementById('nav-btn-' + tabId);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.getElementById('current-tab-name').innerText = tabNames[tabId] || tabId;
+      document.querySelectorAll('.content-container .tab-pane').forEach(p => p.classList.remove('active'));
+      const targetPane = document.getElementById('tab-' + tabId);
+      if (targetPane) targetPane.classList.add('active');
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.innerWidth <= 900) document.body.classList.remove('sidebar-open');
     }
 
-    // Slide navigation logic
-    let currentSlide = 1;
-    const totalSlides = 10;
-
-    function changeSlide(direction) {
-      const slides = document.querySelectorAll('.slide-item');
-      slides[currentSlide - 1].classList.remove('active');
-      
-      currentSlide += direction;
-      if (currentSlide < 1) currentSlide = 1;
-      if (currentSlide > totalSlides) currentSlide = totalSlides;
-
-      slides[currentSlide - 1].classList.add('active');
-
-      // Update Toolbar
-      document.getElementById('slide-num-badge').innerText = currentSlide + ' / ' + totalSlides;
-      document.getElementById('slide-progress-bar').style.width = ((currentSlide / totalSlides) * 100) + '%';
-
-      document.getElementById('prev-btn').disabled = (currentSlide === 1);
-      document.getElementById('next-btn').disabled = (currentSlide === totalSlides);
-    }
-
-    // Keyboard support for presentation
-    document.addEventListener('keydown', function(e) {
-      if (!document.getElementById('slides').classList.contains('active')) return;
-      if (e.key === 'ArrowRight' || e.key === 'Space') {
-        if (currentSlide < totalSlides) changeSlide(1);
-      } else if (e.key === 'ArrowLeft') {
-        if (currentSlide > 1) changeSlide(-1);
+    function toggleSidebar() {
+      if (window.innerWidth <= 900) {
+        document.body.classList.toggle('sidebar-open');
+      } else {
+        document.body.classList.toggle('sidebar-collapsed');
+        isSidebarOpen = !document.body.classList.contains('sidebar-collapsed');
+        const icon = document.getElementById('collapse-icon');
+        if (icon) icon.innerText = isSidebarOpen ? '◀' : '▶';
       }
-    });
+    }
 
-    // Fullscreen toggle
     function toggleFullScreen() {
-      const elem = document.querySelector('.slide-viewer');
+      const activeViewer = document.querySelector('.tab-pane.active .slide-viewer');
+      const elem = activeViewer || document.documentElement;
       if (!document.fullscreenElement) {
-        elem.requestFullscreen().catch(err => {
-          alert('전체화면 전환 에러: ' + err.message);
-        });
+        elem.requestFullscreen().catch(err => alert('전체화면 오류: ' + err.message));
       } else {
         document.exitFullscreen();
       }
     }
 
-    // Interactive Simulator Logic
+    let currentSlide = 1;
+    const totalSlides = 10;
+    function changeSlide(direction) {
+      const slides = document.querySelectorAll('.slide-item');
+      slides[currentSlide - 1].classList.remove('active');
+      currentSlide += direction;
+      if (currentSlide < 1) currentSlide = 1;
+      if (currentSlide > totalSlides) currentSlide = totalSlides;
+      slides[currentSlide - 1].classList.add('active');
+
+      document.getElementById('slide-num-badge').innerText = currentSlide + ' / ' + totalSlides;
+      document.getElementById('slide-progress-bar').style.width = ((currentSlide / totalSlides) * 100) + '%';
+      document.getElementById('prev-btn').disabled = (currentSlide === 1);
+      document.getElementById('next-btn').disabled = (currentSlide === totalSlides);
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (activeTab === 'slides') {
+        if (e.key === 'ArrowRight' || e.key === 'Space') { if (currentSlide < totalSlides) changeSlide(1); }
+        else if (e.key === 'ArrowLeft') { if (currentSlide > 1) changeSlide(-1); }
+      }
+      if (e.key === '[' || e.key === ']') toggleSidebar();
+    });
+
     function triggerSimulator(mode) {
       const electron = document.getElementById('sim-electron');
       const photon = document.getElementById('sim-photon');
@@ -1019,62 +1125,56 @@
       if (mode === 'fluorescence') {
         status.innerText = "1단계: 자외선 광자 흡수 중...";
         photon.style.opacity = '1';
-        photon.style.left = '200px';
-
+        photon.style.left = '230px';
         setTimeout(() => {
           photon.style.opacity = '0';
-          status.innerText = "2단계: 전자가 들뜬 상태로 점프!";
-          electron.style.top = '40px';
+          status.innerText = "2단계: 전자가 들뜬 상태(3층)로 번쩍 점프!";
+          electron.style.top = '35px';
           electron.style.background = '#f43f5e';
           electron.style.boxShadow = '0 0 16px #f43f5e';
         }, 500);
-
         setTimeout(() => {
-          status.innerText = "3단계: 진동으로 미세 에너지 손실 후 초록색 형광 방출!";
+          status.innerText = "3단계: 진동으로 열을 조금 흘리고 초록색 형광 방출 착지!";
           emission.style.opacity = '1';
-          emission.style.left = '320px';
+          emission.style.left = '330px';
           electron.style.top = '200px';
           electron.style.background = '#38bdf8';
           electron.style.boxShadow = '0 0 12px #38bdf8';
-        }, 1200);
-
+        }, 1300);
         setTimeout(() => {
           emission.style.opacity = '0';
-          emission.style.left = '250px';
+          emission.style.left = '290px';
           photon.style.left = '40px';
-          status.innerText = "형광 방출 완료! (바닥 상태 도달)";
-        }, 2200);
+          status.innerText = "형광 방출 완료! 전자가 다시 바닥 상태로 안착했습니다.";
+        }, 2400);
       } 
       else if (mode === 'triplet') {
-        status.innerText = "자외선 흡수 후 삼중항으로 전이 (스핀 뒤집힘)";
-        electron.style.top = '40px';
+        status.innerText = "자외선 흡수 후 스핀이 뒤집히며 삼중항으로 전이!";
+        electron.style.top = '35px';
         setTimeout(() => {
-          electron.style.top = '120px';
+          electron.style.top = '115px';
           electron.style.background = '#a855f7';
-          electron.style.boxShadow = '0 0 16px #a855f7';
-          status.innerText = "삼중항에 갇힘: 문이 잠겨 있어 빛을 즉시 내지 못함(야광/인광)";
+          status.innerText = "삼중항 갇힘: 문이 잠겨 바로 내려가지 못하고 오랫동안 갇힘 (인광/야광)";
         }, 600);
       }
       else if (mode === 'hot-exciton') {
-        status.innerText = "KAIST 핫 엑시톤 가동! 들뜬 삼중항에서 단일항으로 초고속 점프!";
-        electron.style.top = '120px';
-        electron.style.background = '#a855f7';
+        status.innerText = "KAIST 핫 엑시톤 가동! 옥상 구름다리로 초고속 점프!";
+        electron.style.top = '115px';
         setTimeout(() => {
-          electron.style.top = '40px';
+          electron.style.top = '35px';
           electron.style.background = '#f43f5e';
-          status.innerText = "단일항 도달 성공! 100% 효율로 초록색 형광 방출 준비 완료!";
+          status.innerText = "단일항 도달 성공! 100% 효율로 초록색 형광 뿜어낼 준비 완료!";
         }, 600);
         setTimeout(() => {
           emission.style.opacity = '1';
-          emission.style.left = '320px';
+          emission.style.left = '330px';
           electron.style.top = '200px';
           electron.style.background = '#38bdf8';
         }, 1400);
         setTimeout(() => {
           emission.style.opacity = '0';
-          emission.style.left = '250px';
-          status.innerText = "핫 엑시톤 구출 성공: 버려지던 에너지가 모두 빛으로 전환됨!";
-        }, 2400);
+          status.innerText = "구출 완료: 버려지던 75%의 에너지가 모두 빛으로 전환되었습니다!";
+        }, 2500);
       }
     }
   </script>

@@ -3,122 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>0과 1의 한계를 넘는 분자 탐험: 양자 컴퓨터와 계산 화학의 미래</title>
+  <title>0과 1의 한계를 넘는 분자 탐험: 2022 개정 중학교 과학·정보 융합 수업 패키지</title>
   <style>
     :root {
       --primary: #7c3aed;
       --primary-dark: #6d28d9;
-      --primary-light: #f5f3ff;
-      --secondary: #2563eb;
       --accent: #06b6d4;
       --dark: #0f172a;
-      --gray-dark: #334155;
-      --gray: #64748b;
-      --gray-light: #f1f5f9;
+      --sidebar-bg: #090d16;
+      --sidebar-border: rgba(255,255,255,0.08);
+      --main-bg: #f8fafc;
+      --text-main: #1e293b;
       --white: #ffffff;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-      --card-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --sidebar-w: 300px;
+      --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --card-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.08);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Pretendard", "Apple SD Gothic Neo", sans-serif;
-      background-color: #f8fafc;
-      color: var(--dark);
+      background-color: var(--main-bg);
+      color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    header {
-      background: linear-gradient(135deg, #090d16 0%, #2e1065 50%, #1e1b4b 100%);
-      color: var(--white);
-      padding: 1.5rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
+    .app-container {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      min-height: 100vh;
+      position: relative;
     }
-    .badge {
+
+    /* Sidebar */
+    .app-sidebar {
+      width: var(--sidebar-w);
+      background-color: var(--sidebar-bg);
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      border-right: 1px solid var(--sidebar-border);
+      position: fixed;
+      top: 0; bottom: 0; left: 0;
+      z-index: 100;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    body.sidebar-collapsed .app-sidebar { transform: translateX(-100%); }
+
+    .sidebar-brand {
+      padding: 1.5rem 1.25rem 1.25rem;
+      border-bottom: 1px solid var(--sidebar-border);
+      background: linear-gradient(180deg, rgba(46,16,101,0.6) 0%, transparent 100%);
+    }
+    .brand-badge {
       display: inline-block;
-      padding: 0.25rem 0.75rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 9999px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #c4b5fd;
-      margin-bottom: 0.25rem;
+      background: rgba(192,132,252,0.15);
+      border: 1px solid rgba(192,132,252,0.3);
+      color: #c084fc;
+      margin-bottom: 0.5rem;
     }
-    h1.title {
-      font-size: 1.4rem;
+    .brand-title {
+      font-size: 1.2rem;
       font-weight: 800;
       background: linear-gradient(90deg, #ffffff, #c4b5fd, #67e8f9);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .subtitle {
-      font-size: 0.85rem;
-      color: #cbd5e1;
+    .brand-sub { font-size: 0.78rem; color: #94a3b8; margin-top: 0.2rem; }
+
+    .sidebar-section {
+      padding: 1.1rem 1.1rem 0.5rem;
+      border-bottom: 1px solid var(--sidebar-border);
     }
-    /* Tabs Navigation */
-    .nav-tabs {
-      display: flex;
-      background: rgba(15, 23, 42, 0.6);
-      padding: 0.35rem;
-      border-radius: 0.75rem;
-      gap: 0.35rem;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .tab-btn {
-      background: transparent;
-      border: none;
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: #94a3b8;
-      padding: 0.5rem 1rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Package Switcher */
+    .pkg-switch-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .pkg-switch-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .pkg-switch-btn:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.25);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .pkg-switch-btn.active {
+      background: linear-gradient(135deg, rgba(124,58,237,0.25) 0%, rgba(192,132,252,0.15) 100%);
+      border-color: #c084fc;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+    }
+    .pkg-icon {
+      font-size: 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
       border-radius: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    .pkg-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+    .pkg-title { font-size: 0.88rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .pkg-sub { font-size: 0.72rem; color: #94a3b8; margin-top: 0.15rem; }
+
+    /* Nav items */
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.35rem; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 0.6rem;
+      background: transparent;
+      border: 1px solid transparent;
+      color: #94a3b8;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
+      text-align: left;
       transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      width: 100%;
     }
-    .tab-btn:hover {
-      color: var(--white);
-      background: rgba(255,255,255,0.08);
+    .nav-item:hover { color: #ffffff; background: rgba(255,255,255,0.06); }
+    .nav-item.active {
+      color: #ffffff;
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
     }
-    .tab-btn.active {
-      color: var(--white);
-      background: var(--primary);
-      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);
-    }
-    main.container {
-      max-width: 1400px;
-      margin: 1.5rem auto;
-      padding: 0 1.5rem 3rem;
-    }
-    .tab-pane {
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    .tab-pane.active { display: block; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    .nav-icon { font-size: 1.1rem; }
+    .nav-text { flex: 1; }
+    .nav-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.35rem;
+      background: rgba(255,255,255,0.1);
+      color: #cbd5e1;
     }
 
-    /* Card Layouts */
+    .sidebar-actions { display: flex; flex-direction: column; gap: 0.4rem; }
+    .action-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      color: #cbd5e1;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+    .action-btn:hover { background: rgba(255,255,255,0.08); color: #ffffff; }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 1.25rem 1.1rem;
+      border-top: 1px solid var(--sidebar-border);
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+    .sidebar-footer a { color: #94a3b8; text-decoration: none; }
+    .sidebar-footer a:hover { color: #c084fc; text-decoration: underline; }
+
+    /* Main Area */
+    .app-main {
+      flex: 1;
+      margin-left: var(--sidebar-w);
+      transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    body.sidebar-collapsed .app-main { margin-left: 0; }
+
+    .app-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.75rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 1rem; }
+    .sidebar-toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .current-pkg-badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
+      color: #6d28d9;
+    }
+    .current-tab-name { font-size: 1rem; font-weight: 800; color: #0f172a; margin-left: 0.5rem; }
+    .topbar-actions { display: flex; gap: 0.5rem; }
+    .topbar-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .content-container { padding: 1.75rem; max-width: 1400px; margin: 0 auto; width: 100%; }
+    .tab-pane { display: none; animation: fadeIn 0.25s ease; }
+    .tab-pane.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
     .card {
       background: var(--white);
       border-radius: 1rem;
@@ -134,918 +275,882 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #1e293b;
-      display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 0.5rem;
     }
+    .card-title { font-size: 1.25rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; }
 
-    /* Slides Presentation Mode Styles */
+    /* Slide Deck Layout */
     .slide-viewer {
       background: #060814;
       border-radius: 1.25rem;
       overflow: hidden;
-      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
-      border: 1px solid #1e293b;
-      color: var(--white);
+      box-shadow: var(--card-shadow-lg);
+      display: flex;
+      flex-direction: column;
+      min-height: 640px;
       position: relative;
     }
     .slide-toolbar {
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(8px);
-      padding: 0.75rem 1.25rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 10;
     }
-    .slide-screen {
-      min-height: 580px;
-      padding: 3rem 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      background: radial-gradient(circle at 80% 20%, #3b0764 0%, #060814 65%);
-    }
-    .slide-item {
-      display: none;
-      animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .slide-item.active { display: block; }
-    @keyframes slideIn {
-      from { opacity: 0; transform: scale(0.98) translateX(15px); }
-      to { opacity: 1; transform: scale(1) translateX(0); }
-    }
+    .slide-progress { height: 4px; background: rgba(255,255,255,0.1); width: 100%; }
+    .slide-progress-bar { height: 100%; background: linear-gradient(90deg, #7c3aed, #c084fc); width: 10%; transition: width 0.3s ease; }
+    .slide-screen { flex: 1; display: flex; padding: 2.5rem 3.5rem; color: var(--white); position: relative; overflow-y: auto; }
+    .slide-item { display: none; width: 100%; max-width: 1100px; margin: 0 auto; flex-direction: column; justify-content: center; animation: slideIn 0.3s ease; }
+    .slide-item.active { display: flex; }
+    @keyframes slideIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
     .slide-tag {
-      color: #a855f7;
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
       font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-    .slide-h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 1.25rem;
-      background: linear-gradient(90deg, #ffffff, #e9d5ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .slide-body {
-      font-size: 1.15rem;
-      color: #cbd5e1;
-      line-height: 1.7;
-      max-width: 950px;
-    }
-    .slide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.75rem;
-    }
-    .slide-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-      transition: all 0.2s;
-    }
-    .slide-card:hover {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(168, 85, 247, 0.4);
-      transform: translateY(-2px);
-    }
-    .slide-nav-btn {
-      background: rgba(255,255,255,0.1);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .slide-nav-btn:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-    .slide-nav-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-    .slide-progress {
-      height: 4px;
-      background: rgba(255,255,255,0.1);
-    }
-    .slide-progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, #a855f7, #38bdf8);
-      width: 10%;
-      transition: width 0.3s ease;
-    }
-
-    /* Interactive Simulator Card */
-    .sim-box {
-      background: #0f172a;
-      color: white;
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      margin: 1.25rem 0;
-      border: 1px solid #334155;
-    }
-    .sim-controls {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
+      background: rgba(124,58,237,0.25);
+      border: 1px solid rgba(192,132,252,0.4);
+      color: #c4b5fd;
       margin-bottom: 1rem;
     }
-    .sim-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .sim-btn:hover { background: var(--primary-dark); }
-    .sim-btn.secondary { background: #334155; }
-    .sim-btn.secondary:hover { background: #1e293b; }
-    .sim-canvas {
-      width: 100%;
-      height: 270px;
-      background: #020617;
-      border-radius: 0.5rem;
-      border: 1px solid #1e293b;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    /* Print styling */
-    .print-btn {
-      background: #e2e8f0;
-      border: 1px solid #cbd5e1;
-      padding: 0.4rem 0.8rem;
-      border-radius: 0.375rem;
+    .slide-h1 { font-size: 2.1rem; font-weight: 800; line-height: 1.3; margin-bottom: 1.25rem; color: #f8fafc; }
+    .slide-body { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 1.5rem; }
+    .slide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+    .slide-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; }
+    .slide-nav-btn {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.45rem 0.9rem;
+      border-radius: 0.4rem;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      color: #334155;
     }
-    .print-btn:hover { background: #cbd5e1; }
+    .slide-nav-btn:hover:not(:disabled) { background: #7c3aed; }
+    .slide-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-    /* Tables & Grids */
-    table.data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: 0.9rem;
+    /* Simulator */
+    .sim-box { background: #0d1322; border: 1px solid #1e293b; border-radius: 1rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .sim-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .sim-btn {
+      background: #7c3aed; color: white; border: none; padding: 0.6rem 1.1rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.9rem; cursor: pointer;
     }
-    table.data-table th {
-      background: #f1f5f9;
-      color: #1e293b;
-      font-weight: 700;
-      padding: 0.75rem;
-      border: 1px solid #e2e8f0;
-      text-align: left;
-    }
-    table.data-table td {
-      padding: 0.75rem;
-      border: 1px solid #e2e8f0;
-      vertical-align: top;
-    }
-    table.data-table tr:nth-child(even) { background: #f8fafc; }
-
-    /* Worksheet specific elements */
-    .worksheet-section {
-      background: #f8fafc;
-      border-left: 4px solid var(--primary);
-      padding: 1.25rem;
-      border-radius: 0 0.5rem 0.5rem 0;
-      margin: 1.25rem 0;
-    }
-    .answer-box {
-      border: 1.5px dashed #94a3b8;
-      background: var(--white);
-      border-radius: 0.5rem;
-      min-height: 80px;
-      padding: 0.75rem;
-      margin-top: 0.5rem;
-      color: #64748b;
-      font-style: italic;
+    .sim-btn:hover { background: #6d28d9; }
+    .sim-btn.secondary { background: #475569; }
+    .sim-canvas {
+      width: 100%; min-height: 240px; background: radial-gradient(circle at 50% 50%, #1e1533 0%, #060814 100%);
+      border-radius: 0.75rem; position: relative; overflow: hidden; border: 1px solid #334155;
     }
 
-    /* Text Book styles */
-    .chapter-hero {
-      background: linear-gradient(135deg, #f5f3ff 0%, #eff6ff 100%);
-      padding: 2rem;
-      border-radius: 0.75rem;
-      border: 1px solid #ddd6fe;
-      margin-bottom: 1.5rem;
-    }
-    .callout-box {
-      background: #fefce8;
-      border: 1px solid #fef08a;
-      border-left: 4px solid #eab308;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-      margin: 1.25rem 0;
-    }
-    .kaist-highlight {
-      background: #faf5ff;
-      border: 1px solid #e9d5ff;
-      border-left: 4px solid #a855f7;
-      padding: 1.25rem;
-      border-radius: 0.5rem;
-      margin: 1.5rem 0;
+    /* Table & Print */
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+    .data-table th, .data-table td { border: 1px solid #e2e8f0; padding: 0.8rem 1rem; text-align: left; vertical-align: top; }
+    .data-table th { background-color: #f8fafc; font-weight: 700; color: #334155; }
+    .worksheet-section { border: 1px dashed #cbd5e1; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.25rem; background: #fafafa; }
+    .answer-box { border: 1px solid #94a3b8; border-radius: 0.4rem; background: white; padding: 0.75rem; min-height: 60px; margin-top: 0.5rem; }
+    .chapter-hero { background: linear-gradient(135deg, #f5f3ff 0%, #eff6ff 100%); padding: 1.75rem; border-radius: 0.75rem; border: 1px solid #ddd6fe; margin-bottom: 1.5rem; }
+    .callout-box { background: #fefce8; border: 1px solid #fef08a; border-left: 4px solid #eab308; padding: 1rem 1.25rem; border-radius: 0.5rem; margin: 1.25rem 0; }
+    .kaist-highlight { background: #faf5ff; border: 1px solid #e9d5ff; border-left: 4px solid #a855f7; padding: 1.25rem; border-radius: 0.5rem; margin: 1.5rem 0; }
+
+    @media (max-width: 900px) {
+      .app-sidebar { transform: translateX(-100%); }
+      body.sidebar-open .app-sidebar { transform: translateX(0); }
+      .app-main { margin-left: 0 !important; }
+      .sidebar-overlay { display: none; position: fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,0.6); z-index:90; }
+      body.sidebar-open .sidebar-overlay { display: block; }
     }
 
     @media print {
-      header, .nav-tabs, .slide-toolbar, .print-btn, .sim-controls { display: none !important; }
+      .app-sidebar, .app-topbar, .sidebar-toggle-btn, .topbar-actions, .sim-controls, .slide-toolbar, .slide-progress { display: none !important; }
+      .app-main { margin-left: 0 !important; }
+      .content-container { padding: 0 !important; }
       .tab-pane { display: block !important; page-break-after: always; }
-      body { background: white; color: black; }
-      .card { box-shadow: none; border: 1px solid #ccc; }
+      body { background: white !important; color: black !important; }
+      .card { box-shadow: none !important; border: 1px solid #ccc !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Header & Nav -->
-  <header>
-    <div class="header-content">
-      <div>
-        <span class="badge">KAIST CPRL × 중학교 과학·정보 융합 심화 교육과정</span>
-        <h1 class="title">0과 1의 한계를 넘는 분자 탐험: 양자 컴퓨터와 계산 화학의 미래</h1>
-        <p class="subtitle">계산광동역학(CPRL) 연구실 연계 심화 올인원(All-in-One) 교수학습 플랫폼</p>
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <div class="app-container">
+
+    <!-- ========================================== -->
+    <!-- LEFT SIDEBAR                               -->
+    <!-- ========================================== -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-badge">2022 개정 교육과정 매핑</span>
+        <h1 class="brand-title">🏛️ KAIST CPRL</h1>
+        <p class="brand-sub">중학교 과학·정보 융합 심화</p>
       </div>
-      <nav class="nav-tabs" role="tablist">
-        <button class="tab-btn active" onclick="switchTab('slides')">📽️ 발표 슬라이드</button>
-        <button class="tab-btn" onclick="switchTab('lesson-plan')">📋 상세 수업준비자료</button>
-        <button class="tab-btn" onclick="switchTab('worksheet')">📝 학생활동지</button>
-        <button class="tab-btn" onclick="switchTab('textbook')">📖 학생용 교재</button>
-        <button class="tab-btn" onclick="switchTab('curriculum')">🎯 2022 개정 교육과정 연계표</button>
-      </nav>
-    </div>
-  </header>
 
-  <main class="container">
+      <!-- 1-Click Package Switcher -->
+      <div class="sidebar-section">
+        <div class="section-label">
+          <span>수업 패키지 선택</span>
+          <span style="font-size:0.68rem; color:#c084fc;">1-Click 전환</span>
+        </div>
+        <div class="pkg-switch-group">
+          <a href="01_빛과분자_OLED_수업패키지.html" class="pkg-switch-btn">
+            <span class="pkg-icon">🌈</span>
+            <div class="pkg-info">
+              <span class="pkg-title">01. 분자의 빛 & OLED</span>
+              <span class="pkg-sub">중2 빛과파동·물질구성·전기</span>
+            </div>
+          </a>
+          <a href="02_양자컴퓨터_계산화학_수업패키지.html" class="pkg-switch-btn active">
+            <span class="pkg-icon">⚛️</span>
+            <div class="pkg-info">
+              <span class="pkg-title">02. 양자컴퓨터·화학</span>
+              <span class="pkg-sub">중1~3 과학기술·화학·정보</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="sidebar-section">
+        <div class="section-label">학습 모듈 메뉴</div>
+        <nav class="sidebar-nav">
+          <button class="nav-item active" id="nav-btn-slides" onclick="switchTab('slides')">
+            <span class="nav-icon">📽️</span>
+            <span class="nav-text">발표 슬라이드</span>
+            <span class="nav-badge">10장</span>
+          </button>
+          <button class="nav-item" id="nav-btn-lesson-plan" onclick="switchTab('lesson-plan')">
+            <span class="nav-icon">📋</span>
+            <span class="nav-text">교사용 지도안</span>
+            <span class="nav-badge">4차시</span>
+          </button>
+          <button class="nav-item" id="nav-btn-worksheet" onclick="switchTab('worksheet')">
+            <span class="nav-icon">📝</span>
+            <span class="nav-text">학생활동지</span>
+            <span class="nav-badge">A4인쇄</span>
+          </button>
+          <button class="nav-item" id="nav-btn-textbook" onclick="switchTab('textbook')">
+            <span class="nav-icon">📖</span>
+            <span class="nav-text">학생용 읽기자료</span>
+            <span class="nav-badge">스토리</span>
+          </button>
+          <button class="nav-item" id="nav-btn-curriculum" onclick="switchTab('curriculum')">
+            <span class="nav-icon">🎯</span>
+            <span class="nav-text">2022 성취기준 연계표</span>
+            <span class="nav-badge">루브릭</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Tools -->
+      <div class="sidebar-section sidebar-actions">
+        <div class="section-label">수업 도구</div>
+        <button class="action-btn" onclick="window.print()">
+          <span>🖨️</span> 현재 탭 A4 출력
+        </button>
+        <button class="action-btn" onclick="toggleFullScreen()">
+          <span>🖥️</span> 슬라이드 전체화면
+        </button>
+        <button class="action-btn" onclick="toggleSidebar()">
+          <span id="collapse-icon">◀</span> 사이드바 접기 (넓게 보기)
+        </button>
+      </div>
+
+      <div class="sidebar-footer">
+        <p>KAIST 화학과 계산광동역학 연구실</p>
+        <p style="margin-top:0.25rem;"><a href="index.html">통합 메인 플랫폼 ↗</a></p>
+      </div>
+    </aside>
 
     <!-- ========================================== -->
-    <!-- TAB 1: 📽️ 발표자료 슬라이드 (Slide Mode) -->
+    <!-- MAIN CONTENT AREA                          -->
     <!-- ========================================== -->
-    <div id="slides" class="tab-pane active">
-      <div class="slide-viewer">
-        <div class="slide-toolbar">
-          <div style="display:flex; align-items:center; gap:0.75rem;">
-            <span style="font-size:0.85rem; font-weight:700; color:#94a3b8;">SLIDE DECK</span>
-            <span id="slide-num-badge" style="background:rgba(255,255,255,0.15); padding:0.2rem 0.6rem; border-radius:0.35rem; font-size:0.8rem; font-weight:700;">1 / 10</span>
-          </div>
-          <div style="display:flex; gap:0.5rem;">
-            <button class="slide-nav-btn" id="prev-btn" onclick="changeSlide(-1)" disabled>◀ 이전 (←)</button>
-            <button class="slide-nav-btn" id="next-btn" onclick="changeSlide(1)">다음 (→) ▶</button>
-            <button class="slide-nav-btn" onclick="toggleFullScreen()" style="background:#7c3aed;">전체화면</button>
+    <main class="app-main" id="app-main">
+      
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">
+            <span>☰</span>
+            <span class="toggle-text">메뉴</span>
+          </button>
+          <div class="current-context">
+            <span class="current-pkg-badge">모듈 02. 양자 컴퓨터와 계산 화학의 미래</span>
+            <span class="current-tab-name" id="current-tab-name">발표 슬라이드</span>
           </div>
         </div>
-        <div class="slide-progress">
-          <div class="slide-progress-bar" id="slide-progress-bar"></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" onclick="toggleFullScreen()">🖥️ 전체화면</button>
+          <button class="topbar-btn" onclick="window.print()">🖨️ 인쇄하기</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- TAB 1: 📽️ 발표 슬라이드 -->
+        <div class="tab-pane active" id="tab-slides">
+          <div class="slide-viewer">
+            <div class="slide-toolbar">
+              <div style="display:flex; align-items:center; gap:0.75rem;">
+                <span style="font-size:0.85rem; font-weight:700; color:#94a3b8;">QUANTUM SLIDE DECK</span>
+                <span id="slide-num-badge" style="background:rgba(255,255,255,0.15); padding:0.2rem 0.6rem; border-radius:0.35rem; font-size:0.8rem; font-weight:700;">1 / 10</span>
+              </div>
+              <div style="display:flex; gap:0.5rem;">
+                <button class="slide-nav-btn" id="prev-btn" onclick="changeSlide(-1)" disabled>◀ 이전 (←)</button>
+                <button class="slide-nav-btn" id="next-btn" onclick="changeSlide(1)">다음 (→) ▶</button>
+                <button class="slide-nav-btn" onclick="toggleFullScreen()" style="background:#7c3aed;">전체화면</button>
+              </div>
+            </div>
+            <div class="slide-progress">
+              <div class="slide-progress-bar" id="slide-progress-bar"></div>
+            </div>
+
+            <div class="slide-screen">
+              <!-- Slide 1 -->
+              <div class="slide-item active" data-slide="1">
+                <div class="slide-tag">[도입] 첨단 과학기술과 인류 문명 · [9과01-02]</div>
+                <h1 class="slide-h1">슈퍼컴퓨터도 멈춰버린 분자의 세계,<br>양자 컴퓨터가 답하다!</h1>
+                <p class="slide-body">
+                  전 세계 1위 슈퍼컴퓨터도 작은 카페인 분자 하나를 계산하는 데 수백만 년이 걸린다고 합니다.<br>
+                  0과 1로 일하는 기존 컴퓨터의 한계를 넘어, <strong>원자 속 전자의 춤</strong>을 흉내 내는<br>
+                  <strong>KAIST 계산광동역학 연구실</strong>의 <strong>양자 계산 화학</strong> 세계로 떠나봅시다!
+                </p>
+                <div class="slide-grid">
+                  <div class="slide-card">
+                    <div style="color:#c084fc; font-weight:700; margin-bottom:0.3rem;">🧩 1단계: 원자 레고 퍼즐</div>
+                    <div style="font-size:0.9rem;">전자가 늘어나면 왜 슈퍼컴퓨터도 계산을 포기할까?</div>
+                  </div>
+                  <div class="slide-card">
+                    <div style="color:#38bdf8; font-weight:700; margin-bottom:0.3rem;">🪙 2단계: 회전하는 동전</div>
+                    <div style="font-size:0.9rem;">0과 1이 동시에 춤추는 양자 '중첩(Superposition)'과 큐비트</div>
+                  </div>
+                  <div class="slide-card">
+                    <div style="color:#34d399; font-weight:700; margin-bottom:0.3rem;">🌍 3단계: 지구를 구하는 화학</div>
+                    <div style="font-size:0.9rem;">친환경 비료 촉매, 불나지 않는 배터리, 암 치료 신약 설계</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="slide-item" data-slide="2">
+                <div class="slide-tag">중2 &lt;물질의 구성&gt; · [9과11-01] [9과11-02] 연계</div>
+                <h1 class="slide-h1">전자가 많아질수록 폭발하는 계산의 벽</h1>
+                <p class="slide-body">분자는 원자핵과 그 주위를 도는 <strong>음(-)전하 전자들</strong>로 이루어져 있습니다. 전자들은 서로 밀어내며 끊임없이 짝을 바꿉니다.</p>
+                <div class="slide-grid" style="margin-top:1.5rem;">
+                  <div class="slide-card" style="border-left:4px solid #38bdf8;">
+                    <h4 style="color:#38bdf8;">💧 물 분자 (H₂O)</h4>
+                    <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.3rem;">전자 10개<br>계산 상태 수: <strong>2¹⁰ = 1,024가지</strong><br>👉 스마트폰으로 0.1초 만에 계산 완료!</p>
+                  </div>
+                  <div class="slide-card" style="border-left:4px solid #f59e0b;">
+                    <h4 style="color:#f59e0b;">☕ 카페인 분자 (C₈H₁₀N₄O₂)</h4>
+                    <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.3rem;">전자 102개<br>계산 상태 수: <strong>2¹⁰²가지 (약 10³⁰가지)</strong><br>👉 지구상 모든 바닷가 모래알보다 많음!</p>
+                  </div>
+                  <div class="slide-card" style="border-left:4px solid #ef4444;">
+                    <h4 style="color:#ef4444;">💊 페니실린 (항생제 분자)</h4>
+                    <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.3rem;">전자 수백 개<br>계산 상태 수: <strong>10⁸⁶가지</strong><br>👉 우주 전체에 존재하는 모든 원자 수 초과!</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="slide-item" data-slide="3">
+                <div class="slide-tag">양자 컴퓨터의 출발점 · [9과01-02]</div>
+                <h1 class="slide-h1">천재 물리학자 리처드 파인만의 아이디어</h1>
+                <p class="slide-body" style="font-size:1.25rem; line-height:1.9; color:#e2e8f0; font-style:italic; border-left:4px solid #a855f7; padding-left:1.5rem; margin:2rem 0; background:rgba(255,255,255,0.03); padding-top:1rem; padding-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+                  "자연은 0과 1로 된 보통 컴퓨터처럼 움직이지 않는다.<br>
+                  자연은 미시세계의 양자역학 규칙대로 움직인다.<br>
+                  그러므로 자연과 분자를 흉내 내고 싶다면,<br>
+                  <strong>컴퓨터 자체를 양자역학의 원리로 만들어야 한다!</strong>"<br>
+                  <span style="font-size:0.95rem; color:#94a3b8; font-style:normal; display:block; margin-top:0.75rem;">— 리처드 파인만 (1981년)</span>
+                </p>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="slide-item" data-slide="4">
+                <div class="slide-tag">정보과 융합 · 비트 vs 큐비트</div>
+                <h1 class="slide-h1">전등 스위치(비트) vs 돌아가는 동전(큐비트)</h1>
+                <p class="slide-body">일반 컴퓨터와 양자 컴퓨터는 정보를 표현하는 방식 자체가 완전히 다릅니다.</p>
+                <div class="slide-grid">
+                  <div class="slide-card" style="background:rgba(37,99,235,0.1); border-color:rgba(37,99,235,0.3);">
+                    <h3 style="color:#60a5fa; font-size:1.15rem;">💡 일반 비트 (Bit) = 전등 스위치</h3>
+                    <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.5rem; line-height:1.7;">
+                      • 스위치가 꺼짐(0) 또는 켜짐(1) 둘 중 딱 하나만 선택 가능.<br>
+                      • 바닥에 누워 있는 동전 (앞면 아니면 뒷면).<br>
+                      • 비트가 10개면 1,024개 길 중 <strong>한 번에 오직 하나의 길만</strong> 검사 가능.
+                    </p>
+                  </div>
+                  <div class="slide-card" style="background:rgba(168,85,247,0.1); border-color:rgba(168,85,247,0.3);">
+                    <h3 style="color:#c084fc; font-size:1.15rem;">🔮 양자 큐비트 (Qubit) = 회전하는 팽이 동전</h3>
+                    <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.5rem; line-height:1.7;">
+                      • 팽이가 도는 동안 앞면(0)과 뒷면(1)이 동시에 섞여 있음!<br>
+                      • 이를 <strong>'중첩(Superposition)'</strong>이라고 부릅니다.<br>
+                      • 큐비트가 10개면 1,024개의 길을 <strong>동시에 한 번에</strong> 탐색!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5 -->
+              <div class="slide-item" data-slide="5">
+                <div class="slide-tag">디지털 탐구 도구 · 인터랙티브 시뮬레이터</div>
+                <h1 class="slide-h1">🔬 큐비트 중첩 & VQE 바닥 상태 탐색기</h1>
+                <p class="slide-body">버튼을 눌러 큐비트를 팽이처럼 돌려보고, 양자 컴퓨터로 분자의 가장 안정한 최저 에너지를 찾아보세요!</p>
+                <div class="sim-box" style="margin-top:0.5rem;">
+                  <div class="sim-controls">
+                    <button class="sim-btn" onclick="runQuantumSim('superposition')">🔄 큐비트 회전! (중첩 만들기)</button>
+                    <button class="sim-btn secondary" onclick="runQuantumSim('vqe')" style="background:#059669;">⛰️ VQE 가동! (최저 바닥 찾기)</button>
+                    <button class="sim-btn secondary" onclick="runQuantumSim('reset')">초기화</button>
+                    <span id="quantum-sim-status" style="margin-left:auto; color:#c084fc; font-weight:700; align-self:center;">준비 완료: 버튼을 클릭하세요</span>
+                  </div>
+                  <div class="sim-canvas" id="quantum-sim-canvas" style="display:flex; align-items:center; justify-content:space-around;">
+                    <div style="text-align:center; width:45%;">
+                      <div style="font-size:0.85rem; color:#cbd5e1; margin-bottom:0.5rem; font-weight:700;">[큐비트의 상태: 팽이 동전]</div>
+                      <div id="qubit-sphere" style="width:105px; height:105px; border:2px dashed #a855f7; border-radius:50%; margin:0 auto; position:relative; display:flex; align-items:center; justify-content:center; transition:all 0.6s;">
+                        <div id="qubit-vector" style="width:4px; height:45px; background:#38bdf8; transform-origin:bottom center; transform:rotate(0deg); transition:all 0.6s;"></div>
+                      </div>
+                      <div id="qubit-state-text" style="font-size:0.9rem; font-weight:700; color:#38bdf8; margin-top:0.6rem;">상태: 0 (바닥에 멈춘 동전)</div>
+                    </div>
+                    <div style="text-align:center; width:50%; border-left:1px solid #334155; padding-left:1rem;">
+                      <div style="font-size:0.85rem; color:#cbd5e1; margin-bottom:0.5rem; font-weight:700;">[분자 에너지 골짜기 탐색]</div>
+                      <div style="position:relative; width:100%; height:105px; background:#0b0f19; border-radius:0.4rem; border:1px solid #1e293b; overflow:hidden;">
+                        <div style="position:absolute; left:10px; top:8px; font-size:0.75rem; color:#f87171;">높은 에너지 (불안정한 분자)</div>
+                        <div style="position:absolute; left:10px; bottom:8px; font-size:0.75rem; color:#34d399;">최저 바닥 상태 (가장 안정한 분자)</div>
+                        <div id="vqe-ball" style="position:absolute; left:20px; top:20px; width:16px; height:16px; background:#f43f5e; border-radius:50%; transition:all 1s cubic-bezier(0.25, 1, 0.5, 1); box-shadow:0 0 10px #f43f5e;"></div>
+                      </div>
+                      <div id="vqe-text" style="font-size:0.85rem; color:#cbd5e1; margin-top:0.6rem;">에너지 상태: 탐색 대기 중</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 6 -->
+              <div class="slide-item" data-slide="6">
+                <div class="slide-tag">중3 &lt;화학 반응의 규칙성&gt; [9과16-01] [9과16-06] 연계</div>
+                <h1 class="slide-h1">VQE 알고리즘: 환상의 2인 3각 달리기</h1>
+                <p class="slide-body">모든 화학 반응에서 분자는 에너지가 가장 낮고 안정한 <strong>'바닥 상태'</strong>를 찾아 결합합니다.<br><strong>VQE(변분 양자 고유값 계산기)</strong>는 양자 컴퓨터와 일반 컴퓨터가 서로 돕는 협동 알고리즘입니다!</p>
+                <div class="slide-grid">
+                  <div class="slide-card" style="border-top:4px solid #a855f7;">
+                    <h4 style="color:#c084fc;">1. 양자 컴퓨터 (발 빠른 탐험가)</h4>
+                    <p style="font-size:0.92rem; color:#cbd5e1; margin-top:0.4rem;">복잡한 분자 속 전자들의 움직임을 큐비트 중첩으로 순식간에 시뮬레이션하고, 측정값을 일반 컴퓨터에 넘깁니다.</p>
+                  </div>
+                  <div class="slide-card" style="border-top:4px solid #38bdf8;">
+                    <h4 style="color:#38bdf8;">2. 일반 컴퓨터 (똑똑한 내비게이션)</h4>
+                    <p style="font-size:0.92rem; color:#cbd5e1; margin-top:0.4rem;">에너지 숫자를 보고 "경사가 기울었으니 분자 결합 각도를 5도 좁혀봐!"라고 계산하여 가장 낮은 골짜기로 길을 안내합니다.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 7 -->
+              <div class="slide-item" data-slide="7">
+                <div class="slide-tag">첨단 과학기술과 사회 · [9과01-02] KAIST 연구 성과</div>
+                <h1 class="slide-h1">KAIST의 혁신: 컴퓨터 속에서 분자를 합성하다!</h1>
+                <p class="slide-body">
+                  <strong>KAIST 화학과 계산광동역학 연구실(CPRL / 이영민 교수팀)</strong>은 이온을 전자기장으로 공중에 띄워 만든 <strong>이온 트랩 양자 컴퓨터</strong>로 분자의 화학 결합을 초정밀 계산하는 알고리즘을 발표했습니다 (npj Quantum Information, 2024).
+                </p>
+                <div style="background:rgba(124,58,237,0.15); border:1px solid #7c3aed; border-radius:0.75rem; padding:1.4rem; margin-top:1rem;">
+                  <h4 style="color:#c4b5fd; font-size:1.1rem; margin-bottom:0.4rem;">🔬 실험실 비커 없이도 새로운 물질을 만드는 기적</h4>
+                  <p style="font-size:0.95rem; color:#e2e8f0; line-height:1.75;">
+                    • 유독한 화학 약품을 섞어가며 수년 동안 수천 번 실패하던 전통 실험 방식을 탈피!<br>
+                    • 양자 컴퓨터 가상 세계에서 분자의 전자들을 완벽히 계산하여 가장 안전하고 효율적인 신물질을 <strong>단 몇 분 만에 미리 설계</strong>합니다.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 8 -->
+              <div class="slide-item" data-slide="8">
+                <div class="slide-tag">생태전환교육 & 사회 기여 · [9과01-02] [9과16-01]</div>
+                <h1 class="slide-h1">양자 컴퓨터가 해결할 인류의 3대 지구 난제</h1>
+                <div class="slide-grid">
+                  <div class="slide-card">
+                    <div style="font-size:1.6rem; margin-bottom:0.2rem;">🌱</div>
+                    <h4 style="color:#34d399;">1. 온실가스 없는 친환경 비료</h4>
+                    <p style="font-size:0.88rem; color:#cbd5e1; margin-top:0.3rem;">뿌리혹박테리아처럼 <strong>상온에서 질소를 고정하는 마법의 촉매 분자</strong>를 계산하여 식량 위기와 지구온난화를 동시에 해결합니다.</p>
+                  </div>
+                  <div class="slide-card">
+                    <div style="font-size:1.6rem; margin-bottom:0.2rem;">🔋</div>
+                    <h4 style="color:#38bdf8;">2. 불나지 않는 전고체 배터리</h4>
+                    <p style="font-size:0.88rem; color:#cbd5e1; margin-top:0.3rem;">충전 속도가 10배 빠르고 안전한 <strong>꿈의 고체 전해질 결정</strong>을 양자 계산으로 설계합니다.</p>
+                  </div>
+                  <div class="slide-card">
+                    <div style="font-size:1.6rem; margin-bottom:0.2rem;">💊</div>
+                    <h4 style="color:#f43f5e;">3. 변종 바이러스 맞춤형 신약</h4>
+                    <p style="font-size:0.88rem; color:#cbd5e1; margin-top:0.3rem;">바이러스 단백질 열쇠구멍에 딱 들어맞는 <strong>표적 치료제 분자</strong>를 컴퓨터 속에서 빛의 속도로 발굴합니다.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 9 -->
+              <div class="slide-item" data-slide="9">
+                <div class="slide-tag">배움 정리 & 형성평가</div>
+                <h1 class="slide-h1">오늘 배운 핵심 내용 3가지 쏙쏙 정리</h1>
+                <div style="display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;">
+                  <div class="slide-card">
+                    <strong style="color:#c084fc;">1. 전자가 많아지면 생기는 지수 폭발:</strong> 분자 속 전자들의 밀어내는 힘과 상호작용 때문에 전자가 늘어날 때마다 계산량이 2의 N제곱으로 폭발하여 슈퍼컴퓨터도 계산할 수 없다.
+                  </div>
+                  <div class="slide-card">
+                    <strong style="color:#38bdf8;">2. 팽이처럼 도는 큐비트 중첩:</strong> 0과 1 중 하나만 고르는 비트와 달리, 큐비트는 회전하는 동전처럼 0과 1이 동시에 섞여 있어 수많은 상태를 한 번에 동시 계산한다.
+                  </div>
+                  <div class="slide-card">
+                    <strong style="color:#34d399;">3. 지구를 구하는 양자 화학:</strong> VQE 알고리즘을 통해 인류의 기후 위기, 배터리 안전, 난치병 신약을 실험실 밖 컴퓨터 속에서 해결하는 혁신이 일어나고 있다.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 10 -->
+              <div class="slide-item" data-slide="10">
+                <div class="slide-tag">과학과 나의 미래 · [9과23-01] [9과23-02]</div>
+                <h1 class="slide-h1">미래를 코딩하는 양자 화학자를 꿈꾸며</h1>
+                <p class="slide-body" style="font-size:1.25rem; margin-top:2rem; line-height:1.9;">
+                  "화학과 컴퓨터가 만나면,<br>
+                  실험실의 비커 없이도 지구의 온난화를 막고 생명을 살리는 새로운 시대가 열립니다.<br><br>
+                  <strong>여러분도 미래의 KAIST 연구원처럼 양자 컴퓨터로 세상을 바꾸어 보시겠습니까?</strong>"
+                </p>
+                <div style="margin-top:2.5rem; text-align:center;">
+                  <button class="sim-btn" onclick="switchTab('worksheet')" style="font-size:1rem; padding:0.75rem 1.5rem;">📝 사이드바의 [학생활동지] 열고 CEO 프로젝트 시작하기</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="slide-screen" id="slide-container">
+        <!-- TAB 2: 📋 교사용 지도안 -->
+        <div class="tab-pane" id="tab-lesson-plan">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="brand-badge" style="background:#f5f3ff; color:#6d28d9;">2022 개정 과학·정보 융합 과정안</span>
+                <h2 class="card-title">📋 [교사용 지도안] 0과 1의 한계를 넘는 양자 컴퓨터와 계산 화학</h2>
+              </div>
+              <button class="topbar-btn" onclick="window.print()">🖨️ 지도안 인쇄</button>
+            </div>
 
-          <!-- Slide 1 -->
-          <div class="slide-item active" data-slide="1">
-            <div class="slide-tag">단원 도입 · 미래 기술 융합</div>
-            <h1 class="slide-h1">슈퍼컴퓨터도 무릎 꿇은 분자의 세계,<br>양자 컴퓨터가 답하다</h1>
-            <p class="slide-body">
-              전 세계 1위 슈퍼컴퓨터가 수백만 년 걸려도 풀지 못하는 작은 카페인 분자 하나!<br>
-              0과 1로 작동하는 기존 컴퓨터의 한계를 깨고,<br>
-              <strong>KAIST 계산광동역학 연구실</strong>이 개발하는 <strong>양자 화학 알고리즘(VQE)</strong>의 놀라운 세계를 탐험해 봅시다.
-            </p>
-            <div class="slide-grid">
-              <div class="slide-card">
-                <div style="color:#c084fc; font-weight:700; margin-bottom:0.3rem;">💥 1단계: 지수 폭발</div>
-                <div style="font-size:0.9rem;">전자가 늘어날 때마다 계산량이 우주의 원자 수보다 많아지는 이유</div>
+            <table class="data-table">
+              <tr>
+                <th style="width:16%;">관련 단원</th>
+                <td>중학교 과학 &lt;물질의 구성&gt;, &lt;화학 반응의 규칙성&gt;, &lt;과학과 사회&gt; & 정보과 &lt;데이터와 알고리즘&gt; 융합 심화</td>
+                <th style="width:14%;">권장 차시</th>
+                <td><strong>총 4차시 (차시당 45분 중학교 수업 기준)</strong><br>※ 90분 블록타임 2회 운영 가능</td>
+              </tr>
+              <tr>
+                <th>2022 개정 교육과정<br>공식 성취기준</th>
+                <td colspan="3">
+                  • <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                  • <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                  • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                  • <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                  • <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                  &nbsp;&nbsp;<span style="color:#64748b; font-size:0.85rem;">*(성취기준 해설: 화학 반응이 일어날 때 물질을 구성하는 원자의 배열만 변하고, 원자의 종류와 수는 변하지 않음을 강조하여 설명한다.)*</span><br>
+                  • <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.<br>
+                  • <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.<br>
+                  • <strong>[정보과 연계]</strong> [9정01-03] 2진수 데이터 표현 / [9정02-02] 알고리즘 모델링
+                </td>
+              </tr>
+              <tr>
+                <th>수업 목표</th>
+                <td colspan="3">
+                  1. <strong>[지식·이해]</strong> 다전자 분자에서 전자 간 반발력으로 인해 발생하는 계산 복잡도와 비트 vs 큐비트 중첩의 차이를 설명할 수 있다.<br>
+                  2. <strong>[과정·기능]</strong> 동전 돌리기 조작 실험 및 시뮬레이터를 통해 VQE 바닥 상태 탐색 과정을 시각적으로 추론할 수 있다.<br>
+                  3. <strong>[가치·태도]</strong> 양자 화학이 기후 위기 및 난치병 극복에 기여함을 인식하고 융합 진로에 주도적으로 참여한다.
+                </td>
+              </tr>
+            </table>
+
+            <div class="callout-box">
+              <strong>💡 [수식 없는 양자역학 지도 팁]:</strong> 수식이나 파동방정식을 지양하고, <strong>"바닥에 놓인 동전(비트) vs 도는 팽이 동전(큐비트)"</strong>과 <strong>"2인 3각 산골짜기 바닥 찾기(VQE)"</strong>라는 직관적 은유를 활용하여 지도합니다.
+            </div>
+
+            <h3 style="margin: 1.5rem 0 0.75rem; color:#1e293b;">차시별 세부 교수·학습 지도 계획 (45분 단위 4차시)</h3>
+
+            <!-- 1차시 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#7c3aed; font-size:1.1rem; margin:0;">[1차시] 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발 (45분)</h4>
+                <span class="badge" style="background:#f5f3ff; color:#6d28d9; font-size:0.8rem;">성취기준: [9과11-01] [9과11-02] [9과01-02]</span>
               </div>
-              <div class="slide-card">
-                <div style="color:#38bdf8; font-weight:700; margin-bottom:0.3rem;">🔮 2단계: 큐비트의 마법</div>
-                <div style="font-size:0.9rem;">0과 1이 동시에 공존하는 '중첩(Superposition)'과 동전 비유</div>
+              <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 분자 속 전자가 증가함에 따라 전자 간 반발력으로 인해 계산량이 2의 N제곱($2^N$)으로 폭발하는 '지수 폭발'의 한계를 체험하고 설명할 수 있다.</p>
+              <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+                <thead>
+                  <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>도입<br>(5분)</strong></td>
+                    <td>• <strong>동기 유발:</strong> 체스판과 쌀알 퀴즈 (1칸 1톨, 2칸 2톨, 3칸 4톨... 64칸엔 전 세계 쌀 생산량의 수백 배!)<br>• <strong>학습 문제 제기:</strong> "왜 세상에서 가장 비싼 슈퍼컴퓨터도 커피 한 잔 속 카페인 분자 하나를 계산하지 못할까?"</td>
+                    <td>• 거듭제곱의 무서운 증가 속도를 직관적으로 체감하도록 지도</td>
+                  </tr>
+                  <tr>
+                    <td><strong>전개<br>(32분)</strong></td>
+                    <td>• <strong>분자의 미시세계 복습:</strong> 원자핵 주위를 도는 음(-)전하 전자들의 반발력과 끊임없는 상호작용 [9과11-02]<br>• <strong>[탐구 활동 1] 지수 폭발 체험표 채우기:</strong><br>  - 수소(H, 전자 1개) $\rightarrow 2^1 = 2$가지 (즉시 계산)<br>  - 물($H_2O$, 전자 10개) $\rightarrow 2^{10} = 1,024$가지 (0.1초)<br>  - 카페인(전자 102개) $\rightarrow 2^{102} \approx 10^{30}$가지 (지구상 모든 모래알 수 초과!)<br>  - 페니실린(항생제) $\rightarrow 10^{86}$가지 (우주 전체 모든 원자 수 초과, 계산 불가!)<br>• <strong>신약·신소재 개발의 현실 한계:</strong> 컴퓨터가 계산을 못해 화학자들이 비커에 약품을 섞어가며 수천 번 실패해야 함(10년 이상, 수조 원 소요)</td>
+                    <td>• <strong>[과정평가]</strong> 전자의 증가와 계산 복잡도의 관계를 수치 및 그래프로 바르게 추론하는지 평가 (활동지 점검)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>정리<br>(8분)</strong></td>
+                    <td>• 파인만의 명언("자연을 계산하려면 컴퓨터 자체를 양자역학으로 만들어라") 소개<br>• 다음 차시(0과 1이 춤추는 큐비트) 예고</td>
+                    <td>• 활동지 1번 작성 확인</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 2차시 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#2563eb; font-size:1.1rem; margin:0;">[2차시] 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트 (45분)</h4>
+                <span class="badge" style="background:#eff6ff; color:#1d4ed8; font-size:0.8rem;">정보과 연계: [9정01-03] [9정02-02] [9과01-02]</span>
               </div>
-              <div class="slide-card">
-                <div style="color:#34d399; font-weight:700; margin-bottom:0.3rem;">🌍 3단계: 지구 구출 프로젝트</div>
-                <div style="font-size:0.9rem;">꿈의 배터리, 상온 비료 촉매, 맞춤형 신약 개발의 혁신</div>
+              <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 고전 비트(스위치)와 양자 큐비트(회전하는 동전의 '중첩')의 차이를 실험을 통해 비교하고 동시 병렬 처리의 원리를 설명할 수 있다.</p>
+              <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+                <thead>
+                  <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>도입<br>(5분)</strong></td>
+                    <td>• 전등 스위치 켜기/끄기 조작 vs 책상 위 동전 팽이 돌리기 비교 시연<br>• "바닥에 누운 동전과 도는 동전은 무엇이 다를까?"</td>
+                    <td>• 학생들에게 동전을 1개씩 배부하여 직접 조작하도록 유도</td>
+                  </tr>
+                  <tr>
+                    <td><strong>전개<br>(32분)</strong></td>
+                    <td>• <strong>[조작 실험] 동전 팽이와 양자 중첩:</strong> 멈추기 전 도는 동전을 관찰하며 0(앞)과 1(뒤)이 공존하는 <strong>'중첩(Superposition)'</strong> 개념 발견<br>• <strong>비트(Bit) vs 큐비트(Qubit) 대조:</strong><br>  - 비트: 꺼짐(0) 또는 켜짐(1) 하나만 선택 (바닥의 동전)<br>  - 큐비트: 0과 1이 동시에 섞여 있음 (회전하는 팽이 동전)<br>• <strong>동시 병렬 처리의 힘:</strong> 비트 10개는 1,024개 길 중 1개씩 순서대로 검사하지만, 큐비트 10개는 1,024개 길을 <strong>동시에 단 한 번에</strong> 탐색!<br>• <strong>시뮬레이션 탐구:</strong> 인터랙티브 큐비트 구 시뮬레이터로 큐비트 회전 및 중첩 상태 만들기 실습</td>
+                    <td>• 복잡한 양자 상태 벡터 수식 대신 '동전 비유' 철저 유지<br>• <strong>[과정평가]</strong> 비트와 큐비트의 정보 처리 방식 차이를 자기 언어로 설명할 수 있는지 확인 (구술평가)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>정리<br>(8분)</strong></td>
+                    <td>• 큐비트 중첩의 핵심 원리 요약 퀴즈<br>• 활동지 [활동 2] Q1(비트 vs 큐비트 차이) 서술형 작성 및 3차시 예고</td>
+                    <td>• 활동지 작성 지도</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 3차시 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#059669; font-size:1.1rem; margin:0;">[3차시] 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태 (45분)</h4>
+                <span class="badge" style="background:#ecfdf5; color:#047857; font-size:0.8rem;">성취기준: [9과16-01] [9과16-06] [9정02-02]</span>
               </div>
+              <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 화학 반응에서 원자가 가장 안정한 최저 바닥 상태를 찾아 결합함을 이해하고, 양자 컴퓨터와 일반 컴퓨터가 협력하는 VQE 알고리즘을 역할극으로 설명할 수 있다.</p>
+              <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+                <thead>
+                  <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>도입<br>(5분)</strong></td>
+                    <td>• 굴러가는 공 비유: "언덕에서 공을 굴리면 어디서 멈출까?" $\rightarrow$ 가장 낮은 골짜기 바닥!<br>• 자연과 화학 분자도 에너지가 가장 낮은 <strong>'바닥 상태'</strong>를 찾아 결합함을 상기 [9과16-06]</td>
+                    <td>• 일상적 비유로 최적화 개념 접근</td>
+                  </tr>
+                  <tr>
+                    <td><strong>전개<br>(32분)</strong></td>
+                    <td>• <strong>화학 반응과 에너지 출입:</strong> 원자 재배열 시 가장 안정한 결합 형태 탐구 [9과16-01]<br>• <strong>VQE(변분 양자 고유값 계산기) 2인 1조 협동 역할극:</strong><br>  - 학생 A (양자 컴퓨터, 빠른 탐험가): 큐비트 중첩으로 복잡한 전자 구름 계산 후 "현재 분자 모양의 에너지는 -0.45입니다!" 전달<br>  - 학생 B (일반 컴퓨터, 똑똑한 내비게이션): 에너지 수치를 분석하여 "오른쪽으로 기울었으니 결합 각도를 5도 좁히세요!" 피드백 전달<br>• <strong>시뮬레이션 탐구:</strong> VQE 최적화 루프 시뮬레이터로 공이 골짜기 바닥(-1.137)으로 안착하는 과정 조작<br>• <strong>KAIST 연구 성과:</strong> 이온 트랩 양자 컴퓨터로 분자의 결합 에너지를 초정밀 계산한 연구 소개</td>
+                    <td>• <strong>[협동학습]</strong> 2인 1조 역할극을 통해 알고리즘의 피드백 루프를 온몸으로 체득<br>• <strong>[과정평가]</strong> VQE의 2인 3각 협력 구조를 정확히 파악하였는지 평가</td>
+                  </tr>
+                  <tr>
+                    <td><strong>정리<br>(8분)</strong></td>
+                    <td>• VQE 협동 알고리즘 요약 정리 및 활동지 [활동 2] Q2 작성<br>• 다음 차시(틴에이저 양자 스타트업 CEO 프로젝트) 과제 안내</td>
+                    <td>• 4차시 프로젝트 모둠 구성</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 4차시 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#d97706; font-size:1.1rem; margin:0;">[4차시] 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트 (45분)</h4>
+                <span class="badge" style="background:#fffbeb; color:#b45309; font-size:0.8rem;">성취기준: [9과01-02] [9과16-01] [9과23-01/02]</span>
+              </div>
+              <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 양자 계산 화학이 인류의 3대 지구 난제를 해결하는 생태전환적 가치를 인식하고, 미래 스타트업 CEO 기획서를 작성·발표할 수 있다.</p>
+              <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+                <thead>
+                  <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>도입<br>(5분)</strong></td>
+                    <td>• "위험한 화학 약품과 비커 없이 컴퓨터로 신물질을 만든다면?" 비커 없는 화학 실험실 비전 제시</td>
+                    <td>• 환경·안전·지속가능성 가치 부각</td>
+                  </tr>
+                  <tr>
+                    <td><strong>전개<br>(32분)</strong></td>
+                    <td>• <strong>양자 컴퓨터가 해결할 인류의 3대 지구 난제 탐구:</strong><br>  1) <strong>친환경 상온 비료:</strong> 전 세계 전기의 2%를 쓰는 비료 공장 대신 상온 질소 고정 촉매 분자 계산 $\rightarrow$ 식량난 및 온실가스 동시 해결<br>  2) <strong>전고체 배터리:</strong> 전기차 화재를 막고 10배 빨리 충전되는 꿈의 고체 전해질 설계<br>  3) <strong>표적 신약:</strong> 변종 바이러스 단백질 열쇠구멍에 꼭 맞는 치료제 분자 가상 스크리닝<br>• <strong>[프로젝트] 틴에이저 양자 화학 스타트업 CEO 기획서 작성:</strong><br>  - 4인 1조 창업팀 구성, 3대 난제 중 1개 선택<br>  - 회사명, 도전 과제, 양자 컴퓨터로 설계할 가상 분자 아이디어, 사회적 기대 효과 구안<br>• <strong>모둠별 피칭:</strong> 2분 엘리베이터 스피치 발표 및 질의응답</td>
+                    <td>• <strong>[생태전환교육]</strong> 기후 위기 및 탄소 중립과 기술의 연계성 강조<br>• <strong>[산출물평가]</strong> CEO 기획서의 창의성, 공공성, 과학적 설득력 평가 (루브릭 적용)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>정리<br>(8분)</strong></td>
+                    <td>• 상호 동료 평가 및 교사 피드백<br>• 양자 계산 과학자 진로 탐색 및 3차원 루브릭 자가평가, 전체 프로그램 마무리</td>
+                    <td>• 학생생활기록부 세특 기재 연계</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
 
-          <!-- Slide 2 -->
-          <div class="slide-item" data-slide="2">
-            <div class="slide-tag">계산 복잡도의 벽</div>
-            <h1 class="slide-h1">왜 슈퍼컴퓨터는 작은 분자조차 계산하지 못할까?</h1>
-            <p class="slide-body">
-              분자 속의 전자들은 서로 마주치면 음(-)전하끼리 밀어내고, 스핀이 얽히며 끊임없이 복잡하게 상호작용합니다.
-            </p>
-            <div class="slide-grid" style="margin-top:1.5rem;">
-              <div class="slide-card" style="border-left:4px solid #38bdf8;">
-                <h4 style="color:#38bdf8;">💧 물 분자 (H₂O)</h4>
-                <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.3rem;">전자 10개 → 계산 상태 수: <strong>2의 10제곱 = 1,024개</strong> (스마트폰으로 1초 만에 계산 가능!)</p>
+        <!-- TAB 3: 📝 학생활동지 -->
+        <div class="tab-pane" id="tab-worksheet">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="brand-badge" style="background:#fef3c7; color:#92400e;">중학생 탐구 활동지 (A4 출력용)</span>
+                <h2 class="card-title">📝 [탐구 활동지] 양자 컴퓨터로 떠나는 미래 분자 탐험</h2>
               </div>
-              <div class="slide-card" style="border-left:4px solid #f59e0b;">
-                <h4 style="color:#f59e0b;">☕ 카페인 분자 (C₈H₁₀N₄O₂)</h4>
-                <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.3rem;">전자 102개 → 계산 상태 수: <strong>2의 102제곱 (약 10의 30제곱 개)</strong> (지구상 모든 모래알 수보다 많음!)</p>
-              </div>
-              <div class="slide-card" style="border-left:4px solid #ef4444;">
-                <h4 style="color:#ef4444;">💊 페니실린 (항생제)</h4>
-                <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.3rem;">전자 수백 개 → 계산 상태 수: <strong>10의 86제곱 개</strong> (우주 전체에 있는 모든 원자 수 10의 80제곱 개 초과!)</p>
-              </div>
+              <button class="topbar-btn" onclick="window.print()">🖨️ 활동지 인쇄</button>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem; font-size:0.95rem;">
+              <span>중학교 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )학년 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )반 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )번</span>
+              <span>이름: ____________________</span>
+            </div>
+
+            <div class="worksheet-section">
+              <h3 style="color:#6d28d9; font-size:1.05rem; margin-bottom:0.5rem;">[활동 1] 전자가 늘어나면? 지수 폭발 체험표 [9과11-01] [9과11-02]</h3>
+              <table class="data-table" style="margin-top:0.6rem;">
+                <thead>
+                  <tr><th>대상 분자</th><th>전자 수 (N)</th><th>상태 수 (2ⁿ)</th><th>일반 슈퍼컴퓨터의 계산 시간</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>수소 원자 (H)</strong></td><td>1개</td><td>2¹ = 2가지</td><td>즉시 (0.000001초)</td></tr>
+                  <tr><td><strong>물 분자 (H₂O)</strong></td><td>10개</td><td>2¹⁰ = <input type="text" style="width:65px; padding:2px;" value="1,024"> 가지</td><td>0.1초 미만</td></tr>
+                  <tr><td><strong>카페인 분자</strong></td><td>102개</td><td>2¹⁰² (약 10³⁰가지)</td><td>지구상 모든 모래알 초과 (수백만 년!)</td></tr>
+                  <tr><td><strong>페니실린 분자</strong></td><td>수백 개</td><td>10⁸⁶가지 이상</td><td>우주 전체 모든 원자 수 초과 (계산 불가)</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="worksheet-section">
+              <h3 style="color:#6d28d9; font-size:1.05rem; margin-bottom:0.5rem;">[활동 2] 팽이 동전 실험과 2인 3각 VQE 알고리즘 [정보 융합] [9과16-06]</h3>
+              <p style="font-weight:600; font-size:0.92rem;">Q1. 책상 위에 누워 있는 동전(비트)과 회전하는 동전(큐비트)의 차이점을 '0과 1', '중첩'이라는 단어로 설명해 보세요.</p>
+              <div class="answer-box" style="min-height:75px;"></div>
+              <p style="font-weight:600; font-size:0.92rem; margin-top:0.75rem;">Q2. 양자 컴퓨터(빠른 탐험가)와 일반 컴퓨터(내비게이션)가 협력하는 '2인 3각 VQE 방식'으로 분자의 가장 안정한 에너지를 찾는 원리를 적어보세요.</p>
+              <div class="answer-box" style="min-height:75px;"></div>
+            </div>
+
+            <div class="worksheet-section">
+              <h3 style="color:#6d28d9; font-size:1.05rem; margin-bottom:0.5rem;">[활동 3] [지구를 구하는 틴에이저 양자 화학 스타트업 CEO] 기획서 [9과01-02] [9과23-01]</h3>
+              <p style="font-weight:600; font-size:0.92rem;">• 스타트업 회사 이름 & 도전 과제:</p>
+              <div class="answer-box" style="min-height:40px;"></div>
+              <p style="font-weight:600; font-size:0.92rem; margin-top:0.5rem;">• 양자 컴퓨터로 가상 설계할 분자 아이디어 및 기대 효과:</p>
+              <div class="answer-box" style="min-height:70px;"></div>
             </div>
           </div>
+        </div>
 
-          <!-- Slide 3 -->
-          <div class="slide-item" data-slide="3">
-            <div class="slide-tag">양자 컴퓨터의 탄생</div>
-            <h1 class="slide-h1">리처드 파인만의 위대한 통찰</h1>
-            <p class="slide-body" style="font-size:1.3rem; line-height:1.8; color:#e2e8f0; font-style:italic; border-left:4px solid #a855f7; padding-left:1.5rem; margin:2rem 0;">
-              "자연은 0과 1로 된 고전역학으로 움직이지 않는다.<br>
-              자연은 양자역학으로 움직인다.<br>
-              그러므로 자연을 흉내 내고 계산하고 싶다면,<br>
-              <strong>컴퓨터 자체를 양자역학의 원리로 만들어야 한다!</strong>"<br>
-              <span style="font-size:0.95rem; color:#94a3b8; font-style:normal;">— 리처드 파인만 (노벨 물리학상 수상자, 1981년)</span>
-            </p>
-          </div>
+        <!-- TAB 4: 📖 학생용 읽기자료 -->
+        <div class="tab-pane" id="tab-textbook">
+          <div class="card">
+            <div class="chapter-hero">
+              <span class="brand-badge" style="background:#7c3aed; color:white;">중학생을 위한 첨단 과학 이야기</span>
+              <h2 style="font-size:1.5rem; font-weight:800; color:#4c1d95; margin:0.4rem 0;">제2장. 0과 1을 넘어선 마법의 컴퓨터와 미래 화학자</h2>
+              <p style="color:#7c3aed; font-size:0.9rem;">글: KAIST 계산광동역학 연구실(CPRL) × 중학교 과학교육팀</p>
+            </div>
 
-          <!-- Slide 4 -->
-          <div class="slide-item" data-slide="4">
-            <div class="slide-tag">핵심 개념 비교</div>
-            <h1 class="slide-h1">비트(Bit) vs 큐비트(Qubit): 0과 1의 벽을 깨다</h1>
-            <p class="slide-body">고전 컴퓨터의 비트와 양자 컴퓨터의 큐비트는 정보를 다루는 방식 자체가 완전히 다릅니다.</p>
-            <div class="slide-grid">
-              <div class="slide-card" style="background:rgba(37,99,235,0.1); border-color:rgba(37,99,235,0.3);">
-                <h3 style="color:#60a5fa; font-size:1.2rem;">💡 고전 비트 (Bit) = 전등 스위치</h3>
-                <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.5rem;">
-                  - 스위치가 꺼짐(0) 또는 켜짐(1) 둘 중 하나만 가능.<br>
-                  - 바닥에 얌전히 놓인 동전 (앞면 아니면 뒷면).<br>
-                  - N개의 비트는 2의 N제곱 개 상태 중 <strong>오직 1개만</strong> 표현.
+            <div style="font-size:1rem; line-height:1.85; color:#334155;">
+              <h3 style="color:#1e293b; margin:1.25rem 0 0.4rem; font-size:1.2rem;">1. 슈퍼컴퓨터도 두 손 든 '원자 속 꼬마 전자들의 춤'</h3>
+              <p>우리가 마시는 시원한 물 한 방울 속에는 수많은 물 분자들이 들어 있습니다. 그리고 분자 하나하나 속에는 원자핵 주위를 전깃불처럼 빠르게 맴도는 전자들이 살고 있습니다.</p>
+              <p>그런데 전 세계 화학자들에게는 엄청난 고민이 하나 있습니다. 전자가 1개, 2개일 때는 종이에 연필로도 계산할 수 있지만, 전자가 50개, 100개로 늘어나면 세상에서 가장 크고 비싼 슈퍼컴퓨터로도 분자의 에너지를 계산할 수 없다는 사실입니다! 전자가 늘어날 때마다 경우의 수가 2 곱하기 2 곱하기 2처럼 기하급수적으로 폭발하기 때문입니다.</p>
+
+              <h3 style="color:#1e293b; margin:1.5rem 0 0.4rem; font-size:1.2rem;">2. 팽이처럼 회전하는 마법의 동전, '큐비트(Qubit)'</h3>
+              <p>우리가 쓰는 일반 컴퓨터는 벽에 붙은 전등 스위치처럼 0(꺼짐) 아니면 1(켜짐) 중 하나만 선택할 수 있습니다. 하지만 양자 컴퓨터의 <strong>큐비트(Qubit)</strong>는 책상 위에서 팽이처럼 빠르게 도는 동전과 같습니다. 도는 동안 앞면(0)과 뒷면(1)이 동시에 섞여 있습니다! 이것을 <strong>'중첩(Superposition)'</strong>이라고 부릅니다. 중첩 덕분에 큐비트는 수많은 경우의 수를 <strong>동시에 한 번에</strong> 계산할 수 있습니다.</p>
+
+              <div class="kaist-highlight">
+                <h4 style="color:#581c87; font-size:1.05rem; margin-bottom:0.3rem;">🏛️ KAIST 연구원 코너: 비커 없는 화학 실험실이 온다!</h4>
+                <p style="font-size:0.92rem; color:#4c1d95; line-height:1.7;">
+                  <strong>KAIST 화학과 계산광동역학 연구실(CPRL / 이영민 교수팀)</strong>에서는 실제 이온 트랩 양자 컴퓨터를 이용해 분자의 결합을 정밀하게 풀어내는 <strong>VQE 알고리즘</strong>을 연구하고 있습니다.<br>
+                  위험한 화학 약품을 비커에 섞어가며 수년 동안 수천 번 실패할 필요 없이, 컴퓨터 속에서 가장 완벽하고 친환경적인 촉매와 배터리 신소재를 미리 설계하는 미래가 열렸습니다!
                 </p>
               </div>
-              <div class="slide-card" style="background:rgba(168,85,247,0.1); border-color:rgba(168,85,247,0.3);">
-                <h3 style="color:#c084fc; font-size:1.2rem;">🔮 양자 큐비트 (Qubit) = 회전하는 팽이</h3>
-                <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.5rem;">
-                  - 팽이가 도는 동안 0과 1이 동시에 섞인 <strong>'중첩(Superposition)'</strong> 상태!<br>
-                  - N개의 큐비트는 2의 N제곱 개의 모든 상태를 <strong>동시에 계산</strong>.<br>
-                  - 큐비트 300개만 있으면 우주 전체 원자 수보다 많은 계산을 한 번에 수행!
-                </p>
-              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Slide 5 -->
-          <div class="slide-item" data-slide="5">
-            <div class="slide-tag">인터랙티브 실험실</div>
-            <h1 class="slide-h1">🔬 큐비트 중첩 & VQE 바닥상태 탐색기</h1>
-            <p class="slide-body">아래 시뮬레이터에서 큐비트를 회전시켜 중첩 상태를 만들고, VQE 최적화 알고리즘으로 분자의 가장 안정한 에너지를 찾아보세요!</p>
-
-            <div class="sim-box" style="margin-top:1rem;">
-              <div class="sim-controls">
-                <button class="sim-btn" onclick="runQuantumSim('superposition')">🔄 큐비트 중첩 만들기 (H-Gate)</button>
-                <button class="sim-btn secondary" onclick="runQuantumSim('vqe')">⛰️ VQE 골짜기 바닥(바닥상태) 찾기</button>
-                <button class="sim-btn secondary" onclick="runQuantumSim('reset')">초기화</button>
-                <span id="q-sim-status" style="margin-left:auto; color:#a855f7; font-weight:700; align-self:center;">준비 완료: 버튼을 클릭하세요</span>
+        <!-- TAB 5: 🎯 성취기준 연계표 -->
+        <div class="tab-pane" id="tab-curriculum">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="badge" style="background:#f5f3ff; color:#6d28d9;">2022 개정 공식 표준 매핑</span>
+                <h2 class="card-title">🎯 2022 개정 교육과정 (중학교 과학·정보) 성취기준 및 3차원 평가 루브릭</h2>
               </div>
-              <div class="sim-canvas" id="q-sim-canvas">
-                <div style="text-align:center; width:45%;">
-                  <div style="font-size:0.85rem; color:#94a3b8; margin-bottom:0.5rem;">[큐비트 구(Bloch Sphere) 상태]</div>
-                  <div id="qubit-sphere" style="width:100px; height:100px; border:2px dashed #a855f7; border-radius:50%; margin:0 auto; position:relative; display:flex; align-items:center; justify-content:center; transition:all 0.6s;">
-                    <div id="qubit-vector" style="width:4px; height:45px; background:#38bdf8; transform-origin:bottom center; transform:rotate(0deg); transition:all 0.6s;"></div>
-                  </div>
-                  <div id="qubit-state-text" style="font-size:0.9rem; font-weight:700; color:#38bdf8; margin-top:0.5rem;">상태: 0 (확정 상태)</div>
-                </div>
-
-                <div style="text-align:center; width:50%; border-left:1px solid #334155; padding-left:1rem;">
-                  <div style="font-size:0.85rem; color:#94a3b8; margin-bottom:0.5rem;">[VQE 에너지 최적화 그래프]</div>
-                  <div style="position:relative; width:100%; height:100px; background:#0b0f19; border-radius:0.4rem; border:1px solid #1e293b; overflow:hidden;">
-                    <div style="position:absolute; left:10px; top:10px; font-size:0.75rem; color:#64748b;">에너지(E) 높은 들뜬상태</div>
-                    <div style="position:absolute; left:10px; bottom:10px; font-size:0.75rem; color:#10b981;">가장 안정한 바닥상태 (최저점)</div>
-                    <div id="vqe-ball" style="position:absolute; left:20px; top:20px; width:14px; height:14px; background:#f43f5e; border-radius:50%; transition:all 1s cubic-bezier(0.25, 1, 0.5, 1);"></div>
-                  </div>
-                  <div id="vqe-text" style="font-size:0.85rem; color:#cbd5e1; margin-top:0.5rem;">에너지 값: 계산 대기 중</div>
-                </div>
-              </div>
+              <button class="topbar-btn" onclick="window.print()">🖨️ 연계표 인쇄</button>
             </div>
-          </div>
 
-          <!-- Slide 6 -->
-          <div class="slide-item" data-slide="6">
-            <div class="slide-tag">KAIST CPRL 알고리즘 원리</div>
-            <h1 class="slide-h1">VQE: 눈 가리고 산골짜기 바닥 찾기</h1>
-            <p class="slide-body">
-              분자는 에너지가 가장 낮은 <strong>'바닥 상태(Ground State)'</strong>에서 가장 안정적으로 존재합니다.<br>
-              <strong>VQE(변분 양자 고유값 계산기)</strong>는 양자 컴퓨터와 일반 컴퓨터가 환상의 짝꿍을 이루는 하이브리드 기술입니다!
-            </p>
-            <div class="slide-grid">
-              <div class="slide-card" style="border-top:4px solid #a855f7;">
-                <h4 style="color:#c084fc;">1. 양자 컴퓨터 (눈 가린 탐험가)</h4>
-                <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.3rem;">
-                  복잡한 전자의 양자 상태를 큐비트로 재현하고, "현재 지점의 에너지는 이만큼이야!"라고 측정값을 일반 컴퓨터에 전달.
-                </p>
-              </div>
-              <div class="slide-card" style="border-top:4px solid #38bdf8;">
-                <h4 style="color:#38bdf8;">2. 고전 컴퓨터 (똑똑한 내비게이션)</h4>
-                <p style="font-size:0.9rem; color:#cbd5e1; margin-top:0.3rem;">
-                  측정된 에너지를 보고 "경사가 아래쪽이니 각도를 오른쪽으로 5도 수정해 봐!"라고 파라미터를 조절하여 가장 낮은 골짜기로 유도.
-                </p>
-              </div>
-            </div>
-          </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:16%;">교과 / 영역</th>
+                  <th style="width:26%;">2022 개정 공식 성취기준</th>
+                  <th style="width:28%;">본 프로그램 연계 요소</th>
+                  <th style="width:30%;">3차원 성취수준 루브릭 (상 / 중 / 하)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>중2 과학<br>(11) 물질의 구성</strong></td>
+                  <td>
+                    • <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                    • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.
+                  </td>
+                  <td>• 분자 구조와 전자 배치<br>• 전자 간 반발력과 계산 복잡도(지수 폭발) 탐구</td>
+                  <td><strong>[상]</strong> 원자 속 전자 간 상호작용으로 인해 전자가 늘어날수록 분자 상태 수가 지수적으로 폭발함을 논리적으로 설명하고 화학식으로 표현함.<br><strong>[중]</strong> 분자가 원자와 전자로 이루어져 있음을 이해함.<br><strong>[하]</strong> 원자 속에 전자가 있음을 안다.</td>
+                </tr>
+                <tr>
+                  <td><strong>중3 과학<br>(16) 화학 반응의 규칙성</strong></td>
+                  <td>
+                    • <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                    • <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                    &nbsp;&nbsp;<span style="color:#64748b; font-size:0.83rem;">*(성취기준 해설: 화학 반응이 일어날 때 물질을 구성하는 원자의 배열만 변하고, 원자의 종류와 수는 변하지 않음을 강조하여 설명한다.)*</span><br>
+                    • <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.
+                  </td>
+                  <td>• 최저 바닥 상태 결합 원리<br>• 상온 비료 합성 촉매 설계를 통한 화학 반응 에너지 장벽 극복</td>
+                  <td><strong>[상]</strong> 화학 반응에서 원자 배열이 변할 때 에너지가 출입함을 이해하고, VQE 알고리즘이 분자의 바닥 상태를 찾아가는 과정을 화학 결합과 연결하여 서술함.<br><strong>[중]</strong> 화학 반응 시 에너지가 출입함을 설명함.<br><strong>[하]</strong> 화학 반응으로 물질이 변함을 안다.</td>
+                </tr>
+                <tr>
+                  <td><strong>정보과 융합</strong></td>
+                  <td><strong>[9정01-03]</strong> 2진수 데이터 표현<br><strong>[9정02-02]</strong> 문제 해결 알고리즘과 시뮬레이션</td>
+                  <td>• 0과 1의 비트 vs 동전 회전 중첩(큐비트)<br>• VQE 하이브리드 최적화 루프</td>
+                  <td><strong>[상]</strong> 비트와 큐비트의 차이(중첩)를 바탕으로 양자 컴퓨터의 동시 병렬 처리 장점을 명확히 비교하고 VQE 피드백 루프를 분석함.<br><strong>[중]</strong> 큐비트가 중첩 상태임을 동전 비유로 설명함.<br><strong>[하]</strong> 컴퓨터가 0과 1을 씀을 안다.</td>
+                </tr>
+              </tbody>
+            </table>
 
-          <!-- Slide 7 -->
-          <div class="slide-item" data-slide="7">
-            <div class="slide-tag">KAIST CPRL 연구 성과</div>
-            <h1 class="slide-h1">KAIST의 혁신: 이온 트랩 양자 컴퓨터로 분자를 풀다</h1>
-            <p class="slide-body">
-              <strong>KAIST 화학과 이영민 교수 연구실(CPRL)</strong>은 실제 <strong>이온 트랩(Trapped-Ion) 양자 컴퓨터</strong> 하드웨어에서 분자의 전자쌍 상관관계를 극도로 정확하게 계산하는 알고리즘을 발표했습니다 (npj Quantum Information, 2024).
-            </p>
-            <div style="background:rgba(124,58,237,0.15); border:1px solid #7c3aed; border-radius:0.75rem; padding:1.25rem; margin-top:1.5rem;">
-              <h4 style="color:#c4b5fd; font-size:1.1rem; margin-bottom:0.4rem;">🔬 CPRL 연구의 핵심 돌파구</h4>
-              <p style="font-size:0.95rem; color:#e2e8f0; line-height:1.7;">
-                • 제한된 수의 큐비트만을 사용하면서도 분자의 결합 에너지를 정밀하게 계산하는 <strong>'오비탈 최적화 쌍 상관 시뮬레이션'</strong> 개발.<br>
-                • 양자 컴퓨터가 화학 결합, 광화학 반응 경로를 직접 풀어내는 실용적 시대를 개척!
+            <div style="margin-top:1.5rem; padding:1.25rem; background:#f8fafc; border-radius:0.5rem; border:1px solid #e2e8f0;">
+              <h4 style="color:#1e293b; margin-bottom:0.5rem;">💡 [교과 세부능력 및 특기사항(세특)] 기재 예시</h4>
+              <p style="font-size:0.92rem; color:#475569; line-height:1.75;">
+                <em>"원자 모형과 다전자 분자의 상호작용을 학습하며 전자가 늘어남에 따라 계산량이 2의 N제곱으로 폭발하는 지수 폭발의 한계를 체계적으로 분석함. 일반 컴퓨터의 비트와 양자 큐비트의 중첩 원리를 '회전하는 동전' 모형으로 명쾌하게 대조하여 설명함. KAIST 계산광동역학 연구실의 VQE 알고리즘 원리를 탐구한 후, '지구를 구하는 틴에이저 스타트업 CEO' 활동에서 상온 질소 고정 촉매 분자 설계를 통한 탄소 배출 저감 프로젝트를 기획함. 컴퓨팅 사고력과 화학적 지식을 융합하여 기후 위기 해결 방안을 창의적으로 제안하는 탁월한 문제해결력을 보임."</em>
               </p>
             </div>
           </div>
-
-          <!-- Slide 8 -->
-          <div class="slide-item" data-slide="8">
-            <div class="slide-tag">지구를 구하는 양자 화학</div>
-            <h1 class="slide-h1">양자 컴퓨터가 해결할 인류의 3대 난제</h1>
-            <div class="slide-grid">
-              <div class="slide-card">
-                <div style="font-size:1.5rem; margin-bottom:0.3rem;">🌱</div>
-                <h4 style="color:#34d399;">1. 상온 암모니아 비료 합성</h4>
-                <p style="font-size:0.85rem; color:#cbd5e1; margin-top:0.3rem;">
-                  전 세계 에너지의 1~2%를 먹어치우는 하버-보슈법을 대체할 '박테리아 상온 촉매'를 양자 시뮬레이션으로 설계 (식량 & 탄소 중립).
-                </p>
-              </div>
-              <div class="slide-card">
-                <div style="font-size:1.5rem; margin-bottom:0.3rem;">🔋</div>
-                <h4 style="color:#38bdf8;">2. 꿈의 전고체 배터리 소재</h4>
-                <p style="font-size:0.85rem; color:#cbd5e1; margin-top:0.3rem;">
-                  화재 위험이 없고 충전이 10배 빠른 고체 전해질 속 리튬 이온의 초고속 이동 통로를 양자 계산으로 발굴 (친환경 전기차).
-                </p>
-              </div>
-              <div class="slide-card">
-                <div style="font-size:1.5rem; margin-bottom:0.3rem;">💊</div>
-                <h4 style="color:#f43f5e;">3. 변종 바이러스 표적 신약</h4>
-                <p style="font-size:0.85rem; color:#cbd5e1; margin-top:0.3rem;">
-                  수억 개의 약물 후보 분자 중 암세포나 바이러스에 꼭 맞는 열쇠 분자를 단 몇 초 만에 찾아내는 초고속 신약 스크리닝.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 9 -->
-          <div class="slide-item" data-slide="9">
-            <div class="slide-tag">핵심 정리 & 퀴즈</div>
-            <h1 class="slide-h1">오늘 배운 핵심 3가지 총정리</h1>
-            <div style="display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;">
-              <div class="slide-card">
-                <strong>1. 지수 폭발의 한계:</strong> 전자가 늘어날 때마다 경우의 수가 기하급수적으로 폭발하여 기존 슈퍼컴퓨터로는 복잡한 분자를 풀 수 없다.
-              </div>
-              <div class="slide-card">
-                <strong>2. 큐비트와 중첩:</strong> 0과 1이 동시에 존재하는 큐비트의 중첩 덕분에 양자 컴퓨터는 수많은 분자 상태를 동시에 계산할 수 있다.
-              </div>
-              <div class="slide-card">
-                <strong>3. VQE 하이브리드 혁신:</strong> 양자 컴퓨터와 일반 컴퓨터가 협력하여 분자의 가장 안정한 바닥 상태 에너지를 찾아내고 신소재/신약을 개발한다.
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 10 -->
-          <div class="slide-item" data-slide="10">
-            <div class="slide-tag">수업 마무리</div>
-            <h1 class="slide-h1">미래를 코딩하는 과학자를 꿈꾸며</h1>
-            <p class="slide-body" style="font-size:1.3rem; margin-top:2rem; line-height:1.8;">
-              "컴퓨터 과학과 화학이 만나면,<br>
-              실험실의 비커 없이도 지구의 기후 위기를 해결하고<br>
-              난치병을 치료하는 기적이 시작됩니다.<br><br>
-              <strong>여러분도 KAIST 연구원처럼 양자 컴퓨터로 세상을 바꾸어 보시겠습니까?</strong>"
-            </p>
-            <div style="margin-top:2.5rem;">
-              <span class="badge" style="font-size:0.9rem; padding:0.4rem 1rem;">다음 탭의 [학생활동지]를 열어 탐구 활동을 시작하세요!</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- TAB 2: 📋 상세 수업준비자료 (Teacher Guide) -->
-    <!-- ========================================== -->
-    <div id="lesson-plan" class="tab-pane">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <span class="badge" style="background:#f5f3ff; color:#6d28d9;">교사용 지도안</span>
-            <h2 class="card-title">📋 [상세 수업지도안] 0과 1의 한계를 넘는 양자 컴퓨터와 계산 화학</h2>
-          </div>
-          <button class="print-btn" onclick="window.print()">🖨️ 지도안 인쇄</button>
-        </div>
-
-        <table class="data-table">
-          <tr>
-            <th style="width:15%;">단원명</th>
-            <td>중학교 과학 (물질의 구성 / 과학기술과 인류 문명) & 정보 (알고리즘과 컴퓨팅) 융합 심화</td>
-            <th style="width:15%;">권장 차시</th>
-            <td>총 3차시 (차시당 45분) 또는 블록타임 135분</td>
-          </tr>
-          <tr>
-            <th>학습 목표</th>
-            <td colspan="3">
-              1. 분자 내 전자 간 상호작용으로 인해 발생하는 '계산 복잡도의 지수 폭발'을 이해하고 슈퍼컴퓨터의 한계를 설명할 수 있다.<br>
-              2. 고전 비트(Bit)와 양자 큐비트(Qubit)의 차이(중첩 현상)를 회전하는 동전 비유를 통해 직관적으로 설명할 수 있다.<br>
-              3. VQE(변분 양자 고유값 계산기) 알고리즘의 원리를 이해하고, 양자 컴퓨터가 배터리·비료·신약 개발에 미치는 영향을 서술할 수 있다.
-            </td>
-          </tr>
-          <tr>
-            <th>준비물 및 교구</th>
-            <td colspan="3">
-              • <strong>활동 교구:</strong> 바둑판 및 바둑알(또는 체스판과 쌀알 모형), 동전(모둠별 4개), 안대(2인 1조 게임용), 골짜기 지형도 활동지.<br>
-              • <strong>학습 자료:</strong> 학생활동지, 발표 슬라이드, 웹 기반 양자 큐비트 시뮬레이터.
-            </td>
-          </tr>
-        </table>
-
-        <h3 style="margin: 1.5rem 0 0.75rem; color:#1e293b;">차시별 세부 교수·학습 흐름</h3>
-
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
-          <h4 style="color:#7c3aed; margin-bottom:0.5rem;">[1차시] 슈퍼컴퓨터가 항복한 이유: 지수 폭발 체감하기</h4>
-          <ul style="padding-left:1.25rem; font-size:0.95rem; line-height:1.7;">
-            <li><strong>도입 (10분):</strong> 체스판에 쌀알을 2의 n제곱 개씩 올리는 고대 설화 소개. "전자가 늘어나면 계산량이 얼마나 커질까?"</li>
-            <li><strong>전개 (25분):</strong> 전자 수(N)와 상태 수(2의 N제곱)의 관계 체험 활동. 물 분자(전자 10개, 1,024개) vs 카페인 분자(전자 102개, 약 10의 30제곱 개) 비교 계산. 왜 일반 컴퓨터는 0과 1을 하나씩 순서대로 계산해야만 하는지 한계 토론.</li>
-            <li><strong>정리 (10분):</strong> 리처드 파인만의 명언을 통해 양자 컴퓨터의 필요성 정리.</li>
-          </ul>
-        </div>
-
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
-          <h4 style="color:#2563eb; margin-bottom:0.5rem;">[2차시] 0과 1이 춤추는 큐비트 & 2인 1조 VQE 보물찾기</h4>
-          <ul style="padding-left:1.25rem; font-size:0.95rem; line-height:1.7;">
-            <li><strong>도입 (10분):</strong> 동전 돌리기 놀이. "동전이 빠르게 돌고 있을 때는 앞면일까, 뒷면일까?" → <strong>중첩(Superposition)</strong> 개념 도출.</li>
-            <li><strong>전개 (25분):</strong> 2인 1조 [VQE 골짜기 바닥 찾기] 게임 진행.
-              <br>- 학생 A(양자 프로세서): 안대를 쓰고 발바닥 감각으로 경사값(에너지)만 측정.
-              <br>- 학생 B(고전 컴퓨터): 전달받은 에너지 값을 보고 학생 A의 이동 방향을 수정하는 최적화 명령 하달.
-            </li>
-            <li><strong>정리 (10분):</strong> KAIST CPRL 연구실이 개발하는 양자-고전 하이브리드 알고리즘의 원리와 장점 정리.</li>
-          </ul>
-        </div>
-
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
-          <h4 style="color:#059669; margin-bottom:0.5rem;">[3차시] 지구를 구하는 양자 화학 스타트업 CEO 프로젝트</h4>
-          <ul style="padding-left:1.25rem; font-size:0.95rem; line-height:1.7;">
-            <li><strong>도입 (10분):</strong> 기후 위기와 에너지 문제(비료 합성, 배터리 화재) 제시.</li>
-            <li><strong>전개 (25분):</strong> 모둠별 3대 난제(친환경 비료 촉매 / 전고체 배터리 / 맞춤형 신약) 중 1개를 선택하여 '양자 화학 스타트업 제안서' 포스터 작성.</li>
-            <li><strong>정리 (10분):</strong> 모둠별 발표 및 미래 양자 화학자로서의 진로 비전 공유.</li>
-          </ul>
-        </div>
-
-        <div class="callout-box">
-          <strong>💡 교사용 지도 팁 (수식 없는 양자역학 교육):</strong><br>
-          학생들에게 복잡한 파동함수나 행렬 수식을 설명하려 하지 마세요. <strong>"0과 1을 동시에 품는 팽이(큐비트)"</strong>와 <strong>"가장 안정한 바닥을 찾아가는 눈 가린 탐험가(VQE)"</strong>라는 직관적 은유만으로도 중학생들은 양자 컴퓨팅의 본질과 계산 화학의 매력을 깊이 있게 이해할 수 있습니다.
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- TAB 3: 📝 학생활동지 (Worksheet) -->
-    <!-- ========================================== -->
-    <div id="worksheet" class="tab-pane">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <span class="badge" style="background:#fef3c7; color:#92400e;">학생 탐구 활동지</span>
-            <h2 class="card-title">📝 [탐구 활동지] 양자 컴퓨터로 떠나는 미래 분자 탐험</h2>
-          </div>
-          <button class="print-btn" onclick="window.print()">🖨️ 활동지 인쇄하기</button>
-        </div>
-
-        <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem; font-size:0.95rem;">
-          <span>중학교 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )학년 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )반 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )번</span>
-          <span>이름: ____________________</span>
-        </div>
-
-        <div class="worksheet-section">
-          <h3 style="color:#6d28d9; font-size:1.1rem; margin-bottom:0.5rem;">[탐구 1] 지수 폭발 계산기: 전자가 늘어나면?</h3>
-          <p style="font-size:0.9rem; color:#475569;">전자의 개수에 따라 고전 컴퓨터가 계산해야 하는 상태의 수(2의 N제곱)를 적어봅시다.</p>
-          
-          <table class="data-table" style="margin-top:0.75rem;">
-            <thead>
-              <tr>
-                <th>전자 개수 (N)</th>
-                <th>계산해야 하는 상태 수 (2의 N제곱)</th>
-                <th>현존 최고 슈퍼컴퓨터의 계산 시간</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>전자 1개</td>
-                <td>2의 1제곱 = 2개</td>
-                <td>0.0000001초 미만 (즉시)</td>
-              </tr>
-              <tr>
-                <td>전자 10개 (물 분자)</td>
-                <td>2의 10제곱 = <input type="text" style="width:70px; padding:2px 4px;" value="1,024"> 개</td>
-                <td>1초 미만</td>
-              </tr>
-              <tr>
-                <td>전자 50개</td>
-                <td>2의 50제곱 (약 1,000조 개)</td>
-                <td>수 분 ~ 수 시간</td>
-              </tr>
-              <tr>
-                <td>전자 100개 (카페인)</td>
-                <td>2의 100제곱 (약 10의 30제곱 개)</td>
-                <td><div class="answer-box" style="min-height:30px; font-size:0.85rem;">(예: 수백만 년 이상 걸려 계산 불가능!)</div></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="worksheet-section">
-          <h3 style="color:#6d28d9; font-size:1.1rem; margin-bottom:0.5rem;">[탐구 2] 2인 1조 VQE 하이브리드 게임 체험 보고서</h3>
-          <p style="font-size:0.9rem; color:#475569;">
-            양자 컴퓨터(학생 A)와 고전 컴퓨터(학생 B)가 협력하여 분자의 최저 에너지(바닥 상태)를 찾는 게임을 수행하고 느낀 점을 적어보세요.
-          </p>
-          <div style="margin-top:0.75rem;">
-            <p style="font-weight:600; font-size:0.95rem;">Q1. 양자 컴퓨터와 일반 슈퍼컴퓨터가 서로의 단점을 보완하며 협력하는 '하이브리드 방식'이 왜 순수 양자 컴퓨터보다 현실에서 더 유용할까요?</p>
-            <div class="answer-box" style="min-height:70px;"></div>
-          </div>
-        </div>
-
-        <div class="worksheet-section">
-          <h3 style="color:#6d28d9; font-size:1.1rem; margin-bottom:0.5rem;">[탐구 3] [지구를 구하는 양자 화학 스타트업 CEO] 프로젝트 기획서</h3>
-          <p style="font-size:0.9rem; color:#475569;">
-            내가 양자 컴퓨팅 기술을 활용하는 화학 스타트업을 창업한다면, 어떤 지구 환경·에너지 문제를 해결하고 싶나요?
-          </p>
-          <div style="margin-top:0.75rem;">
-            <p style="font-weight:600; font-size:0.95rem;">• 스타트업 회사명 및 해결하고 싶은 문제:</p>
-            <div class="answer-box" style="min-height:45px;"></div>
-            <p style="font-weight:600; font-size:0.95rem; margin-top:0.5rem;">• 양자 컴퓨터를 이용해 시뮬레이션할 분자나 물질:</p>
-            <div class="answer-box" style="min-height:45px;"></div>
-            <p style="font-weight:600; font-size:0.95rem; margin-top:0.5rem;">• 이 기술이 성공했을 때 인류 사회에 미칠 긍정적 변화:</p>
-            <div class="answer-box" style="min-height:70px;"></div>
-          </div>
         </div>
 
       </div>
-    </div>
+    </main>
 
-    <!-- ========================================== -->
-    <!-- TAB 4: 📖 학생용 교재 (Textbook / Reader) -->
-    <!-- ========================================== -->
-    <div id="textbook" class="tab-pane">
-      <div class="card">
-        <div class="chapter-hero">
-          <span class="badge" style="background:#7c3aed; color:white;">중학생을 위한 미래 과학 읽기자료</span>
-          <h2 style="font-size:1.6rem; font-weight:800; color:#4c1d95; margin:0.5rem 0;">제2장. 0과 1을 넘어선 마법의 컴퓨터와 미래 화학</h2>
-          <p style="color:#7c3aed; font-size:0.95rem;">글: KAIST 계산광동역학 연구실(CPRL) 교육기획팀</p>
-        </div>
-
-        <div style="font-size:1.02rem; line-height:1.8; color:#334155;">
-          <h3 style="color:#1e293b; margin:1.5rem 0 0.5rem; font-size:1.25rem;">1. 슈퍼컴퓨터도 두 손 든 '분자의 춤'</h3>
-          <p>
-            우리가 마시는 물 한 방울 속에는 셀 수 없이 많은 물 분자들이 들어 있습니다. 그리고 분자 하나하나 속에는 원자핵 주위를 전깃불처럼 빠르게 맴도는 전자들이 있습니다. 
-          </p>
-          <p>
-            그런데 화학자들에게는 커다란 고민이 있습니다. 전자가 1개, 2개일 때는 종이에 연필로도 계산할 수 있지만, 전자가 50개, 100개로 늘어나면 세상에서 가장 비싼 수천억 원짜리 슈퍼컴퓨터로도 분자의 에너지를 정확하게 계산할 수 없다는 사실입니다! 전자가 늘어날 때마다 경우의 수가 2 곱하기 2 곱하기 2처럼 기하급수적으로 폭발하기 때문입니다.
-          </p>
-
-          <h3 style="color:#1e293b; margin:1.75rem 0 0.5rem; font-size:1.25rem;">2. 팽이처럼 회전하는 마법의 비트, '큐비트(Qubit)'</h3>
-          <p>
-            우리가 쓰는 컴퓨터나 스마트폰은 모든 정보를 0(꺼짐)과 1(켜짐)로 표현합니다. 벽에 붙은 전등 스위치처럼 0 아니면 1 중 하나만 선택할 수 있습니다.
-          </p>
-          <p>
-            하지만 양자 컴퓨터는 다릅니다. 양자 컴퓨터의 기본 단위인 <strong>'큐비트(Qubit)'</strong>는 바닥에서 빠르게 돌고 있는 팽이와 같습니다. 팽이가 돌고 있을 때는 앞면(0)일까요, 뒷면(1)일까요? 둘 다 동시에 섞여 있습니다! 이것을 양자역학에서는 <strong>'중첩(Superposition)'</strong>이라고 부릅니다.
-          </p>
-          <p>
-            중첩 덕분에 큐비트는 수많은 경우의 수를 하나씩 차례대로 검사하는 대신, <strong>동시에 한 번에</strong> 계산할 수 있는 엄청난 초능력을 갖게 됩니다.
-          </p>
-
-          <div class="kaist-highlight">
-            <h4 style="color:#581c87; font-size:1.1rem; margin-bottom:0.3rem;">🏛️ KAIST 연구원 코너: 양자 컴퓨터로 지구의 미래를 바꾸다</h4>
-            <p style="font-size:0.95rem; color:#4c1d95;">
-              <strong>KAIST 화학과 계산광동역학 연구실(CPRL)</strong>에서는 이온을 공중에 띄워 만든 '이온 트랩 양자 컴퓨터'를 활용하여 분자의 복잡한 전자 구조를 계산하는 최첨단 <strong>VQE 알고리즘</strong>을 연구하고 있습니다.
-              <br><br>
-              화학 실험실에서 유독한 물질을 섞어가며 수년 동안 수천 번 실험할 필요 없이, 양자 컴퓨터 속에서 안전하고 정밀하게 새로운 친환경 배터리 소재와 암 치료 표적 약물을 설계하는 미래가 열리고 있습니다!
-            </p>
-          </div>
-
-          <h3 style="color:#1e293b; margin:1.75rem 0 0.5rem; font-size:1.25rem;">📚 쏙쏙 핵심 용어 사전</h3>
-          <ul style="padding-left:1.25rem; line-height:1.8;">
-            <li><strong>비트 (Bit):</strong> 0 또는 1의 두 가지 상태 중 하나만 갖는 고전 컴퓨터의 정보 단위.</li>
-            <li><strong>큐비트 (Qubit):</strong> 0과 1이 동시에 중첩될 수 있는 양자 컴퓨터의 기본 정보 단위.</li>
-            <li><strong>중첩 (Superposition):</strong> 여러 가지 물리적 상태가 확률적으로 동시에 공존하는 양자역학적 성질.</li>
-            <li><strong>VQE (변분 양자 고유값 계산기):</strong> 양자 컴퓨터와 고전 컴퓨터가 협력하여 분자의 가장 안정한 바닥 상태 에너지를 찾아내는 하이브리드 알고리즘.</li>
-            <li><strong>계산 복잡도 (Computational Complexity):</strong> 문제의 크기(전자 수)가 커질 때 계산에 필요한 시간과 메모리가 얼마나 급격히 늘어나는지를 나타내는 척도.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- TAB 5: 🎯 2022 개정 교육과정 연계표 -->
-    <!-- ========================================== -->
-    <div id="curriculum" class="tab-pane">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <span class="badge" style="background:#f5f3ff; color:#6d28d9;">교육과정 표준 매핑</span>
-            <h2 class="card-title">🎯 2022 개정 교육과정 (중학교 과학·정보) 성취기준 연계표</h2>
-          </div>
-          <button class="print-btn" onclick="window.print()">🖨️ 연계표 인쇄</button>
-        </div>
-
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th style="width:15%;">교과 / 영역</th>
-              <th style="width:25%;">2022 개정 교육과정 성취기준</th>
-              <th style="width:30%;">본 수업 프로그램 연계 요소</th>
-              <th style="width:30%;">평가 기준 (상 / 중 / 하)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>중학교 과학<br>(물질의 구성)</strong></td>
-              <td>
-                <strong>[9과01-01]</strong> 물질의 기본 성분과 원자 모형을 이해하고 전자의 존재를 설명할 수 있다.<br>
-                <strong>[9과03-01]</strong> 화학 결합의 형성과 물질의 성질을 관련지어 설명할 수 있다.
-              </td>
-              <td>
-                • 분자 내 전자의 배치와 전자 간 반발력(척력) 이해<br>
-                • 다전자 분자의 복잡한 상호작용과 바닥 상태 에너지의 의미 탐구
-              </td>
-              <td>
-                <strong>[상]</strong> 전자의 다체 상호작용으로 인해 분자 에너지 계산량이 지수적으로 폭발함을 논리적으로 설명함.<br>
-                <strong>[중]</strong> 분자가 원자와 전자로 구성되어 있으며 전자가 상호작용함을 이해함.<br>
-                <strong>[하]</strong> 원자 속에 전자가 있음을 말할 수 있음.
-              </td>
-            </tr>
-            <tr>
-              <td><strong>중학교 정보<br>(컴퓨팅 시스템 & 알고리즘)</strong></td>
-              <td>
-                <strong>[9정02-02]</strong> 문제 해결을 위한 알고리즘을 설계하고 시뮬레이션 모델을 활용할 수 있다.<br>
-                <strong>[9정01-03]</strong> 2진수 데이터 표현과 디지털 시스템의 정보 처리 원리를 이해한다.
-              </td>
-              <td>
-                • 0과 1의 고전 비트 vs 중첩을 갖는 양자 큐비트의 차이 분석<br>
-                • 양자-고전 하이브리드 최적화 알고리즘(VQE)의 작동 원리 이해
-              </td>
-              <td>
-                <strong>[상]</strong> 비트와 큐비트의 정보 표현 방식 차이를 바탕으로 양자 컴퓨터의 병렬 처리 장점을 정확히 비교 설명함.<br>
-                <strong>[중]</strong> 큐비트가 0과 1을 동시에 가질 수 있는 중첩 상태임을 이해함.<br>
-                <strong>[하]</strong> 컴퓨터가 0과 1을 사용한다는 사실을 앎.
-              </td>
-            </tr>
-            <tr>
-              <td><strong>중학교 과학<br>(과학과 사회)</strong></td>
-              <td>
-                <strong>[9과09-03]</strong> 과학기술의 발전이 인류 문명과 지구 환경 문제 해결에 미치는 영향을 탐색할 수 있다.
-              </td>
-              <td>
-                • 양자 컴퓨터를 이용한 3대 지구 난제(상온 비료 촉매, 전고체 배터리, 변종 바이러스 신약) 해결 프로젝트 기획
-              </td>
-              <td>
-                <strong>[상]</strong> 양자 화학 기술이 기후 위기 및 난치병 치료에 기여할 수 있는 구체적 시나리오를 창의적으로 제안함.<br>
-                <strong>[중]</strong> 양자 컴퓨터가 신소재나 신약 개발에 사용될 수 있음을 설명함.<br>
-                <strong>[하]</strong> 첨단 과학기술이 인류에게 유익함을 표현함.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div style="margin-top:1.5rem; padding:1.25rem; background:#f8fafc; border-radius:0.5rem; border:1px solid #e2e8f0;">
-          <h4 style="color:#1e293b; margin-bottom:0.5rem;">💡 교과 세부능력 및 특기사항(세특) 기재 예시 문구</h4>
-          <p style="font-size:0.92rem; color:#475569; line-height:1.7;">
-            <em>"다전자 분자의 에너지 계산에서 발생하는 지수 폭발 한계를 이해하고, 이를 극복하기 위한 양자 큐비트의 중첩 원리를 고전 비트와 명확히 비교 분석함. KAIST 계산광동역학 연구실의 VQE 알고리즘 연구 사례를 탐구하며 양자-고전 하이브리드 최적화 과정을 논리적으로 설명함. '지구를 구하는 양자 화학 스타트업 CEO' 프로젝트에서 상온 암모니아 합성 촉매 설계를 통한 탄소 배출 저감 방안을 창의적으로 기획하여 뛰어난 컴퓨팅 사고력과 융합적 문제해결력을 발휘함."</em>
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </main>
+  </div>
 
   <script>
-    // Tab switching logic
+    let activeTab = 'slides';
+    let isSidebarOpen = true;
+
+    const tabNames = {
+      'slides': '발표 슬라이드 (Slide Deck)',
+      'lesson-plan': '교사용 지도안 (Teacher Guide)',
+      'worksheet': '학생활동지 (Worksheet)',
+      'textbook': '학생용 읽기자료 (Textbook)',
+      'curriculum': '2022 성취기준 연계표 (Curriculum)'
+    };
+
     function switchTab(tabId) {
-      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      
-      document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      activeTab = tabId;
+      document.querySelectorAll('.sidebar-nav .nav-item').forEach(i => i.classList.remove('active'));
+      const activeBtn = document.getElementById('nav-btn-' + tabId);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.getElementById('current-tab-name').innerText = tabNames[tabId] || tabId;
+      document.querySelectorAll('.content-container .tab-pane').forEach(p => p.classList.remove('active'));
+      const targetPane = document.getElementById('tab-' + tabId);
+      if (targetPane) targetPane.classList.add('active');
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.innerWidth <= 900) document.body.classList.remove('sidebar-open');
     }
 
-    // Slide navigation logic
-    let currentSlide = 1;
-    const totalSlides = 10;
-
-    function changeSlide(direction) {
-      const slides = document.querySelectorAll('.slide-item');
-      slides[currentSlide - 1].classList.remove('active');
-      
-      currentSlide += direction;
-      if (currentSlide < 1) currentSlide = 1;
-      if (currentSlide > totalSlides) currentSlide = totalSlides;
-
-      slides[currentSlide - 1].classList.add('active');
-
-      // Update Toolbar
-      document.getElementById('slide-num-badge').innerText = currentSlide + ' / ' + totalSlides;
-      document.getElementById('slide-progress-bar').style.width = ((currentSlide / totalSlides) * 100) + '%';
-
-      document.getElementById('prev-btn').disabled = (currentSlide === 1);
-      document.getElementById('next-btn').disabled = (currentSlide === totalSlides);
-    }
-
-    // Keyboard support for presentation
-    document.addEventListener('keydown', function(e) {
-      if (!document.getElementById('slides').classList.contains('active')) return;
-      if (e.key === 'ArrowRight' || e.key === 'Space') {
-        if (currentSlide < totalSlides) changeSlide(1);
-      } else if (e.key === 'ArrowLeft') {
-        if (currentSlide > 1) changeSlide(-1);
+    function toggleSidebar() {
+      if (window.innerWidth <= 900) {
+        document.body.classList.toggle('sidebar-open');
+      } else {
+        document.body.classList.toggle('sidebar-collapsed');
+        isSidebarOpen = !document.body.classList.contains('sidebar-collapsed');
+        const icon = document.getElementById('collapse-icon');
+        if (icon) icon.innerText = isSidebarOpen ? '◀' : '▶';
       }
-    });
+    }
 
-    // Fullscreen toggle
     function toggleFullScreen() {
-      const elem = document.querySelector('.slide-viewer');
+      const activeViewer = document.querySelector('.tab-pane.active .slide-viewer');
+      const elem = activeViewer || document.documentElement;
       if (!document.fullscreenElement) {
-        elem.requestFullscreen().catch(err => {
-          alert('전체화면 전환 에러: ' + err.message);
-        });
+        elem.requestFullscreen().catch(err => alert('전체화면 오류: ' + err.message));
       } else {
         document.exitFullscreen();
       }
     }
 
-    // Interactive Quantum Simulator Logic
-    function runQuantumSim(mode) {
-      const sphere = document.getElementById('qubit-sphere');
+    let currentSlide = 1;
+    const totalSlides = 10;
+    function changeSlide(direction) {
+      const slides = document.querySelectorAll('.slide-item');
+      slides[currentSlide - 1].classList.remove('active');
+      currentSlide += direction;
+      if (currentSlide < 1) currentSlide = 1;
+      if (currentSlide > totalSlides) currentSlide = totalSlides;
+      slides[currentSlide - 1].classList.add('active');
+
+      document.getElementById('slide-num-badge').innerText = currentSlide + ' / ' + totalSlides;
+      document.getElementById('slide-progress-bar').style.width = ((currentSlide / totalSlides) * 100) + '%';
+      document.getElementById('prev-btn').disabled = (currentSlide === 1);
+      document.getElementById('next-btn').disabled = (currentSlide === totalSlides);
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (activeTab === 'slides') {
+        if (e.key === 'ArrowRight' || e.key === 'Space') { if (currentSlide < totalSlides) changeSlide(1); }
+        else if (e.key === 'ArrowLeft') { if (currentSlide > 1) changeSlide(-1); }
+      }
+      if (e.key === '[' || e.key === ']') toggleSidebar();
+    });
+
+    function runQuantumSim(action) {
       const vector = document.getElementById('qubit-vector');
       const stateText = document.getElementById('qubit-state-text');
       const ball = document.getElementById('vqe-ball');
       const vqeText = document.getElementById('vqe-text');
-      const status = document.getElementById('q-sim-status');
+      const status = document.getElementById('quantum-sim-status');
 
-      if (mode === 'superposition') {
-        status.innerText = "하다마드(H) 게이트 적용: 큐비트가 중첩 상태로 회전!";
+      if (action === 'superposition') {
+        status.innerText = "큐비트 회전 중... 0과 1이 동시에 공존하는 중첩 상태 형성!";
         vector.style.transform = 'rotate(90deg)';
-        sphere.style.borderColor = '#38bdf8';
-        sphere.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.4)';
-        stateText.innerHTML = "상태: 0과 1의 중첩 상태 <br><span style='color:#a855f7; font-size:0.8rem;'>50% 확률로 0이자 1인 신비로운 상태!</span>";
+        vector.style.background = '#c084fc';
+        stateText.innerText = "상태: 0과 1이 공존하는 완벽한 중첩!";
+        stateText.style.color = '#c084fc';
       } 
-      else if (mode === 'vqe') {
-        status.innerText = "VQE 하이브리드 최적화 시작: 최저 에너지 골짜기 탐색 중...";
-        ball.style.left = '20px';
-        ball.style.top = '20px';
-        vqeText.innerText = "1단계: 초기 에너지 E = +4.82 eV (들뜬 상태)";
-
-        setTimeout(() => {
-          ball.style.left = '100px';
-          ball.style.top = '55px';
-          vqeText.innerText = "2단계: 고전 컴퓨터 매개변수 수정 → E = -1.15 eV";
-        }, 800);
-
-        setTimeout(() => {
-          ball.style.left = '180px';
-          ball.style.top = '78px';
-          ball.style.background = '#10b981';
-          ball.style.boxShadow = '0 0 12px #10b981';
-          vqeText.innerText = "최적화 완료! 바닥상태 도달: E = -2.86 eV (가장 안정한 분자 구조)";
-          status.innerText = "VQE 성공! 분자의 가장 안정한 상태 발견!";
-        }, 1600);
-      }
-      else if (mode === 'reset') {
+      else if (action === 'vqe') {
+        status.innerText = "VQE 최적화 루프: 양자-일반 컴퓨터 협력으로 최저 에너지 탐색 중...";
+        let step = 0;
+        const interval = setInterval(() => {
+          step++;
+          if (step === 1) {
+            ball.style.left = '60px'; ball.style.top = '40px';
+            vqeText.innerText = "에너지 값: -0.45 (탐색 중...)";
+          } else if (step === 2) {
+            ball.style.left = '120px'; ball.style.top = '65px';
+            vqeText.innerText = "에너지 값: -0.89 (골짜기 하강 중...)";
+          } else if (step === 3) {
+            ball.style.left = '170px'; ball.style.top = '78px';
+            ball.style.background = '#10b981';
+            ball.style.boxShadow = '0 0 14px #10b981';
+            vqeText.innerText = "에너지 값: -1.137 (가장 안정한 바닥 상태 도달!)";
+            status.innerText = "최적화 완료! 분자의 가장 안정한 결합 구조를 찾았습니다.";
+            clearInterval(interval);
+          }
+        }, 600);
+      } 
+      else if (action === 'reset') {
         vector.style.transform = 'rotate(0deg)';
-        sphere.style.borderColor = '#a855f7';
-        sphere.style.boxShadow = 'none';
-        stateText.innerText = "상태: 0 (확정 상태)";
+        vector.style.background = '#38bdf8';
+        stateText.innerText = "상태: 0 (바닥에 멈춘 동전)";
+        stateText.style.color = '#38bdf8';
         ball.style.left = '20px';
         ball.style.top = '20px';
         ball.style.background = '#f43f5e';
-        vqeText.innerText = "에너지 값: 계산 대기 중";
+        ball.style.boxShadow = '0 0 10px #f43f5e';
+        vqeText.innerText = "에너지 상태: 탐색 대기 중";
         status.innerText = "초기화되었습니다.";
       }
     }
