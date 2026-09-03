@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[학생용 읽기자료] 분자의 빛과 디스플레이의 과학 - KAIST 첨단과학 탐구</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Shared Sidebar -->
+    <aside class="sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+          <span class="current-view-title">📖 [학생용 읽기자료] 분자의 빛과 디스플레이의 과학</span>
+        </div>
+        <div class="topbar-actions">
+          <a href="worksheet.html" class="topbar-btn">📝 학생활동지</a>
+          <a href="lab.html" class="topbar-btn primary">🧪 가상실험실</a>
+          <button class="topbar-btn" onclick="window.print()">🖨️ 인쇄</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #4338ca, #6366f1);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">스토리텔링 과학 탐구 교과서</div>
+            <div class="section-header-title">분자의 빛과 디스플레이의 과학: 형광에서 스마트폰 OLED까지</div>
+          </div>
+
+          <!-- 본문 섹션 1 -->
+          <article style="line-height:1.85; font-size:1rem; color:#334155; margin-bottom:2rem;">
+            <h2 style="color:#1e3a8a; font-size:1.35rem; margin:1.5rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🔍 1장. 어둠 속에서 빛나는 마법, 형광의 정체</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              불이 꺼진 방 안에서 블랙라이트(자외선 램프)를 켜본 적이 있나요? 투명한 유리잔에 담긴 토닉워터가 마법처럼 눈부신 사파이어 빛 파란색으로 변하고, 평범한 비타민 음료는 눈이 시리도록 밝은 형광 연두색으로 빛납니다. 우리 눈에는 보이지 않는 투명한 자외선을 비추었을 뿐인데, 도대체 왜 액체 속에서 알록달록한 눈부신 가시광선이 뿜어져 나오는 걸까요?
+            </p>
+            <p style="margin-bottom:1rem;">
+              비밀은 음료 속에 숨어 있는 <strong>'분자(Molecule)'</strong>에 있습니다. 토닉워터 속에는 말라리아 치료제로 쓰이던 <strong>'퀴닌(Quinine)'</strong>이라는 특별한 유기 분자가 녹아 있고, 비타민 음료 속에는 <strong>'리보플라빈(비타민 $B_2$)'</strong> 분자가 가득 들어 있습니다. 이 분자들은 사람의 눈에는 보이지 않지만 매우 강력한 에너지를 지닌 파장 300~400nm(나노미터)의 자외선 빛을 꿀꺽 삼킨 뒤, 눈에 보이는 부드러운 가시광선(400~700nm)으로 바꾸어 다시 내뿜습니다. 이 신비로운 마법 현상을 과학에서는 <strong>'형광(Fluorescence)'</strong>이라고 부릅니다.
+            </p>
+
+            <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🤸 2장. 꼬마 전자의 트램펄린 점프와 사라진 에너지</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              원자 속에는 무거운 원자핵 주위를 가볍게 맴도는 음(-)전하를 띤 <strong>'전자(Electron)'</strong>가 살고 있습니다. 평소에 전자는 에너지가 가장 낮고 편안한 1층 거실, 즉 <strong>'바닥 상태(Ground State)'</strong>에 얌전히 머물러 있습니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              그런데 에너지가 센 자외선 광자가 전자를 톡 건드리면, 전자는 그 에너지를 트램펄린 발판 삼아 3층 옥상인 <strong>'들뜬 상태(Excited State)'</strong>로 껑충 뛰어오릅니다! 하지만 3층은 전자가 오래 머물기에 너무 높고 불안정합니다. 전자는 불안해서 온몸을 부르르 떨기 시작하는데, 이를 화학에서는 <strong>'분자 진동'</strong>이라고 합니다. 이때 전자는 부르르 떨면서 흡수했던 에너지 중 일부를 <strong>'열(Heat)'</strong>로 뚝뚝 흘려버립니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              열을 조금 흘려 에너지가 약간 줄어든 전자는, 마침내 1층 바닥 상태로 편안하게 착지하면서 남은 에너지를 한꺼번에 바깥으로 번쩍 뿜어냅니다. 처음 들어갔던 자외선보다 에너지가 약간 작아졌기 때문에, 파장이 더 길어진 <strong>알록달록한 가시광선 형광빛</strong>이 되어 나오는 것입니다. 영국의 물리학자 조지 스토크스의 이름을 따 이를 <strong>'스토크스 이동(Stokes Shift)'</strong>이라 부르며, 이때도 <code>[흡수한 자외선] = [방출된 빛] + [흘린 열]</code>이라는 위대한 <strong>에너지 보존 법칙</strong>이 완벽하게 성립합니다!
+            </p>
+
+            <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>📱 3장. 팽이 스핀의 비밀과 스마트폰 OLED의 75% 배터리 도둑</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              오늘날 우리가 매일 들여다보는 스마트폰 화면은 스스로 빛을 내는 첨단 유기 분자로 만든 <strong>OLED(유기발광다이오드)</strong> 디스플레이입니다. 스마트폰은 자외선 조명을 비추는 대신, 리튬 배터리에서 나오는 <strong>전기(전류)</strong>를 유기 분자에 직접 찔러 넣어 빛을 냅니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              그런데 여기서 놀라운 과학의 난제가 발생합니다. 전자는 제자리에서 팽이처럼 빙글빙글 도는 <strong>'스핀(Spin)'</strong>이라는 양자역학적 성질을 가지고 있습니다. 전기로 들뜬 분자를 만들면 두 전자가 팽이처럼 돌며 짝을 이루는데, 놀랍게도 두 가지 상태가 생겨납니다:
+            </p>
+            <ul style="margin-left:1.5rem; margin-bottom:1rem;">
+              <li><strong>단일항 (Singlet, ↑↓):</strong> 두 전자가 서로 마주보고 반대로 회전합니다. 1층으로 내려가는 비상문이 활짝 열려 있어, 1억 분의 1초 만에 눈부신 형광 빛을 뿜어냅니다!</li>
+              <li><strong>삼중항 (Triplet, ↑↑):</strong> 두 전자가 나란히 같은 방향으로 회전합니다. 양자역학 규칙에 의해 1층 비상문이 쾅 닫혀 있어 전자가 내려가지 못하고 갇히게 됩니다.</li>
+            </ul>
+            <p style="margin-bottom:1rem;">
+              문제는 배터리에서 전기를 주입하면 양자 통계 확률에 따라 <strong>빛을 내는 단일항은 단 25%만 생기고, 문이 잠긴 삼중항이 무려 75%나 생긴다는 점</strong>입니다! 이 갇힌 75%의 전자는 빛을 내지 못하고 부르르 떨며 에너지를 모조리 <strong>열</strong>로 방출합니다. 결국 스마트폰 배터리의 75%가 화면을 밝히는 대신 스마트폰을 뜨겁게 달구는 난로가 되어 버리는 <strong>'75% 배터리 도둑'</strong> 현상이 발생한 것입니다.
+            </p>
+
+            <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🔬 4장. KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              대한민국 최고의 과학기술 대학인 <strong>KAIST 화학과 CPRL(계산광동역학 연구실) 이영민 교수팀</strong>은 이 갇혀버린 75%의 전자를 구출하기 위해 컴퓨터 시뮬레이션과 첨단 레이저 분광학을 결합한 혁신적인 연구를 성공시켰습니다!
+            </p>
+            <p style="margin-bottom:1rem;">
+              연구팀은 갇혀 있는 삼중항 전자가 1층에서 열을 내뿜기 전에, 에너지가 높은 2층 삼중항 옥상에서 단일항으로 훌쩍 건너갈 수 있는 초고속 구름다리 우회로를 분자 속에 설계했습니다. 이를 <strong>'핫 엑시톤(Hot Exciton)'</strong> 메커니즘이라고 부릅니다. 또한 주변의 미세한 열에너지를 흡수해 단일항으로 거꾸로 뛰어넘는 <strong>TADF(열활성 지연형광)</strong> 기술도 함께 발전시켰습니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              그 결과, 버려지던 75%의 전자를 모조리 빛으로 전환하여 <strong>100% 발광 효율</strong>을 달성하는 기적을 만들어냈습니다! 특히 빛의 삼원색(Red, Green, Blue) 중 에너지가 가장 높아 분자가 쉽게 깨지는 <strong>'청색(Blue) OLED'</strong>의 수명을 비약적으로 늘릴 수 있게 되었습니다. 이제 여러분이 미래의 신소재 분자 디자이너가 되어, 더 단단하고 오래가는 나만의 발광 분자를 설계할 차례입니다!
+            </p>
+          </article>
+
+          <!-- 중학생 핵심 용어 사전 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>📚 중학생 핵심 과학 용어 사전</span>
+            </h3>
+
+            <dl style="font-size:0.92rem; line-height:1.75;">
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">1. 자외선 (Ultraviolet, UV)</dt>
+              <dd style="color:#475569; margin-left:1rem;">가시광선보다 파장이 짧고(약 100~400nm) 에너지가 훨씬 강력하여 눈에 보이지 않는 빛. 살균이나 물질을 들뜨게 만드는 데 쓰입니다.</dd>
+
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">2. 바닥 상태 vs 들뜬 상태</dt>
+              <dd style="color:#475569; margin-left:1rem;">전자가 가장 낮은 에너지를 가지고 편안하게 머무는 안정한 상태를 '바닥 상태', 에너지를 흡수하여 높은 층으로 뛰어오른 불안정한 상태를 '들뜬 상태'라고 합니다.</dd>
+
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">3. 형광 (Fluorescence)</dt>
+              <dd style="color:#475569; margin-left:1rem;">물질이 자외선처럼 높은 에너지를 흡수했다가, 1억 분의 1초라는 매우 짧은 순간에 가시광선 빛을 내뿜으며 바닥으로 떨어지는 현상입니다.</dd>
+
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">4. 단일항(Singlet) vs 삼중항(Triplet)</dt>
+              <dd style="color:#475569; margin-left:1rem;">두 전자의 스핀(팽이 회전) 방향이 반대인 상태가 단일항(형광 방출, 25% 확률), 두 전자의 스핀 방향이 같은 상태가 삼중항(비상문 잠김, 75% 확률)입니다.</dd>
+
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">5. 핫 엑시톤 (Hot Exciton)</dt>
+              <dd style="color:#475569; margin-left:1rem;">KAIST CPRL 연구진이 밝혀낸 첨단 메커니즘으로, 고에너지 들뜬 삼중항 상태에서 단일항으로 순식간에 건너가 100% 효율로 빛을 내게 만드는 초고속 구름다리 기술입니다.</dd>
+            </dl>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/sidebar.js"></script>
+  <script>
+    renderSidebar('oled', 'textbook');
+  </script>
+</body>
+</html>

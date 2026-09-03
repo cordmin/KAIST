@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[가상실험실] 큐비트 중첩 & VQE 최적화 - KAIST 첨단과학 탐구</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .lab-panel {
+      background: #0f172a;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+    .lab-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .lab-btn {
+      background: #7c3aed;
+      color: #ffffff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lab-btn:hover { background: #6d28d9; }
+    .lab-btn.green { background: #059669; }
+    .lab-btn.green:hover { background: #047857; }
+    .lab-btn.orange { background: #d97706; }
+    .lab-btn.orange:hover { background: #b45309; }
+    .canvas-container {
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Shared Sidebar -->
+    <aside class="sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+          <span class="current-view-title">🧪 [가상실험실] 큐비트 중첩 & VQE 알고리즘 시뮬레이터</span>
+        </div>
+        <div class="topbar-actions">
+          <a href="worksheet.html" class="topbar-btn">📝 활동지 작성하기</a>
+          <button class="topbar-btn primary" style="background:#7c3aed; border-color:#7c3aed;" onclick="toggleFullScreen()">🖥️ 전체화면</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <!-- 실험 1: 큐비트 중첩 시뮬레이터 -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">🪙 [가상 실험 1] 0과 1이 공존하는 동전 팽이와 양자 큐비트 중첩</h2>
+            <span class="badge" style="background:#f5f3ff; color:#6d28d9;">성취기준 [9정01-03] [9과01-02]</span>
+          </div>
+          <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem;">
+            가만히 누워 있는 동전(비트)은 0 또는 1이지만, 회전하는 동전(큐비트)은 0과 1이 동시에 섞여 있는 '중첩(Superposition)' 상태입니다. 중첩 비율을 조절하고 [100회 연속 측정]을 눌러 확률적으로 0과 1이 관측되는 양자 측정 원리를 체험해 보세요.
+          </p>
+
+          <div class="lab-panel" id="labPanel1">
+            <div class="lab-controls">
+              <label style="font-size:0.9rem; font-weight:700;">중첩 각도 조절 (θ): </label>
+              <input type="range" id="theta-slider" min="0" max="180" value="90" oninput="updateQubitAngle()" style="width:180px; cursor:pointer;">
+              <span id="theta-val" style="font-weight:700; color:#ddd6fe; min-width:50px;">90° (50:50 중첩)</span>
+
+              <button class="lab-btn" onclick="spinCoin()">🌀 동전 팽이 돌리기!</button>
+              <button class="lab-btn green" onclick="measureQubit100()">📊 100회 연속 측정</button>
+              <button class="lab-btn orange" onclick="resetLab1()">🔄 초기화</button>
+            </div>
+
+            <div class="canvas-container">
+              <canvas id="canvasLab1" width="1100" height="380" style="width:100%; height:100%;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- 실험 2: 2인 3각 VQE 알고리즘 시뮬레이터 -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">⛰️ [가상 실험 2] 환상의 2인 3각 VQE: 화학 결합의 최저 바닥 상태 찾기</h2>
+            <span class="badge" style="background:#ecfdf5; color:#047857;">성취기준 [9과16-01] [9과16-06] [9정02-02]</span>
+          </div>
+          <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem;">
+            수소 분자($H_2$)의 두 원자 사이 거리를 조절하며 에너지를 관찰합니다. <strong>[VQE 자동 최적화 루프 실행]</strong>을 누르면 양자 컴퓨터와 일반 컴퓨터가 서로 피드백을 주고받으며 공이 산골짜기 맨 밑바닥(-1.137 a.u., 거리 0.74Å)으로 찾아 들어가는 최적화 과정을 직접 볼 수 있습니다!
+          </p>
+
+          <div class="lab-panel">
+            <div class="lab-controls">
+              <label style="font-size:0.9rem; font-weight:700;">원자 간 거리 (R): </label>
+              <input type="range" id="dist-slider" min="30" max="250" value="180" oninput="manualDistanceChange()" style="width:180px; cursor:pointer;">
+              <span id="dist-val" style="font-weight:700; color:#60a5fa; min-width:80px;">1.80 Å</span>
+
+              <button class="lab-btn green" id="btn-vqe" onclick="runVQE()">🚀 VQE 자동 최적화 루프 실행</button>
+              <button class="lab-btn orange" onclick="resetLab2()">🔄 초기화</button>
+
+              <div style="margin-left:auto; display:flex; gap:1.5rem; font-weight:700;">
+                <span style="color:#ddd6fe;">현재 결합 에너지: <span id="energy-val" style="font-size:1.2rem;">-0.850 a.u.</span></span>
+                <span id="vqe-status" style="color:#fbbf24; font-size:0.92rem;">수동 탐색 모드</span>
+              </div>
+            </div>
+
+            <div class="canvas-container" style="height:350px;">
+              <canvas id="canvasLab2" width="1100" height="350" style="width:100%; height:100%;"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/sidebar.js"></script>
+  <script>
+    renderSidebar('quantum', 'lab');
+
+    // Canvas 1: Qubit & Coin Spin Simulator
+    const c1 = document.getElementById('canvasLab1');
+    const ctx1 = c1.getContext('2d');
+    let theta = 90; // degrees
+    let isSpinning = false;
+    let spinAngle = 0;
+    let count0 = 50;
+    let count1 = 50;
+
+    function updateQubitAngle() {
+      theta = parseInt(document.getElementById('theta-slider').value);
+      const p0 = Math.round(Math.pow(Math.cos(theta * Math.PI / 360), 2) * 100);
+      const p1 = 100 - p0;
+      document.getElementById('theta-val').innerText = `${theta}° (|0⟩:${p0}%, |1⟩:${p1}%)`;
+    }
+
+    function spinCoin() {
+      isSpinning = true;
+      let frames = 0;
+      const interval = setInterval(() => {
+        spinAngle += 0.25;
+        frames++;
+        if (frames > 40) {
+          clearInterval(interval);
+          isSpinning = false;
+        }
+      }, 25);
+    }
+
+    function measureQubit100() {
+      count0 = 0;
+      count1 = 0;
+      const prob0 = Math.pow(Math.cos(theta * Math.PI / 360), 2);
+      for (let i = 0; i < 100; i++) {
+        if (Math.random() < prob0) count0++;
+        else count1++;
+      }
+    }
+
+    function resetLab1() {
+      document.getElementById('theta-slider').value = 90;
+      updateQubitAngle();
+      count0 = 50; count1 = 50;
+    }
+
+    function drawLab1() {
+      ctx1.clearRect(0, 0, c1.width, c1.height);
+
+      // Draw Rotating Coin / Qubit Block
+      const cx = 350, cy = 190;
+      ctx1.save();
+      ctx1.translate(cx, cy);
+
+      // Qubit Sphere glow
+      ctx1.strokeStyle = '#475569';
+      ctx1.lineWidth = 2;
+      ctx1.beginPath(); ctx1.arc(0, 0, 110, 0, Math.PI * 2); ctx1.stroke();
+      ctx1.setLineDash([4, 4]);
+      ctx1.beginPath(); ctx1.ellipse(0, 0, 110, 35, 0, 0, Math.PI * 2); ctx1.stroke();
+      ctx1.setLineDash([]);
+
+      // Top state |0> (Heads)
+      ctx1.fillStyle = '#60a5fa'; ctx1.font = 'bold 15px Pretendard';
+      ctx1.fillText('|0⟩ 앞면 (스위치 OFF)', -70, -125);
+
+      // Bottom state |1> (Tails)
+      ctx1.fillStyle = '#f87171';
+      ctx1.fillText('|1⟩ 뒷면 (스위치 ON)', -65, 140);
+
+      // Coin in Center
+      const scaleX = isSpinning ? Math.cos(spinAngle) : Math.sin(theta * Math.PI / 180);
+      ctx1.fillStyle = '#fbbf24';
+      ctx1.shadowColor = '#f59e0b';
+      ctx1.shadowBlur = 15;
+      ctx1.beginPath();
+      ctx1.ellipse(0, 0, Math.abs(scaleX) * 70 + 5, 70, 0, 0, Math.PI * 2);
+      ctx1.fill();
+      ctx1.shadowBlur = 0;
+      ctx1.strokeStyle = '#b45309';
+      ctx1.lineWidth = 3;
+      ctx1.stroke();
+
+      ctx1.fillStyle = '#78350f';
+      ctx1.font = 'bold 20px Pretendard';
+      ctx1.textAlign = 'center';
+      if (Math.abs(scaleX) > 0.3) {
+        ctx1.fillText(isSpinning ? '0 & 1' : (scaleX > 0 ? '|0⟩' : '|1⟩'), 0, 8);
+      }
+      ctx1.textAlign = 'left';
+
+      // State Arrow Vector
+      const arrowRad = (theta - 90) * Math.PI / 180;
+      const ax = Math.sin(arrowRad) * 95;
+      const ay = -Math.cos(arrowRad) * 95;
+      ctx1.strokeStyle = '#c084fc';
+      ctx1.lineWidth = 4;
+      ctx1.beginPath(); ctx1.moveTo(0, 0); ctx1.lineTo(ax, ay); ctx1.stroke();
+      ctx1.fillStyle = '#c084fc';
+      ctx1.beginPath(); ctx1.arc(ax, ay, 7, 0, Math.PI * 2); ctx1.fill();
+
+      ctx1.restore();
+
+      // Draw 100 Measurement Results Bar Chart on right
+      const bx = 780, by = 80;
+      ctx1.fillStyle = '#1e293b'; ctx1.fillRect(bx, by, 270, 240);
+      ctx1.strokeStyle = '#475569'; ctx1.strokeRect(bx, by, 270, 240);
+
+      ctx1.fillStyle = '#f8fafc'; ctx1.font = 'bold 15px Pretendard';
+      ctx1.fillText('📊 양자 측정 결과 (총 100회)', bx + 35, by + 30);
+
+      // Bar 0
+      ctx1.fillStyle = '#60a5fa';
+      const h0 = count0 * 1.5;
+      ctx1.fillRect(bx + 45, by + 190 - h0, 60, h0);
+      ctx1.fillStyle = '#ffffff'; ctx1.font = 'bold 13px Pretendard';
+      ctx1.fillText(`|0⟩: ${count0}회`, bx + 45, by + 215);
+
+      // Bar 1
+      ctx1.fillStyle = '#f87171';
+      const h1 = count1 * 1.5;
+      ctx1.fillRect(bx + 160, by + 190 - h1, 60, h1);
+      ctx1.fillStyle = '#ffffff';
+      ctx1.fillText(`|1⟩: ${count1}회`, bx + 160, by + 215);
+
+      requestAnimationFrame(drawLab1);
+    }
+    drawLab1();
+
+    // Canvas 2: VQE Optimizer Simulation
+    const c2 = document.getElementById('canvasLab2');
+    const ctx2 = c2.getContext('2d');
+    let currentDist = 1.8; // Angstrom
+    let isVQERunning = false;
+
+    // Potential Energy Curve calculation for H2
+    function getH2Energy(r) {
+      // Lennard-Jones/Morse-like curve for H2 minimum at r = 0.74, E = -1.137
+      const De = 0.8;
+      const a = 1.5;
+      const re = 0.74;
+      const E_morse = De * (Math.exp(-2 * a * (r - re)) - 2 * Math.exp(-a * (r - re))) - 0.337;
+      return E_morse;
+    }
+
+    function manualDistanceChange() {
+      if (isVQERunning) return;
+      currentDist = parseInt(document.getElementById('dist-slider').value) / 100;
+      updateVQEInfo();
+    }
+
+    function updateVQEInfo() {
+      document.getElementById('dist-val').innerText = currentDist.toFixed(2) + ' Å';
+      const energy = getH2Energy(currentDist);
+      document.getElementById('energy-val').innerText = energy.toFixed(3) + ' a.u.';
+    }
+
+    function runVQE() {
+      if (isVQERunning) return;
+      isVQERunning = true;
+      document.getElementById('vqe-status').innerText = '🤖 2인 3각 최적화 루프 실행 중...';
+      document.getElementById('btn-vqe').disabled = true;
+
+      const targetDist = 0.74;
+      const interval = setInterval(() => {
+        if (Math.abs(currentDist - targetDist) > 0.02) {
+          currentDist += (targetDist - currentDist) * 0.12;
+          document.getElementById('dist-slider').value = Math.round(currentDist * 100);
+          updateVQEInfo();
+        } else {
+          currentDist = targetDist;
+          document.getElementById('dist-slider').value = 74;
+          updateVQEInfo();
+          clearInterval(interval);
+          isVQERunning = false;
+          document.getElementById('btn-vqe').disabled = false;
+          document.getElementById('vqe-status').innerText = '🎉 최저 바닥 상태 도달! (-1.137 a.u.) 화학 결합 완성!';
+        }
+      }, 80);
+    }
+
+    function resetLab2() {
+      currentDist = 1.8;
+      document.getElementById('dist-slider').value = 180;
+      document.getElementById('vqe-status').innerText = '수동 탐색 모드';
+      updateVQEInfo();
+    }
+
+    function drawLab2() {
+      ctx2.clearRect(0, 0, c2.width, c2.height);
+
+      // Left Side: Hydrogen Molecule Animation
+      const mx = 200, my = 175;
+      const sep = currentDist * 55;
+
+      // Electron Cloud glow
+      ctx2.fillStyle = 'rgba(192, 132, 252, 0.2)';
+      ctx2.beginPath();
+      ctx2.ellipse(mx, my, sep / 2 + 35, 45, 0, 0, Math.PI * 2);
+      ctx2.fill();
+
+      // Hydrogen Atom 1
+      ctx2.fillStyle = '#3b82f6';
+      ctx2.beginPath(); ctx2.arc(mx - sep / 2, my, 18, 0, Math.PI * 2); ctx2.fill();
+      ctx2.fillStyle = '#ffffff'; ctx2.font = 'bold 13px Pretendard';
+      ctx2.fillText('H⁺', mx - sep / 2 - 8, my + 5);
+
+      // Hydrogen Atom 2
+      ctx2.fillStyle = '#3b82f6';
+      ctx2.beginPath(); ctx2.arc(mx + sep / 2, my, 18, 0, Math.PI * 2); ctx2.fill();
+      ctx2.fillStyle = '#ffffff';
+      ctx2.fillText('H⁺', mx + sep / 2 - 8, my + 5);
+
+      // Spring / Bond line
+      ctx2.strokeStyle = '#c084fc'; ctx2.lineWidth = 3;
+      ctx2.beginPath(); ctx2.moveTo(mx - sep / 2 + 18, my); ctx2.lineTo(mx + sep / 2 - 18, my); ctx2.stroke();
+
+      ctx2.fillStyle = '#94a3b8'; ctx2.font = '12px Pretendard';
+      ctx2.fillText(`결합 거리 R = ${currentDist.toFixed(2)} Å`, mx - 50, my + 55);
+
+      // Right Side: Energy Valley Curve (Potential Energy Surface)
+      const gx = 480, gy = 40, gw = 560, gh = 260;
+      ctx2.strokeStyle = '#334155'; ctx2.lineWidth = 1;
+      ctx2.strokeRect(gx, gy, gw, gh);
+
+      // Axes
+      ctx2.strokeStyle = '#64748b'; ctx2.lineWidth = 2;
+      ctx2.beginPath(); ctx2.moveTo(gx + 40, gy + 20); ctx2.lineTo(gx + 40, gy + gh - 30); ctx2.lineTo(gx + gw - 20, gy + gh - 30); ctx2.stroke();
+      ctx2.fillStyle = '#94a3b8'; ctx2.font = '11px Pretendard';
+      ctx2.fillText('에너지 (E)', gx + 10, gy + 18);
+      ctx2.fillText('원자 간 거리 (R)', gx + gw - 80, gy + gh - 12);
+
+      // Draw Curve
+      ctx2.strokeStyle = '#a855f7'; ctx2.lineWidth = 3;
+      ctx2.beginPath();
+      for (let r = 0.3; r <= 2.5; r += 0.02) {
+        const px = gx + 40 + (r - 0.3) / 2.2 * (gw - 70);
+        const e = getH2Energy(r);
+        const py = gy + gh - 30 - ((e - (-1.2)) / 1.5) * (gh - 60);
+        if (r === 0.3) ctx2.moveTo(px, py);
+        else ctx2.lineTo(px, py);
+      }
+      ctx2.stroke();
+
+      // Draw Valley Bottom Minimum Marker
+      const minX = gx + 40 + (0.74 - 0.3) / 2.2 * (gw - 70);
+      const minY = gy + gh - 30 - (((-1.137) - (-1.2)) / 1.5) * (gh - 60);
+      ctx2.fillStyle = '#10b981';
+      ctx2.fillText('★ 최저 바닥 상태 (0.74Å, -1.137 a.u.)', minX - 70, minY + 25);
+
+      // Draw Current Ball on Curve
+      const curX = gx + 40 + (currentDist - 0.3) / 2.2 * (gw - 70);
+      const curE = getH2Energy(currentDist);
+      const curY = gy + gh - 30 - ((curE - (-1.2)) / 1.5) * (gh - 60);
+
+      ctx2.fillStyle = '#f59e0b';
+      ctx2.shadowColor = '#fbbf24';
+      ctx2.shadowBlur = 12;
+      ctx2.beginPath(); ctx2.arc(curX, curY, 9, 0, Math.PI * 2); ctx2.fill();
+      ctx2.shadowBlur = 0;
+
+      requestAnimationFrame(drawLab2);
+    }
+    updateVQEInfo();
+    drawLab2();
+  </script>
+</body>
+</html>

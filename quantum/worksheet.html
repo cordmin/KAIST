@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[학생 활동지] 양자 컴퓨터와 계산 화학의 미래 - KAIST 첨단과학 탐구</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Shared Sidebar -->
+    <aside class="sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+          <span class="current-view-title">📝 [학생 활동지] 양자 컴퓨터와 계산 화학의 미래</span>
+        </div>
+        <div class="topbar-actions">
+          <a href="teacher-guide.html" class="topbar-btn">💡 교사도움자료(정답) 보기</a>
+          <button class="topbar-btn primary" onclick="window.print()">🖨️ 활동지 A4 인쇄</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <div class="card">
+          <!-- 충남교육청 표준 헤더 표 -->
+          <div class="section-header-box" style="background: linear-gradient(135deg, #6d28d9, #8b5cf6);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">중학교 과학 탐구활동지</div>
+            <div class="section-header-title">0과 1의 한계를 넘는 분자 탐험: 양자 컴퓨터와 계산 화학의 미래</div>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th style="width:16%;">단원</th>
+              <td colspan="3">중학교 과학 &lt;물질의 구성&gt;, &lt;화학 반응의 규칙성&gt;, &lt;과학과 사회&gt; & 정보과 융합 심화</td>
+            </tr>
+            <tr>
+              <th>성취기준</th>
+              <td colspan="3">
+                <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.<br>
+                <strong>[정보과 연계]</strong> [9정01-03] 2진수 데이터 표현 / [9정02-02] 문제 해결 알고리즘과 시뮬레이션 모델링
+              </td>
+            </tr>
+            <tr>
+              <th>탐구목표</th>
+              <td colspan="3">
+                1. 다전자 분자 속 전자 간 반발력으로 인해 발생하는 계산 조합 수의 지수 폭발($2^N$)을 체감하고 설명할 수 있다.<br>
+                2. 바닥에 놓인 동전(비트)과 회전하는 팽이 동전(큐비트의 '중첩')을 비교하여 동시 병렬 처리의 원리를 설명할 수 있다.<br>
+                3. 양자 컴퓨터와 일반 컴퓨터가 협력하는 VQE 알고리즘을 통해 화학 분자가 가장 안정한 바닥 상태를 찾아 결합하는 과정을 설명할 수 있다.<br>
+                4. 인류의 3대 지구 난제를 해결하는 틴에이저 양자 화학 스타트업 CEO 프로젝트를 기획할 수 있다.
+              </td>
+            </tr>
+            <tr>
+              <th>지능형<br>탐구활동 유형</th>
+              <td>동전 조작 실험 + 가상실험실(시뮬레이션) + 2인 1조 알고리즘 역할극</td>
+              <th>권장 모둠</th>
+              <td>4인 1모둠 (또는 2인 1모둠)</td>
+            </tr>
+            <tr>
+              <th>준비물</th>
+              <td colspan="3">스마트기기(노트북 또는 태블릿), 동전(학생당 1개), 역할극 카드, 가상실험실(lab.html)</td>
+            </tr>
+          </table>
+
+          <div style="display:flex; justify-content:flex-end; gap:1.5rem; margin:1rem 0; font-size:0.95rem; font-weight:600; padding:0.5rem; background:#f1f5f9; border-radius:0.4rem;">
+            <span>제 3 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
+            <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
+            <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+            <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+          </div>
+
+          <!-- 1. 탐구 과정 -->
+          <div class="inquiry-step-title">1. 탐구 과정</div>
+          
+          <div style="margin-bottom:1rem; line-height:1.75; font-size:0.93rem;">
+            <p><strong>【탐구 1】 원자 레고 퍼즐과 지수 폭발 체험</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>원자핵 주위를 도는 전자 1개가 가질 수 있는 양자 상태를 2가지(0 또는 1)로 가정한다.</li>
+              <li>전자가 1개, 10개, 100개로 늘어날 때 전체 계산해야 하는 상태의 수($2^N$)를 거듭제곱으로 계산한다.</li>
+              <li>현존하는 세계 최고의 슈퍼컴퓨터로도 카페인이나 페니실린 같은 분자를 완벽하게 계산할 수 없는 이유를 토의한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 2】 0과 1이 동시에 춤추는 동전 팽이와 양자 큐비트</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>책상 위에 동전을 가만히 놓았을 때 앞면(0) 또는 뒷면(1) 중 한 가지만 나타남을 관찰한다. (고전 비트 모형)</li>
+              <li>동전을 손가락으로 팽이처럼 빠르게 회전시킨 뒤, 멈추기 전 도는 동안 앞면과 뒷면이 공존하는 상태를 관찰한다. (양자 큐비트 모형)</li>
+              <li>가상실험실(lab.html)의 [블록 구 큐비트 시뮬레이터]에 접속하여 0과 1이 섞인 중첩 상태를 직접 만들어본다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 3】 환상의 2인 3각 달리기: VQE 알고리즘 역할극</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>2인 1조를 구성하고, 학생 A는 <strong>'양자 컴퓨터(빠른 에너지 탐험가)'</strong>, 학생 B는 <strong>'일반 컴퓨터(똑똑한 내비게이션)'</strong> 역할을 맡는다.</li>
+              <li>학생 A가 큐비트로 분자의 에너지 값을 계산하여 전달하면, 학생 B는 수치를 보고 분자 결합 각도를 넓히거나 좁히도록 피드백을 준다.</li>
+              <li>가상실험실(lab.html)의 [VQE 최적화 루프 시뮬레이터]를 가동하여 공이 골짜기 최저 바닥 상태(-1.137 a.u.)로 찾아 들어가는 과정을 확인한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 4】 틴에이저 양자 화학 스타트업 CEO 프로젝트</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>인류의 3대 지구 난제(친환경 상온 비료 촉매 / 화재 없는 전고체 배터리 / 맞춤형 표적 신약) 중 1개를 선택한다.</li>
+              <li>비커 없이 양자 컴퓨터로 가상 분자를 설계하는 미래 스타트업 창업 기획서를 작성하고 모둠별 피칭을 준비한다.</li>
+            </ol>
+          </div>
+
+          <!-- 2. 탐구 활동 -->
+          <div class="inquiry-step-title">2. 탐구 활동</div>
+
+          <!-- 탐구 1 활동 -->
+          <div style="margin-top:0.75rem;">
+            <p><strong>【탐구 1】 원자 레고 퍼즐과 지수 폭발 체험표</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 분자 속 전자 수에 따른 계산 조합의 수($2^N$)를 계산하여 표의 빈칸을 채워보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">물질명</th>
+                  <th style="width:15%;">화학식</th>
+                  <th style="width:15%;">전자 수 ($N$)</th>
+                  <th style="width:25%;">계산해야 할 상태 수 ($2^N$)</th>
+                  <th style="width:25%;">일반 슈퍼컴퓨터의 계산 소요 시간</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>수소 원자</td><td>$H$</td><td>1개</td><td>$2^1 =$ ( &nbsp;&nbsp;&nbsp;&nbsp; )가지</td><td>0.000001초 (즉시)</td></tr>
+                <tr><td>물 분자</td><td>$H_2O$</td><td>10개</td><td>$2^{10} =$ ( &nbsp;&nbsp;&nbsp;&nbsp; )가지</td><td>약 0.001초</td></tr>
+                <tr><td>카페인 분자</td><td>$C_8H_{10}N_4O_2$</td><td>102개</td><td>$2^{102} \approx 10^{30}$가지</td><td>( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td></tr>
+                <tr><td>페니실린(항생제)</td><td>$C_{16}H_{18}N_2O_4S$</td><td>약 280개</td><td>$2^{280} \approx 10^{84}$가지</td><td>( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td></tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 지구상의 모든 모래알 수는 약 $10^{23}$개이고, 관측 가능한 우주 전체의 모든 원자 수는 약 $10^{80}$개입니다. 이 사실을 바탕으로, 왜 슈퍼컴퓨터로도 작은 약품 분자 하나를 계산하지 못하는지 '지수 폭발'의 관점에서 서술해 보자.</p>
+            <div class="answer-box">
+              ☞ 서술: 
+            </div>
+          </div>
+
+          <!-- 탐구 2 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 2】 동전 팽이 실험과 0과 1의 양자 중첩(Superposition)</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 책상 위의 가만히 있는 동전(고전 비트)과 회전하는 동전(양자 큐비트)의 정보 표현 차이를 비교해 보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">비교 항목</th>
+                  <th style="width:40%;">고전 비트 (Bit)</th>
+                  <th style="width:40%;">양자 큐비트 (Qubit)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>동전 비유</strong></td>
+                  <td>바닥에 가만히 누워 있는 동전</td>
+                  <td>책상 위에서 팽이처럼 빠르게 도는 동전</td>
+                </tr>
+                <tr>
+                  <td><strong>정보의 표현</strong></td>
+                  <td>0 또는 1 중 ( 단 한 개만 / 둘 다 동시에 ) 선택</td>
+                  <td>0과 1이 ( 단 한 개만 / 둘 다 동시에 ) 섞인 <strong>중첩</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>10개 사용 시 정보 처리</strong></td>
+                  <td>1,024개 길 중 ( &nbsp;&nbsp;&nbsp;&nbsp; )개씩 순서대로 검사</td>
+                  <td>1,024개 길을 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 한 번에 동시 탐색!</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 미로 찾기를 할 때, 일반 컴퓨터의 탐색 방식과 양자 컴퓨터의 동시 병렬 처리 방식의 차이를 일상적 언어로 비유하여 설명해 보자.</p>
+            <div class="answer-box">
+              ☞ 비유 설명: 
+            </div>
+          </div>
+
+          <!-- 탐구 3 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 3】 환상의 2인 3각 달리기: VQE 알고리즘과 바닥 상태</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 자연계의 모든 화학 분자는 에너지가 가장 ( 높은 / 낮은 ) 최저 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )를 찾아 결합합니다.</p>
+            
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. VQE(변분 양자 고유값 계산기) 알고리즘에서 두 컴퓨터의 협동 순서도를 완성해 보자.</p>
+            <div class="callout-box" style="background:#f8fafc; font-size:0.92rem; text-align:center;">
+              [ 1단계: <strong>양자 컴퓨터</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 계산<br>
+              ⬇ 수치 전달<br>
+              [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 분자의 결합 각도와 거리를 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )<br>
+              ⬇ 반복(루프)<br>
+              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+            </div>
+          </div>
+
+          <!-- 탐구 4 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 4】 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 기획서</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 인류의 3대 지구 난제 중 1가지를 선택하여, 양자 컴퓨터로 해결하는 우리 모둠의 스타트업 기획서를 작성해 보자.</p>
+
+            <table class="data-table">
+              <tr>
+                <th style="width:20%;">스타트업 회사명</th>
+                <td style="width:30%;">&nbsp;</td>
+                <th style="width:20%;">대표 CEO 및 연구팀</th>
+                <td style="width:30%;">&nbsp;</td>
+              </tr>
+              <tr>
+                <th>해결할 지구 난제<br>(택 1)</th>
+                <td colspan="3">
+                  [ ] <strong>친환경 상온 비료:</strong> 전 세계 전기의 2%를 쓰는 비료 공장 대신 상온 질소 고정 촉매 분자 설계<br>
+                  [ ] <strong>전고체 배터리:</strong> 전기차 화재를 막고 10배 빨리 충전되는 꿈의 고체 전해질 분자 설계<br>
+                  [ ] <strong>맞춤형 표적 신약:</strong> 변종 바이러스 단백질 열쇠구멍에 꼭 맞는 치료제 분자 가상 스크리닝
+                </td>
+              </tr>
+              <tr>
+                <th>양자 컴퓨터로 설계할<br>가상 분자 아이디어</th>
+                <td colspan="3">
+                  <div class="graph-canvas-area" style="height:140px;">
+                    <span style="color:#94a3b8; font-size:0.9rem;">(설계할 분자의 특징과 원자 결합 모양을 스케치해 보세요)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>사회적 및 생태적<br>기대 효과</th>
+                <td colspan="3">
+                  ☞ 탄소 배출 저감, 식량난 해결, 난치병 극복 등 기대 효과 서술:
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- 3. 실험 및 안전 유의사항 -->
+          <div class="inquiry-step-title" style="margin-top:1.75rem;">3. 실험 및 안전 유의사항</div>
+          <div class="callout-box" style="font-size:0.9rem; background:#f5f3ff; border-left-color:#7c3aed;">
+            ◎ <strong>스마트기기 과몰입 방지:</strong> 가상실험실(시뮬레이션) 이용 시 10분 내외로 이용하고 눈의 피로를 예방합니다.<br>
+            ◎ <strong>디지털 정보 윤리:</strong> 생성형 AI를 활용하여 자료를 조사할 경우, 인공지능의 환각(오류) 가능성을 비판적으로 검증하고 출처를 명확히 표기합니다.<br>
+            ◎ <strong>협력과 존중:</strong> 모둠 토의 및 알고리즘 역할극 수행 시 타인의 의견을 경청하고 모둠원 간 역할을 성실히 분담합니다.
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/sidebar.js"></script>
+  <script>
+    renderSidebar('quantum', 'worksheet');
+  </script>
+</body>
+</html>

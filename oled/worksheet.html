@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[학생 활동지] 분자의 빛과 디스플레이의 과학 - KAIST 첨단과학 탐구</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Shared Sidebar -->
+    <aside class="sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+          <span class="current-view-title">📝 [학생 활동지] 분자의 빛과 디스플레이의 과학</span>
+        </div>
+        <div class="topbar-actions">
+          <a href="teacher-guide.html" class="topbar-btn">💡 교사도움자료(정답) 보기</a>
+          <button class="topbar-btn primary" onclick="window.print()">🖨️ 활동지 A4 인쇄</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <div class="card">
+          <!-- 충남교육청 표준 헤더 표 -->
+          <div class="section-header-box">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">중학교 과학 탐구활동지</div>
+            <div class="section-header-title">분자의 빛과 디스플레이의 과학: 형광에서 스마트폰 OLED까지</div>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th style="width:16%;">단원</th>
+              <td colspan="3">중2 &lt;빛과 파동&gt;, &lt;물질의 구성&gt;, &lt;전기와 자기&gt; 융합 심화</td>
+            </tr>
+            <tr>
+              <th>성취기준</th>
+              <td colspan="3">
+                <strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.<br>
+                <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                <strong>[9과14-02]</strong> 전기 회로에서 전류를 모형으로 설명하고, 실험을 통해 저항, 전류, 전압 사이의 관계를 이끌어낼 수 있다.<br>
+                <strong>[9과14-03]</strong> 저항의 직렬연결과 병렬연결의 특징을 비교하고, 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.
+              </td>
+            </tr>
+            <tr>
+              <th>탐구목표</th>
+              <td colspan="3">
+                1. 자외선과 가시광선의 에너지 차이를 알고, 일상 속 형광 물질의 발광 원리를 입자 모형으로 설명할 수 있다.<br>
+                2. 원자 속 전자의 들뜬 상태 전이 및 회전 팽이(스핀) 모형을 통해 OLED의 75% 열 손실 문제를 분석할 수 있다.<br>
+                3. KAIST CPRL 연구실의 핫 엑시톤 구출 메커니즘을 적용하여 미래의 고효율 청색 OLED 분자를 디자인할 수 있다.
+              </td>
+            </tr>
+            <tr>
+              <th>지능형<br>탐구활동 유형</th>
+              <td>실물 실험 + 가상실험실(시뮬레이션)</td>
+              <th>권장 모둠</th>
+              <td>4인 1모둠 (또는 2인 1모둠)</td>
+            </tr>
+            <tr>
+              <th>준비물</th>
+              <td colspan="3">스마트기기, UV-A 블랙라이트 램프, 자외선 차단 보안경, 암실 상자, 토닉워터, 비타민 음료, 올리브유, 형광펜, 지폐</td>
+            </tr>
+          </table>
+
+          <div style="display:flex; justify-content:flex-end; gap:1.5rem; margin:1rem 0; font-size:0.95rem; font-weight:600; padding:0.5rem; background:#f1f5f9; border-radius:0.4rem;">
+            <span>제 2 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
+            <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
+            <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+            <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+          </div>
+
+          <!-- 1. 탐구 과정 -->
+          <div class="inquiry-step-title">1. 탐구 과정</div>
+          
+          <div style="margin-bottom:1rem; line-height:1.75; font-size:0.93rem;">
+            <p><strong>【탐구 1】 자외선 형광 탐정단: 일상 속 숨은 빛 찾기</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>자외선 차단 보안경을 착용하고, 암실 상자 안에 토닉워터, 비타민 음료, 올리브유, 지폐를 배치한다.</li>
+              <li>일반 조명(가시광선) 아래에서의 물질 색상을 관찰하여 기록한다.</li>
+              <li>암실 상자 안에서 UV-A 블랙라이트 램프를 비추고, 방출되는 형광 빛의 색상을 관찰하여 표에 기록한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 2】 꼬마 전자의 트램펄린 점프: 전자의 에너지 계단</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>스마트기기를 통해 <strong>가상실험실 (lab.html)</strong>의 [전자의 에너지 계단 시뮬레이터]에 접속한다.</li>
+              <li>바닥 상태(1층)의 전자에 자외선 광자(센 에너지)를 흡수시켜 들뜬 상태(3층)로 점프시킨다.</li>
+              <li>전자가 불안정하여 부르르 떨며 열을 방출하고, 남은 에너지를 형광빛으로 방출하며 바닥으로 착지하는 과정을 관찰한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 3】 팽이 스핀과 스마트폰 OLED의 75% 배터리 도둑</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>형광펜(빛을 끄면 즉시 소광)과 야광 스티커(불 꺼도 오래 지속)의 발광 지속 시간을 비교한다.</li>
+              <li>두 전자의 회전 방향 모형(단일항: 반대 방향 회전 vs 삼중항: 같은 방향 회전)을 비교 관찰한다.</li>
+              <li>스마트폰 OLED에 전기를 넣었을 때 25%만 빛이 되고 75%는 열로 변하는 이유를 탐구한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 4】 차세대 청색 OLED 분자 디자이너 프로젝트</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>KAIST CPRL의 '핫 엑시톤(Hot Exciton)' 옥상 구름다리 우회로와 'TADF' 메커니즘을 학습한다.</li>
+              <li>가장 에너지가 높아 쉽게 깨지는 청색(Blue) 발광 분자를 단단하게 보강하는 신소재 디자이너 기획서를 작성한다.</li>
+            </ol>
+          </div>
+
+          <!-- 2. 탐구 활동 -->
+          <div class="inquiry-step-title">2. 탐구 활동</div>
+
+          <!-- 탐구 1 활동 -->
+          <div style="margin-top:0.75rem;">
+            <p><strong>【탐구 1】 자외선 형광 탐정단 관찰 결과 기록</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록해 보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:22%;">실험 물질</th>
+                  <th style="width:26%;">포함된 핵심 분자</th>
+                  <th style="width:26%;">일반 조명 아래 색상</th>
+                  <th style="width:26%;">자외선(UV-A) 조사 시 색상</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>토닉워터</td><td>퀴닌 (Quinine)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>비타민 음료</td><td>리보플라빈 (비타민 $B_2$)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>올리브유</td><td>엽록소 (Chlorophyll)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>대한민국 지폐</td><td>형광 인쇄 섬유</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인가?</p>
+            <div class="answer-box">
+              ☞ 답: 
+            </div>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 눈부신 알록달록 가시광선이 뿜어져 나오는지, 그리고 들어간 에너지와 나온 빛의 에너지 차이는 어떻게 되었을지 토의하여 써 보자.</p>
+            <div class="answer-box">
+              ☞ 토의 내용: 
+            </div>
+          </div>
+
+          <!-- 탐구 2 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 2】 꼬마 전자의 트램펄린 점프와 에너지 전환</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 전자의 에너지 계단 3단계 과정을 아래 빈칸에 순서대로 정리해 보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr><th style="width:20%;">단계</th><th style="width:80%;">전자의 상태 변화 및 에너지 전환</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1단계: 흡수</strong></td>
+                  <td>바닥 상태(1층)의 전자가 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 에너지를 먹고 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 상태(3층)로 높이 점프한다.</td>
+                </tr>
+                <tr>
+                  <td><strong>2단계: 진동</strong></td>
+                  <td>3층이 너무 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 에너지 형태로 잃어버린다.</td>
+                </tr>
+                <tr>
+                  <td><strong>3단계: 방출</strong></td>
+                  <td>남은 에너지를 알록달록한 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 빛으로 번쩍 뿜어내며 바닥 상태로 사뿐히 착지한다.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 에너지 보존 법칙의 관점에서, [흡수한 자외선 에너지]와 [방출된 형광빛], [흘린 열에너지] 사이의 관계식을 완성해 보자.</p>
+            <div class="answer-box" style="text-align:center; font-size:1.05rem;">
+              [ 흡수한 자외선 에너지 ] = [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] + [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]
+            </div>
+          </div>
+
+          <!-- 탐구 3 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 3】 팽이 스핀과 스마트폰 OLED의 75% 배터리 도둑</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 전자의 회전 팽이(스핀) 모형에 따른 단일항과 삼중항의 차이를 비교해 보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">구분</th>
+                  <th style="width:40%;">단일항 (Singlet)</th>
+                  <th style="width:40%;">삼중항 (Triplet)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>전자 팽이 회전 방향</strong></td>
+                  <td>서로 ( 마주보고 / 나란히 ) 회전 (↑↓)</td>
+                  <td>서로 ( 마주보고 / 나란히 ) 회전 (↑↑)</td>
+                </tr>
+                <tr>
+                  <td><strong>방출되는 빛의 종류</strong></td>
+                  <td>( 형광 / 인광 )</td>
+                  <td>( 형광 / 인광 )</td>
+                </tr>
+                <tr>
+                  <td><strong>빛을 내뿜는 속도</strong></td>
+                  <td>1억 분의 1초 만에 ( 즉시 방출 / 갇혀서 천천히 방출 )</td>
+                  <td>비상문이 잠겨 ( 즉시 방출 / 갇혀서 천천히 방출 )</td>
+                </tr>
+                <tr>
+                  <td><strong>전기 주입 시 생성 확률</strong></td>
+                  <td>( &nbsp;&nbsp;&nbsp;&nbsp; ) %</td>
+                  <td>( &nbsp;&nbsp;&nbsp;&nbsp; ) %</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 스마트폰 배터리 전기로 화면을 켤 때 무려 75%의 전자가 빛을 내지 못하고 스마트폰을 뜨겁게 달구는 까닭을 위의 확률과 관련지어 설명해 보자.</p>
+            <div class="answer-box">
+              ☞ 까닭: 
+            </div>
+          </div>
+
+          <!-- 탐구 4 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 4】 차세대 청색 OLED 분자 디자이너 프로젝트 기획서</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. KAIST CPRL 연구실의 핫 엑시톤(Hot Exciton) 및 TADF 원리를 적용하여, 우리 모둠만의 차세대 청색 OLED 발광 분자 디자이너 기획서를 작성해 보자.</p>
+
+            <table class="data-table">
+              <tr>
+                <th style="width:20%;">스타트업 회사명</th>
+                <td style="width:30%;">&nbsp;</td>
+                <th style="width:20%;">대표 분자 디자이너</th>
+                <td style="width:30%;">&nbsp;</td>
+              </tr>
+              <tr>
+                <th>해결할 과제</th>
+                <td colspan="3">청색(Blue) OLED는 에너지가 너무 높아 분자가 쉽게 깨져 화면 수명이 짧고 번인(Burn-in)이 발생함.</td>
+              </tr>
+              <tr>
+                <th>나만의 청색 분자<br>구조 스케치 및 아이디어</th>
+                <td colspan="3">
+                  <div class="graph-canvas-area" style="height:150px;">
+                    <span style="color:#94a3b8; font-size:0.9rem;">(여기에 분자의 원자 연결 구조와 결합을 단단하게 고정한 모양을 스케치해 보세요)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>75% 구출 메커니즘<br>적용 방안</th>
+                <td colspan="3">
+                  [ 핫 엑시톤 구름다리 우회로 / TADF 열 흡수 역전이 ] 중 선택:<br>
+                  ☞ 구출 원리 서술: 
+                </td>
+              </tr>
+              <tr>
+                <th>미래 사회 기대 효과</th>
+                <td colspan="3">
+                  ☞ 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- 3. 실험 및 안전 유의사항 -->
+          <div class="inquiry-step-title" style="margin-top:1.75rem;">3. 실험 및 안전 유의사항</div>
+          <div class="callout-box callout-danger" style="font-size:0.9rem;">
+            ◎ <strong>자외선(UV-A) 취급 안전:</strong> 자외선 램프를 사람의 눈이나 피부에 직접 비추지 않으며, 반드시 자외선 차단 보안경을 착용합니다.<br>
+            ◎ <strong>실험 시약 안전:</strong> 토닉워터와 비타민 음료는 실험용으로 준비된 것이므로 절대로 마시지 않으며, 실험 후 잔여 액체는 싱크대에 안전하게 처리합니다.<br>
+            ◎ <strong>스마트기기 과몰입 방지:</strong> 가상실험실(시뮬레이션) 이용 시 10분 내외로 탐구하고, 눈의 피로를 느끼면 먼 곳을 바라보며 휴식합니다.
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/sidebar.js"></script>
+  <script>
+    renderSidebar('oled', 'worksheet');
+  </script>
+</body>
+</html>

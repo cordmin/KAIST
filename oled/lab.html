@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[가상실험실] 전자의 계단 점프 & OLED 스핀 - KAIST 첨단과학 탐구</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .lab-panel {
+      background: #0f172a;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+    .lab-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .lab-btn {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lab-btn:hover { background: #1d4ed8; }
+    .lab-btn.green { background: #059669; }
+    .lab-btn.green:hover { background: #047857; }
+    .lab-btn.orange { background: #d97706; }
+    .lab-btn.orange:hover { background: #b45309; }
+    .canvas-container {
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Shared Sidebar -->
+    <aside class="sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+          <span class="current-view-title">🧪 [가상실험실] 전자의 에너지 계단 & OLED 스핀 시뮬레이터</span>
+        </div>
+        <div class="topbar-actions">
+          <a href="worksheet.html" class="topbar-btn">📝 활동지 작성하기</a>
+          <button class="topbar-btn primary" onclick="toggleFullScreen()">🖥️ 전체화면</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <!-- 실험 1: 전자의 계단 점프 시뮬레이터 -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">🔬 [가상 실험 1] 꼬마 전자의 에너지 계단과 형광 발광 (스토크스 이동)</h2>
+            <span class="badge" style="background:#eff6ff; color:#1d4ed8;">성취기준 [9과11-02] [9과14-03]</span>
+          </div>
+          <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem;">
+            바닥 상태(1층)의 전자에 높은 에너지의 자외선 광자를 흡수시켜 들뜬 상태(3층)로 점프시킵니다. 전자가 부르르 떨며 열을 흘리고, 남은 에너지를 형광빛으로 방출하며 1층으로 착지하는 에너지 보존 과정을 직접 확인해 보세요.
+          </p>
+
+          <div class="lab-panel" id="labPanel1">
+            <div class="lab-controls">
+              <button class="lab-btn" id="btn-fire-photon" onclick="firePhoton()">⚡ 자외선(UV) 광자 흡수 & 점프!</button>
+              <button class="lab-btn orange" onclick="resetLab1()">🔄 실험 초기화</button>
+              <div style="margin-left:auto; display:flex; align-items:center; gap:0.5rem; font-size:0.9rem;">
+                <span id="lab1-status" style="color:#60a5fa; font-weight:700;">대기 중: 전자가 1층 바닥 상태에 머물러 있습니다.</span>
+              </div>
+            </div>
+
+            <div class="canvas-container">
+              <canvas id="canvasLab1" width="1100" height="380" style="width:100%; height:100%;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- 실험 2: OLED 스핀 확률과 핫 엑시톤 구출 시뮬레이터 -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">💡 [가상 실험 2] 스마트폰 OLED의 75% 배터리 도둑 & KAIST 구출 작전</h2>
+            <span class="badge" style="background:#ecfdf5; color:#047857;">성취기준 [9과14-02] [9과01-02]</span>
+          </div>
+          <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem;">
+            전기를 주입했을 때 생성되는 100개의 엑시톤(전자쌍)의 스핀을 분석합니다. 일반 스마트폰에서는 25%만 빛을 내고 75%는 열로 사라지지만, <strong>KAIST 핫 엑시톤 구름다리 스위치</strong>를 켜면 버려지던 75%가 빛으로 구출됩니다!
+          </p>
+
+          <div class="lab-panel">
+            <div class="lab-controls">
+              <button class="lab-btn" onclick="injectElectricity()">⚡ 배터리 전류 주입 (100개 엑시톤 생성)</button>
+              <button class="lab-btn green" id="btn-kaist-rescue" onclick="toggleKaistRescue()">🚀 KAIST 핫 엑시톤 구출 스위치: OFF</button>
+              <div style="margin-left:auto; display:flex; gap:1.5rem; font-weight:700;">
+                <span style="color:#60a5fa;">발광 효율: <span id="eff-val" style="font-size:1.2rem;">0%</span></span>
+                <span style="color:#f87171;">열 손실: <span id="heat-val" style="font-size:1.2rem;">0%</span></span>
+              </div>
+            </div>
+
+            <div class="canvas-container" style="height:300px;">
+              <canvas id="canvasLab2" width="1100" height="300" style="width:100%; height:100%;"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/sidebar.js"></script>
+  <script>
+    renderSidebar('oled', 'lab');
+
+    // Canvas 1: Electron Jump Animation
+    const c1 = document.getElementById('canvasLab1');
+    const ctx1 = c1.getContext('2d');
+    let electronY = 300;
+    let targetY = 300;
+    let electronState = 'ground'; // ground, jumping, vibrating, falling
+    let vibrationTimer = 0;
+    let photonX = -50;
+    let photonActive = false;
+    let emittedPhotonX = -50;
+    let emittedPhotonActive = false;
+
+    function drawLab1() {
+      ctx1.clearRect(0, 0, c1.width, c1.height);
+
+      // Draw Energy Levels
+      ctx1.strokeStyle = '#334155';
+      ctx1.lineWidth = 2;
+      
+      // Level 3 (Excited)
+      ctx1.beginPath(); ctx1.moveTo(150, 100); ctx1.lineTo(850, 100); ctx1.stroke();
+      ctx1.fillStyle = '#f87171'; ctx1.font = 'bold 15px Pretendard';
+      ctx1.fillText('3층 들뜬 상태 (Excited State, S1 옥상) - 불안정!', 160, 90);
+
+      // Level 2 (Vibrational Relaxed)
+      ctx1.setLineDash([5, 5]);
+      ctx1.beginPath(); ctx1.moveTo(150, 160); ctx1.lineTo(850, 160); ctx1.stroke();
+      ctx1.setLineDash([]);
+      ctx1.fillStyle = '#fbbf24';
+      ctx1.fillText('2층 진동 이완 준위 (열을 흘린 후)', 160, 150);
+
+      // Level 1 (Ground)
+      ctx1.beginPath(); ctx1.moveTo(150, 310); ctx1.lineTo(850, 310); ctx1.stroke();
+      ctx1.fillStyle = '#60a5fa';
+      ctx1.fillText('1층 바닥 상태 (Ground State, S0) - 가장 안정!', 160, 335);
+
+      // Draw Incoming UV Photon
+      if (photonActive) {
+        ctx1.fillStyle = '#c084fc';
+        ctx1.beginPath(); ctx1.arc(photonX, 300, 12, 0, Math.PI * 2); ctx1.fill();
+        ctx1.fillStyle = '#ffffff'; ctx1.font = 'bold 11px Pretendard';
+        ctx1.fillText('자외선(UV)', photonX - 25, 280);
+        photonX += 12;
+        if (photonX >= 500) {
+          photonActive = false;
+          electronState = 'jumping';
+          targetY = 100;
+          document.getElementById('lab1-status').innerText = '1단계: 자외선 에너지를 먹고 3층으로 점프!';
+        }
+      }
+
+      // Draw Emitted Fluorescence Photon
+      if (emittedPhotonActive) {
+        ctx1.fillStyle = '#38bdf8';
+        ctx1.beginPath(); ctx1.arc(emittedPhotonX, 235, 14, 0, Math.PI * 2); ctx1.fill();
+        ctx1.fillStyle = '#ffffff'; ctx1.font = 'bold 12px Pretendard';
+        ctx1.fillText('파란 형광빛 방출! (가시광선)', emittedPhotonX - 30, 210);
+        emittedPhotonX += 10;
+        if (emittedPhotonX > 1100) emittedPhotonActive = false;
+      }
+
+      // Handle Electron State Transitions
+      if (electronState === 'jumping') {
+        electronY += (targetY - electronY) * 0.15;
+        if (Math.abs(electronY - targetY) < 2) {
+          electronY = 100;
+          electronState = 'vibrating';
+          vibrationTimer = 40;
+          document.getElementById('lab1-status').innerText = '2단계: 너무 높아 불안하여 부르르 떨며 열(Heat) 방출!';
+        }
+      } else if (electronState === 'vibrating') {
+        vibrationTimer--;
+        electronY = 100 + (Math.sin(vibrationTimer * 0.8) * 6);
+        // Draw heat waves
+        ctx1.fillStyle = '#ea580c';
+        ctx1.fillText('🔥 열에너지 방출~', 530, 95);
+        if (vibrationTimer <= 0) {
+          electronY = 160;
+          electronState = 'falling';
+          targetY = 300;
+          emittedPhotonActive = true;
+          emittedPhotonX = 500;
+          document.getElementById('lab1-status').innerText = '3단계: 남은 에너지를 눈부신 가시광선 형광빛으로 방출하며 착지!';
+        }
+      } else if (electronState === 'falling') {
+        electronY += (targetY - electronY) * 0.12;
+        if (Math.abs(electronY - targetY) < 2) {
+          electronY = 300;
+          electronState = 'ground';
+          document.getElementById('lab1-status').innerText = '완료: E(자외선) = E(형광빛) + E(열) 에너지 보존 확인!';
+        }
+      }
+
+      // Draw Electron
+      ctx1.fillStyle = '#3b82f6';
+      ctx1.shadowColor = '#60a5fa';
+      ctx1.shadowBlur = 15;
+      ctx1.beginPath();
+      ctx1.arc(500, electronY, 16, 0, Math.PI * 2);
+      ctx1.fill();
+      ctx1.shadowBlur = 0;
+      ctx1.fillStyle = '#ffffff';
+      ctx1.font = 'bold 12px Pretendard';
+      ctx1.fillText('e⁻ 전자', 480, electronY + 4);
+
+      // Draw Energy Balance Meter Box on right
+      ctx1.fillStyle = '#1e293b';
+      ctx1.fillRect(890, 80, 190, 250);
+      ctx1.strokeStyle = '#475569';
+      ctx1.strokeRect(890, 80, 190, 250);
+      ctx1.fillStyle = '#f8fafc';
+      ctx1.font = 'bold 14px Pretendard';
+      ctx1.fillText('⚡ 에너지 수지 분석', 910, 110);
+
+      ctx1.fillStyle = '#c084fc'; ctx1.fillRect(910, 130, 30, 120);
+      ctx1.fillStyle = '#ffffff'; ctx1.font = '11px Pretendard'; ctx1.fillText('자외선 100%', 900, 265);
+
+      ctx1.fillStyle = '#ea580c'; ctx1.fillRect(965, 210, 30, 40);
+      ctx1.fillStyle = '#ffffff'; ctx1.fillText('열 25%', 965, 265);
+
+      ctx1.fillStyle = '#38bdf8'; ctx1.fillRect(1020, 150, 30, 100);
+      ctx1.fillStyle = '#ffffff'; ctx1.fillText('형광 75%', 1020, 265);
+
+      requestAnimationFrame(drawLab1);
+    }
+    drawLab1();
+
+    function firePhoton() {
+      if (photonActive || electronState !== 'ground') return;
+      photonX = 100;
+      photonActive = true;
+    }
+
+    function resetLab1() {
+      electronY = 300;
+      targetY = 300;
+      electronState = 'ground';
+      photonActive = false;
+      emittedPhotonActive = false;
+      document.getElementById('lab1-status').innerText = '대기 중: 전자가 1층 바닥 상태에 머물러 있습니다.';
+    }
+
+    // Canvas 2: OLED Exciton Simulation
+    const c2 = document.getElementById('canvasLab2');
+    const ctx2 = c2.getContext('2d');
+    let excitons = [];
+    let isKaistRescue = false;
+
+    function injectElectricity() {
+      excitons = [];
+      for (let i = 0; i < 100; i++) {
+        const isSinglet = Math.random() < 0.25;
+        excitons.push({
+          x: Math.random() * (c2.width - 60) + 30,
+          y: Math.random() * (c2.height - 80) + 40,
+          type: isSinglet ? 'singlet' : 'triplet',
+          rescued: false,
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: (Math.random() - 0.5) * 1.5
+        });
+      }
+      updateEfficiency();
+    }
+
+    function toggleKaistRescue() {
+      isKaistRescue = !isKaistRescue;
+      const btn = document.getElementById('btn-kaist-rescue');
+      if (isKaistRescue) {
+        btn.innerText = '🚀 KAIST 핫 엑시톤 구출 스위치: ON (구출 가동!)';
+        btn.classList.remove('green');
+        btn.style.background = '#38bdf8';
+        btn.style.color = '#0f172a';
+        excitons.forEach(e => {
+          if (e.type === 'triplet') e.rescued = true;
+        });
+      } else {
+        btn.innerText = '🚀 KAIST 핫 엑시톤 구출 스위치: OFF';
+        btn.classList.add('green');
+        btn.style.background = '#059669';
+        btn.style.color = '#ffffff';
+        excitons.forEach(e => {
+          if (e.type === 'triplet') e.rescued = false;
+        });
+      }
+      updateEfficiency();
+    }
+
+    function updateEfficiency() {
+      if (excitons.length === 0) return;
+      const glowingCount = excitons.filter(e => e.type === 'singlet' || (isKaistRescue && e.rescued)).length;
+      const eff = Math.round((glowingCount / excitons.length) * 100);
+      document.getElementById('eff-val').innerText = eff + '%';
+      document.getElementById('heat-val').innerText = (100 - eff) + '%';
+    }
+
+    function drawLab2() {
+      ctx2.clearRect(0, 0, c2.width, c2.height);
+
+      if (excitons.length === 0) {
+        ctx2.fillStyle = '#64748b';
+        ctx2.font = 'bold 16px Pretendard';
+        ctx2.textAlign = 'center';
+        ctx2.fillText('상단의 [배터리 전류 주입] 버튼을 눌러 100개의 엑시톤을 생성해 보세요.', c2.width / 2, c2.height / 2);
+        ctx2.textAlign = 'left';
+      }
+
+      excitons.forEach(e => {
+        e.x += e.vx; e.y += e.vy;
+        if (e.x < 20 || e.x > c2.width - 20) e.vx *= -1;
+        if (e.y < 20 || e.y > c2.height - 20) e.vy *= -1;
+
+        if (e.type === 'singlet' || (isKaistRescue && e.rescued)) {
+          // Glowing blue photon
+          ctx2.fillStyle = '#38bdf8';
+          ctx2.shadowColor = '#60a5fa';
+          ctx2.shadowBlur = 12;
+          ctx2.beginPath(); ctx2.arc(e.x, e.y, 8, 0, Math.PI * 2); ctx2.fill();
+          ctx2.shadowBlur = 0;
+        } else {
+          // Heat emitting red/orange triplet
+          ctx2.fillStyle = '#dc2626';
+          ctx2.beginPath(); ctx2.arc(e.x, e.y, 6, 0, Math.PI * 2); ctx2.fill();
+        }
+      });
+
+      requestAnimationFrame(drawLab2);
+    }
+    drawLab2();
+  </script>
+</body>
+</html>

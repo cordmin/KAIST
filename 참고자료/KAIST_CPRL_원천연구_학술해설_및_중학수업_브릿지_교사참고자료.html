@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[교사용 심층 학술 자료] KAIST CPRL 원천 연구 해설 및 중학 과학 브릿지 가이드</title>
+  <style>
+    :root {
+      --color-paper-warmth: #f6f5f4;
+      --color-pure-white: #ffffff;
+      --color-charcoal: #111111;
+      --color-graphite: #615d59;
+      --color-stone: #757575;
+      --color-notion-blue: #0075de;
+      --color-sky-tint: #e6f3fe;
+      --color-coral: #f64932;
+      --border: rgba(0, 0, 0, 0.08);
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 8px;
+      --radius-full: 9999px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper-warmth);
+      color: var(--color-charcoal);
+      line-height: 1.8;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+    .doc-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: var(--color-pure-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      padding: 3.5rem 3rem;
+    }
+    .doc-badge {
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--color-stone);
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+    h1.doc-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-charcoal);
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.3px;
+    }
+    .doc-subtitle {
+      font-size: 1rem;
+      color: var(--color-stone);
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.25rem;
+      line-height: 1.65;
+    }
+    .meta-box {
+      background: #faf9f8;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      font-size: 0.88rem;
+    }
+    .meta-item strong { color: var(--color-charcoal); display: block; margin-bottom: 0.2rem; font-size: 0.78rem; text-transform: uppercase; color: var(--color-stone); }
+    h2.section-heading {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-charcoal);
+      margin: 2.5rem 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    h3.sub-heading {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-notion-blue);
+      margin: 1.75rem 0 0.75rem;
+    }
+    p { margin-bottom: 1.1rem; font-size: 0.95rem; color: var(--color-graphite); }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: var(--color-graphite); }
+    li { margin-bottom: 0.5rem; }
+    .theory-card {
+      background: #faf9f8;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--color-notion-blue);
+      border-radius: var(--radius-sm);
+      padding: 1.35rem 1.5rem;
+      margin: 1.25rem 0 1.75rem;
+      color: var(--color-graphite);
+    }
+    .theory-card.oled { border-left-color: var(--color-notion-blue); }
+    .theory-card.quantum { border-left-color: #5e5ce6; }
+    .bridge-box {
+      background: #fdfdfd;
+      border: 1px solid var(--border);
+      border-left: 4px solid #198754;
+      border-radius: var(--radius-sm);
+      padding: 1.35rem 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--color-graphite);
+    }
+    .bridge-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #198754;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .paper-entry {
+      background: #faf9f8;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .paper-title { font-weight: 600; color: var(--color-charcoal); font-size: 0.98rem; margin-bottom: 0.25rem; }
+    .paper-authors { font-size: 0.84rem; color: var(--color-stone); margin-bottom: 0.25rem; }
+    .paper-journal { font-size: 0.84rem; font-weight: 500; color: var(--color-notion-blue); font-family: var(--font-mono); }
+    .paper-desc { font-size: 0.88rem; color: var(--color-graphite); margin-top: 0.5rem; line-height: 1.65; }
+    code {
+      font-family: var(--font-mono);
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.35rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      color: var(--color-charcoal);
+    }
+    .print-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--color-notion-blue);
+      color: var(--color-pure-white);
+      border: 1px solid var(--color-notion-blue);
+      padding: 0.75rem 1.35rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 117, 222, 0.25);
+      z-index: 100;
+      transition: all 0.15s ease;
+    }
+    .print-btn:hover { background: #0062bd; transform: translateY(-1px); }
+    @media print {
+      body { background: #ffffff !important; color: #000000 !important; padding: 0; }
+      .doc-container { background: #ffffff !important; color: #000000 !important; border: none; box-shadow: none; padding: 0; width: 100%; max-width: 100%; }
+      .meta-box, .theory-card, .paper-entry { background: #f8fafc !important; color: #000000 !important; border: 1px solid #cbd5e1 !important; }
+      h1.doc-title, .section-heading, .sub-heading, .meta-item strong, .paper-title { color: #000000 !important; }
+      p, ul, ol, .paper-desc { color: #000000 !important; }
+      .print-btn { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn" onclick="window.print()">A4 연구자료 인쇄</button>
+
+  <div class="doc-container">
+    
+    <div class="doc-badge">KAIST CPRL 파견 교사 전용 · 교재 연구 및 학술 배경 자료</div>
+    <h1 class="doc-title">KAIST CPRL 원천 연구 심층 학술 해설 및<br>중학교 과학 교육과정 브릿지 가이드</h1>
+    <div class="doc-subtitle">
+      한국과학기술원(KAIST) 화학과 계산광동역학 연구실(Computational Photodynamics Research Lab, CPRL / 이영민 교수)의 광화학 및 양자 컴퓨팅 원천 연구를 중학교 과학교육으로 전이하기 위한 교사용 전문 지침서
+    </div>
+
+    <!-- 문서 메타 정보 박스 -->
+    <div class="meta-box">
+      <div class="meta-item">
+        <strong>연구실 명칭</strong>
+        KAIST CPRL (이영민 교수)
+      </div>
+      <div class="meta-item">
+        <strong>연구실 홈페이지</strong>
+        <a href="http://singlet.kaist.ac.kr" target="_blank" style="color:var(--color-notion-blue); text-decoration:none;">http://singlet.kaist.ac.kr</a>
+      </div>
+      <div class="meta-item">
+        <strong>작성자 / 용도</strong>
+        KAIST 파견 중학교 과학교사 / 교재 연구용
+      </div>
+      <div class="meta-item">
+        <strong>연계 교육과정</strong>
+        2022 개정 중학교 과학과 교육과정
+      </div>
+    </div>
+
+    <!-- 1장: 파견 교사의 미션과 교육과정 개발 철학 -->
+    <h2 class="section-heading">1. 파견 교사의 미션과 교육과정 전이(Pedagogical Transposition) 철학</h2>
+    
+    <p>
+      본 자료는 KAIST 화학과 계산광동역학 연구실(CPRL)에 파견된 중학교 과학교사가 교수님 및 연구진의 원천 연구 성과를 깊이 있게 이해하고, 이를 <strong>2022 개정 교육과정에 부합하는 중학생 수준의 탐구 수업</strong>으로 성공적으로 변환하기 위해 집필된 교사용 심층 연구 자료입니다.
+    </p>
+
+    <div class="theory-card">
+      <h3 style="color:var(--color-charcoal); margin-top:0;">핵심 교육과정 전이 원칙: "수식의 경량화, 개념의 본질화"</h3>
+      <p style="margin-bottom:0.5rem;">
+        대학원 수준의 계산화학 및 비단열 양자역학은 복잡한 다체 슈뢰딩거 방정식, 미분 기하학적 원추교차(Conical Intersection), 스핀-궤도 결합 해밀토니안($\hat{H}_{\text{SO}}$)을 다룹니다. 그러나 이를 중학교 교실로 가져올 때의 핵심은 <strong>"수학적 장벽은 걷어내되, 과학적 인과관계와 자연의 규칙성은 100% 보존하는 것"</strong>입니다.
+      </p>
+      <ul style="margin-bottom:0;">
+        <li><strong>현상 기반 도입:</strong> 일상 속 관찰 가능한 현상(토닉워터 형광, 스마트폰 발열, 동전 회전)으로 호기심 촉발.</li>
+        <li><strong>직관적 과학 은유:</strong> 트램펄린 점프(전자 전이), 회전하는 팽이 동전(스핀 중첩), 2인 3각 골짜기 달리기(VQE).</li>
+        <li><strong>교육과정 정합성:</strong> 2022 개정 성취기준(빛의 합성, 원자 모형, 전기에너지 전환, 화학 반응 규칙)과의 완벽한 유기적 결합.</li>
+      </ul>
+    </div>
+
+    <!-- 2장: OLED 및 광화학 연구의 원천 -->
+    <h2 class="section-heading">2. [원천 연구 01] OLED 스핀 통계 한계 극복과 핫 엑시톤(Hot Exciton) 광물리</h2>
+
+    <h3 class="sub-heading">2.1 학술적 배경: 유기 발광 분자의 스핀 통계와 75% 열 손실 딜레마</h3>
+    <p>
+      유기 발광 다이오드(OLED)에서 음극(Cathode)에서 주입된 전자($e^-$)와 양극(Anode)에서 주입된 정공($h^+$)이 발광층의 유기 분자에서 만나 엑시톤(Exciton, 들뜬 전자-정공 쌍)을 형성합니다. 전자는 스핀 양자수 $s=1/2$을 가지므로, 두 스핀이 결합할 때 양자역학적 총 스핀 각운동량 양자수 $S$는 0 또는 1이 됩니다.
+    </p>
+    
+    <div class="theory-card oled">
+      <strong>[양자역학적 스핀 다중도 (Spin Multiplicity, $2S+1$)]</strong><br>
+      • <strong>단일항 (Singlet State, $S=0$):</strong> 스핀 파동함수 $\frac{1}{\sqrt{2}}(\alpha\beta - \beta\alpha)$. 비축퇴(1개 상태, 25% 확률). 바닥 상태($S_0$)와 스핀 다중도가 같아 쌍극자 전이 허용(Dipole Allowed) $\rightarrow$ <strong>$10^{-9}$초(나노초) 단위의 초고속 형광(Fluorescence) 방출!</strong><br>
+      • <strong>삼중항 (Triplet State, $S=1$):</strong> 스핀 파동함수 $\alpha\alpha, \frac{1}{\sqrt{2}}(\alpha\beta + \beta\alpha), \beta\beta$. 3중 축퇴(3개 상태, 75% 확률). 바닥 상태($S_0$)로의 전이가 스핀 금지(Spin-Forbidden) 전이 $\rightarrow$ <strong>상온에서 빛을 내지 못하고 무복사 감쇄(Non-radiative decay)를 통해 모조리 진동 열에너지로 방출!</strong>
+    </div>
+
+    <p>
+      이로 인해 전통적인 1세대 형광 OLED는 전기 에너지를 넣었을 때 <strong>최대 내부 양자 효율(IQE)이 25%</strong>에 묶여 있었으며, 나머지 <strong>75%의 에너지는 디스플레이 발열과 분자 열화를 유발하는 '배터리 도둑'</strong>으로 작용하였습니다.
+    </p>
+
+    <h3 class="sub-heading">2.2 CPRL의 핵심 연구 성과: 핫 엑시톤(Hot Exciton) 및 비단열 스핀 동역학</h3>
+    <p>
+      KAIST CPRL 이영민 교수 연구실은 버려지는 75%의 삼중항 엑시톤을 100% 빛으로 전환(Triplet Harvesting)하기 위한 미시적 메커니즘 규명에 집중하고 있습니다. 기존 3세대 TADF(열활성 지연형광)는 최저 단일항($S_1$)과 최저 삼중항($T_1$) 사이의 에너지 갭($\Delta E_{ST}$)을 0.1 eV 이하로 극소화하여 상온 열에너지로 역간교차(RISC)를 유도하지만, 엑시톤 수명이 길어져 고휘도에서 효율이 급격히 떨어지는 롤오프(Roll-off) 현상과 청색 소자의 화학적 결합 분해 문제가 있었습니다.
+    </p>
+
+    <div class="theory-card oled">
+      <strong>[CPRL의 핫 엑시톤(Hot Exciton) 시스템 비단열 진동 결합 연구]</strong>
+      <p style="margin-top:0.5rem; font-size:0.95rem;">
+        CPRL 연구진은 <strong>고에너지 들뜬 삼중항 준위($T_2$ 이상)</strong>에 주목하였습니다. 전하 재결합 시 고에너지 상태로 생성된 삼중항 전자가 에너지를 잃고 $T_1$으로 이완되기 전에, 높은 옥상 준위에서 최저 들뜬 단일항($S_1$)으로 초고속 역간교차(RISC: $T_2 \to S_1$)를 일으켜 형광으로 방출시키는 통로입니다.
+      </p>
+      <p style="font-size:0.92rem; color:var(--color-stone); margin-bottom:0;">
+        최근 발표된 논문(<em>J. Phys. Chem. A</em> 2026, 130, 758–766)에서는 핫 엑시톤 OLED 시스템에서 <strong>스핀-궤도 결합(Spin-Orbit Coupling, SOC)에 섭동적 진동 결합 보정(Perturbative Vibronic Correction)</strong>을 적용하여, 분자 골격의 미세한 진동 모드가 $T_2 \to S_1$ 스핀 반전 전이를 어떻게 증폭시키는지를 정량적으로 규명하였습니다.
+      </p>
+    </div>
+
+    <!-- 교과 브릿지 박스 1 -->
+    <div class="bridge-box">
+      <div class="bridge-title">교사용 수업 브릿지 전략: OLED 단원</div>
+      <p style="margin-bottom:0.5rem;">
+        <strong>"어려운 양자 상태도($S_0, S_1, T_1, T_2$)를 중학생에게 어떻게 전달할 것인가?"</strong>
+      </p>
+      <ol style="margin-bottom:0; font-size:0.95rem;">
+        <li><strong>원자 속 전자의 트램펄린 점프:</strong> $S_0 \to S_1$ 흡수를 '1층에서 3층 옥상으로 트램펄린 점프'로, 진동 이완을 '불안해서 부르르 떨며 열 흘리기'로, $S_1 \to S_0$ 형광을 '남은 에너지로 알록달록 무지개빛 뿜으며 착지'로 시각화합니다.</li>
+        <li><strong>스핀 팽이 모형:</strong> 단일항을 '서로 마주보고 도는 팽이(↑↓, 비상문 열림, 25%)', 삼중항을 '나란히 도는 팽이(↑↑, 비상문 닫힘, 75%)'로 제시하여 확률 1:3의 직관적 근거를 제공합니다.</li>
+        <li><strong>스마트폰 난로 현상과 KAIST 옥상 구름다리:</strong> 75%가 1층 골방($T_1$)에 갇혀 열을 내기 전에, 2층 옥상($T_2$)에서 단일항($S_1$)으로 건너가는 <strong>'핫 엑시톤 옥상 구름다리'</strong> 은유를 사용하여 100% 효율 달성의 과학적 쾌감을 전달합니다.</li>
+      </ol>
+    </div>
+
+    <!-- 3장: 양자 컴퓨팅 및 계산화학 연구의 원천 -->
+    <h2 class="section-heading">3. [원천 연구 02] 양자 컴퓨팅 기반 전자구조 계산과 VQE 알고리즘</h2>
+
+    <h3 class="sub-heading">3.1 학술적 배경: 다전자 파동함수의 지수 폭발($2^N$)과 고전 컴퓨터의 한계</h3>
+    <p>
+      양자화학의 궁극적 목표는 분자의 전자 해밀토니안에 대한 정상상태 슈뢰딩거 방정식 $\hat{H}|\Psi\rangle = E|\Psi\rangle$을 풀어 분자의 기하 구조, 화학 결합 에너지, 반응 전이 상태를 정확히 예측하는 것입니다. 그러나 원자핵 주위의 전자들은 서로 페르미 통계(파울리 배타 원리)를 따르며 쿨롱 반발력으로 복잡하게 얽혀 있는 <strong>'다체 문제(Many-Body Problem)'</strong>를 형성합니다.
+    </p>
+
+    <div class="theory-card quantum">
+      <strong>[FCI 힐베르트 공간의 조합론적 지수 폭발 (Combinatorial Explosion)]</strong><br>
+      $M$개의 공간 궤도에 $N$개의 전자를 배치하는 완전 입체배치 상호작용(Full Configuration Interaction, FCI)의 슬레이터 결정자(Slater Determinant) 차원은 $\binom{2M}{N_{\alpha}}\binom{2M}{N_{\beta}}$에 달합니다.<br>
+      • 카페인($N=102$)이나 페니실린($N=280$) 분자만 되어도 상태 수가 $10^{30} \sim 10^{84}$를 초과하여, 전 세계 모든 슈퍼컴퓨터의 메모리와 CPU를 동원해도 우주의 나이(138억 년) 동안 계산할 수 없습니다.
+    </div>
+
+    <h3 class="sub-heading">3.2 CPRL의 핵심 연구 성과: 이온 트랩 양자 컴퓨터와 하이브리드 VQE</h3>
+    <p>
+      리처드 파인만이 통찰했듯, 양자역학적 계를 시뮬레이션하는 가장 자연스러운 방법은 <strong>양자역학적 물리계 자체를 연산 소자로 사용하는 것</strong>입니다. CPRL 이영민 교수 연구실은 노이즈가 존재하는 현재의 NISQ 양자 하드웨어를 활용하여 다전자 분자의 결합 에너지를 정밀하게 계산하는 <strong>양자 알고리즘 개발</strong>을 선도하고 있습니다.
+    </p>
+
+    <div class="theory-card quantum">
+      <strong>[CPRL의 양자 컴퓨팅 주요 학술 성과 (npj Quantum Information, PCCP)]</strong>
+      <ul style="margin-top:0.5rem; font-size:0.95rem; margin-bottom:0;">
+        <li>
+          <strong>이온 트랩 양자 컴퓨터 상의 궤도 최적화 전자쌍 상관 시뮬레이션 (<em>npj Quantum Inf.</em> 2023, 2024):</strong><br>
+          듀크대/칭화대 김기환 교수 연구팀과 협력하여, 갇힌 이온(Trapped-ion) 양자 프로세서에서 <strong>전자쌍 근사(Electron Pair Approximation)</strong>를 적용해 큐비트 자원 소모를 혁신적으로 줄이면서 화학적 정확도(Chemical Accuracy, 1 kcal/mol)를 만족하는 분자 에너지 계산을 입증하였습니다.
+        </li>
+        <li>
+          <strong>닫힌 껍질 분자를 위한 VQE 알고리즘 개발 (<em>PCCP</em> 2024, 26, 8390):</strong><br>
+          변분 양자 고유값 계산기(VQE)에 비보손적 보정(Non-bosonic corrections)을 도입하여, 제한된 큐비트 연산 깊이에서도 기저 상태 에너지를 정확히 산출하는 독창적 하이브리드 양자 알고리즘을 개발하였습니다.
+        </li>
+        <li>
+          <strong>양자화학 탐구 교육 도구 'eChem' 개발 (<em>J. Chem. Educ.</em> 2023, 100, 1664):</strong><br>
+          주피터 노트북 기반의 오픈소스 양자화학 교육용 소프트웨어를 개발하여, 학생들이 직접 파이썬 코드로 분자 궤도와 전자 구조를 시뮬레이션할 수 있는 교육 공학적 혁신을 이끌었습니다.
+        </li>
+      </ul>
+    </div>
+
+    <!-- 교과 브릿지 박스 2 -->
+    <div class="bridge-box">
+      <div class="bridge-title">교사용 수업 브릿지 전략: 양자 컴퓨팅 및 계산화학 단원</div>
+      <p style="margin-bottom:0.5rem;">
+        <strong>"중학생에게 힐베르트 공간과 VQE 알고리즘을 어떻게 체감시킬 것인가?"</strong>
+      </p>
+      <ol style="margin-bottom:0; font-size:0.95rem;">
+        <li><strong>체스판과 쌀알 퀴즈:</strong> 64칸 쌀알 퀴즈($2^{63}$)로 거듭제곱의 공포를 체감시킨 뒤, "카페인 전자 102개의 상태($2^{102} \approx 10^{30}$)는 지구의 모든 모래알보다 많다!"는 비유로 슈퍼컴퓨터의 한계를 명쾌히 납득시킵니다.</li>
+        <li><strong>동전 팽이 조작 실험:</strong> 책상 위 정지한 동전(0 또는 1, 비트)과 빠르게 도는 동전 팽이(0과 1의 중첩, 큐비트)를 직접 돌려보게 함으로써, 10개 큐비트가 1,024개 길을 <strong>동시에 단 한 번에 탐색하는 동시 병렬 처리</strong>를 시각화합니다.</li>
+        <li><strong>환상의 2인 3각 역할극:</strong> 양자 컴퓨터(빠른 산골짜기 고도 탐험가)와 일반 컴퓨터(방향을 알려주는 스마트 내비게이션)가 서로 수치를 주고받으며 수소 분자가 최저 바닥 상태(-1.137 a.u., 결합 거리 0.74Å)를 찾아가는 과정을 2인 1조 역할극으로 온몸으로 체득하게 합니다.</li>
+        <li><strong>생태전환적 진로 프로젝트:</strong> "비커 없는 화학 실험실"을 통해 인류의 3대 난제인 <strong>[친환경 상온 비료 합성 촉매 설계(식량 및 온실가스)], [화재 없는 전고체 배터리(에너지)], [변종 바이러스 표적 신약(의학)]</strong>을 해결하는 틴에이저 스타트업 CEO 프로젝트로 확장합니다.</li>
+      </ol>
+    </div>
+
+    <!-- 4장: 원천 연구 주요 논문 서지 목록 -->
+    <h2 class="section-heading">4. CPRL 원천 연구 주요 논문 서지 목록 (Annotated Bibliography)</h2>
+    <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      교사가 수업 설계 및 질의응답 시 신뢰성 있는 학술적 근거로 인용할 수 있는 CPRL 연구진의 대표 논문 목록입니다.
+    </p>
+
+    <!-- 논문 1 -->
+    <div class="paper-entry">
+      <div class="paper-title">1. Effect of Perturbative Vibronic Correction for Spin–Orbit Coupling in Hot Exciton OLED Systems</div>
+      <div class="paper-authors">H. Choi, S. W. Park, <strong>Y. M. Rhee*</strong></div>
+      <div class="paper-journal">The Journal of Physical Chemistry A, 130, 758–766 (2026) · DOI: 10.1021/acs.jpca.5c05378</div>
+      <div class="paper-desc">
+        핫 엑시톤 OLED 분자에서 스핀-궤도 결합에 분자 진동 모드의 섭동적 보정을 적용하여, 고에너지 삼중항($T_2$)에서 단일항($S_1$)으로의 역간교차(RISC) 속도를 정밀하게 예측하고 분자 설계 규칙을 제안한 최신 원천 연구.
+      </div>
+    </div>
+
+    <!-- 논문 2 -->
+    <div class="paper-entry">
+      <div class="paper-title">2. Overcoming the Limitation of Spin Statistics in Organic Light Emitting Diodes (OLEDs): Hot Exciton Mechanism and Its Characterization</div>
+      <div class="paper-authors">S. W. Park, D. Kim, <strong>Y. M. Rhee*</strong></div>
+      <div class="paper-journal">International Journal of Molecular Sciences, 24, 12362 (2023) · DOI: 10.3390/ijms241512362</div>
+      <div class="paper-desc">
+        유기발광다이오드에서 스핀 통계의 25% 한계를 극복하는 핫 엑시톤 메커니즘의 물리화학적 원리를 체계적으로 정리하고 분광학적 특성 분석법을 제시한 핵심 논문.
+      </div>
+    </div>
+
+    <!-- 논문 3 -->
+    <div class="paper-entry">
+      <div class="paper-title">3. Enhancing the electron pair approximation with measurements on trapped-ion quantum computers</div>
+      <div class="paper-authors">L. Zhao, Q. Wang, ..., <strong>Y. M. Rhee*</strong>, K. Kim*</div>
+      <div class="paper-journal">npj Quantum Information (Nature Partner Journal), 10, 76 (2024) · DOI: 10.1038/s41534-024-00871-4</div>
+      <div class="paper-desc">
+        실제 갇힌 이온(Trapped-ion) 양자 컴퓨터 상에서 전자쌍 상관 근사법을 구현하여, NISQ 양자 프로세서의 제한된 큐비트 환경에서도 고정밀 분자 결합 에너지를 측정할 수 있음을 실험적으로 증명한 선도적 연구.
+      </div>
+    </div>
+
+    <!-- 논문 4 -->
+    <div class="paper-entry">
+      <div class="paper-title">4. Variational quantum eigensolver for closed-shell molecules with non-bosonic corrections</div>
+      <div class="paper-authors">K. Kim, ..., G. Lee, ..., J. K. Rhee, <strong>Y. M. Rhee*</strong></div>
+      <div class="paper-journal">Physical Chemistry Chemical Physics (PCCP), 26, 8390–8396 (2024) · DOI: 10.1039/D3CP05646H</div>
+      <div class="paper-desc">
+        닫힌 껍질 분자에 대해 비보손적 보정을 적용한 VQE 하이브리드 알고리즘을 개발하여 양자 하드웨어의 연산 효율과 수렴성을 획기적으로 향상시킨 알고리즘 논문.
+      </div>
+    </div>
+
+    <!-- 논문 5 -->
+    <div class="paper-entry">
+      <div class="paper-title">5. eChem: A Notebook Exploration of Quantum Chemistry</div>
+      <div class="paper-authors">T. Fransson, ..., <strong>Y. M. Rhee</strong>, P. Norman*</div>
+      <div class="paper-journal">Journal of Chemical Education, 100, 1664–1671 (2023) · DOI: 10.1021/acs.jchemed.2c01103</div>
+      <div class="paper-desc">
+        주피터 노트북 기반의 대화형 양자화학 교육 플랫폼 개발 논문. 복잡한 계산화학 이론을 학생 친화적인 인터랙티브 소프트웨어로 구현하는 교육적 방법론 제시.
+      </div>
+    </div>
+
+    <!-- 5장: 교사용 질의응답 및 오개념 예방 가이드 -->
+    <h2 class="section-heading">5. 중학교 교실 수업 시 교사용 Q&A 및 오개념 지도 요령</h2>
+
+    <div class="theory-card">
+      <strong style="color:#2563eb;">Q1. 중학생이 "빛을 흡수했는데 왜 다른 색의 빛이 나와요?"라고 묻는다면?</strong>
+      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+        <strong>[교사 지도 팁]:</strong> "빛은 에너지를 배달하는 에너지 택배원이야. 자외선은 무거운 고에너지 택배를 싣고 와서 원자 속 전자를 3층으로 번쩍 올려놓았지. 그런데 3층이 너무 높아 불안해서 전자가 온몸을 부르르 떨며 일부 에너지를 <strong>'열'</strong>로 흘려버렸단다. 그래서 남은 에너지만 가지고 1층으로 내려오니까, 처음 들어간 자외선보다 에너지가 작아져서 눈에 보이는 <strong>파란색이나 초록색 가시광선(형광)</strong>으로 변해서 나온 거야! 이때도 <code>[흡수한 자외선] = [방출된 형광] + [흘린 열]</code>이라는 위대한 에너지 보존 법칙은 100% 지켜진단다."
+      </p>
+    </div>
+
+    <div class="theory-card">
+      <strong style="color:#7c3aed;">Q2. 중학생이 "양자 컴퓨터가 나오면 지금 쓰는 컴퓨터는 다 버려야 하나요?"라고 묻는다면?</strong>
+      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+        <strong>[교사 지도 팁]:</strong> "절대 아니란다! 고속열차가 생겼다고 자전거나 택배 트럭이 사라지지 않는 것과 같아. 양자 컴퓨터는 유튜브 동영상을 재생하거나 문서를 작성하는 데는 일반 컴퓨터보다 오히려 비효율적이야. 하지만 <strong>수백억 개의 미로 길을 동시에 가보거나, 분자 속 전자의 복잡한 얽힘을 계산하는 특별한 문제</strong>에서만 빛을 발하지. 미래에도 VQE 알고리즘처럼 일반 컴퓨터와 양자 컴퓨터가 서로 역할을 나누어 <strong>2인 3각 달리기</strong>로 일하게 된단다."
+      </p>
+    </div>
+
+    <div class="theory-card">
+      <strong style="color:#059669;">Q3. 중학교 2022 개정 교육과정과의 정확한 연계 논리는 무엇인가요?</strong>
+      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+        <strong>[교사 지도 팁]:</strong> 중학교 2학년 <strong>[9과10-03]</strong>(빛의 합성 및 영상 장치), <strong>[9과11-02]</strong>(원자 모형과 전자), <strong>[9과14-02]</strong>(전류 모형 및 반도체 해설), <strong>[9과14-03]</strong>(전기 에너지의 열·빛 전환과 소비 전력) 성취기준과 유기적으로 결합됩니다. 교과서에 머물러 있는 도체/반도체와 RGB 화소 개념을 'KAIST 첨단 OLED 분자 공학'과 직결시키고, 화학 반응의 질량 보존 및 에너지 출입<strong>[9과16-01/03/06]</strong>을 '양자 계산 화학의 최저 바닥 상태 결합'과 연결하여 학생들의 융합 탐구 사고력을 비약적으로 끌어올립니다.
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>

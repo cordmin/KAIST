@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[2022 성취기준 연계표] 양자 컴퓨터와 계산 화학 - KAIST 첨단과학 탐구</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Shared Sidebar -->
+    <aside class="sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+          <span class="current-view-title">🎯 [2022 성취기준 연계표] 양자 컴퓨터와 계산 화학의 미래</span>
+        </div>
+        <div class="topbar-actions">
+          <a href="lesson-plan.html" class="topbar-btn">📋 교사용 지도안</a>
+          <button class="topbar-btn primary" onclick="window.print()">🖨️ 연계표 A4 인쇄</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #5b21b6, #7c3aed);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">2022 개정 교육과정 공인 평가 기준</div>
+            <div class="section-header-title">공식 성취기준 매핑 및 3차원 평가 루브릭</div>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:16%;">교과 / 영역</th>
+                <th style="width:30%;">2022 개정 교육과정 공식 성취기준 전문</th>
+                <th style="width:24%;">본 프로그램 탐구 연계 요소</th>
+                <th style="width:30%;">3차원 성취수준 루브릭 (상 / 중 / 하)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>중2 과학<br>(11) 물질의 구성</strong></td>
+                <td>
+                  • <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                  • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.
+                </td>
+                <td>
+                  • 다전자 분자 구조와 전자 배치<br>
+                  • 전자 간 반발력과 계산 조합의 수(지수 폭발, $2^N$)
+                </td>
+                <td>
+                  <strong>[상]</strong> 원자 속 전자 간 상호작용으로 인해 전자가 늘어날수록 분자 상태 수가 지수적으로 폭발함을 논리적으로 설명하고 화학식으로 표현함.<br>
+                  <strong>[중]</strong> 분자가 원자와 전자로 이루어져 있음을 이해함.<br>
+                  <strong>[하]</strong> 원자 속에 전자가 있음을 안다.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>중3 과학<br>(16) 화학 반응의 규칙성</strong></td>
+                <td>
+                  • <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                  • <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                  &nbsp;&nbsp;<span style="color:#64748b; font-size:0.83rem;">*(성취기준 해설: 화학 반응이 일어날 때 물질을 구성하는 원자의 배열만 변하고, 원자의 종류와 수는 변하지 않음을 강조하여 설명한다.)*</span><br>
+                  • <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.
+                </td>
+                <td>
+                  • 원자 재배열과 최저 바닥 상태 결합<br>
+                  • 상온 비료 합성 촉매 설계를 통한 화학 반응 에너지 장벽 극복
+                </td>
+                <td>
+                  <strong>[상]</strong> 화학 반응에서 원자 배열이 변할 때 에너지가 출입함을 이해하고, VQE 알고리즘이 분자의 바닥 상태를 찾아가는 과정을 화학 결합과 연결하여 서술함.<br>
+                  <strong>[중]</strong> 화학 반응 시 에너지가 출입함을 설명함.<br>
+                  <strong>[하]</strong> 화학 반응으로 물질이 변함을 안다.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>정보과 융합<br>(데이터·알고리즘)</strong></td>
+                <td>
+                  • <strong>[9정01-03]</strong> 2진수 데이터 표현<br>
+                  • <strong>[9정02-02]</strong> 문제 해결 알고리즘과 시뮬레이션 모델링
+                </td>
+                <td>
+                  • 고전 0과 1의 비트 vs 동전 회전 중첩(큐비트)<br>
+                  • VQE 양자-고전 하이브리드 최적화 피드백 루프
+                </td>
+                <td>
+                  <strong>[상]</strong> 비트와 큐비트의 차이(중첩)를 바탕으로 양자 컴퓨터의 동시 병렬 처리 장점을 명확히 비교하고 VQE 피드백 루프를 분석함.<br>
+                  <strong>[중]</strong> 큐비트가 중첩 상태임을 동전 비유로 설명함.<br>
+                  <strong>[하]</strong> 컴퓨터가 0과 1을 씀을 안다.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>중1·3 융합<br>(사회 · 진로)</strong></td>
+                <td>
+                  • <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                  • <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
+                </td>
+                <td>
+                  • 3대 지구 난제(비료, 배터리, 신약) 해결<br>
+                  • 틴에이저 양자 화학 스타트업 CEO 기획
+                </td>
+                <td>
+                  <strong>[상]</strong> 양자 계산 화학 기술이 기후 위기 및 의학에 기여하는 구체적 해결책을 창의적으로 기획하고 진로 포부를 논리적으로 피력함.<br>
+                  <strong>[중]</strong> 양자 컴퓨터가 신소재 개발에 미치는 영향을 설명함.<br>
+                  <strong>[하]</strong> 첨단 과학기술의 유용성을 인식함.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 세특 기재 예시 3종 -->
+          <div style="margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;">💡 [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
+
+            <!-- 예시 1: 우수 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
+              <strong style="color:#7c3aed;">[예시 1: 융합 컴퓨팅 사고력 우수 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"원자 모형과 다전자 분자의 상호작용을 학습하며, 전자가 늘어남에 따라 계산량이 2의 N제곱으로 폭발하는 '지수 폭발'의 한계를 수학적 거듭제곱 모델로 체계적으로 분석함. 일반 컴퓨터의 비트와 양자 큐비트의 중첩 원리를 '회전하는 동전 팽이' 모형으로 명쾌하게 대조하여 급우들에게 설명함. KAIST 연구진의 VQE 알고리즘 원리를 탐구한 후, '지구를 구하는 틴에이저 스타트업 CEO' 프로젝트에서 상온 질소 고정 촉매 분자 설계를 통한 탄소 배출 저감 프로젝트를 기획함. 컴퓨팅 사고력과 화학적 지식을 융합하여 기후 위기 해결 방안을 창의적으로 제안하는 탁월한 문제해결력을 보임."</em>
+              </p>
+            </div>
+
+            <!-- 예시 2: 협동 및 실험 탐구 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
+              <strong style="color:#059669;">[예시 2: 협동 역할극 및 탐구 성실 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"동전 팽이 조작 실험에서 앞면과 뒷면이 공존하는 중첩 현상을 관찰하고 관찰 일지를 성실히 작성함. 2인 1조 VQE 알고리즘 역할극에서 '양자 컴퓨터(탐험가)' 역할을 맡아, 큐비트 시뮬레이터를 조작하며 파트너인 일반 컴퓨터와 긴밀히 소통하여 수소 분자의 최저 바닥 상태 결합을 성공적으로 도출함. 모둠 토의 시 경청과 협력의 태도를 보였으며, 양자 컴퓨터의 10개 큐비트가 1,024개 길을 동시에 탐색하는 병렬 처리의 위력을 논리적으로 설명함."</em>
+              </p>
+            </div>
+
+            <!-- 예시 3: 진로 및 생태전환 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem;">
+              <strong style="color:#2563eb;">[예시 3: 생태전환 및 양자 공학 진로 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"비커와 시험관 없이 컴퓨터 안에서 분자를 시뮬레이션하는 '양자 계산 화학'의 친환경적 가치에 주목함. 전 세계 전력의 2%를 소비하는 전통 비료 공정의 환경 문제를 조사하고, 콩과 식물 뿌리혹박테리아의 상온 질소 고정 효소를 양자 컴퓨터로 모사하는 미래 스타트업 기획서를 완성도 높게 발표함. 첨단 과학기술이 인류의 지속가능한 삶과 기후 위기 극복에 미치는 선한 영향력을 체감하고, 미래 양자 알고리즘 개발자로 성장하겠다는 구체적인 진로 로드맵을 구축함."</em>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/sidebar.js"></script>
+  <script>
+    renderSidebar('quantum', 'curriculum');
+  </script>
+</body>
+</html>

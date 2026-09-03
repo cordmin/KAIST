@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAIST CPRL 원천 연구 소개 - 광화학 및 양자 컴퓨팅</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .research-hero {
+      background: var(--color-pure-white);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--color-charcoal);
+      color: var(--color-charcoal);
+      padding: 2.5rem 2.25rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .research-card {
+      background: var(--color-pure-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--color-charcoal);
+    }
+    .paper-item {
+      background: #faf9f8;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1.1rem;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+    }
+    .paper-title-tag {
+      font-weight: 600;
+      color: var(--color-charcoal);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .paper-journal-tag {
+      color: var(--color-notion-blue);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .bridge-indicator {
+      background: #fdfdfd;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--color-notion-blue);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem 1.1rem;
+      margin-top: 1.25rem;
+      color: var(--color-graphite);
+    }
+    @media (max-width: 768px) {
+      .research-grid { grid-template-columns: 1fr; }
+      .research-hero { padding: 1.75rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem;">
+    
+    <!-- Top Navigation -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+      <a href="index.html" class="topbar-btn">플랫폼 홈으로</a>
+      <div style="display:flex; gap:0.6rem;">
+        <a href="참고자료/KAIST_CPRL_원천연구_학술해설_및_중학수업_브릿지_교사참고자료.html" target="_blank" class="topbar-btn primary">교사용 학술 배경 자료 전문 열람 ↗</a>
+        <a href="http://singlet.kaist.ac.kr" target="_blank" class="topbar-btn">CPRL 연구실 공식 홈페이지 ↗</a>
+      </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <header class="research-hero">
+      <span class="badge" style="margin-bottom:0.75rem;">KAIST Department of Chemistry · Rhee Group</span>
+      <h1 style="font-size:2rem; font-weight:700; line-height:1.3; margin-bottom:0.75rem; color:var(--color-charcoal);">
+        KAIST CPRL 원천 연구 소개<br>
+        <span style="color:var(--color-stone); font-size:1.25rem; font-weight:500;">최첨단 광화학 및 양자 컴퓨팅 연구에서 중학교 과학 교육과정까지</span>
+      </h1>
+      <p style="font-size:0.96rem; color:var(--color-graphite); line-height:1.7; max-width:850px; margin-bottom:1.25rem;">
+        <strong>"We develop and apply theoretical and computational tools to understand photochemical phenomena in complex systems."</strong><br>
+        KAIST 화학과 <strong>계산광동역학 연구실(Computational Photodynamics Research Lab, CPRL / 이영민 교수)</strong>은 복잡한 분자계에서 일어나는 빛과 물질의 상호작용, 비단열 여기 상태 동역학, 그리고 차세대 양자 컴퓨팅 알고리즘을 선도적으로 연구하고 있습니다.
+      </p>
+      <div style="background:#faf9f8; border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.9rem 1.15rem; font-size:0.88rem; color:var(--color-graphite);">
+        <strong>파견 교사의 미션:</strong> CPRL 연구진이 수행하는 첨단 광화학 및 양자 계산 이론을 대한민국 2022 개정 중학교 과학과 교육과정(빛과 파동, 물질의 구성, 전기와 자기, 화학 반응의 규칙성)에 체계적으로 연계하여, 일선 학교 현장에서 구현 가능한 실천적 탐구 수업 프로그램을 개발합니다.
+      </div>
+    </header>
+
+    <!-- Two Core Research Themes Section -->
+    <h2 style="font-size:1.45rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.4rem;">
+      CPRL 2대 원천 연구와 중학교 교육과정 연계
+    </h2>
+    <p style="color:var(--color-stone); font-size:0.92rem; margin-bottom:1.75rem;">
+      본 플랫폼의 두 가지 핵심 수업 패키지(OLED, 양자컴퓨터)는 CPRL 연구실의 실제 최신 학술 논문과 원천 이론에 기초하여 기획되었습니다.
+    </p>
+
+    <div class="research-grid">
+      
+      <!-- Theme 1: OLED & Photodynamics -->
+      <div class="research-card">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+            <span class="badge">원천 주제 01 · 광물리 & 여기상태</span>
+            <span style="font-size:0.8rem; color:var(--color-stone);">http://singlet.kaist.ac.kr/research</span>
+          </div>
+          <h3 style="font-size:1.25rem; font-weight:700; color:var(--color-notion-blue); line-height:1.3; margin-bottom:0.6rem;">
+            유기 반도체의 스핀 통계 한계 극복과 핫 엑시톤(Hot Exciton) 광물리
+          </h3>
+          <p style="font-size:0.9rem; color:var(--color-graphite); line-height:1.7;">
+            OLED 발광층에 전기가 주입될 때 양자 스핀 통계에 의해 <strong>빛을 내는 단일항(Singlet)은 25%만 생성되고, 75%는 비상문이 잠긴 삼중항(Triplet)에 갇혀 모조리 열로 소실</strong>됩니다. 
+            CPRL 연구실은 고에너지 들뜬 삼중항($T_2$) 옥상에서 단일항($S_1$)으로 초고속 역간교차(RISC)를 일으켜 <strong>75%의 버려지던 전자를 100% 빛으로 구출하는 '핫 엑시톤(Hot Exciton)' 메커니즘</strong>과 비단열 스핀-궤도-진동 결합(Vibronic SOC)을 연구합니다.
+          </p>
+
+          <h4 style="font-size:0.92rem; font-weight:600; color:var(--color-charcoal); margin:1.25rem 0 0.5rem;">CPRL 대표 원천 논문 (Publications)</h4>
+          
+          <div class="paper-item">
+            <span class="paper-title-tag">Effect of Perturbative Vibronic Correction for Spin–Orbit Coupling in Hot Exciton OLED Systems</span>
+            <span style="font-size:0.82rem; color:var(--color-stone);">H. Choi, S. W. Park, <strong>Y. M. Rhee*</strong></span><br>
+            <span class="paper-journal-tag">J. Phys. Chem. A 130, 758–766 (2026) · DOI: 10.1021/acs.jpca.5c05378</span>
+          </div>
+
+          <div class="paper-item">
+            <span class="paper-title-tag">Overcoming the Limitation of Spin Statistics in OLEDs: Hot Exciton Mechanism and Its Characterization</span>
+            <span style="font-size:0.82rem; color:var(--color-stone);">S. W. Park, D. Kim, <strong>Y. M. Rhee*</strong></span><br>
+            <span class="paper-journal-tag">Int. J. Mol. Sci. 24, 12362 (2023) · DOI: 10.3390/ijms241512362</span>
+          </div>
+
+          <!-- Bridge Box -->
+          <div class="bridge-indicator">
+            <strong style="color:var(--color-charcoal); font-size:0.88rem; display:block; margin-bottom:0.25rem;">중학교 과학 수업으로의 전이 (Pedagogical Bridge)</strong>
+            <p style="font-size:0.88rem; color:var(--color-graphite); margin:0; line-height:1.6;">
+              복잡한 스핀 섭동 수식 대신 <strong>자외선 형광 탐정단 ➔ 전자의 에너지 계단 점프(흡수-진동열-형광) ➔ 회전 팽이 스핀(단일항 25% vs 삼중항 75%) ➔ 스마트폰 배터리 손실과 KAIST 옥상 우회로</strong>라는 직관적 입자 모형과 비유로 재구성하여 중2 과학 &lt;빛과 파동&gt;, &lt;물질의 구성&gt;, &lt;전기와 자기&gt; 단원에 접목하였습니다.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.82rem; color:var(--color-stone);">수업 패키지 01</span>
+          <a href="index.html#oled/lesson-plan" class="topbar-btn primary">OLED 수업 패키지 열기 ➔</a>
+        </div>
+      </div>
+
+      <!-- Theme 2: Quantum Computing & VQE -->
+      <div class="research-card">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+            <span class="badge">원천 주제 02 · 양자 정보 & 전자구조</span>
+            <span style="font-size:0.8rem; color:var(--color-stone);">http://singlet.kaist.ac.kr/research</span>
+          </div>
+          <h3 style="font-size:1.25rem; font-weight:700; color:#5e5ce6; line-height:1.3; margin-bottom:0.6rem;">
+            양자 컴퓨터 기반 전자구조 계산과 하이브리드 VQE 알고리즘
+          </h3>
+          <p style="font-size:0.9rem; color:var(--color-graphite); line-height:1.7;">
+            다전자 분자에서 전자 간 반발력과 얽힘으로 인해 양자 상태 수가 기하급수적으로 폭발($2^N$)하여, 슈퍼컴퓨터로도 카페인이나 페니실린 같은 작은 분자조차 계산할 수 없는 <strong>'지수 폭발(Exponential Complexity)'</strong> 한계에 부딪힙니다. 
+            CPRL 연구실은 <strong>이온 트랩(Trapped-ion) 양자 하드웨어</strong> 상에서 전자쌍 상관을 시뮬레이션하고, 고전 컴퓨터와 양자 컴퓨터가 협력하는 <strong>VQE(변분 양자 고유값 계산기) 알고리즘</strong>을 개발하여 화학적 정확도로 분자 바닥 상태 결합을 예측합니다.
+          </p>
+
+          <h4 style="font-size:0.92rem; font-weight:600; color:var(--color-charcoal); margin:1.25rem 0 0.5rem;">CPRL 대표 원천 논문 (Publications)</h4>
+          
+          <div class="paper-item">
+            <span class="paper-title-tag">Enhancing the electron pair approximation with measurements on trapped-ion quantum computers</span>
+            <span style="font-size:0.82rem; color:var(--color-stone);">L. Zhao, Q. Wang, ..., <strong>Y. M. Rhee*</strong>, K. Kim*</span><br>
+            <span class="paper-journal-tag">npj Quantum Information 10, 76 (2024) · DOI: 10.1038/s41534-024-00871-4</span>
+          </div>
+
+          <div class="paper-item">
+            <span class="paper-title-tag">Variational quantum eigensolver for closed-shell molecules with non-bosonic corrections</span>
+            <span style="font-size:0.82rem; color:var(--color-stone);">K. Kim, ..., G. Lee, ..., J. K. Rhee, <strong>Y. M. Rhee*</strong></span><br>
+            <span class="paper-journal-tag">Phys. Chem. Chem. Phys. (PCCP) 26, 8390–8396 (2024) · DOI: 10.1039/D3CP05646H</span>
+          </div>
+
+          <div class="paper-item">
+            <span class="paper-title-tag">Orbital-optimized pair-correlated electron simulations on trapped-ion quantum computers</span>
+            <span style="font-size:0.82rem; color:var(--color-stone);">L. Zhao, ..., J. K. Rhee, <strong>Y. M. Rhee*</strong>, ..., J. Kim, S. Johri</span><br>
+            <span class="paper-journal-tag">npj Quantum Information 9, 60 (2023) · DOI: 10.1038/s41534-023-00730-8</span>
+          </div>
+
+          <!-- Bridge Box -->
+          <div class="bridge-indicator">
+            <strong style="color:var(--color-charcoal); font-size:0.88rem; display:block; margin-bottom:0.25rem;">중학교 과학 수업으로의 전이 (Pedagogical Bridge)</strong>
+            <p style="font-size:0.88rem; color:var(--color-graphite); margin:0; line-height:1.6;">
+              복잡한 파동함수 연산 대신 <strong>체스판 쌀알 퀴즈와 지수 폭발 체험 ➔ 책상 위 동전 팽이와 큐비트 중첩(동시 병렬 처리) ➔ 2인 3각 VQE 알고리즘 역할극(골짜기 바닥 상태 찾기) ➔ 청소년 양자 화학 스타트업 프로젝트</strong>로 재구성하여 중3 &lt;화학 반응의 규칙성&gt; 및 정보과 &lt;데이터와 알고리즘&gt;에 연결하였습니다.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem; border-top:1px solid var(--border); padding-top:1rem; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.82rem; color:var(--color-stone);">수업 패키지 02</span>
+          <a href="index.html#quantum/lesson-plan" class="topbar-btn" style="background:#5e5ce6; color:#ffffff; font-weight:500; border:none;">양자 수업 패키지 열기 ➔</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 교사용 심층 자료 열람 배너 -->
+    <div class="card" style="background:var(--color-pure-white); border:1px solid var(--border); border-left:4px solid var(--color-notion-blue); padding:1.75rem 2rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem;">
+        <div>
+          <span class="badge" style="margin-bottom:0.4rem;">교재 연구 전문 자료</span>
+          <h3 style="font-size:1.25rem; font-weight:700; margin:0.4rem 0 0.2rem; color:var(--color-charcoal);">
+            KAIST CPRL 원천 연구 심층 학술 해설 및 중학 수업 브릿지 가이드
+          </h3>
+          <p style="font-size:0.9rem; color:var(--color-graphite); margin:0; line-height:1.6; max-width:750px;">
+            연구원 수준의 양자광물리(스핀 다중도, 비단열 결합, 핫 엑시톤 RISC) 및 양자컴퓨팅(FCI 지수 폭발, 큐비트 중첩, 이온트랩 VQE 루프) 학술 원리와 교사용 수업 지도 팁을 집대성한 전문 문서입니다.
+          </p>
+        </div>
+        <a href="참고자료/KAIST_CPRL_원천연구_학술해설_및_중학수업_브릿지_교사참고자료.html" target="_blank" class="topbar-btn primary" style="font-weight:600; padding:0.65rem 1.25rem;">
+          전문 열람 및 A4 인쇄 ➔
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

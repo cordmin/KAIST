@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[교사 도움 자료] 양자 컴퓨터와 계산 화학의 미래 - KAIST 첨단과학 탐구</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Shared Sidebar -->
+    <aside class="sidebar" id="app-sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+          <span class="current-view-title">💡 [교사 도움 자료] 활동지 모범답안 및 지도 팁</span>
+        </div>
+        <div class="topbar-actions">
+          <a href="worksheet.html" class="topbar-btn">📝 학생활동지 원본</a>
+          <a href="lesson-plan.html" class="topbar-btn">📋 교사용 지도안</a>
+          <button class="topbar-btn primary" onclick="window.print()">🖨️ 도움자료 A4 인쇄</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #059669, #10b981);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">교사용 수업 보조 및 평가 도움자료</div>
+            <div class="section-header-title">4. 교사 도움 자료: 탐구 활동 모범답안 및 지도 가이드</div>
+          </div>
+
+          <!-- 탐구 1 모범 답안 -->
+          <div style="margin-top:1.25rem;">
+            <h3 style="color:#7c3aed; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #ede9fe; padding-bottom:0.4rem;">
+              【탐구 1】 원자 레고 퍼즐과 지수 폭발 체험표 예시 답안
+            </h3>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">물질명</th>
+                  <th style="width:15%;">화학식</th>
+                  <th style="width:15%;">전자 수 ($N$)</th>
+                  <th style="width:25%;">계산해야 할 상태 수 ($2^N$)</th>
+                  <th style="width:25%;">일반 슈퍼컴퓨터의 계산 소요 시간</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>수소 원자</strong></td>
+                  <td>$H$</td>
+                  <td>1개</td>
+                  <td><strong class="model-answer">$2^1 = 2$ 가지</strong></td>
+                  <td>0.000001초 (즉시 계산)</td>
+                </tr>
+                <tr>
+                  <td><strong>물 분자</strong></td>
+                  <td>$H_2O$</td>
+                  <td>10개</td>
+                  <td><strong class="model-answer">$2^{10} = 1,024$ 가지</strong></td>
+                  <td>약 0.001초 (즉시 계산)</td>
+                </tr>
+                <tr>
+                  <td><strong>카페인 분자</strong></td>
+                  <td>$C_8H_{10}N_4O_2$</td>
+                  <td>102개</td>
+                  <td><strong class="model-answer">$2^{102} \approx 10^{30}$ 가지</strong></td>
+                  <td><strong class="model-answer">수백 년 이상 소요 (지구 모든 모래알 $10^{23}$개 초과!)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>페니실린(항생제)</strong></td>
+                  <td>$C_{16}H_{18}N_2O_4S$</td>
+                  <td>약 280개</td>
+                  <td><strong class="model-answer">$2^{280} \approx 10^{84}$ 가지</strong></td>
+                  <td><strong class="model-answer">우주 나이(138억 년) 동안 계산해도 불가 (우주 전체 원자 수 $10^{80}$개 초과!)</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 슈퍼컴퓨터의 한계와 지수 폭발 서술</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              분자 속 전자가 1개 늘어날 때마다 계산해야 하는 양자역학적 상태의 수가 2배씩 곱해지는 <strong>'지수 폭발($2^N$)'</strong>이 발생하기 때문입니다. 전자가 100개만 넘어가도 조합의 수가 지구상 모든 모래알의 수($10^{23}$)나 전 우주의 모든 원자 수($10^{80}$)를 아득히 뛰어넘어, 현존하는 가장 강력한 슈퍼컴퓨터로도 화학 분자의 전자 구름을 계산하는 것이 물리적으로 불가능합니다.
+            </div>
+          </div>
+
+          <!-- 탐구 2 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#2563eb; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #dbeafe; padding-bottom:0.4rem;">
+              【탐구 2】 동전 팽이 실험과 0과 1의 양자 중첩 예시 답안
+            </h3>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">비교 항목</th>
+                  <th style="width:40%;">고전 비트 (Bit)</th>
+                  <th style="width:40%;">양자 큐비트 (Qubit)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>동전 비유</strong></td>
+                  <td>바닥에 가만히 누워 있는 동전</td>
+                  <td>책상 위에서 팽이처럼 빠르게 도는 동전</td>
+                </tr>
+                <tr>
+                  <td><strong>정보의 표현</strong></td>
+                  <td>0 또는 1 중 (<strong class="model-answer">&nbsp;단 한 개만&nbsp;</strong>) 선택</td>
+                  <td>0과 1이 (<strong class="model-answer">&nbsp;둘 다 동시에&nbsp;</strong>) 섞인 <strong>중첩</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>10개 사용 시 정보 처리</strong></td>
+                  <td>1,024개 길 중 (<strong class="model-answer">&nbsp;1&nbsp;</strong>)개씩 순서대로 검사</td>
+                  <td>1,024개 길을 (<strong class="model-answer">&nbsp;단 한 번에 동시에&nbsp;</strong>) 동시 탐색!</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 미로 찾기 비유</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              일반 컴퓨터(비트)는 미로를 탐색할 때 한 사람이 한 갈래 길씩 끝까지 가보고 벽에 막히면 되돌아 나오는 <strong>'순차 탐색'</strong> 방식입니다. 반면 양자 컴퓨터(큐비트)는 중첩의 성질을 이용하여 <strong>1,024명의 분신이 모든 갈래 길을 '동시에 단 한 번에' 쏟아져 들어가서</strong> 출구를 즉각 발견하는 <strong>'동시 병렬 처리'</strong> 방식입니다.
+            </div>
+          </div>
+
+          <!-- 탐구 3 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#059669; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #d1fae5; padding-bottom:0.4rem;">
+              【탐구 3】 환상의 2인 3각 달리기 VQE 알고리즘 예시 답안
+            </h3>
+            
+            <p style="font-size:0.9rem; margin-bottom:0.4rem;"><strong>1. 화학 분자의 결합 상태 빈칸</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
+            </div>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. VQE 협동 순서도 완성</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; text-align:center; font-size:0.95rem;">
+              [ 1단계: <strong>양자 컴퓨터</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( <strong class="model-answer">에너지 값</strong> ) 계산<br>
+              ⬇ 수치 전달<br>
+              [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <strong class="model-answer">미세 조정(최적화)</strong> )<br>
+              ⬇ 반복(피드백 루프)<br>
+              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+            </div>
+          </div>
+
+          <!-- 탐구 4 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#d97706; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #fef3c7; padding-bottom:0.4rem;">
+              【탐구 4】 틴에이저 양자 화학 스타트업 CEO 기획서 예시 산출물
+            </h3>
+            
+            <table class="data-table">
+              <tr>
+                <th style="width:20%;">스타트업 회사명</th>
+                <td style="width:30%;"><strong class="model-answer">퀀텀 카탈리스트 (Quantum Catalyst)</strong></td>
+                <th style="width:20%;">대표 CEO 및 연구팀</th>
+                <td style="width:30%;"><strong class="model-answer">이양자 대표 (양자계산과학자 모둠)</strong></td>
+              </tr>
+              <tr>
+                <th>해결할 지구 난제</th>
+                <td colspan="3">
+                  <strong class="model-answer">[선택 1] 친환경 상온 비료 합성 촉매 설계</strong><br>
+                  (현 비료 공장은 400℃ 고온과 200기압 고압을 쓰며 전 세계 전기의 2%를 소비하고 온실가스를 배출함)
+                </td>
+              </tr>
+              <tr>
+                <th>양자 컴퓨터로 설계할<br>가상 분자 아이디어</th>
+                <td colspan="3">
+                  <strong class="model-answer">
+                    • 콩과 식물 뿌리혹박테리아의 질소고정효소(니트로게나아제) 활성 중심인 철-몰리브덴(Fe-Mo) 클러스터의 전자 결합을 양자 컴퓨터로 정밀 시뮬레이션함.<br>
+                    • 상온·상압에서도 공기 중의 질소($N_2$) 삼중결합을 부드럽게 끊어내는 인공 금속 유기 촉매 분자를 컴퓨터 안에서 가상 합성함.
+                  </strong>
+                </td>
+              </tr>
+              <tr>
+                <th>사회적 및 생태적<br>기대 효과</th>
+                <td colspan="3">
+                  <strong class="model-answer">
+                    • 100년 된 고에너지 소비 하버-보슈 공정을 완전 대체하여 전 세계 이산화탄소 배출량의 1.5%를 감축.<br>
+                    • 저렴하고 안전한 친환경 비료 생산으로 저개발국 식량난 해결 및 농업 탄소 중립 실현.
+                  </strong>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- 지도상 유의점 및 교사 팁 -->
+          <div style="margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;">💡 [지도상 유의점 및 수업 지도 팁]</h3>
+            
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed;">
+              <strong>1. 학생 오개념 지도 요령: "양자 컴퓨터가 나오면 모든 일반 컴퓨터가 사라지나요?"</strong><br>
+              학생들은 양자 컴퓨터가 유튜브 시청이나 게임, 워드 프로세서까지 모두 대체할 것이라고 오해하기 쉽습니다. 양자 컴퓨터는 일상적인 사무 작업용이 아니라, <strong>'분자 시뮬레이션, 거대 조합 최적화, 암호 해독' 등 특수한 병렬 연산에만 특화된 장치</strong>이며, 미래에도 일반 컴퓨터와 양자 컴퓨터가 서로 협력(VQE처럼)하여 공존함을 명확히 지도합니다.
+            </div>
+
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb;">
+              <strong>2. 동전 팽이 조작 실험 팁</strong><br>
+              학생들이 동전을 돌릴 때 책상 밑으로 떨어지지 않도록 책받침이나 평평한 트레이 위에서 돌리도록 안내합니다. "동전이 돌고 있을 때 여러분은 앞면이라고 단정할 수 있나요, 뒷면이라고 단정할 수 있나요?"라는 발문을 통해 <strong>'측정하기 전에는 0과 1이 공존하는 중첩 상태'</strong>임을 체감하도록 유도합니다.
+            </div>
+
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#10b981;">
+              <strong>3. 가상실험실(lab.html) 연계 안내</strong><br>
+              2차시 수업에서는 <strong>[블록 구 큐비트 시뮬레이터]</strong>를 통해 0과 1의 확률을 조작해보고, 3차시 수업에서는 <strong>[VQE 에너지 최적화 시뮬레이터]</strong>를 조작하여 두 원자 사이의 거리가 좁아졌다가 넓어지며 에너지가 가장 낮은 골짜기 바닥에 쏙 들어가는 장면을 직관적으로 확인하도록 지도합니다.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/sidebar.js"></script>
+  <script>
+    renderSidebar('quantum', 'teacher-guide');
+  </script>
+</body>
+</html>
