@@ -163,58 +163,85 @@ body {
   color: var(--color-stone);
 }
 
-/* Package Switcher Buttons in Sidebar */
-.pkg-switcher-wrapper {
-  padding: 1.15rem 1.15rem 0.9rem;
-  border-bottom: 1px solid var(--border);
+/* Chrome Tab Package Container */
+.pkg-tab-container {
+  padding: 0.75rem 0.75rem 0.5rem;
   background: var(--sidebar-bg);
 }
 
-.pkg-switcher-title {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--color-stone);
-  text-transform: uppercase;
-  margin-bottom: 0.45rem;
-  letter-spacing: 0.5px;
-}
-
 .pkg-switch-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.35rem;
-  background: rgba(0, 0, 0, 0.05);
-  padding: 3px;
-  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  background: transparent;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
 }
 
 .pkg-btn {
-  border: none;
-  background: transparent;
-  padding: 0.45rem 0.5rem;
-  border-radius: var(--radius-sm);
+  flex: 1;
+  height: 38px;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: #eae8e5;
+  padding: 0 0.35rem;
+  border-radius: 8px 8px 0 0;
   font-size: 0.82rem;
   font-weight: 500;
-  color: var(--color-stone);
+  color: #71717a;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s ease;
+  gap: 0.35rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
   text-decoration: none;
   white-space: nowrap;
+  position: relative;
+  margin-bottom: -1px;
+  z-index: 1;
+}
+
+.pkg-btn::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  height: 3px;
+  border-radius: 8px 8px 0 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pkg-btn.active::before {
+  opacity: 1;
+}
+
+.pkg-btn.oled::before {
+  background-color: var(--color-notion-blue);
+}
+
+.pkg-btn.quantum::before {
+  background-color: #5e5ce6;
 }
 
 .pkg-btn:hover {
+  background: #f2f0ee;
   color: var(--color-charcoal);
-  background: rgba(255, 255, 255, 0.5);
 }
 
 .pkg-btn.active {
   background: var(--color-pure-white);
   color: var(--color-charcoal);
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-weight: 700;
+  border-color: var(--border);
+  border-bottom-color: var(--color-pure-white);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.04);
+  z-index: 3;
 }
 
 .pkg-btn.oled.active {
@@ -223,6 +250,27 @@ body {
 
 .pkg-btn.quantum.active {
   color: #5e5ce6;
+}
+
+/* Chrome Tab Body Panel — Wrapping & Enclosing the Package Menu */
+.pkg-tab-panel {
+  background: var(--color-pure-white);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  padding: 0.55rem 0.45rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pkg-tab-panel .nav-item {
+  border-radius: var(--radius-sm);
+  padding: 0.48rem 0.65rem;
+  font-size: 0.86rem;
 }
 
 /* Sidebar Nav Links — Clean, Minimal, No Badges */
@@ -291,6 +339,114 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
+/* Sidebar Project & Partnership Header (StarBridge 2.0) */
+.sidebar-project-header {
+  padding: 0.85rem 0.8rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--sidebar-bg);
+}
+
+.project-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  padding: 0 0.1rem;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(0, 117, 222, 0.08);
+  color: var(--color-notion-blue);
+  font-size: calc(0.72rem + 1px);
+  font-weight: 700;
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+/* Sidebar CPRL Mascot Integrated Card (Outer Mascot Card Enclosing Inner White Card) */
+.cprl-mascot-card {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 117, 222, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 75, 160, 0.12);
+  display: flex;
+  flex-direction: column;
+  padding: 152px 10px 12px 10px;
+  box-sizing: border-box;
+  background-color: #0268c4;
+}
+
+.cprl-mascot-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cprl-inner-card {
+  position: relative;
+  z-index: 2;
+  background: var(--color-pure-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 0.65rem 0.55rem 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 20, 60, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.project-research-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.research-menu-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-stone);
+  letter-spacing: 0.3px;
+  padding: 0.1rem 0.45rem 0.2rem;
+}
+
+.project-research-menu .nav-item {
+  border-radius: var(--radius-sm);
+  padding: 0.42rem 0.55rem;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition: all 0.12s ease;
+}
+
+.project-research-menu .nav-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-charcoal);
+}
+
+.project-research-menu .nav-item.active {
+  background: rgba(0, 117, 222, 0.08);
+  color: var(--color-notion-blue);
+  font-weight: 700;
+}
+
 
 /* Main Content Area */
 .main-content {
@@ -628,7 +784,7 @@ body.in-iframe .content-container {
 
 /* Print Styles */
 @media print {
-  .sidebar, .topbar, .topbar-actions, .sidebar-toggle-btn, .pkg-switcher-wrapper, .no-print, .print-btn {
+  .sidebar, .topbar, .topbar-actions, .sidebar-toggle-btn, .pkg-switcher-wrapper, .pkg-tab-container, .no-print, .print-btn {
     display: none !important;
   }
   .main-content {
@@ -816,3 +972,142 @@ h3.sub-heading {
 .paper-authors { font-size: 0.84rem; color: var(--color-stone); margin-bottom: 0.25rem; }
 .paper-journal { font-size: 0.84rem; font-weight: 500; color: var(--color-notion-blue); font-family: var(--font-mono); }
 .paper-desc { font-size: 0.88rem; color: var(--color-graphite); margin-top: 0.5rem; line-height: 1.65; }
+
+/* ==========================================================================
+   CPRL Research Area Chrome Tab Cards
+   ========================================================================== */
+.chrome-card {
+  background: var(--color-pure-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.chrome-card:hover {
+  border-color: rgba(0, 0, 0, 0.16);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.chrome-tab-bar {
+  background: #e9ebef;
+  border-bottom: 1px solid #d1d5db;
+  padding: 8px 12px 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 42px;
+}
+
+.chrome-tab-item {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-bottom: 1px solid #ffffff;
+  border-radius: 9px 9px 0 0;
+  padding: 6px 12px 7px 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: -1px;
+  position: relative;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.04);
+  z-index: 2;
+}
+
+.chrome-tab-item::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  height: 3px;
+  border-radius: 9px 9px 0 0;
+}
+
+.chrome-tab-item.tab-blue::before { background: #0075de; }
+.chrome-tab-item.tab-green::before { background: #10b981; }
+.chrome-tab-item.tab-purple::before { background: #5e5ce6; }
+
+.chrome-tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.tab-blue .chrome-tab-dot { background: #0075de; box-shadow: 0 0 0 2px rgba(0, 117, 222, 0.2); }
+.tab-green .chrome-tab-dot { background: #10b981; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2); }
+.tab-purple .chrome-tab-dot { background: #5e5ce6; box-shadow: 0 0 0 2px rgba(94, 92, 230, 0.2); }
+
+.chrome-tab-title {
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  letter-spacing: -0.2px;
+}
+
+.chrome-tab-close {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-left: 4px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  cursor: default;
+  transition: all 0.15s ease;
+}
+
+.chrome-tab-close:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #ef4444;
+}
+
+.chrome-tab-sub {
+  font-size: 0.76rem;
+  font-family: var(--font-mono, monospace);
+  font-weight: 600;
+  color: #4b5563;
+  padding-bottom: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+.chrome-card-body {
+  padding: 1.45rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  background: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .chrome-tab-bar {
+    padding: 6px 8px 0;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .chrome-tab-sub {
+    font-size: 0.72rem;
+    padding-bottom: 4px;
+  }
+  .chrome-card-body {
+    padding: 1.15rem 1.15rem 1.25rem;
+  }
+}
+
+
+
