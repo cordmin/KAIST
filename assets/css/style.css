@@ -50,8 +50,8 @@
   --font-serif: 'Newsreader', 'Lyon Text', Georgia, "Noto Serif KR", serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Layout & Spacing (Sidebar widened by ~20%: 275px * 1.2 = 330px) */
-  --sidebar-w: 330px;
+  /* Layout & Spacing (Sidebar width reduced by 20%: 330px * 0.8 = 264px) */
+  --sidebar-w: 264px;
   --topbar-h: 58px;
   
   /* Border Radii */
@@ -165,7 +165,7 @@ body {
 
 /* Package Switcher Buttons in Sidebar */
 .pkg-switcher-wrapper {
-  padding: 0.85rem 1.15rem;
+  padding: 1.15rem 1.15rem 0.9rem;
   border-bottom: 1px solid var(--border);
   background: var(--sidebar-bg);
 }
@@ -388,10 +388,10 @@ body {
   border-color: var(--primary-hover);
 }
 
-/* Content Container */
+/* Content Container — Widened Layout */
 .content-container {
-  padding: 1.75rem 2.25rem 4rem;
-  max-width: 1240px;
+  padding: 1.5rem 1.75rem 4rem;
+  max-width: 1600px;
   width: 100%;
   margin: 0 auto;
 }
@@ -702,3 +702,117 @@ body.in-iframe .content-container {
     color: #000000 !important;
   }
 }
+
+/* ==========================================================================
+   Academic Guide Document Styles (Inlined)
+   ========================================================================== */
+.doc-container {
+  max-width: 100%;
+  margin: 0 auto;
+  background: var(--color-pure-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 3rem 2.5rem;
+}
+.doc-badge {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-stone);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+}
+h1.doc-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-charcoal);
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+.doc-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-stone);
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+  line-height: 1.65;
+}
+.meta-box {
+  background: #faf9f8;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  font-size: 0.88rem;
+}
+.meta-item strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--color-stone);
+}
+h2.section-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-charcoal);
+  margin: 2.25rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+h3.sub-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-notion-blue);
+  margin: 1.5rem 0 0.75rem;
+}
+.theory-card {
+  background: #faf9f8;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--color-notion-blue);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0 1.5rem;
+  color: var(--color-graphite);
+}
+.theory-card.oled { border-left-color: var(--color-notion-blue); }
+.theory-card.quantum { border-left-color: #5e5ce6; }
+.bridge-box {
+  background: #fdfdfd;
+  border: 1px solid var(--border);
+  border-left: 4px solid #198754;
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
+  color: var(--color-graphite);
+}
+.bridge-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #198754;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.paper-entry {
+  background: #faf9f8;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.15rem;
+  margin-bottom: 1rem;
+}
+.paper-title { font-weight: 600; color: var(--color-charcoal); font-size: 0.95rem; margin-bottom: 0.25rem; }
+.paper-authors { font-size: 0.84rem; color: var(--color-stone); margin-bottom: 0.25rem; }
+.paper-journal { font-size: 0.84rem; font-weight: 500; color: var(--color-notion-blue); font-family: var(--font-mono); }
+.paper-desc { font-size: 0.88rem; color: var(--color-graphite); margin-top: 0.5rem; line-height: 1.65; }

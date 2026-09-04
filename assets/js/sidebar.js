@@ -21,17 +21,6 @@ function renderSidebar(pkg, currentKey) {
   const validKey = currentKey === 'overview' ? 'lesson-plan' : currentKey;
 
   sidebarEl.innerHTML = `
-    <div class="sidebar-header">
-      <a href="../index.html" class="logo-area">
-        <span class="logo-badge">KAIST</span>
-        <div>
-          <div class="logo-title">첨단과학 탐구실험</div>
-          <div class="logo-sub">2022 개정 중학교 과학</div>
-        </div>
-      </a>
-      <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="사이드바 닫기 (단축키: [)">◀</button>
-    </div>
-
     <div class="pkg-switcher-wrapper">
       <div class="pkg-switcher-title">수업 패키지 선택</div>
       <div class="pkg-switch-group">
@@ -47,7 +36,6 @@ function renderSidebar(pkg, currentKey) {
     </div>
 
     <nav class="sidebar-nav">
-      <div class="nav-category">${isOled ? '수업 모듈: OLED' : '수업 모듈: 양자컴퓨터'}</div>
       ${pages.map(p => {
         const isActive = p.key === currentKey;
         const activeClass = isActive ? (isOled ? 'active' : 'quantum-active active') : '';

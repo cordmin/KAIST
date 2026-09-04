@@ -140,18 +140,8 @@
 <body>
 
   <div class="app-layout">
-    <!-- Master Notion-Style Sidebar (Widened to 330px, Badges Removed, Clean) -->
+    <!-- Master Notion-Style Sidebar (264px, Badges Removed, Clean) -->
     <aside class="sidebar" id="app-sidebar">
-      <div class="sidebar-header">
-        <div class="logo-area" style="cursor:pointer;" onclick="setAppState('oled', 'lesson-plan')">
-          <span class="logo-badge">KAIST</span>
-          <div>
-            <div class="logo-title">첨단과학 탐구실험</div>
-            <div class="logo-sub">2022 개정 중학교 과학</div>
-          </div>
-        </div>
-        <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="사이드바 닫기 (단축키: [)">◀</button>
-      </div>
 
       <!-- 1-Click Package Switcher -->
       <div class="pkg-switcher-wrapper">
@@ -168,7 +158,6 @@
 
       <!-- Navigation Links (No badges, clean minimal labels) -->
       <nav class="sidebar-nav">
-        <div class="nav-category" id="nav-category-pkg-title">수업 모듈: OLED</div>
         
         <a href="javascript:void(0)" class="nav-item active" id="nav-item-lesson-plan" onclick="switchView('lesson-plan')">
           <span class="nav-text">교사용 지도안</span>
@@ -209,17 +198,6 @@
 
     <!-- Main Dynamic Content Workspace -->
     <main class="main-content">
-      <header class="topbar">
-        <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
-          <span class="current-view-title" id="topbar-title">01. OLED: 교사용 지도안</span>
-        </div>
-        <div class="topbar-actions">
-          <button class="topbar-btn" id="btn-quick-switch" onclick="togglePackageQuick()">02. 양자컴퓨터로 전환</button>
-          <button class="topbar-btn primary" onclick="window.print()">A4 인쇄</button>
-        </div>
-      </header>
-
       <div class="content-container">
 
         <!-- ========================================== -->
@@ -278,22 +256,232 @@
         <!-- 2. CPRL 교사용 심층 학술자료 VIEW         -->
         <!-- ========================================== -->
         <section id="view-cprl-academic" class="content-view">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="card-title">교사용 심층 학술자료: CPRL 원천 연구 해설 및 중학 수업 브릿지 가이드</h2>
-              <span class="badge">파견 교사용 전문 지침서</span>
-            </div>
-            <p style="font-size:0.92rem; color:var(--color-graphite); line-height:1.75;">
-              본 자료는 교재 연구 및 수업 설계를 위해 작성된 교사용 전문 지침서입니다. 복잡한 수식 이면의 물리화학적 본질을 파악하고, 학생들에게 직관적인 비유로 전달할 수 있는 상세한 브릿지 전략과 서지 정보를 담고 있습니다.
-            </p>
-            <div style="display:flex; gap:0.75rem; margin:1rem 0;">
-              <a href="참고자료/KAIST_CPRL_원천연구_학술해설_및_중학수업_브릿지_교사참고자료.html" target="_blank" class="topbar-btn primary">
-                독립 새 창으로 열기 (A4 인쇄용) ↗
-              </a>
-            </div>
-            <iframe src="참고자료/KAIST_CPRL_원천연구_학술해설_및_중학수업_브릿지_교사참고자료.html" style="width:100%; height:750px; border:1px solid var(--border); border-radius:var(--radius-md); margin-top:0.5rem; background:#ffffff;"></iframe>
-          </div>
-        </section>
+<div class="doc-container">
+    
+    <div class="doc-badge">KAIST CPRL 파견 교사 전용 · 교재 연구 및 학술 배경 자료</div>
+    <h1 class="doc-title">KAIST CPRL 원천 연구 심층 학술 해설 및<br>중학교 과학 교육과정 브릿지 가이드</h1>
+    <div class="doc-subtitle">
+      한국과학기술원(KAIST) 화학과 계산광동역학 연구실(Computational Photodynamics Research Lab, CPRL / 이영민 교수)의 광화학 및 양자 컴퓨팅 원천 연구를 중학교 과학교육으로 전이하기 위한 교사용 전문 지침서
+    </div>
+
+    <!-- 문서 메타 정보 박스 -->
+    <div class="meta-box">
+      <div class="meta-item">
+        <strong>연구실 명칭</strong>
+        KAIST CPRL (이영민 교수)
+      </div>
+      <div class="meta-item">
+        <strong>연구실 홈페이지</strong>
+        <a href="http://singlet.kaist.ac.kr" target="_blank" style="color:var(--color-notion-blue); text-decoration:none;">http://singlet.kaist.ac.kr</a>
+      </div>
+      <div class="meta-item">
+        <strong>작성자 / 용도</strong>
+        KAIST 파견 중학교 과학교사 / 교재 연구용
+      </div>
+      <div class="meta-item">
+        <strong>연계 교육과정</strong>
+        2022 개정 중학교 과학과 교육과정
+      </div>
+    </div>
+
+    <!-- 1장: 파견 교사의 미션과 교육과정 개발 철학 -->
+    <h2 class="section-heading">1. 파견 교사의 미션과 교육과정 전이(Pedagogical Transposition) 철학</h2>
+    
+    <p>
+      본 자료는 KAIST 화학과 계산광동역학 연구실(CPRL)에 파견된 중학교 과학교사가 교수님 및 연구진의 원천 연구 성과를 깊이 있게 이해하고, 이를 <strong>2022 개정 교육과정에 부합하는 중학생 수준의 탐구 수업</strong>으로 성공적으로 변환하기 위해 집필된 교사용 심층 연구 자료입니다.
+    </p>
+
+    <div class="theory-card">
+      <h3 style="color:var(--color-charcoal); margin-top:0;">핵심 교육과정 전이 원칙: "수식의 경량화, 개념의 본질화"</h3>
+      <p style="margin-bottom:0.5rem;">
+        대학원 수준의 계산화학 및 비단열 양자역학은 복잡한 다체 슈뢰딩거 방정식, 미분 기하학적 원추교차(Conical Intersection), 스핀-궤도 결합 해밀토니안($\hat{H}_{\text{SO}}$)을 다룹니다. 그러나 이를 중학교 교실로 가져올 때의 핵심은 <strong>"수학적 장벽은 걷어내되, 과학적 인과관계와 자연의 규칙성은 100% 보존하는 것"</strong>입니다.
+      </p>
+      <ul style="margin-bottom:0;">
+        <li><strong>현상 기반 도입:</strong> 일상 속 관찰 가능한 현상(토닉워터 형광, 스마트폰 발열, 동전 회전)으로 호기심 촉발.</li>
+        <li><strong>직관적 과학 은유:</strong> 트램펄린 점프(전자 전이), 회전하는 팽이 동전(스핀 중첩), 2인 3각 골짜기 달리기(VQE).</li>
+        <li><strong>교육과정 정합성:</strong> 2022 개정 성취기준(빛의 합성, 원자 모형, 전기에너지 전환, 화학 반응 규칙)과의 완벽한 유기적 결합.</li>
+      </ul>
+    </div>
+
+    <!-- 2장: OLED 및 광화학 연구의 원천 -->
+    <h2 class="section-heading">2. [원천 연구 01] OLED 스핀 통계 한계 극복과 핫 엑시톤(Hot Exciton) 광물리</h2>
+
+    <h3 class="sub-heading">2.1 학술적 배경: 유기 발광 분자의 스핀 통계와 75% 열 손실 딜레마</h3>
+    <p>
+      유기 발광 다이오드(OLED)에서 음극(Cathode)에서 주입된 전자($e^-$)와 양극(Anode)에서 주입된 정공($h^+$)이 발광층의 유기 분자에서 만나 엑시톤(Exciton, 들뜬 전자-정공 쌍)을 형성합니다. 전자는 스핀 양자수 $s=1/2$을 가지므로, 두 스핀이 결합할 때 양자역학적 총 스핀 각운동량 양자수 $S$는 0 또는 1이 됩니다.
+    </p>
+    
+    <div class="theory-card oled">
+      <strong>[양자역학적 스핀 다중도 (Spin Multiplicity, $2S+1$)]</strong><br>
+      • <strong>단일항 (Singlet State, $S=0$):</strong> 스핀 파동함수 $\frac{1}{\sqrt{2}}(\alpha\beta - \beta\alpha)$. 비축퇴(1개 상태, 25% 확률). 바닥 상태($S_0$)와 스핀 다중도가 같아 쌍극자 전이 허용(Dipole Allowed) $\rightarrow$ <strong>$10^{-9}$초(나노초) 단위의 초고속 형광(Fluorescence) 방출!</strong><br>
+      • <strong>삼중항 (Triplet State, $S=1$):</strong> 스핀 파동함수 $\alpha\alpha, \frac{1}{\sqrt{2}}(\alpha\beta + \beta\alpha), \beta\beta$. 3중 축퇴(3개 상태, 75% 확률). 바닥 상태($S_0$)로의 전이가 스핀 금지(Spin-Forbidden) 전이 $\rightarrow$ <strong>상온에서 빛을 내지 못하고 무복사 감쇄(Non-radiative decay)를 통해 모조리 진동 열에너지로 방출!</strong>
+    </div>
+
+    <p>
+      이로 인해 전통적인 1세대 형광 OLED는 전기 에너지를 넣었을 때 <strong>최대 내부 양자 효율(IQE)이 25%</strong>에 묶여 있었으며, 나머지 <strong>75%의 에너지는 디스플레이 발열과 분자 열화를 유발하는 '배터리 도둑'</strong>으로 작용하였습니다.
+    </p>
+
+    <h3 class="sub-heading">2.2 CPRL의 핵심 연구 성과: 핫 엑시톤(Hot Exciton) 및 비단열 스핀 동역학</h3>
+    <p>
+      KAIST CPRL 이영민 교수 연구실은 버려지는 75%의 삼중항 엑시톤을 100% 빛으로 전환(Triplet Harvesting)하기 위한 미시적 메커니즘 규명에 집중하고 있습니다. 기존 3세대 TADF(열활성 지연형광)는 최저 단일항($S_1$)과 최저 삼중항($T_1$) 사이의 에너지 갭($\Delta E_{ST}$)을 0.1 eV 이하로 극소화하여 상온 열에너지로 역간교차(RISC)를 유도하지만, 엑시톤 수명이 길어져 고휘도에서 효율이 급격히 떨어지는 롤오프(Roll-off) 현상과 청색 소자의 화학적 결합 분해 문제가 있었습니다.
+    </p>
+
+    <div class="theory-card oled">
+      <strong>[CPRL의 핫 엑시톤(Hot Exciton) 시스템 비단열 진동 결합 연구]</strong>
+      <p style="margin-top:0.5rem; font-size:0.95rem;">
+        CPRL 연구진은 <strong>고에너지 들뜬 삼중항 준위($T_2$ 이상)</strong>에 주목하였습니다. 전하 재결합 시 고에너지 상태로 생성된 삼중항 전자가 에너지를 잃고 $T_1$으로 이완되기 전에, 높은 옥상 준위에서 최저 들뜬 단일항($S_1$)으로 초고속 역간교차(RISC: $T_2 \to S_1$)를 일으켜 형광으로 방출시키는 통로입니다.
+      </p>
+      <p style="font-size:0.92rem; color:var(--color-stone); margin-bottom:0;">
+        최근 발표된 논문(<em>J. Phys. Chem. A</em> 2026, 130, 758–766)에서는 핫 엑시톤 OLED 시스템에서 <strong>스핀-궤도 결합(Spin-Orbit Coupling, SOC)에 섭동적 진동 결합 보정(Perturbative Vibronic Correction)</strong>을 적용하여, 분자 골격의 미세한 진동 모드가 $T_2 \to S_1$ 스핀 반전 전이를 어떻게 증폭시키는지를 정량적으로 규명하였습니다.
+      </p>
+    </div>
+
+    <!-- 교과 브릿지 박스 1 -->
+    <div class="bridge-box">
+      <div class="bridge-title">교사용 수업 브릿지 전략: OLED 단원</div>
+      <p style="margin-bottom:0.5rem;">
+        <strong>"어려운 양자 상태도($S_0, S_1, T_1, T_2$)를 중학생에게 어떻게 전달할 것인가?"</strong>
+      </p>
+      <ol style="margin-bottom:0; font-size:0.95rem;">
+        <li><strong>원자 속 전자의 트램펄린 점프:</strong> $S_0 \to S_1$ 흡수를 '1층에서 3층 옥상으로 트램펄린 점프'로, 진동 이완을 '불안해서 부르르 떨며 열 흘리기'로, $S_1 \to S_0$ 형광을 '남은 에너지로 알록달록 무지개빛 뿜으며 착지'로 시각화합니다.</li>
+        <li><strong>스핀 팽이 모형:</strong> 단일항을 '서로 마주보고 도는 팽이(↑↓, 비상문 열림, 25%)', 삼중항을 '나란히 도는 팽이(↑↑, 비상문 닫힘, 75%)'로 제시하여 확률 1:3의 직관적 근거를 제공합니다.</li>
+        <li><strong>스마트폰 난로 현상과 KAIST 옥상 구름다리:</strong> 75%가 1층 골방($T_1$)에 갇혀 열을 내기 전에, 2층 옥상($T_2$)에서 단일항($S_1$)으로 건너가는 <strong>'핫 엑시톤 옥상 구름다리'</strong> 은유를 사용하여 100% 효율 달성의 과학적 쾌감을 전달합니다.</li>
+      </ol>
+    </div>
+
+    <!-- 3장: 양자 컴퓨팅 및 계산화학 연구의 원천 -->
+    <h2 class="section-heading">3. [원천 연구 02] 양자 컴퓨팅 기반 전자구조 계산과 VQE 알고리즘</h2>
+
+    <h3 class="sub-heading">3.1 학술적 배경: 다전자 파동함수의 지수 폭발($2^N$)과 고전 컴퓨터의 한계</h3>
+    <p>
+      양자화학의 궁극적 목표는 분자의 전자 해밀토니안에 대한 정상상태 슈뢰딩거 방정식 $\hat{H}|\Psi\rangle = E|\Psi\rangle$을 풀어 분자의 기하 구조, 화학 결합 에너지, 반응 전이 상태를 정확히 예측하는 것입니다. 그러나 원자핵 주위의 전자들은 서로 페르미 통계(파울리 배타 원리)를 따르며 쿨롱 반발력으로 복잡하게 얽혀 있는 <strong>'다체 문제(Many-Body Problem)'</strong>를 형성합니다.
+    </p>
+
+    <div class="theory-card quantum">
+      <strong>[FCI 힐베르트 공간의 조합론적 지수 폭발 (Combinatorial Explosion)]</strong><br>
+      $M$개의 공간 궤도에 $N$개의 전자를 배치하는 완전 입체배치 상호작용(Full Configuration Interaction, FCI)의 슬레이터 결정자(Slater Determinant) 차원은 $\binom{2M}{N_{\alpha}}\binom{2M}{N_{\beta}}$에 달합니다.<br>
+      • 카페인($N=102$)이나 페니실린($N=280$) 분자만 되어도 상태 수가 $10^{30} \sim 10^{84}$를 초과하여, 전 세계 모든 슈퍼컴퓨터의 메모리와 CPU를 동원해도 우주의 나이(138억 년) 동안 계산할 수 없습니다.
+    </div>
+
+    <h3 class="sub-heading">3.2 CPRL의 핵심 연구 성과: 이온 트랩 양자 컴퓨터와 하이브리드 VQE</h3>
+    <p>
+      리처드 파인만이 통찰했듯, 양자역학적 계를 시뮬레이션하는 가장 자연스러운 방법은 <strong>양자역학적 물리계 자체를 연산 소자로 사용하는 것</strong>입니다. CPRL 이영민 교수 연구실은 노이즈가 존재하는 현재의 NISQ 양자 하드웨어를 활용하여 다전자 분자의 결합 에너지를 정밀하게 계산하는 <strong>양자 알고리즘 개발</strong>을 선도하고 있습니다.
+    </p>
+
+    <div class="theory-card quantum">
+      <strong>[CPRL의 양자 컴퓨팅 주요 학술 성과 (npj Quantum Information, PCCP)]</strong>
+      <ul style="margin-top:0.5rem; font-size:0.95rem; margin-bottom:0;">
+        <li>
+          <strong>이온 트랩 양자 컴퓨터 상의 궤도 최적화 전자쌍 상관 시뮬레이션 (<em>npj Quantum Inf.</em> 2023, 2024):</strong><br>
+          듀크대/칭화대 김기환 교수 연구팀과 협력하여, 갇힌 이온(Trapped-ion) 양자 프로세서에서 <strong>전자쌍 근사(Electron Pair Approximation)</strong>를 적용해 큐비트 자원 소모를 혁신적으로 줄이면서 화학적 정확도(Chemical Accuracy, 1 kcal/mol)를 만족하는 분자 에너지 계산을 입증하였습니다.
+        </li>
+        <li>
+          <strong>닫힌 껍질 분자를 위한 VQE 알고리즘 개발 (<em>PCCP</em> 2024, 26, 8390):</strong><br>
+          변분 양자 고유값 계산기(VQE)에 비보손적 보정(Non-bosonic corrections)을 도입하여, 제한된 큐비트 연산 깊이에서도 기저 상태 에너지를 정확히 산출하는 독창적 하이브리드 양자 알고리즘을 개발하였습니다.
+        </li>
+        <li>
+          <strong>양자화학 탐구 교육 도구 'eChem' 개발 (<em>J. Chem. Educ.</em> 2023, 100, 1664):</strong><br>
+          주피터 노트북 기반의 오픈소스 양자화학 교육용 소프트웨어를 개발하여, 학생들이 직접 파이썬 코드로 분자 궤도와 전자 구조를 시뮬레이션할 수 있는 교육 공학적 혁신을 이끌었습니다.
+        </li>
+      </ul>
+    </div>
+
+    <!-- 교과 브릿지 박스 2 -->
+    <div class="bridge-box">
+      <div class="bridge-title">교사용 수업 브릿지 전략: 양자 컴퓨팅 및 계산화학 단원</div>
+      <p style="margin-bottom:0.5rem;">
+        <strong>"중학생에게 힐베르트 공간과 VQE 알고리즘을 어떻게 체감시킬 것인가?"</strong>
+      </p>
+      <ol style="margin-bottom:0; font-size:0.95rem;">
+        <li><strong>체스판과 쌀알 퀴즈:</strong> 64칸 쌀알 퀴즈($2^{63}$)로 거듭제곱의 공포를 체감시킨 뒤, "카페인 전자 102개의 상태($2^{102} \approx 10^{30}$)는 지구의 모든 모래알보다 많다!"는 비유로 슈퍼컴퓨터의 한계를 명쾌히 납득시킵니다.</li>
+        <li><strong>동전 팽이 조작 실험:</strong> 책상 위 정지한 동전(0 또는 1, 비트)과 빠르게 도는 동전 팽이(0과 1의 중첩, 큐비트)를 직접 돌려보게 함으로써, 10개 큐비트가 1,024개 길을 <strong>동시에 단 한 번에 탐색하는 동시 병렬 처리</strong>를 시각화합니다.</li>
+        <li><strong>환상의 2인 3각 역할극:</strong> 양자 컴퓨터(빠른 산골짜기 고도 탐험가)와 일반 컴퓨터(방향을 알려주는 스마트 내비게이션)가 서로 수치를 주고받으며 수소 분자가 최저 바닥 상태(-1.137 a.u., 결합 거리 0.74Å)를 찾아가는 과정을 2인 1조 역할극으로 온몸으로 체득하게 합니다.</li>
+        <li><strong>생태전환적 진로 프로젝트:</strong> "비커 없는 화학 실험실"을 통해 인류의 3대 난제인 <strong>[친환경 상온 비료 합성 촉매 설계(식량 및 온실가스)], [화재 없는 전고체 배터리(에너지)], [변종 바이러스 표적 신약(의학)]</strong>을 해결하는 틴에이저 스타트업 CEO 프로젝트로 확장합니다.</li>
+      </ol>
+    </div>
+
+    <!-- 4장: 원천 연구 주요 논문 서지 목록 -->
+    <h2 class="section-heading">4. CPRL 원천 연구 주요 논문 서지 목록 (Annotated Bibliography)</h2>
+    <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      교사가 수업 설계 및 질의응답 시 신뢰성 있는 학술적 근거로 인용할 수 있는 CPRL 연구진의 대표 논문 목록입니다.
+    </p>
+
+    <!-- 논문 1 -->
+    <div class="paper-entry">
+      <div class="paper-title">1. Effect of Perturbative Vibronic Correction for Spin–Orbit Coupling in Hot Exciton OLED Systems</div>
+      <div class="paper-authors">H. Choi, S. W. Park, <strong>Y. M. Rhee*</strong></div>
+      <div class="paper-journal">The Journal of Physical Chemistry A, 130, 758–766 (2026) · DOI: 10.1021/acs.jpca.5c05378</div>
+      <div class="paper-desc">
+        핫 엑시톤 OLED 분자에서 스핀-궤도 결합에 분자 진동 모드의 섭동적 보정을 적용하여, 고에너지 삼중항($T_2$)에서 단일항($S_1$)으로의 역간교차(RISC) 속도를 정밀하게 예측하고 분자 설계 규칙을 제안한 최신 원천 연구.
+      </div>
+    </div>
+
+    <!-- 논문 2 -->
+    <div class="paper-entry">
+      <div class="paper-title">2. Overcoming the Limitation of Spin Statistics in Organic Light Emitting Diodes (OLEDs): Hot Exciton Mechanism and Its Characterization</div>
+      <div class="paper-authors">S. W. Park, D. Kim, <strong>Y. M. Rhee*</strong></div>
+      <div class="paper-journal">International Journal of Molecular Sciences, 24, 12362 (2023) · DOI: 10.3390/ijms241512362</div>
+      <div class="paper-desc">
+        유기발광다이오드에서 스핀 통계의 25% 한계를 극복하는 핫 엑시톤 메커니즘의 물리화학적 원리를 체계적으로 정리하고 분광학적 특성 분석법을 제시한 핵심 논문.
+      </div>
+    </div>
+
+    <!-- 논문 3 -->
+    <div class="paper-entry">
+      <div class="paper-title">3. Enhancing the electron pair approximation with measurements on trapped-ion quantum computers</div>
+      <div class="paper-authors">L. Zhao, Q. Wang, ..., <strong>Y. M. Rhee*</strong>, K. Kim*</div>
+      <div class="paper-journal">npj Quantum Information (Nature Partner Journal), 10, 76 (2024) · DOI: 10.1038/s41534-024-00871-4</div>
+      <div class="paper-desc">
+        실제 갇힌 이온(Trapped-ion) 양자 컴퓨터 상에서 전자쌍 상관 근사법을 구현하여, NISQ 양자 프로세서의 제한된 큐비트 환경에서도 고정밀 분자 결합 에너지를 측정할 수 있음을 실험적으로 증명한 선도적 연구.
+      </div>
+    </div>
+
+    <!-- 논문 4 -->
+    <div class="paper-entry">
+      <div class="paper-title">4. Variational quantum eigensolver for closed-shell molecules with non-bosonic corrections</div>
+      <div class="paper-authors">K. Kim, ..., G. Lee, ..., J. K. Rhee, <strong>Y. M. Rhee*</strong></div>
+      <div class="paper-journal">Physical Chemistry Chemical Physics (PCCP), 26, 8390–8396 (2024) · DOI: 10.1039/D3CP05646H</div>
+      <div class="paper-desc">
+        닫힌 껍질 분자에 대해 비보손적 보정을 적용한 VQE 하이브리드 알고리즘을 개발하여 양자 하드웨어의 연산 효율과 수렴성을 획기적으로 향상시킨 알고리즘 논문.
+      </div>
+    </div>
+
+    <!-- 논문 5 -->
+    <div class="paper-entry">
+      <div class="paper-title">5. eChem: A Notebook Exploration of Quantum Chemistry</div>
+      <div class="paper-authors">T. Fransson, ..., <strong>Y. M. Rhee</strong>, P. Norman*</div>
+      <div class="paper-journal">Journal of Chemical Education, 100, 1664–1671 (2023) · DOI: 10.1021/acs.jchemed.2c01103</div>
+      <div class="paper-desc">
+        주피터 노트북 기반의 대화형 양자화학 교육 플랫폼 개발 논문. 복잡한 계산화학 이론을 학생 친화적인 인터랙티브 소프트웨어로 구현하는 교육적 방법론 제시.
+      </div>
+    </div>
+
+    <!-- 5장: 교사용 질의응답 및 오개념 예방 가이드 -->
+    <h2 class="section-heading">5. 중학교 교실 수업 시 교사용 Q&A 및 오개념 지도 요령</h2>
+
+    <div class="theory-card">
+      <strong style="color:#2563eb;">Q1. 중학생이 "빛을 흡수했는데 왜 다른 색의 빛이 나와요?"라고 묻는다면?</strong>
+      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+        <strong>[교사 지도 팁]:</strong> "빛은 에너지를 배달하는 에너지 택배원이야. 자외선은 무거운 고에너지 택배를 싣고 와서 원자 속 전자를 3층으로 번쩍 올려놓았지. 그런데 3층이 너무 높아 불안해서 전자가 온몸을 부르르 떨며 일부 에너지를 <strong>'열'</strong>로 흘려버렸단다. 그래서 남은 에너지만 가지고 1층으로 내려오니까, 처음 들어간 자외선보다 에너지가 작아져서 눈에 보이는 <strong>파란색이나 초록색 가시광선(형광)</strong>으로 변해서 나온 거야! 이때도 <code>[흡수한 자외선] = [방출된 형광] + [흘린 열]</code>이라는 위대한 에너지 보존 법칙은 100% 지켜진단다."
+      </p>
+    </div>
+
+    <div class="theory-card">
+      <strong style="color:#7c3aed;">Q2. 중학생이 "양자 컴퓨터가 나오면 지금 쓰는 컴퓨터는 다 버려야 하나요?"라고 묻는다면?</strong>
+      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+        <strong>[교사 지도 팁]:</strong> "절대 아니란다! 고속열차가 생겼다고 자전거나 택배 트럭이 사라지지 않는 것과 같아. 양자 컴퓨터는 유튜브 동영상을 재생하거나 문서를 작성하는 데는 일반 컴퓨터보다 오히려 비효율적이야. 하지만 <strong>수백억 개의 미로 길을 동시에 가보거나, 분자 속 전자의 복잡한 얽힘을 계산하는 특별한 문제</strong>에서만 빛을 발하지. 미래에도 VQE 알고리즘처럼 일반 컴퓨터와 양자 컴퓨터가 서로 역할을 나누어 <strong>2인 3각 달리기</strong>로 일하게 된단다."
+      </p>
+    </div>
+
+    <div class="theory-card">
+      <strong style="color:#059669;">Q3. 중학교 2022 개정 교육과정과의 정확한 연계 논리는 무엇인가요?</strong>
+      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+        <strong>[교사 지도 팁]:</strong> 중학교 2학년 <strong>[9과10-03]</strong>(빛의 합성 및 영상 장치), <strong>[9과11-02]</strong>(원자 모형과 전자), <strong>[9과14-02]</strong>(전류 모형 및 반도체 해설), <strong>[9과14-03]</strong>(전기 에너지의 열·빛 전환과 소비 전력) 성취기준과 유기적으로 결합됩니다. 교과서에 머물러 있는 도체/반도체와 RGB 화소 개념을 'KAIST 첨단 OLED 분자 공학'과 직결시키고, 화학 반응의 질량 보존 및 에너지 출입<strong>[9과16-01/03/06]</strong>을 '양자 계산 화학의 최저 바닥 상태 결합'과 연결하여 학생들의 융합 탐구 사고력을 비약적으로 끌어올립니다.
+      </p>
+    </div>
+
+  </div>
+</section>
 
         <!-- ========================================== -->
         <!-- 3. OLED 패키지 VIEWS (1~7)                -->
@@ -301,17 +489,633 @@
 
         <!-- [OLED] 1. 교사용 지도안 -->
         <section id="view-oled-lesson-plan" class="content-view active">
-          <div id="oled-lp-container"></div>
+          <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">📋 2022 개정 교육과정 연계 교사용 지도안</h2>
+            <span class="badge" style="background:#eff6ff; color:#1d4ed8;">중학교 45분 수업 기준 4차시</span>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th style="width:16%;">관련 단원</th>
+              <td>중학교 2학년 &lt;빛과 파동&gt;, &lt;물질의 구성&gt;, &lt;전기와 자기&gt; 융합 심화<br>(중1 &lt;과학과 인류의 지속가능한 삶&gt;, 중3 &lt;과학과 나의 미래&gt; 연계)</td>
+              <th style="width:14%;">권장 차시</th>
+              <td><strong>총 4차시 (차시당 45분 중학교 수업 기준)</strong><br>※ 90분 블록타임 2회 운영 가능</td>
+            </tr>
+            <tr>
+              <th>2022 개정 교육과정<br>공식 성취기준</th>
+              <td colspan="3">
+                • <strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.<br>
+                • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                • <strong>[9과14-02]</strong> 전기 회로에서 전류를 모형으로 설명하고, 실험을 통해 저항, 전류, 전압 사이의 관계를 이끌어낼 수 있다.<br>
+                &nbsp;&nbsp;<span style="color:#64748b; font-size:0.85rem;">*(성취기준 해설: 일상생활에 활용되는 다양한 물질의 저항이 다름을 도체와 부도체의 예를 들어 설명하고, 반도체를 소개한다.)*</span><br>
+                • <strong>[9과14-03]</strong> 저항의 직렬연결과 병렬연결의 특징을 비교하고, 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.<br>
+                • <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                • <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
+              </td>
+            </tr>
+            <tr>
+              <th>수업 목표</th>
+              <td colspan="3">
+                1. <strong>[지식·이해]</strong> 자외선과 가시광선의 에너지 차이를 알고, 원자 속 전자의 들뜬 상태와 바닥 상태 전이를 통해 형광이 발생하는 원리를 입자 모형으로 설명할 수 있다.<br>
+                2. <strong>[과정·기능]</strong> 스마트폰 화면 속 RGB 서브픽셀과 일상 속 형광 물질을 관찰하고, 인터랙티브 가상실험실을 활용하여 전자의 스핀 상태 및 OLED 발광 효율 문제를 탐구할 수 있다.<br>
+                3. <strong>[가치·태도]</strong> KAIST CPRL 연구실의 핫 엑시톤 메커니즘을 통해 첨단 기술이 일상에 미치는 영향을 체감하고 신소재 화학자 진로에 흥미를 갖는다.
+              </td>
+            </tr>
+            <tr>
+              <th>지능형 탐구 유형</th>
+              <td>실물 실험 + 가상실험실(인터랙티브 시뮬레이션) + 디지털 분자 설계 프로젝트</td>
+              <th>준비물</th>
+              <td>스마트기기, UV-A 블랙라이트 램프, 보안경, 토닉워터, 비타민 음료, 올리브유, 형광펜, 지폐</td>
+            </tr>
+          </table>
+
+          <div class="callout-box callout-danger">
+            <strong style="color:#b91c1c;">🚨 [교육부 실험 안전 수칙 필수 준수]:</strong><br>
+            1. <strong>UV 램프 보안경 착용:</strong> 자외선(UV-A) 광원을 직접 눈으로 보거나 타인에게 비추지 않도록 보안경 착용 지도 및 암실 상자 활용.<br>
+            2. <strong>시약 안전:</strong> 음료류(토닉워터, 비타민)는 실험용이므로 마시지 않도록 사전 지도 및 폐액 분리 수거.
+          </div>
+
+          <h3 style="margin: 1.75rem 0 1rem; color:#1e293b;">차시별 세부 교수·학습 지도 계획 (45분 단위 4차시)</h3>
+          
+          <!-- 1차시 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+              <h4 style="color:#2563eb; font-size:1.1rem; margin:0;">[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단 (45분)</h4>
+              <span class="badge" style="background:#eff6ff; color:#1d4ed8; font-size:0.8rem;">성취기준: [9과10-03]</span>
+            </div>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 자외선과 가시광선의 파장 및 에너지 관계를 비교하고, 일상 속 형광 물질을 관찰하여 형광 현상을 탐구할 수 있다.</p>
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+              <thead>
+                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>도입<br>(5분)</strong></td>
+                  <td>• <strong>동기 유발:</strong> 암실 상자에서 블랙라이트(자외선)를 켰을 때 옷과 신발 끈이 눈부시게 빛나는 현상 시연<br>• <strong>학습 문제 제기:</strong> "왜 보이지 않는 빛을 비추었는데 눈부신 알록달록 빛이 나올까?"<br>• 학습 목표 및 안전 수칙 안내</td>
+                  <td>• 자외선 램프를 얼굴에 직접 비추지 않도록 주의 지도</td>
+                </tr>
+                <tr>
+                  <td><strong>전개<br>(32분)</strong></td>
+                  <td>• <strong>[탐구 활동 1] 자외선 형광 탐정단:</strong> 4인 1조로 토닉워터(퀴닌), 비타민(리보플라빈), 올리브유(엽록소), 지폐에 UV-A 조사 후 색상 변화 관찰 및 기록<br>• <strong>개념 형성:</strong> 자외선(300~400nm) vs 가시광선(400~700nm). 파장이 짧을수록 에너지가 셈을 직관적으로 학습<br>• <strong>질문 토의:</strong> 더 센 에너지(자외선)가 들어가서 순한 에너지(가시광선)가 나오는 이유와 차이 나는 에너지의 행방 추론</td>
+                  <td>• <strong>[안전]</strong> 보안경 착용 확인<br>• <strong>[과정평가]</strong> 관찰 결과의 정확한 기록 및 파장-에너지 관계 이해도 점검</td>
+                </tr>
+                <tr>
+                  <td><strong>정리<br>(8분)</strong></td>
+                  <td>• 모둠별 관찰 결과 공유 및 '형광(Fluorescence)' 개념 정의<br>• "사라진 에너지는 어디로 갔을까?" 질문으로 2차시(전자의 계단 점프) 예고</td>
+                  <td>• 활동지 1번 작성 점검</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 2차시 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+              <h4 style="color:#7c3aed; font-size:1.1rem; margin:0;">[2차시] 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환 (45분)</h4>
+              <span class="badge" style="background:#f5f3ff; color:#6d28d9; font-size:0.8rem;">성취기준: [9과11-02] [9과14-03]</span>
+            </div>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 원자 속 전자가 에너지를 흡수하여 들뜬 상태로 점프했다가 열과 형광 빛을 내며 바닥 상태로 복귀하는 과정을 입자 모형과 에너지 보존으로 설명할 수 있다.</p>
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+              <thead>
+                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>도입<br>(5분)</strong></td>
+                  <td>• 전차시 복습: 자외선(센 에너지)과 가시광선(약한 에너지)의 차이 상기<br>• 트램펄린 비유: "사람이 높이 뛰었다가 내려올 때 무슨 일이 일어날까?"</td>
+                  <td>• 입자 모형의 시각적 비유 활용</td>
+                </tr>
+                <tr>
+                  <td><strong>전개<br>(32분)</strong></td>
+                  <td>• <strong>원자 모형 복습:</strong> 원자핵과 주위를 도는 가벼운 음(-)전하 전자<br>• <strong>전자의 에너지 계단 3단계:</strong><br>  1) 바닥 상태 전자가 자외선 광자를 먹고 3층 들뜬 상태로 점프<br>  2) 3층이 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 <strong>열</strong>로 방출<br>  3) 남은 에너지를 알록달록 <strong>가시광선 형광</strong>으로 뿜어내며 1층으로 착지<br>• <strong>시뮬레이션 탐구:</strong> 디지털 전자의 계단 점프 가상 실험실 조작 실습<br>• <strong>에너지 보존:</strong> [흡수한 자외선] = [방출된 형광빛] + [흘린 열에너지]</td>
+                  <td>• 수식 대신 '에너지 보존 계단 그림'으로 정성적 이해 유도<br>• <strong>[과정평가]</strong> 시뮬레이터 조작을 통해 전자의 상태 변화를 구두로 설명할 수 있는지 확인</td>
+                </tr>
+                <tr>
+                  <td><strong>정리<br>(8분)</strong></td>
+                  <td>• 전자의 에너지 계단 3단계 핵심 낱말 퀴즈<br>• 활동지 [활동 2] 전자의 점프와 사라진 에너지 서술형 문항 작성</td>
+                  <td>• 서술형 힌트 제공</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 3차시 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+              <h4 style="color:#059669; font-size:1.1rem; margin:0;">[3차시] 팽이 스핀의 비밀과 스마트폰 OLED의 75% 배터리 도둑 (45분)</h4>
+              <span class="badge" style="background:#ecfdf5; color:#047857; font-size:0.8rem;">성취기준: [9과11-02] [9과14-02] [9과14-03]</span>
+            </div>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 전자의 스핀 방향(단일항 vs 삼중항)에 따른 발광 차이를 이해하고, 전기 에너지를 사용하는 스마트폰 OLED의 75% 열 손실 문제를 분석할 수 있다.</p>
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+              <thead>
+                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>도입<br>(5분)</strong></td>
+                  <td>• 실물 비교: 형광펜(조명 끄면 즉시 꺼짐) vs 야광 스티커(불 꺼도 수 시간 동안 빛남)<br>• "왜 둘은 빛을 내뿜는 시간에 엄청난 차이가 날까?"</td>
+                  <td>• 실물 교구 조작으로 흥미 유발</td>
+                </tr>
+                <tr>
+                  <td><strong>전개<br>(32분)</strong></td>
+                  <td>• <strong>전자의 팽이 회전(스핀) 모형:</strong><br>  - 마주보고 도는 전자쌍 (단일항, ↑↓): 비상문 활짝 열려 1억 분의 1초 만에 형광 방출<br>  - 나란히 도는 전자쌍 (삼중항, ↑↑): 비상문 잠겨 천천히 갇혀서 인광 방출<br>• <strong>스마트폰 화면(OLED) 구동:</strong> 배터리의 전기(전류)를 유기 반도체 분자에 직접 주입 [9과14-02]<br>• <strong>75% 배터리 도둑의 충격적 확률:</strong><br>  - 전기를 넣으면 4개 중 <strong>단 1개(25%)만</strong> 단일항이 되어 빛을 냄<br>  - 무려 <strong>3개(75%)는</strong> 삼중항에 갇혀 빛 대신 <strong>열</strong>을 내뿜어 스마트폰을 뜨겁게 달굼!<br>• 스마트폰 소비 전력, 발열, 배터리 수명 저하의 과학적 원인 토의 [9과14-03]</td>
+                  <td>• 양자 스핀 수식 대신 '회전 팽이' 비유로 직관화<br>• <strong>[과정평가]</strong> 단일항과 삼중항의 차이를 전자의 회전 방향과 연결하여 구분하는지 평가</td>
+                </tr>
+                <tr>
+                  <td><strong>정리<br>(8분)</strong></td>
+                  <td>• 25% 발광 vs 75% 열 손실 딜레마 정리<br>• "갇혀서 열만 내는 75%의 전자를 구출할 방법은 없을까?" 질문으로 4차시 예고</td>
+                  <td>• 활동지 3번 연계</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 4차시 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+              <h4 style="color:#d97706; font-size:1.1rem; margin:0;">[4차시] KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너 (45분)</h4>
+              <span class="badge" style="background:#fffbeb; color:#b45309; font-size:0.8rem;">성취기준: [9과10-03] [9과01-02] [9과23-01]</span>
+            </div>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> KAIST CPRL의 핫 엑시톤 구출 메커니즘을 이해하고, 빛의 삼원색(RGB) 원리를 바탕으로 차세대 청색 OLED 분자 디자이너 프로젝트를 수행할 수 있다.</p>
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+              <thead>
+                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>도입<br>(5분)</strong></td>
+                  <td>• 전차시 상기: 75%의 갇힌 전자를 구출하는 대한민국의 최첨단 과학 뉴스 소개 (KAIST CPRL 이영민 교수팀 연구 성과)</td>
+                  <td>• 첨단 과학 연구에 대한 자긍심 고취</td>
+                </tr>
+                <tr>
+                  <td><strong>전개<br>(32분)</strong></td>
+                  <td>• <strong>KAIST의 두 가지 구출 마법:</strong><br>  1) <strong>핫 엑시톤(Hot Exciton):</strong> 고에너지 옥상 우회로로 번개처럼 단일항으로 건너가는 초고속 구름다리<br>  2) <strong>TADF(열활성 지연형광):</strong> 주변 공기의 미세한 열을 흡수해 단일항으로 점프<br>  👉 <strong>결과: 75%를 구출하여 100% 발광 효율 달성!</strong><br>• <strong>빛의 삼원색과 영상 장치:</strong> 스마트폰 화면의 RGB 화소 관찰 [9과10-03]<br>• <strong>청색(Blue) OLED의 난제:</strong> 에너지가 너무 세서 쉽게 깨지는 파란색 분자의 수명 한계<br>• <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강한 나만의 고효율 파란색 발광 분자 및 롤러블 디스플레이 기획서 작성 [9과23-01]</td>
+                  <td>• 화학 분자 설계 + 물리 빛 합성 + 디스플레이 공학 융합 유도<br>• <strong>[산출물평가]</strong> 분자 디자이너 기획서 창의성 및 과학적 타당성 평가 (루브릭 적용)</td>
+                </tr>
+                <tr>
+                  <td><strong>정리<br>(8분)</strong></td>
+                  <td>• 모둠별 분자 디자인 아이디어 1분 스피치 발표<br>• 3차원 루브릭 기반 학생 상호평가 및 단원 총정리, 미래 과학 기술 진로 로드맵 공유</td>
+                  <td>• 세특 기재용 관찰 기록 작성</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
         </section>
 
         <!-- [OLED] 3. 학생 활동지 -->
         <section id="view-oled-worksheet" class="content-view">
-          <div id="oled-ws-container"></div>
+          <div class="card">
+          <!-- 충남교육청 표준 헤더 표 -->
+          <div class="section-header-box">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">중학교 과학 탐구활동지</div>
+            <div class="section-header-title">분자의 빛과 디스플레이의 과학: 형광에서 스마트폰 OLED까지</div>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th style="width:16%;">단원</th>
+              <td colspan="3">중2 &lt;빛과 파동&gt;, &lt;물질의 구성&gt;, &lt;전기와 자기&gt; 융합 심화</td>
+            </tr>
+            <tr>
+              <th>성취기준</th>
+              <td colspan="3">
+                <strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.<br>
+                <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                <strong>[9과14-02]</strong> 전기 회로에서 전류를 모형으로 설명하고, 실험을 통해 저항, 전류, 전압 사이의 관계를 이끌어낼 수 있다.<br>
+                <strong>[9과14-03]</strong> 저항의 직렬연결과 병렬연결의 특징을 비교하고, 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.
+              </td>
+            </tr>
+            <tr>
+              <th>탐구목표</th>
+              <td colspan="3">
+                1. 자외선과 가시광선의 에너지 차이를 알고, 일상 속 형광 물질의 발광 원리를 입자 모형으로 설명할 수 있다.<br>
+                2. 원자 속 전자의 들뜬 상태 전이 및 회전 팽이(스핀) 모형을 통해 OLED의 75% 열 손실 문제를 분석할 수 있다.<br>
+                3. KAIST CPRL 연구실의 핫 엑시톤 구출 메커니즘을 적용하여 미래의 고효율 청색 OLED 분자를 디자인할 수 있다.
+              </td>
+            </tr>
+            <tr>
+              <th>지능형<br>탐구활동 유형</th>
+              <td>실물 실험 + 가상실험실(시뮬레이션)</td>
+              <th>권장 모둠</th>
+              <td>4인 1모둠 (또는 2인 1모둠)</td>
+            </tr>
+            <tr>
+              <th>준비물</th>
+              <td colspan="3">스마트기기, UV-A 블랙라이트 램프, 자외선 차단 보안경, 암실 상자, 토닉워터, 비타민 음료, 올리브유, 형광펜, 지폐</td>
+            </tr>
+          </table>
+
+          <div style="display:flex; justify-content:flex-end; gap:1.5rem; margin:1rem 0; font-size:0.95rem; font-weight:600; padding:0.5rem; background:#f1f5f9; border-radius:0.4rem;">
+            <span>제 2 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
+            <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
+            <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+            <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+          </div>
+
+          <!-- 1. 탐구 과정 -->
+          <div class="inquiry-step-title">1. 탐구 과정</div>
+          
+          <div style="margin-bottom:1rem; line-height:1.75; font-size:0.93rem;">
+            <p><strong>【탐구 1】 자외선 형광 탐정단: 일상 속 숨은 빛 찾기</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>자외선 차단 보안경을 착용하고, 암실 상자 안에 토닉워터, 비타민 음료, 올리브유, 지폐를 배치한다.</li>
+              <li>일반 조명(가시광선) 아래에서의 물질 색상을 관찰하여 기록한다.</li>
+              <li>암실 상자 안에서 UV-A 블랙라이트 램프를 비추고, 방출되는 형광 빛의 색상을 관찰하여 표에 기록한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 2】 꼬마 전자의 트램펄린 점프: 전자의 에너지 계단</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>스마트기기를 통해 <strong>가상실험실 (lab.html)</strong>의 [전자의 에너지 계단 시뮬레이터]에 접속한다.</li>
+              <li>바닥 상태(1층)의 전자에 자외선 광자(센 에너지)를 흡수시켜 들뜬 상태(3층)로 점프시킨다.</li>
+              <li>전자가 불안정하여 부르르 떨며 열을 방출하고, 남은 에너지를 형광빛으로 방출하며 바닥으로 착지하는 과정을 관찰한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 3】 팽이 스핀과 스마트폰 OLED의 75% 배터리 도둑</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>형광펜(빛을 끄면 즉시 소광)과 야광 스티커(불 꺼도 오래 지속)의 발광 지속 시간을 비교한다.</li>
+              <li>두 전자의 회전 방향 모형(단일항: 반대 방향 회전 vs 삼중항: 같은 방향 회전)을 비교 관찰한다.</li>
+              <li>스마트폰 OLED에 전기를 넣었을 때 25%만 빛이 되고 75%는 열로 변하는 이유를 탐구한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 4】 차세대 청색 OLED 분자 디자이너 프로젝트</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>KAIST CPRL의 '핫 엑시톤(Hot Exciton)' 옥상 구름다리 우회로와 'TADF' 메커니즘을 학습한다.</li>
+              <li>가장 에너지가 높아 쉽게 깨지는 청색(Blue) 발광 분자를 단단하게 보강하는 신소재 디자이너 기획서를 작성한다.</li>
+            </ol>
+          </div>
+
+          <!-- 2. 탐구 활동 -->
+          <div class="inquiry-step-title">2. 탐구 활동</div>
+
+          <!-- 탐구 1 활동 -->
+          <div style="margin-top:0.75rem;">
+            <p><strong>【탐구 1】 자외선 형광 탐정단 관찰 결과 기록</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록해 보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:22%;">실험 물질</th>
+                  <th style="width:26%;">포함된 핵심 분자</th>
+                  <th style="width:26%;">일반 조명 아래 색상</th>
+                  <th style="width:26%;">자외선(UV-A) 조사 시 색상</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>토닉워터</td><td>퀴닌 (Quinine)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>비타민 음료</td><td>리보플라빈 (비타민 $B_2$)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>올리브유</td><td>엽록소 (Chlorophyll)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>대한민국 지폐</td><td>형광 인쇄 섬유</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인가?</p>
+            <div class="answer-box">
+              ☞ 답: 
+            </div>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 눈부신 알록달록 가시광선이 뿜어져 나오는지, 그리고 들어간 에너지와 나온 빛의 에너지 차이는 어떻게 되었을지 토의하여 써 보자.</p>
+            <div class="answer-box">
+              ☞ 토의 내용: 
+            </div>
+          </div>
+
+          <!-- 탐구 2 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 2】 꼬마 전자의 트램펄린 점프와 에너지 전환</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 전자의 에너지 계단 3단계 과정을 아래 빈칸에 순서대로 정리해 보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr><th style="width:20%;">단계</th><th style="width:80%;">전자의 상태 변화 및 에너지 전환</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1단계: 흡수</strong></td>
+                  <td>바닥 상태(1층)의 전자가 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 에너지를 먹고 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 상태(3층)로 높이 점프한다.</td>
+                </tr>
+                <tr>
+                  <td><strong>2단계: 진동</strong></td>
+                  <td>3층이 너무 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 에너지 형태로 잃어버린다.</td>
+                </tr>
+                <tr>
+                  <td><strong>3단계: 방출</strong></td>
+                  <td>남은 에너지를 알록달록한 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 빛으로 번쩍 뿜어내며 바닥 상태로 사뿐히 착지한다.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 에너지 보존 법칙의 관점에서, [흡수한 자외선 에너지]와 [방출된 형광빛], [흘린 열에너지] 사이의 관계식을 완성해 보자.</p>
+            <div class="answer-box" style="text-align:center; font-size:1.05rem;">
+              [ 흡수한 자외선 에너지 ] = [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] + [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]
+            </div>
+          </div>
+
+          <!-- 탐구 3 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 3】 팽이 스핀과 스마트폰 OLED의 75% 배터리 도둑</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 전자의 회전 팽이(스핀) 모형에 따른 단일항과 삼중항의 차이를 비교해 보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">구분</th>
+                  <th style="width:40%;">단일항 (Singlet)</th>
+                  <th style="width:40%;">삼중항 (Triplet)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>전자 팽이 회전 방향</strong></td>
+                  <td>서로 ( 마주보고 / 나란히 ) 회전 (↑↓)</td>
+                  <td>서로 ( 마주보고 / 나란히 ) 회전 (↑↑)</td>
+                </tr>
+                <tr>
+                  <td><strong>방출되는 빛의 종류</strong></td>
+                  <td>( 형광 / 인광 )</td>
+                  <td>( 형광 / 인광 )</td>
+                </tr>
+                <tr>
+                  <td><strong>빛을 내뿜는 속도</strong></td>
+                  <td>1억 분의 1초 만에 ( 즉시 방출 / 갇혀서 천천히 방출 )</td>
+                  <td>비상문이 잠겨 ( 즉시 방출 / 갇혀서 천천히 방출 )</td>
+                </tr>
+                <tr>
+                  <td><strong>전기 주입 시 생성 확률</strong></td>
+                  <td>( &nbsp;&nbsp;&nbsp;&nbsp; ) %</td>
+                  <td>( &nbsp;&nbsp;&nbsp;&nbsp; ) %</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 스마트폰 배터리 전기로 화면을 켤 때 무려 75%의 전자가 빛을 내지 못하고 스마트폰을 뜨겁게 달구는 까닭을 위의 확률과 관련지어 설명해 보자.</p>
+            <div class="answer-box">
+              ☞ 까닭: 
+            </div>
+          </div>
+
+          <!-- 탐구 4 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 4】 차세대 청색 OLED 분자 디자이너 프로젝트 기획서</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. KAIST CPRL 연구실의 핫 엑시톤(Hot Exciton) 및 TADF 원리를 적용하여, 우리 모둠만의 차세대 청색 OLED 발광 분자 디자이너 기획서를 작성해 보자.</p>
+
+            <table class="data-table">
+              <tr>
+                <th style="width:20%;">스타트업 회사명</th>
+                <td style="width:30%;">&nbsp;</td>
+                <th style="width:20%;">대표 분자 디자이너</th>
+                <td style="width:30%;">&nbsp;</td>
+              </tr>
+              <tr>
+                <th>해결할 과제</th>
+                <td colspan="3">청색(Blue) OLED는 에너지가 너무 높아 분자가 쉽게 깨져 화면 수명이 짧고 번인(Burn-in)이 발생함.</td>
+              </tr>
+              <tr>
+                <th>나만의 청색 분자<br>구조 스케치 및 아이디어</th>
+                <td colspan="3">
+                  <div class="graph-canvas-area" style="height:150px;">
+                    <span style="color:#94a3b8; font-size:0.9rem;">(여기에 분자의 원자 연결 구조와 결합을 단단하게 고정한 모양을 스케치해 보세요)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>75% 구출 메커니즘<br>적용 방안</th>
+                <td colspan="3">
+                  [ 핫 엑시톤 구름다리 우회로 / TADF 열 흡수 역전이 ] 중 선택:<br>
+                  ☞ 구출 원리 서술: 
+                </td>
+              </tr>
+              <tr>
+                <th>미래 사회 기대 효과</th>
+                <td colspan="3">
+                  ☞ 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- 3. 실험 및 안전 유의사항 -->
+          <div class="inquiry-step-title" style="margin-top:1.75rem;">3. 실험 및 안전 유의사항</div>
+          <div class="callout-box callout-danger" style="font-size:0.9rem;">
+            ◎ <strong>자외선(UV-A) 취급 안전:</strong> 자외선 램프를 사람의 눈이나 피부에 직접 비추지 않으며, 반드시 자외선 차단 보안경을 착용합니다.<br>
+            ◎ <strong>실험 시약 안전:</strong> 토닉워터와 비타민 음료는 실험용으로 준비된 것이므로 절대로 마시지 않으며, 실험 후 잔여 액체는 싱크대에 안전하게 처리합니다.<br>
+            ◎ <strong>스마트기기 과몰입 방지:</strong> 가상실험실(시뮬레이션) 이용 시 10분 내외로 탐구하고, 눈의 피로를 느끼면 먼 곳을 바라보며 휴식합니다.
+          </div>
+
+        </div>
         </section>
 
         <!-- [OLED] 4. 교사 도움자료 (모범답안) -->
         <section id="view-oled-teacher-guide" class="content-view">
-          <div id="oled-tg-container"></div>
+          <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #059669, #10b981);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">교사용 수업 보조 및 평가 도움자료</div>
+            <div class="section-header-title">4. 교사 도움 자료: 탐구 활동 모범답안 및 지도 가이드</div>
+          </div>
+
+          <!-- 탐구 1 모범 답안 -->
+          <div style="margin-top:1.25rem;">
+            <h3 style="color:#2563eb; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #dbeafe; padding-bottom:0.4rem;">
+              【탐구 1】 자외선 형광 탐정단 예시 답안
+            </h3>
+            
+            <p style="font-size:0.9rem; margin-bottom:0.4rem;"><strong>1. 각 물질의 관찰 결과 예시표</strong></p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:22%;">실험 물질</th>
+                  <th style="width:26%;">포함된 핵심 분자</th>
+                  <th style="width:26%;">일반 조명 아래 색상</th>
+                  <th style="width:26%;">자외선(UV-A) 조사 시 색상 (예시 답안)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>토닉워터</strong></td>
+                  <td>퀴닌 (Quinine)</td>
+                  <td>투명한 무색</td>
+                  <td><strong class="model-answer">눈부신 푸른색 (Blue) 형광</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>비타민 음료</strong></td>
+                  <td>리보플라빈 (비타민 $B_2$)</td>
+                  <td>노란색</td>
+                  <td><strong class="model-answer">밝은 형광 연두색 / 황록색</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>올리브유</strong></td>
+                  <td>엽록소 (Chlorophyll)</td>
+                  <td>연한 초록색 / 노란색</td>
+                  <td><strong class="model-answer">선명한 붉은색 (Red) 형광</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>대한민국 지폐</strong></td>
+                  <td>형광 인쇄 섬유</td>
+                  <td>일반 인쇄만 보임</td>
+                  <td><strong class="model-answer">숨겨진 형광 보안 섬유 발광 (주황/청록)</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 파장과 에너지 관계</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              자외선(300~400nm)이 가시광선(400~700nm)보다 파장이 짧고 에너지가 더 크다. (빛의 파장이 짧을수록 광자의 에너지는 크다.)
+            </div>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>3. 형광 현상과 에너지 차이의 행방</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              물질 속 분자가 센 에너지의 자외선을 흡수하여 전자가 들뜬 상태로 점프한 뒤, 분자 진동을 통해 일부 에너지를 <strong>'열'</strong>로 잃어버립니다. 그 후 남은 에너지만을 파장이 더 길고 에너지가 순한 <strong>'가시광선(형광)'</strong> 빛으로 방출하기 때문에 알록달록한 빛이 나옵니다. 들어간 자외선과 나온 형광 빛의 에너지 차이는 분자가 떨리며 주변에 방출한 <strong>열에너지</strong>로 전환되었습니다. (스토크스 이동 및 에너지 보존 법칙)
+            </div>
+          </div>
+
+          <!-- 탐구 2 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#7c3aed; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #ede9fe; padding-bottom:0.4rem;">
+              【탐구 2】 꼬마 전자의 트램펄린 점프 예시 답안
+            </h3>
+            
+            <table class="data-table">
+              <thead>
+                <tr><th style="width:20%;">단계</th><th style="width:80%;">전자의 상태 변화 및 에너지 전환 (예시 답안)</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1단계: 흡수</strong></td>
+                  <td>바닥 상태(1층)의 전자가 (<strong class="model-answer">&nbsp;자외선(높은 에너지)&nbsp;</strong>) 에너지를 먹고 (<strong class="model-answer">&nbsp;들뜬&nbsp;</strong>) 상태(3층)로 높이 점프한다.</td>
+                </tr>
+                <tr>
+                  <td><strong>2단계: 진동</strong></td>
+                  <td>3층이 너무 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 (<strong class="model-answer">&nbsp;열&nbsp;</strong>) 에너지 형태로 잃어버린다.</td>
+                </tr>
+                <tr>
+                  <td><strong>3단계: 방출</strong></td>
+                  <td>남은 에너지를 알록달록한 (<strong class="model-answer">&nbsp;가시광선 형광&nbsp;</strong>) 빛으로 번쩍 뿜어내며 바닥 상태로 사뿐히 착지한다.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 에너지 보존 관계식</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; text-align:center; font-size:1.05rem;">
+              <span class="answer-arrow">☞</span> <strong>[ 흡수한 자외선 에너지 ] = [ <span class="model-answer">방출된 형광빛 에너지</span> ] + [ <span class="model-answer">흘린 열에너지</span> ]</strong>
+            </div>
+          </div>
+
+          <!-- 탐구 3 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#059669; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #d1fae5; padding-bottom:0.4rem;">
+              【탐구 3】 팽이 스핀과 스마트폰 OLED의 75% 배터리 도둑 예시 답안
+            </h3>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">구분</th>
+                  <th style="width:40%;">단일항 (Singlet)</th>
+                  <th style="width:40%;">삼중항 (Triplet)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>전자 팽이 회전 방향</strong></td>
+                  <td>서로 (<strong class="model-answer">&nbsp;마주보고&nbsp;</strong>) 회전 (↑↓)</td>
+                  <td>서로 (<strong class="model-answer">&nbsp;나란히&nbsp;</strong>) 회전 (↑↑)</td>
+                </tr>
+                <tr>
+                  <td><strong>방출되는 빛의 종류</strong></td>
+                  <td><strong class="model-answer">형광 (Fluorescence)</strong></td>
+                  <td><strong class="model-answer">인광 (Phosphorescence)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>빛을 내뿜는 속도</strong></td>
+                  <td>1억 분의 1초 만에 (<strong class="model-answer">&nbsp;즉시 방출&nbsp;</strong>)</td>
+                  <td>비상문이 잠겨 (<strong class="model-answer">&nbsp;갇혀서 천천히 방출&nbsp;</strong>)</td>
+                </tr>
+                <tr>
+                  <td><strong>전기 주입 시 생성 확률</strong></td>
+                  <td><strong class="model-answer">25 % (4개 중 1개)</strong></td>
+                  <td><strong class="model-answer">75 % (4개 중 3개)</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 스마트폰 발열과 배터리 손실 이유</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              스마트폰 배터리의 전류를 유기 발광 분자에 직접 넣으면 양자 통계 법칙에 의해 <strong>빛을 내는 단일항은 단 25%만 생성되고, 비상문이 잠겨 빛을 내지 못하는 삼중항이 무려 75%나 생성</strong>됩니다. 상온의 스마트폰 디스플레이에서 75%의 삼중항 전자는 빛을 내지 못한 채 에너지를 모조리 <strong>열</strong>로 뿜어내며 바닥으로 떨어지므로, 배터리 전력의 75%가 낭비되고 스마트폰이 뜨겁게 달아오릅니다.
+            </div>
+          </div>
+
+          <!-- 탐구 4 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#d97706; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #fef3c7; padding-bottom:0.4rem;">
+              【탐구 4】 차세대 청색 OLED 분자 디자이너 프로젝트 예시 산출물
+            </h3>
+            
+            <table class="data-table">
+              <tr>
+                <th style="width:20%;">스타트업 회사명</th>
+                <td style="width:30%;"><strong class="model-answer">블루 엑시톤 테크 (Blue Exciton Tech)</strong></td>
+                <th style="width:20%;">대표 분자 디자이너</th>
+                <td style="width:30%;"><strong class="model-answer">김미래 학생 (신소재 화학자)</strong></td>
+              </tr>
+              <tr>
+                <th>나만의 청색 분자<br>아이디어 및 구조</th>
+                <td colspan="3">
+                  <strong class="model-answer">
+                    • 붕소(B)와 질소(N)를 육각형 벤젠 고리 내부에 단단하게 고정한 다중 공명 구조 고안<br>
+                    • 분자가 자유롭게 흔들리며 결합이 끊어지는 것을 막기 위해 단단한 고리형 브릿지를 추가하여 진동 에너지 손실을 최소화함.
+                  </strong>
+                </td>
+              </tr>
+              <tr>
+                <th>75% 구출 메커니즘<br>적용 방안</th>
+                <td colspan="3">
+                  <strong class="model-answer">
+                    [핫 엑시톤(Hot Exciton) 우회로 선택]<br>
+                    ☞ 원리: 삼중항 전자가 1층(T1)에 갇혀 열을 내기 전에, 에너지가 높은 2층 삼중항(T2) 옥상에서 단일항(S1)으로 순식간에 건너가는 '초고속 구름다리(역간교차, RISC)'를 설계함. 이를 통해 버려지던 75%의 전자를 단일항으로 100% 구출하여 눈부신 파란색 형광으로 전환함.
+                  </strong>
+                </td>
+              </tr>
+              <tr>
+                <th>미래 사회 기대 효과</th>
+                <td colspan="3">
+                  <strong class="model-answer">
+                    • 청색 OLED의 발광 효율이 4배(25% → 100%)로 향상되어 스마트폰 디스플레이 소비 전력을 획기적으로 절감.<br>
+                    • 열 발생이 급감하여 스마트폰 발열 문제가 해결되고, 청색 화소 수명이 5배 이상 늘어나 영구적인 롤러블/폴더블 화면 상용화 기여.
+                  </strong>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- 지도상 유의점 및 교사 팁 -->
+          <div style="margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;">💡 [지도상 유의점 및 실험 지도 팁]</h3>
+            
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#3b82f6;">
+              <strong>1. 학생 오개념 지도 요령: "형광과 야광(인광)은 같은 건가요?"</strong><br>
+              학생들은 어둠 속에서 빛나는 현상을 모두 '야광'으로 통칭하는 경우가 많습니다. 형광펜(조명을 끄면 1억분의 1초 만에 즉시 꺼짐)과 야광 스티커(불을 꺼도 전자가 갇혀 있어 수 시간 동안 지속됨)의 차이를 실물로 비교하게 하고, 이는 전자가 <strong>"마주보고 도는가(단일항) vs 나란히 도는가(삼중항)"</strong>라는 스핀 규칙 때문에 일어남을 강조하여 지도합니다.
+            </div>
+
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#10b981;">
+              <strong>2. 시약 및 준비물 선택 팁</strong><br>
+              • <strong>토닉워터:</strong> 마트에서 판매하는 토닉워터 중 원재료명에 <strong>'퀴닌(Quinine)'</strong> 향 또는 성분이 표기된 제품을 구매해야 강력한 청색 형광이 나타납니다.<br>
+              • <strong>비타민 음료:</strong> 비타민 B2(리보플라빈)가 함유된 비타민 음료(예: 비타500, 오로나민C 등)를 사용하면 눈부신 황록색 형광을 쉽게 관찰할 수 있습니다.<br>
+              • <strong>올리브유:</strong> 엑스트라 버진 올리브유일수록 엽록소가 풍부하여 붉은색 형광이 선명합니다.
+            </div>
+
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#f59e0b;">
+              <strong>3. 가상실험실(lab.html) 연계 안내</strong><br>
+              실제 분자 레벨의 전자 전이는 눈으로 볼 수 없으므로, 학생들이 직접 파장 슬라이더를 조작하며 전자가 3층으로 점프했다가 열을 흘리고 형광을 내며 떨어지는 <strong>[가상실험실(lab.html)]</strong>을 10분간 적극 활용하도록 안내합니다.
+            </div>
+          </div>
+
+        </div>
         </section>
 
         <!-- [OLED] 5. 가상실험실 -->
@@ -365,7 +1169,93 @@
 
         <!-- [OLED] 6. 학생용 읽기자료 -->
         <section id="view-oled-textbook" class="content-view">
-          <div id="oled-tb-container"></div>
+          <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #4338ca, #6366f1);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">스토리텔링 과학 탐구 교과서</div>
+            <div class="section-header-title">분자의 빛과 디스플레이의 과학: 형광에서 스마트폰 OLED까지</div>
+          </div>
+
+          <!-- 본문 섹션 1 -->
+          <article style="line-height:1.85; font-size:1rem; color:#334155; margin-bottom:2rem;">
+            <h2 style="color:#1e3a8a; font-size:1.35rem; margin:1.5rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🔍 1장. 어둠 속에서 빛나는 마법, 형광의 정체</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              불이 꺼진 방 안에서 블랙라이트(자외선 램프)를 켜본 적이 있나요? 투명한 유리잔에 담긴 토닉워터가 마법처럼 눈부신 사파이어 빛 파란색으로 변하고, 평범한 비타민 음료는 눈이 시리도록 밝은 형광 연두색으로 빛납니다. 우리 눈에는 보이지 않는 투명한 자외선을 비추었을 뿐인데, 도대체 왜 액체 속에서 알록달록한 눈부신 가시광선이 뿜어져 나오는 걸까요?
+            </p>
+            <p style="margin-bottom:1rem;">
+              비밀은 음료 속에 숨어 있는 <strong>'분자(Molecule)'</strong>에 있습니다. 토닉워터 속에는 말라리아 치료제로 쓰이던 <strong>'퀴닌(Quinine)'</strong>이라는 특별한 유기 분자가 녹아 있고, 비타민 음료 속에는 <strong>'리보플라빈(비타민 $B_2$)'</strong> 분자가 가득 들어 있습니다. 이 분자들은 사람의 눈에는 보이지 않지만 매우 강력한 에너지를 지닌 파장 300~400nm(나노미터)의 자외선 빛을 꿀꺽 삼킨 뒤, 눈에 보이는 부드러운 가시광선(400~700nm)으로 바꾸어 다시 내뿜습니다. 이 신비로운 마법 현상을 과학에서는 <strong>'형광(Fluorescence)'</strong>이라고 부릅니다.
+            </p>
+
+            <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🤸 2장. 꼬마 전자의 트램펄린 점프와 사라진 에너지</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              원자 속에는 무거운 원자핵 주위를 가볍게 맴도는 음(-)전하를 띤 <strong>'전자(Electron)'</strong>가 살고 있습니다. 평소에 전자는 에너지가 가장 낮고 편안한 1층 거실, 즉 <strong>'바닥 상태(Ground State)'</strong>에 얌전히 머물러 있습니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              그런데 에너지가 센 자외선 광자가 전자를 톡 건드리면, 전자는 그 에너지를 트램펄린 발판 삼아 3층 옥상인 <strong>'들뜬 상태(Excited State)'</strong>로 껑충 뛰어오릅니다! 하지만 3층은 전자가 오래 머물기에 너무 높고 불안정합니다. 전자는 불안해서 온몸을 부르르 떨기 시작하는데, 이를 화학에서는 <strong>'분자 진동'</strong>이라고 합니다. 이때 전자는 부르르 떨면서 흡수했던 에너지 중 일부를 <strong>'열(Heat)'</strong>로 뚝뚝 흘려버립니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              열을 조금 흘려 에너지가 약간 줄어든 전자는, 마침내 1층 바닥 상태로 편안하게 착지하면서 남은 에너지를 한꺼번에 바깥으로 번쩍 뿜어냅니다. 처음 들어갔던 자외선보다 에너지가 약간 작아졌기 때문에, 파장이 더 길어진 <strong>알록달록한 가시광선 형광빛</strong>이 되어 나오는 것입니다. 영국의 물리학자 조지 스토크스의 이름을 따 이를 <strong>'스토크스 이동(Stokes Shift)'</strong>이라 부르며, 이때도 <code>[흡수한 자외선] = [방출된 빛] + [흘린 열]</code>이라는 위대한 <strong>에너지 보존 법칙</strong>이 완벽하게 성립합니다!
+            </p>
+
+            <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>📱 3장. 팽이 스핀의 비밀과 스마트폰 OLED의 75% 배터리 도둑</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              오늘날 우리가 매일 들여다보는 스마트폰 화면은 스스로 빛을 내는 첨단 유기 분자로 만든 <strong>OLED(유기발광다이오드)</strong> 디스플레이입니다. 스마트폰은 자외선 조명을 비추는 대신, 리튬 배터리에서 나오는 <strong>전기(전류)</strong>를 유기 분자에 직접 찔러 넣어 빛을 냅니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              그런데 여기서 놀라운 과학의 난제가 발생합니다. 전자는 제자리에서 팽이처럼 빙글빙글 도는 <strong>'스핀(Spin)'</strong>이라는 양자역학적 성질을 가지고 있습니다. 전기로 들뜬 분자를 만들면 두 전자가 팽이처럼 돌며 짝을 이루는데, 놀랍게도 두 가지 상태가 생겨납니다:
+            </p>
+            <ul style="margin-left:1.5rem; margin-bottom:1rem;">
+              <li><strong>단일항 (Singlet, ↑↓):</strong> 두 전자가 서로 마주보고 반대로 회전합니다. 1층으로 내려가는 비상문이 활짝 열려 있어, 1억 분의 1초 만에 눈부신 형광 빛을 뿜어냅니다!</li>
+              <li><strong>삼중항 (Triplet, ↑↑):</strong> 두 전자가 나란히 같은 방향으로 회전합니다. 양자역학 규칙에 의해 1층 비상문이 쾅 닫혀 있어 전자가 내려가지 못하고 갇히게 됩니다.</li>
+            </ul>
+            <p style="margin-bottom:1rem;">
+              문제는 배터리에서 전기를 주입하면 양자 통계 확률에 따라 <strong>빛을 내는 단일항은 단 25%만 생기고, 문이 잠긴 삼중항이 무려 75%나 생긴다는 점</strong>입니다! 이 갇힌 75%의 전자는 빛을 내지 못하고 부르르 떨며 에너지를 모조리 <strong>열</strong>로 방출합니다. 결국 스마트폰 배터리의 75%가 화면을 밝히는 대신 스마트폰을 뜨겁게 달구는 난로가 되어 버리는 <strong>'75% 배터리 도둑'</strong> 현상이 발생한 것입니다.
+            </p>
+
+            <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🔬 4장. KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              대한민국 최고의 과학기술 대학인 <strong>KAIST 화학과 CPRL(계산광동역학 연구실) 이영민 교수팀</strong>은 이 갇혀버린 75%의 전자를 구출하기 위해 컴퓨터 시뮬레이션과 첨단 레이저 분광학을 결합한 혁신적인 연구를 성공시켰습니다!
+            </p>
+            <p style="margin-bottom:1rem;">
+              연구팀은 갇혀 있는 삼중항 전자가 1층에서 열을 내뿜기 전에, 에너지가 높은 2층 삼중항 옥상에서 단일항으로 훌쩍 건너갈 수 있는 초고속 구름다리 우회로를 분자 속에 설계했습니다. 이를 <strong>'핫 엑시톤(Hot Exciton)'</strong> 메커니즘이라고 부릅니다. 또한 주변의 미세한 열에너지를 흡수해 단일항으로 거꾸로 뛰어넘는 <strong>TADF(열활성 지연형광)</strong> 기술도 함께 발전시켰습니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              그 결과, 버려지던 75%의 전자를 모조리 빛으로 전환하여 <strong>100% 발광 효율</strong>을 달성하는 기적을 만들어냈습니다! 특히 빛의 삼원색(Red, Green, Blue) 중 에너지가 가장 높아 분자가 쉽게 깨지는 <strong>'청색(Blue) OLED'</strong>의 수명을 비약적으로 늘릴 수 있게 되었습니다. 이제 여러분이 미래의 신소재 분자 디자이너가 되어, 더 단단하고 오래가는 나만의 발광 분자를 설계할 차례입니다!
+            </p>
+          </article>
+
+          <!-- 중학생 핵심 용어 사전 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>📚 중학생 핵심 과학 용어 사전</span>
+            </h3>
+
+            <dl style="font-size:0.92rem; line-height:1.75;">
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">1. 자외선 (Ultraviolet, UV)</dt>
+              <dd style="color:#475569; margin-left:1rem;">가시광선보다 파장이 짧고(약 100~400nm) 에너지가 훨씬 강력하여 눈에 보이지 않는 빛. 살균이나 물질을 들뜨게 만드는 데 쓰입니다.</dd>
+
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">2. 바닥 상태 vs 들뜬 상태</dt>
+              <dd style="color:#475569; margin-left:1rem;">전자가 가장 낮은 에너지를 가지고 편안하게 머무는 안정한 상태를 '바닥 상태', 에너지를 흡수하여 높은 층으로 뛰어오른 불안정한 상태를 '들뜬 상태'라고 합니다.</dd>
+
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">3. 형광 (Fluorescence)</dt>
+              <dd style="color:#475569; margin-left:1rem;">물질이 자외선처럼 높은 에너지를 흡수했다가, 1억 분의 1초라는 매우 짧은 순간에 가시광선 빛을 내뿜으며 바닥으로 떨어지는 현상입니다.</dd>
+
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">4. 단일항(Singlet) vs 삼중항(Triplet)</dt>
+              <dd style="color:#475569; margin-left:1rem;">두 전자의 스핀(팽이 회전) 방향이 반대인 상태가 단일항(형광 방출, 25% 확률), 두 전자의 스핀 방향이 같은 상태가 삼중항(비상문 잠김, 75% 확률)입니다.</dd>
+
+              <dt style="font-weight:700; color:#2563eb; margin-top:0.5rem;">5. 핫 엑시톤 (Hot Exciton)</dt>
+              <dd style="color:#475569; margin-left:1rem;">KAIST CPRL 연구진이 밝혀낸 첨단 메커니즘으로, 고에너지 들뜬 삼중항 상태에서 단일항으로 순식간에 건너가 100% 효율로 빛을 내게 만드는 초고속 구름다리 기술입니다.</dd>
+            </dl>
+          </div>
+
+        </div>
         </section>
 
         <!-- [OLED] 7. 발표 슬라이드 -->
@@ -394,7 +1284,123 @@
 
         <!-- [OLED] 8. 2022 성취기준 연계표 -->
         <section id="view-oled-curriculum" class="content-view">
-          <div id="oled-curr-container"></div>
+          <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #0e7490, #06b6d4);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">2022 개정 교육과정 공인 평가 기준</div>
+            <div class="section-header-title">공식 성취기준 매핑 및 3차원 평가 루브릭</div>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:16%;">교과 / 영역</th>
+                <th style="width:30%;">2022 개정 교육과정 공식 성취기준 전문</th>
+                <th style="width:24%;">본 프로그램 탐구 연계 요소</th>
+                <th style="width:30%;">3차원 성취수준 루브릭 (상 / 중 / 하)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>중2 과학<br>(10) 빛과 파동</strong></td>
+                <td>
+                  • <strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.
+                </td>
+                <td>
+                  • 자외선과 가시광선 파장/에너지 차이<br>
+                  • 스마트폰 RGB 서브픽셀 빛의 합성<br>
+                  • 일상 속 형광 물질의 파장 방출 관찰
+                </td>
+                <td>
+                  <strong>[상]</strong> 영상 장치가 RGB 합성으로 색을 표현함을 알고, 자외선 흡수 후 긴 파장의 가시광선을 방출하는 원리를 파장-에너지 관계와 연결하여 정확히 설명함.<br>
+                  <strong>[중]</strong> 스마트폰 속 RGB 화소와 형광 방출 현상을 설명함.<br>
+                  <strong>[하]</strong> 영상 장치가 빛으로 색을 표현함을 관찰함.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>중2 과학<br>(11) 물질의 구성</strong></td>
+                <td>
+                  • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                  • <strong>[9과11-04]</strong> 물질을 이루는 입자는 원자, 분자, 이온 등으로 존재할 수 있음을 알고, 이온은 전하를 띠고 있음을 설명할 수 있다.
+                </td>
+                <td>
+                  • 원자 모형 속 전자의 트램펄린 점프<br>
+                  • 바닥 상태 vs 들뜬 상태 전이<br>
+                  • 전자의 스핀(단일항 vs 삼중항)
+                </td>
+                <td>
+                  <strong>[상]</strong> 원자 속 전자가 에너지를 흡수해 들뜬 상태로 갔다가 열과 빛을 내며 복귀하는 과정을 입자 모형으로 논리적으로 설명함.<br>
+                  <strong>[중]</strong> 전자가 에너지를 얻거나 잃으며 상태가 변함을 모형으로 이해함.<br>
+                  <strong>[하]</strong> 원자 속에 전자가 있음을 안다.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>중2 과학<br>(14) 전기와 자기</strong></td>
+                <td>
+                  • <strong>[9과14-02]</strong> 전기 회로에서 전류를 모형으로 설명하고, 실험을 통해 저항, 전류, 전압 사이의 관계를 이끌어낼 수 있다.<br>
+                  &nbsp;&nbsp;<span style="color:#64748b; font-size:0.83rem;">*(성취기준 해설: 일상생활에 활용되는 다양한 물질의 저항이 다름을 도체와 부도체의 예를 들어 설명하고, 반도체를 소개한다.)*</span><br>
+                  • <strong>[9과14-03]</strong> 저항의 직렬연결과 병렬연결의 특징을 비교하고, 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.
+                </td>
+                <td>
+                  • 유기 반도체(OLED)의 전류 주입 발광<br>
+                  • 전기 에너지의 빛과 열 전환<br>
+                  • 75% 열 손실과 소비 전력 절감 기술
+                </td>
+                <td>
+                  <strong>[상]</strong> 디스플레이에서 전기가 빛과 열로 전환됨을 이해하고, 열로 낭비되는 에너지를 빛으로 바꿔 소비 전력을 줄이는 원리를 에너지 보존 관점에서 설명함.<br>
+                  <strong>[중]</strong> 전기가 빛과 열로 전환됨을 설명함.<br>
+                  <strong>[하]</strong> 전기로 빛을 만들 수 있음을 앎.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>중1·3 융합<br>(사회 · 진로)</strong></td>
+                <td>
+                  • <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                  • <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
+                </td>
+                <td>
+                  • KAIST 핫 엑시톤 및 TADF 메커니즘<br>
+                  • 미래 청색 OLED 분자 디자이너 프로젝트
+                </td>
+                <td>
+                  <strong>[상]</strong> 첨단 디스플레이 화학 연구가 미래 사회에 미칠 파급 효과를 분석하고, 창의적인 청색 OLED 분자 설계 기획서를 설득력 있게 제시함.<br>
+                  <strong>[중]</strong> 신소재 과학자가 하는 일을 조사하고 발표함.<br>
+                  <strong>[하]</strong> 디스플레이 기술이 생활에 쓰임을 안다.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 세특 기재 예시 3종 -->
+          <div style="margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;">💡 [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
+
+            <!-- 예시 1: 우수 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
+              <strong style="color:#2563eb;">[예시 1: 융합 탐구 역량 우수 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"빛의 파장과 에너지 관계를 바탕으로 일상 속 형광 물질(퀴닌, 리보플라빈)의 흡수-방출 스펙트럼 차이를 에너지 보존 법칙과 연결하여 논리정연하게 규명함. 원자 속 전자의 들뜬 상태 전이 및 분자 진동에 의한 열 손실 과정을 입자 모형으로 시각화하여 발표함. 스마트폰 OLED의 75% 삼중항 열 손실 딜레마를 조사하고, KAIST CPRL 연구진의 '핫 엑시톤' 구출 메커니즘을 적용한 '차세대 청색 OLED 분자 디자이너' 프로젝트에서 결합 안정성을 보강한 창의적인 분자 구조를 고안함. 양자 스핀과 광학 원리를 실생활 기술과 융합하여 해석하는 탁월한 과학적 탐구력을 보임."</em>
+              </p>
+            </div>
+
+            <!-- 예시 2: 실험 및 협동 활동 우수 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
+              <strong style="color:#059669;">[예시 2: 탐구 실험 및 안전 의식 우수 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"'자외선 형광 탐정단' 모둠 실험에서 자외선 차단 보안경 착용 및 암실 상자 조작 등 실험 안전 수칙을 솔선수범하여 준수함. 토닉워터와 지폐의 형광 반응을 세밀하게 관찰하고, 가상실험실 시뮬레이터를 활용해 전자의 3단계 계단 점프 과정을 직관적으로 이해함. 단일항(25%)과 삼중항(75%)의 확률 차이를 모둠원들에게 알기 쉽게 설명하며 협력적 소통을 주도함. 스마트폰 발열 문제 해결을 위한 분자 설계 활동에서 적극적으로 아이디어를 개진하여 모둠 산출물의 완성도를 높임."</em>
+              </p>
+            </div>
+
+            <!-- 예시 3: 진로 연계 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem;">
+              <strong style="color:#7c3aed;">[예시 3: 신소재 및 공학 진로 연계 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"영상 장치의 RGB 서브픽셀 발광 원리를 학습하며, 청색 OLED의 짧은 수명과 번인(Burn-in) 현상이 고에너지 청색 분자의 취약성에 기인함을 깊이 있게 분석함. KAIST 이영민 교수팀의 연구 성과를 조사하여 핫 엑시톤과 TADF 기술이 차세대 디스플레이 산업에 가져올 변화를 미래 사회 직업 전망과 연계하여 보고서로 작성함. 신소재 화학공학 연구원으로서 인류의 에너지 절약과 친환경 디스플레이 개발에 기여하겠다는 뚜렷한 진로 포부를 지님."</em>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
         </section>
 
 
@@ -404,17 +1410,587 @@
         
         <!-- [QUANTUM] 1. 교사용 지도안 -->
         <section id="view-quantum-lesson-plan" class="content-view">
-          <div id="quantum-lp-container"></div>
+          <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">📋 2022 개정 교육과정 연계 교사용 지도안</h2>
+            <span class="badge" style="background:#f5f3ff; color:#6d28d9;">중학교 45분 수업 기준 4차시</span>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th style="width:16%;">관련 단원</th>
+              <td>중학교 과학 &lt;물질의 구성&gt;, &lt;화학 반응의 규칙성&gt;, &lt;과학과 사회&gt; & 정보과 &lt;데이터와 알고리즘&gt; 융합 심화</td>
+              <th style="width:14%;">권장 차시</th>
+              <td><strong>총 4차시 (차시당 45분 중학교 수업 기준)</strong><br>※ 90분 블록타임 2회 운영 가능</td>
+            </tr>
+            <tr>
+              <th>2022 개정 교육과정<br>공식 성취기준</th>
+              <td colspan="3">
+                • <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                • <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                • <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                • <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                &nbsp;&nbsp;<span style="color:#64748b; font-size:0.85rem;">*(성취기준 해설: 화학 반응이 일어날 때 물질을 구성하는 원자의 배열만 변하고, 원자의 종류와 수는 변하지 않음을 강조하여 설명한다.)*</span><br>
+                • <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.<br>
+                • <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.<br>
+                • <strong>[정보과 연계]</strong> [9정01-03] 2진수 데이터 표현 / [9정02-02] 문제 해결 알고리즘과 시뮬레이션 모델링
+              </td>
+            </tr>
+            <tr>
+              <th>수업 목표</th>
+              <td colspan="3">
+                1. <strong>[지식·이해]</strong> 다전자 분자에서 전자 간 반발력으로 인해 발생하는 계산 복잡도와 비트 vs 큐비트 중첩의 차이를 설명할 수 있다.<br>
+                2. <strong>[과정·기능]</strong> 동전 돌리기 조작 실험 및 인터랙티브 시뮬레이터를 통해 VQE 바닥 상태 탐색 과정을 시각적으로 추론할 수 있다.<br>
+                3. <strong>[가치·태도]</strong> 양자 화학이 기후 위기 및 난치병 극복에 기여함을 인식하고 융합 진로에 주도적으로 참여한다.
+              </td>
+            </tr>
+            <tr>
+              <th>지능형 탐구 유형</th>
+              <td>동전 조작 실험 + 가상실험실(시뮬레이션) + 2인 1조 알고리즘 역할극 + 스타트업 CEO 프로젝트</td>
+              <th>준비물</th>
+              <td>스마트기기, 동전(학생당 1개), 역할 카드(양자 컴퓨터 / 고전 컴퓨터), 스타트업 기획서 양식</td>
+            </tr>
+          </table>
+
+          <div class="callout-box">
+            <strong>💡 [수식 없는 양자역학 지도 팁]:</strong> 수식이나 파동방정식을 지양하고, <strong>"바닥에 놓인 동전(비트) vs 도는 팽이 동전(큐비트)"</strong>과 <strong>"2인 3각 산골짜기 바닥 찾기(VQE)"</strong>라는 직관적 은유를 활용하여 지도합니다.
+          </div>
+
+          <h3 style="margin: 1.75rem 0 1rem; color:#1e293b;">차시별 세부 교수·학습 지도 계획 (45분 단위 4차시)</h3>
+
+          <!-- 1차시 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+              <h4 style="color:#7c3aed; font-size:1.1rem; margin:0;">[1차시] 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발 (45분)</h4>
+              <span class="badge" style="background:#f5f3ff; color:#6d28d9; font-size:0.8rem;">성취기준: [9과11-01] [9과11-02] [9과01-02]</span>
+            </div>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 분자 속 전자가 증가함에 따라 전자 간 반발력으로 인해 계산량이 2의 N제곱($2^N$)으로 폭발하는 '지수 폭발'의 한계를 체험하고 설명할 수 있다.</p>
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+              <thead>
+                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>도입<br>(5분)</strong></td>
+                  <td>• <strong>동기 유발:</strong> 체스판과 쌀알 퀴즈 (1칸 1톨, 2칸 2톨, 3칸 4톨... 64칸엔 전 세계 쌀 생산량의 수백 배!)<br>• <strong>학습 문제 제기:</strong> "왜 세상에서 가장 비싼 슈퍼컴퓨터도 커피 한 잔 속 카페인 분자 하나를 계산하지 못할까?"</td>
+                  <td>• 거듭제곱의 무서운 증가 속도를 직관적으로 체감하도록 지도</td>
+                </tr>
+                <tr>
+                  <td><strong>전개<br>(32분)</strong></td>
+                  <td>• <strong>분자의 미시세계 복습:</strong> 원자핵 주위를 도는 음(-)전하 전자들의 반발력과 끊임없는 상호작용 [9과11-02]<br>• <strong>[탐구 활동 1] 지수 폭발 체험표 채우기:</strong><br>  - 수소(H, 전자 1개) $\rightarrow 2^1 = 2$가지 (즉시 계산)<br>  - 물($H_2O$, 전자 10개) $\rightarrow 2^{10} = 1,024$가지 (0.1초)<br>  - 카페인(전자 102개) $\rightarrow 2^{102} \approx 10^{30}$가지 (지구상 모든 모래알 수 초과!)<br>  - 페니실린(항생제) $\rightarrow 10^{86}$가지 (우주 전체 모든 원자 수 초과, 계산 불가!)<br>• <strong>신약·신소재 개발의 현실 한계:</strong> 컴퓨터가 계산을 못해 화학자들이 비커에 약품을 섞어가며 수천 번 실패해야 함(10년 이상, 수조 원 소요)</td>
+                  <td>• <strong>[과정평가]</strong> 전자의 증가와 계산 복잡도의 관계를 수치 및 그래프로 바르게 추론하는지 평가 (활동지 점검)</td>
+                </tr>
+                <tr>
+                  <td><strong>정리<br>(8분)</strong></td>
+                  <td>• 파인만의 명언("자연을 계산하려면 컴퓨터 자체를 양자역학으로 만들어라") 소개<br>• 다음 차시(0과 1이 춤추는 큐비트) 예고</td>
+                  <td>• 활동지 1번 작성 확인</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 2차시 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+              <h4 style="color:#2563eb; font-size:1.1rem; margin:0;">[2차시] 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트 (45분)</h4>
+              <span class="badge" style="background:#eff6ff; color:#1d4ed8; font-size:0.8rem;">정보과 연계: [9정01-03] [9정02-02] [9과01-02]</span>
+            </div>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 고전 비트(스위치)와 양자 큐비트(회전하는 동전의 '중첩')의 차이를 실험을 통해 비교하고 동시 병렬 처리의 원리를 설명할 수 있다.</p>
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+              <thead>
+                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>도입<br>(5분)</strong></td>
+                  <td>• 전등 스위치 켜기/끄기 조작 vs 책상 위 동전 팽이 돌리기 비교 시연<br>• "바닥에 누운 동전과 도는 동전은 무엇이 다를까?"</td>
+                  <td>• 학생들에게 동전을 1개씩 배부하여 직접 조작하도록 유도</td>
+                </tr>
+                <tr>
+                  <td><strong>전개<br>(32분)</strong></td>
+                  <td>• <strong>[조작 실험] 동전 팽이와 양자 중첩:</strong> 멈추기 전 도는 동전을 관찰하며 0(앞)과 1(뒤)이 공존하는 <strong>'중첩(Superposition)'</strong> 개념 발견<br>• <strong>비트(Bit) vs 큐비트(Qubit) 대조:</strong><br>  - 비트: 꺼짐(0) 또는 켜짐(1) 하나만 선택 (바닥의 동전)<br>  - 큐비트: 0과 1이 동시에 섞여 있음 (회전하는 팽이 동전)<br>• <strong>동시 병렬 처리의 힘:</strong> 비트 10개는 1,024개 길 중 1개씩 순서대로 검사하지만, 큐비트 10개는 1,024개 길을 <strong>동시에 단 한 번에</strong> 탐색!<br>• <strong>시뮬레이션 탐구:</strong> 인터랙티브 큐비트 구 시뮬레이터로 큐비트 회전 및 중첩 상태 만들기 실습</td>
+                  <td>• 복잡한 양자 상태 벡터 수식 대신 '동전 비유' 철저 유지<br>• <strong>[과정평가]</strong> 비트와 큐비트의 정보 처리 방식 차이를 자기 언어로 설명할 수 있는지 확인 (구술평가)</td>
+                </tr>
+                <tr>
+                  <td><strong>정리<br>(8분)</strong></td>
+                  <td>• 큐비트 중첩의 핵심 원리 요약 퀴즈<br>• 활동지 [활동 2] Q1(비트 vs 큐비트 차이) 서술형 작성 및 3차시 예고</td>
+                  <td>• 활동지 작성 지도</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 3차시 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+              <h4 style="color:#059669; font-size:1.1rem; margin:0;">[3차시] 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태 (45분)</h4>
+              <span class="badge" style="background:#ecfdf5; color:#047857; font-size:0.8rem;">성취기준: [9과16-01] [9과16-06] [9정02-02]</span>
+            </div>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 화학 반응에서 원자가 가장 안정한 최저 바닥 상태를 찾아 결합함을 이해하고, 양자 컴퓨터와 일반 컴퓨터가 협력하는 VQE 알고리즘을 역할극으로 설명할 수 있다.</p>
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+              <thead>
+                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>도입<br>(5분)</strong></td>
+                  <td>• 굴러가는 공 비유: "언덕에서 공을 굴리면 어디서 멈출까?" $\rightarrow$ 가장 낮은 골짜기 바닥!<br>• 자연과 화학 분자도 에너지가 가장 낮은 <strong>'바닥 상태'</strong>를 찾아 결합함을 상기 [9과16-06]</td>
+                  <td>• 일상적 비유로 최적화 개념 접근</td>
+                </tr>
+                <tr>
+                  <td><strong>전개<br>(32분)</strong></td>
+                  <td>• <strong>화학 반응과 에너지 출입:</strong> 원자 재배열 시 가장 안정한 결합 형태 탐구 [9과16-01]<br>• <strong>VQE(변분 양자 고유값 계산기) 2인 1조 협동 역할극:</strong><br>  - 학생 A (양자 컴퓨터, 빠른 탐험가): 큐비트 중첩으로 복잡한 전자 구름 계산 후 "현재 분자 모양의 에너지는 -0.45입니다!" 전달<br>  - 학생 B (일반 컴퓨터, 똑똑한 내비게이션): 에너지 수치를 분석하여 "오른쪽으로 기울었으니 결합 각도를 5도 좁히세요!" 피드백 전달<br>• <strong>시뮬레이션 탐구:</strong> VQE 최적화 루프 시뮬레이터로 공이 골짜기 바닥(-1.137)으로 안착하는 과정 조작<br>• <strong>KAIST 연구 성과:</strong> 이온 트랩 양자 컴퓨터로 분자의 결합 에너지를 초정밀 계산한 연구 소개</td>
+                  <td>• <strong>[협동학습]</strong> 2인 1조 역할극을 통해 알고리즘의 피드백 루프를 온몸으로 체득<br>• <strong>[과정평가]</strong> VQE의 2인 3각 협력 구조를 정확히 파악하였는지 평가</td>
+                </tr>
+                <tr>
+                  <td><strong>정리<br>(8분)</strong></td>
+                  <td>• VQE 협동 알고리즘 요약 정리 및 활동지 [활동 2] Q2 작성<br>• 다음 차시(틴에이저 양자 스타트업 CEO 프로젝트) 과제 안내</td>
+                  <td>• 4차시 프로젝트 모둠 구성</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 4차시 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+              <h4 style="color:#d97706; font-size:1.1rem; margin:0;">[4차시] 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트 (45분)</h4>
+              <span class="badge" style="background:#fffbeb; color:#b45309; font-size:0.8rem;">성취기준: [9과01-02] [9과16-01] [9과23-01/02]</span>
+            </div>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>학습 목표:</strong> 양자 계산 화학이 인류의 3대 지구 난제를 해결하는 생태전환적 가치를 인식하고, 미래 스타트업 CEO 기획서를 작성·발표할 수 있다.</p>
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
+              <thead>
+                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>도입<br>(5분)</strong></td>
+                  <td>• "위험한 화학 약품과 비커 없이 컴퓨터로 신물질을 만든다면?" 비커 없는 화학 실험실 비전 제시</td>
+                  <td>• 환경·안전·지속가능성 가치 부각</td>
+                </tr>
+                <tr>
+                  <td><strong>전개<br>(32분)</strong></td>
+                  <td>• <strong>양자 컴퓨터가 해결할 인류의 3대 지구 난제 탐구:</strong><br>  1) <strong>친환경 상온 비료:</strong> 전 세계 전기의 2%를 쓰는 비료 공장 대신 상온 질소 고정 촉매 분자 계산 $\rightarrow$ 식량난 및 온실가스 동시 해결<br>  2) <strong>전고체 배터리:</strong> 전기차 화재를 막고 10배 빨리 충전되는 꿈의 고체 전해질 설계<br>  3) <strong>표적 신약:</strong> 변종 바이러스 단백질 열쇠구멍에 꼭 맞는 치료제 분자 가상 스크리닝<br>• <strong>[프로젝트] 틴에이저 양자 화학 스타트업 CEO 기획서 작성:</strong><br>  - 4인 1조 창업팀 구성, 3대 난제 중 1개 선택<br>  - 회사명, 도전 과제, 양자 컴퓨터로 설계할 가상 분자 아이디어, 사회적 기대 효과 구안<br>• <strong>모둠별 피칭:</strong> 2분 엘리베이터 스피치 발표 및 질의응답</td>
+                  <td>• <strong>[생태전환교육]</strong> 기후 위기 및 탄소 중립과 기술의 연계성 강조<br>• <strong>[산출물평가]</strong> CEO 기획서의 창의성, 공공성, 과학적 설득력 평가 (루브릭 적용)</td>
+                </tr>
+                <tr>
+                  <td><strong>정리<br>(8분)</strong></td>
+                  <td>• 상호 동료 평가 및 교사 피드백<br>• 양자 계산 과학자 진로 탐색 및 3차원 루브릭 자가평가, 전체 프로그램 마무리</td>
+                  <td>• 학생생활기록부 세특 기재 연계</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
         </section>
 
         <!-- [QUANTUM] 3. 학생 활동지 -->
         <section id="view-quantum-worksheet" class="content-view">
-          <div id="quantum-ws-container"></div>
+          <div class="card">
+          <!-- 충남교육청 표준 헤더 표 -->
+          <div class="section-header-box" style="background: linear-gradient(135deg, #6d28d9, #8b5cf6);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">중학교 과학 탐구활동지</div>
+            <div class="section-header-title">0과 1의 한계를 넘는 분자 탐험: 양자 컴퓨터와 계산 화학의 미래</div>
+          </div>
+
+          <table class="data-table">
+            <tr>
+              <th style="width:16%;">단원</th>
+              <td colspan="3">중학교 과학 &lt;물질의 구성&gt;, &lt;화학 반응의 규칙성&gt;, &lt;과학과 사회&gt; & 정보과 융합 심화</td>
+            </tr>
+            <tr>
+              <th>성취기준</th>
+              <td colspan="3">
+                <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.<br>
+                <strong>[정보과 연계]</strong> [9정01-03] 2진수 데이터 표현 / [9정02-02] 문제 해결 알고리즘과 시뮬레이션 모델링
+              </td>
+            </tr>
+            <tr>
+              <th>탐구목표</th>
+              <td colspan="3">
+                1. 다전자 분자 속 전자 간 반발력으로 인해 발생하는 계산 조합 수의 지수 폭발($2^N$)을 체감하고 설명할 수 있다.<br>
+                2. 바닥에 놓인 동전(비트)과 회전하는 팽이 동전(큐비트의 '중첩')을 비교하여 동시 병렬 처리의 원리를 설명할 수 있다.<br>
+                3. 양자 컴퓨터와 일반 컴퓨터가 협력하는 VQE 알고리즘을 통해 화학 분자가 가장 안정한 바닥 상태를 찾아 결합하는 과정을 설명할 수 있다.<br>
+                4. 인류의 3대 지구 난제를 해결하는 틴에이저 양자 화학 스타트업 CEO 프로젝트를 기획할 수 있다.
+              </td>
+            </tr>
+            <tr>
+              <th>지능형<br>탐구활동 유형</th>
+              <td>동전 조작 실험 + 가상실험실(시뮬레이션) + 2인 1조 알고리즘 역할극</td>
+              <th>권장 모둠</th>
+              <td>4인 1모둠 (또는 2인 1모둠)</td>
+            </tr>
+            <tr>
+              <th>준비물</th>
+              <td colspan="3">스마트기기(노트북 또는 태블릿), 동전(학생당 1개), 역할극 카드, 가상실험실(lab.html)</td>
+            </tr>
+          </table>
+
+          <div style="display:flex; justify-content:flex-end; gap:1.5rem; margin:1rem 0; font-size:0.95rem; font-weight:600; padding:0.5rem; background:#f1f5f9; border-radius:0.4rem;">
+            <span>제 3 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
+            <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
+            <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+            <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+          </div>
+
+          <!-- 1. 탐구 과정 -->
+          <div class="inquiry-step-title">1. 탐구 과정</div>
+          
+          <div style="margin-bottom:1rem; line-height:1.75; font-size:0.93rem;">
+            <p><strong>【탐구 1】 원자 레고 퍼즐과 지수 폭발 체험</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>원자핵 주위를 도는 전자 1개가 가질 수 있는 양자 상태를 2가지(0 또는 1)로 가정한다.</li>
+              <li>전자가 1개, 10개, 100개로 늘어날 때 전체 계산해야 하는 상태의 수($2^N$)를 거듭제곱으로 계산한다.</li>
+              <li>현존하는 세계 최고의 슈퍼컴퓨터로도 카페인이나 페니실린 같은 분자를 완벽하게 계산할 수 없는 이유를 토의한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 2】 0과 1이 동시에 춤추는 동전 팽이와 양자 큐비트</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>책상 위에 동전을 가만히 놓았을 때 앞면(0) 또는 뒷면(1) 중 한 가지만 나타남을 관찰한다. (고전 비트 모형)</li>
+              <li>동전을 손가락으로 팽이처럼 빠르게 회전시킨 뒤, 멈추기 전 도는 동안 앞면과 뒷면이 공존하는 상태를 관찰한다. (양자 큐비트 모형)</li>
+              <li>가상실험실(lab.html)의 [블록 구 큐비트 시뮬레이터]에 접속하여 0과 1이 섞인 중첩 상태를 직접 만들어본다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 3】 환상의 2인 3각 달리기: VQE 알고리즘 역할극</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>2인 1조를 구성하고, 학생 A는 <strong>'양자 컴퓨터(빠른 에너지 탐험가)'</strong>, 학생 B는 <strong>'일반 컴퓨터(똑똑한 내비게이션)'</strong> 역할을 맡는다.</li>
+              <li>학생 A가 큐비트로 분자의 에너지 값을 계산하여 전달하면, 학생 B는 수치를 보고 분자 결합 각도를 넓히거나 좁히도록 피드백을 준다.</li>
+              <li>가상실험실(lab.html)의 [VQE 최적화 루프 시뮬레이터]를 가동하여 공이 골짜기 최저 바닥 상태(-1.137 a.u.)로 찾아 들어가는 과정을 확인한다.</li>
+            </ol>
+
+            <p style="margin-top:0.75rem;"><strong>【탐구 4】 틴에이저 양자 화학 스타트업 CEO 프로젝트</strong></p>
+            <ol style="margin-left:1.5rem; margin-top:0.3rem;">
+              <li>인류의 3대 지구 난제(친환경 상온 비료 촉매 / 화재 없는 전고체 배터리 / 맞춤형 표적 신약) 중 1개를 선택한다.</li>
+              <li>비커 없이 양자 컴퓨터로 가상 분자를 설계하는 미래 스타트업 창업 기획서를 작성하고 모둠별 피칭을 준비한다.</li>
+            </ol>
+          </div>
+
+          <!-- 2. 탐구 활동 -->
+          <div class="inquiry-step-title">2. 탐구 활동</div>
+
+          <!-- 탐구 1 활동 -->
+          <div style="margin-top:0.75rem;">
+            <p><strong>【탐구 1】 원자 레고 퍼즐과 지수 폭발 체험표</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 분자 속 전자 수에 따른 계산 조합의 수($2^N$)를 계산하여 표의 빈칸을 채워보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">물질명</th>
+                  <th style="width:15%;">화학식</th>
+                  <th style="width:15%;">전자 수 ($N$)</th>
+                  <th style="width:25%;">계산해야 할 상태 수 ($2^N$)</th>
+                  <th style="width:25%;">일반 슈퍼컴퓨터의 계산 소요 시간</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>수소 원자</td><td>$H$</td><td>1개</td><td>$2^1 =$ ( &nbsp;&nbsp;&nbsp;&nbsp; )가지</td><td>0.000001초 (즉시)</td></tr>
+                <tr><td>물 분자</td><td>$H_2O$</td><td>10개</td><td>$2^{10} =$ ( &nbsp;&nbsp;&nbsp;&nbsp; )가지</td><td>약 0.001초</td></tr>
+                <tr><td>카페인 분자</td><td>$C_8H_{10}N_4O_2$</td><td>102개</td><td>$2^{102} \approx 10^{30}$가지</td><td>( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td></tr>
+                <tr><td>페니실린(항생제)</td><td>$C_{16}H_{18}N_2O_4S$</td><td>약 280개</td><td>$2^{280} \approx 10^{84}$가지</td><td>( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td></tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 지구상의 모든 모래알 수는 약 $10^{23}$개이고, 관측 가능한 우주 전체의 모든 원자 수는 약 $10^{80}$개입니다. 이 사실을 바탕으로, 왜 슈퍼컴퓨터로도 작은 약품 분자 하나를 계산하지 못하는지 '지수 폭발'의 관점에서 서술해 보자.</p>
+            <div class="answer-box">
+              ☞ 서술: 
+            </div>
+          </div>
+
+          <!-- 탐구 2 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 2】 동전 팽이 실험과 0과 1의 양자 중첩(Superposition)</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 책상 위의 가만히 있는 동전(고전 비트)과 회전하는 동전(양자 큐비트)의 정보 표현 차이를 비교해 보자.</p>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">비교 항목</th>
+                  <th style="width:40%;">고전 비트 (Bit)</th>
+                  <th style="width:40%;">양자 큐비트 (Qubit)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>동전 비유</strong></td>
+                  <td>바닥에 가만히 누워 있는 동전</td>
+                  <td>책상 위에서 팽이처럼 빠르게 도는 동전</td>
+                </tr>
+                <tr>
+                  <td><strong>정보의 표현</strong></td>
+                  <td>0 또는 1 중 ( 단 한 개만 / 둘 다 동시에 ) 선택</td>
+                  <td>0과 1이 ( 단 한 개만 / 둘 다 동시에 ) 섞인 <strong>중첩</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>10개 사용 시 정보 처리</strong></td>
+                  <td>1,024개 길 중 ( &nbsp;&nbsp;&nbsp;&nbsp; )개씩 순서대로 검사</td>
+                  <td>1,024개 길을 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 한 번에 동시 탐색!</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 미로 찾기를 할 때, 일반 컴퓨터의 탐색 방식과 양자 컴퓨터의 동시 병렬 처리 방식의 차이를 일상적 언어로 비유하여 설명해 보자.</p>
+            <div class="answer-box">
+              ☞ 비유 설명: 
+            </div>
+          </div>
+
+          <!-- 탐구 3 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 3】 환상의 2인 3각 달리기: VQE 알고리즘과 바닥 상태</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 자연계의 모든 화학 분자는 에너지가 가장 ( 높은 / 낮은 ) 최저 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )를 찾아 결합합니다.</p>
+            
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. VQE(변분 양자 고유값 계산기) 알고리즘에서 두 컴퓨터의 협동 순서도를 완성해 보자.</p>
+            <div class="callout-box" style="background:#f8fafc; font-size:0.92rem; text-align:center;">
+              [ 1단계: <strong>양자 컴퓨터</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 계산<br>
+              ⬇ 수치 전달<br>
+              [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 분자의 결합 각도와 거리를 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )<br>
+              ⬇ 반복(루프)<br>
+              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+            </div>
+          </div>
+
+          <!-- 탐구 4 활동 -->
+          <div style="margin-top:1.5rem;">
+            <p><strong>【탐구 4】 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 기획서</strong></p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 인류의 3대 지구 난제 중 1가지를 선택하여, 양자 컴퓨터로 해결하는 우리 모둠의 스타트업 기획서를 작성해 보자.</p>
+
+            <table class="data-table">
+              <tr>
+                <th style="width:20%;">스타트업 회사명</th>
+                <td style="width:30%;">&nbsp;</td>
+                <th style="width:20%;">대표 CEO 및 연구팀</th>
+                <td style="width:30%;">&nbsp;</td>
+              </tr>
+              <tr>
+                <th>해결할 지구 난제<br>(택 1)</th>
+                <td colspan="3">
+                  [ ] <strong>친환경 상온 비료:</strong> 전 세계 전기의 2%를 쓰는 비료 공장 대신 상온 질소 고정 촉매 분자 설계<br>
+                  [ ] <strong>전고체 배터리:</strong> 전기차 화재를 막고 10배 빨리 충전되는 꿈의 고체 전해질 분자 설계<br>
+                  [ ] <strong>맞춤형 표적 신약:</strong> 변종 바이러스 단백질 열쇠구멍에 꼭 맞는 치료제 분자 가상 스크리닝
+                </td>
+              </tr>
+              <tr>
+                <th>양자 컴퓨터로 설계할<br>가상 분자 아이디어</th>
+                <td colspan="3">
+                  <div class="graph-canvas-area" style="height:140px;">
+                    <span style="color:#94a3b8; font-size:0.9rem;">(설계할 분자의 특징과 원자 결합 모양을 스케치해 보세요)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>사회적 및 생태적<br>기대 효과</th>
+                <td colspan="3">
+                  ☞ 탄소 배출 저감, 식량난 해결, 난치병 극복 등 기대 효과 서술:
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- 3. 실험 및 안전 유의사항 -->
+          <div class="inquiry-step-title" style="margin-top:1.75rem;">3. 실험 및 안전 유의사항</div>
+          <div class="callout-box" style="font-size:0.9rem; background:#f5f3ff; border-left-color:#7c3aed;">
+            ◎ <strong>스마트기기 과몰입 방지:</strong> 가상실험실(시뮬레이션) 이용 시 10분 내외로 이용하고 눈의 피로를 예방합니다.<br>
+            ◎ <strong>디지털 정보 윤리:</strong> 생성형 AI를 활용하여 자료를 조사할 경우, 인공지능의 환각(오류) 가능성을 비판적으로 검증하고 출처를 명확히 표기합니다.<br>
+            ◎ <strong>협력과 존중:</strong> 모둠 토의 및 알고리즘 역할극 수행 시 타인의 의견을 경청하고 모둠원 간 역할을 성실히 분담합니다.
+          </div>
+
+        </div>
         </section>
 
         <!-- [QUANTUM] 4. 교사 도움자료 (모범답안) -->
         <section id="view-quantum-teacher-guide" class="content-view">
-          <div id="quantum-tg-container"></div>
+          <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #059669, #10b981);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">교사용 수업 보조 및 평가 도움자료</div>
+            <div class="section-header-title">4. 교사 도움 자료: 탐구 활동 모범답안 및 지도 가이드</div>
+          </div>
+
+          <!-- 탐구 1 모범 답안 -->
+          <div style="margin-top:1.25rem;">
+            <h3 style="color:#7c3aed; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #ede9fe; padding-bottom:0.4rem;">
+              【탐구 1】 원자 레고 퍼즐과 지수 폭발 체험표 예시 답안
+            </h3>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">물질명</th>
+                  <th style="width:15%;">화학식</th>
+                  <th style="width:15%;">전자 수 ($N$)</th>
+                  <th style="width:25%;">계산해야 할 상태 수 ($2^N$)</th>
+                  <th style="width:25%;">일반 슈퍼컴퓨터의 계산 소요 시간</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>수소 원자</strong></td>
+                  <td>$H$</td>
+                  <td>1개</td>
+                  <td><strong class="model-answer">$2^1 = 2$ 가지</strong></td>
+                  <td>0.000001초 (즉시 계산)</td>
+                </tr>
+                <tr>
+                  <td><strong>물 분자</strong></td>
+                  <td>$H_2O$</td>
+                  <td>10개</td>
+                  <td><strong class="model-answer">$2^{10} = 1,024$ 가지</strong></td>
+                  <td>약 0.001초 (즉시 계산)</td>
+                </tr>
+                <tr>
+                  <td><strong>카페인 분자</strong></td>
+                  <td>$C_8H_{10}N_4O_2$</td>
+                  <td>102개</td>
+                  <td><strong class="model-answer">$2^{102} \approx 10^{30}$ 가지</strong></td>
+                  <td><strong class="model-answer">수백 년 이상 소요 (지구 모든 모래알 $10^{23}$개 초과!)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>페니실린(항생제)</strong></td>
+                  <td>$C_{16}H_{18}N_2O_4S$</td>
+                  <td>약 280개</td>
+                  <td><strong class="model-answer">$2^{280} \approx 10^{84}$ 가지</strong></td>
+                  <td><strong class="model-answer">우주 나이(138억 년) 동안 계산해도 불가 (우주 전체 원자 수 $10^{80}$개 초과!)</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 슈퍼컴퓨터의 한계와 지수 폭발 서술</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              분자 속 전자가 1개 늘어날 때마다 계산해야 하는 양자역학적 상태의 수가 2배씩 곱해지는 <strong>'지수 폭발($2^N$)'</strong>이 발생하기 때문입니다. 전자가 100개만 넘어가도 조합의 수가 지구상 모든 모래알의 수($10^{23}$)나 전 우주의 모든 원자 수($10^{80}$)를 아득히 뛰어넘어, 현존하는 가장 강력한 슈퍼컴퓨터로도 화학 분자의 전자 구름을 계산하는 것이 물리적으로 불가능합니다.
+            </div>
+          </div>
+
+          <!-- 탐구 2 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#2563eb; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #dbeafe; padding-bottom:0.4rem;">
+              【탐구 2】 동전 팽이 실험과 0과 1의 양자 중첩 예시 답안
+            </h3>
+            
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:20%;">비교 항목</th>
+                  <th style="width:40%;">고전 비트 (Bit)</th>
+                  <th style="width:40%;">양자 큐비트 (Qubit)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>동전 비유</strong></td>
+                  <td>바닥에 가만히 누워 있는 동전</td>
+                  <td>책상 위에서 팽이처럼 빠르게 도는 동전</td>
+                </tr>
+                <tr>
+                  <td><strong>정보의 표현</strong></td>
+                  <td>0 또는 1 중 (<strong class="model-answer">&nbsp;단 한 개만&nbsp;</strong>) 선택</td>
+                  <td>0과 1이 (<strong class="model-answer">&nbsp;둘 다 동시에&nbsp;</strong>) 섞인 <strong>중첩</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>10개 사용 시 정보 처리</strong></td>
+                  <td>1,024개 길 중 (<strong class="model-answer">&nbsp;1&nbsp;</strong>)개씩 순서대로 검사</td>
+                  <td>1,024개 길을 (<strong class="model-answer">&nbsp;단 한 번에 동시에&nbsp;</strong>) 동시 탐색!</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 미로 찾기 비유</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              일반 컴퓨터(비트)는 미로를 탐색할 때 한 사람이 한 갈래 길씩 끝까지 가보고 벽에 막히면 되돌아 나오는 <strong>'순차 탐색'</strong> 방식입니다. 반면 양자 컴퓨터(큐비트)는 중첩의 성질을 이용하여 <strong>1,024명의 분신이 모든 갈래 길을 '동시에 단 한 번에' 쏟아져 들어가서</strong> 출구를 즉각 발견하는 <strong>'동시 병렬 처리'</strong> 방식입니다.
+            </div>
+          </div>
+
+          <!-- 탐구 3 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#059669; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #d1fae5; padding-bottom:0.4rem;">
+              【탐구 3】 환상의 2인 3각 달리기 VQE 알고리즘 예시 답안
+            </h3>
+            
+            <p style="font-size:0.9rem; margin-bottom:0.4rem;"><strong>1. 화학 분자의 결합 상태 빈칸</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+              <span class="answer-arrow">☞</span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
+            </div>
+
+            <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. VQE 협동 순서도 완성</strong></p>
+            <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; text-align:center; font-size:0.95rem;">
+              [ 1단계: <strong>양자 컴퓨터</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( <strong class="model-answer">에너지 값</strong> ) 계산<br>
+              ⬇ 수치 전달<br>
+              [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <strong class="model-answer">미세 조정(최적화)</strong> )<br>
+              ⬇ 반복(피드백 루프)<br>
+              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+            </div>
+          </div>
+
+          <!-- 탐구 4 모범 답안 -->
+          <div style="margin-top:1.75rem;">
+            <h3 style="color:#d97706; font-size:1.15rem; margin-bottom:0.6rem; border-bottom:2px solid #fef3c7; padding-bottom:0.4rem;">
+              【탐구 4】 틴에이저 양자 화학 스타트업 CEO 기획서 예시 산출물
+            </h3>
+            
+            <table class="data-table">
+              <tr>
+                <th style="width:20%;">스타트업 회사명</th>
+                <td style="width:30%;"><strong class="model-answer">퀀텀 카탈리스트 (Quantum Catalyst)</strong></td>
+                <th style="width:20%;">대표 CEO 및 연구팀</th>
+                <td style="width:30%;"><strong class="model-answer">이양자 대표 (양자계산과학자 모둠)</strong></td>
+              </tr>
+              <tr>
+                <th>해결할 지구 난제</th>
+                <td colspan="3">
+                  <strong class="model-answer">[선택 1] 친환경 상온 비료 합성 촉매 설계</strong><br>
+                  (현 비료 공장은 400℃ 고온과 200기압 고압을 쓰며 전 세계 전기의 2%를 소비하고 온실가스를 배출함)
+                </td>
+              </tr>
+              <tr>
+                <th>양자 컴퓨터로 설계할<br>가상 분자 아이디어</th>
+                <td colspan="3">
+                  <strong class="model-answer">
+                    • 콩과 식물 뿌리혹박테리아의 질소고정효소(니트로게나아제) 활성 중심인 철-몰리브덴(Fe-Mo) 클러스터의 전자 결합을 양자 컴퓨터로 정밀 시뮬레이션함.<br>
+                    • 상온·상압에서도 공기 중의 질소($N_2$) 삼중결합을 부드럽게 끊어내는 인공 금속 유기 촉매 분자를 컴퓨터 안에서 가상 합성함.
+                  </strong>
+                </td>
+              </tr>
+              <tr>
+                <th>사회적 및 생태적<br>기대 효과</th>
+                <td colspan="3">
+                  <strong class="model-answer">
+                    • 100년 된 고에너지 소비 하버-보슈 공정을 완전 대체하여 전 세계 이산화탄소 배출량의 1.5%를 감축.<br>
+                    • 저렴하고 안전한 친환경 비료 생산으로 저개발국 식량난 해결 및 농업 탄소 중립 실현.
+                  </strong>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- 지도상 유의점 및 교사 팁 -->
+          <div style="margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;">💡 [지도상 유의점 및 수업 지도 팁]</h3>
+            
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed;">
+              <strong>1. 학생 오개념 지도 요령: "양자 컴퓨터가 나오면 모든 일반 컴퓨터가 사라지나요?"</strong><br>
+              학생들은 양자 컴퓨터가 유튜브 시청이나 게임, 워드 프로세서까지 모두 대체할 것이라고 오해하기 쉽습니다. 양자 컴퓨터는 일상적인 사무 작업용이 아니라, <strong>'분자 시뮬레이션, 거대 조합 최적화, 암호 해독' 등 특수한 병렬 연산에만 특화된 장치</strong>이며, 미래에도 일반 컴퓨터와 양자 컴퓨터가 서로 협력(VQE처럼)하여 공존함을 명확히 지도합니다.
+            </div>
+
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb;">
+              <strong>2. 동전 팽이 조작 실험 팁</strong><br>
+              학생들이 동전을 돌릴 때 책상 밑으로 떨어지지 않도록 책받침이나 평평한 트레이 위에서 돌리도록 안내합니다. "동전이 돌고 있을 때 여러분은 앞면이라고 단정할 수 있나요, 뒷면이라고 단정할 수 있나요?"라는 발문을 통해 <strong>'측정하기 전에는 0과 1이 공존하는 중첩 상태'</strong>임을 체감하도록 유도합니다.
+            </div>
+
+            <div class="callout-box" style="background:#f8fafc; border-left-color:#10b981;">
+              <strong>3. 가상실험실(lab.html) 연계 안내</strong><br>
+              2차시 수업에서는 <strong>[블록 구 큐비트 시뮬레이터]</strong>를 통해 0과 1의 확률을 조작해보고, 3차시 수업에서는 <strong>[VQE 에너지 최적화 시뮬레이터]</strong>를 조작하여 두 원자 사이의 거리가 좁아졌다가 넓어지며 에너지가 가장 낮은 골짜기 바닥에 쏙 들어가는 장면을 직관적으로 확인하도록 지도합니다.
+            </div>
+          </div>
+
+        </div>
         </section>
 
         <!-- [QUANTUM] 5. 가상실험실 -->
@@ -477,7 +2053,104 @@
 
         <!-- [QUANTUM] 6. 학생용 읽기자료 -->
         <section id="view-quantum-textbook" class="content-view">
-          <div id="quantum-tb-container"></div>
+          <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #5b21b6, #7c3aed);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">스토리텔링 과학 탐구 교과서</div>
+            <div class="section-header-title">0과 1의 한계를 넘는 분자 탐험: 양자 컴퓨터와 계산 화학의 미래</div>
+          </div>
+
+          <!-- 본문 섹션 1 -->
+          <article style="line-height:1.85; font-size:1rem; color:#334155; margin-bottom:2rem;">
+            <h2 style="color:#5b21b6; font-size:1.35rem; margin:1.5rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🌾 1장. 슈퍼컴퓨터도 무릎 꿇은 분자의 미시세계: 지수 폭발</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              옛날 인도의 왕과 지혜로운 학자의 '체스판과 쌀알' 이야기를 아시나요? 첫 번째 칸에 쌀 1톨, 두 번째 칸에 2톨, 세 번째 칸에 4톨… 매 칸마다 2배씩 늘려가면 64번째 칸에는 전 세계 쌀 생산량의 수백 배가 넘는 어마어마한 쌀알이 필요합니다. 거듭제곱의 무서운 힘입니다!
+            </p>
+            <p style="margin-bottom:1rem;">
+              화학 분자의 세계에서도 똑같은 일이 일어납니다. 우리가 매일 마시는 커피 한 잔 속 카페인 분자($C_8H_{10}N_4O_2$) 속에는 102개의 전자가 살고 있습니다. 이 전자들은 서로를 밀어내며 끊임없이 상호작용하는데, 전자가 1개 늘어날 때마다 계산해야 하는 상태의 수가 2배씩 곱해집니다. 이를 <strong>'지수 폭발(Exponential Explosion, $2^N$)'</strong>이라고 부릅니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              전자가 102개인 카페인의 상태 수는 무려 $2^{102} \approx 10^{30}$가지로, 지구상의 모든 바닷가 모래알 수($10^{23}$개)보다 천만 배나 많습니다! 심지어 흔한 항생제인 페니실린 분자는 $10^{84}$가지의 상태를 가지는데, 이는 전 우주의 모든 원자 수($10^{80}$개)를 초과합니다. 아무리 비싼 슈퍼컴퓨터를 총동원해도 우주의 나이(138억 년) 동안 계산할 수 없습니다. 그래서 화학자들은 지금까지 위험한 비커와 약품을 수만 번 섞어보며 10년 넘게 실패를 거듭해야만 신약을 만들 수 있었습니다.
+            </p>
+
+            <h2 style="color:#5b21b6; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🪙 2장. 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              천재 물리학자 리처드 파인만은 기막힌 아이디어를 냈습니다. <em>"자연의 분자가 양자역학으로 움직인다면, 컴퓨터 자체를 양자역학으로 만들면 되지 않겠는가!"</em> 이렇게 탄생한 것이 바로 <strong>'양자 컴퓨터(Quantum Computer)'</strong>입니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              우리가 쓰는 일반 컴퓨터는 전등 스위치처럼 전기가 꺼짐(0) 또는 켜짐(1) 중 한 가지만 선택할 수 있는 <strong>'비트(Bit)'</strong>를 씁니다. 책상 위에 가만히 누워 있는 동전과 같습니다. 앞면(0)이거나 뒷면(1)입니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              하지만 양자 컴퓨터의 기본 단위인 <strong>'큐비트(Qubit)'</strong>는 책상 위에서 팽이처럼 빠르게 빙글빙글 회전하는 동전과 같습니다! 동전이 도는 동안에는 앞면(0)인가요, 뒷면(1)인가요? <strong>0과 1이 둘 다 동시에 섞여 있습니다!</strong> 이를 양자역학에서는 <strong>'중첩(Superposition)'</strong>이라고 부릅니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              비트 10개는 1,024개의 갈림길 중 한 번에 1개씩 순서대로 검사해야 하지만, 큐비트 10개는 0과 1의 중첩 덕분에 <strong>1,024개의 갈림길을 '동시에 단 한 번에' 탐색</strong>합니다! 큐비트가 늘어날 때마다 처리 능력이 기하급수적으로 폭발하므로, 슈퍼컴퓨터가 수백 년 걸릴 분자 계산을 단 몇 분 만에 끝낼 수 있게 됩니다.
+            </p>
+
+            <h2 style="color:#5b21b6; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>⛰️ 3장. 환상의 2인 3각 달리기: VQE 알고리즘과 골짜기 바닥 상태</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              가파른 언덕에서 축구공을 굴리면 공은 어디로 굴러가서 멈출까요? 당연히 가장 낮은 골짜기 바닥입니다! 자연계의 모든 원자와 분자도 에너지가 가장 낮고 편안한 <strong>'바닥 상태(Ground State)'</strong>를 찾아 서로 단단하게 결합합니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              화학 분자가 가장 안정한 모양을 찾는 알고리즘이 바로 <strong>'VQE(변분 양자 고유값 계산기, Variational Quantum Eigensolver)'</strong>입니다. VQE는 놀랍게도 양자 컴퓨터 혼자 일하는 것이 아니라, 일반 슈퍼컴퓨터와 <strong>2인 3각 달리기</strong>처럼 완벽한 팀워크를 이룹니다:
+            </p>
+            <ul style="margin-left:1.5rem; margin-bottom:1rem;">
+              <li><strong>양자 컴퓨터 (빠른 탐험가):</strong> 큐비트의 중첩을 활용하여 복잡하게 얽힌 전자 구름의 현재 에너지 값을 순식간에 계산해 일반 컴퓨터에 넘겨줍니다.</li>
+              <li><strong>일반 컴퓨터 (스마트 내비게이션):</strong> 넘겨받은 에너지 숫자를 보고 "지금 경사가 오른쪽으로 기울었으니, 원자 결합 거리를 0.05Å(옹스트롬) 좁히자!"라고 분자 모양을 미세 조정하도록 명령합니다.</li>
+            </ul>
+            <p style="margin-bottom:1rem;">
+              이 피드백 루프를 몇 번 반복하면, 공이 산골짜기 맨 밑바닥에 안착하듯 분자가 에너지가 가장 낮은 완벽한 결합 구조를 찾아냅니다! KAIST 연구진은 이 원리를 바탕으로 실제 이온 트랩 양자 컴퓨터를 이용해 분자의 화학 결합 에너지를 초정밀 계산하는 데 성공했습니다.
+            </p>
+
+            <h2 style="color:#5b21b6; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>🌍 4장. 비커 없는 미래 실험실과 틴에이저 양자 화학 스타트업</span>
+            </h2>
+            <p style="margin-bottom:1rem;">
+              이제 화학은 위험한 폭발 위험과 유독 가스가 가득한 비커와 시험관의 시대를 지나, 컴퓨터 안에서 분자를 시뮬레이션하는 <strong>'양자 계산 화학(Quantum Computational Chemistry)'</strong>의 시대로 진화하고 있습니다.
+            </p>
+            <p style="margin-bottom:1rem;">
+              양자 계산 화학은 인류가 직면한 3대 지구 난제를 해결할 열쇠입니다:
+            </p>
+            <ol style="margin-left:1.5rem; margin-bottom:1rem;">
+              <li><strong>친환경 상온 비료:</strong> 현재 비료 공장은 전 세계 전기의 2%를 쓰며 막대한 온실가스를 배출합니다. 콩과 식물 뿌리혹박테리아처럼 상온에서 질소를 고정하는 인공 촉매 분자를 계산해내면 기후 위기와 식량난을 동시에 해결합니다.</li>
+              <li><strong>화재 없는 전고체 배터리:</strong> 불이 붙지 않고 10배 빨리 충전되는 꿈의 고체 전해질 분자를 컴퓨터로 가상 합성합니다.</li>
+              <li><strong>맞춤형 표적 신약:</strong> 변종 바이러스 단백질의 열쇠구멍 구조를 분석하여 꼭 맞는 치료제 분자를 수천 배 빠르게 스크리닝합니다.</li>
+            </ol>
+            <p style="margin-bottom:1rem;">
+              미래에는 청소년인 여러분이 컴퓨터 한 대로 전 세계를 구하는 <strong>'양자 화학 스타트업 CEO'</strong>가 될 수 있습니다. 0과 1의 한계를 뛰어넘어 분자의 세계를 자유롭게 탐험해 보세요!
+            </p>
+          </article>
+
+          <!-- 중학생 핵심 용어 사전 -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+              <span>📚 중학생 핵심 과학 용어 사전</span>
+            </h3>
+
+            <dl style="font-size:0.92rem; line-height:1.75;">
+              <dt style="font-weight:700; color:#7c3aed; margin-top:0.5rem;">1. 고전 비트 (Bit) vs 양자 큐비트 (Qubit)</dt>
+              <dd style="color:#475569; margin-left:1rem;">비트는 0 또는 1 중 오직 하나만 저장할 수 있는 스위치입니다. 큐비트는 0과 1이 동시에 섞여 존재하는 '중첩' 상태를 가질 수 있는 양자 컴퓨터의 기본 정보 단위입니다.</dd>
+
+              <dt style="font-weight:700; color:#7c3aed; margin-top:0.5rem;">2. 중첩 (Superposition)</dt>
+              <dd style="color:#475569; margin-left:1rem;">하나의 양자 입자가 여러 가지 상태(0과 1)를 동시에 가지고 있는 신비로운 양자역학적 성질입니다. 회전하고 있는 동전 팽이에 비유할 수 있습니다.</dd>
+
+              <dt style="font-weight:700; color:#7c3aed; margin-top:0.5rem;">3. 지수 폭발 (Exponential Explosion)</dt>
+              <dd style="color:#475569; margin-left:1rem;">변수가 1개씩 늘어날 때마다 계산량이나 조합의 수가 2배, 4배, 8배($2^N$)로 폭발적으로 급증하여, 일반 컴퓨터로는 물리적으로 계산할 수 없게 되는 현상입니다.</dd>
+
+              <dt style="font-weight:700; color:#7c3aed; margin-top:0.5rem;">4. VQE (변분 양자 고유값 계산기)</dt>
+              <dd style="color:#475569; margin-left:1rem;">양자 컴퓨터가 분자의 에너지를 계산하고, 일반 컴퓨터가 분자 구조를 미세 조정하며 협력하여 가장 안정한 최저 바닥 상태를 찾아내는 하이브리드 알고리즘입니다.</dd>
+
+              <dt style="font-weight:700; color:#7c3aed; margin-top:0.5rem;">5. 계산 화학 (Computational Chemistry)</dt>
+              <dd style="color:#475569; margin-left:1rem;">실제 비커와 유독 시약을 사용하는 대신, 컴퓨터 시뮬레이션을 통해 분자의 결합과 화학 반응을 예측하고 신물질을 설계하는 첨단 융합 화학 분야입니다.</dd>
+            </dl>
+          </div>
+
+        </div>
         </section>
 
         <!-- [QUANTUM] 7. 발표 슬라이드 -->
@@ -506,7 +2179,122 @@
 
         <!-- [QUANTUM] 8. 2022 성취기준 연계표 -->
         <section id="view-quantum-curriculum" class="content-view">
-          <div id="quantum-curr-container"></div>
+          <div class="card">
+          <div class="section-header-box" style="background: linear-gradient(135deg, #5b21b6, #7c3aed);">
+            <div style="font-size:0.85rem; opacity:0.9; margin-bottom:0.25rem;">2022 개정 교육과정 공인 평가 기준</div>
+            <div class="section-header-title">공식 성취기준 매핑 및 3차원 평가 루브릭</div>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:16%;">교과 / 영역</th>
+                <th style="width:30%;">2022 개정 교육과정 공식 성취기준 전문</th>
+                <th style="width:24%;">본 프로그램 탐구 연계 요소</th>
+                <th style="width:30%;">3차원 성취수준 루브릭 (상 / 중 / 하)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>중2 과학<br>(11) 물질의 구성</strong></td>
+                <td>
+                  • <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                  • <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.
+                </td>
+                <td>
+                  • 다전자 분자 구조와 전자 배치<br>
+                  • 전자 간 반발력과 계산 조합의 수(지수 폭발, $2^N$)
+                </td>
+                <td>
+                  <strong>[상]</strong> 원자 속 전자 간 상호작용으로 인해 전자가 늘어날수록 분자 상태 수가 지수적으로 폭발함을 논리적으로 설명하고 화학식으로 표현함.<br>
+                  <strong>[중]</strong> 분자가 원자와 전자로 이루어져 있음을 이해함.<br>
+                  <strong>[하]</strong> 원자 속에 전자가 있음을 안다.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>중3 과학<br>(16) 화학 반응의 규칙성</strong></td>
+                <td>
+                  • <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                  • <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                  &nbsp;&nbsp;<span style="color:#64748b; font-size:0.83rem;">*(성취기준 해설: 화학 반응이 일어날 때 물질을 구성하는 원자의 배열만 변하고, 원자의 종류와 수는 변하지 않음을 강조하여 설명한다.)*</span><br>
+                  • <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.
+                </td>
+                <td>
+                  • 원자 재배열과 최저 바닥 상태 결합<br>
+                  • 상온 비료 합성 촉매 설계를 통한 화학 반응 에너지 장벽 극복
+                </td>
+                <td>
+                  <strong>[상]</strong> 화학 반응에서 원자 배열이 변할 때 에너지가 출입함을 이해하고, VQE 알고리즘이 분자의 바닥 상태를 찾아가는 과정을 화학 결합과 연결하여 서술함.<br>
+                  <strong>[중]</strong> 화학 반응 시 에너지가 출입함을 설명함.<br>
+                  <strong>[하]</strong> 화학 반응으로 물질이 변함을 안다.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>정보과 융합<br>(데이터·알고리즘)</strong></td>
+                <td>
+                  • <strong>[9정01-03]</strong> 2진수 데이터 표현<br>
+                  • <strong>[9정02-02]</strong> 문제 해결 알고리즘과 시뮬레이션 모델링
+                </td>
+                <td>
+                  • 고전 0과 1의 비트 vs 동전 회전 중첩(큐비트)<br>
+                  • VQE 양자-고전 하이브리드 최적화 피드백 루프
+                </td>
+                <td>
+                  <strong>[상]</strong> 비트와 큐비트의 차이(중첩)를 바탕으로 양자 컴퓨터의 동시 병렬 처리 장점을 명확히 비교하고 VQE 피드백 루프를 분석함.<br>
+                  <strong>[중]</strong> 큐비트가 중첩 상태임을 동전 비유로 설명함.<br>
+                  <strong>[하]</strong> 컴퓨터가 0과 1을 씀을 안다.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>중1·3 융합<br>(사회 · 진로)</strong></td>
+                <td>
+                  • <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                  • <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
+                </td>
+                <td>
+                  • 3대 지구 난제(비료, 배터리, 신약) 해결<br>
+                  • 틴에이저 양자 화학 스타트업 CEO 기획
+                </td>
+                <td>
+                  <strong>[상]</strong> 양자 계산 화학 기술이 기후 위기 및 의학에 기여하는 구체적 해결책을 창의적으로 기획하고 진로 포부를 논리적으로 피력함.<br>
+                  <strong>[중]</strong> 양자 컴퓨터가 신소재 개발에 미치는 영향을 설명함.<br>
+                  <strong>[하]</strong> 첨단 과학기술의 유용성을 인식함.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 세특 기재 예시 3종 -->
+          <div style="margin-top:2rem;">
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;">💡 [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
+
+            <!-- 예시 1: 우수 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
+              <strong style="color:#7c3aed;">[예시 1: 융합 컴퓨팅 사고력 우수 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"원자 모형과 다전자 분자의 상호작용을 학습하며, 전자가 늘어남에 따라 계산량이 2의 N제곱으로 폭발하는 '지수 폭발'의 한계를 수학적 거듭제곱 모델로 체계적으로 분석함. 일반 컴퓨터의 비트와 양자 큐비트의 중첩 원리를 '회전하는 동전 팽이' 모형으로 명쾌하게 대조하여 급우들에게 설명함. KAIST 연구진의 VQE 알고리즘 원리를 탐구한 후, '지구를 구하는 틴에이저 스타트업 CEO' 프로젝트에서 상온 질소 고정 촉매 분자 설계를 통한 탄소 배출 저감 프로젝트를 기획함. 컴퓨팅 사고력과 화학적 지식을 융합하여 기후 위기 해결 방안을 창의적으로 제안하는 탁월한 문제해결력을 보임."</em>
+              </p>
+            </div>
+
+            <!-- 예시 2: 협동 및 실험 탐구 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
+              <strong style="color:#059669;">[예시 2: 협동 역할극 및 탐구 성실 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"동전 팽이 조작 실험에서 앞면과 뒷면이 공존하는 중첩 현상을 관찰하고 관찰 일지를 성실히 작성함. 2인 1조 VQE 알고리즘 역할극에서 '양자 컴퓨터(탐험가)' 역할을 맡아, 큐비트 시뮬레이터를 조작하며 파트너인 일반 컴퓨터와 긴밀히 소통하여 수소 분자의 최저 바닥 상태 결합을 성공적으로 도출함. 모둠 토의 시 경청과 협력의 태도를 보였으며, 양자 컴퓨터의 10개 큐비트가 1,024개 길을 동시에 탐색하는 병렬 처리의 위력을 논리적으로 설명함."</em>
+              </p>
+            </div>
+
+            <!-- 예시 3: 진로 및 생태전환 학생 -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem;">
+              <strong style="color:#2563eb;">[예시 3: 생태전환 및 양자 공학 진로 학생]</strong>
+              <p style="font-size:0.92rem; color:#334155; line-height:1.75; margin-top:0.4rem;">
+                <em>"비커와 시험관 없이 컴퓨터 안에서 분자를 시뮬레이션하는 '양자 계산 화학'의 친환경적 가치에 주목함. 전 세계 전력의 2%를 소비하는 전통 비료 공정의 환경 문제를 조사하고, 콩과 식물 뿌리혹박테리아의 상온 질소 고정 효소를 양자 컴퓨터로 모사하는 미래 스타트업 기획서를 완성도 높게 발표함. 첨단 과학기술이 인류의 지속가능한 삶과 기후 위기 극복에 미치는 선한 영향력을 체감하고, 미래 양자 알고리즘 개발자로 성장하겠다는 구체적인 진로 로드맵을 구축함."</em>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
         </section>
 
       </div>
@@ -554,19 +2342,16 @@
       // 1. Update Package Switcher Buttons
       const btnOled = document.getElementById('pkg-btn-oled');
       const btnQuantum = document.getElementById('pkg-btn-quantum');
-      const navPkgTitle = document.getElementById('nav-category-pkg-title');
       const btnQuick = document.getElementById('btn-quick-switch');
 
       if (currentPkg === 'oled') {
         btnOled.classList.add('active');
         btnQuantum.classList.remove('active');
-        navPkgTitle.innerText = '수업 모듈: OLED';
-        btnQuick.innerText = '02. 양자컴퓨터로 전환';
+        if (btnQuick) btnQuick.innerText = '02. 양자컴퓨터로 전환';
       } else {
         btnQuantum.classList.add('active');
         btnOled.classList.remove('active');
-        navPkgTitle.innerText = '수업 모듈: 양자컴퓨터';
-        btnQuick.innerText = '01. OLED로 전환';
+        if (btnQuick) btnQuick.innerText = '01. OLED로 전환';
       }
 
       // 2. Update Sidebar Active Links
@@ -580,13 +2365,15 @@
         }
       }
 
-      // 3. Update Topbar Title
+      // 3. Update Topbar Title (if present)
       const topbarTitle = document.getElementById('topbar-title');
-      if (currentView.startsWith('cprl')) {
-        topbarTitle.innerText = viewTitles[currentView];
-      } else {
-        const pkgPrefix = currentPkg === 'oled' ? '01. OLED: ' : '02. 양자컴퓨터: ';
-        topbarTitle.innerText = `${pkgPrefix}${viewTitles[currentView]}`;
+      if (topbarTitle) {
+        if (currentView.startsWith('cprl')) {
+          topbarTitle.innerText = viewTitles[currentView];
+        } else {
+          const pkgPrefix = currentPkg === 'oled' ? '01. OLED: ' : '02. 양자컴퓨터: ';
+          topbarTitle.innerText = `${pkgPrefix}${viewTitles[currentView]}`;
+        }
       }
 
       // 4. Toggle Content View Display
@@ -639,32 +2426,8 @@
     }
     window.addEventListener('popstate', parseHash);
 
-    // Embed Modular Files into Container Divs
-    function loadEmbedContent(containerId, filePath) {
-      const el = document.getElementById(containerId);
-      if (!el) return;
-      el.innerHTML = `
-        <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-bottom:0.75rem;">
-          <a href="${filePath}" target="_blank" class="topbar-btn" style="font-size:0.8rem;">독립 새 창으로 열기 ↗</a>
-        </div>
-        <iframe src="${filePath}" style="width:100%; height:820px; border:1px solid var(--border); border-radius:var(--radius-md); background:#ffffff;"></iframe>
-      `;
-    }
-
-    // Load sub-documents into their respective containers
+    // Initialize view on load
     window.addEventListener('DOMContentLoaded', () => {
-      loadEmbedContent('oled-lp-container', 'oled/lesson-plan.html');
-      loadEmbedContent('oled-ws-container', 'oled/worksheet.html');
-      loadEmbedContent('oled-tg-container', 'oled/teacher-guide.html');
-      loadEmbedContent('oled-tb-container', 'oled/textbook.html');
-      loadEmbedContent('oled-curr-container', 'oled/curriculum.html');
-
-      loadEmbedContent('quantum-lp-container', 'quantum/lesson-plan.html');
-      loadEmbedContent('quantum-ws-container', 'quantum/worksheet.html');
-      loadEmbedContent('quantum-tg-container', 'quantum/teacher-guide.html');
-      loadEmbedContent('quantum-tb-container', 'quantum/textbook.html');
-      loadEmbedContent('quantum-curr-container', 'quantum/curriculum.html');
-
       parseHash();
     });
   </script>
