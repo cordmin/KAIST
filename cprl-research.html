@@ -58,19 +58,6 @@
       padding: 0.85rem 1rem;
       border-radius: var(--radius-sm);
     }
-    .core-pillar-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
-    }
-    .core-pillar-card {
-      background: var(--color-pure-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
-    }
   </style>
 </head>
 <body>
@@ -101,103 +88,88 @@
 
     <!-- CPRL Official 3 Core Research Pillars -->
     <h2 style="font-size:1.45rem; font-weight:700; color:var(--color-charcoal); margin:0 0 0.4rem;">
-      CPRL 공식 3대 핵심 연구 영역 (Core Research Areas)
+      CPRL 공식 3대 핵심 연구 영역
     </h2>
     <p style="color:#4b5563; font-size:0.96rem; margin-bottom:1.5rem;">
       Rhee Group 웹사이트에 공식 수록된 이론 및 계산화학 분야의 3가지 핵심 축을 중학생 눈높이로 쉽게 소개합니다.
     </p>
 
-    <div class="core-pillar-grid">
-      <!-- Pillar 1 -->
-      <div class="chrome-card">
-        <div class="chrome-tab-bar">
-          <div class="chrome-tab-item tab-blue">
-            <span class="chrome-tab-dot"></span>
-            <span class="chrome-tab-title">연구 영역 01 · 분자 시뮬레이션</span>
-            <span class="chrome-tab-close" title="탭">×</span>
-          </div>
-          <div class="chrome-tab-sub">Building the Surface (IM/MM)</div>
+    <div class="chrome-window">
+      <div class="chrome-tab-bar" role="tablist">
+        <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchResearchTab(event, 0)" role="tab" aria-selected="true">
+          연구 영역 01 · 분자 거동 시뮬레이션
+        </button>
+        <button type="button" class="chrome-tab-btn tab-green" onclick="switchResearchTab(event, 1)" role="tab" aria-selected="false">
+          연구 영역 02 · 양자 효과 시뮬레이션
+        </button>
+        <button type="button" class="chrome-tab-btn tab-purple" onclick="switchResearchTab(event, 2)" role="tab" aria-selected="false">
+          연구 영역 03 · 양자 컴퓨팅 툴 개발
+        </button>
+      </div>
+
+      <!-- 패널 1: 분자 거동 시뮬레이션 -->
+      <div class="chrome-tab-panel active" role="tabpanel">
+        <div style="margin-bottom:1.5rem;">
+          <span class="badge" style="background:rgba(0,117,222,0.1); color:#005fb8; font-weight:700; margin-bottom:0.6rem;">연구 영역 01 · 분자 거동 시뮬레이션</span>
+          <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
+            분자 세상의 컴퓨터 입체 지도 그리기
+          </h3>
+          <h4 style="font-size:0.98rem; font-weight:700; color:#0062bd; margin-bottom:1rem;">
+            "정밀한 돋보기와 넓게 보는 안경을 합쳐, 복잡한 분자 거동도 빠르게 계산해요"
+          </h4>
+          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:0.85rem;">
+            수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자의 복잡한 움직임(분자 거동)은 덩치가 너무 커서 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다.
+          </p>
+          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:1.15rem;">
+            CPRL 연구실은 화학 반응이 일어나는 가장 중요한 핵심 영역은 <strong>정밀한 돋보기(양자역학)</strong>로 아주 세밀하게 들여다보고, 주변을 둘러싼 물 분자나 단백질 껍질은 <strong>가벼운 안경(분자역학)</strong>으로 빠르게 모사하는 <strong>하이브리드 계산법(IM/MM)</strong>을 개발했습니다. 여기에 <strong>인공지능(머신러닝)</strong>을 결합하여, 분자가 화학 반응을 일으키며 지나가는 롤러코스터 같은 '에너지 입체 지도(표면)'를 순식간에 완성하여 분자 거동을 정밀하게 모사합니다.
+          </p>
         </div>
-        <div class="chrome-card-body">
-          <div>
-            <h3 style="color:var(--color-charcoal); font-size:1.22rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-              분자 세상의 컴퓨터 입체 지도 그리기
-            </h3>
-            <h4 style="font-size:0.92rem; font-weight:700; color:#0062bd; margin-bottom:0.65rem;">
-              "정밀한 돋보기와 넓게 보는 안경을 합쳐, 복잡한 분자도 빠르게 계산해요"
-            </h4>
-            <p style="font-size:0.94rem; color:#2d3139; line-height:1.7; margin-bottom:0.75rem;">
-              수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자는 덩치가 너무 커서 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다.
-            </p>
-            <p style="font-size:0.94rem; color:#2d3139; line-height:1.7; margin-bottom:0.75rem;">
-              CPRL 연구실은 화학 반응이 일어나는 가장 중요한 핵심 영역은 <strong>정밀한 돋보기(양자역학)</strong>로 아주 세밀하게 들여다보고, 주변을 둘러싼 물 분자나 단백질 껍질은 <strong>가벼운 안경(분자역학)</strong>으로 빠르게 모사하는 <strong>하이브리드 계산법(IM/MM)</strong>을 개발했습니다. 여기에 <strong>인공지능(머신러닝)</strong>을 결합하여, 분자가 화학 반응을 일으키며 지나가는 롤러코스터 같은 '에너지 입체 지도'를 순식간에 완성합니다.
-            </p>
-          </div>
-          <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.65rem 0.85rem; font-size:0.84rem; color:#1f2937; margin-top:0.75rem;">
-            <strong style="color:#111111;">대표 논문:</strong> <em>J. Phys. Chem. Lett.</em> 17, 7028 (2026) / <em>PCCP</em> 26, 9021 (2024)
-          </div>
+        <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
+          <strong style="color:#111111;">대표 논문:</strong> <em>J. Phys. Chem. Lett.</em> 17, 7028 (2026) / <em>PCCP</em> 26, 9021 (2024)
         </div>
       </div>
 
-      <!-- Pillar 2 -->
-      <div class="chrome-card">
-        <div class="chrome-tab-bar">
-          <div class="chrome-tab-item tab-green">
-            <span class="chrome-tab-dot"></span>
-            <span class="chrome-tab-title">연구 영역 02 · 빛-물질 상호작용</span>
-            <span class="chrome-tab-close" title="탭">×</span>
-          </div>
-          <div class="chrome-tab-sub">Quantum Simulations</div>
+      <!-- 패널 2: 양자 효과 시뮬레이션 -->
+      <div class="chrome-tab-panel" role="tabpanel">
+        <div style="margin-bottom:1.5rem;">
+          <span class="badge" style="background:rgba(16,185,129,0.1); color:#047857; font-weight:700; margin-bottom:0.6rem;">연구 영역 02 · 양자 효과 시뮬레이션</span>
+          <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
+            빛을 내뿜는 전자의 순간포착
+          </h3>
+          <h4 style="font-size:0.98rem; font-weight:700; color:#047857; margin-bottom:1rem;">
+            "스마트폰 화면 속 갇혀서 버려지던 75%의 전자를 구출하여 100% 빛으로 만들어요"
+          </h4>
+          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:0.85rem;">
+            분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 쉽게 가려지지만, 빛이나 전기를 받으면 트램펄린을 탄 것처럼 높은 에너지 계단(들뜬 상태)으로 튀어 오르고, 다시 바닥으로 착지하면서 남은 에너지를 아름다운 빛(형광)으로 뿜어내며 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다.
+          </p>
+          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:1.15rem;">
+            하지만 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 전자의 25%만 빛을 내고, <strong>나머지 75%는 문이 잠긴 방에 갇혀 모조리 '스마트폰 발열과 배터리 낭비'</strong>로 사라지는 한계가 있었습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 옥상 구름다리로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 '핫 엑시톤' 양자 효과 메커니즘</strong>을 규명했습니다.
+          </p>
         </div>
-        <div class="chrome-card-body">
-          <div>
-            <h3 style="color:var(--color-charcoal); font-size:1.22rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-              빛을 내뿜는 전자의 순간포착
-            </h3>
-            <h4 style="font-size:0.92rem; font-weight:700; color:#047857; margin-bottom:0.65rem;">
-              "스마트폰 화면 속 갇혀서 버려지던 75%의 전자를 구출하여 100% 빛으로 만들어요"
-            </h4>
-            <p style="font-size:0.94rem; color:#2d3139; line-height:1.7; margin-bottom:0.75rem;">
-              분자 속 전자는 빛이나 전기를 받으면 트램펄린을 탄 것처럼 높은 에너지 계단(들뜬 상태)으로 튀어 오르고, 다시 바닥으로 착지하면서 남은 에너지를 아름다운 빛(형광)으로 뿜어냅니다.
-            </p>
-            <p style="font-size:0.94rem; color:#2d3139; line-height:1.7; margin-bottom:0.75rem;">
-              하지만 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 전자의 25%만 빛을 내고, <strong>나머지 75%는 문이 잠긴 방에 갇혀 모조리 '스마트폰 발열과 배터리 낭비'</strong>로 사라지는 한계가 있었습니다. CPRL 연구실은 컴퓨터 시뮬레이션을 통해 갇혀 있던 전자를 높은 옥상 구름다리로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 원리('핫 엑시톤' 구출 메커니즘)</strong>를 밝혀냈습니다.
-            </p>
-          </div>
-          <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.65rem 0.85rem; font-size:0.84rem; color:#1f2937; margin-top:0.75rem;">
-            <strong style="color:#111111;">대표 논문:</strong> <em>J. Phys. Chem. A</em> 130, 758 (2026) / <em>Int. J. Mol. Sci.</em> 24, 12362 (2023)
-          </div>
+        <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
+          <strong style="color:#111111;">대표 논문:</strong> <em>J. Phys. Chem. A</em> 130, 758 (2026) / <em>Int. J. Mol. Sci.</em> 24, 12362 (2023)
         </div>
       </div>
 
-      <!-- Pillar 3 -->
-      <div class="chrome-card">
-        <div class="chrome-tab-bar">
-          <div class="chrome-tab-item tab-purple">
-            <span class="chrome-tab-dot"></span>
-            <span class="chrome-tab-title">연구 영역 03 · 미래 양자 소프트웨어</span>
-            <span class="chrome-tab-close" title="탭">×</span>
-          </div>
-          <div class="chrome-tab-sub">Quantum Tools</div>
+      <!-- 패널 3: 양자 컴퓨팅 툴 개발 -->
+      <div class="chrome-tab-panel" role="tabpanel">
+        <div style="margin-bottom:1.5rem;">
+          <span class="badge" style="background:rgba(94,92,230,0.1); color:#4f46e5; font-weight:700; margin-bottom:0.6rem;">연구 영역 03 · 양자 컴퓨팅 툴 개발</span>
+          <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
+            슈퍼컴퓨터의 한계를 깨는 미래 계산 도구
+          </h3>
+          <h4 style="font-size:0.98rem; font-weight:700; color:#4f46e5; margin-bottom:1rem;">
+            "빙글빙글 도는 동전처럼 모든 경우를 한 번에 계산하는 양자 컴퓨터로 분자를 풀어요"
+          </h4>
+          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:0.85rem;">
+            분자 속 전자들은 서로를 밀쳐내며 복잡하게 얽혀 있어서, 전자가 조금만 늘어나도 계산해야 할 경우의 수가 우주 전체의 모래알 수보다 기하급수적으로 폭발(지수 폭발)하여 인류 최강의 슈퍼컴퓨터로도 멈춰버립니다.
+          </p>
+          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:1.15rem;">
+            CPRL 연구실은 화학 계산 문제를 양자 하드웨어에 맞게 새롭게 재설계(Outside-of-the-Box)합니다. 기존 일반 컴퓨터와 양자 컴퓨터가 서로 손을 맞잡고 2인 3각으로 협동하는 <strong>양자-고전 하이브리드 알고리즘(VQE)</strong> 및 <strong>양자 분자 동역학 계산 툴(Software Tools)</strong>을 개발하여 미래 화학의 새로운 지평을 열고 있습니다.
+          </p>
         </div>
-        <div class="chrome-card-body">
-          <div>
-            <h3 style="color:var(--color-charcoal); font-size:1.22rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-              슈퍼컴퓨터의 한계를 깨는 미래 계산 도구
-            </h3>
-            <h4 style="font-size:0.92rem; font-weight:700; color:#4f46e5; margin-bottom:0.65rem;">
-              "빙글빙글 도는 동전처럼 모든 경우를 한 번에 계산하는 양자 컴퓨터로 분자를 풀어요"
-            </h4>
-            <p style="font-size:0.94rem; color:#2d3139; line-height:1.7; margin-bottom:0.75rem;">
-              분자 속 전자들은 서로를 밀쳐내며 복잡하게 얽혀 있어서, 전자가 조금만 늘어나도 계산해야 할 경우의 수가 우주 전체의 모래알 수보다 기하급수적으로 폭발(지수 폭발)하여 인류 최강의 슈퍼컴퓨터로도 멈춰버립니다.
-            </p>
-            <p style="font-size:0.94rem; color:#2d3139; line-height:1.7; margin-bottom:0.75rem;">
-              CPRL 연구실은 책상 위에서 팽이처럼 빙글빙글 도는 동전이 앞면과 뒷면을 동시에 갖는 것처럼, 0과 1을 동시에 다루는 <strong>양자 컴퓨터(이온 트랩 장치)</strong>를 활용합니다. 기존 일반 컴퓨터와 양자 컴퓨터가 서로 손을 맞잡고 2인 3각으로 협동하는 <strong>양자-고전 하이브리드 알고리즘(VQE)</strong>을 개발하여, 미래의 청정 에너지 촉매나 난치병 치료 약물 분자의 비밀을 풀고 있습니다.
-            </p>
-          </div>
-          <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.65rem 0.85rem; font-size:0.84rem; color:#1f2937; margin-top:0.75rem;">
-            <strong style="color:#111111;">대표 논문:</strong> <em>npj Quantum Inf.</em> 10, 76 (2024) / <em>PCCP</em> 26, 8390 (2024)
-          </div>
+        <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
+          <strong style="color:#111111;">대표 논문:</strong> <em>npj Quantum Inf.</em> 10, 76 (2024) / <em>PCCP</em> 26, 8390 (2024)
         </div>
       </div>
     </div>
@@ -207,7 +179,7 @@
       CPRL 원천 연구와 중학교 교육과정 연계 브릿지
     </h2>
     <p style="color:var(--color-stone); font-size:0.92rem; margin-bottom:1.75rem;">
-      본 플랫폼의 두 가지 핵심 수업 패키지(OLED, 양자컴퓨터)는 CPRL 연구실의 3대 연구 축 중 [여기상태 동역학·OLED 광물리]와 [양자 컴퓨팅 알고리즘]을 2022 개정 중학교 교육과정으로 재구성하였습니다.
+      본 플랫폼의 두 가지 핵심 수업 패키지(OLED, 양자컴퓨터)는 CPRL 연구실의 3대 연구 축 중 [양자 효과 시뮬레이션·OLED 광물리]와 [양자 컴퓨팅 툴 개발]을 2022 개정 중학교 교육과정으로 재구성하였습니다.
     </p>
 
     <div class="research-grid">
@@ -328,5 +300,21 @@
 
   </div>
 
+  <script>
+    function switchResearchTab(e, index) {
+      const btn = e ? e.currentTarget : null;
+      const container = btn ? btn.closest('.chrome-window') : document.querySelector('.chrome-window');
+      if (!container) return;
+      const tabs = container.querySelectorAll('.chrome-tab-btn');
+      const panels = container.querySelectorAll('.chrome-tab-panel');
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+        tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+      panels.forEach((panel, i) => {
+        panel.classList.toggle('active', i === index);
+      });
+    }
+  </script>
 </body>
 </html>
