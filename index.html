@@ -9,14 +9,20 @@
     /* All-in-One Dynamic View Styles */
     .content-view {
       display: none;
-      animation: fadeIn 0.15s ease-in-out;
     }
     .content-view.active {
       display: block;
+      animation: fadeInView 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(3px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeInView {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Notion Style Header Panels */
@@ -240,22 +246,56 @@
 
             <!-- 패널 1: 분자 거동 시뮬레이션 -->
             <div class="chrome-tab-panel active" role="tabpanel">
-              <div style="margin-bottom:1.5rem;">
-                <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-                  분자 세상의 컴퓨터 입체 지도 그리기
-                </h3>
-                <h4 style="font-size:0.98rem; font-weight:700; color:#0062bd; margin-bottom:1rem;">
-                  "정밀한 돋보기와 넓게 보는 안경을 합쳐, 복잡한 분자 거동도 빠르게 계산해요"
-                </h4>
-                <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:0.85rem;">
-                  수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자의 복잡한 움직임(분자 거동)은 덩치가 너무 커서 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다.
-                </p>
-                <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:1.15rem;">
-                  CPRL 연구실은 화학 반응이 일어나는 가장 중요한 핵심 영역은 <strong>정밀한 돋보기(양자역학)</strong>로 아주 세밀하게 들여다보고, 주변을 둘러싼 물 분자나 단백질 껍질은 <strong>가벼운 안경(분자역학)</strong>으로 빠르게 모사하는 <strong>하이브리드 계산법(IM/MM)</strong>을 개발했습니다. 여기에 <strong>인공지능(머신러닝)</strong>을 결합하여, 분자가 화학 반응을 일으키며 지나가는 롤러코스터 같은 '에너지 입체 지도(표면)'를 순식간에 완성하여 분자 거동을 정밀하게 모사합니다.
-                </p>
-              </div>
-              <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
-                <strong style="color:#111111;">대표 논문:</strong> <em>J. Phys. Chem. Lett.</em> 17, 7028 (2026) / <em>PCCP</em> 26, 9021 (2024)
+              <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap:1.75rem; align-items:start;">
+                
+                <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
+                <div style="display:flex; flex-direction:column; justify-content:space-between;">
+                  <div>
+                    <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
+                      분자 세상의 컴퓨터 입체 지도 그리기
+                    </h3>
+                    <h4 style="font-size:0.98rem; font-weight:700; color:#0062bd; margin-bottom:1rem;">
+                      "정밀한 돋보기와 넓게 보는 안경을 합쳐, 복잡한 분자 거동도 빠르게 계산해요"
+                    </h4>
+                    <p style="font-size:0.96rem; color:#2d3139; line-height:1.8; margin-bottom:1.25rem;">
+                      수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자의 복잡한 움직임(분자 거동)은 덩치가 너무 커서 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다. CPRL 연구실은 화학 반응이 일어나는 가장 중요한 핵심 영역은 <strong>정밀한 돋보기(양자역학)</strong>로 아주 세밀하게 들여다보고, 주변을 둘러싼 물 분자나 단백질 껍질은 <strong>가벼운 안경(분자역학)</strong>으로 빠르게 모사하는 <strong>하이브리드 계산법(IM/MM)</strong>을 개발했습니다. 여기에 <strong>인공지능(머신러닝)</strong>을 결합하여, 분자가 화학 반응을 일으키며 지나가는 롤러코스터 같은 '에너지 입체 지도(표면)'를 순식간에 완성하여 분자 거동을 정밀하게 모사합니다.
+                    </p>
+                  </div>
+
+                  <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
+                    <strong style="color:#111111;">대표 논문:</strong> <em>J. Phys. Chem. Lett.</em> 17, 7028 (2026) / <em>PCCP</em> 26, 9021 (2024)
+                  </div>
+                </div>
+
+                <!-- 우측: 미디어 상단 탭 전환 컨테이너 (사진 / 영상) -->
+                <div class="media-tab-container" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                  <!-- 상단 서브 탭 바 -->
+                  <div style="display:flex; background:#f1f5f9; border-bottom:1px solid #cbd5e1; padding:0.45rem 0.5rem 0; gap:0.4rem;" role="tablist">
+                    <button type="button" class="media-subtab-btn active" onclick="switchMediaTab(event, 0)" style="flex:1; padding:0.6rem 0.75rem; font-size:0.88rem; font-weight:700; border-radius:8px 8px 0 0; border:1px solid #cbd5e1; border-bottom:none; background:#ffffff; color:#0f172a; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.4rem; transition:all 0.2s;" role="tab" aria-selected="true">
+                      <span>🌿 3D 분자 구조 모델</span>
+                    </button>
+                    <button type="button" class="media-subtab-btn" onclick="switchMediaTab(event, 1)" style="flex:1; padding:0.6rem 0.75rem; font-size:0.88rem; font-weight:600; border-radius:8px 8px 0 0; border:1px solid transparent; border-bottom:none; background:transparent; color:#64748b; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.4rem; transition:all 0.2s;" role="tab" aria-selected="false">
+                      <span>🎬 실시간 시뮬레이션 영상</span>
+                    </button>
+                  </div>
+
+                  <!-- 탭 패널 1: 3D 분자 구조 모델 사진 -->
+                  <div class="media-subtab-panel" style="display:block;">
+                    <img src="image/lh2_concept_korean.jpg" alt="햇빛 수확 안테나(LH2) 3D 구조 및 한글 명칭" style="width:100%; height:auto; display:block; cursor:pointer;" onclick="window.open(this.src)">
+                    <div style="padding:0.75rem 1rem; font-size:0.84rem; color:#475569; line-height:1.6; background:#ffffff; border-top:1px solid #f1f5f9;">
+                      보라색 세균의 세포막 위에 떠 있는 <strong>햇빛 수확 안테나(LH2)</strong>입니다. 똑같이 생긴 9개 블록이 도넛 모양으로 둥글게 모여 햇빛 에너지를 흡수하고 전달합니다.
+                    </div>
+                  </div>
+
+                  <!-- 탭 패널 2: 실시간 시뮬레이션 영상 -->
+                  <div class="media-subtab-panel" style="display:none;">
+                    <video src="image/lh2_simulation.mp4" poster="image/lh2_concept_korean.jpg" loop muted playsinline controls style="width:100%; height:auto; display:block; background:#0a0f1d;"></video>
+                    <div style="padding:0.75rem 1rem; font-size:0.84rem; color:#475569; line-height:1.6; background:#ffffff; border-top:1px solid #f1f5f9;">
+                      빙글빙글 도는 <strong>노란색 구</strong>는 빛 에너지 덩어리(엑시톤)입니다. 9각 링에서 안전벨트(수소결합)의 지지를 받아 흔들림 없이 가장 빠르게 이동합니다.
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
 
@@ -2367,6 +2407,37 @@
       });
       panels.forEach((panel, i) => {
         panel.classList.toggle('active', i === index);
+      });
+    }
+
+    // Media Subtab Switcher (Photos & Videos)
+    function switchMediaTab(e, index) {
+      const btn = e ? e.currentTarget : null;
+      const container = btn ? btn.closest('.media-tab-container') : document.querySelector('.media-tab-container');
+      if (!container) return;
+      const btns = container.querySelectorAll('.media-subtab-btn');
+      const panels = container.querySelectorAll('.media-subtab-panel');
+      btns.forEach((b, i) => {
+        const isActive = (i === index);
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        b.style.background = isActive ? '#ffffff' : 'transparent';
+        b.style.borderColor = isActive ? '#cbd5e1' : 'transparent';
+        b.style.color = isActive ? '#0f172a' : '#64748b';
+        b.style.fontWeight = isActive ? '700' : '600';
+      });
+      panels.forEach((p, i) => {
+        const isActive = (i === index);
+        p.style.display = isActive ? 'block' : 'none';
+        const video = p.querySelector('video');
+        if (video) {
+          if (isActive) {
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        }
       });
     }
 
