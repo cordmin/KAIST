@@ -174,8 +174,7 @@ body {
   align-items: flex-end;
   gap: 3px;
   background: transparent;
-  padding: 0 4px;
-  border-bottom: 1px solid var(--border);
+  padding: 0 8px;
   position: relative;
   z-index: 2;
 }
@@ -205,30 +204,6 @@ body {
   z-index: 1;
 }
 
-.pkg-btn::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  height: 3px;
-  border-radius: 8px 8px 0 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.pkg-btn.active::before {
-  opacity: 1;
-}
-
-.pkg-btn.oled::before {
-  background-color: var(--color-notion-blue);
-}
-
-.pkg-btn.quantum::before {
-  background-color: #5e5ce6;
-}
-
 .pkg-btn:hover {
   background: #f2f0ee;
   color: var(--color-charcoal);
@@ -239,16 +214,19 @@ body {
   color: var(--color-charcoal);
   font-weight: 700;
   border-color: var(--border);
+  border-top-width: 3px;
   border-bottom-color: var(--color-pure-white);
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.04);
   z-index: 3;
 }
 
 .pkg-btn.oled.active {
+  border-top-color: var(--color-notion-blue);
   color: var(--color-notion-blue);
 }
 
 .pkg-btn.quantum.active {
+  border-top-color: #5e5ce6;
   color: #5e5ce6;
 }
 
@@ -256,8 +234,7 @@ body {
 .pkg-tab-panel {
   background: var(--color-pure-white);
   border: 1px solid var(--border);
-  border-top: none;
-  border-radius: 0 0 10px 10px;
+  border-radius: 10px;
   padding: 0.55rem 0.45rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   display: flex;
@@ -985,11 +962,9 @@ h3.sub-heading {
   align-items: flex-end;
   gap: 4px;
   background: transparent;
-  padding: 0 6px;
-  border-bottom: 1px solid var(--border);
+  padding: 0 14px;
   position: relative;
   z-index: 2;
-  overflow-x: auto;
 }
 
 .chrome-tab-btn {
@@ -1016,34 +991,6 @@ h3.sub-heading {
   user-select: none;
 }
 
-.chrome-tab-btn::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  height: 3px;
-  border-radius: 8px 8px 0 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.chrome-tab-btn.active::before {
-  opacity: 1;
-}
-
-.chrome-tab-btn.tab-blue::before {
-  background-color: var(--color-notion-blue);
-}
-
-.chrome-tab-btn.tab-green::before {
-  background-color: #10b981;
-}
-
-.chrome-tab-btn.tab-purple::before {
-  background-color: #5e5ce6;
-}
-
 .chrome-tab-btn:hover {
   background: #f2f0ee;
   color: var(--color-charcoal);
@@ -1054,36 +1001,45 @@ h3.sub-heading {
   color: var(--color-charcoal);
   font-weight: 700;
   border-color: var(--border);
+  border-top-width: 3px;
   border-bottom-color: var(--color-pure-white);
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.04);
   z-index: 3;
+}
+
+.chrome-tab-btn.tab-blue.active {
+  border-top-color: var(--color-notion-blue);
+  color: var(--color-notion-blue);
+}
+
+.chrome-tab-btn.tab-green.active {
+  border-top-color: #047857;
+  color: #047857;
+}
+
+.chrome-tab-btn.tab-purple.active {
+  border-top-color: #5e5ce6;
+  color: #5e5ce6;
 }
 
 .chrome-tab-panel {
   display: none;
   background: var(--color-pure-white);
   border: 1px solid var(--border);
-  border-top: none;
-  border-radius: 0 0 12px 12px;
+  border-radius: 12px;
   padding: 2rem 2.25rem 2.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   position: relative;
   z-index: 1;
-  animation: tabFadeIn 0.2s ease-out;
 }
 
 .chrome-tab-panel.active {
   display: block;
 }
 
-@keyframes tabFadeIn {
-  from { opacity: 0; transform: translateY(3px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @media (max-width: 640px) {
   .chrome-tab-bar {
-    padding: 0 4px;
+    padding: 0 8px;
     gap: 2px;
   }
   .chrome-tab-btn {
@@ -1092,6 +1048,7 @@ h3.sub-heading {
     font-size: 0.8rem;
   }
   .chrome-tab-panel {
+    border-radius: 10px;
     padding: 1.25rem 1.15rem 1.5rem;
   }
 }
