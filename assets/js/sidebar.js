@@ -29,7 +29,9 @@ function renderSidebar(pkg, currentKey) {
         <img src="../image/kaist_mascot.png" alt="KAIST 넙죽이와 오리" class="cprl-mascot-bg">
         <div class="cprl-inner-card">
           <div class="project-research-menu">
-            <div class="research-menu-label">KAIST 화학과 CPRL 소개</div>
+            <a href="../index.html#cprl-intro" class="nav-item">
+              <span class="nav-text">KAIST 화학과 CPRL 소개</span>
+            </a>
             <a href="../index.html#cprl-research" class="nav-item">
               <span class="nav-text">CPRL 주요 연구 내용</span>
             </a>

@@ -403,8 +403,9 @@ body {
 
 .project-research-menu .nav-item {
   border-radius: var(--radius-sm);
-  padding: 0.42rem 0.55rem;
-  font-size: 0.82rem;
+  padding: 0.48rem 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -414,12 +415,12 @@ body {
 }
 
 .project-research-menu .nav-item:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(0, 0, 0, 0.05);
   color: var(--color-charcoal);
 }
 
 .project-research-menu .nav-item.active {
-  background: rgba(0, 117, 222, 0.08);
+  background: rgba(0, 117, 222, 0.09);
   color: var(--color-notion-blue);
   font-weight: 700;
 }

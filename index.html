@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스타브릿지2.0 (KAIST CPRL)</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     /* All-in-One Dynamic View Styles */
     .content-view {
@@ -141,6 +142,93 @@
       height: 360px;
       overflow: hidden;
     }
+
+    /* CPRL Professor Profile Badges & Hover Popovers */
+    .cprl-badge-item {
+      position: relative;
+      display: inline-block;
+    }
+    .cprl-badge-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.32rem 0.72rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      outline: none;
+      user-select: none;
+    }
+    .cprl-badge-btn.badge-edu {
+      color: var(--color-notion-blue);
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+    .cprl-badge-btn.badge-career {
+      color: #047857;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+    }
+    .cprl-badge-btn.badge-award {
+      color: #b45309;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+    }
+    .cprl-badge-btn:hover,
+    .cprl-badge-item:hover .cprl-badge-btn,
+    .cprl-badge-item.active .cprl-badge-btn {
+      filter: brightness(0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+    .cprl-badge-btn .badge-chevron {
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
+    .cprl-badge-item:hover .badge-chevron,
+    .cprl-badge-item.active .badge-chevron {
+      transform: rotate(180deg);
+    }
+    .cprl-badge-popover {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 290px;
+      max-width: min(320px, 85vw);
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px -4px rgba(0,0,0,0.12), 0 4px 6px -2px rgba(0,0,0,0.05);
+      padding: 0.9rem 1rem;
+      z-index: 120;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+      pointer-events: none;
+    }
+    .cprl-badge-popover.popover-align-right {
+      left: auto;
+      right: 0;
+    }
+    .cprl-badge-popover.popover-align-center {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%) translateY(6px);
+    }
+    .cprl-badge-item:hover .cprl-badge-popover,
+    .cprl-badge-item.active .cprl-badge-popover {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .cprl-badge-item:hover .cprl-badge-popover.popover-align-center,
+    .cprl-badge-item.active .cprl-badge-popover.popover-align-center {
+      transform: translateX(-50%) translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -160,7 +248,9 @@
 
           <div class="cprl-inner-card">
             <div class="project-research-menu">
-              <div class="research-menu-label">KAIST 화학과 CPRL 소개</div>
+              <a href="javascript:void(0)" class="nav-item" id="nav-item-cprl-intro" onclick="switchView('cprl-intro')">
+                <span class="nav-text">KAIST 화학과 CPRL 소개</span>
+              </a>
               <a href="javascript:void(0)" class="nav-item" id="nav-item-cprl-research" onclick="switchView('cprl-research')">
                 <span class="nav-text">CPRL 주요 연구 내용</span>
               </a>
@@ -223,18 +313,260 @@
       <div class="content-container">
 
         <!-- ========================================== -->
-        <!-- 1. CPRL 원천 연구 소개 VIEW               -->
+        <!-- 1. KAIST 화학과 CPRL 소개 VIEW            -->
+        <!-- ========================================== -->
+        <section id="view-cprl-intro" class="content-view">
+          <!-- 연구실 상세 안내 카드: 지도교수 & 연구진 소개 -->
+          <div class="card" style="margin-bottom:1.75rem;">
+            <div class="card-header" style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom:1.35rem; gap:0.45rem;">
+              <h2 class="card-title" style="margin:0;">
+                <span>KAIST 화학과 CPRL 소개</span>
+              </h2>
+              <p style="font-size:0.92rem; color:var(--color-graphite); margin:0; line-height:1.65;">
+                <strong>CPRL(Computational Photodynamics Research Lab)</strong>은 KAIST 화학과 산하 연구실로, 슈퍼컴퓨터와 양자역학 시뮬레이션을 통해 분자의 빛 반응과 전자 이동을 탐구하는 연구실입니다.
+              </p>
+            </div>
+            
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:1.35rem;">
+              <!-- 좌측: 지도교수 프로필 + 교수님 강연 및 해설 영상 통합 -->
+              <div style="background:#f8fafc; border:1px solid var(--border); border-radius:var(--radius-md); padding:1.35rem; display:flex; flex-direction:column; justify-content:space-between;">
+                <!-- 지도교수 정보 -->
+                <div>
+                  <div style="font-size:1.15rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.85rem;">
+                    <span>CPRL 지도교수</span>
+                  </div>
+                  
+                  <div style="display:flex; gap:1.25rem; align-items:flex-start; flex-wrap:wrap; margin-bottom:1rem;">
+                    <img src="image/prof_youngmin_rhee.jpg" alt="이영민 교수" style="width:175px; height:210px; object-fit:cover; object-position:center 15%; border-radius:var(--radius-md); border:1px solid var(--border); box-shadow:var(--shadow-sm); flex-shrink:0;">
+                    <div style="flex:1; min-width:200px; display:flex; flex-direction:column; justify-content:flex-start;">
+                      <!-- 이름 및 배지 그룹 (동일 행 인라인 배치) -->
+                      <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; margin-bottom:0.6rem;">
+                        <span style="font-size:1.24rem; font-weight:700; color:var(--color-charcoal); line-height:1.2;">이영민 교수</span>
+                        <div style="display:inline-flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+                          <!-- 1. 학력 배지 -->
+                          <div class="cprl-badge-item">
+                            <button type="button" class="cprl-badge-btn badge-edu" onclick="toggleCprlPopover(this, event)" aria-label="학력 상세 보기">
+                              <span>학력</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="badge-chevron"><path d="m6 9 6 6 6-6"/></svg>
+                            </button>
+                            <div class="cprl-badge-popover">
+                              <div style="font-size:0.84rem; font-weight:700; color:var(--color-notion-blue); margin-bottom:0.55rem; padding-bottom:0.35rem; border-bottom:1px solid #f1f5f9;">
+                                <span>학력</span>
+                              </div>
+                              <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem; color:var(--color-charcoal); line-height:1.55; display:flex; flex-direction:column; gap:0.5rem;">
+                                <li>
+                                  <div style="font-weight:700;">서울대학교 화학과 학사</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">1991 – 1995</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">서울대학교 화학과 석사</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">1995 – 1997 · 지도교수: 김명수 교수</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">미국 스탠퍼드 대학교 화학과 박사</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2000 – 2005 · 지도교수: Vijay S. Pande 교수</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">미국 UC 버클리 박사후연구원</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2005 – 2008 · 지도교수: Martin Head-Gordon 교수</div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <!-- 2. 경력 배지 -->
+                          <div class="cprl-badge-item">
+                            <button type="button" class="cprl-badge-btn badge-career" onclick="toggleCprlPopover(this, event)" aria-label="경력 상세 보기">
+                              <span>경력</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="badge-chevron"><path d="m6 9 6 6 6-6"/></svg>
+                            </button>
+                            <div class="cprl-badge-popover popover-align-center">
+                              <div style="font-size:0.84rem; font-weight:700; color:#047857; margin-bottom:0.55rem; padding-bottom:0.35rem; border-bottom:1px solid #f1f5f9;">
+                                <span>경력</span>
+                              </div>
+                              <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem; color:var(--color-charcoal); line-height:1.5; display:flex; flex-direction:column; gap:0.45rem;">
+                                <li>
+                                  <div style="font-weight:700;">포항공과대학교 화학과 조교수</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2008 – 2012</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">포항공과대학교 화학과 부교수</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2012 – 2017</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">기초과학연구원 복잡계 자기조립 연구단 그룹리더</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2012 – 2017</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">KAIST 화학과 부교수</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2017 – 2019</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">스웨덴 왕립공과대학교 초빙교수</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2023 – 2024</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">KAIST 화학과 정교수</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2019 – 현재</div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <!-- 3. 수상 배지 -->
+                          <div class="cprl-badge-item">
+                            <button type="button" class="cprl-badge-btn badge-award" onclick="toggleCprlPopover(this, event)" aria-label="수상 상세 보기">
+                              <span>수상</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="badge-chevron"><path d="m6 9 6 6 6-6"/></svg>
+                            </button>
+                            <div class="cprl-badge-popover popover-align-right">
+                              <div style="font-size:0.84rem; font-weight:700; color:#b45309; margin-bottom:0.55rem; padding-bottom:0.35rem; border-bottom:1px solid #f1f5f9;">
+                                <span>수상</span>
+                              </div>
+                              <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem; color:var(--color-charcoal); line-height:1.55; display:flex; flex-direction:column; gap:0.5rem;">
+                                <li>
+                                  <div style="font-weight:700;">한국화학회 물리화학 초기 경력상</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">2013</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">창의적 교육상</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">KAIST (2022)</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">한국화학회 신국조학 학업우수상</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">한국화학회 (2022)</div>
+                                </li>
+                                <li>
+                                  <div style="font-weight:700;">IPJAE 물리화학상</div>
+                                  <div style="color:var(--color-stone); font-size:0.74rem;">한국화학회 (2026)</div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 교수 소개 문구 -->
+                      <p style="font-size:0.88rem; color:var(--color-graphite); line-height:1.65; margin:0;">
+                        KAIST 화학과 교수 (2019 ~ )<br>
+                        양자 화학 분야의 이론 및 계산 연구를 이끌고 있습니다.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 강연 및 인터뷰 (좌측 카드 내 통합) -->
+                <div style="border-top:1px dashed var(--border); padding-top:1rem;">
+                  <div style="font-size:0.95rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.75rem;">
+                    <span>강연 및 인터뷰</span>
+                  </div>
+
+                  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:0.65rem;">
+                    <!-- 영상 1 -->
+                    <a href="https://youtu.be/YQfs9rIG_DY" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; background:var(--color-pure-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:transform 0.15s ease, box-shadow 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                      <div style="position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden;">
+                        <img src="https://img.youtube.com/vi/YQfs9rIG_DY/mqdefault.jpg" alt="석학인터뷰 이영민" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
+                        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center;">
+                          <div style="width:28px; height:28px; background:rgba(0,0,0,0.65); border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(2px);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="padding:0.55rem 0.6rem; flex:1; display:flex; align-items:center;">
+                        <div style="font-size:0.78rem; font-weight:600; color:var(--color-charcoal); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                          세상을 지배하는 원리, 작은 세상을 통해 볼 수 있다
+                        </div>
+                      </div>
+                    </a>
+
+                    <!-- 영상 2 -->
+                    <a href="https://youtu.be/u7OqkWleCOA" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; background:var(--color-pure-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:transform 0.15s ease, box-shadow 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                      <div style="position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden;">
+                        <img src="https://img.youtube.com/vi/u7OqkWleCOA/mqdefault.jpg" alt="명강리뷰 이영민" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
+                        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center;">
+                          <div style="width:28px; height:28px; background:rgba(0,0,0,0.65); border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(2px);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="padding:0.55rem 0.6rem; flex:1; display:flex; align-items:center;">
+                        <div style="font-size:0.78rem; font-weight:600; color:var(--color-charcoal); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                          세상을 만드는 원자는 동그랄까, 길쭉할까, 우글쭈글할까?
+                        </div>
+                      </div>
+                    </a>
+
+                    <!-- 영상 3 -->
+                    <a href="https://youtu.be/KHiNM1I1dPQ" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; background:var(--color-pure-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:transform 0.15s ease, box-shadow 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                      <div style="position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden;">
+                        <img src="https://img.youtube.com/vi/KHiNM1I1dPQ/mqdefault.jpg" alt="강연 풀영상 이영민" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
+                        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center;">
+                          <div style="width:28px; height:28px; background:rgba(0,0,0,0.65); border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(2px);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="padding:0.55rem 0.6rem; flex:1; display:flex; align-items:center;">
+                        <div style="font-size:0.78rem; font-weight:600; color:var(--color-charcoal); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                          세상을 만드는 원자는 동그랄까, 길쭉할까, 우글쭈글할까?
+                        </div>
+                      </div>
+                    </a>
+
+                    <!-- 영상 4 -->
+                    <a href="https://youtu.be/MCIiTmUyl3s" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; background:var(--color-pure-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:transform 0.15s ease, box-shadow 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                      <div style="position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden;">
+                        <img src="https://img.youtube.com/vi/MCIiTmUyl3s/mqdefault.jpg" alt="질문답변 이영민" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
+                        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center;">
+                          <div style="width:28px; height:28px; background:rgba(0,0,0,0.65); border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(2px);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="padding:0.55rem 0.6rem; flex:1; display:flex; align-items:center;">
+                        <div style="font-size:0.78rem; font-weight:600; color:var(--color-charcoal); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                          수소가 전자를 잃고 이온이 되면 원자핵 크기로 작아질까?
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 우측: CPRL 연구진 단체 카드 -->
+              <div style="background:#f8fafc; border:1px solid var(--border); border-radius:var(--radius-md); padding:1.35rem; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="font-size:1.15rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.85rem;">
+                    <span>CPRL 연구진</span>
+                  </div>
+
+                  <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-sm); margin-bottom:0.9rem; background:#eaeaea;">
+                    <img src="image/cprl_group.jpg" alt="CPRL 연구진 단체 사진" style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; object-position:center; display:block;">
+                  </div>
+
+                  <p style="font-size:0.88rem; color:var(--color-graphite); line-height:1.65; margin:0;">
+                    KAIST 화학과 석·박사 과정 및 박사후 연구원들이 함께 모여 첨단 컴퓨터 시뮬레이션과 양자 동역학을 통해 분자의 새로운 광반응을 개척하고 있습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 2. CPRL 주요 연구 내용 VIEW                -->
         <!-- ========================================== -->
         <section id="view-cprl-research" class="content-view">
           <div class="theme-header-research" style="margin-bottom:1.75rem;">
             <h1 style="font-size:1.85rem; font-weight:800; margin:0 0 0.6rem; color:var(--color-charcoal); letter-spacing:-0.5px;">
-              KAIST CPRL 주요 연구
+              CPRL 주요 연구 내용
             </h1>
             <p style="font-size:1.0625rem; color:var(--color-charcoal); margin:0 0 0.75rem; line-height:1.65; font-weight:600;">
               "눈에 보이지 않는 작은 세계를 컴퓨터 가상 실험실에서 탐험합니다."
             </p>
             <p style="font-size:0.98rem; color:#2b2b2b; margin:0; line-height:1.7;">
-              KAIST 화학과 <strong>계산 광동역학 연구실(CPRL)</strong>은 화학약품을 섞는 실험실이 아닌, <strong>슈퍼컴퓨터와 양자 컴퓨터를 활용해 분자와 전자의 화학 반응을 탐구</strong>하는 첨단 연구실입니다. 우리가 매일 사용하는 스마트폰 액정 화면부터 미래 인류를 구할 신약 분자 설계까지, 컴퓨터 시뮬레이션으로 화학의 새로운 미래를 열어가고 있습니다.
+              KAIST 화학과 <strong>계산 광동역학 연구실(CPRL, Computational Photodynamics Research Lab / 이영민 교수 연구실)</strong>은 화학약품을 섞는 실험실이 아닌, <strong>슈퍼컴퓨터와 양자 컴퓨터를 활용해 분자와 전자의 화학 반응을 탐구</strong>하는 첨단 연구실입니다. 우리가 매일 사용하는 스마트폰 액정 화면부터 미래 인류를 구할 신약 분자 설계까지, 컴퓨터 시뮬레이션으로 화학의 새로운 미래를 열어가고 있습니다.
             </p>
           </div>
 
@@ -2464,14 +2796,16 @@
       'textbook': '학생용 읽기자료',
       'slides': '발표 슬라이드',
       'curriculum': '2022 성취기준 연계표',
+      'cprl-intro': 'KAIST 화학과 CPRL 소개',
       'cprl-research': 'CPRL 주요 연구 내용',
       'cprl-academic': '교사용 학술 배경 자료'
     };
 
     function setAppState(pkg, view) {
       currentPkg = pkg;
-      currentView = (view === 'overview') ? 'lesson-plan' : view;
-      window.location.hash = `${pkg}/${currentView}`;
+      const normalizedView = (view === 'overview') ? 'lesson-plan' : view;
+      currentView = normalizedView;
+      window.location.hash = normalizedView.startsWith('cprl') ? normalizedView : `${pkg}/${currentView}`;
       if (window.innerWidth <= 768) {
         document.body.classList.remove('sidebar-open');
       }
@@ -2532,7 +2866,7 @@
 
       // 2. Update Sidebar Active Links
       document.querySelectorAll('.sidebar .nav-item').forEach(el => el.classList.remove('active', 'quantum-active'));
-      const activeNavId = currentView.startsWith('cprl') ? `nav-item-${currentView}` : `nav-item-${currentView}`;
+      const activeNavId = `nav-item-${currentView}`;
       const activeNavEl = document.getElementById(activeNavId);
       if (activeNavEl) {
         activeNavEl.classList.add('active');
@@ -2545,7 +2879,7 @@
       const topbarTitle = document.getElementById('topbar-title');
       if (topbarTitle) {
         if (currentView.startsWith('cprl')) {
-          topbarTitle.innerText = viewTitles[currentView];
+          topbarTitle.innerText = viewTitles[currentView] || 'KAIST 화학과 CPRL 소개';
         } else {
           const pkgPrefix = currentPkg === 'oled' ? '01. OLED: ' : '02. 양자컴퓨터: ';
           topbarTitle.innerText = `${pkgPrefix}${viewTitles[currentView]}`;
@@ -2571,6 +2905,10 @@
       if (currentView === 'lab') {
         window.dispatchEvent(new Event('resize'));
       }
+
+      if (window.lucide) {
+        try { lucide.createIcons(); } catch(e) {}
+      }
     }
 
     // Sidebar Toggle
@@ -2583,6 +2921,23 @@
     }
     document.addEventListener('keydown', (e) => {
       if (e.key === '[' || e.key === ']') toggleSidebar();
+    });
+
+    // CPRL Badge Popover Toggle
+    function toggleCprlPopover(btn, event) {
+      if (event) event.stopPropagation();
+      const item = btn.closest('.cprl-badge-item');
+      if (!item) return;
+      const wasActive = item.classList.contains('active');
+      document.querySelectorAll('.cprl-badge-item.active').forEach(el => el.classList.remove('active'));
+      if (!wasActive) {
+        item.classList.add('active');
+      }
+    }
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.cprl-badge-item')) {
+        document.querySelectorAll('.cprl-badge-item.active').forEach(el => el.classList.remove('active'));
+      }
     });
 
     // Hash Parser on Load / Popstate
@@ -2605,6 +2960,9 @@
     // Initialize view on load
     window.addEventListener('DOMContentLoaded', () => {
       parseHash();
+      if (window.lucide) {
+        try { lucide.createIcons(); } catch(e) {}
+      }
     });
   </script>
 
