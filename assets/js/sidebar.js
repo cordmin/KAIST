@@ -72,15 +72,30 @@ function renderSidebar(pkg, currentKey) {
       </a>
     </nav>
   `;
+
+  // 모바일 오버레이 보장
+  if (!document.querySelector('.sidebar-overlay')) {
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    overlay.onclick = toggleSidebar;
+    document.body.appendChild(overlay);
+  }
 }
 
 function toggleSidebar() {
-  if (window.innerWidth <= 960) {
+  if (window.innerWidth <= 768) {
     document.body.classList.toggle('sidebar-open');
   } else {
     document.body.classList.toggle('sidebar-collapsed');
   }
 }
+
+// 창 크기 변경 시 모바일 열림 상태 정리
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    document.body.classList.remove('sidebar-open');
+  }
+});
 
 // Keyboard shortcuts for toggle
 document.addEventListener('keydown', (e) => {
@@ -93,3 +108,4 @@ document.addEventListener('keydown', (e) => {
 if (window.self !== window.top) {
   document.body.classList.add('in-iframe');
 }
+

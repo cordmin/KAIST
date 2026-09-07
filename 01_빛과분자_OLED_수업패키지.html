@@ -359,7 +359,7 @@
     .callout-box { background: #fefce8; border: 1px solid #fef08a; border-left: 4px solid #eab308; padding: 1rem 1.25rem; border-radius: 0.5rem; margin: 1.25rem 0; }
     .kaist-highlight { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #22c55e; padding: 1.25rem; border-radius: 0.5rem; margin: 1.5rem 0; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
       .app-sidebar { transform: translateX(-100%); }
       body.sidebar-open .app-sidebar { transform: translateX(0); }
       .app-main { margin-left: 0 !important; }
@@ -1058,11 +1058,11 @@
       if (targetPane) targetPane.classList.add('active');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (window.innerWidth <= 900) document.body.classList.remove('sidebar-open');
+      if (window.innerWidth <= 768) document.body.classList.remove('sidebar-open');
     }
 
     function toggleSidebar() {
-      if (window.innerWidth <= 900) {
+      if (window.innerWidth <= 768) {
         document.body.classList.toggle('sidebar-open');
       } else {
         document.body.classList.toggle('sidebar-collapsed');

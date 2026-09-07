@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KAIST CPRL 첨단과학 탐구실험 올인원 플랫폼 - 2022 개정 중학교 과학</title>
+  <title>스타브릿지2.0 (KAIST CPRL)</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     /* All-in-One Dynamic View Styles */
@@ -212,6 +212,14 @@
 
     <!-- Main Dynamic Content Workspace -->
     <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()" aria-label="사이드바 토글">☰</button>
+          <span class="current-view-title" id="topbar-title">📋 01. OLED: 교사용 지도안</span>
+        </div>
+      </header>
+      <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
       <div class="content-container">
 
         <!-- ========================================== -->
@@ -220,13 +228,13 @@
         <section id="view-cprl-research" class="content-view">
           <div class="theme-header-research" style="margin-bottom:1.75rem;">
             <h1 style="font-size:1.85rem; font-weight:800; margin:0 0 0.6rem; color:var(--color-charcoal); letter-spacing:-0.5px;">
-              KAIST CPRL 주요 연구 내용
+              KAIST CPRL 주요 연구
             </h1>
             <p style="font-size:1.0625rem; color:var(--color-charcoal); margin:0 0 0.75rem; line-height:1.65; font-weight:600;">
               "눈에 보이지 않는 작은 세계를 컴퓨터 가상 실험실에서 탐험합니다."
             </p>
             <p style="font-size:0.98rem; color:#2b2b2b; margin:0; line-height:1.7;">
-              KAIST 화학과 <strong>계산 광동역학 연구실(CPRL, 이영민 교수 연구실)</strong>은 실험실에서 플라스크를 섞는 대신, <strong>초고속 슈퍼컴퓨터와 미래의 양자 컴퓨터를 이용해 분자의 움직임과 화학 반응을 예측하고 탐구</strong>하는 첨단 연구실입니다. 우리가 매일 손에 쥐는 스마트폰 화면이 빛나는 원리부터 미래 인류를 구할 신약 분자 설계까지, 컴퓨터 시뮬레이션으로 화학의 새로운 미래를 열어가고 있습니다.
+              KAIST 화학과 <strong>계산 광동역학 연구실(CPRL)</strong>은 화학약품을 섞는 실험실이 아닌, <strong>슈퍼컴퓨터와 양자 컴퓨터를 활용해 분자와 전자의 화학 반응을 탐구</strong>하는 첨단 연구실입니다. 우리가 매일 사용하는 스마트폰 액정 화면부터 미래 인류를 구할 신약 분자 설계까지, 컴퓨터 시뮬레이션으로 화학의 새로운 미래를 열어가고 있습니다.
             </p>
           </div>
 
@@ -234,13 +242,19 @@
           <div class="chrome-window">
             <div class="chrome-tab-bar" role="tablist">
               <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchResearchTab(event, 0)" role="tab" aria-selected="true">
-                연구 영역 01 · 분자 거동 시뮬레이션
+                <span class="tab-text-full">연구 영역 01 · 분자 거동 시뮬레이션</span>
+                <span class="tab-text-mid">01. 분자 거동</span>
+                <span class="tab-text-short">01. 분자</span>
               </button>
               <button type="button" class="chrome-tab-btn tab-green" onclick="switchResearchTab(event, 1)" role="tab" aria-selected="false">
-                연구 영역 02 · 양자 효과 시뮬레이션
+                <span class="tab-text-full">연구 영역 02 · 양자 효과 시뮬레이션</span>
+                <span class="tab-text-mid">02. 양자 효과</span>
+                <span class="tab-text-short">02. 양자</span>
               </button>
               <button type="button" class="chrome-tab-btn tab-purple" onclick="switchResearchTab(event, 2)" role="tab" aria-selected="false">
-                연구 영역 03 · 양자 컴퓨팅 툴 개발
+                <span class="tab-text-full">연구 영역 03 · 양자 컴퓨팅 툴 개발</span>
+                <span class="tab-text-mid">03. 양자 툴 개발</span>
+                <span class="tab-text-short">03. 툴 개발</span>
               </button>
             </div>
 
@@ -258,7 +272,7 @@
                       "정밀한 돋보기와 넓게 보는 안경을 합쳐, 복잡한 분자 거동도 빠르게 계산해요"
                     </h4>
                     <p style="font-size:0.96rem; color:#2d3139; line-height:1.8; margin-bottom:1.25rem;">
-                      수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자의 복잡한 움직임(분자 거동)은 덩치가 너무 커서 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다. CPRL 연구실은 화학 반응이 일어나는 가장 중요한 핵심 영역은 <strong>정밀한 돋보기(양자역학)</strong>로 아주 세밀하게 들여다보고, 주변을 둘러싼 물 분자나 단백질 껍질은 <strong>가벼운 안경(분자역학)</strong>으로 빠르게 모사하는 <strong>하이브리드 계산법(IM/MM)</strong>을 개발했습니다. 여기에 <strong>인공지능(머신러닝)</strong>을 결합하여, 분자가 화학 반응을 일으키며 지나가는 롤러코스터 같은 '에너지 입체 지도(표면)'를 순식간에 완성하여 분자 거동을 정밀하게 모사합니다.
+                      수만 개의 원자가 얽혀 있는 생명체 속 단백질과 신약 개발의 대상이 되는 분자들의 화학 반응 예측은 슈퍼 컴퓨터로도 정밀하게 계산하기 어렵습니다. 따라서 화학 반응이 일어나는 중요한 핵심 영역은 <strong>정밀한 돋보기(양자역학)</strong>로 아주 세밀하게 들여다보고, 주변을 둘러싼 물 분자나 단백질 껍질은 <strong>가벼운 안경(분자역학)</strong>으로 빠르게 본을 뜨는(모사) <strong>하이브리드 계산법(IM/MM)</strong>을 CPRL 연구실에서 개발했습니다. 여기에 <strong>인공지능(머신러닝)</strong>을 활용하여, 분자가 화학 반응을 일으키며 지나가는 롤러코스터 같은 '에너지 입체 지도'를 완성하고 분자 거동을 정밀하게 모사합니다.
                     </p>
                   </div>
 
@@ -303,16 +317,13 @@
             <div class="chrome-tab-panel" role="tabpanel">
               <div style="margin-bottom:1.5rem;">
                 <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-                  빛을 내뿜는 전자의 순간포착
+                  빛을 내뿜는 전자들의 움직임
                 </h3>
                 <h4 style="font-size:0.98rem; font-weight:700; color:#047857; margin-bottom:1rem;">
-                  "스마트폰 화면 속 갇혀서 버려지던 75%의 전자를 구출하여 100% 빛으로 만들어요"
+                  "스마트폰에 갇혀있던 75%의 전자를 구출하여, 보다 효율적으로 빛을 만들어요"
                 </h4>
-                <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:0.85rem;">
-                  분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 쉽게 가려지지만, 빛이나 전기를 받으면 트램펄린을 탄 것처럼 높은 에너지 계단(들뜬 상태)으로 튀어 오르고, 다시 바닥으로 착지하면서 남은 에너지를 아름다운 빛(형광)으로 뿜어내며 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다.
-                </p>
-                <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:1.15rem;">
-                  하지만 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 전자의 25%만 빛을 내고, <strong>나머지 75%는 문이 잠긴 방에 갇혀 모조리 '스마트폰 발열과 배터리 낭비'</strong>로 사라지는 한계가 있었습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 옥상 구름다리로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 '핫 엑시톤' 양자 효과 메커니즘</strong>을 규명했습니다.
+                <p style="font-size:0.96rem; color:#2d3139; line-height:1.8; margin-bottom:1.25rem;">
+                  분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 잘 보이지 않지만, 빛이나 전기를 받으면 높은 에너지 상태로 튀어 올랐다가 낮은 상태로 내려가면서 빛 에너지를 방출하며 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다. 그런데 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 25%의 전자들만 빛을 내고, <strong>나머지 75%의 전자는 문이 잠긴 방에 갇혀 '스마트폰 발열'</strong>로 사라지는 배터리 낭비의 한계가 있었습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 곳으로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 '핫 엑시톤' 양자 효과 메커니즘</strong>을 규명했습니다.
                 </p>
               </div>
               <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
@@ -2461,6 +2472,9 @@
       currentPkg = pkg;
       currentView = (view === 'overview') ? 'lesson-plan' : view;
       window.location.hash = `${pkg}/${currentView}`;
+      if (window.innerWidth <= 768) {
+        document.body.classList.remove('sidebar-open');
+      }
       renderView();
     }
 
@@ -2475,6 +2489,26 @@
     function togglePackageQuick() {
       switchPackage(currentPkg === 'oled' ? 'quantum' : 'oled');
     }
+
+    function toggleSidebar() {
+      if (window.innerWidth <= 768) {
+        document.body.classList.toggle('sidebar-open');
+      } else {
+        document.body.classList.toggle('sidebar-collapsed');
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        document.body.classList.remove('sidebar-open');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '[' || e.key === ']') {
+        toggleSidebar();
+      }
+    });
 
     function renderView() {
       // 1. Update Package Switcher Buttons
