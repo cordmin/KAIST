@@ -143,91 +143,186 @@
       overflow: hidden;
     }
 
-    /* CPRL Professor Profile Badges & Hover Popovers */
-    .cprl-badge-item {
-      position: relative;
-      display: inline-block;
-    }
-    .cprl-badge-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.32rem 0.72rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border-radius: var(--radius-full);
+    /* CPRL Professor CV Summary Box & Centered Modal Dialog */
+    .cprl-cv-box {
+      background: var(--color-pure-white);
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.85rem;
+      box-shadow: var(--shadow-sm);
       cursor: pointer;
-      transition: all 0.15s ease;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
       user-select: none;
     }
-    .cprl-badge-btn.badge-edu {
-      color: var(--color-notion-blue);
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
+    .cprl-cv-box:hover {
+      border-color: #93c5fd;
+      background: #fbfdff;
+      box-shadow: 0 4px 14px rgba(0, 117, 222, 0.09);
+      transform: translateY(-1px);
     }
-    .cprl-badge-btn.badge-career {
-      color: #047857;
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
+    .cprl-cv-box:hover .cprl-cv-arrow {
+      transform: translateX(3px);
     }
-    .cprl-badge-btn.badge-award {
-      color: #b45309;
-      background: #fffbeb;
-      border: 1px solid #fde68a;
+    .cprl-cv-arrow {
+      transition: transform 0.18s ease;
     }
-    .cprl-badge-btn:hover,
-    .cprl-badge-item:hover .cprl-badge-btn,
-    .cprl-badge-item.active .cprl-badge-btn {
-      filter: brightness(0.95);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    .cprl-prof-row {
+      display: flex;
+      gap: 1.25rem;
+      align-items: stretch;
+      margin-bottom: 1rem;
     }
-    .cprl-badge-btn .badge-chevron {
-      transition: transform 0.2s ease;
-      display: inline-block;
-    }
-    .cprl-badge-item:hover .badge-chevron,
-    .cprl-badge-item.active .badge-chevron {
-      transform: rotate(180deg);
-    }
-    .cprl-badge-popover {
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      width: 290px;
-      max-width: min(320px, 85vw);
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
+    .cprl-prof-img-wrap {
+      width: 175px;
+      flex-shrink: 0;
+      position: relative;
       border-radius: var(--radius-md);
-      box-shadow: 0 10px 25px -4px rgba(0,0,0,0.12), 0 4px 6px -2px rgba(0,0,0,0.05);
-      padding: 0.9rem 1rem;
-      z-index: 120;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .cprl-prof-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+    .cprl-prof-info {
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    @media (max-width: 520px) {
+      .cprl-prof-row {
+        flex-direction: column;
+      }
+      .cprl-prof-img-wrap {
+        width: 100%;
+        height: 220px;
+      }
+    }
+    .cprl-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.52);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(6px);
-      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
-      pointer-events: none;
+      transition: opacity 0.22s ease, visibility 0.22s ease;
     }
-    .cprl-badge-popover.popover-align-right {
-      left: auto;
-      right: 0;
-    }
-    .cprl-badge-popover.popover-align-center {
-      left: 50%;
-      right: auto;
-      transform: translateX(-50%) translateY(6px);
-    }
-    .cprl-badge-item:hover .cprl-badge-popover,
-    .cprl-badge-item.active .cprl-badge-popover {
+    .cprl-modal-backdrop.active {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
-      pointer-events: auto;
     }
-    .cprl-badge-item:hover .cprl-badge-popover.popover-align-center,
-    .cprl-badge-item.active .cprl-badge-popover.popover-align-center {
-      transform: translateX(-50%) translateY(0);
+    .cprl-modal-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.28), 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 550px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.96) translateY(12px);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cprl-modal-backdrop.active .cprl-modal-card {
+      transform: scale(1) translateY(0);
+    }
+    .cprl-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.15rem;
+      border-bottom: 1px solid #f1f5f9;
+      background: #fafbfc;
+    }
+    .cprl-modal-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--color-charcoal);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .cprl-modal-close {
+      background: transparent;
+      border: none;
+      color: var(--color-stone);
+      cursor: pointer;
+      padding: 0.25rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .cprl-modal-close:hover {
+      color: var(--color-charcoal);
+      background: #e2e8f0;
+    }
+    .cprl-modal-body {
+      padding: 0.75rem 1.15rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .cprl-cv-section {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.5rem 0.85rem;
+    }
+    .cprl-cv-badge-row {
+      margin-bottom: 0.35rem;
+    }
+    .cprl-cv-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: var(--color-charcoal);
+      line-height: 1.45;
+    }
+    .cprl-cv-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.55rem;
+      border-bottom: 1px dashed #e2e8f0;
+      padding-bottom: 0.25rem;
+    }
+    .cprl-cv-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .cprl-cv-year {
+      width: 90px;
+      flex-shrink: 0;
+      text-align: left;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--color-stone);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.35;
+      display: inline-block;
     }
   </style>
 </head>
@@ -336,121 +431,51 @@
                     <span>CPRL 지도교수</span>
                   </div>
                   
-                  <div style="display:flex; gap:1.25rem; align-items:flex-start; flex-wrap:wrap; margin-bottom:1rem;">
-                    <img src="image/prof_youngmin_rhee.jpg" alt="이영민 교수" style="width:175px; height:210px; object-fit:cover; object-position:center 15%; border-radius:var(--radius-md); border:1px solid var(--border); box-shadow:var(--shadow-sm); flex-shrink:0;">
-                    <div style="flex:1; min-width:200px; display:flex; flex-direction:column; justify-content:flex-start;">
-                      <!-- 이름 및 배지 그룹 (동일 행 인라인 배치) -->
-                      <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; margin-bottom:0.6rem;">
-                        <span style="font-size:1.24rem; font-weight:700; color:var(--color-charcoal); line-height:1.2;">이영민 교수</span>
-                        <div style="display:inline-flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
-                          <!-- 1. 학력 배지 -->
-                          <div class="cprl-badge-item">
-                            <button type="button" class="cprl-badge-btn badge-edu" onclick="toggleCprlPopover(this, event)" aria-label="학력 상세 보기">
-                              <span>학력</span>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="badge-chevron"><path d="m6 9 6 6 6-6"/></svg>
-                            </button>
-                            <div class="cprl-badge-popover">
-                              <div style="font-size:0.84rem; font-weight:700; color:var(--color-notion-blue); margin-bottom:0.55rem; padding-bottom:0.35rem; border-bottom:1px solid #f1f5f9;">
-                                <span>학력</span>
-                              </div>
-                              <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem; color:var(--color-charcoal); line-height:1.55; display:flex; flex-direction:column; gap:0.5rem;">
-                                <li>
-                                  <div style="font-weight:700;">서울대학교 화학과 학사</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">1991 – 1995</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">서울대학교 화학과 석사</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">1995 – 1997 · 지도교수: 김명수 교수</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">미국 스탠퍼드 대학교 화학과 박사</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2000 – 2005 · 지도교수: Vijay S. Pande 교수</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">미국 UC 버클리 박사후연구원</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2005 – 2008 · 지도교수: Martin Head-Gordon 교수</div>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-
-                          <!-- 2. 경력 배지 -->
-                          <div class="cprl-badge-item">
-                            <button type="button" class="cprl-badge-btn badge-career" onclick="toggleCprlPopover(this, event)" aria-label="경력 상세 보기">
-                              <span>경력</span>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="badge-chevron"><path d="m6 9 6 6 6-6"/></svg>
-                            </button>
-                            <div class="cprl-badge-popover popover-align-center">
-                              <div style="font-size:0.84rem; font-weight:700; color:#047857; margin-bottom:0.55rem; padding-bottom:0.35rem; border-bottom:1px solid #f1f5f9;">
-                                <span>경력</span>
-                              </div>
-                              <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem; color:var(--color-charcoal); line-height:1.5; display:flex; flex-direction:column; gap:0.45rem;">
-                                <li>
-                                  <div style="font-weight:700;">포항공과대학교 화학과 조교수</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2008 – 2012</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">포항공과대학교 화학과 부교수</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2012 – 2017</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">기초과학연구원 복잡계 자기조립 연구단 그룹리더</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2012 – 2017</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">KAIST 화학과 부교수</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2017 – 2019</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">스웨덴 왕립공과대학교 초빙교수</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2023 – 2024</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">KAIST 화학과 정교수</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2019 – 현재</div>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-
-                          <!-- 3. 수상 배지 -->
-                          <div class="cprl-badge-item">
-                            <button type="button" class="cprl-badge-btn badge-award" onclick="toggleCprlPopover(this, event)" aria-label="수상 상세 보기">
-                              <span>수상</span>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="badge-chevron"><path d="m6 9 6 6 6-6"/></svg>
-                            </button>
-                            <div class="cprl-badge-popover popover-align-right">
-                              <div style="font-size:0.84rem; font-weight:700; color:#b45309; margin-bottom:0.55rem; padding-bottom:0.35rem; border-bottom:1px solid #f1f5f9;">
-                                <span>수상</span>
-                              </div>
-                              <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem; color:var(--color-charcoal); line-height:1.55; display:flex; flex-direction:column; gap:0.5rem;">
-                                <li>
-                                  <div style="font-weight:700;">한국화학회 물리화학 초기 경력상</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">2013</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">창의적 교육상</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">KAIST (2022)</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">한국화학회 신국조학 학업우수상</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">한국화학회 (2022)</div>
-                                </li>
-                                <li>
-                                  <div style="font-weight:700;">IPJAE 물리화학상</div>
-                                  <div style="color:var(--color-stone); font-size:0.74rem;">한국화학회 (2026)</div>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- 교수 소개 문구 -->
-                      <p style="font-size:0.88rem; color:var(--color-graphite); line-height:1.65; margin:0;">
+                  <div class="cprl-prof-row">
+                    <div class="cprl-prof-img-wrap">
+                      <img src="image/prof_youngmin_rhee.jpg" alt="이영민 교수" class="cprl-prof-img">
+                    </div>
+                    <div class="cprl-prof-info">
+                      <div style="font-size:1.24rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.35rem; line-height:1.2;">이영민 교수</div>
+                      <p style="font-size:0.88rem; color:var(--color-graphite); line-height:1.6; margin:0 0 0.75rem 0;">
                         KAIST 화학과 교수 (2019 ~ )<br>
                         양자 화학 분야의 이론 및 계산 연구를 이끌고 있습니다.
                       </p>
+
+                      <!-- 학력 / 경력 / 수상 요약 카드 (클릭 시 중앙 상세 모달 팝업) -->
+                      <div class="cprl-cv-box" onclick="openCvModal()" onkeydown="if(event.key==='Enter'||event.key===' ')openCvModal()" aria-label="이영민 교수 상세 이력 보기" role="button" tabindex="0">
+                        <div style="display:flex; flex-direction:column; gap:0.42rem;">
+                          <!-- 최신 학력 -->
+                          <div style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="font-size:0.71rem; font-weight:700; color:var(--color-notion-blue); background:#eff6ff; border:1px solid #bfdbfe; border-radius:4px; padding:0.12rem 0.4rem; flex-shrink:0; line-height:1.2;">학력</span>
+                            <span style="font-size:0.8rem; color:var(--color-charcoal); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                              미국 스탠퍼드 대학교 화학과 박사 <span style="font-weight:400; color:var(--color-stone); font-size:0.73rem;">(2000–2005)</span>
+                            </span>
+                          </div>
+
+                          <!-- 최신 경력 -->
+                          <div style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="font-size:0.71rem; font-weight:700; color:#047857; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:4px; padding:0.12rem 0.4rem; flex-shrink:0; line-height:1.2;">경력</span>
+                            <span style="font-size:0.8rem; color:var(--color-charcoal); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                              KAIST 화학과 정교수 <span style="font-weight:400; color:var(--color-stone); font-size:0.73rem;">(2019 ~ 현재)</span>
+                            </span>
+                          </div>
+
+                          <!-- 최신 수상 -->
+                          <div style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="font-size:0.71rem; font-weight:700; color:#b45309; background:#fffbeb; border:1px solid #fde68a; border-radius:4px; padding:0.12rem 0.4rem; flex-shrink:0; line-height:1.2;">수상</span>
+                            <span style="font-size:0.8rem; color:var(--color-charcoal); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                              한국화학회 IPJAE 물리화학상 <span style="font-weight:400; color:var(--color-stone); font-size:0.73rem;">(2026)</span>
+                            </span>
+                          </div>
+                        </div>
+
+                        <!-- 하단 상세 이력 안내 팁 -->
+                        <div style="display:flex; align-items:center; justify-content:flex-end; gap:0.25rem; font-size:0.72rem; color:var(--color-notion-blue); margin-top:0.45rem; padding-top:0.35rem; border-top:1px dashed #e2e8f0; font-weight:600;">
+                          <span>상세 이력</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="cprl-cv-arrow"><path d="m9 18 6-6-6-6"/></svg>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2735,6 +2760,134 @@
     </main>
   </div>
 
+  <!-- CPRL 이영민 교수 상세 이력 모달 (화면 중앙 렌더링 다이얼로그) -->
+  <div id="cprl-cv-modal" class="cprl-modal-backdrop" onclick="closeCvModal(event)" role="dialog" aria-modal="true" aria-labelledby="cprl-modal-title-text">
+    <div class="cprl-modal-card" onclick="event.stopPropagation()">
+      <div class="cprl-modal-header">
+        <div class="cprl-modal-title" id="cprl-modal-title-text">
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-notion-blue);"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <span>이영민 교수 상세 이력</span>
+        </div>
+        <button type="button" class="cprl-modal-close" onclick="closeCvModal()" aria-label="닫기">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="cprl-modal-body">
+        <!-- 1. 학력 섹션 -->
+        <div class="cprl-cv-section">
+          <div class="cprl-cv-badge-row">
+            <span style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:4px; padding:0.12rem 0.45rem; font-size:0.72rem; font-weight:700; color:var(--color-notion-blue);">학력</span>
+          </div>
+          <ul class="cprl-cv-list">
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">스탠퍼드 대학교</span> 화학과 박사 <span style="font-weight:400; color:var(--color-stone); font-size:0.74rem;">(지도교수: Vijay S. Pande)</span>
+              </div>
+              <span class="cprl-cv-year">2000 – 2005</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">UC 버클리</span> 박사후연구원 <span style="font-weight:400; color:var(--color-stone); font-size:0.74rem;">(지도교수: Martin Head-Gordon)</span>
+              </div>
+              <span class="cprl-cv-year">2005 – 2008</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">서울대학교</span> 화학과 석사 <span style="font-weight:400; color:var(--color-stone); font-size:0.74rem;">(지도교수: 김명수)</span>
+              </div>
+              <span class="cprl-cv-year">1995 – 1997</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">서울대학교</span> 화학과 학사
+              </div>
+              <span class="cprl-cv-year">1991 – 1995</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 2. 경력 섹션 -->
+        <div class="cprl-cv-section">
+          <div class="cprl-cv-badge-row">
+            <span style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:4px; padding:0.12rem 0.45rem; font-size:0.72rem; font-weight:700; color:#047857;">경력</span>
+          </div>
+          <ul class="cprl-cv-list">
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">KAIST 화학과</span> 정교수
+              </div>
+              <span class="cprl-cv-year">2019 – 현재</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">스웨덴 왕립공과대학교 (KTH)</span> 초빙교수
+              </div>
+              <span class="cprl-cv-year">2023 – 2024</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">KAIST 화학과</span> 부교수
+              </div>
+              <span class="cprl-cv-year">2017 – 2019</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">기초과학연구원 (IBS)</span> 복잡계 자기조립 연구단 그룹리더
+              </div>
+              <span class="cprl-cv-year">2012 – 2017</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">포항공과대학교 (POSTECH)</span> 화학과 부교수
+              </div>
+              <span class="cprl-cv-year">2012 – 2017</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">포항공과대학교 (POSTECH)</span> 화학과 조교수
+              </div>
+              <span class="cprl-cv-year">2008 – 2012</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 3. 수상 섹션 -->
+        <div class="cprl-cv-section">
+          <div class="cprl-cv-badge-row">
+            <span style="background:#fffbeb; border:1px solid #fde68a; border-radius:4px; padding:0.12rem 0.45rem; font-size:0.72rem; font-weight:700; color:#b45309;">수상</span>
+          </div>
+          <ul class="cprl-cv-list">
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">IPJAE 물리화학상</span> <span style="font-weight:400; color:var(--color-stone); font-size:0.74rem;">(대한화학회)</span>
+              </div>
+              <span class="cprl-cv-year">2026</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">창의적 교육상</span> <span style="font-weight:400; color:var(--color-stone); font-size:0.74rem;">(KAIST)</span>
+              </div>
+              <span class="cprl-cv-year">2022</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">신국조학 학업우수상</span> <span style="font-weight:400; color:var(--color-stone); font-size:0.74rem;">(대한화학회)</span>
+              </div>
+              <span class="cprl-cv-year">2022</span>
+            </li>
+            <li class="cprl-cv-item">
+              <div style="flex:1; min-width:0;">
+                <span style="font-weight:700; color:#0f172a;">물리화학 초기 경력상</span> <span style="font-weight:400; color:var(--color-stone); font-size:0.74rem;">(대한화학회)</span>
+              </div>
+              <span class="cprl-cv-year">2013</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Embedded Component Injector & State Controller -->
   <script>
     // Chrome Tab Switcher
@@ -2838,12 +2991,6 @@
       }
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === '[' || e.key === ']') {
-        toggleSidebar();
-      }
-    });
-
     function renderView() {
       // 1. Update Package Switcher Buttons
       const btnOled = document.getElementById('pkg-btn-oled');
@@ -2919,24 +3066,31 @@
         document.body.classList.toggle('sidebar-collapsed');
       }
     }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === '[' || e.key === ']') toggleSidebar();
-    });
 
-    // CPRL Badge Popover Toggle
-    function toggleCprlPopover(btn, event) {
-      if (event) event.stopPropagation();
-      const item = btn.closest('.cprl-badge-item');
-      if (!item) return;
-      const wasActive = item.classList.contains('active');
-      document.querySelectorAll('.cprl-badge-item.active').forEach(el => el.classList.remove('active'));
-      if (!wasActive) {
-        item.classList.add('active');
+    // CPRL Professor CV Centered Modal Controls
+    function openCvModal() {
+      const modal = document.getElementById('cprl-cv-modal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
     }
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.cprl-badge-item')) {
-        document.querySelectorAll('.cprl-badge-item.active').forEach(el => el.classList.remove('active'));
+
+    function closeCvModal(e) {
+      if (!e || e.target === e.currentTarget || (e.target && e.target.closest && e.target.closest('.cprl-modal-close'))) {
+        const modal = document.getElementById('cprl-cv-modal');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '[' || e.key === ']') {
+        toggleSidebar();
+      } else if (e.key === 'Escape') {
+        closeCvModal();
       }
     });
 
