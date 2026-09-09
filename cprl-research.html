@@ -33,7 +33,7 @@
       justify-content: space-between;
     }
     .paper-item {
-      background: #faf9f8;
+      background: #11172e;
       border-left: 3px solid var(--color-notion-blue);
       padding: 0.65rem 0.85rem;
       margin-top: 0.6rem;
@@ -97,9 +97,9 @@
     <div class="chrome-window">
       <div class="chrome-tab-bar" role="tablist">
         <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchResearchTab(event, 0)" role="tab" aria-selected="true">
-          <span class="tab-text-full">연구 영역 01 · 복잡한 화학 반응 예측</span>
-          <span class="tab-text-mid">01. 화학 반응 예측</span>
-          <span class="tab-text-short">01. 화학 반응</span>
+          <span class="tab-text-full">연구 영역 01 · 화학 반응 에너지 지형도 구축</span>
+          <span class="tab-text-mid">01. 에너지 지형도 구축</span>
+          <span class="tab-text-short">01. 에너지 지형도</span>
         </button>
         <button type="button" class="chrome-tab-btn tab-green" onclick="switchResearchTab(event, 1)" role="tab" aria-selected="false">
           <span class="tab-text-full">연구 영역 02 · 양자 효과 시뮬레이션</span>
@@ -113,19 +113,16 @@
         </button>
       </div>
 
-      <!-- 패널 1: 복잡한 화학 반응 예측 -->
+      <!-- 패널 1: 화학 반응 에너지 지형도 구축 -->
       <div class="chrome-tab-panel active" role="tabpanel">
         <div class="research-panel-grid">
           
           <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
           <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
             <div>
-              <h3 style="color:var(--color-charcoal); font-size:1.34rem; font-weight:800; margin-bottom:0.35rem; line-height:1.35;">
-                컴퓨터와 AI로 예측하는 복잡한 화학 반응
+              <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
+                "컴퓨터와 AI를 활용해, 복잡한 화학 반응의 에너지 지형을 빠르고 정확하게 계산해요"
               </h3>
-              <h4 style="font-size:0.96rem; font-weight:700; color:#0062bd; margin-bottom:0.7rem;">
-                "양자역학의 정밀함과 인공지능의 속도를 합쳐, 복잡한 화학 반응을 빠르고 정확하게 계산해요"
-              </h4>
               <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
                 수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자의 화학 반응은 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다. 따라서 화학 반응이 직접 일어나는 핵심 영역은 <strong>정밀한 양자역학</strong>으로 세밀하게 계산하고, 주변을 둘러싼 방대한 물 분자나 단백질 환경은 <strong>계산 속도가 빠른 분자역학</strong>으로 효율적으로 처리하는 <strong>하이브리드 시뮬레이션 기술(IM/MM)</strong>을 CPRL 연구실에서 독자 개발했습니다. 여기에 <strong>인공지능(신경망 머신러닝)</strong>을 결합하여 중간 에너지 변화를 수학적으로 매끄럽게 보간(연결)함으로써, 복잡한 화학 반응과 분자의 움직임을 실제 실험실보다 훨씬 빠르고 정확하게 컴퓨터로 예측할 수 있습니다.
               </p>
@@ -166,7 +163,7 @@
                   광합성 홍색세균의 세포막에 존재하는 빛 수확 복합체(LH2)의 9량체 원형 구조
                 </div>
                 <div>
-                  CPRL 연구진은 첨단 분자 시뮬레이션을 통해 자연이 왜 9개 고리를 선택해 에너지 손실(무질서도)을 최소화했는지를 세계 최초로 증명했습니다.
+                  CPRL 연구진은 첨단 분자 시뮬레이션을 통해 자연이 왜 9개 고리를 선택해 에너지 손실(무질서도)을 최소화했는지를 증명했습니다. (2026)
                 </div>
               </div>
             </div>
@@ -177,43 +174,124 @@
 
       <!-- 패널 2: 양자 효과 시뮬레이션 -->
       <div class="chrome-tab-panel" role="tabpanel">
-        <div style="margin-bottom:1.5rem;">
-          <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-            빛을 내뿜는 전자의 순간포착
-          </h3>
-          <h4 style="font-size:0.98rem; font-weight:700; color:#047857; margin-bottom:1rem;">
-            "스마트폰 화면 속 갇혀서 버려지던 75%의 전자를 구출하여 100% 빛으로 만들어요"
-          </h4>
-          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:0.85rem;">
-            분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 쉽게 가려지지만, 빛이나 전기를 받으면 트램펄린을 탄 것처럼 높은 에너지 계단(들뜬 상태)으로 튀어 오르고, 다시 바닥으로 착지하면서 남은 에너지를 아름다운 빛(형광)으로 뿜어내며 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다.
-          </p>
-          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:1.15rem;">
-            하지만 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 전자의 25%만 빛을 내고, <strong>나머지 75%는 문이 잠긴 방에 갇혀 모조리 '스마트폰 발열과 배터리 낭비'</strong>로 사라지는 한계가 있었습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 옥상 구름다리로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 '핫 엑시톤' 양자 효과 메커니즘</strong>을 규명했습니다.
-          </p>
-        </div>
-        <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
-          <strong style="color:#111111;">대표 논문:</strong> <em>J. Phys. Chem. A</em> 130, 758 (2026) / <em>Int. J. Mol. Sci.</em> 24, 12362 (2023)
+        <div class="research-panel-grid">
+          
+          <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
+          <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
+            <div>
+              <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
+                "스마트폰에 갇혀있던 75%의 전자를 구출하여, 보다 효율적으로 빛을 만들어요"
+              </h3>
+              <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
+                분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 잘 보이지 않지만, 빛이나 전기를 받으면 높은 에너지 상태로 튀어 올랐다가 낮은 상태로 내려가면서 빛 에너지를 방출하며 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다. 그런데 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 25%의 전자들만 빛을 내고, <strong>나머지 75%의 전자는 문이 잠긴 방에 갇혀 '스마트폰 발열'</strong>로 사라지는 배터리 낭비의 한계가 있었습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 곳으로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 '핫 엑시톤' 양자 효과 메커니즘</strong>을 규명했습니다.
+              </p>
+            </div>
+
+            <!-- 좌측 하단: 최근 대표 연구 1편 (본문 아래 여백 없이 꽉 찬 대형 카드) -->
+            <div style="flex:1; display:flex; flex-direction:column; margin-top:0.6rem;">
+              <a href="https://doi.org/10.1021/acs.jpca.5c05378" target="_blank" rel="noopener noreferrer" style="flex:1; display:flex; align-items:center; gap:1.25rem; padding:1.1rem 1.25rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; transition:all 0.2s ease; box-shadow:0 1px 4px rgba(0,0,0,0.04); min-height:175px;" onmouseover="this.style.background='#f1f5f9'; this.style.borderColor='#cbd5e1';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0';">
+                <div style="width:265px; height:152px; flex-shrink:0; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0.4rem; box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);">
+                  <img src="image/paper_oled_toc.png" alt="최근 대표 연구 논문 핵심 도표" style="max-width:100%; max-height:100%; object-fit:contain;">
+                </div>
+                <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                  <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+                    <span style="font-size:0.78rem; font-weight:800; color:#059669; background:#ecfdf5; border:1px solid #a7f3d0; padding:0.18rem 0.55rem; border-radius:4px;">최근 대표 연구</span>
+                    <span style="font-size:0.78rem; font-weight:700; color:#475569;">미국화학회 JPCA 2026 ↗</span>
+                  </div>
+                  <div style="font-size:1.02rem; font-weight:800; color:#0f172a; line-height:1.4; margin-bottom:0.4rem; word-break:keep-all;">
+                    버려지던 75% 전자를 빛으로: OLED 분자의 미세 진동 효과
+                  </div>
+                  <div style="font-size:0.84rem; color:#475569; line-height:1.55;">
+                    컴퓨터 양자 시뮬레이션으로 밝혀낸 차세대 핫 엑시톤 고효율 발광 원리<br>
+                    <span style="font-size:0.76rem; color:#64748b; display:inline-block; margin-top:0.25rem;">(KAIST CPRL 최효주 연구원 · 박수완 연구원 · 이영민 교수팀)</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- 우측: 미디어 컨테이너 (컴퓨터 양자 시뮬레이션 모델) -->
+          <div class="media-tab-container" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column; height:100%;">
+            <!-- 3D 분자 양자 시뮬레이션 사진 -->
+            <div style="display:flex; flex-direction:column; flex:1;">
+              <div style="flex:1; min-height:340px; background:#000000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                <img src="image/oled_quantum_simulation_main.jpg" alt="컴퓨터 양자 시뮬레이션을 통한 스마트폰 OLED 발광 분자 연구" style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;" onclick="window.open(this.src)">
+              </div>
+              <div style="padding:0.85rem 1.1rem; font-size:0.84rem; color:#475569; line-height:1.55; background:#ffffff; border-top:1px solid #f1f5f9;">
+                <div style="font-size:0.92rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
+                  컴퓨터 양자 시뮬레이션으로 밝혀내는 스마트폰 OLED 청색 발광의 비밀
+                </div>
+                <div>
+                  CPRL 연구실은 슈퍼컴퓨터를 이용해 분자 속 전자의 확률 분포(전자 구름 궤도)를 시뮬레이션함으로써, 스마트폰 발열로 낭비되던 75%의 전자를 활용하여 100% 빛으로 전환하는 메커니즘을 규명했습니다. (2026)
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <!-- 패널 3: 양자 컴퓨팅 툴 개발 -->
       <div class="chrome-tab-panel" role="tabpanel">
-        <div style="margin-bottom:1.5rem;">
-          <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-            슈퍼컴퓨터의 한계를 깨는 미래 계산 도구
-          </h3>
-          <h4 style="font-size:0.98rem; font-weight:700; color:#4f46e5; margin-bottom:1rem;">
-            "빙글빙글 도는 동전처럼 모든 경우를 한 번에 계산하는 양자 컴퓨터로 분자를 풀어요"
-          </h4>
-          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:0.85rem;">
-            분자 속 전자들은 서로를 밀쳐내며 복잡하게 얽혀 있어서, 전자가 조금만 늘어나도 계산해야 할 경우의 수가 우주 전체의 모래알 수보다 기하급수적으로 폭발(지수 폭발)하여 인류 최강의 슈퍼컴퓨터로도 멈춰버립니다.
-          </p>
-          <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:1.15rem;">
-            CPRL 연구실은 화학 계산 문제를 양자 하드웨어에 맞게 새롭게 재설계(Outside-of-the-Box)합니다. 기존 일반 컴퓨터와 양자 컴퓨터가 서로 손을 맞잡고 2인 3각으로 협동하는 <strong>양자-고전 하이브리드 알고리즘(VQE)</strong> 및 <strong>양자 분자 동역학 계산 툴(Software Tools)</strong>을 개발하여 미래 화학의 새로운 지평을 열고 있습니다.
-          </p>
-        </div>
-        <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
-          <strong style="color:#111111;">대표 논문:</strong> <em>npj Quantum Inf.</em> 10, 76 (2024) / <em>PCCP</em> 26, 8390 (2024)
+        <div class="research-panel-grid">
+          
+          <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
+          <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
+            <div>
+              <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
+                "기존 슈퍼컴퓨터의 한계를 넘어, 양자 컴퓨터와 손잡고 복잡한 분자의 비밀을 풀어요"
+              </h3>
+              <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
+                분자 속 수많은 전자들은 서로를 밀어내며 복잡하게 얽혀 있어서, 분자가 조금만 커져도 계산해야 할 경우의 수가 우주 전체의 모래알 수보다 많아지는 <strong>'지수 폭발(Exponential Complexity)'</strong>이 일어납니다. 인류 최강의 슈퍼컴퓨터조차 멈춰버리는 이 난제를 해결하기 위해 CPRL 연구실은 <strong>미래의 게임체인저인 양자 컴퓨터(Quantum Computer)</strong>를 화학 계산에 도입했습니다. 현재의 초기 양자 하드웨어가 가진 물리적 노이즈 한계를 뛰어넘기 위해, 기존의 틀을 깨는 발상(Thinking Outside-of-the-Box)으로 <strong>양자 컴퓨터와 일반 컴퓨터가 역할을 나누어 협동하는 '양자-고전 하이브리드 계산 기술(VQE-PT2)'</strong>을 독자 개발하여 실제 글로벌 양자 컴퓨터(IonQ)에서 화학적 정확성을 입증했습니다.
+              </p>
+            </div>
+
+            <!-- 좌측 하단: 최근 대표 연구 1편 (본문 아래 여백 없이 꽉 찬 대형 카드) -->
+            <div style="flex:1; display:flex; flex-direction:column; margin-top:0.6rem;">
+              <a href="https://doi.org/10.1038/s41534-024-00871-4" target="_blank" rel="noopener noreferrer" style="flex:1; display:flex; align-items:center; gap:1.25rem; padding:1.1rem 1.25rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; transition:all 0.2s ease; box-shadow:0 1px 4px rgba(0,0,0,0.04); min-height:175px;" onmouseover="this.style.background='#f1f5f9'; this.style.borderColor='#cbd5e1';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0';">
+                <div style="width:265px; height:152px; flex-shrink:0; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0.4rem; box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);">
+                  <img src="image/paper_quantum_pes.png" alt="최근 대표 연구 논문 핵심 도표" style="max-width:100%; max-height:100%; object-fit:contain;">
+                </div>
+                <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                  <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+                    <span style="font-size:0.78rem; font-weight:800; color:#7c3aed; background:#f5f3ff; border:1px solid #ddd6fe; padding:0.18rem 0.55rem; border-radius:4px;">최근 대표 연구</span>
+                    <span style="font-size:0.78rem; font-weight:700; color:#475569;">네이처 npj Quantum Inf. 2024 ↗</span>
+                  </div>
+                  <div style="font-size:1.02rem; font-weight:800; color:#0f172a; line-height:1.4; margin-bottom:0.4rem; word-break:keep-all;">
+                    양자 컴퓨터로 풀어낸 분자의 에너지: 전자쌍 근사와 섭동 보정
+                  </div>
+                  <div style="font-size:0.84rem; color:#475569; line-height:1.55;">
+                    이온트랩 양자 하드웨어에서 화학 반응 계산 오차를 90% 줄인 하이브리드 알고리즘<br>
+                    <span style="font-size:0.76rem; color:#64748b; display:inline-block; margin-top:0.25rem;">(IonQ · 현대자동차 · KAIST CPRL 이영민 교수팀)</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- 우측: 미디어 컨테이너 (이온트랩 양자 컴퓨터 시뮬레이션 모델) -->
+          <div class="media-tab-container" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column; height:100%;">
+            <!-- 3D 이온트랩 양자 컴퓨터 분자 시뮬레이션 사진 -->
+            <div style="display:flex; flex-direction:column; flex:1;">
+              <div style="flex:1; min-height:340px; background:#000000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                <img src="image/quantum_trapped_ion_sim.jpg" alt="이온트랩 양자 컴퓨터를 이용한 분자 전자 구조 시뮬레이션" style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;" onclick="window.open(this.src)">
+              </div>
+              <div style="padding:0.85rem 1.1rem; font-size:0.84rem; color:#475569; line-height:1.55; background:#ffffff; border-top:1px solid #f1f5f9;">
+                <div style="font-size:0.92rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
+                  이온트랩 양자 컴퓨터를 이용한 화학 분자 전자 구조 시뮬레이션
+                </div>
+                <div>
+                  CPRL 연구진은 글로벌 양자컴퓨터 기업(IonQ) 및 현대자동차와 협력하여, 실제 양자 하드웨어의 노이즈를 극복하고 화학 반응 에너지를 초정밀 예측하는 차세대 양자 컴퓨팅 툴을 개발했습니다. (2024)
+                </div>
+                <div style="margin-top:0.75rem;">
+                  <a href="quantum_deep_dive_guide.html" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.45rem 0.9rem; background:linear-gradient(135deg, #4f46e5, #0ea5e9); color:#ffffff; font-size:0.82rem; font-weight:700; border-radius:6px; text-decoration:none; box-shadow:0 2px 6px rgba(79,70,229,0.3); transition:all 0.2s;" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 10px rgba(79,70,229,0.4)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 2px 6px rgba(79,70,229,0.3)';">
+                    <span>🔬 [심층 탐구] 원자 포획부터 파이썬 양자 알고리즘까지 해부 가이드 ➔</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

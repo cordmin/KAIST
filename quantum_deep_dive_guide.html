@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고등학생을 위한 양자 컴퓨터 완벽 해부 가이드 | KAIST CPRL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070913;
+      --bg-card: #0e1326;
+      --bg-card-hover: #151d38;
+      --border-color: rgba(99, 102, 241, 0.2);
+      --border-accent: rgba(56, 189, 248, 0.4);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #6366f1;
+      --accent-purple: #a855f7;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-main: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.75;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
+    }
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7, 9, 19, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-badge {
+      font-size: 0.72rem; padding: 3px 8px; border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-cyan); font-weight: 600;
+    }
+    .nav-links { display: flex; gap: 16px; align-items: center; }
+    .nav-link {
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+      font-weight: 500; transition: all 0.2s; padding: 6px 14px; border-radius: 8px;
+    }
+    .nav-link:hover { color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1); }
+    .nav-btn {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: #fff; text-decoration: none; font-size: 0.88rem; font-weight: 600;
+      padding: 8px 18px; border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35); transition: all 0.2s;
+    }
+    .nav-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5); }
+    .hero { max-width: 1120px; margin: 0 auto; padding: 70px 24px 40px; text-align: center; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      border-radius: 9999px; background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3); color: #818cf8;
+      font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: 2.75rem; font-weight: 900; line-height: 1.25; letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 70%, #94a3b8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 840px;
+      margin: 0 auto 36px; line-height: 1.85; word-break: keep-all;
+    }
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; max-width: 1040px; margin: 0 auto 50px; text-align: left;
+    }
+    .meta-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 14px;
+    }
+    .meta-icon {
+      font-size: 1.8rem; background: rgba(56, 189, 248, 0.1); width: 46px; height: 46px;
+      display: flex; align-items: center; justify-content: center; border-radius: 10px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .meta-info h4 {
+      font-size: 0.82rem; color: var(--text-dim); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .meta-info p { font-size: 0.98rem; color: var(--text-main); font-weight: 700; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px 80px; }
+    .chapter-nav {
+      background: rgba(14, 19, 38, 0.85); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color); border-radius: 14px; padding: 12px 18px;
+      margin-bottom: 48px; display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; position: sticky; top: 72px; z-index: 90;
+    }
+    .chap-btn {
+      color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 14px; border-radius: 8px; transition: all 0.2s;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid transparent;
+    }
+    .chap-btn:hover { color: #fff; background: rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.4); }
+    .chapter-block {
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px;
+      padding: 44px 40px; margin-bottom: 56px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      scroll-margin-top: 130px; transition: border-color 0.3s ease;
+    }
+    .chapter-block:hover { border-color: var(--border-accent); }
+    .chapter-header { margin-bottom: 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 24px; }
+    .chap-number {
+      font-size: 0.85rem; font-weight: 700; color: var(--accent-cyan);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; display: block;
+    }
+    .chap-title { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; color: #ffffff; margin-bottom: 10px; }
+    .chap-subtitle { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; }
+    .prose { font-size: 1.05rem; color: #cbd5e1; line-height: 1.85; margin-bottom: 28px; word-break: keep-all; }
+    .prose p { margin-bottom: 18px; }
+    .prose strong { color: #fff; font-weight: 700; }
+    .highlight-box {
+      background: rgba(56, 189, 248, 0.07); border-left: 4px solid var(--accent-cyan);
+      border-radius: 0 12px 12px 0; padding: 18px 24px; margin: 24px 0; font-size: 0.98rem; color: #e2e8f0;
+    }
+    .analogy-box {
+      background: rgba(168, 85, 247, 0.08); border-left: 4px solid var(--accent-purple);
+      border-radius: 0 12px 12px 0; padding: 18px 24px; margin: 24px 0; font-size: 0.98rem; color: #f1f5f9;
+    }
+    .figure-container {
+      margin: 32px 0; border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1); background: #050711;
+    }
+    .figure-img { width: 100%; height: auto; display: block; }
+    .figure-caption {
+      padding: 16px 22px; background: #090d1f; border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;
+    }
+    .figure-caption strong { color: var(--accent-cyan); }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+    @media (max-width: 768px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .chapter-block { padding: 28px 20px; }
+      .hero-title { font-size: 2.1rem; }
+    }
+    .compare-card {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px; padding: 24px;
+    }
+    .compare-card.highlight { border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.04); }
+    .compare-badge {
+      display: inline-block; font-size: 0.75rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .badge-super { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-ion { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .compare-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .compare-list { list-style: none; font-size: 0.94rem; color: var(--text-muted); }
+    .compare-list li { margin-bottom: 10px; padding-left: 20px; position: relative; line-height: 1.6; }
+    .compare-list li::before { content: '•'; position: absolute; left: 6px; color: var(--accent-cyan); font-weight: bold; }
+    .step-flow { margin: 36px 0; position: relative; }
+    .step-flow::before {
+      content: ''; position: absolute; top: 30px; bottom: 30px; left: 27px; width: 2px;
+      background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-blue), var(--accent-purple));
+    }
+    .step-item { display: flex; gap: 22px; margin-bottom: 32px; position: relative; }
+    .step-bubble {
+      width: 56px; height: 56px; flex-shrink: 0; border-radius: 50%;
+      background: var(--bg-card); border: 2px solid var(--accent-cyan); color: var(--accent-cyan);
+      display: flex; align-items: center; justify-content: center; font-weight: 800;
+      font-size: 1.2rem; box-shadow: 0 0 16px rgba(56, 189, 248, 0.3); z-index: 2;
+    }
+    .step-bubble.purple { border-color: var(--accent-purple); color: var(--accent-purple); box-shadow: 0 0 16px rgba(168, 85, 247, 0.3); }
+    .step-bubble.emerald { border-color: var(--accent-emerald); color: var(--accent-emerald); box-shadow: 0 0 16px rgba(16, 185, 129, 0.3); }
+    .step-content {
+      background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px; padding: 22px 24px; flex-grow: 1;
+    }
+    .step-content h4 { font-size: 1.15rem; color: #fff; font-weight: 700; margin-bottom: 8px; }
+    .step-content p { font-size: 0.96rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+    .code-wrapper {
+      background: #060913; border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px; overflow: hidden; margin: 24px 0;
+    }
+    .code-bar {
+      background: #0d1222; padding: 10px 18px; display: flex; justify-content: space-between;
+      align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.8rem; color: var(--text-dim); font-family: var(--font-mono);
+    }
+    .code-lang { color: var(--accent-cyan); font-weight: 600; }
+    pre.code-content {
+      padding: 20px; margin: 0; font-family: var(--font-mono); font-size: 0.88rem;
+      line-height: 1.65; color: #e2e8f0; overflow-x: auto;
+    }
+    .c-kw { color: #f43f5e; font-weight: 600; }
+    .c-fn { color: #38bdf8; }
+    .c-str { color: #a3e635; }
+    .c-com { color: #64748b; font-style: italic; }
+    .c-num { color: #fb923c; }
+    .qa-box { margin-top: 30px; }
+    .qa-item {
+      border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px;
+      margin-bottom: 12px; background: rgba(255, 255, 255, 0.02); overflow: hidden;
+    }
+    .qa-question {
+      padding: 18px 22px; cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; font-weight: 700; font-size: 1.02rem; color: #f1f5f9;
+      user-select: none; transition: background 0.2s;
+    }
+    .qa-question:hover { background: rgba(56, 189, 248, 0.06); color: var(--accent-cyan); }
+    .qa-answer {
+      padding: 0 22px 20px; font-size: 0.95rem; color: var(--text-muted);
+      line-height: 1.8; display: block; border-top: 1px solid rgba(255, 255, 255, 0.04); padding-top: 16px;
+    }
+    .footer {
+      border-top: 1px solid var(--border-color); padding: 50px 24px;
+      text-align: center; background: #04060d; color: var(--text-dim); font-size: 0.88rem;
+    }
+    .footer a { color: var(--accent-cyan); text-decoration: none; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="cprl-research.html" class="nav-brand">
+      <span>⚛️ KAIST CPRL</span>
+      <span class="nav-badge">High School Quantum Guide</span>
+    </a>
+    <div class="nav-links">
+      <a href="cprl-research.html" class="nav-link">🔬 CPRL 연구실 홈</a>
+      <a href="02_양자컴퓨터_계산화학_수업패키지.html" class="nav-link">📚 고교 수업 패키지</a>
+      <a href="#chap1" class="nav-btn">가이드 시작하기 ↓</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-tag">
+      <span>🌟 고등학생 눈높이 과학 심층 탐구</span>
+      <span>•</span>
+      <span>물리 & 화학 & 컴퓨터과학 융합 특강</span>
+    </div>
+    <h1 class="hero-title">
+      원자 한 개를 낚아채 <span>양자 두뇌</span>를 만들다:<br>
+      이온 트랩 하드웨어와 파이썬 알고리즘의 비밀
+    </h1>
+    <p class="hero-desc">
+      "가열된 금속 기체에서 어떻게 원자 1개를 진공에 가둘까?", "왜 이온들이 서로 밀어내지 않고 일렬로 줄을 설까?", 
+      그리고 "내가 작성한 10줄의 파이썬 코드가 어떻게 물리적 레이저 펄스로 변해 화학 분자의 비밀을 풀까?"<br>
+      KAIST 화학과 계산화학 연구실(CPRL)이 <strong>실제 실험 장비와 물리학 원리</strong>로 그 모든 궁금증을 명쾌하게 풀어드립니다.
+    </p>
+
+    <div class="meta-grid">
+      <div class="meta-card">
+        <div class="meta-icon">🧪</div>
+        <div class="meta-info">
+          <h4>큐비트 소재</h4>
+          <p>희토류 이테르븀 (171Yb⁺)</p>
+        </div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-icon">🧲</div>
+        <div class="meta-info">
+          <h4>포획 물리 원리</h4>
+          <p>폴 트랩 & 회전 전기장</p>
+        </div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-icon">⚡</div>
+        <div class="meta-info">
+          <h4>연산 조작 방식</h4>
+          <p>355nm 펄스 레이저 & 포논</p>
+        </div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-icon">🐍</div>
+        <div class="meta-info">
+          <h4>소프트웨어 연동</h4>
+          <p>Python Qiskit & oo-upCCD</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav class="chapter-nav">
+      <a href="#chap1" class="chap-btn">1. 큐비트의 정체와 소재</a>
+      <a href="#chap2" class="chap-btn">2. 원자 오븐과 이온 포획</a>
+      <a href="#chap3" class="chap-btn">3. 1열 종대와 쿨롱 결정</a>
+      <a href="#chap4" class="chap-btn">4. 레이저로 계산하는 원리</a>
+      <a href="#chap5" class="chap-btn">5. 파이썬과 양자의 융합 (CPRL)</a>
+      <a href="#chap6" class="chap-btn">6. 고교생 핵심 Q&A</a>
+    </nav>
+
+    <!-- CHAPTER 1 -->
+    <section id="chap1" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 01</span>
+        <h2 class="chap-title">양자 컴퓨터의 '두뇌'는 무엇으로 만드는가?</h2>
+        <p class="chap-subtitle">반도체 실리콘 칩(0과 1) vs 자연이 만든 완벽한 원자(중첩과 얽힘)</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          우리가 매일 사용하는 스마트폰과 노트북 속 CPU는 <strong>실리콘(규소, Si) 기판</strong> 위에 수십억 개의 미세한 스위치(트랜지스터)를 만들어 둡니다. 전기가 통하면 <code>1</code>, 통하지 않으면 <code>0</code>이라는 디지털 2진수로 세상의 모든 계산을 처리합니다.
+        </p>
+        <p>
+          하지만 <strong>양자 컴퓨터(Quantum Computer)</strong>는 완전히 다릅니다. 인위적으로 만든 트랜지스터 스위치를 쓰는 것이 아니라, <strong>물질의 가장 깊숙한 기본 단위인 '원자' 그 자체의 양자역학적 상태</strong>를 정보의 기본 단위인 <strong>큐비트(Qubit, Quantum Bit)</strong>로 사용합니다.
+        </p>
+      </div>
+
+      <!-- Comparison Cards -->
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-badge badge-super">인공 칩 방식 (IBM, Google)</span>
+          <h3 class="compare-title">초전도 큐비트 (Superconducting)</h3>
+          <ul class="compare-list">
+            <li><strong>재료:</strong> 실리콘 기판 위에 알루미늄/니오븀 초전도 금속 박막 회로 제작</li>
+            <li><strong>원리:</strong> 극저온에서 저항이 0이 되는 초전도 전류의 회전 방향(시계/반시계)으로 0과 1을 정의</li>
+            <li><strong>장점:</strong> 회로 연산 속도(나노초 단위)가 매우 빠르고 반도체 공정 활용 가능</li>
+            <li><strong>약점:</strong> 인간이 깎아 만든 금속이라 큐비트마다 미세한 오차가 존재하며, <strong>영하 273.14℃(15 mK)</strong>를 유지하는 거대한 '황금빛 샹들리에(희석 냉동기)'가 반드시 필요함</li>
+          </ul>
+        </div>
+
+        <div class="compare-card highlight">
+          <span class="compare-badge badge-ion">천연 원자 방식 (IonQ, Quantinuum)</span>
+          <h3 class="compare-title">이온 트랩 큐비트 (Trapped Ion) ⭐</h3>
+          <ul class="compare-list">
+            <li><strong>재료:</strong> 희토류 원소인 <strong>이테르븀(Yb, 원자번호 70)</strong> 또는 알칼리 토금속인 칼슘(Ca), 바륨(Ba)</li>
+            <li><strong>원리:</strong> 전자 하나를 떼어낸 <strong>순수 양이온(Yb⁺)</strong>의 최외각 전자 스핀 궤도 에너지 준위 사용</li>
+            <li><strong>장점:</strong> 지구에서 잡든 안드로메다 은하에서 잡든 <strong>우주에 존재하는 모든 이테르븀 원자는 100.000% 완벽히 동일</strong>함 (품질 편차 0, 긴 결맞음 시간)</li>
+            <li><strong>상태 유지:</strong> 극저온 냉동기가 필요 없으며, <strong>실온(Room Temp)의 진공 챔버</strong> 안에서 전자기장으로 공중에 띄워 유지함!</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Hardware Real Photo -->
+      <div class="figure-container">
+        <img src="image/quantum_superconducting_vs_iontrap.jpg" alt="초전도 샹들리에와 이온트랩 진공 챔버 비교" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 1] 두 양자 컴퓨터 하드웨어 실물 비교:</strong> 
+          (왼쪽) IBM/Google의 초전도 양자 컴퓨터 - 영하 273℃를 유지하기 위한 샹들리에 형태의 다단 희석 냉동기. 
+          (오른쪽) IonQ/CPRL 연구에서 활용되는 이온 트랩 양자 컴퓨터 - 실온에서 작동하는 스테인리스 스틸 초고진공(UHV) 챔버와 초정밀 레이저 광학계.
+        </div>
+      </div>
+
+      <div class="analogy-box">
+        💡 <strong>고등학생을 위한 직관적 비유:</strong><br>
+        초전도 방식이 <em>"인간이 정밀 기계로 나노미터 크기의 똑같은 모래시계를 수백 개 깎아 맞추려 애쓰는 기술"</em>이라면, 
+        이온 트랩 방식은 <em>"신(자연)이 이미 100억 년 전에 완벽하게 오차 0으로 만들어둔 똑같은 물방울(원자)을 공중에 띄워 쓰는 기술"</em>입니다.
+      </div>
+    </section>
+
+    <!-- CHAPTER 2 -->
+    <section id="chap2" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 02</span>
+        <h2 class="chap-title">가열된 원자에서 이온을 낚아채는 마법</h2>
+        <p class="chap-subtitle">"금속 덩어리를 400℃로 가열하는데 어떻게 허공에 딱 멈춰 세울까?"</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          "고체 금속을 가열하면 기체가 되어 사방으로 미친 듯이 날아갈 텐데, 대체 무슨 수로 원자를 하나하나 골라내어 공중에 가둘 수 있나요?" 
+          이것은 물리학자들도 수십 년간 머리를 싸매며 연구했던 <strong>노벨 물리학상(1989년 볼프강 파울)의 위대한 발명</strong>입니다.
+        </p>
+      </div>
+
+      <!-- Step Flow -->
+      <div class="step-flow">
+        <!-- Step 1 -->
+        <div class="step-item">
+          <div class="step-bubble">1</div>
+          <div class="step-content">
+            <h4>1단계: 원자 오븐(Atomic Oven)에서 원자 빔 분출</h4>
+            <p>
+              손가락 한 마디 크기의 가느다란 스테인리스 스틸 튜브 안에 고체 <strong>이테르븀(Yb-171)</strong> 금속 조각을 넣고 전류를 흘려 약 <strong>400℃ ~ 500℃</strong>로 달굽니다. 
+              챔버 내부는 공기 분자가 전혀 없는 <strong>초고진공(UHV, 10⁻¹¹ Torr: 달 표면보다 100배 깨끗한 진공)</strong> 상태이므로, 기화된 이테르븀 중성 원자들은 공기 저항 없이 미세한 노즐을 통해 한 줄기 총알(초속 수백 미터)처럼 발사됩니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-item">
+          <div class="step-bubble purple">2</div>
+          <div class="step-content">
+            <h4>2단계: 2단계 공명 레이저 저격 (Two-Step Photo-Ionization)</h4>
+            <p>
+              날아가는 중성 원자 중에서 우리가 원하는 <strong>'이테르븀-171' 동위원소만 딱 집어서</strong> 전자를 떼어내야 합니다!
+              <br>• <strong>399 nm 보랏빛 레이저:</strong> 오직 이테르븀-171 원자의 최외각 전자만 반응할 수 있는 초정밀 파장을 쏴서 전자를 바깥 궤도(¹P₁)로 들뜨게 만듭니다.
+              <br>• <strong>369 nm / 394 nm 자외선 레이저:</strong> 들뜬 전자에 추가 에너지를 공급해 원자 밖으로 완전히 튕겨내 버립니다! 
+              <br>순식간에 중성 원자는 순수한 <strong>양이온(¹⁷¹Yb⁺)</strong>으로 변신하며 강력한 전기적 성질(+)을 띠게 됩니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-item">
+          <div class="step-bubble emerald">3</div>
+          <div class="step-content">
+            <h4>3단계: 폴 트랩(Paul Trap) - '회전하는 말안장'의 마법</h4>
+            <p>
+              전자기학의 대원칙인 <strong>언쇼의 정리(Earnshaw's Theorem)</strong>에 따르면, 고정된 자석이나 고정된 전기장(DC)만으로는 전하를 3차원 허공에 가둘 수 없습니다(반드시 어느 한쪽 방향으로는 미끄러져 튕겨 나갑니다).
+              <br>물리학자 볼프강 파울은 <strong>"말안장을 모터로 빠르게 빙글빙글 돌리는 아이디어"</strong>를 고안했습니다!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saddle Metaphor Box -->
+      <div class="highlight-box">
+        🐎 <strong>회전하는 말안장(Saddle Trap)의 원리:</strong><br>
+        말안장 한가운데에 쇠구슬을 가만히 올려두면 좌우로 미끄러져 땅에 떨어집니다. 
+        하지만 말안장을 초당 수십 바퀴씩 모터로 <strong>아주 빠르게 회전</strong>시키면 어떻게 될까요?<br>
+        구슬이 아래로 떨어지려는 찰나에 안장의 솟아오른 면이 구슬을 위로 쳐올리고, 다시 반대편으로 떨어지려는 순간 또 반대쪽이 쳐올립니다! 
+        구슬은 떨어질 틈을 찾지 못하고 <strong>마치 보이지 않는 그릇에 담긴 것처럼 말안장 회전축 정중앙에 둥둥 떠 있게 됩니다.</strong><br>
+        이온 트랩에서는 4개의 전극에 <strong>초당 수천만 번(수십 MHz) 극성이 바뀌는 라디오파(RF 고주파 전압)</strong>를 걸어 이온을 허공에 가둡니다!
+      </div>
+
+      <!-- Oven Loading Graphic -->
+      <div class="figure-container">
+        <img src="image/quantum_oven_loading.jpg" alt="원자 오븐에서 2단계 레이저 광이온화 및 폴 트랩 포획 과정" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 2] 원자 오븐에서 폴 트랩(Paul Trap) 포획까지의 전 과정 3D 시각화:</strong> 
+          오븐에서 증발한 이테르븀 원자 빔이 날아오는 순간 399nm+369nm 레이저가 전자를 저격하여 양이온화하고, 4개의 RF 고전압 전극이 형성하는 고주파 진동 사중극자 전자기장에 의해 중심 포텐셜 우물에 포획됩니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3 -->
+    <section id="chap3" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 03</span>
+        <h2 class="chap-title">1열 종대와 쿨롱 결정(Coulomb Crystal)</h2>
+        <p class="chap-subtitle">"양이온끼리는 서로 밀어낼 텐데, 어떻게 완벽한 일렬로 줄을 설까?"</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          양이온(+ 전하) 여러 개를 한 공간에 가두면 당연히 <strong>쿨롱 척력(서로 밀어내는 힘)</strong> 때문에 사방으로 흩어지려 합니다. 
+          게다가 처음 가열되어 오븐에서 튀어나온 이온은 온도가 수백 ℃에 달해 엄청난 속도로 요동치고 있습니다. 
+          이 문제를 해결하는 두 가지 물리적 기술이 바로 <strong>도플러 레이저 냉각</strong>과 <strong>선형 폴 트랩의 기하학적 구속</strong>입니다.
+        </p>
+      </div>
+
+      <!-- Concept List -->
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-bubble">A</div>
+          <div class="step-content">
+            <h4>도플러 레이저 냉각 (Doppler Laser Cooling) - 브레이크 밟기</h4>
+            <p>
+              빛(광자)도 질량과 운동량을 가지고 있습니다. 날뛰는 이온을 향해 <strong>369.5 nm 레이저</strong>를 마주 비춰줍니다.<br>
+              <strong>도플러 효과:</strong> 이온이 레이저를 향해 달려올 때만 빛의 파장이 압축되어 공명 흡수가 일어나며 광자의 반대 방향 충격을 받습니다(브레이크!). 반대로 레이저와 같은 방향으로 달아날 때는 빛을 흡수하지 않습니다.<br>
+              수만 번의 브레이크를 연속으로 밟으면서, 이온의 온도는 불과 0.01초 만에 <strong>절대영도 직전인 0.0001 K(수백 마이크로켈빈)</strong>으로 얼어붙습니다!
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-bubble purple">B</div>
+          <div class="step-content">
+            <h4>쿨롱 결정(Coulomb Crystal)의 형성 - 스프링 구슬 줄다리기</h4>
+            <p>
+              열운동 에너지를 완전히 빼앗긴 차가운 이온들은 이제 전자기장의 형태에 지배당합니다. 
+              선형 폴 트랩은 <strong>x축과 y축(좌우/상하)으로는 매우 강력하게 조여 매고, z축(길이 방향)으로는 느슨하게</strong> 전기장을 만듭니다.<br>
+              좌우로는 탈출할 수 없으니 이온들은 z축을 따라 일렬로 정렬할 수밖에 없으며, 
+              <strong>"외부 전극이 양쪽 끝에서 밀어 넣는 힘" vs "이온들끼리 서로 밀어내는 쿨롱 반발력"</strong>이 완벽한 평형을 이루며 약 <strong>5 마이크로미터(μm) 간격</strong>으로 완벽한 1열 종대 기차를 만듭니다!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Trap Simulation Image -->
+      <div class="figure-container">
+        <img src="image/quantum_trapped_ion_sim.jpg" alt="실제 UHV 진공 챔버 속 쿼츠 관측창과 1열로 포획된 이온 체인" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 3] 초고진공 챔버 내부의 실제 이온 체인(Ion Chain) 모습:</strong> 
+          스테인리스 챔버 중앙의 쿼츠 관측창(Viewport) 너머로, 도플러 냉각 레이저 빛을 받아 밝은 형광을 내뿜으며 약 5μm 간격으로 공중에 정지해 있는 단일 이테르븀 이온들의 1열 종대 쿨롱 결정.
+        </div>
+      </div>
+
+      <!-- Surface Trap Chip Image -->
+      <div class="figure-container">
+        <img src="image/quantum_trapped_ion_chip.jpg" alt="현대 양자 컴퓨터의 초미세 표면 이온 트랩 반도체 칩" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 4] 최신 표면 이온 트랩 칩 (Surface Trap Chip):</strong> 
+          기존의 4개 금속 막대 트랩을 반도체 노광 공정으로 초소형화한 칩. 금(Au)으로 도금된 미세 전극들 상공 약 70μm 높이의 허공에 수십 개의 이온 큐비트가 부유하며 고속 셔플링(이동)됩니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4 -->
+    <section id="chap4" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 04</span>
+        <h2 class="chap-title">레이저로 계산을 수행하는 원리</h2>
+        <p class="chap-subtitle">"공중에 매달린 원자에 레이저를 쏘는데 어떻게 수학과 화학 문제가 풀릴까?"</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          원자가 공중에 줄을 서 있는 것만으로는 계산이 되지 않습니다. 
+          이제 이 원자들을 <strong>'양자 스위치'</strong>로 조작해야 합니다. 
+          이테르븀 이온(¹⁷¹Yb⁺)의 중심에는 원자핵이 있고, 그 주위를 단 1개의 최외각 전자가 돌고 있습니다.
+        </p>
+      </div>
+
+      <!-- Quantum State Definition -->
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-badge badge-ion">양자 상태 |0⟩</span>
+          <h3 class="compare-title">바닥 상태 (F=0, m_F=0)</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            전자의 스핀 자기모멘트와 원자핵의 스핀이 서로 반대 방향으로 결합된 가장 안정한 에너지 상태. 디지털 신호 <strong>0</strong>에 해당합니다.
+          </p>
+        </div>
+
+        <div class="compare-card highlight">
+          <span class="compare-badge badge-ion">양자 상태 |1⟩</span>
+          <h3 class="compare-title">들뜬 상태 (F=1, m_F=0)</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            스핀이 나란히 정렬되어 바닥 상태보다 정확히 <strong>12.642812 GHz</strong>(마이크로웨이브 영역) 만큼 높은 에너지를 가진 상태. 디지털 신호 <strong>1</strong>에 해당합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- Laser Gates Step Flow -->
+      <div class="step-flow">
+        <!-- 1-qubit gate -->
+        <div class="step-item">
+          <div class="step-bubble">1</div>
+          <div class="step-content">
+            <h4>1-큐비트 게이트: 나노초 레이저 펄스로 중첩(Superposition) 만들기</h4>
+            <p>
+              두 에너지 준위 차이에 정확히 일치하는 <strong>355 nm 펄스 레이저</strong>를 이온에 쏩니다.<br>
+              • <strong>π (파이) 펄스:</strong> 정해진 시간 동안 레이저를 비추면 |0⟩ 상태가 100% 확률로 |1⟩로 뒤집힙니다 (비트 반전, NOT 게이트).<br>
+              • <strong>π/2 펄스:</strong> 딱 절반 시간 동안만 레이저를 쪼이면 전자는 |0⟩과 |1⟩의 중간인 <strong>50% 확률로 0이면서 동시에 50% 확률로 1인 '중첩 상태'</strong>에 놓이게 됩니다 (아다마르, H 게이트)!
+            </p>
+          </div>
+        </div>
+
+        <!-- 2-qubit gate -->
+        <div class="step-item">
+          <div class="step-bubble purple">2</div>
+          <div class="step-content">
+            <h4>2-큐비트 얽힘 게이트: 이온들의 '공동 진동(포논)'으로 대화하기</h4>
+            <p>
+              양자 컴퓨터의 진정한 초능력은 큐비트끼리 운명을 공유하는 <strong>양자 얽힘(Quantum Entanglement)</strong>에서 나옵니다. 
+              그런데 멀리 5μm나 떨어져 있는 두 원자가 어떻게 서로 소통할까요?<br>
+              <strong>스프링 비유:</strong> 1열로 늘어선 양이온들은 서로 양전하(+)로 밀어내고 있기 때문에, <em>마치 보이지 않는 용수철로 연결된 쇠구슬들</em>과 같습니다. 
+              1번 이온을 레이저로 툭 치면 그 진동(양자 포논, Phonon)이 용수철을 타고 전체 이온으로 전달됩니다!<br>
+              <strong>뫼르머-쇠렌센(Mølmer-Sørensen) 게이트:</strong> 이 진동을 매개체로 삼아 두 원자의 전자 스핀을 동시에 뒤흔들면, <strong>한쪽 원자의 상태가 바뀌면 다른 쪽 원자도 즉각 반응하는 완벽한 얽힘 상태</strong>가 완성됩니다!
+            </p>
+          </div>
+        </div>
+
+        <!-- Measurement -->
+        <div class="step-item">
+          <div class="step-bubble emerald">3</div>
+          <div class="step-content">
+            <h4>결과 측정: 빛이 나면 1, 캄캄하면 0! (형광 검출법)</h4>
+            <p>
+              계산이 끝났으면 원자 속에 들어있는 답을 디지털 컴퓨터로 읽어와야 합니다.<br>
+              이온 전체에 <strong>369.5 nm 검출 레이저</strong>를 쏩니다.<br>
+              • <strong>|1⟩ 상태의 이온:</strong> 레이저 빛을 맹렬히 흡수하고 뿜어내며 <strong>찬란한 푸른빛(형광 광자)</strong>을 방출합니다!<br>
+              • <strong>|0⟩ 상태의 이온:</strong> 에너지 준위가 맞지 않아 레이저 빛을 전혀 흡수하지 못하고 <strong>완전한 암흑</strong>으로 남습니다.<br>
+              초고감도 EMCCD 카메라가 이 빛을 촬영하여 "빛남 = 1, 어두움 = 0"의 디지털 비트 배열(예: <code>1011001...</code>)로 즉시 변환합니다!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Laser manipulation Image -->
+      <div class="figure-container">
+        <img src="image/quantum_laser_manipulation.jpg" alt="개별 레이저 빔으로 이온 큐비트를 조작하고 얽힘을 만드는 실험 장면" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 5] 개별 레이저 빔에 의한 양자 논리 게이트 조작:</strong> 
+          음향광학변조기(AOM)로 쪼갠 355nm 레이저 빔들이 1열로 정렬된 개별 이온들을 정밀 타격하여 1-큐비트 회전 및 2-큐비트 진동 모드 매개 얽힘(Entanglement) 연산을 수행하는 렌더링.
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5 -->
+    <section id="chap5" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 05</span>
+        <h2 class="chap-title">파이썬(Python)과 양자의 하이브리드 연동</h2>
+        <p class="chap-subtitle">"내가 짠 파이썬 코드가 어떻게 양자 하드웨어를 움직여 화학 문제를 풀까?"</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          이제 가장 흥미로운 부분입니다! 여러분이 학교 컴퓨터실에서 작성한 <strong>파이썬(Python) 코드</strong>가 
+          어떤 다리를 건너 실제 실험실 진공 챔버 속 원자들을 지휘하고, 
+          <strong>KAIST 화학과 CPRL 연구실의 알고리즘</strong>을 거쳐 최첨단 분자 에너지를 계산해내는지 5단계 파이프라인으로 확인해 봅시다.
+        </p>
+      </div>
+
+      <!-- Python Code Sample -->
+      <div class="code-wrapper">
+        <div class="code-bar">
+          <span class="code-lang">PYTHON (Qiskit + PySCF)</span>
+          <span>quantum_chemistry_job.py</span>
+        </div>
+        <pre class="code-content"><code><span class="c-com"># 1. 고교생이 작성하는 파이썬 양자 화학 계산 코드 예시</span>
+<span class="c-kw">from</span> qiskit <span class="c-kw">import</span> QuantumCircuit
+<span class="c-kw">from</span> qiskit_braket_provider <span class="c-kw">import</span> BraketProvider
+
+<span class="c-com"># 수소 분자(H2)의 전자 구조를 위한 2-큐비트 앙상블 회로 생성</span>
+qc = QuantumCircuit(<span class="c-num">2</span>)
+qc.<span class="c-fn">h</span>(<span class="c-num">0</span>)                     <span class="c-com"># 0번 큐비트에 아다마르(H) 게이트 적용 (중첩)</span>
+qc.<span class="c-fn">cx</span>(<span class="c-num">0</span>, <span class="c-num">1</span>)                 <span class="c-com"># 0번과 1번 큐비트 CNOT 얽힘 게이트 적용</span>
+qc.<span class="c-fn">rz</span>(theta, <span class="c-num">1</span>)             <span class="c-com"># 분자 결합 길이에 따른 양자 위상 회전</span>
+qc.<span class="c-fn">measure_all</span>()            <span class="c-com"># 광자 형광 측정 명령</span>
+
+<span class="c-com"># 2. 클라우드를 통해 실제 이온트랩(IonQ) 양자 컴퓨터로 전송</span>
+backend = provider.<span class="c-fn">get_backend</span>(<span class="c-str">'IonQ Aria'</span>)
+job = backend.<span class="c-fn">run</span>(qc, shots=<span class="c-num">1000</span>)
+result = job.<span class="c-fn">result</span>()
+<span class="c-fn">print</span>(<span class="c-str">"측정된 전자 구름 확률 분포:"</span>, result.<span class="c-fn">get_counts</span>())</code></pre>
+      </div>
+
+      <!-- Pipeline steps -->
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-bubble">1</div>
+          <div class="step-content">
+            <h4>[클라이언트] 파이썬 회로 생성 및 QASM 변환</h4>
+            <p>
+              파이썬 라이브러리(Qiskit)는 우리가 작성한 게이트 명령을 양자 어셈블리어인 <strong>OpenQASM 3.0(텍스트 명령어)</strong>으로 번역하고 JSON 패킷으로 묶어 클라우드 API로 발송합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-bubble purple">2</div>
+          <div class="step-content">
+            <h4>[서버 랙] 리눅스 마스터 컨트롤러 & 펄스 컴파일러</h4>
+            <p>
+              양자 컴퓨터 옆 19인치 서버 랙의 <strong>리눅스(Linux) 시스템</strong>이 이 명령어를 받습니다. 
+              리눅스 내의 컴파일러는 QASM 명령어(예: <code>cx q[0], q[1]</code>)를 물리적인 <strong>"AOM 고주파 전압 제어 펄스 파형(타이밍, 세기, 주파수, 위상)"</strong>으로 변환하여 초정밀 하드웨어 제어 보드(FPGA)로 보냅니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-bubble emerald">3</div>
+          <div class="step-content">
+            <h4>[챔버 내부] 레이저 저격 및 광자 카운팅</h4>
+            <p>
+              FPGA가 나노초 단위로 레이저 셔터를 열고 닫으며 이온들에게 펄스를 쏘고, EMCCD 카메라가 1000번 반복 측정한 밝기(형광) 데이터를 수집하여 0과 1의 통계 확률로 환산합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-bubble">4</div>
+          <div class="step-content">
+            <h4>[KAIST CPRL의 핵심 혁신] oo-upCCD-PT2 고전-양자 하이브리드 보정</h4>
+            <p>
+              현재 양자 컴퓨터(NISQ)는 완벽하지 않아 약간의 레이저 노이즈가 발생합니다. 
+              <strong>KAIST 화학과 이영민 교수 연구실(npj Quantum Information, 2024)</strong>은 기막힌 융합 알고리즘을 개발했습니다!<br>
+              1) <strong>양자 컴퓨터:</strong> 전자가 강하게 얽혀 고전 컴퓨터가 풀지 못하는 핵심 궤도(upCCD)만 빠르게 계산.<br>
+              2) <strong>고전 슈퍼컴퓨터(리눅스 클러스터):</strong> 섭동 이론(PT2)과 오비탈 최적화(oo)를 실시간으로 적용해 양자 컴퓨터의 노이즈와 나머지 오차를 수학적으로 깔끔하게 제거!<br>
+              <strong>결과:</strong> 순수 양자 하드웨어 단독 계산 대비 <strong>화학 반응 에너지 오차를 90% 이상 대폭 줄여</strong> 실제 실험값에 완벽히 일치하는 분자 퍼텐셜 에너지 곡선(PES)을 얻어냈습니다!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Python to Quantum Hardware Pipeline Graphic -->
+      <div class="figure-container">
+        <img src="image/quantum_python_workflow.jpg" alt="파이썬 코드에서 리눅스 제어기, 양자 챔버 연산, 분자 에너지 곡선까지의 전체 워크플로우" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 6] 파이썬 소프트웨어에서 양자 실험 챔버까지의 하이브리드 파이프라인:</strong> 
+          사용자의 Python 코드 작성이 클라우드를 통해 랙마운트 리눅스 제어기로 전달되고, FPGA 펄스 변환을 거쳐 실제 진공 챔버 속 이온 트랩을 물리적으로 구동한 뒤, CPRL의 하이브리드 보정 알고리즘을 통해 화학 에너지 그래프로 출력되는 전 주기.
+        </div>
+      </div>
+
+      <!-- Real Paper Data Graphic -->
+      <div class="figure-container">
+        <img src="image/paper_quantum_pes.png" alt="npj Quantum Information 2024 논문 실제 에너지 곡선 그래프" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 7] KAIST CPRL 연구팀의 실제 논문 데이터 (npj Quantum Information, 2024):</strong> 
+          기존 방식(파란 점/초록 점)은 결합 거리가 멀어질 때 양자 오차로 인해 진짜 에너지 정답(FCI, 검은 실선)에서 크게 벗어납니다. 반면 CPRL 연구팀이 개발한 <strong>oo-upCCD-PT2 알고리즘(빨간 원)</strong>은 양자 컴퓨터와 고전 컴퓨터의 하이브리드 보정으로 전 구간에서 이론적 참값과 100% 일치합니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 6: High School Student FAQ -->
+    <section id="chap6" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 06</span>
+        <h2 class="chap-title">고등학생이 가장 많이 묻는 결정적 질문 TOP 4</h2>
+        <p class="chap-subtitle">물리와 화학 시험에 나오는 개념과 양자 컴퓨터의 연결고리</p>
+      </div>
+
+      <div class="qa-box">
+        <div class="qa-item">
+          <div class="qa-question">
+            Q1. 왜 하필 이테르븀(Yb)이나 칼슘(Ca) 같은 원소를 쓰나요? 탄소(C)나 산소(O)는 안 되나요?
+            <span>▼</span>
+          </div>
+          <div class="qa-answer">
+            <strong>정답: 최외각 전자의 구조 때문입니다!</strong><br>
+            이테르븀이나 칼슘은 최외각 전자가 2개 있는 금속입니다. 여기서 전자 1개를 떼어내면(단일 양이온), 수소 원자처럼 <strong>단 1개의 전자만 남은 가장 단순하고 깔끔한 전자 껍질 구조</strong>가 됩니다. 
+            반면 탄소나 산소는 전자를 떼어내도 여러 개의 전자가 서로 복잡하게 상호작용하여 레이저로 깔끔하게 0과 1 준위를 조작하기가 극도로 어렵습니다. 또한 이테르븀-171은 핵스핀이 1/2이어서 지구 자기장의 미세한 노이즈에 영향을 받지 않는 '기적의 시계 전이 준위(Clock Transition)'를 제공합니다.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">
+            Q2. 이온들이 진공관 안에서 공중에 떠 있다가 유리벽에 부딪혀 사라지진 않나요?
+            <span>▼</span>
+          </div>
+          <div class="qa-answer">
+            <strong>정답: 전기장의 '보이지 않는 에너지 감옥'과 초고진공 덕분에 절대 부딪히지 않습니다!</strong><br>
+            폴 트랩 전극이 만드는 전기장 우물의 깊이는 이온의 열운동 에너지보다 수천 배나 깊습니다. 즉, 이온 입장에서는 에베레스트 산맥으로 둘러싸인 깊은 분지에 갇혀 있는 셈입니다. 
+            또한 챔버 내부 압력이 10⁻¹¹ Torr로 거의 완전한 무(無)의 상태이므로, 이온과 충돌해 이온을 튕겨낼 공기 분자조차 존재하지 않습니다. 그래서 한 번 포획된 이온은 <strong>수 시간에서 수일 동안 공중에 그대로 멈춰</strong> 있습니다.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">
+            Q3. 일반 컴퓨터의 비트와 양자 큐비트가 결정적으로 다른 점이 무엇인가요?
+            <span>▼</span>
+          </div>
+          <div class="qa-answer">
+            <strong>정답: 2의 n제곱 개의 상태를 한 번에 동시에 계산할 수 있다는 점(병렬성)입니다!</strong><br>
+            일반 컴퓨터 비트 3개가 있으면 <code>000</code>, <code>001</code>, ..., <code>111</code> 중 <strong>단 1개의 상태</strong>만 표현할 수 있습니다. 
+            하지만 큐비트 3개는 양자 중첩 덕분에 <strong>8개의 상태를 동시에</strong> 가질 수 있습니다. 큐비트가 50개만 되어도 2⁵⁰(약 1125조) 개의 숫자를 단 한 번의 레이저 펄스로 동시에 처리할 수 있어, 슈퍼컴퓨터로 수만 년 걸릴 화학 분자 상호작용을 단 몇 초 만에 시뮬레이션할 수 있습니다.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">
+            Q4. 왜 양자 컴퓨터만으로 다 계산하지 않고 일반 컴퓨터와 파이썬을 섞어 쓰나요?
+            <span>▼</span>
+          </div>
+          <div class="qa-answer">
+            <strong>정답: 둘이 잘하는 영역이 완전히 다르기 때문입니다!</strong><br>
+            양자 컴퓨터는 얽힘이나 미시세계 전자 구름 계산에는 천재적이지만, 단순 덧셈·뺄셈, 파일 저장, 조건문 분기 같은 작업은 일반 컴퓨터가 수억 배 빠르고 정확합니다. 
+            따라서 <strong>"양자 컴퓨터는 가장 난해한 핵심 양자 매듭만 풀고, 나머지 정리와 오차 보정은 일반 고성능 리눅스 컴퓨터가 맡는 하이브리드(VQE) 방식"</strong>이 현재 인류가 양자 컴퓨터를 가장 실용적으로 활용하는 표준 방식(KAIST CPRL 연구의 핵심)입니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Footer CTA -->
+    <div style="text-align: center; margin: 60px 0 20px;">
+      <a href="cprl-research.html" class="nav-btn" style="font-size: 1.05rem; padding: 14px 32px; display: inline-block;">
+        🔬 KAIST CPRL 연구실 홈으로 돌아가기
+      </a>
+      <a href="02_양자컴퓨터_계산화학_수업패키지.html" class="nav-btn" style="font-size: 1.05rem; padding: 14px 32px; display: inline-block; margin-left: 14px; background: linear-gradient(135deg, #0ea5e9, #38bdf8);">
+        📚 양자 고교 수업 패키지 열람
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="cprl-research.html">CPRL 연구 개요</a>
+      <a href="index.html">홈페이지 메인</a>
+      <a href="02_양자컴퓨터_계산화학_수업패키지.html">고교생 교육 자료</a>
+    </div>
+    <p>© 2026 KAIST Chemical Physics & Spectroscopy Research Laboratory (CPRL). All Rights Reserved.</p>
+    <p style="margin-top: 6px; font-size: 0.8rem; color: #475569;">
+      Based on: <em>npj Quantum Information</em> (2024) 10:45 & Department of Chemistry, KAIST
+    </p>
+  </footer>
+
+  <!-- Accordion script -->
+  <script>
+    document.querySelectorAll('.qa-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const ans = item.querySelector('.qa-answer');
+        const arrow = q.querySelector('span');
+        if (ans.style.display === 'none') {
+          ans.style.display = 'block';
+          arrow.textContent = '▲';
+        } else {
+          ans.style.display = 'none';
+          arrow.textContent = '▼';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

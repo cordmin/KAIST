@@ -6,6 +6,7 @@ function renderSidebar(pkg, currentKey) {
   const isOled = pkg === 'oled';
 
   const pages = [
+    ...(isOled ? [] : [{ key: 'quantum-guide', name: '양자 컴퓨터란?', file: 'quantum_deep_dive_guide.html' }]),
     { key: 'lesson-plan', name: '교사용 지도안', file: 'lesson-plan.html' },
     { key: 'worksheet', name: '학생 활동지', file: 'worksheet.html' },
     { key: 'teacher-guide', name: '교사 도움자료', file: 'teacher-guide.html' },
@@ -18,7 +19,7 @@ function renderSidebar(pkg, currentKey) {
   const sidebarEl = document.getElementById('app-sidebar');
   if (!sidebarEl) return;
 
-  const validKey = currentKey === 'overview' ? 'lesson-plan' : currentKey;
+  const validKey = currentKey === 'overview' ? (isOled ? 'lesson-plan' : 'quantum-guide') : currentKey;
 
   sidebarEl.innerHTML = `
     <div class="sidebar-project-header">
@@ -34,9 +35,6 @@ function renderSidebar(pkg, currentKey) {
             </a>
             <a href="../index.html#cprl-research" class="nav-item">
               <span class="nav-text">CPRL 주요 연구 내용</span>
-            </a>
-            <a href="../index.html#cprl-academic" class="nav-item">
-              <span class="nav-text">교사용 학술 배경 자료</span>
             </a>
           </div>
         </div>

@@ -348,9 +348,6 @@
               <a href="javascript:void(0)" class="nav-item" id="nav-item-cprl-research" onclick="switchView('cprl-research')">
                 <span class="nav-text">CPRL 주요 연구 내용</span>
               </a>
-              <a href="javascript:void(0)" class="nav-item" id="nav-item-cprl-academic" onclick="switchView('cprl-academic')">
-                <span class="nav-text">교사용 학술 배경 자료</span>
-              </a>
             </div>
           </div>
         </div>
@@ -369,6 +366,9 @@
         </div>
 
         <div class="pkg-tab-panel" id="pkg-tab-panel">
+            <a href="javascript:void(0)" class="nav-item" id="nav-item-quantum-guide" onclick="switchView('quantum-guide')" style="display:none;">
+              <span class="nav-text">양자 컴퓨터란?</span>
+            </a>
             <a href="javascript:void(0)" class="nav-item active" id="nav-item-lesson-plan" onclick="switchView('lesson-plan')">
               <span class="nav-text">교사용 지도안</span>
             </a>
@@ -598,9 +598,9 @@
           <div class="chrome-window">
             <div class="chrome-tab-bar" role="tablist">
               <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchResearchTab(event, 0)" role="tab" aria-selected="true">
-                <span class="tab-text-full">연구 영역 01 · 복잡한 화학 반응 예측</span>
-                <span class="tab-text-mid">01. 화학 반응 예측</span>
-                <span class="tab-text-short">01. 화학 반응</span>
+                <span class="tab-text-full">연구 영역 01 · 화학 반응 에너지 지형도 구축</span>
+                <span class="tab-text-mid">01. 에너지 지형도 구축</span>
+                <span class="tab-text-short">01. 에너지 지형도</span>
               </button>
               <button type="button" class="chrome-tab-btn tab-green" onclick="switchResearchTab(event, 1)" role="tab" aria-selected="false">
                 <span class="tab-text-full">연구 영역 02 · 양자 효과 시뮬레이션</span>
@@ -614,19 +614,16 @@
               </button>
             </div>
 
-            <!-- 패널 1: 복잡한 화학 반응 예측 -->
+            <!-- 패널 1: 화학 반응 에너지 지형도 구축 -->
             <div class="chrome-tab-panel active" role="tabpanel">
               <div class="research-panel-grid">
                 
                 <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
                 <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
                   <div>
-                    <h3 style="color:var(--color-charcoal); font-size:1.34rem; font-weight:800; margin-bottom:0.35rem; line-height:1.35;">
-                      컴퓨터와 AI로 예측하는 복잡한 화학 반응
+                    <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
+                      "컴퓨터와 AI를 활용해, 복잡한 화학 반응의 에너지 지형을 빠르고 정확하게 계산해요"
                     </h3>
-                    <h4 style="font-size:0.96rem; font-weight:700; color:#0062bd; margin-bottom:0.7rem;">
-                      "양자역학의 정밀함과 인공지능의 속도를 합쳐, 복잡한 화학 반응을 빠르고 정확하게 계산해요"
-                    </h4>
                     <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
                       수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자의 화학 반응은 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다. 따라서 화학 반응이 직접 일어나는 핵심 영역은 <strong>정밀한 양자역학</strong>으로 세밀하게 계산하고, 주변을 둘러싼 방대한 물 분자나 단백질 환경은 <strong>계산 속도가 빠른 분자역학</strong>으로 효율적으로 처리하는 <strong>하이브리드 시뮬레이션 기술(IM/MM)</strong>을 CPRL 연구실에서 독자 개발했습니다. 여기에 <strong>인공지능(신경망 머신러닝)</strong>을 결합하여 중간 에너지 변화를 수학적으로 매끄럽게 보간(연결)함으로써, 복잡한 화학 반응과 분자의 움직임을 실제 실험실보다 훨씬 빠르고 정확하게 컴퓨터로 예측할 수 있습니다.
                     </p>
@@ -667,7 +664,7 @@
                         광합성 홍색세균의 세포막에 존재하는 빛 수확 복합체(LH2)의 9량체 원형 구조
                       </div>
                       <div>
-                        CPRL 연구진은 첨단 분자 시뮬레이션을 통해 자연이 왜 9개 고리를 선택해 에너지 손실(무질서도)을 최소화했는지를 세계 최초로 증명했습니다.
+                        CPRL 연구진은 첨단 분자 시뮬레이션을 통해 자연이 왜 9개 고리를 선택해 에너지 손실(무질서도)을 최소화했는지를 증명했습니다. (2026)
                       </div>
                     </div>
                   </div>
@@ -678,275 +675,123 @@
 
             <!-- 패널 2: 양자 효과 시뮬레이션 -->
             <div class="chrome-tab-panel" role="tabpanel">
-              <div style="margin-bottom:1.5rem;">
-                <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-                  빛을 내뿜는 전자들의 움직임
-                </h3>
-                <h4 style="font-size:0.98rem; font-weight:700; color:#047857; margin-bottom:1rem;">
-                  "스마트폰에 갇혀있던 75%의 전자를 구출하여, 보다 효율적으로 빛을 만들어요"
-                </h4>
-                <p style="font-size:0.96rem; color:#2d3139; line-height:1.8; margin-bottom:1.25rem;">
-                  분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 잘 보이지 않지만, 빛이나 전기를 받으면 높은 에너지 상태로 튀어 올랐다가 낮은 상태로 내려가면서 빛 에너지를 방출하며 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다. 그런데 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 25%의 전자들만 빛을 내고, <strong>나머지 75%의 전자는 문이 잠긴 방에 갇혀 '스마트폰 발열'</strong>로 사라지는 배터리 낭비의 한계가 있었습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 곳으로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 '핫 엑시톤' 양자 효과 메커니즘</strong>을 규명했습니다.
-                </p>
-              </div>
-              <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
-                <strong style="color:#111111;">대표 논문:</strong> <em>J. Phys. Chem. A</em> 130, 758 (2026) / <em>Int. J. Mol. Sci.</em> 24, 12362 (2023)
+              <div class="research-panel-grid">
+                
+                <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
+                <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
+                  <div>
+                    <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
+                      "스마트폰에 갇혀있던 75%의 전자를 구출하여, 보다 효율적으로 빛을 만들어요"
+                    </h3>
+                    <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
+                      분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 잘 보이지 않지만, 빛이나 전기를 받으면 높은 에너지 상태로 튀어 올랐다가 낮은 상태로 내려가면서 빛 에너지를 방출하며 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다. 그런데 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 25%의 전자들만 빛을 내고, <strong>나머지 75%의 전자는 문이 잠긴 방에 갇혀 '스마트폰 발열'</strong>로 사라지는 배터리 낭비의 한계가 있었습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 곳으로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 '핫 엑시톤' 양자 효과 메커니즘</strong>을 규명했습니다.
+                    </p>
+                  </div>
+
+                  <!-- 좌측 하단: 최근 대표 연구 1편 (본문 아래 여백 없이 꽉 찬 대형 카드) -->
+                  <div style="flex:1; display:flex; flex-direction:column; margin-top:0.6rem;">
+                    <a href="https://doi.org/10.1021/acs.jpca.5c05378" target="_blank" rel="noopener noreferrer" style="flex:1; display:flex; align-items:center; gap:1.25rem; padding:1.1rem 1.25rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; transition:all 0.2s ease; box-shadow:0 1px 4px rgba(0,0,0,0.04); min-height:175px;" onmouseover="this.style.background='#f1f5f9'; this.style.borderColor='#cbd5e1';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0';">
+                      <div style="width:265px; height:152px; flex-shrink:0; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0.4rem; box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);">
+                        <img src="image/paper_oled_toc.png" alt="최근 대표 연구 논문 핵심 도표" style="max-width:100%; max-height:100%; object-fit:contain;">
+                      </div>
+                      <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+                          <span style="font-size:0.78rem; font-weight:800; color:#059669; background:#ecfdf5; border:1px solid #a7f3d0; padding:0.18rem 0.55rem; border-radius:4px;">최근 대표 연구</span>
+                          <span style="font-size:0.78rem; font-weight:700; color:#475569;">미국화학회 JPCA 2026 ↗</span>
+                        </div>
+                        <div style="font-size:1.02rem; font-weight:800; color:#0f172a; line-height:1.4; margin-bottom:0.4rem; word-break:keep-all;">
+                          버려지던 75% 전자를 빛으로: OLED 분자의 미세 진동 효과
+                        </div>
+                        <div style="font-size:0.84rem; color:#475569; line-height:1.55;">
+                          컴퓨터 양자 시뮬레이션으로 밝혀낸 차세대 핫 엑시톤 고효율 발광 원리<br>
+                          <span style="font-size:0.76rem; color:#64748b; display:inline-block; margin-top:0.25rem;">(KAIST CPRL 최효주 연구원 · 박수완 연구원 · 이영민 교수팀)</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- 우측: 미디어 컨테이너 (컴퓨터 양자 시뮬레이션 모델) -->
+                <div class="media-tab-container" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column; height:100%;">
+                  <!-- 3D 분자 양자 시뮬레이션 사진 -->
+                  <div style="display:flex; flex-direction:column; flex:1;">
+                    <div style="flex:1; min-height:340px; background:#000000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                      <img src="image/oled_quantum_simulation_main.jpg" alt="컴퓨터 양자 시뮬레이션을 통한 스마트폰 OLED 발광 분자 연구" style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;" onclick="window.open(this.src)">
+                    </div>
+                    <div style="padding:0.85rem 1.1rem; font-size:0.84rem; color:#475569; line-height:1.55; background:#ffffff; border-top:1px solid #f1f5f9;">
+                      <div style="font-size:0.92rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
+                        컴퓨터 양자 시뮬레이션으로 밝혀내는 스마트폰 OLED 청색 발광의 비밀
+                      </div>
+                      <div>
+                        CPRL 연구실은 슈퍼컴퓨터를 이용해 분자 속 전자의 확률 분포(전자 구름 궤도)를 시뮬레이션함으로써, 스마트폰 발열로 낭비되던 75%의 전자를 활용하여 100% 빛으로 전환하는 메커니즘을 규명했습니다. (2026)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
 
             <!-- 패널 3: 양자 컴퓨팅 툴 개발 -->
             <div class="chrome-tab-panel" role="tabpanel">
-              <div style="margin-bottom:1.5rem;">
-                <h3 style="color:var(--color-charcoal); font-size:1.38rem; font-weight:800; margin-bottom:0.45rem; line-height:1.35;">
-                  슈퍼컴퓨터의 한계를 깨는 미래 계산 도구
-                </h3>
-                <h4 style="font-size:0.98rem; font-weight:700; color:#4f46e5; margin-bottom:1rem;">
-                  "빙글빙글 도는 동전처럼 모든 경우를 한 번에 계산하는 양자 컴퓨터로 분자를 풀어요"
-                </h4>
-                <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:0.85rem;">
-                  분자 속 전자들은 서로를 밀쳐내며 복잡하게 얽혀 있어서, 전자가 조금만 늘어나도 계산해야 할 경우의 수가 우주 전체의 모래알 수보다 기하급수적으로 폭발(지수 폭발)하여 인류 최강의 슈퍼컴퓨터로도 멈춰버립니다.
-                </p>
-                <p style="font-size:0.98rem; color:#2d3139; line-height:1.8; margin-bottom:1.15rem;">
-                  CPRL 연구실은 화학 계산 문제를 양자 하드웨어에 맞게 새롭게 재설계(Outside-of-the-Box)합니다. 기존 일반 컴퓨터와 양자 컴퓨터가 서로 손을 맞잡고 2인 3각으로 협동하는 <strong>양자-고전 하이브리드 알고리즘(VQE)</strong> 및 <strong>양자 분자 동역학 계산 툴(Software Tools)</strong>을 개발하여 미래 화학의 새로운 지평을 열고 있습니다.
-                </p>
-              </div>
-              <div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:var(--radius-sm); padding:0.75rem 1rem; font-size:0.86rem; color:#1f2937;">
-                <strong style="color:#111111;">대표 논문:</strong> <em>npj Quantum Inf.</em> 10, 76 (2024) / <em>PCCP</em> 26, 8390 (2024)
+              <div class="research-panel-grid">
+                
+                <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
+                <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
+                  <div>
+                    <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
+                      "기존 슈퍼컴퓨터의 한계를 넘어, 양자 컴퓨터와 손잡고 복잡한 분자의 비밀을 풀어요"
+                    </h3>
+                    <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
+                      분자 속 수많은 전자들은 서로를 밀어내며 복잡하게 얽혀 있어서, 분자가 조금만 커져도 계산해야 할 경우의 수가 우주 전체의 모래알 수보다 많아지는 <strong>'지수 폭발(Exponential Complexity)'</strong>이 일어납니다. 인류 최강의 슈퍼컴퓨터조차 멈춰버리는 이 난제를 해결하기 위해 CPRL 연구실은 <strong>미래의 게임체인저인 양자 컴퓨터(Quantum Computer)</strong>를 화학 계산에 도입했습니다. 현재의 초기 양자 하드웨어가 가진 물리적 노이즈 한계를 뛰어넘기 위해, 기존의 틀을 깨는 발상(Thinking Outside-of-the-Box)으로 <strong>양자 컴퓨터와 일반 컴퓨터가 역할을 나누어 협동하는 '양자-고전 하이브리드 계산 기술(VQE-PT2)'</strong>을 독자 개발하여 실제 글로벌 양자 컴퓨터(IonQ)에서 화학적 정확성을 입증했습니다.
+                    </p>
+                  </div>
+
+                  <!-- 좌측 하단: 최근 대표 연구 1편 (본문 아래 여백 없이 꽉 찬 대형 카드) -->
+                  <div style="flex:1; display:flex; flex-direction:column; margin-top:0.6rem;">
+                    <a href="https://doi.org/10.1038/s41534-024-00871-4" target="_blank" rel="noopener noreferrer" style="flex:1; display:flex; align-items:center; gap:1.25rem; padding:1.1rem 1.25rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; transition:all 0.2s ease; box-shadow:0 1px 4px rgba(0,0,0,0.04); min-height:175px;" onmouseover="this.style.background='#f1f5f9'; this.style.borderColor='#cbd5e1';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0';">
+                      <div style="width:265px; height:152px; flex-shrink:0; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0.4rem; box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);">
+                        <img src="image/paper_quantum_pes.png" alt="최근 대표 연구 논문 핵심 도표" style="max-width:100%; max-height:100%; object-fit:contain;">
+                      </div>
+                      <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
+                        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+                          <span style="font-size:0.78rem; font-weight:800; color:#7c3aed; background:#f5f3ff; border:1px solid #ddd6fe; padding:0.18rem 0.55rem; border-radius:4px;">최근 대표 연구</span>
+                          <span style="font-size:0.78rem; font-weight:700; color:#475569;">네이처 npj Quantum Inf. 2024 ↗</span>
+                        </div>
+                        <div style="font-size:1.02rem; font-weight:800; color:#0f172a; line-height:1.4; margin-bottom:0.4rem; word-break:keep-all;">
+                          양자 컴퓨터로 풀어낸 분자의 에너지: 전자쌍 근사와 섭동 보정
+                        </div>
+                        <div style="font-size:0.84rem; color:#475569; line-height:1.55;">
+                          이온트랩 양자 하드웨어에서 화학 반응 계산 오차를 90% 줄인 하이브리드 알고리즘<br>
+                          <span style="font-size:0.76rem; color:#64748b; display:inline-block; margin-top:0.25rem;">(IonQ · 현대자동차 · KAIST CPRL 이영민 교수팀)</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- 우측: 미디어 컨테이너 (이온트랩 양자 컴퓨터 시뮬레이션 모델) -->
+                <div class="media-tab-container" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column; height:100%;">
+                  <!-- 3D 이온트랩 양자 컴퓨터 분자 시뮬레이션 사진 -->
+                  <div style="display:flex; flex-direction:column; flex:1;">
+                    <div style="flex:1; min-height:340px; background:#000000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+                      <img src="image/quantum_trapped_ion_sim.jpg" alt="이온트랩 양자 컴퓨터를 이용한 분자 전자 구조 시뮬레이션" style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;" onclick="window.open(this.src)">
+                    </div>
+                    <div style="padding:0.85rem 1.1rem; font-size:0.84rem; color:#475569; line-height:1.55; background:#ffffff; border-top:1px solid #f1f5f9;">
+                      <div style="font-size:0.92rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
+                        이온트랩 양자 컴퓨터를 이용한 화학 분자 전자 구조 시뮬레이션
+                      </div>
+                      <div>
+                        CPRL 연구진은 글로벌 양자컴퓨터 기업(IonQ) 및 현대자동차와 협력하여, 실제 양자 하드웨어의 노이즈를 극복하고 화학 반응 에너지를 초정밀 예측하는 차세대 양자 컴퓨팅 툴을 개발했습니다. (2024)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
         </section>
-
-        <!-- ========================================== -->
-        <!-- 2. CPRL 교사용 심층 학술자료 VIEW         -->
-        <!-- ========================================== -->
-        <section id="view-cprl-academic" class="content-view">
-<div class="doc-container">
-    
-    <div class="doc-badge">KAIST CPRL 파견 교사 전용 · 교재 연구 및 학술 배경 자료</div>
-    <h1 class="doc-title">KAIST CPRL 원천 연구 심층 학술 해설 및<br>중학교 과학 교육과정 브릿지 가이드</h1>
-    <div class="doc-subtitle">
-      한국과학기술원(KAIST) 화학과 계산 광동역학 연구실(Computational Photodynamics Research Lab, CPRL / 이영민 교수)의 광화학 및 양자 컴퓨팅 원천 연구를 중학교 과학교육으로 전이하기 위한 교사용 전문 지침서
-    </div>
-
-    <!-- 문서 메타 정보 박스 -->
-    <div class="meta-box">
-      <div class="meta-item">
-        <strong>연구실 명칭</strong>
-        KAIST CPRL (이영민 교수)
-      </div>
-      <div class="meta-item">
-        <strong>연구실 홈페이지</strong>
-        <a href="http://singlet.kaist.ac.kr" target="_blank" style="color:var(--color-notion-blue); text-decoration:none;">http://singlet.kaist.ac.kr</a>
-      </div>
-      <div class="meta-item">
-        <strong>작성자 / 용도</strong>
-        KAIST 파견 중학교 과학교사 / 교재 연구용
-      </div>
-      <div class="meta-item">
-        <strong>연계 교육과정</strong>
-        2022 개정 중학교 과학과 교육과정
-      </div>
-    </div>
-
-    <!-- 1장: 파견 교사의 미션과 교육과정 개발 철학 -->
-    <h2 class="section-heading">1. 파견 교사의 미션과 교육과정 전이(Pedagogical Transposition) 철학</h2>
-    
-    <p>
-      본 자료는 KAIST 화학과 계산 광동역학 연구실(CPRL)에 파견된 중학교 과학교사가 교수님 및 연구진의 원천 연구 성과를 깊이 있게 이해하고, 이를 <strong>2022 개정 교육과정에 부합하는 중학생 수준의 탐구 수업</strong>으로 성공적으로 변환하기 위해 집필된 교사용 심층 연구 자료입니다.
-    </p>
-
-    <div class="theory-card">
-      <h3 style="color:var(--color-charcoal); margin-top:0;">핵심 교육과정 전이 원칙: "수식의 경량화, 개념의 본질화"</h3>
-      <p style="margin-bottom:0.5rem;">
-        대학원 수준의 계산화학 및 비단열 양자역학은 복잡한 다체 슈뢰딩거 방정식, 미분 기하학적 원추교차(Conical Intersection), 스핀-궤도 결합 해밀토니안($\hat{H}_{\text{SO}}$)을 다룹니다. 그러나 이를 중학교 교실로 가져올 때의 핵심은 <strong>"수학적 장벽은 걷어내되, 과학적 인과관계와 자연의 규칙성은 100% 보존하는 것"</strong>입니다.
-      </p>
-      <ul style="margin-bottom:0;">
-        <li><strong>현상 기반 도입:</strong> 일상 속 관찰 가능한 현상(토닉워터 형광, 스마트폰 발열, 동전 회전)으로 호기심 촉발.</li>
-        <li><strong>직관적 과학 은유:</strong> 트램펄린 점프(전자 전이), 회전하는 팽이 동전(스핀 중첩), 2인 3각 골짜기 달리기(VQE).</li>
-        <li><strong>교육과정 정합성:</strong> 2022 개정 성취기준(빛의 합성, 원자 모형, 전기에너지 전환, 화학 반응 규칙)과의 완벽한 유기적 결합.</li>
-      </ul>
-    </div>
-
-    <!-- 2장: OLED 및 광화학 연구의 원천 -->
-    <h2 class="section-heading">2. [원천 연구 01] OLED 스핀 통계 한계 극복과 핫 엑시톤(Hot Exciton) 광물리</h2>
-
-    <h3 class="sub-heading">2.1 학술적 배경: 유기 발광 분자의 스핀 통계와 75% 열 손실 딜레마</h3>
-    <p>
-      유기 발광 다이오드(OLED)에서 음극(Cathode)에서 주입된 전자($e^-$)와 양극(Anode)에서 주입된 정공($h^+$)이 발광층의 유기 분자에서 만나 엑시톤(Exciton, 들뜬 전자-정공 쌍)을 형성합니다. 전자는 스핀 양자수 $s=1/2$을 가지므로, 두 스핀이 결합할 때 양자역학적 총 스핀 각운동량 양자수 $S$는 0 또는 1이 됩니다.
-    </p>
-    
-    <div class="theory-card oled">
-      <strong>[양자역학적 스핀 다중도 (Spin Multiplicity, $2S+1$)]</strong><br>
-      • <strong>단일항 (Singlet State, $S=0$):</strong> 스핀 파동함수 $\frac{1}{\sqrt{2}}(\alpha\beta - \beta\alpha)$. 비축퇴(1개 상태, 25% 확률). 바닥 상태($S_0$)와 스핀 다중도가 같아 쌍극자 전이 허용(Dipole Allowed) $\rightarrow$ <strong>$10^{-9}$초(나노초) 단위의 초고속 형광(Fluorescence) 방출!</strong><br>
-      • <strong>삼중항 (Triplet State, $S=1$):</strong> 스핀 파동함수 $\alpha\alpha, \frac{1}{\sqrt{2}}(\alpha\beta + \beta\alpha), \beta\beta$. 3중 축퇴(3개 상태, 75% 확률). 바닥 상태($S_0$)로의 전이가 스핀 금지(Spin-Forbidden) 전이 $\rightarrow$ <strong>상온에서 빛을 내지 못하고 무복사 감쇄(Non-radiative decay)를 통해 모조리 진동 열에너지로 방출!</strong>
-    </div>
-
-    <p>
-      이로 인해 전통적인 1세대 형광 OLED는 전기 에너지를 넣었을 때 <strong>최대 내부 양자 효율(IQE)이 25%</strong>에 묶여 있었으며, 나머지 <strong>75%의 에너지는 디스플레이 발열과 분자 열화를 유발하는 '배터리 도둑'</strong>으로 작용하였습니다.
-    </p>
-
-    <h3 class="sub-heading">2.2 CPRL의 핵심 연구 성과: 핫 엑시톤(Hot Exciton) 및 비단열 스핀 동역학</h3>
-    <p>
-      KAIST CPRL 이영민 교수 연구실은 버려지는 75%의 삼중항 엑시톤을 100% 빛으로 전환(Triplet Harvesting)하기 위한 미시적 메커니즘 규명에 집중하고 있습니다. 기존 3세대 TADF(열활성 지연형광)는 최저 단일항($S_1$)과 최저 삼중항($T_1$) 사이의 에너지 갭($\Delta E_{ST}$)을 0.1 eV 이하로 극소화하여 상온 열에너지로 역간교차(RISC)를 유도하지만, 엑시톤 수명이 길어져 고휘도에서 효율이 급격히 떨어지는 롤오프(Roll-off) 현상과 청색 소자의 화학적 결합 분해 문제가 있었습니다.
-    </p>
-
-    <div class="theory-card oled">
-      <strong>[CPRL의 핫 엑시톤(Hot Exciton) 시스템 비단열 진동 결합 연구]</strong>
-      <p style="margin-top:0.5rem; font-size:0.95rem;">
-        CPRL 연구진은 <strong>고에너지 들뜬 삼중항 준위($T_2$ 이상)</strong>에 주목하였습니다. 전하 재결합 시 고에너지 상태로 생성된 삼중항 전자가 에너지를 잃고 $T_1$으로 이완되기 전에, 높은 옥상 준위에서 최저 들뜬 단일항($S_1$)으로 초고속 역간교차(RISC: $T_2 \to S_1$)를 일으켜 형광으로 방출시키는 통로입니다.
-      </p>
-      <p style="font-size:0.92rem; color:var(--color-stone); margin-bottom:0;">
-        최근 발표된 논문(<em>J. Phys. Chem. A</em> 2026, 130, 758–766)에서는 핫 엑시톤 OLED 시스템에서 <strong>스핀-궤도 결합(Spin-Orbit Coupling, SOC)에 섭동적 진동 결합 보정(Perturbative Vibronic Correction)</strong>을 적용하여, 분자 골격의 미세한 진동 모드가 $T_2 \to S_1$ 스핀 반전 전이를 어떻게 증폭시키는지를 정량적으로 규명하였습니다.
-      </p>
-    </div>
-
-    <!-- 교과 브릿지 박스 1 -->
-    <div class="bridge-box">
-      <div class="bridge-title">교사용 수업 브릿지 전략: OLED 단원</div>
-      <p style="margin-bottom:0.5rem;">
-        <strong>"어려운 양자 상태도($S_0, S_1, T_1, T_2$)를 중학생에게 어떻게 전달할 것인가?"</strong>
-      </p>
-      <ol style="margin-bottom:0; font-size:0.95rem;">
-        <li><strong>원자 속 전자의 트램펄린 점프:</strong> $S_0 \to S_1$ 흡수를 '1층에서 3층 옥상으로 트램펄린 점프'로, 진동 이완을 '불안해서 부르르 떨며 열 흘리기'로, $S_1 \to S_0$ 형광을 '남은 에너지로 알록달록 무지개빛 뿜으며 착지'로 시각화합니다.</li>
-        <li><strong>스핀 팽이 모형:</strong> 단일항을 '서로 마주보고 도는 팽이(↑↓, 비상문 열림, 25%)', 삼중항을 '나란히 도는 팽이(↑↑, 비상문 닫힘, 75%)'로 제시하여 확률 1:3의 직관적 근거를 제공합니다.</li>
-        <li><strong>스마트폰 난로 현상과 KAIST 옥상 구름다리:</strong> 75%가 1층 골방($T_1$)에 갇혀 열을 내기 전에, 2층 옥상($T_2$)에서 단일항($S_1$)으로 건너가는 <strong>'핫 엑시톤 옥상 구름다리'</strong> 은유를 사용하여 100% 효율 달성의 과학적 쾌감을 전달합니다.</li>
-      </ol>
-    </div>
-
-    <!-- 3장: 양자 컴퓨팅 및 계산화학 연구의 원천 -->
-    <h2 class="section-heading">3. [원천 연구 02] 양자 컴퓨팅 기반 전자구조 계산과 VQE 알고리즘</h2>
-
-    <h3 class="sub-heading">3.1 학술적 배경: 다전자 파동함수의 지수 폭발($2^N$)과 고전 컴퓨터의 한계</h3>
-    <p>
-      양자화학의 궁극적 목표는 분자의 전자 해밀토니안에 대한 정상상태 슈뢰딩거 방정식 $\hat{H}|\Psi\rangle = E|\Psi\rangle$을 풀어 분자의 기하 구조, 화학 결합 에너지, 반응 전이 상태를 정확히 예측하는 것입니다. 그러나 원자핵 주위의 전자들은 서로 페르미 통계(파울리 배타 원리)를 따르며 쿨롱 반발력으로 복잡하게 얽혀 있는 <strong>'다체 문제(Many-Body Problem)'</strong>를 형성합니다.
-    </p>
-
-    <div class="theory-card quantum">
-      <strong>[FCI 힐베르트 공간의 조합론적 지수 폭발 (Combinatorial Explosion)]</strong><br>
-      $M$개의 공간 궤도에 $N$개의 전자를 배치하는 완전 입체배치 상호작용(Full Configuration Interaction, FCI)의 슬레이터 결정자(Slater Determinant) 차원은 $\binom{2M}{N_{\alpha}}\binom{2M}{N_{\beta}}$에 달합니다.<br>
-      • 카페인($N=102$)이나 페니실린($N=280$) 분자만 되어도 상태 수가 $10^{30} \sim 10^{84}$를 초과하여, 전 세계 모든 슈퍼컴퓨터의 메모리와 CPU를 동원해도 우주의 나이(138억 년) 동안 계산할 수 없습니다.
-    </div>
-
-    <h3 class="sub-heading">3.2 CPRL의 핵심 연구 성과: 이온 트랩 양자 컴퓨터와 하이브리드 VQE</h3>
-    <p>
-      리처드 파인만이 통찰했듯, 양자역학적 계를 시뮬레이션하는 가장 자연스러운 방법은 <strong>양자역학적 물리계 자체를 연산 소자로 사용하는 것</strong>입니다. CPRL 이영민 교수 연구실은 노이즈가 존재하는 현재의 NISQ 양자 하드웨어를 활용하여 다전자 분자의 결합 에너지를 정밀하게 계산하는 <strong>양자 알고리즘 개발</strong>을 선도하고 있습니다.
-    </p>
-
-    <div class="theory-card quantum">
-      <strong>[CPRL의 양자 컴퓨팅 주요 학술 성과 (npj Quantum Information, PCCP)]</strong>
-      <ul style="margin-top:0.5rem; font-size:0.95rem; margin-bottom:0;">
-        <li>
-          <strong>이온 트랩 양자 컴퓨터 상의 궤도 최적화 전자쌍 상관 시뮬레이션 (<em>npj Quantum Inf.</em> 2023, 2024):</strong><br>
-          듀크대/칭화대 김기환 교수 연구팀과 협력하여, 갇힌 이온(Trapped-ion) 양자 프로세서에서 <strong>전자쌍 근사(Electron Pair Approximation)</strong>를 적용해 큐비트 자원 소모를 혁신적으로 줄이면서 화학적 정확도(Chemical Accuracy, 1 kcal/mol)를 만족하는 분자 에너지 계산을 입증하였습니다.
-        </li>
-        <li>
-          <strong>닫힌 껍질 분자를 위한 VQE 알고리즘 개발 (<em>PCCP</em> 2024, 26, 8390):</strong><br>
-          변분 양자 고유값 계산기(VQE)에 비보손적 보정(Non-bosonic corrections)을 도입하여, 제한된 큐비트 연산 깊이에서도 기저 상태 에너지를 정확히 산출하는 독창적 하이브리드 양자 알고리즘을 개발하였습니다.
-        </li>
-        <li>
-          <strong>양자화학 탐구 교육 도구 'eChem' 개발 (<em>J. Chem. Educ.</em> 2023, 100, 1664):</strong><br>
-          주피터 노트북 기반의 오픈소스 양자화학 교육용 소프트웨어를 개발하여, 학생들이 직접 파이썬 코드로 분자 궤도와 전자 구조를 시뮬레이션할 수 있는 교육 공학적 혁신을 이끌었습니다.
-        </li>
-      </ul>
-    </div>
-
-    <!-- 교과 브릿지 박스 2 -->
-    <div class="bridge-box">
-      <div class="bridge-title">교사용 수업 브릿지 전략: 양자 컴퓨팅 및 계산화학 단원</div>
-      <p style="margin-bottom:0.5rem;">
-        <strong>"중학생에게 힐베르트 공간과 VQE 알고리즘을 어떻게 체감시킬 것인가?"</strong>
-      </p>
-      <ol style="margin-bottom:0; font-size:0.95rem;">
-        <li><strong>체스판과 쌀알 퀴즈:</strong> 64칸 쌀알 퀴즈($2^{63}$)로 거듭제곱의 공포를 체감시킨 뒤, "카페인 전자 102개의 상태($2^{102} \approx 10^{30}$)는 지구의 모든 모래알보다 많다!"는 비유로 슈퍼컴퓨터의 한계를 명쾌히 납득시킵니다.</li>
-        <li><strong>동전 팽이 조작 실험:</strong> 책상 위 정지한 동전(0 또는 1, 비트)과 빠르게 도는 동전 팽이(0과 1의 중첩, 큐비트)를 직접 돌려보게 함으로써, 10개 큐비트가 1,024개 길을 <strong>동시에 단 한 번에 탐색하는 동시 병렬 처리</strong>를 시각화합니다.</li>
-        <li><strong>환상의 2인 3각 역할극:</strong> 양자 컴퓨터(빠른 산골짜기 고도 탐험가)와 일반 컴퓨터(방향을 알려주는 스마트 내비게이션)가 서로 수치를 주고받으며 수소 분자가 최저 바닥 상태(-1.137 a.u., 결합 거리 0.74Å)를 찾아가는 과정을 2인 1조 역할극으로 온몸으로 체득하게 합니다.</li>
-        <li><strong>생태전환적 진로 프로젝트:</strong> "비커 없는 화학 실험실"을 통해 인류의 3대 난제인 <strong>[친환경 상온 비료 합성 촉매 설계(식량 및 온실가스)], [화재 없는 전고체 배터리(에너지)], [변종 바이러스 표적 신약(의학)]</strong>을 해결하는 틴에이저 스타트업 CEO 프로젝트로 확장합니다.</li>
-      </ol>
-    </div>
-
-    <!-- 4장: 원천 연구 주요 논문 서지 목록 -->
-    <h2 class="section-heading">4. CPRL 원천 연구 주요 논문 서지 목록 (Annotated Bibliography)</h2>
-    <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1.5rem;">
-      교사가 수업 설계 및 질의응답 시 신뢰성 있는 학술적 근거로 인용할 수 있는 CPRL 연구진의 대표 논문 목록입니다.
-    </p>
-
-    <!-- 논문 1 -->
-    <div class="paper-entry">
-      <div class="paper-title">1. Effect of Perturbative Vibronic Correction for Spin–Orbit Coupling in Hot Exciton OLED Systems</div>
-      <div class="paper-authors">H. Choi, S. W. Park, <strong>Y. M. Rhee*</strong></div>
-      <div class="paper-journal">The Journal of Physical Chemistry A, 130, 758–766 (2026) · DOI: 10.1021/acs.jpca.5c05378</div>
-      <div class="paper-desc">
-        핫 엑시톤 OLED 분자에서 스핀-궤도 결합에 분자 진동 모드의 섭동적 보정을 적용하여, 고에너지 삼중항($T_2$)에서 단일항($S_1$)으로의 역간교차(RISC) 속도를 정밀하게 예측하고 분자 설계 규칙을 제안한 최신 원천 연구.
-      </div>
-    </div>
-
-    <!-- 논문 2 -->
-    <div class="paper-entry">
-      <div class="paper-title">2. Overcoming the Limitation of Spin Statistics in Organic Light Emitting Diodes (OLEDs): Hot Exciton Mechanism and Its Characterization</div>
-      <div class="paper-authors">S. W. Park, D. Kim, <strong>Y. M. Rhee*</strong></div>
-      <div class="paper-journal">International Journal of Molecular Sciences, 24, 12362 (2023) · DOI: 10.3390/ijms241512362</div>
-      <div class="paper-desc">
-        유기발광다이오드에서 스핀 통계의 25% 한계를 극복하는 핫 엑시톤 메커니즘의 물리화학적 원리를 체계적으로 정리하고 분광학적 특성 분석법을 제시한 핵심 논문.
-      </div>
-    </div>
-
-    <!-- 논문 3 -->
-    <div class="paper-entry">
-      <div class="paper-title">3. Enhancing the electron pair approximation with measurements on trapped-ion quantum computers</div>
-      <div class="paper-authors">L. Zhao, Q. Wang, ..., <strong>Y. M. Rhee*</strong>, K. Kim*</div>
-      <div class="paper-journal">npj Quantum Information (Nature Partner Journal), 10, 76 (2024) · DOI: 10.1038/s41534-024-00871-4</div>
-      <div class="paper-desc">
-        실제 갇힌 이온(Trapped-ion) 양자 컴퓨터 상에서 전자쌍 상관 근사법을 구현하여, NISQ 양자 프로세서의 제한된 큐비트 환경에서도 고정밀 분자 결합 에너지를 측정할 수 있음을 실험적으로 증명한 선도적 연구.
-      </div>
-    </div>
-
-    <!-- 논문 4 -->
-    <div class="paper-entry">
-      <div class="paper-title">4. Variational quantum eigensolver for closed-shell molecules with non-bosonic corrections</div>
-      <div class="paper-authors">K. Kim, ..., G. Lee, ..., J. K. Rhee, <strong>Y. M. Rhee*</strong></div>
-      <div class="paper-journal">Physical Chemistry Chemical Physics (PCCP), 26, 8390–8396 (2024) · DOI: 10.1039/D3CP05646H</div>
-      <div class="paper-desc">
-        닫힌 껍질 분자에 대해 비보손적 보정을 적용한 VQE 하이브리드 알고리즘을 개발하여 양자 하드웨어의 연산 효율과 수렴성을 획기적으로 향상시킨 알고리즘 논문.
-      </div>
-    </div>
-
-    <!-- 논문 5 -->
-    <div class="paper-entry">
-      <div class="paper-title">5. eChem: A Notebook Exploration of Quantum Chemistry</div>
-      <div class="paper-authors">T. Fransson, ..., <strong>Y. M. Rhee</strong>, P. Norman*</div>
-      <div class="paper-journal">Journal of Chemical Education, 100, 1664–1671 (2023) · DOI: 10.1021/acs.jchemed.2c01103</div>
-      <div class="paper-desc">
-        주피터 노트북 기반의 대화형 양자화학 교육 플랫폼 개발 논문. 복잡한 계산화학 이론을 학생 친화적인 인터랙티브 소프트웨어로 구현하는 교육적 방법론 제시.
-      </div>
-    </div>
-
-    <!-- 5장: 교사용 질의응답 및 오개념 예방 가이드 -->
-    <h2 class="section-heading">5. 중학교 교실 수업 시 교사용 Q&A 및 오개념 지도 요령</h2>
-
-    <div class="theory-card">
-      <strong style="color:#2563eb;">Q1. 중학생이 "빛을 흡수했는데 왜 다른 색의 빛이 나와요?"라고 묻는다면?</strong>
-      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
-        <strong>[교사 지도 팁]:</strong> "빛은 에너지를 배달하는 에너지 택배원이야. 자외선은 무거운 고에너지 택배를 싣고 와서 원자 속 전자를 3층으로 번쩍 올려놓았지. 그런데 3층이 너무 높아 불안해서 전자가 온몸을 부르르 떨며 일부 에너지를 <strong>'열'</strong>로 흘려버렸단다. 그래서 남은 에너지만 가지고 1층으로 내려오니까, 처음 들어간 자외선보다 에너지가 작아져서 눈에 보이는 <strong>파란색이나 초록색 가시광선(형광)</strong>으로 변해서 나온 거야! 이때도 <code>[흡수한 자외선] = [방출된 형광] + [흘린 열]</code>이라는 위대한 에너지 보존 법칙은 100% 지켜진단다."
-      </p>
-    </div>
-
-    <div class="theory-card">
-      <strong style="color:#7c3aed;">Q2. 중학생이 "양자 컴퓨터가 나오면 지금 쓰는 컴퓨터는 다 버려야 하나요?"라고 묻는다면?</strong>
-      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
-        <strong>[교사 지도 팁]:</strong> "절대 아니란다! 고속열차가 생겼다고 자전거나 택배 트럭이 사라지지 않는 것과 같아. 양자 컴퓨터는 유튜브 동영상을 재생하거나 문서를 작성하는 데는 일반 컴퓨터보다 오히려 비효율적이야. 하지만 <strong>수백억 개의 미로 길을 동시에 가보거나, 분자 속 전자의 복잡한 얽힘을 계산하는 특별한 문제</strong>에서만 빛을 발하지. 미래에도 VQE 알고리즘처럼 일반 컴퓨터와 양자 컴퓨터가 서로 역할을 나누어 <strong>2인 3각 달리기</strong>로 일하게 된단다."
-      </p>
-    </div>
-
-    <div class="theory-card">
-      <strong style="color:#059669;">Q3. 중학교 2022 개정 교육과정과의 정확한 연계 논리는 무엇인가요?</strong>
-      <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
-        <strong>[교사 지도 팁]:</strong> 중학교 2학년 <strong>[9과10-03]</strong>(빛의 합성 및 영상 장치), <strong>[9과11-02]</strong>(원자 모형과 전자), <strong>[9과14-02]</strong>(전류 모형 및 반도체 해설), <strong>[9과14-03]</strong>(전기 에너지의 열·빛 전환과 소비 전력) 성취기준과 유기적으로 결합됩니다. 교과서에 머물러 있는 도체/반도체와 RGB 화소 개념을 'KAIST 첨단 OLED 분자 공학'과 직결시키고, 화학 반응의 질량 보존 및 에너지 출입<strong>[9과16-01/03/06]</strong>을 '양자 계산 화학의 최저 바닥 상태 결합'과 연결하여 학생들의 융합 탐구 사고력을 비약적으로 끌어올립니다.
-      </p>
-    </div>
-
-  </div>
-</section>
 
         <!-- ========================================== -->
         <!-- 3. OLED 패키지 VIEWS (1~7)                -->
@@ -1869,10 +1714,656 @@
         </section>
 
 
+        ﻿        <!-- [OLED] 8. 교사용 학술 배경 자료 -->
+        <section id="view-oled-academic" class="content-view">
+          <div class="doc-container">
+            
+            <div class="doc-badge" style="background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe;">KAIST CPRL 파견 교사 전용 · OLED 교재 연구 및 학술 배경 자료</div>
+            <h1 class="doc-title">OLED 스핀 통계 한계 극복과<br>핫 엑시톤(Hot Exciton) 광물리 원천 해설</h1>
+            <div class="doc-subtitle">
+              한국과학기술원(KAIST) 화학과 계산 광동역학 연구실(CPRL / 이영민 교수)의 분자 광물리 및 비단열 여기상태 연구를 중학교 2학년 과학(빛과 파동, 물질의 구성, 전기와 자기) 교육과정으로 전이하기 위한 교사용 전문 지침서
+            </div>
+
+            <!-- 문서 메타 정보 박스 -->
+            <div class="meta-box">
+              <div class="meta-item">
+                <strong>원천 연구실</strong>
+                KAIST 화학과 CPRL (이영민 교수)
+              </div>
+              <div class="meta-item">
+                <strong>연구실 홈페이지</strong>
+                <a href="http://singlet.kaist.ac.kr" target="_blank" style="color:var(--color-notion-blue); text-decoration:none;">http://singlet.kaist.ac.kr</a>
+              </div>
+              <div class="meta-item">
+                <strong>대상 수업 패키지</strong>
+                01. 분자의 빛 & OLED 디스플레이
+              </div>
+              <div class="meta-item">
+                <strong>연계 교육과정</strong>
+                2022 개정 중학교 2학년 [빛과 파동], [물질의 구성], [전기와 자기]
+              </div>
+            </div>
+
+            <!-- 1장: 파견 교사의 미션과 교육과정 전이 철학 -->
+            <h2 class="section-heading">1. 파견 교사의 미션과 교육과정 전이(Pedagogical Transposition) 철학</h2>
+            <p>
+              본 자료는 KAIST 화학과 계산 광동역학 연구실(CPRL)에 파견된 중학교 과학교사가 연구진의 분자 광물리 원천 연구 성과를 깊이 있게 이해하고, 이를 <strong>2022 개정 교육과정에 부합하는 중학생 수준의 탐구 수업</strong>으로 성공적으로 변환하기 위해 집필된 교사용 심층 배경 자료입니다.
+            </p>
+            <div class="theory-card">
+              <h3 style="color:var(--color-charcoal); margin-top:0;">핵심 교육과정 전이 원칙: "수식의 경량화, 개념의 본질화"</h3>
+              <p style="margin-bottom:0.5rem;">
+                대학원 수준의 유기 광물리는 복잡한 다체 파동함수, 비단열 원추교차(Conical Intersection), 스핀-궤도 결합 해밀토니안($\hat{H}_{\text{SO}}$)을 다룹니다. 그러나 이를 중학교 교실로 가져올 때의 핵심은 <strong>"수학적 장벽은 걷어내되, 과학적 인과관계와 자연의 규칙성은 100% 보존하는 것"</strong>입니다.
+              </p>
+              <ul style="margin-bottom:0;">
+                <li><strong>현상 기반 도입:</strong> 일상 속 관찰 가능한 현상(토닉워터 자외선 형광, 스마트폰 발열, 무지개 분광기)으로 호기심 촉발.</li>
+                <li><strong>직관적 과학 은유:</strong> 트램펄린 점프(전자 전이), 부르르 떨며 열 흘리기(진동 이완), 서로 마주보는 스핀 팽이(단일항)와 나란한 팽이(삼중항).</li>
+                <li><strong>교육과정 정합성:</strong> 2022 개정 성취기준(빛의 합성, 원자 모형, 전기에너지의 열·빛 전환)과의 완벽한 유기적 결합.</li>
+              </ul>
+            </div>
+
+            <!-- 2장: 학술적 배경 & CPRL 원천 연구 -->
+            <h2 class="section-heading">2. [원천 연구] OLED 스핀 통계 한계 극복과 핫 엑시톤(Hot Exciton) 메커니즘</h2>
+            <h3 class="sub-heading">2.1 학술적 배경: 유기 발광 분자의 스핀 통계와 75% 열 손실 딜레마</h3>
+            <p>
+              유기 발광 다이오드(OLED)에서 음극에서 주입된 전자($e^-$)와 양극에서 주입된 정공($h^+$)이 발광층의 유기 분자에서 만나 엑시톤(Exciton, 들뜬 전자-정공 쌍)을 형성합니다. 전자는 스핀 $s=1/2$을 가지므로, 양자역학적 결합 시 총 스핀 양자수는 $S=0$(단일항) 또는 $S=1$(삼중항)이 됩니다.
+            </p>
+            <div class="theory-card oled">
+              <strong>[양자역학적 스핀 다중도 (Spin Multiplicity, $2S+1$)]</strong><br>
+              • <strong>단일항 (Singlet State, $S=0$):</strong> 스핀 파동함수 $\frac{1}{\sqrt{2}}(\alpha\beta - \beta\alpha)$. 비축퇴(1개 상태, 25% 확률). 바닥 상태($S_0$)와 스핀 다중도가 같아 쌍극자 전이 허용 $\rightarrow$ <strong>$10^{-9}$초 단위 초고속 형광(Fluorescence) 방출!</strong><br>
+              • <strong>삼중항 (Triplet State, $S=1$):</strong> 스핀 파동함수 $\alpha\alpha, \frac{1}{\sqrt{2}}(\alpha\beta + \beta\alpha), \beta\beta$. 3중 축퇴(3개 상태, 75% 확률). 바닥 상태로의 전이가 스핀 금지 전이 $\rightarrow$ <strong>상온에서 빛을 내지 못하고 진동 열에너지로 소실!</strong>
+            </div>
+            <p>
+              이로 인해 전통적인 1세대 형광 OLED는 전기 에너지를 넣었을 때 <strong>최대 내부 양자 효율(IQE)이 25%</strong>에 묶여 있었으며, 나머지 <strong>75%의 에너지는 디스플레이 발열과 분자 열화를 유발하는 '배터리 도둑'</strong>으로 작용하였습니다.
+            </p>
+
+            <h3 class="sub-heading">2.2 CPRL의 핵심 연구 성과: 핫 엑시톤(Hot Exciton) 및 비단열 스핀 동역학</h3>
+            <p>
+              KAIST CPRL 이영민 교수 연구실은 버려지는 75%의 삼중항 엑시톤을 100% 빛으로 전환(Triplet Harvesting)하기 위한 미시적 메커니즘 규명에 집중하고 있습니다. 기존 3세대 TADF(열활성 지연형광)는 최저 단일항($S_1$)과 최저 삼중항($T_1$) 사이의 에너지 갭을 극소화하지만, 엑시톤 수명이 길어져 고휘도 롤오프(Roll-off)와 청색 소자의 화학적 결합 분해 문제가 있었습니다.
+            </p>
+            <div class="theory-card oled">
+              <strong>[CPRL의 핫 엑시톤(Hot Exciton) 시스템 비단열 진동 결합 연구]</strong>
+              <p style="margin-top:0.5rem; font-size:0.95rem;">
+                CPRL 연구진은 <strong>고에너지 들뜬 삼중항 준위($T_2$ 이상)</strong>에 주목하였습니다. 전하 재결합 시 고에너지 상태로 생성된 삼중항 전자가 에너지를 잃고 $T_1$으로 이완되기 전에, 높은 옥상 준위에서 최저 들뜬 단일항($S_1$)으로 초고속 역간교차(RISC: $T_2 \to S_1$)를 일으켜 형광으로 방출시키는 통로입니다.
+              </p>
+              <p style="font-size:0.92rem; color:var(--color-stone); margin-bottom:0;">
+                최근 발표된 논문(<em>J. Phys. Chem. A</em> 2026, 130, 758–766)에서는 핫 엑시톤 OLED 시스템에서 <strong>스핀-궤도 결합(Spin-Orbit Coupling, SOC)에 섭동적 진동 결합 보정(Perturbative Vibronic Correction)</strong>을 적용하여, 분자 골격의 미세한 진동 모드가 $T_2 \to S_1$ 스핀 반전 전이를 어떻게 증폭시키는지를 정량적으로 규명하였습니다.
+              </p>
+            </div>
+
+            <!-- 3장: 교사용 수업 브릿지 전략 -->
+            <h2 class="section-heading">3. 교사용 수업 브릿지 전략: OLED 단원</h2>
+            <div class="bridge-box">
+              <div class="bridge-title">"어려운 양자 상태도($S_0, S_1, T_1, T_2$)를 중학생에게 어떻게 전달할 것인가?"</div>
+              <ol style="margin-bottom:0; font-size:0.95rem;">
+                <li><strong>원자 속 전자의 트램펄린 점프:</strong> $S_0 \to S_1$ 흡수를 '1층에서 3층 옥상으로 트램펄린 점프'로, 진동 이완을 '불안해서 부르르 떨며 열 흘리기'로, $S_1 \to S_0$ 형광을 '남은 에너지로 알록달록 무지개빛 뿜으며 착지'로 시각화합니다.</li>
+                <li><strong>스핀 팽이 모형:</strong> 단일항을 '서로 마주보고 도는 팽이(↑↓, 비상문 열림, 25%)', 삼중항을 '나란히 도는 팽이(↑↑, 비상문 닫힘, 75%)'로 제시하여 확률 1:3의 직관적 근거를 제공합니다.</li>
+                <li><strong>스마트폰 난로 현상과 KAIST 옥상 구름다리:</strong> 75%가 1층 골방($T_1$)에 갇혀 열을 내기 전에, 2층 옥상($T_2$)에서 단일항($S_1$)으로 건너가는 <strong>'핫 엑시톤 옥상 구름다리'</strong> 은유를 사용하여 100% 효율 달성의 과학적 쾌감을 전달합니다.</li>
+              </ol>
+            </div>
+
+            <!-- 4장: OLED 원천 연구 주요 논문 서지 목록 -->
+            <h2 class="section-heading">4. CPRL OLED 원천 연구 대표 논문 목록</h2>
+            <div class="paper-entry">
+              <div class="paper-title">1. Effect of Perturbative Vibronic Correction for Spin–Orbit Coupling in Hot Exciton OLED Systems</div>
+              <div class="paper-authors">H. Choi, S. W. Park, <strong>Y. M. Rhee*</strong></div>
+              <div class="paper-journal">The Journal of Physical Chemistry A, 130, 758–766 (2026) · DOI: 10.1021/acs.jpca.5c05378</div>
+              <div class="paper-desc">
+                핫 엑시톤 OLED 분자에서 스핀-궤도 결합에 분자 진동 모드의 섭동적 보정을 적용하여, 고에너지 삼중항($T_2$)에서 단일항($S_1$)으로의 역간교차(RISC) 속도를 정밀하게 예측하고 분자 설계 규칙을 제안한 최신 원천 연구.
+              </div>
+            </div>
+            <div class="paper-entry">
+              <div class="paper-title">2. Overcoming the Limitation of Spin Statistics in Organic Light Emitting Diodes (OLEDs): Hot Exciton Mechanism and Its Characterization</div>
+              <div class="paper-authors">S. W. Park, D. Kim, <strong>Y. M. Rhee*</strong></div>
+              <div class="paper-journal">International Journal of Molecular Sciences, 24, 12362 (2023) · DOI: 10.3390/ijms241512362</div>
+              <div class="paper-desc">
+                유기발광다이오드에서 스핀 통계의 25% 한계를 극복하는 핫 엑시톤 메커니즘의 물리화학적 원리를 체계적으로 정리하고 분광학적 특성 분석법을 제시한 핵심 총설 논문.
+              </div>
+            </div>
+
+            <!-- 5장: 교사용 Q&A 및 오개념 지도 요령 -->
+            <h2 class="section-heading">5. OLED 수업 시 교사용 Q&A 및 오개념 지도 요령</h2>
+            <div class="theory-card">
+              <strong style="color:#2563eb;">Q1. 중학생이 "빛을 흡수했는데 왜 다른 색의 빛이 나와요?"라고 묻는다면?</strong>
+              <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+                <strong>[교사 지도 팁]:</strong> "빛은 에너지를 배달하는 에너지 택배원이야. 자외선은 무거운 고에너지 택배를 싣고 와서 원자 속 전자를 3층으로 번쩍 올려놓았지. 그런데 3층이 너무 높아 불안해서 전자가 온몸을 부르르 떨며 일부 에너지를 <strong>'열'</strong>로 흘려버렸단다. 그래서 남은 에너지만 가지고 1층으로 내려오니까, 처음 들어간 자외선보다 에너지가 작아져서 눈에 보이는 <strong>파란색이나 초록색 가시광선(형광)</strong>으로 변해서 나온 거야! 이때도 <code>[흡수한 자외선] = [방출된 형광] + [흘린 열]</code>이라는 위대한 에너지 보존 법칙은 100% 지켜진단다."
+              </p>
+            </div>
+            <div class="theory-card">
+              <strong style="color:#059669;">Q2. 중학교 2022 개정 교육과정과의 정확한 연계 논리는 무엇인가요?</strong>
+              <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+                <strong>[교사 지도 팁]:</strong> 중학교 2학년 <strong>[9과10-03]</strong>(빛의 합성 및 영상 장치), <strong>[9과11-02]</strong>(원자 모형과 전자), <strong>[9과14-02]</strong>(전류 모형 및 반도체 해설), <strong>[9과14-03]</strong>(전기 에너지의 열·빛 전환과 소비 전력) 성취기준과 유기적으로 결합됩니다. 교과서에 머물러 있는 도체/반도체와 RGB 화소 개념을 'KAIST 첨단 OLED 분자 공학'과 직결시켜 학생들의 융합 탐구 사고력을 비약적으로 끌어올립니다.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+
         <!-- ========================================== -->
         <!-- 4. QUANTUM 패키지 VIEWS (1~7)             -->
         <!-- ========================================== -->
         
+        
+        <!-- ========================================== -->
+        <!-- [QUANTUM] 0. 양자 컴퓨터란? (심층 해부 가이드) -->
+        <!-- ========================================== -->
+        <section id="view-quantum-guide" class="content-view">
+          <div class="quantum-guide-wrapper" style="width: 100%; max-width: 100%; box-sizing: border-box; padding-bottom: 60px;">
+<header class="hero">
+    <div class="hero-tag">
+      <span>🌟 고등학생 눈높이 과학 심층 탐구</span>
+      <span>•</span>
+      <span>물리 & 화학 & 컴퓨터과학 융합 특강</span>
+    </div>
+    <h1 class="hero-title">
+      원자 한 개를 낚아채 <span>양자 두뇌</span>를 만들다:<br>
+      이온 트랩 하드웨어와 파이썬 알고리즘의 비밀
+    </h1>
+    <p class="hero-desc">
+      "가열된 금속 기체에서 어떻게 원자 1개를 진공에 가둘까?", "왜 이온들이 서로 밀어내지 않고 일렬로 줄을 설까?", 
+      그리고 "내가 작성한 10줄의 파이썬 코드가 어떻게 물리적 레이저 펄스로 변해 화학 분자의 비밀을 풀까?"<br>
+      KAIST 화학과 계산화학 연구실(CPRL)이 <strong>실제 실험 장비와 물리학 원리</strong>로 그 모든 궁금증을 명쾌하게 풀어드립니다.
+    </p>
+
+    <div class="meta-grid">
+      <div class="meta-card">
+        <div class="meta-icon">🧪</div>
+        <div class="meta-info">
+          <h4>큐비트 소재</h4>
+          <p>희토류 이테르븀 (171Yb⁺)</p>
+        </div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-icon">🧲</div>
+        <div class="meta-info">
+          <h4>포획 물리 원리</h4>
+          <p>폴 트랩 & 회전 전기장</p>
+        </div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-icon">⚡</div>
+        <div class="meta-info">
+          <h4>연산 조작 방식</h4>
+          <p>355nm 펄스 레이저 & 포논</p>
+        </div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-icon">🐍</div>
+        <div class="meta-info">
+          <h4>소프트웨어 연동</h4>
+          <p>Python Qiskit & oo-upCCD</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav class="chapter-nav">
+      <a href="javascript:void(0)" onclick="document.getElementById('chap1').scrollIntoView({behavior:'smooth'})" class="chap-btn">1. 큐비트의 정체와 소재</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('chap2').scrollIntoView({behavior:'smooth'})" class="chap-btn">2. 원자 오븐과 이온 포획</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('chap3').scrollIntoView({behavior:'smooth'})" class="chap-btn">3. 1열 종대와 쿨롱 결정</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('chap4').scrollIntoView({behavior:'smooth'})" class="chap-btn">4. 레이저로 계산하는 원리</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('chap5').scrollIntoView({behavior:'smooth'})" class="chap-btn">5. 파이썬과 양자의 융합 (CPRL)</a>
+      <a href="javascript:void(0)" onclick="document.getElementById('chap6').scrollIntoView({behavior:'smooth'})" class="chap-btn">6. 고교생 핵심 Q&A</a>
+    </nav>
+
+    <!-- CHAPTER 1 -->
+    <section id="chap1" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 01</span>
+        <h2 class="chap-title">양자 컴퓨터의 '두뇌'는 무엇으로 만드는가?</h2>
+        <p class="chap-subtitle">반도체 실리콘 칩(0과 1) vs 자연이 만든 완벽한 원자(중첩과 얽힘)</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          우리가 매일 사용하는 스마트폰과 노트북 속 CPU는 <strong>실리콘(규소, Si) 기판</strong> 위에 수십억 개의 미세한 스위치(트랜지스터)를 만들어 둡니다. 전기가 통하면 <code>1</code>, 통하지 않으면 <code>0</code>이라는 디지털 2진수로 세상의 모든 계산을 처리합니다.
+        </p>
+        <p>
+          하지만 <strong>양자 컴퓨터(Quantum Computer)</strong>는 완전히 다릅니다. 인위적으로 만든 트랜지스터 스위치를 쓰는 것이 아니라, <strong>물질의 가장 깊숙한 기본 단위인 '원자' 그 자체의 양자역학적 상태</strong>를 정보의 기본 단위인 <strong>큐비트(Qubit, Quantum Bit)</strong>로 사용합니다.
+        </p>
+      </div>
+
+      <!-- Comparison Cards -->
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-badge badge-super">인공 칩 방식 (IBM, Google)</span>
+          <h3 class="compare-title">초전도 큐비트 (Superconducting)</h3>
+          <ul class="compare-list">
+            <li><strong>재료:</strong> 실리콘 기판 위에 알루미늄/니오븀 초전도 금속 박막 회로 제작</li>
+            <li><strong>원리:</strong> 극저온에서 저항이 0이 되는 초전도 전류의 회전 방향(시계/반시계)으로 0과 1을 정의</li>
+            <li><strong>장점:</strong> 회로 연산 속도(나노초 단위)가 매우 빠르고 반도체 공정 활용 가능</li>
+            <li><strong>약점:</strong> 인간이 깎아 만든 금속이라 큐비트마다 미세한 오차가 존재하며, <strong>영하 273.14℃(15 mK)</strong>를 유지하는 거대한 '황금빛 샹들리에(희석 냉동기)'가 반드시 필요함</li>
+          </ul>
+        </div>
+
+        <div class="compare-card highlight">
+          <span class="compare-badge badge-ion">천연 원자 방식 (IonQ, Quantinuum)</span>
+          <h3 class="compare-title">이온 트랩 큐비트 (Trapped Ion) ⭐</h3>
+          <ul class="compare-list">
+            <li><strong>재료:</strong> 희토류 원소인 <strong>이테르븀(Yb, 원자번호 70)</strong> 또는 알칼리 토금속인 칼슘(Ca), 바륨(Ba)</li>
+            <li><strong>원리:</strong> 전자 하나를 떼어낸 <strong>순수 양이온(Yb⁺)</strong>의 최외각 전자 스핀 궤도 에너지 준위 사용</li>
+            <li><strong>장점:</strong> 지구에서 잡든 안드로메다 은하에서 잡든 <strong>우주에 존재하는 모든 이테르븀 원자는 100.000% 완벽히 동일</strong>함 (품질 편차 0, 긴 결맞음 시간)</li>
+            <li><strong>상태 유지:</strong> 극저온 냉동기가 필요 없으며, <strong>실온(Room Temp)의 진공 챔버</strong> 안에서 전자기장으로 공중에 띄워 유지함!</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Hardware Real Photo -->
+      <div class="figure-container">
+        <img src="image/quantum_superconducting_vs_iontrap.jpg" alt="초전도 샹들리에와 이온트랩 진공 챔버 비교" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 1] 두 양자 컴퓨터 하드웨어 실물 비교:</strong> 
+          (왼쪽) IBM/Google의 초전도 양자 컴퓨터 - 영하 273℃를 유지하기 위한 샹들리에 형태의 다단 희석 냉동기. 
+          (오른쪽) IonQ/CPRL 연구에서 활용되는 이온 트랩 양자 컴퓨터 - 실온에서 작동하는 스테인리스 스틸 초고진공(UHV) 챔버와 초정밀 레이저 광학계.
+        </div>
+      </div>
+
+      <div class="analogy-box">
+        💡 <strong>고등학생을 위한 직관적 비유:</strong><br>
+        초전도 방식이 <em>"인간이 정밀 기계로 나노미터 크기의 똑같은 모래시계를 수백 개 깎아 맞추려 애쓰는 기술"</em>이라면, 
+        이온 트랩 방식은 <em>"신(자연)이 이미 100억 년 전에 완벽하게 오차 0으로 만들어둔 똑같은 물방울(원자)을 공중에 띄워 쓰는 기술"</em>입니다.
+      </div>
+    </section>
+
+    <!-- CHAPTER 2 -->
+    <section id="chap2" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 02</span>
+        <h2 class="chap-title">가열된 원자에서 이온을 낚아채는 마법</h2>
+        <p class="chap-subtitle">"금속 덩어리를 400℃로 가열하는데 어떻게 허공에 딱 멈춰 세울까?"</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          "고체 금속을 가열하면 기체가 되어 사방으로 미친 듯이 날아갈 텐데, 대체 무슨 수로 원자를 하나하나 골라내어 공중에 가둘 수 있나요?" 
+          이것은 물리학자들도 수십 년간 머리를 싸매며 연구했던 <strong>노벨 물리학상(1989년 볼프강 파울)의 위대한 발명</strong>입니다.
+        </p>
+      </div>
+
+      <!-- Step Flow -->
+      <div class="step-flow">
+        <!-- Step 1 -->
+        <div class="step-item">
+          <div class="step-bubble">1</div>
+          <div class="step-content">
+            <h4>1단계: 원자 오븐(Atomic Oven)에서 원자 빔 분출</h4>
+            <p>
+              손가락 한 마디 크기의 가느다란 스테인리스 스틸 튜브 안에 고체 <strong>이테르븀(Yb-171)</strong> 금속 조각을 넣고 전류를 흘려 약 <strong>400℃ ~ 500℃</strong>로 달굽니다. 
+              챔버 내부는 공기 분자가 전혀 없는 <strong>초고진공(UHV, 10⁻¹¹ Torr: 달 표면보다 100배 깨끗한 진공)</strong> 상태이므로, 기화된 이테르븀 중성 원자들은 공기 저항 없이 미세한 노즐을 통해 한 줄기 총알(초속 수백 미터)처럼 발사됩니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-item">
+          <div class="step-bubble purple">2</div>
+          <div class="step-content">
+            <h4>2단계: 2단계 공명 레이저 저격 (Two-Step Photo-Ionization)</h4>
+            <p>
+              날아가는 중성 원자 중에서 우리가 원하는 <strong>'이테르븀-171' 동위원소만 딱 집어서</strong> 전자를 떼어내야 합니다!
+              <br>• <strong>399 nm 보랏빛 레이저:</strong> 오직 이테르븀-171 원자의 최외각 전자만 반응할 수 있는 초정밀 파장을 쏴서 전자를 바깥 궤도(¹P₁)로 들뜨게 만듭니다.
+              <br>• <strong>369 nm / 394 nm 자외선 레이저:</strong> 들뜬 전자에 추가 에너지를 공급해 원자 밖으로 완전히 튕겨내 버립니다! 
+              <br>순식간에 중성 원자는 순수한 <strong>양이온(¹⁷¹Yb⁺)</strong>으로 변신하며 강력한 전기적 성질(+)을 띠게 됩니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-item">
+          <div class="step-bubble emerald">3</div>
+          <div class="step-content">
+            <h4>3단계: 폴 트랩(Paul Trap) - '회전하는 말안장'의 마법</h4>
+            <p>
+              전자기학의 대원칙인 <strong>언쇼의 정리(Earnshaw's Theorem)</strong>에 따르면, 고정된 자석이나 고정된 전기장(DC)만으로는 전하를 3차원 허공에 가둘 수 없습니다(반드시 어느 한쪽 방향으로는 미끄러져 튕겨 나갑니다).
+              <br>물리학자 볼프강 파울은 <strong>"말안장을 모터로 빠르게 빙글빙글 돌리는 아이디어"</strong>를 고안했습니다!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saddle Metaphor Box -->
+      <div class="highlight-box">
+        🐎 <strong>회전하는 말안장(Saddle Trap)의 원리:</strong><br>
+        말안장 한가운데에 쇠구슬을 가만히 올려두면 좌우로 미끄러져 땅에 떨어집니다. 
+        하지만 말안장을 초당 수십 바퀴씩 모터로 <strong>아주 빠르게 회전</strong>시키면 어떻게 될까요?<br>
+        구슬이 아래로 떨어지려는 찰나에 안장의 솟아오른 면이 구슬을 위로 쳐올리고, 다시 반대편으로 떨어지려는 순간 또 반대쪽이 쳐올립니다! 
+        구슬은 떨어질 틈을 찾지 못하고 <strong>마치 보이지 않는 그릇에 담긴 것처럼 말안장 회전축 정중앙에 둥둥 떠 있게 됩니다.</strong><br>
+        이온 트랩에서는 4개의 전극에 <strong>초당 수천만 번(수십 MHz) 극성이 바뀌는 라디오파(RF 고주파 전압)</strong>를 걸어 이온을 허공에 가둡니다!
+      </div>
+
+      <!-- Oven Loading Graphic -->
+      <div class="figure-container">
+        <img src="image/quantum_oven_loading.jpg" alt="원자 오븐에서 2단계 레이저 광이온화 및 폴 트랩 포획 과정" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 2] 원자 오븐에서 폴 트랩(Paul Trap) 포획까지의 전 과정 3D 시각화:</strong> 
+          오븐에서 증발한 이테르븀 원자 빔이 날아오는 순간 399nm+369nm 레이저가 전자를 저격하여 양이온화하고, 4개의 RF 고전압 전극이 형성하는 고주파 진동 사중극자 전자기장에 의해 중심 포텐셜 우물에 포획됩니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3 -->
+    <section id="chap3" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 03</span>
+        <h2 class="chap-title">1열 종대와 쿨롱 결정(Coulomb Crystal)</h2>
+        <p class="chap-subtitle">"양이온끼리는 서로 밀어낼 텐데, 어떻게 완벽한 일렬로 줄을 설까?"</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          양이온(+ 전하) 여러 개를 한 공간에 가두면 당연히 <strong>쿨롱 척력(서로 밀어내는 힘)</strong> 때문에 사방으로 흩어지려 합니다. 
+          게다가 처음 가열되어 오븐에서 튀어나온 이온은 온도가 수백 ℃에 달해 엄청난 속도로 요동치고 있습니다. 
+          이 문제를 해결하는 두 가지 물리적 기술이 바로 <strong>도플러 레이저 냉각</strong>과 <strong>선형 폴 트랩의 기하학적 구속</strong>입니다.
+        </p>
+      </div>
+
+      <!-- Concept List -->
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-bubble">A</div>
+          <div class="step-content">
+            <h4>도플러 레이저 냉각 (Doppler Laser Cooling) - 브레이크 밟기</h4>
+            <p>
+              빛(광자)도 질량과 운동량을 가지고 있습니다. 날뛰는 이온을 향해 <strong>369.5 nm 레이저</strong>를 마주 비춰줍니다.<br>
+              <strong>도플러 효과:</strong> 이온이 레이저를 향해 달려올 때만 빛의 파장이 압축되어 공명 흡수가 일어나며 광자의 반대 방향 충격을 받습니다(브레이크!). 반대로 레이저와 같은 방향으로 달아날 때는 빛을 흡수하지 않습니다.<br>
+              수만 번의 브레이크를 연속으로 밟으면서, 이온의 온도는 불과 0.01초 만에 <strong>절대영도 직전인 0.0001 K(수백 마이크로켈빈)</strong>으로 얼어붙습니다!
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-bubble purple">B</div>
+          <div class="step-content">
+            <h4>쿨롱 결정(Coulomb Crystal)의 형성 - 스프링 구슬 줄다리기</h4>
+            <p>
+              열운동 에너지를 완전히 빼앗긴 차가운 이온들은 이제 전자기장의 형태에 지배당합니다. 
+              선형 폴 트랩은 <strong>x축과 y축(좌우/상하)으로는 매우 강력하게 조여 매고, z축(길이 방향)으로는 느슨하게</strong> 전기장을 만듭니다.<br>
+              좌우로는 탈출할 수 없으니 이온들은 z축을 따라 일렬로 정렬할 수밖에 없으며, 
+              <strong>"외부 전극이 양쪽 끝에서 밀어 넣는 힘" vs "이온들끼리 서로 밀어내는 쿨롱 반발력"</strong>이 완벽한 평형을 이루며 약 <strong>5 마이크로미터(μm) 간격</strong>으로 완벽한 1열 종대 기차를 만듭니다!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Trap Simulation Image -->
+      <div class="figure-container">
+        <img src="image/quantum_trapped_ion_sim.jpg" alt="실제 UHV 진공 챔버 속 쿼츠 관측창과 1열로 포획된 이온 체인" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 3] 초고진공 챔버 내부의 실제 이온 체인(Ion Chain) 모습:</strong> 
+          스테인리스 챔버 중앙의 쿼츠 관측창(Viewport) 너머로, 도플러 냉각 레이저 빛을 받아 밝은 형광을 내뿜으며 약 5μm 간격으로 공중에 정지해 있는 단일 이테르븀 이온들의 1열 종대 쿨롱 결정.
+        </div>
+      </div>
+
+      <!-- Surface Trap Chip Image -->
+      <div class="figure-container">
+        <img src="image/quantum_trapped_ion_chip.jpg" alt="현대 양자 컴퓨터의 초미세 표면 이온 트랩 반도체 칩" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 4] 최신 표면 이온 트랩 칩 (Surface Trap Chip):</strong> 
+          기존의 4개 금속 막대 트랩을 반도체 노광 공정으로 초소형화한 칩. 금(Au)으로 도금된 미세 전극들 상공 약 70μm 높이의 허공에 수십 개의 이온 큐비트가 부유하며 고속 셔플링(이동)됩니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4 -->
+    <section id="chap4" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 04</span>
+        <h2 class="chap-title">레이저로 계산을 수행하는 원리</h2>
+        <p class="chap-subtitle">"공중에 매달린 원자에 레이저를 쏘는데 어떻게 수학과 화학 문제가 풀릴까?"</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          원자가 공중에 줄을 서 있는 것만으로는 계산이 되지 않습니다. 
+          이제 이 원자들을 <strong>'양자 스위치'</strong>로 조작해야 합니다. 
+          이테르븀 이온(¹⁷¹Yb⁺)의 중심에는 원자핵이 있고, 그 주위를 단 1개의 최외각 전자가 돌고 있습니다.
+        </p>
+      </div>
+
+      <!-- Quantum State Definition -->
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-badge badge-ion">양자 상태 |0⟩</span>
+          <h3 class="compare-title">바닥 상태 (F=0, m_F=0)</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            전자의 스핀 자기모멘트와 원자핵의 스핀이 서로 반대 방향으로 결합된 가장 안정한 에너지 상태. 디지털 신호 <strong>0</strong>에 해당합니다.
+          </p>
+        </div>
+
+        <div class="compare-card highlight">
+          <span class="compare-badge badge-ion">양자 상태 |1⟩</span>
+          <h3 class="compare-title">들뜬 상태 (F=1, m_F=0)</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            스핀이 나란히 정렬되어 바닥 상태보다 정확히 <strong>12.642812 GHz</strong>(마이크로웨이브 영역) 만큼 높은 에너지를 가진 상태. 디지털 신호 <strong>1</strong>에 해당합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- Laser Gates Step Flow -->
+      <div class="step-flow">
+        <!-- 1-qubit gate -->
+        <div class="step-item">
+          <div class="step-bubble">1</div>
+          <div class="step-content">
+            <h4>1-큐비트 게이트: 나노초 레이저 펄스로 중첩(Superposition) 만들기</h4>
+            <p>
+              두 에너지 준위 차이에 정확히 일치하는 <strong>355 nm 펄스 레이저</strong>를 이온에 쏩니다.<br>
+              • <strong>π (파이) 펄스:</strong> 정해진 시간 동안 레이저를 비추면 |0⟩ 상태가 100% 확률로 |1⟩로 뒤집힙니다 (비트 반전, NOT 게이트).<br>
+              • <strong>π/2 펄스:</strong> 딱 절반 시간 동안만 레이저를 쪼이면 전자는 |0⟩과 |1⟩의 중간인 <strong>50% 확률로 0이면서 동시에 50% 확률로 1인 '중첩 상태'</strong>에 놓이게 됩니다 (아다마르, H 게이트)!
+            </p>
+          </div>
+        </div>
+
+        <!-- 2-qubit gate -->
+        <div class="step-item">
+          <div class="step-bubble purple">2</div>
+          <div class="step-content">
+            <h4>2-큐비트 얽힘 게이트: 이온들의 '공동 진동(포논)'으로 대화하기</h4>
+            <p>
+              양자 컴퓨터의 진정한 초능력은 큐비트끼리 운명을 공유하는 <strong>양자 얽힘(Quantum Entanglement)</strong>에서 나옵니다. 
+              그런데 멀리 5μm나 떨어져 있는 두 원자가 어떻게 서로 소통할까요?<br>
+              <strong>스프링 비유:</strong> 1열로 늘어선 양이온들은 서로 양전하(+)로 밀어내고 있기 때문에, <em>마치 보이지 않는 용수철로 연결된 쇠구슬들</em>과 같습니다. 
+              1번 이온을 레이저로 툭 치면 그 진동(양자 포논, Phonon)이 용수철을 타고 전체 이온으로 전달됩니다!<br>
+              <strong>뫼르머-쇠렌센(Mølmer-Sørensen) 게이트:</strong> 이 진동을 매개체로 삼아 두 원자의 전자 스핀을 동시에 뒤흔들면, <strong>한쪽 원자의 상태가 바뀌면 다른 쪽 원자도 즉각 반응하는 완벽한 얽힘 상태</strong>가 완성됩니다!
+            </p>
+          </div>
+        </div>
+
+        <!-- Measurement -->
+        <div class="step-item">
+          <div class="step-bubble emerald">3</div>
+          <div class="step-content">
+            <h4>결과 측정: 빛이 나면 1, 캄캄하면 0! (형광 검출법)</h4>
+            <p>
+              계산이 끝났으면 원자 속에 들어있는 답을 디지털 컴퓨터로 읽어와야 합니다.<br>
+              이온 전체에 <strong>369.5 nm 검출 레이저</strong>를 쏩니다.<br>
+              • <strong>|1⟩ 상태의 이온:</strong> 레이저 빛을 맹렬히 흡수하고 뿜어내며 <strong>찬란한 푸른빛(형광 광자)</strong>을 방출합니다!<br>
+              • <strong>|0⟩ 상태의 이온:</strong> 에너지 준위가 맞지 않아 레이저 빛을 전혀 흡수하지 못하고 <strong>완전한 암흑</strong>으로 남습니다.<br>
+              초고감도 EMCCD 카메라가 이 빛을 촬영하여 "빛남 = 1, 어두움 = 0"의 디지털 비트 배열(예: <code>1011001...</code>)로 즉시 변환합니다!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Laser manipulation Image -->
+      <div class="figure-container">
+        <img src="image/quantum_laser_manipulation.jpg" alt="개별 레이저 빔으로 이온 큐비트를 조작하고 얽힘을 만드는 실험 장면" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 5] 개별 레이저 빔에 의한 양자 논리 게이트 조작:</strong> 
+          음향광학변조기(AOM)로 쪼갠 355nm 레이저 빔들이 1열로 정렬된 개별 이온들을 정밀 타격하여 1-큐비트 회전 및 2-큐비트 진동 모드 매개 얽힘(Entanglement) 연산을 수행하는 렌더링.
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5 -->
+    <section id="chap5" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 05</span>
+        <h2 class="chap-title">파이썬(Python)과 양자의 하이브리드 연동</h2>
+        <p class="chap-subtitle">"내가 짠 파이썬 코드가 어떻게 양자 하드웨어를 움직여 화학 문제를 풀까?"</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          이제 가장 흥미로운 부분입니다! 여러분이 학교 컴퓨터실에서 작성한 <strong>파이썬(Python) 코드</strong>가 
+          어떤 다리를 건너 실제 실험실 진공 챔버 속 원자들을 지휘하고, 
+          <strong>KAIST 화학과 CPRL 연구실의 알고리즘</strong>을 거쳐 최첨단 분자 에너지를 계산해내는지 5단계 파이프라인으로 확인해 봅시다.
+        </p>
+      </div>
+
+      <!-- Python Code Sample -->
+      <div class="code-wrapper">
+        <div class="code-bar">
+          <span class="code-lang">PYTHON (Qiskit + PySCF)</span>
+          <span>quantum_chemistry_job.py</span>
+        </div>
+        <pre class="code-content"><code><span class="c-com"># 1. 고교생이 작성하는 파이썬 양자 화학 계산 코드 예시</span>
+<span class="c-kw">from</span> qiskit <span class="c-kw">import</span> QuantumCircuit
+<span class="c-kw">from</span> qiskit_braket_provider <span class="c-kw">import</span> BraketProvider
+
+<span class="c-com"># 수소 분자(H2)의 전자 구조를 위한 2-큐비트 앙상블 회로 생성</span>
+qc = QuantumCircuit(<span class="c-num">2</span>)
+qc.<span class="c-fn">h</span>(<span class="c-num">0</span>)                     <span class="c-com"># 0번 큐비트에 아다마르(H) 게이트 적용 (중첩)</span>
+qc.<span class="c-fn">cx</span>(<span class="c-num">0</span>, <span class="c-num">1</span>)                 <span class="c-com"># 0번과 1번 큐비트 CNOT 얽힘 게이트 적용</span>
+qc.<span class="c-fn">rz</span>(theta, <span class="c-num">1</span>)             <span class="c-com"># 분자 결합 길이에 따른 양자 위상 회전</span>
+qc.<span class="c-fn">measure_all</span>()            <span class="c-com"># 광자 형광 측정 명령</span>
+
+<span class="c-com"># 2. 클라우드를 통해 실제 이온트랩(IonQ) 양자 컴퓨터로 전송</span>
+backend = provider.<span class="c-fn">get_backend</span>(<span class="c-str">'IonQ Aria'</span>)
+job = backend.<span class="c-fn">run</span>(qc, shots=<span class="c-num">1000</span>)
+result = job.<span class="c-fn">result</span>()
+<span class="c-fn">print</span>(<span class="c-str">"측정된 전자 구름 확률 분포:"</span>, result.<span class="c-fn">get_counts</span>())</code></pre>
+      </div>
+
+      <!-- Pipeline steps -->
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-bubble">1</div>
+          <div class="step-content">
+            <h4>[클라이언트] 파이썬 회로 생성 및 QASM 변환</h4>
+            <p>
+              파이썬 라이브러리(Qiskit)는 우리가 작성한 게이트 명령을 양자 어셈블리어인 <strong>OpenQASM 3.0(텍스트 명령어)</strong>으로 번역하고 JSON 패킷으로 묶어 클라우드 API로 발송합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-bubble purple">2</div>
+          <div class="step-content">
+            <h4>[서버 랙] 리눅스 마스터 컨트롤러 & 펄스 컴파일러</h4>
+            <p>
+              양자 컴퓨터 옆 19인치 서버 랙의 <strong>리눅스(Linux) 시스템</strong>이 이 명령어를 받습니다. 
+              리눅스 내의 컴파일러는 QASM 명령어(예: <code>cx q[0], q[1]</code>)를 물리적인 <strong>"AOM 고주파 전압 제어 펄스 파형(타이밍, 세기, 주파수, 위상)"</strong>으로 변환하여 초정밀 하드웨어 제어 보드(FPGA)로 보냅니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-bubble emerald">3</div>
+          <div class="step-content">
+            <h4>[챔버 내부] 레이저 저격 및 광자 카운팅</h4>
+            <p>
+              FPGA가 나노초 단위로 레이저 셔터를 열고 닫으며 이온들에게 펄스를 쏘고, EMCCD 카메라가 1000번 반복 측정한 밝기(형광) 데이터를 수집하여 0과 1의 통계 확률로 환산합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-bubble">4</div>
+          <div class="step-content">
+            <h4>[KAIST CPRL의 핵심 혁신] oo-upCCD-PT2 고전-양자 하이브리드 보정</h4>
+            <p>
+              현재 양자 컴퓨터(NISQ)는 완벽하지 않아 약간의 레이저 노이즈가 발생합니다. 
+              <strong>KAIST 화학과 이영민 교수 연구실(npj Quantum Information, 2024)</strong>은 기막힌 융합 알고리즘을 개발했습니다!<br>
+              1) <strong>양자 컴퓨터:</strong> 전자가 강하게 얽혀 고전 컴퓨터가 풀지 못하는 핵심 궤도(upCCD)만 빠르게 계산.<br>
+              2) <strong>고전 슈퍼컴퓨터(리눅스 클러스터):</strong> 섭동 이론(PT2)과 오비탈 최적화(oo)를 실시간으로 적용해 양자 컴퓨터의 노이즈와 나머지 오차를 수학적으로 깔끔하게 제거!<br>
+              <strong>결과:</strong> 순수 양자 하드웨어 단독 계산 대비 <strong>화학 반응 에너지 오차를 90% 이상 대폭 줄여</strong> 실제 실험값에 완벽히 일치하는 분자 퍼텐셜 에너지 곡선(PES)을 얻어냈습니다!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Python to Quantum Hardware Pipeline Graphic -->
+      <div class="figure-container">
+        <img src="image/quantum_python_workflow.jpg" alt="파이썬 코드에서 리눅스 제어기, 양자 챔버 연산, 분자 에너지 곡선까지의 전체 워크플로우" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 6] 파이썬 소프트웨어에서 양자 실험 챔버까지의 하이브리드 파이프라인:</strong> 
+          사용자의 Python 코드 작성이 클라우드를 통해 랙마운트 리눅스 제어기로 전달되고, FPGA 펄스 변환을 거쳐 실제 진공 챔버 속 이온 트랩을 물리적으로 구동한 뒤, CPRL의 하이브리드 보정 알고리즘을 통해 화학 에너지 그래프로 출력되는 전 주기.
+        </div>
+      </div>
+
+      <!-- Real Paper Data Graphic -->
+      <div class="figure-container">
+        <img src="image/paper_quantum_pes.png" alt="npj Quantum Information 2024 논문 실제 에너지 곡선 그래프" class="figure-img">
+        <div class="figure-caption">
+          <strong>[그림 7] KAIST CPRL 연구팀의 실제 논문 데이터 (npj Quantum Information, 2024):</strong> 
+          기존 방식(파란 점/초록 점)은 결합 거리가 멀어질 때 양자 오차로 인해 진짜 에너지 정답(FCI, 검은 실선)에서 크게 벗어납니다. 반면 CPRL 연구팀이 개발한 <strong>oo-upCCD-PT2 알고리즘(빨간 원)</strong>은 양자 컴퓨터와 고전 컴퓨터의 하이브리드 보정으로 전 구간에서 이론적 참값과 100% 일치합니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 6: High School Student FAQ -->
+    <section id="chap6" class="chapter-block">
+      <div class="chapter-header">
+        <span class="chap-number">CHAPTER 06</span>
+        <h2 class="chap-title">고등학생이 가장 많이 묻는 결정적 질문 TOP 4</h2>
+        <p class="chap-subtitle">물리와 화학 시험에 나오는 개념과 양자 컴퓨터의 연결고리</p>
+      </div>
+
+      <div class="qa-box">
+        <div class="qa-item">
+          <div class="qa-question">
+            Q1. 왜 하필 이테르븀(Yb)이나 칼슘(Ca) 같은 원소를 쓰나요? 탄소(C)나 산소(O)는 안 되나요?
+            <span>▼</span>
+          </div>
+          <div class="qa-answer">
+            <strong>정답: 최외각 전자의 구조 때문입니다!</strong><br>
+            이테르븀이나 칼슘은 최외각 전자가 2개 있는 금속입니다. 여기서 전자 1개를 떼어내면(단일 양이온), 수소 원자처럼 <strong>단 1개의 전자만 남은 가장 단순하고 깔끔한 전자 껍질 구조</strong>가 됩니다. 
+            반면 탄소나 산소는 전자를 떼어내도 여러 개의 전자가 서로 복잡하게 상호작용하여 레이저로 깔끔하게 0과 1 준위를 조작하기가 극도로 어렵습니다. 또한 이테르븀-171은 핵스핀이 1/2이어서 지구 자기장의 미세한 노이즈에 영향을 받지 않는 '기적의 시계 전이 준위(Clock Transition)'를 제공합니다.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">
+            Q2. 이온들이 진공관 안에서 공중에 떠 있다가 유리벽에 부딪혀 사라지진 않나요?
+            <span>▼</span>
+          </div>
+          <div class="qa-answer">
+            <strong>정답: 전기장의 '보이지 않는 에너지 감옥'과 초고진공 덕분에 절대 부딪히지 않습니다!</strong><br>
+            폴 트랩 전극이 만드는 전기장 우물의 깊이는 이온의 열운동 에너지보다 수천 배나 깊습니다. 즉, 이온 입장에서는 에베레스트 산맥으로 둘러싸인 깊은 분지에 갇혀 있는 셈입니다. 
+            또한 챔버 내부 압력이 10⁻¹¹ Torr로 거의 완전한 무(無)의 상태이므로, 이온과 충돌해 이온을 튕겨낼 공기 분자조차 존재하지 않습니다. 그래서 한 번 포획된 이온은 <strong>수 시간에서 수일 동안 공중에 그대로 멈춰</strong> 있습니다.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">
+            Q3. 일반 컴퓨터의 비트와 양자 큐비트가 결정적으로 다른 점이 무엇인가요?
+            <span>▼</span>
+          </div>
+          <div class="qa-answer">
+            <strong>정답: 2의 n제곱 개의 상태를 한 번에 동시에 계산할 수 있다는 점(병렬성)입니다!</strong><br>
+            일반 컴퓨터 비트 3개가 있으면 <code>000</code>, <code>001</code>, ..., <code>111</code> 중 <strong>단 1개의 상태</strong>만 표현할 수 있습니다. 
+            하지만 큐비트 3개는 양자 중첩 덕분에 <strong>8개의 상태를 동시에</strong> 가질 수 있습니다. 큐비트가 50개만 되어도 2⁵⁰(약 1125조) 개의 숫자를 단 한 번의 레이저 펄스로 동시에 처리할 수 있어, 슈퍼컴퓨터로 수만 년 걸릴 화학 분자 상호작용을 단 몇 초 만에 시뮬레이션할 수 있습니다.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-question">
+            Q4. 왜 양자 컴퓨터만으로 다 계산하지 않고 일반 컴퓨터와 파이썬을 섞어 쓰나요?
+            <span>▼</span>
+          </div>
+          <div class="qa-answer">
+            <strong>정답: 둘이 잘하는 영역이 완전히 다르기 때문입니다!</strong><br>
+            양자 컴퓨터는 얽힘이나 미시세계 전자 구름 계산에는 천재적이지만, 단순 덧셈·뺄셈, 파일 저장, 조건문 분기 같은 작업은 일반 컴퓨터가 수억 배 빠르고 정확합니다. 
+            따라서 <strong>"양자 컴퓨터는 가장 난해한 핵심 양자 매듭만 풀고, 나머지 정리와 오차 보정은 일반 고성능 리눅스 컴퓨터가 맡는 하이브리드(VQE) 방식"</strong>이 현재 인류가 양자 컴퓨터를 가장 실용적으로 활용하는 표준 방식(KAIST CPRL 연구의 핵심)입니다.
+          </div>
+        </div>
+      </div>
+    </section>
+          </div>
+        </section>
+
         <!-- [QUANTUM] 1. 교사용 지도안 -->
         <section id="view-quantum-lesson-plan" class="content-view">
           <div class="card">
@@ -2762,6 +3253,158 @@
         </div>
         </section>
 
+      
+﻿        <!-- [QUANTUM] 8. 교사용 학술 배경 자료 -->
+        <section id="view-quantum-academic" class="content-view">
+          <div class="doc-container">
+            
+            <div class="doc-badge" style="background:#f5f3ff; color:#6d28d9; border:1px solid #ddd6fe;">KAIST CPRL 파견 교사 전용 · 양자컴퓨터 교재 연구 및 학술 배경 자료</div>
+            <h1 class="doc-title">다전자 파동함수 계산의 지수 폭발 극복과<br>VQE-PT2 하이브리드 양자 알고리즘</h1>
+            <div class="doc-subtitle">
+              한국과학기술원(KAIST) 화학과 계산 광동역학 연구실(CPRL / 이영민 교수)의 이온트랩 양자 컴퓨팅 및 전자구조 계산 원천 연구를 중학교 과학·정보 융합 교육과정으로 전이하기 위한 교사용 전문 지침서
+            </div>
+
+            <!-- 문서 메타 정보 박스 -->
+            <div class="meta-box">
+              <div class="meta-item">
+                <strong>원천 연구실</strong>
+                KAIST 화학과 CPRL (이영민 교수)
+              </div>
+              <div class="meta-item">
+                <strong>연구실 홈페이지</strong>
+                <a href="http://singlet.kaist.ac.kr" target="_blank" style="color:var(--color-notion-blue); text-decoration:none;">http://singlet.kaist.ac.kr</a>
+              </div>
+              <div class="meta-item">
+                <strong>대상 수업 패키지</strong>
+                02. 양자컴퓨터 & 계산화학
+              </div>
+              <div class="meta-item">
+                <strong>연계 교육과정</strong>
+                2022 개정 중학교 과학 [물질의 규칙성, 화학반응 규칙] & 정보 [알고리즘]
+              </div>
+            </div>
+
+            <!-- 1장: 파견 교사의 미션과 교육과정 전이 철학 -->
+            <h2 class="section-heading">1. 파견 교사의 미션과 교육과정 전이(Pedagogical Transposition) 철학</h2>
+            <p>
+              본 자료는 KAIST 화학과 계산 광동역학 연구실(CPRL)에 파견된 중학교 과학교사가 연구진의 양자 알고리즘 및 계산화학 원천 연구 성과를 깊이 있게 이해하고, 이를 <strong>2022 개정 교육과정에 부합하는 중학생 수준의 탐구 수업</strong>으로 성공적으로 변환하기 위해 집필된 교사용 심층 배경 자료입니다.
+            </p>
+            <div class="theory-card">
+              <h3 style="color:var(--color-charcoal); margin-top:0;">핵심 교육과정 전이 원칙: "수식의 경량화, 개념의 본질화"</h3>
+              <p style="margin-bottom:0.5rem;">
+                다체 슈뢰딩거 방정식, 제2양자화 연산자, 힐베르트 공간의 조합론적 팽창 등 양자역학의 엄밀한 수학적 전개는 중학생에게 높은 장벽입니다. 그러나 핵심은 <strong>"수학적 장벽은 걷어내되, 동시 병렬성·상태 중첩·2인 3각 하이브리드 협업의 인과관계는 100% 보존하는 것"</strong>입니다.
+              </p>
+              <ul style="margin-bottom:0;">
+                <li><strong>직관적 과학 은유:</strong> 체스판과 쌀알($2^{63}$, 거듭제곱의 폭발), 회전하는 동전 팽이(스핀 큐비트 중첩), 산골짜기 2인 3각 달리기(VQE).</li>
+                <li><strong>실물 기구 연계:</strong> 희토류 이테르븀(Yb-171) 원자를 진공 속 폴 트랩으로 포획하고 레이저로 연산하는 이온트랩 하드웨어의 생생한 물리 현장 연결.</li>
+                <li><strong>교육과정 정합성:</strong> 2022 개정 성취기준(원자 모형, 화학 반응 에너지, 컴퓨팅 알고리즘)과의 유기적 결합.</li>
+              </ul>
+            </div>
+
+            <!-- 2장: 학술적 배경 & CPRL 원천 연구 -->
+            <h2 class="section-heading">2. [원천 연구] 양자 컴퓨팅 기반 전자구조 계산과 VQE-PT2 알고리즘</h2>
+            <h3 class="sub-heading">2.1 학술적 배경: 다전자 파동함수의 지수 폭발($2^N$)과 고전 컴퓨터의 한계</h3>
+            <p>
+              양자화학의 궁극적 목표는 분자의 전자 해밀토니안에 대한 정상상태 슈뢰딩거 방정식 $\hat{H}|\Psi\rangle = E|\Psi\rangle$을 풀어 분자의 기하 구조, 화학 결합 에너지, 반응 전이 상태를 정확히 예측하는 것입니다. 그러나 원자핵 주위의 전자들은 서로 페르미 통계(파울리 배타 원리)를 따르며 쿨롱 반발력으로 복잡하게 얽혀 있는 <strong>'다체 문제(Many-Body Problem)'</strong>를 형성합니다.
+            </p>
+            <div class="theory-card quantum">
+              <strong>[FCI 힐베르트 공간의 조합론적 지수 폭발 (Combinatorial Explosion)]</strong><br>
+              $M$개의 공간 궤도에 $N$개의 전자를 배치하는 완전 입체배치 상호작용(FCI)의 상태 공간 차원은 $\binom{2M}{N_{\alpha}}\binom{2M}{N_{\beta}}$에 달합니다.<br>
+              • 카페인($N=102$)이나 페니실린($N=280$) 분자만 되어도 상태 수가 $10^{30} \sim 10^{84}$를 초과하여, 전 세계 모든 슈퍼컴퓨터의 메모리와 CPU를 총동원해도 우주의 나이(138억 년) 동안 계산할 수 없습니다.
+            </div>
+
+            <h3 class="sub-heading">2.2 CPRL의 핵심 연구 성과: 이온 트랩 양자 컴퓨터와 하이브리드 VQE-PT2</h3>
+            <p>
+              리처드 파인만이 통찰했듯, 양자역학적 계를 시뮬레이션하는 가장 자연스러운 방법은 <strong>양자역학적 물리계(원자 큐비트) 자체를 연산 소자로 사용하는 것</strong>입니다. CPRL 이영민 교수 연구실은 노이즈가 존재하는 현재의 NISQ 양자 하드웨어를 활용하여 다전자 분자의 결합 에너지를 정밀하게 계산하는 <strong>양자-고전 하이브리드 알고리즘 개발</strong>을 선도하고 있습니다.
+            </p>
+            <div class="theory-card quantum">
+              <strong>[CPRL의 양자 컴퓨팅 주요 학술 성과 (npj Quantum Information, PCCP)]</strong>
+              <ul style="margin-top:0.5rem; font-size:0.95rem; margin-bottom:0;">
+                <li>
+                  <strong>이온 트랩 양자 컴퓨터 상의 궤도 최적화 전자쌍 상관 시뮬레이션 (<em>npj Quantum Inf.</em> 2024, 10, 76):</strong><br>
+                  듀크대/칭화대 김기환 교수 연구팀 및 IonQ와 협력하여, 갇힌 이온(Trapped-ion) 양자 프로세서에서 <strong>전자쌍 근사(Electron Pair Approximation)</strong>와 <strong>oo-upCCD-PT2 보정</strong>을 적용해 양자 오차를 90% 이상 대폭 줄이고 화학적 정확도(1 kcal/mol)를 만족하는 분자 퍼텐셜 에너지 곡선(PES)을 도출하였습니다.
+                </li>
+                <li>
+                  <strong>닫힌 껍질 분자를 위한 VQE 알고리즘 개발 (<em>PCCP</em> 2024, 26, 8390):</strong><br>
+                  변분 양자 고유값 계산기(VQE)에 비보손적 보정(Non-bosonic corrections)을 도입하여, 제한된 큐비트 연산 깊이에서도 기저 상태 에너지를 정확히 산출하는 독창적 하이브리드 양자 알고리즘을 개발하였습니다.
+                </li>
+                <li>
+                  <strong>양자화학 탐구 교육 도구 'eChem' 개발 (<em>J. Chem. Educ.</em> 2023, 100, 1664):</strong><br>
+                  주피터 노트북 기반의 오픈소스 양자화학 교육용 소프트웨어를 개발하여, 학생들이 직접 파이썬 코드로 분자 궤도와 전자 구조를 시뮬레이션할 수 있는 교육 공학적 혁신을 이끌었습니다.
+                </li>
+              </ul>
+            </div>
+
+            <!-- 3장: 교사용 수업 브릿지 전략 -->
+            <h2 class="section-heading">3. 교사용 수업 브릿지 전략: 양자 컴퓨팅 및 계산화학 단원</h2>
+            <div class="bridge-box">
+              <div class="bridge-title">"중학생에게 힐베르트 공간과 VQE 알고리즘을 어떻게 체감시킬 것인가?"</div>
+              <ol style="margin-bottom:0; font-size:0.95rem;">
+                <li><strong>체스판과 쌀알 퀴즈:</strong> 64칸 쌀알 퀴즈($2^{63}$)로 거듭제곱의 공포를 체감시킨 뒤, "카페인 전자 102개의 상태($2^{102} \approx 10^{30}$)는 지구의 모든 모래알보다 많다!"는 비유로 슈퍼컴퓨터의 한계를 명쾌히 납득시킵니다.</li>
+                <li><strong>동전 팽이 조작 실험:</strong> 책상 위 정지한 동전(0 또는 1, 비트)과 빠르게 도는 동전 팽이(0과 1의 중첩, 큐비트)를 직접 돌려보게 함으로써, 10개 큐비트가 1,024개 길을 <strong>동시에 단 한 번에 탐색하는 동시 병렬 처리</strong>를 시각화합니다.</li>
+                <li><strong>환상의 2인 3각 역할극:</strong> 양자 컴퓨터(빠른 산골짜기 고도 탐험가)와 일반 컴퓨터(방향을 알려주는 스마트 내비게이션)가 서로 수치를 주고받으며 수소 분자가 최저 바닥 상태(-1.137 a.u., 결합 거리 0.74Å)를 찾아가는 과정을 2인 1조 역할극으로 온몸으로 체득하게 합니다.</li>
+                <li><strong>생태전환적 진로 프로젝트:</strong> "비커 없는 화학 실험실"을 통해 인류의 3대 난제인 <strong>[친환경 상온 비료 합성 촉매 설계(식량 및 온실가스)], [화재 없는 전고체 배터리(에너지)], [변종 바이러스 표적 신약(의학)]</strong>을 해결하는 틴에이저 스타트업 CEO 프로젝트로 확장합니다.</li>
+              </ol>
+            </div>
+
+            <!-- 4장: 양자 컴퓨팅 원천 연구 주요 논문 서지 목록 -->
+            <h2 class="section-heading">4. CPRL 양자 컴퓨팅 원천 연구 대표 논문 목록</h2>
+            <div class="paper-entry">
+              <div class="paper-title">1. Enhancing the electron pair approximation with measurements on trapped-ion quantum computers</div>
+              <div class="paper-authors">L. Zhao, Q. Wang, ..., <strong>Y. M. Rhee*</strong>, K. Kim*</div>
+              <div class="paper-journal">npj Quantum Information (Nature Partner Journal), 10, 76 (2024) · DOI: 10.1038/s41534-024-00871-4</div>
+              <div class="paper-desc">
+                실제 갇힌 이온(Trapped-ion) 양자 컴퓨터 상에서 전자쌍 상관 근사법을 구현하여, NISQ 양자 프로세서의 제한된 큐비트 환경에서도 고정밀 분자 결합 에너지를 측정할 수 있음을 실험적으로 증명한 선도적 연구.
+              </div>
+            </div>
+            <div class="paper-entry">
+              <div class="paper-title">2. Variational quantum eigensolver for closed-shell molecules with non-bosonic corrections</div>
+              <div class="paper-authors">K. Kim, ..., G. Lee, ..., J. K. Rhee, <strong>Y. M. Rhee*</strong></div>
+              <div class="paper-journal">Physical Chemistry Chemical Physics (PCCP), 26, 8390–8396 (2024) · DOI: 10.1039/D3CP05646H</div>
+              <div class="paper-desc">
+                닫힌 껍질 분자에 대해 비보손적 보정을 적용한 VQE 하이브리드 알고리즘을 개발하여 양자 하드웨어의 연산 효율과 수렴성을 획기적으로 향상시킨 알고리즘 논문.
+              </div>
+            </div>
+            <div class="paper-entry">
+              <div class="paper-title">3. eChem: A Notebook Exploration of Quantum Chemistry</div>
+              <div class="paper-authors">T. Fransson, ..., <strong>Y. M. Rhee</strong>, P. Norman*</div>
+              <div class="paper-journal">Journal of Chemical Education, 100, 1664–1671 (2023) · DOI: 10.1021/acs.jchemed.2c01103</div>
+              <div class="paper-desc">
+                주피터 노트북 기반의 대화형 양자화학 교육 플랫폼 개발 논문. 복잡한 계산화학 이론을 학생 친화적인 인터랙티브 소프트웨어로 구현하는 교육적 방법론 제시.
+              </div>
+            </div>
+
+            <!-- 5장: 교사용 Q&A 및 오개념 지도 요령 -->
+            <h2 class="section-heading">5. 양자 컴퓨팅 수업 시 교사용 Q&A 및 오개념 지도 요령</h2>
+            <div class="theory-card">
+              <strong style="color:#7c3aed;">Q1. 중학생이 "양자 컴퓨터가 나오면 지금 쓰는 컴퓨터는 다 버려야 하나요?"라고 묻는다면?</strong>
+              <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+                <strong>[교사 지도 팁]:</strong> "절대 아니란다! 고속열차가 생겼다고 자전거나 택배 트럭이 사라지지 않는 것과 같아. 양자 컴퓨터는 유튜브 동영상을 재생하거나 문서를 작성하는 데는 일반 컴퓨터보다 오히려 비효율적이야. 하지만 <strong>수백억 개의 미로 길을 동시에 가보거나, 분자 속 전자의 복잡한 얽힘을 계산하는 특별한 문제</strong>에서만 빛을 발하지. 미래에도 VQE 알고리즘처럼 일반 컴퓨터와 양자 컴퓨터가 서로 역할을 나누어 <strong>2인 3각 달리기</strong>로 일하게 된단다."
+              </p>
+            </div>
+            <div class="theory-card">
+              <strong style="color:#059669;">Q2. 중학교 2022 개정 교육과정과의 정확한 연계 논리는 무엇인가요?</strong>
+              <p style="margin-top:0.3rem; margin-bottom:0.2rem; font-size:0.92rem;">
+                <strong>[교사 지도 팁]:</strong> 화학 반응의 질량 보존 및 에너지 출입<strong>[9과16-01/03/06]</strong>을 '양자 계산 화학의 최저 바닥 상태 결합'과 연결하고, 정보 교과의 알고리즘 최적화 단원과 융합하여 학생들의 융합 탐구 사고력을 비약적으로 끌어올립니다.
+              </p>
+            </div>
+
+            <!-- 6장: 고교 심층 탐구 연계 배너 -->
+            <div style="margin-top:2rem; padding:1.5rem; background:linear-gradient(135deg, rgba(99,102,241,0.08), rgba(56,189,248,0.08)); border:1px solid rgba(56,189,248,0.3); border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+              <div>
+                <div style="font-size:0.82rem; font-weight:800; color:#6366f1; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.25rem;">ADVANCED DEEP DIVE RESOURCE</div>
+                <div style="font-size:1.05rem; font-weight:800; color:#0f172a;">원자 포획부터 파이썬 양자 알고리즘까지: 고교생 심층 해부 가이드</div>
+                <div style="font-size:0.88rem; color:#64748b; margin-top:0.2rem;">원자 오븐, 폴 트랩 회전 전기장, 레이저 냉각, 뫼르머-쇠렌센 게이트를 3D 실물 사진으로 탐구하세요.</div>
+              </div>
+              <a href="quantum_deep_dive_guide.html" target="_blank" style="padding:0.65rem 1.25rem; background:linear-gradient(135deg, #6366f1, #38bdf8); color:#ffffff; font-size:0.88rem; font-weight:700; border-radius:8px; text-decoration:none; box-shadow:0 4px 12px rgba(99,102,241,0.25); white-space:nowrap;">
+                심층 가이드 열람 ↗
+              </a>
+            </div>
+
+          </div>
+        </section>
+
+
       </div>
     </main>
   </div>
@@ -2957,12 +3600,14 @@
       'curriculum': '2022 성취기준 연계표',
       'cprl-intro': 'KAIST 화학과 CPRL 소개',
       'cprl-research': 'CPRL 주요 연구 내용',
-      'cprl-academic': '교사용 학술 배경 자료'
+      'quantum-guide': '양자 컴퓨터란?',
+      'academic': '교사용 학술 배경 자료'
     };
 
     function setAppState(pkg, view) {
       currentPkg = pkg;
-      const normalizedView = (view === 'overview') ? 'lesson-plan' : view;
+      let normalizedView = (view === 'overview') ? 'lesson-plan' : view;
+      if (normalizedView === 'cprl-academic') normalizedView = 'academic';
       currentView = normalizedView;
       window.location.hash = normalizedView.startsWith('cprl') ? normalizedView : `${pkg}/${currentView}`;
       if (window.innerWidth <= 768) {
@@ -2972,7 +3617,11 @@
     }
 
     function switchPackage(pkg) {
-      setAppState(pkg, currentView.startsWith('cprl') || currentView === 'overview' ? 'lesson-plan' : currentView);
+      let targetView = currentView;
+      if (pkg === 'oled' && currentView === 'quantum-guide') {
+        targetView = 'lesson-plan';
+      }
+      setAppState(pkg, targetView.startsWith('cprl') || targetView === 'overview' ? 'lesson-plan' : targetView);
     }
 
     function switchView(view) {
@@ -3017,6 +3666,12 @@
         if (btnQuick) btnQuick.innerText = '01. OLED로 전환';
       }
 
+      // Show/Hide Quantum Guide Nav Button based on current package
+      const qGuideBtn = document.getElementById('nav-item-quantum-guide');
+      if (qGuideBtn) {
+        qGuideBtn.style.display = (currentPkg === 'quantum') ? 'flex' : 'none';
+      }
+
       // 2. Update Sidebar Active Links
       document.querySelectorAll('.sidebar .nav-item').forEach(el => el.classList.remove('active', 'quantum-active'));
       const activeNavId = `nav-item-${currentView}`;
@@ -3033,6 +3688,8 @@
       if (topbarTitle) {
         if (currentView.startsWith('cprl')) {
           topbarTitle.innerText = viewTitles[currentView] || 'KAIST 화학과 CPRL 소개';
+        } else if (currentView === 'quantum-guide') {
+          topbarTitle.innerText = '02. 양자컴퓨터: ' + (viewTitles[currentView] || '양자 컴퓨터란?');
         } else {
           const pkgPrefix = currentPkg === 'oled' ? '01. OLED: ' : '02. 양자컴퓨터: ';
           topbarTitle.innerText = `${pkgPrefix}${viewTitles[currentView]}`;
@@ -3045,6 +3702,8 @@
       let targetViewId = '';
       if (currentView.startsWith('cprl')) {
         targetViewId = `view-${currentView}`;
+      } else if (currentView === 'quantum-guide') {
+        targetViewId = 'view-quantum-guide';
       } else {
         targetViewId = `view-${currentPkg}-${currentView}`;
       }
@@ -3110,6 +3769,23 @@
 
     // Initialize view on load
     window.addEventListener('DOMContentLoaded', () => {
+      // Quantum Guide FAQ Accordion Delegation
+      document.addEventListener('click', (e) => {
+        const qHeader = e.target.closest('.qa-question');
+        if (qHeader) {
+          const item = qHeader.parentElement;
+          const ans = item.querySelector('.qa-answer');
+          const arrow = qHeader.querySelector('span');
+          if (ans.style.display === 'none' || !ans.style.display) {
+            ans.style.display = 'block';
+            if (arrow) arrow.textContent = '▲';
+          } else {
+            ans.style.display = 'none';
+            if (arrow) arrow.textContent = '▼';
+          }
+        }
+      });
+
       parseHash();
       if (window.lucide) {
         try { lucide.createIcons(); } catch(e) {}
