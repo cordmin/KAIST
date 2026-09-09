@@ -439,6 +439,7 @@ body {
 
 /* Topbar */
 .topbar {
+  display: none;
   height: var(--topbar-h);
   background: rgba(246, 245, 244, 0.92);
   backdrop-filter: blur(8px);
@@ -447,7 +448,6 @@ body {
   position: sticky;
   top: 0;
   z-index: 40;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.75rem;
@@ -460,6 +460,9 @@ body {
 }
 
 .sidebar-toggle-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
   background: var(--color-pure-white);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -524,7 +527,7 @@ body {
 
 /* Content Container — Widened Layout */
 .content-container {
-  padding: 1.5rem 1.75rem 4rem;
+  padding: 1.25rem 1.75rem 1.5rem;
   max-width: 1600px;
   width: 100%;
   margin: 0 auto;
@@ -543,6 +546,13 @@ body {
 
 .card:hover {
   border-color: rgba(0, 0, 0, 0.14);
+}
+
+/* Paper Card Interactive Hover */
+.paper-card:hover {
+  transform: translateY(-3px);
+  border-color: #93c5fd !important;
+  box-shadow: 0 6px 18px rgba(0, 117, 222, 0.12) !important;
 }
 
 .card-header {
@@ -738,6 +748,9 @@ body.sidebar-collapsed .main-content {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .sidebar-toggle-btn {
+    display: inline-flex;
+  }
   .sidebar {
     transform: translateX(-100%);
     z-index: 1000;
@@ -753,6 +766,7 @@ body.sidebar-collapsed .main-content {
     margin-left: 0;
   }
   .topbar {
+    display: flex;
     padding: 0 1rem;
   }
   .content-container {
@@ -1065,9 +1079,9 @@ h3.sub-heading {
   display: none;
   background: var(--color-pure-white);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 2rem 2.25rem 2.25rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  border-radius: 14px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
   position: relative;
   z-index: 1;
 }
@@ -1099,5 +1113,58 @@ h3.sub-heading {
   }
 }
 
+/* CPRL 대표 논문 옹기종기 미니 카드 */
+.mini-paper-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
 
+.mini-paper-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
 
+.mini-paper-card:hover {
+  border-color: #2563eb !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12) !important;
+}
+
+@media (max-width: 540px) {
+  .mini-paper-grid {
+    grid-template-columns: 1fr;
+  }
+  .mini-paper-card {
+    flex-direction: row;
+  }
+  .mini-paper-card > div:first-child {
+    width: 75px !important;
+    height: auto !important;
+    min-height: 70px;
+    border-bottom: none !important;
+    border-right: 1px solid #f1f5f9;
+    flex-shrink: 0;
+  }
+}
+
+/* CPRL 연구 패널 1: 비대칭 2열 그리드 (좌측 +30px 확대, 우측 -30px 축소) */
+.research-panel-grid {
+  display: grid;
+  grid-template-columns: calc(50% + 30px - 0.8rem) calc(50% - 30px - 0.8rem);
+  gap: 1.6rem;
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .research-panel-grid {
+    grid-template-columns: 1fr;
+  }
+}

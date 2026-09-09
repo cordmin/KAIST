@@ -220,7 +220,7 @@
     }
     .topbar-left { display: flex; align-items: center; gap: 1rem; }
     .sidebar-toggle-btn {
-      display: flex;
+      display: none;
       align-items: center;
       gap: 0.4rem;
       background: #f1f5f9;
@@ -360,6 +360,7 @@
     .kaist-highlight { background: #faf5ff; border: 1px solid #e9d5ff; border-left: 4px solid #a855f7; padding: 1.25rem; border-radius: 0.5rem; margin: 1.5rem 0; }
 
     @media (max-width: 768px) {
+      .sidebar-toggle-btn { display: flex; }
       .app-sidebar { transform: translateX(-100%); }
       body.sidebar-open .app-sidebar { transform: translateX(0); }
       .app-main { margin-left: 0 !important; }
