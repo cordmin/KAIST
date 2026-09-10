@@ -431,9 +431,6 @@
           <button class="nav-item" id="nav-btn-worksheet" onclick="switchTab('worksheet')">
             <span class="nav-text">학생 활동지</span>
           </button>
-          <button class="nav-item" id="nav-btn-textbook" onclick="switchTab('textbook')">
-            <span class="nav-text">학생용 읽기자료</span>
-          </button>
           <button class="nav-item" id="nav-btn-curriculum" onclick="switchTab('curriculum')">
             <span class="nav-text">2022 성취기준 연계표</span>
           </button>
@@ -769,8 +766,19 @@
 
             <!-- 1차시 -->
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
-              <div style="margin-bottom:0.5rem;">
-                <h4 style="color:#7c3aed; font-size:1.1rem; margin:0;">[1차시] 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발 (45분)</h4>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#1e293b; font-size:1.1rem; margin:0;"><span style="color:#7c3aed;">[1차시]</span> 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발 (45분)</h4>
+                <div style="display:inline-flex; gap:0.4rem; align-items:center;">
+                  <button type="button" class="topbar-btn primary" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('worksheet')">
+                    <span>📝 활동지</span>
+                  </button>
+                  <button type="button" class="topbar-btn btn-presentation" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('slides')">
+                    <span>🖥️ 프리젠테이션</span>
+                  </button>
+                  <button type="button" class="topbar-btn btn-textbook" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('textbook')">
+                    <span>📖 읽기 자료</span>
+                  </button>
+                </div>
               </div>
               <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>탐구 목표:</strong> 분자 속 전자가 증가함에 따라 전자 간 반발력으로 인해 계산량이 2의 N제곱($2^N$)으로 폭발하는 '지수 폭발'의 한계를 체험하고 설명할 수 있다.</p>
               <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
@@ -781,7 +789,7 @@
                   <tr>
                     <td style="text-align:center; vertical-align:middle;"><strong>도입</strong></td>
                     <td style="text-align:center; vertical-align:middle;">5분</td>
-                    <td>• <strong>동기 유발:</strong> 체스판과 쌀알 퀴즈 (1칸 1톨, 2칸 2톨, 3칸 4톨... 64칸엔 전 세계 쌀 생산량의 수백 배!)<br>• <strong>학습 문제 제기:</strong> "왜 세상에서 가장 비싼 슈퍼컴퓨터도 커피 한 잔 속 카페인 분자 하나를 계산하지 못할까?"</td>
+                    <td>• <strong>동기 유발:</strong> 체스판과 쌀알 퀴즈 (1칸 1톨, 2칸 2톨, 3칸 4톨... 64칸엔 전 세계 쌀 생산량의 수백 배!)<br>• <strong>문제 인식:</strong> "왜 세상에서 가장 비싼 슈퍼컴퓨터도 커피 한 잔 속 카페인 분자 하나를 계산하지 못할까?"</td>
                     <td>• 거듭제곱의 무서운 증가 속도를 직관적으로 체감하도록 지도</td>
                   </tr>
                   <tr>
@@ -802,8 +810,19 @@
 
             <!-- 2차시 -->
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
-              <div style="margin-bottom:0.5rem;">
-                <h4 style="color:#2563eb; font-size:1.1rem; margin:0;">[2차시] 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트 (45분)</h4>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#1e293b; font-size:1.1rem; margin:0;"><span style="color:#2563eb;">[2차시]</span> 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트 (45분)</h4>
+                <div style="display:inline-flex; gap:0.4rem; align-items:center;">
+                  <button type="button" class="topbar-btn primary" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('worksheet')">
+                    <span>📝 활동지</span>
+                  </button>
+                  <button type="button" class="topbar-btn btn-presentation" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('slides')">
+                    <span>🖥️ 프리젠테이션</span>
+                  </button>
+                  <button type="button" class="topbar-btn btn-textbook" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('textbook')">
+                    <span>📖 읽기 자료</span>
+                  </button>
+                </div>
               </div>
               <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>탐구 목표:</strong> 고전 비트(스위치)와 양자 큐비트(회전하는 동전의 '중첩')의 차이를 실험을 통해 비교하고 동시 병렬 처리의 원리를 설명할 수 있다.</p>
               <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
@@ -835,8 +854,19 @@
 
             <!-- 3차시 -->
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
-              <div style="margin-bottom:0.5rem;">
-                <h4 style="color:#059669; font-size:1.1rem; margin:0;">[3차시] 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태 (45분)</h4>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#1e293b; font-size:1.1rem; margin:0;"><span style="color:#059669;">[3차시]</span> 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태 (45분)</h4>
+                <div style="display:inline-flex; gap:0.4rem; align-items:center;">
+                  <button type="button" class="topbar-btn primary" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('worksheet')">
+                    <span>📝 활동지</span>
+                  </button>
+                  <button type="button" class="topbar-btn btn-presentation" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('slides')">
+                    <span>🖥️ 프리젠테이션</span>
+                  </button>
+                  <button type="button" class="topbar-btn btn-textbook" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('textbook')">
+                    <span>📖 읽기 자료</span>
+                  </button>
+                </div>
               </div>
               <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>탐구 목표:</strong> 화학 반응에서 원자가 가장 안정한 최저 바닥 상태를 찾아 결합함을 이해하고, 양자 컴퓨터와 일반 컴퓨터가 협력하는 VQE 알고리즘을 역할극으로 설명할 수 있다.</p>
               <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">
@@ -868,8 +898,19 @@
 
             <!-- 4차시 -->
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem;">
-              <div style="margin-bottom:0.5rem;">
-                <h4 style="color:#d97706; font-size:1.1rem; margin:0;">[4차시] 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트 (45분)</h4>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+                <h4 style="color:#1e293b; font-size:1.1rem; margin:0;"><span style="color:#d97706;">[4차시]</span> 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트 (45분)</h4>
+                <div style="display:inline-flex; gap:0.4rem; align-items:center;">
+                  <button type="button" class="topbar-btn primary" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('worksheet')">
+                    <span>📝 활동지</span>
+                  </button>
+                  <button type="button" class="topbar-btn btn-presentation" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('slides')">
+                    <span>🖥️ 프리젠테이션</span>
+                  </button>
+                  <button type="button" class="topbar-btn btn-textbook" style="padding:0.25rem 0.6rem; font-size:0.8rem; display:inline-flex; align-items:center; gap:0.3rem;" onclick="switchTab('textbook')">
+                    <span>📖 읽기 자료</span>
+                  </button>
+                </div>
               </div>
               <p style="font-size:0.9rem; color:#64748b; margin-bottom:0.75rem;"><strong>탐구 목표:</strong> 양자 계산 화학이 인류의 3대 지구 난제를 해결하는 생태전환적 가치를 인식하고, 미래 스타트업 CEO 기획서를 작성·발표할 수 있다.</p>
               <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0;">

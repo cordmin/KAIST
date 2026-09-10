@@ -4,19 +4,22 @@
 
 function renderSidebar(pkg, currentKey) {
   const isOled = pkg === 'oled';
-
-  const pages = [
-    ...(isOled ? [] : [{ key: 'quantum-guide', name: '양자 컴퓨터란?', file: 'quantum_deep_dive_guide.html' }]),
-    { key: 'lesson-plan', name: '교사용 지도안', file: 'lesson-plan.html' },
-    { key: 'lab', name: '가상실험실', file: 'lab.html' },
-    { key: 'textbook', name: '학생용 읽기자료', file: 'textbook.html' },
-    { key: 'curriculum', name: '2022 성취기준 연계표', file: 'curriculum.html' }
-  ];
+  const validKey = currentKey === 'overview' ? (isOled ? 'lesson-plan' : 'quantum-guide') : currentKey;
 
   const sidebarEl = document.getElementById('app-sidebar');
   if (!sidebarEl) return;
 
-  const validKey = currentKey === 'overview' ? (isOled ? 'lesson-plan' : 'quantum-guide') : currentKey;
+  const oledPages = [
+    { key: 'oled-guide', name: 'OLED란?' },
+    { key: 'lesson-plan', name: '수업 지도안' },
+    { key: 'lab', name: '가상 실험실' }
+  ];
+
+  const quantumPages = [
+    { key: 'quantum-guide', name: '양자 컴퓨터란?' },
+    { key: 'lesson-plan', name: '수업 지도안' },
+    { key: 'lab', name: '가상 실험실' }
+  ];
 
   sidebarEl.innerHTML = `
     <div class="sidebar-project-header">
@@ -38,27 +41,41 @@ function renderSidebar(pkg, currentKey) {
       </div>
     </div>
 
-    <div class="pkg-tab-container">
-      <div class="pkg-switch-group">
-        <a href="../index.html#oled/${validKey}" 
-           class="pkg-btn oled ${isOled ? 'active' : ''}">
-          01. OLED
-        </a>
-        <a href="../index.html#quantum/${validKey}" 
-           class="pkg-btn quantum ${!isOled ? 'active' : ''}">
-          02. 양자컴퓨터
-        </a>
+    <div class="pkg-cards-container">
+      <!-- 01. OLED 카드 -->
+      <div class="sidebar-pkg-card oled-card ${isOled ? 'active-pkg' : ''}" id="pkg-card-oled">
+        <div class="pkg-card-header oled" id="pkg-btn-oled">
+          <span class="pkg-card-badge oled">01</span>
+          <span class="pkg-card-title">OLED</span>
+        </div>
+        <div class="pkg-card-menu">
+          ${oledPages.map(p => {
+            const isActive = isOled && (p.key === currentKey || (currentKey === 'overview' && p.key === 'lesson-plan'));
+            return `
+              <a href="../index.html#oled/${p.key}" class="nav-item ${isActive ? 'active' : ''}">
+                <span class="nav-text">${p.name}</span>
+              </a>
+            `;
+          }).join('')}
+        </div>
       </div>
-      <div class="pkg-tab-panel" id="pkg-tab-panel">
-        ${pages.map(p => {
-          const isActive = p.key === currentKey;
-          const activeClass = isActive ? (isOled ? 'active' : 'quantum-active active') : '';
-          return `
-            <a href="../index.html#${isOled ? 'oled' : 'quantum'}/${p.key}" class="nav-item ${activeClass}">
-              <span class="nav-text">${p.name}</span>
-            </a>
-          `;
-        }).join('')}
+
+      <!-- 02. 양자컴퓨터 카드 (OLED 아래로 분리) -->
+      <div class="sidebar-pkg-card quantum-card ${!isOled ? 'active-pkg' : ''}" id="pkg-card-quantum">
+        <div class="pkg-card-header quantum" id="pkg-btn-quantum">
+          <span class="pkg-card-badge quantum">02</span>
+          <span class="pkg-card-title">양자컴퓨터</span>
+        </div>
+        <div class="pkg-card-menu">
+          ${quantumPages.map(p => {
+            const isActive = !isOled && (p.key === currentKey || (currentKey === 'overview' && p.key === 'quantum-guide'));
+            return `
+              <a href="../index.html#quantum/${p.key}" class="nav-item ${isActive ? 'quantum-active active' : ''}">
+                <span class="nav-text">${p.name}</span>
+              </a>
+            `;
+          }).join('')}
+        </div>
       </div>
     </div>
 
