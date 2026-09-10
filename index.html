@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스타브릿지2.0 (KAIST CPRL)</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=20260910b">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260910_v3">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     /* Table Border Enforcement */
@@ -37,6 +37,122 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    /* Separated Package Cards (OLED & Quantum Independent Cards) */
+    .pkg-cards-container {
+      padding: 0.55rem 0.75rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      background: var(--sidebar-bg);
+    }
+    .sidebar-pkg-card {
+      background: var(--color-pure-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-pkg-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .sidebar-pkg-card.oled-card.active-pkg {
+      border-color: rgba(0, 117, 222, 0.4);
+      box-shadow: 0 4px 14px rgba(0, 117, 222, 0.09);
+    }
+    .sidebar-pkg-card.quantum-card.active-pkg {
+      border-color: rgba(94, 92, 230, 0.4);
+      box-shadow: 0 4px 14px rgba(94, 92, 230, 0.09);
+    }
+    .pkg-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.58rem 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
+      cursor: default;
+      user-select: none;
+      text-decoration: none;
+    }
+    .pkg-card-header.oled {
+      background: #edf5ff;
+      border-bottom-color: #dbeafe;
+    }
+    .pkg-card-header.quantum {
+      background: #f1edfe;
+      border-bottom-color: #e0e7ff;
+    }
+    .sidebar-pkg-card.active-pkg .pkg-card-header.oled {
+      background: #edf5ff;
+    }
+    .sidebar-pkg-card.active-pkg .pkg-card-header.quantum {
+      background: #f1edfe;
+    }
+    .pkg-card-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.12rem 0.42rem;
+      border-radius: 5px;
+      letter-spacing: 0.3px;
+      line-height: 1.2;
+    }
+    .pkg-card-badge.oled {
+      background: #0075de;
+      color: #ffffff;
+    }
+    .pkg-card-badge.quantum {
+      background: #5e5ce6;
+      color: #ffffff;
+    }
+    .pkg-card-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .pkg-card-header.oled .pkg-card-title {
+      color: #0f4a8a;
+    }
+    .pkg-card-header.quantum .pkg-card-title {
+      color: #4338ca;
+    }
+    .pkg-card-menu {
+      padding: 0.32rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+    }
+    .pkg-card-menu .nav-item {
+      border-radius: 7px;
+      padding: 0.44rem 0.65rem;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all 0.12s ease;
+    }
+    .pkg-card-menu .nav-item:hover {
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+    .pkg-card-menu .nav-item.active {
+      background-color: #e0f0fe;
+      color: #0075de;
+      font-weight: 700;
+    }
+    .pkg-card-menu .nav-item.quantum-active.active {
+      background-color: #ede9fe;
+      color: #5e5ce6;
+      font-weight: 700;
     }
 
     /* Notion Style Header Panels */
