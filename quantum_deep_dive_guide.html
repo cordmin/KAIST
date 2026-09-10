@@ -239,23 +239,24 @@
     .footer a { color: var(--accent-cyan); text-decoration: none; }
     .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
   </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <nav class="navbar">
     <a href="cprl-research.html" class="nav-brand">
-      <span>⚛️ KAIST CPRL</span>
+      <span><i data-lucide="atom"></i> KAIST CPRL</span>
       <span class="nav-badge">High School Quantum Guide</span>
     </a>
     <div class="nav-links">
-      <a href="cprl-research.html" class="nav-link">🔬 CPRL 연구실 홈</a>
-      <a href="02_양자컴퓨터_계산화학_수업패키지.html" class="nav-link">📚 고교 수업 패키지</a>
+      <a href="cprl-research.html" class="nav-link"><i data-lucide="microscope"></i> <span>CPRL 연구실 홈</span></a>
+      <a href="02_양자컴퓨터_계산화학_수업패키지.html" class="nav-link"><i data-lucide="book-open"></i> <span>고교 수업 패키지</span></a>
       <a href="#chap1" class="nav-btn">가이드 시작하기 ↓</a>
     </div>
   </nav>
 
   <header class="hero">
     <div class="hero-tag">
-      <span>🌟 고등학생 눈높이 과학 심층 탐구</span>
+      <span><i data-lucide="sparkles"></i> 고등학생 눈높이 과학 심층 탐구</span>
       <span>•</span>
       <span>물리 & 화학 & 컴퓨터과학 융합 특강</span>
     </div>
@@ -271,28 +272,28 @@
 
     <div class="meta-grid">
       <div class="meta-card">
-        <div class="meta-icon">🧪</div>
+        <div class="meta-icon"><i data-lucide="flask-conical"></i></div>
         <div class="meta-info">
           <h4>큐비트 소재</h4>
           <p>희토류 이테르븀 (171Yb⁺)</p>
         </div>
       </div>
       <div class="meta-card">
-        <div class="meta-icon">🧲</div>
+        <div class="meta-icon"><i data-lucide="magnet"></i></div>
         <div class="meta-info">
           <h4>포획 물리 원리</h4>
           <p>폴 트랩 & 회전 전기장</p>
         </div>
       </div>
       <div class="meta-card">
-        <div class="meta-icon">⚡</div>
+        <div class="meta-icon"><i data-lucide="zap"></i></div>
         <div class="meta-info">
           <h4>연산 조작 방식</h4>
           <p>355nm 펄스 레이저 & 포논</p>
         </div>
       </div>
       <div class="meta-card">
-        <div class="meta-icon">🐍</div>
+        <div class="meta-icon"><i data-lucide="code"></i></div>
         <div class="meta-info">
           <h4>소프트웨어 연동</h4>
           <p>Python Qiskit & oo-upCCD</p>
@@ -343,7 +344,7 @@
 
         <div class="compare-card highlight">
           <span class="compare-badge badge-ion">천연 원자 방식 (IonQ, Quantinuum)</span>
-          <h3 class="compare-title">이온 트랩 큐비트 (Trapped Ion) ⭐</h3>
+          <h3 class="compare-title">이온 트랩 큐비트 (Trapped Ion) <i data-lucide="star" style="color:#eab308; fill:#eab308;"></i></h3>
           <ul class="compare-list">
             <li><strong>재료:</strong> 희토류 원소인 <strong>이테르븀(Yb, 원자번호 70)</strong> 또는 알칼리 토금속인 칼슘(Ca), 바륨(Ba)</li>
             <li><strong>원리:</strong> 전자 하나를 떼어낸 <strong>순수 양이온(Yb⁺)</strong>의 최외각 전자 스핀 궤도 에너지 준위 사용</li>
@@ -364,7 +365,7 @@
       </div>
 
       <div class="analogy-box">
-        💡 <strong>고등학생을 위한 직관적 비유:</strong><br>
+        <i data-lucide="lightbulb"></i> <strong>고등학생을 위한 직관적 비유:</strong><br>
         초전도 방식이 <em>"인간이 정밀 기계로 나노미터 크기의 똑같은 모래시계를 수백 개 깎아 맞추려 애쓰는 기술"</em>이라면, 
         이온 트랩 방식은 <em>"신(자연)이 이미 100억 년 전에 완벽하게 오차 0으로 만들어둔 똑같은 물방울(원자)을 공중에 띄워 쓰는 기술"</em>입니다.
       </div>
@@ -428,7 +429,7 @@
 
       <!-- Saddle Metaphor Box -->
       <div class="highlight-box">
-        🐎 <strong>회전하는 말안장(Saddle Trap)의 원리:</strong><br>
+        <i data-lucide="orbit"></i> <strong>회전하는 말안장(Saddle Trap)의 원리:</strong><br>
         말안장 한가운데에 쇠구슬을 가만히 올려두면 좌우로 미끄러져 땅에 떨어집니다. 
         하지만 말안장을 초당 수십 바퀴씩 모터로 <strong>아주 빠르게 회전</strong>시키면 어떻게 될까요?<br>
         구슬이 아래로 떨어지려는 찰나에 안장의 솟아오른 면이 구슬을 위로 쳐올리고, 다시 반대편으로 떨어지려는 순간 또 반대쪽이 쳐올립니다! 
@@ -769,10 +770,10 @@ result = job.<span class="c-fn">result</span>()
     <!-- Navigation Footer CTA -->
     <div style="text-align: center; margin: 60px 0 20px;">
       <a href="cprl-research.html" class="nav-btn" style="font-size: 1.05rem; padding: 14px 32px; display: inline-block;">
-        🔬 KAIST CPRL 연구실 홈으로 돌아가기
+        <i data-lucide="microscope"></i> KAIST CPRL 연구실 홈으로 돌아가기
       </a>
       <a href="02_양자컴퓨터_계산화학_수업패키지.html" class="nav-btn" style="font-size: 1.05rem; padding: 14px 32px; display: inline-block; margin-left: 14px; background: linear-gradient(135deg, #0ea5e9, #38bdf8);">
-        📚 양자 고교 수업 패키지 열람
+        <i data-lucide="book-open"></i> 양자 고교 수업 패키지 열람
       </a>
     </div>
 
@@ -807,6 +808,11 @@ result = job.<span class="c-fn">result</span>()
         }
       });
     });
+  </script>
+  <script>
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch(e) {}
+    }
   </script>
 </body>
 </html>

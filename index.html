@@ -391,9 +391,6 @@
             <a href="javascript:void(0)" class="nav-item" id="nav-item-textbook" onclick="switchView('textbook')">
               <span class="nav-text">학생용 읽기자료</span>
             </a>
-            <a href="javascript:void(0)" class="nav-item" id="nav-item-slides" onclick="switchView('slides')">
-              <span class="nav-text">발표 슬라이드</span>
-            </a>
             <a href="javascript:void(0)" class="nav-item" id="nav-item-curriculum" onclick="switchView('curriculum')">
               <span class="nav-text">2022 성취기준 연계표</span>
             </a>
@@ -405,8 +402,8 @@
     <main class="main-content">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()" aria-label="사이드바 토글">☰</button>
-          <span class="current-view-title" id="topbar-title">📋 01. OLED: 교사용 지도안</span>
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()" aria-label="사이드바 토글"><i data-lucide="menu"></i></button>
+          <span class="current-view-title" id="topbar-title">01. OLED: 교사용 지도안</span>
         </div>
       </header>
       <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
@@ -819,7 +816,7 @@
             <!-- 5페이지 크롬 탭 바 -->
             <div class="chrome-tab-bar" role="tablist">
               <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true">
-                <span>📋 <span class="tab-text-full">지도안 개요</span><span class="tab-text-short">개요</span></span>
+                <span><i data-lucide="clipboard-list"></i> <span class="tab-text-full">지도안 개요</span><span class="tab-text-short">개요</span></span>
               </button>
               <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
                 <span>[1차시] <span class="tab-text-full">자외선과 형광</span><span class="tab-text-short">1차시</span></span>
@@ -835,11 +832,11 @@
               </button>
             </div>
 
-            <!-- [탭 0]: 📋 지도안 개요 -->
+            <!-- [탭 0]: 지도안 개요 -->
             <div class="chrome-tab-panel active" role="tabpanel">
               <div class="card-header" style="margin-bottom:1rem;">
-                <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);">📋 분자의 빛과 디스플레이의 과학</h2>
-                <button class="topbar-btn primary" onclick="window.print()">🖨️ 전체 지도안 인쇄</button>
+                <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 분자의 빛과 디스플레이의 과학</h2>
+                <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
               </div>
 
               <table class="data-table">
@@ -877,7 +874,7 @@
               </table>
 
               <div class="callout-box callout-danger" style="margin-top:1.25rem;">
-                <strong style="color:#b91c1c;">🚨 필수 안전 수칙</strong><br>
+                <strong style="color:#b91c1c;"><i data-lucide="alert-triangle"></i> 필수 안전 수칙</strong><br>
                 <strong>1. UV 램프 보안경 착용:</strong> 자외선(UV-A) 광원을 직접 눈으로 보거나 타인에게 비추지 않도록 보안경 착용 지도 및 암실 상자 활용.<br>
                 <strong>2. 시약 음용 금지:</strong> 음료류(토닉워터, 비타민)는 실험용이므로 마시지 않도록 사전 지도 및 폐액 분리 수거.
               </div>
@@ -909,14 +906,14 @@
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
                   <td>보안경 착용, 자외선(UV-A)을 눈이나 피부에 비추지 않기. 시약 음용 금지</td>
-                  <th style="text-align:center; white-space:nowrap;">활동지</th>
+                  <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                   <td>
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 1, 'student')">
-                        <span>📝 학생용</span>
+                        <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 1, 'teacher')">
-                        <span>💡 교사용</span>
+                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 1)">
+                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
                   </td>
@@ -976,14 +973,14 @@
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
                   <td>가상실험실 접속 시 과도한 기기 사용으로 인한 눈 피로 방지 및 에너지 계단 비유로 직관적 이해 유도</td>
-                  <th style="text-align:center; white-space:nowrap;">활동지</th>
+                  <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                   <td>
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 2, 'student')">
-                        <span>📝 학생용</span>
+                        <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 2, 'teacher')">
-                        <span>💡 교사용</span>
+                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 2)">
+                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
                   </td>
@@ -1043,14 +1040,14 @@
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
                   <td>단일항과 삼중항의 양자역학 수식 대신 '회전 팽이 방향(↑↓ vs ↑↑)'과 비상문 비유로 지도</td>
-                  <th style="text-align:center; white-space:nowrap;">활동지</th>
+                  <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                   <td>
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 3, 'student')">
-                        <span>📝 학생용</span>
+                        <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 3, 'teacher')">
-                        <span>💡 교사용</span>
+                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 3)">
+                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
                   </td>
@@ -1110,14 +1107,14 @@
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
                   <td>빛의 삼원색 합성 원리와 화학 결합 안정성을 융합적으로 고려하고 루브릭 기반 상호 평가 유도</td>
-                  <th style="text-align:center; white-space:nowrap;">활동지</th>
+                  <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                   <td>
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 4, 'student')">
-                        <span>📝 학생용</span>
+                        <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 4, 'teacher')">
-                        <span>💡 교사용</span>
+                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 4)">
+                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
                   </td>
@@ -1138,7 +1135,7 @@
                   <tr>
                     <td style="text-align:center; vertical-align:middle;"><strong>전개</strong></td>
                     <td style="text-align:center; vertical-align:middle;">32분</td>
-                    <td>• <strong>KAIST의 두 가지 구출 마법:</strong><br>  1) <strong>핫 엑시톤(Hot Exciton):</strong> 고에너지 옥상 우회로로 번개처럼 단일항으로 건너가는 초고속 구름다리<br>  2) <strong>TADF(열활성 지연형광):</strong> 주변 공기의 미세한 열을 흡수해 단일항으로 점프<br>  👉 <strong>결과: 75%를 구출하여 100% 발광 효율 달성!</strong><br>• <strong>빛의 삼원색과 영상 장치:</strong> 스마트폰 화면의 RGB 화소 관찰 [9과10-03]<br>• <strong>청색(Blue) OLED의 난제:</strong> 에너지가 너무 세서 쉽게 깨지는 파란색 분자의 수명 한계<br>• <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강한 나만의 고효율 파란색 발광 분자 및 롤러블 디스플레이 기획서 작성 [9과23-01]</td>
+                    <td>• <strong>KAIST의 두 가지 구출 마법:</strong><br>  1) <strong>핫 엑시톤(Hot Exciton):</strong> 고에너지 옥상 우회로로 번개처럼 단일항으로 건너가는 초고속 구름다리<br>  2) <strong>TADF(열활성 지연형광):</strong> 주변 공기의 미세한 열을 흡수해 단일항으로 점프<br>  <i data-lucide="check-circle-2"></i> <strong>결과: 75%를 구출하여 100% 발광 효율 달성!</strong><br>• <strong>빛의 삼원색과 영상 장치:</strong> 스마트폰 화면의 RGB 화소 관찰 [9과10-03]<br>• <strong>청색(Blue) OLED의 난제:</strong> 에너지가 너무 세서 쉽게 깨지는 파란색 분자의 수명 한계<br>• <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강한 나만의 고효율 파란색 발광 분자 및 롤러블 디스플레이 기획서 작성 [9과23-01]</td>
                     <td>• 화학 분자 설계 + 물리 빛 합성 + 디스플레이 공학 융합 유도<br>• <strong>[산출물평가]</strong> 분자 디자이너 기획서 창의성 및 과학적 타당성 평가 (루브릭 적용)</td>
                   </tr>
                   <tr>
@@ -1263,12 +1260,12 @@
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인가?</p>
             <div class="answer-box">
-              ☞ 답: 
+              <i data-lucide="corner-down-right"></i> 답: 
             </div>
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 눈부신 알록달록 가시광선이 뿜어져 나오는지, 그리고 들어간 에너지와 나온 빛의 에너지 차이는 어떻게 되었을지 토의하여 써 보자.</p>
             <div class="answer-box">
-              ☞ 토의 내용: 
+              <i data-lucide="corner-down-right"></i> 토의 내용: 
             </div>
           </div>
 
@@ -1342,7 +1339,7 @@
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 스마트폰 배터리 전기로 화면을 켤 때 무려 75%의 전자가 빛을 내지 못하고 스마트폰을 뜨겁게 달구는 까닭을 위의 확률과 관련지어 설명해 보자.</p>
             <div class="answer-box">
-              ☞ 까닭: 
+              <i data-lucide="corner-down-right"></i> 까닭: 
             </div>
           </div>
 
@@ -1374,13 +1371,13 @@
                 <th>75% 구출 메커니즘<br>적용 방안</th>
                 <td colspan="3">
                   [ 핫 엑시톤 구름다리 우회로 / TADF 열 흡수 역전이 ] 중 선택:<br>
-                  ☞ 구출 원리 서술: 
+                  <i data-lucide="corner-down-right"></i> 구출 원리 서술: 
                 </td>
               </tr>
               <tr>
                 <th>미래 사회 기대 효과</th>
                 <td colspan="3">
-                  ☞ 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
+                  <i data-lucide="corner-down-right"></i> 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
                 </td>
               </tr>
             </table>
@@ -1451,13 +1448,13 @@
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 파장과 에너지 관계</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
               자외선(300~400nm)이 가시광선(400~700nm)보다 파장이 짧고 에너지가 더 크다. (빛의 파장이 짧을수록 광자의 에너지는 크다.)
             </div>
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>3. 형광 현상과 에너지 차이의 행방</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
               물질 속 분자가 센 에너지의 자외선을 흡수하여 전자가 들뜬 상태로 점프한 뒤, 분자 진동을 통해 일부 에너지를 <strong>'열'</strong>로 잃어버립니다. 그 후 남은 에너지만을 파장이 더 길고 에너지가 순한 <strong>'가시광선(형광)'</strong> 빛으로 방출하기 때문에 알록달록한 빛이 나옵니다. 들어간 자외선과 나온 형광 빛의 에너지 차이는 분자가 떨리며 주변에 방출한 <strong>열에너지</strong>로 전환되었습니다. (스토크스 이동 및 에너지 보존 법칙)
             </div>
           </div>
@@ -1490,7 +1487,7 @@
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 에너지 보존 관계식</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; text-align:center; font-size:1.05rem;">
-              <span class="answer-arrow">☞</span> <strong>[ 흡수한 자외선 에너지 ] = [ <span class="model-answer">방출된 형광빛 에너지</span> ] + [ <span class="model-answer">흘린 열에너지</span> ]</strong>
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>[ 흡수한 자외선 에너지 ] = [ <span class="model-answer">방출된 형광빛 에너지</span> ] + [ <span class="model-answer">흘린 열에너지</span> ]</strong>
             </div>
           </div>
 
@@ -1534,7 +1531,7 @@
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 스마트폰 발열과 배터리 손실 이유</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
               스마트폰 배터리의 전류를 유기 발광 분자에 직접 넣으면 양자 통계 법칙에 의해 <strong>빛을 내는 단일항은 단 25%만 생성되고, 비상문이 잠겨 빛을 내지 못하는 삼중항이 무려 75%나 생성</strong>됩니다. 상온의 스마트폰 디스플레이에서 75%의 삼중항 전자는 빛을 내지 못한 채 에너지를 모조리 <strong>열</strong>로 뿜어내며 바닥으로 떨어지므로, 배터리 전력의 75%가 낭비되고 스마트폰이 뜨겁게 달아오릅니다.
             </div>
           </div>
@@ -1566,7 +1563,7 @@
                 <td colspan="3">
                   <strong class="model-answer">
                     [핫 엑시톤(Hot Exciton) 우회로 선택]<br>
-                    ☞ 원리: 삼중항 전자가 1층(T1)에 갇혀 열을 내기 전에, 에너지가 높은 2층 삼중항(T2) 옥상에서 단일항(S1)으로 순식간에 건너가는 '초고속 구름다리(역간교차, RISC)'를 설계함. 이를 통해 버려지던 75%의 전자를 단일항으로 100% 구출하여 눈부신 파란색 형광으로 전환함.
+                    <i data-lucide="corner-down-right"></i> 원리: 삼중항 전자가 1층(T1)에 갇혀 열을 내기 전에, 에너지가 높은 2층 삼중항(T2) 옥상에서 단일항(S1)으로 순식간에 건너가는 '초고속 구름다리(역간교차, RISC)'를 설계함. 이를 통해 버려지던 75%의 전자를 단일항으로 100% 구출하여 눈부신 파란색 형광으로 전환함.
                   </strong>
                 </td>
               </tr>
@@ -1584,7 +1581,7 @@
 
           <!-- 지도상 유의점 및 교사 팁 -->
           <div style="margin-top:2rem;">
-            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;">💡 [지도상 유의점 및 실험 지도 팁]</h3>
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;"><i data-lucide="lightbulb"></i> [지도상 유의점 및 실험 지도 팁]</h3>
             
             <div class="callout-box" style="background:#f8fafc; border-left-color:#3b82f6;">
               <strong>1. 학생 오개념 지도 요령: "형광과 야광(인광)은 같은 건가요?"</strong><br>
@@ -1667,7 +1664,7 @@
           <!-- 본문 섹션 1 -->
           <article style="line-height:1.85; font-size:1rem; color:#334155; margin-bottom:2rem;">
             <h2 style="color:#1e3a8a; font-size:1.35rem; margin:1.5rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>🔍 1장. 어둠 속에서 빛나는 마법, 형광의 정체</span>
+              <span><i data-lucide="search"></i> 1장. 어둠 속에서 빛나는 마법, 형광의 정체</span>
             </h2>
             <p style="margin-bottom:1rem;">
               불이 꺼진 방 안에서 블랙라이트(자외선 램프)를 켜본 적이 있나요? 투명한 유리잔에 담긴 토닉워터가 마법처럼 눈부신 사파이어 빛 파란색으로 변하고, 평범한 비타민 음료는 눈이 시리도록 밝은 형광 연두색으로 빛납니다. 우리 눈에는 보이지 않는 투명한 자외선을 비추었을 뿐인데, 도대체 왜 액체 속에서 알록달록한 눈부신 가시광선이 뿜어져 나오는 걸까요?
@@ -1677,7 +1674,7 @@
             </p>
 
             <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>🤸 2장. 꼬마 전자의 트램펄린 점프와 사라진 에너지</span>
+              <span><i data-lucide="activity"></i> 2장. 꼬마 전자의 트램펄린 점프와 사라진 에너지</span>
             </h2>
             <p style="margin-bottom:1rem;">
               원자 속에는 무거운 원자핵 주위를 가볍게 맴도는 음(-)전하를 띤 <strong>'전자(Electron)'</strong>가 살고 있습니다. 평소에 전자는 에너지가 가장 낮고 편안한 1층 거실, 즉 <strong>'바닥 상태(Ground State)'</strong>에 얌전히 머물러 있습니다.
@@ -1690,7 +1687,7 @@
             </p>
 
             <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>📱 3장. 팽이 스핀의 비밀과 스마트폰 OLED의 75% 배터리 도둑</span>
+              <span><i data-lucide="smartphone"></i> 3장. 팽이 스핀의 비밀과 스마트폰 OLED의 75% 배터리 도둑</span>
             </h2>
             <p style="margin-bottom:1rem;">
               오늘날 우리가 매일 들여다보는 스마트폰 화면은 스스로 빛을 내는 첨단 유기 분자로 만든 <strong>OLED(유기발광다이오드)</strong> 디스플레이입니다. 스마트폰은 자외선 조명을 비추는 대신, 리튬 배터리에서 나오는 <strong>전기(전류)</strong>를 유기 분자에 직접 찔러 넣어 빛을 냅니다.
@@ -1707,7 +1704,7 @@
             </p>
 
             <h2 style="color:#1e3a8a; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>🔬 4장. KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너</span>
+              <span><i data-lucide="microscope"></i> 4장. KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너</span>
             </h2>
             <p style="margin-bottom:1rem;">
               대한민국 최고의 과학기술 대학인 <strong>KAIST 화학과 CPRL(계산 광동역학 연구실) 이영민 교수팀</strong>은 이 갇혀버린 75%의 전자를 구출하기 위해 컴퓨터 시뮬레이션과 첨단 레이저 분광학을 결합한 혁신적인 연구를 성공시켰습니다!
@@ -1723,7 +1720,7 @@
           <!-- 중학생 핵심 용어 사전 -->
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-top:2rem;">
             <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>📚 중학생 핵심 과학 용어 사전</span>
+              <span><i data-lucide="book-open"></i> 중학생 핵심 과학 용어 사전</span>
             </h3>
 
             <dl style="font-size:0.92rem; line-height:1.75;">
@@ -1764,7 +1761,7 @@
                 <span class="slide-counter" style="color:#9ca3af; font-size:0.85rem;">1 / 10</span>
                 <div>
                   <button class="topbar-btn" onclick="changeOledSlide(-1)">이전</button>
-                  <button class="topbar-btn primary" onclick="changeOledSlide(1)">다음 ➔</button>
+                  <button class="topbar-btn primary" onclick="changeOledSlide(1)"><span>다음</span> <i data-lucide="arrow-right"></i></button>
                 </div>
               </div>
             </div>
@@ -1861,7 +1858,7 @@
 
           <!-- 세특 기재 예시 3종 -->
           <div style="margin-top:2rem;">
-            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;">💡 [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;"><i data-lucide="lightbulb"></i> [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
 
             <!-- 예시 1: 우수 학생 -->
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
@@ -2030,7 +2027,7 @@
           <div class="quantum-guide-wrapper" style="width: 100%; max-width: 100%; box-sizing: border-box; padding-bottom: 60px;">
 <header class="hero">
     <div class="hero-tag">
-      <span>🌟 고등학생 눈높이 과학 심층 탐구</span>
+      <span><i data-lucide="sparkles"></i> 고등학생 눈높이 과학 심층 탐구</span>
       <span>•</span>
       <span>물리 & 화학 & 컴퓨터과학 융합 특강</span>
     </div>
@@ -2046,28 +2043,28 @@
 
     <div class="meta-grid">
       <div class="meta-card">
-        <div class="meta-icon">🧪</div>
+        <div class="meta-icon"><i data-lucide="flask-conical"></i></div>
         <div class="meta-info">
           <h4>큐비트 소재</h4>
           <p>희토류 이테르븀 (171Yb⁺)</p>
         </div>
       </div>
       <div class="meta-card">
-        <div class="meta-icon">🧲</div>
+        <div class="meta-icon"><i data-lucide="magnet"></i></div>
         <div class="meta-info">
           <h4>포획 물리 원리</h4>
           <p>폴 트랩 & 회전 전기장</p>
         </div>
       </div>
       <div class="meta-card">
-        <div class="meta-icon">⚡</div>
+        <div class="meta-icon"><i data-lucide="zap"></i></div>
         <div class="meta-info">
           <h4>연산 조작 방식</h4>
           <p>355nm 펄스 레이저 & 포논</p>
         </div>
       </div>
       <div class="meta-card">
-        <div class="meta-icon">🐍</div>
+        <div class="meta-icon"><i data-lucide="code"></i></div>
         <div class="meta-info">
           <h4>소프트웨어 연동</h4>
           <p>Python Qiskit & oo-upCCD</p>
@@ -2118,7 +2115,7 @@
 
         <div class="compare-card highlight">
           <span class="compare-badge badge-ion">천연 원자 방식 (IonQ, Quantinuum)</span>
-          <h3 class="compare-title">이온 트랩 큐비트 (Trapped Ion) ⭐</h3>
+          <h3 class="compare-title">이온 트랩 큐비트 (Trapped Ion) <i data-lucide="star" style="color:#eab308; fill:#eab308;"></i></h3>
           <ul class="compare-list">
             <li><strong>재료:</strong> 희토류 원소인 <strong>이테르븀(Yb, 원자번호 70)</strong> 또는 알칼리 토금속인 칼슘(Ca), 바륨(Ba)</li>
             <li><strong>원리:</strong> 전자 하나를 떼어낸 <strong>순수 양이온(Yb⁺)</strong>의 최외각 전자 스핀 궤도 에너지 준위 사용</li>
@@ -2139,7 +2136,7 @@
       </div>
 
       <div class="analogy-box">
-        💡 <strong>고등학생을 위한 직관적 비유:</strong><br>
+        <i data-lucide="lightbulb"></i> <strong>고등학생을 위한 직관적 비유:</strong><br>
         초전도 방식이 <em>"인간이 정밀 기계로 나노미터 크기의 똑같은 모래시계를 수백 개 깎아 맞추려 애쓰는 기술"</em>이라면, 
         이온 트랩 방식은 <em>"신(자연)이 이미 100억 년 전에 완벽하게 오차 0으로 만들어둔 똑같은 물방울(원자)을 공중에 띄워 쓰는 기술"</em>입니다.
       </div>
@@ -2203,7 +2200,7 @@
 
       <!-- Saddle Metaphor Box -->
       <div class="highlight-box">
-        🐎 <strong>회전하는 말안장(Saddle Trap)의 원리:</strong><br>
+        <i data-lucide="orbit"></i> <strong>회전하는 말안장(Saddle Trap)의 원리:</strong><br>
         말안장 한가운데에 쇠구슬을 가만히 올려두면 좌우로 미끄러져 땅에 떨어집니다. 
         하지만 말안장을 초당 수십 바퀴씩 모터로 <strong>아주 빠르게 회전</strong>시키면 어떻게 될까요?<br>
         구슬이 아래로 떨어지려는 찰나에 안장의 솟아오른 면이 구슬을 위로 쳐올리고, 다시 반대편으로 떨어지려는 순간 또 반대쪽이 쳐올립니다! 
@@ -2549,7 +2546,7 @@ result = job.<span class="c-fn">result</span>()
             <!-- 5페이지 크롬 탭 바 -->
             <div class="chrome-tab-bar" role="tablist">
               <button type="button" class="chrome-tab-btn tab-purple active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true">
-                <span>📋 <span class="tab-text-full">지도안 개요</span><span class="tab-text-short">개요</span></span>
+                <span><i data-lucide="clipboard-list"></i> <span class="tab-text-full">지도안 개요</span><span class="tab-text-short">개요</span></span>
               </button>
               <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
                 <span>[1차시] <span class="tab-text-full">지수 폭발</span><span class="tab-text-short">1차시</span></span>
@@ -2565,11 +2562,11 @@ result = job.<span class="c-fn">result</span>()
               </button>
             </div>
 
-            <!-- [탭 0]: 📋 지도안 개요 -->
+            <!-- [탭 0]: 지도안 개요 -->
             <div class="chrome-tab-panel active" role="tabpanel">
               <div class="card-header" style="margin-bottom:1rem;">
-                <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);">📋 양자 컴퓨터와 계산 화학의 미래</h2>
-                <button class="topbar-btn primary" onclick="window.print()">🖨️ 전체 지도안 인쇄</button>
+                <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 양자 컴퓨터와 계산 화학의 미래</h2>
+                <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
               </div>
 
               <table class="data-table">
@@ -2610,7 +2607,7 @@ result = job.<span class="c-fn">result</span>()
               </table>
 
               <div class="callout-box" style="margin-top:1.25rem;">
-                <strong>💡 [수식 없는 양자역학 지도 팁]:</strong> 수식이나 파동방정식을 지양하고, <strong>"바닥에 놓인 동전(비트) vs 도는 팽이 동전(큐비트)"</strong>과 <strong>"2인 3각 산골짜기 바닥 찾기(VQE)"</strong>라는 직관적 은유를 활용하여 지도합니다.
+                <strong><i data-lucide="lightbulb"></i> [수식 없는 양자역학 지도 팁]:</strong> 수식이나 파동방정식을 지양하고, <strong>"바닥에 놓인 동전(비트) vs 도는 팽이 동전(큐비트)"</strong>과 <strong>"2인 3각 산골짜기 바닥 찾기(VQE)"</strong>라는 직관적 은유를 활용하여 지도합니다.
               </div>
             </div>
 
@@ -2640,14 +2637,14 @@ result = job.<span class="c-fn">result</span>()
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
                   <td>수학적 거듭제곱 계산에 매몰되지 않고 카페인 분자조차 우주 원자 수(10⁸⁰)를 초과한다는 극적인 대비를 체감하도록 지도</td>
-                  <th style="text-align:center; white-space:nowrap;">활동지</th>
+                  <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                   <td>
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 1, 'student')">
-                        <span>📝 학생용</span>
+                        <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 1, 'teacher')">
-                        <span>💡 교사용</span>
+                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 1)">
+                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
                   </td>
@@ -2707,14 +2704,14 @@ result = job.<span class="c-fn">result</span>()
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
                   <td>동전 회전 실험 시 트레이를 활용하고, 측정 전 0과 1이 공존하는 상태임을 체감하도록 지도</td>
-                  <th style="text-align:center; white-space:nowrap;">활동지</th>
+                  <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                   <td>
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 2, 'student')">
-                        <span>📝 학생용</span>
+                        <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 2, 'teacher')">
-                        <span>💡 교사용</span>
+                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 2)">
+                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
                   </td>
@@ -2774,14 +2771,14 @@ result = job.<span class="c-fn">result</span>()
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
                   <td>역할극 중 양자 컴퓨터(에너지 계산)와 일반 컴퓨터(피드백 최적화)의 협동 피드백 루프를 온몸으로 체득하도록 역할 교대 실습</td>
-                  <th style="text-align:center; white-space:nowrap;">활동지</th>
+                  <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                   <td>
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 3, 'student')">
-                        <span>📝 학생용</span>
+                        <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 3, 'teacher')">
-                        <span>💡 교사용</span>
+                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 3)">
+                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
                   </td>
@@ -2841,14 +2838,14 @@ result = job.<span class="c-fn">result</span>()
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
                   <td>단순 상상에 그치지 않고 질소 분자 절단 에너지 절감, 전고체 배터리 화재 방지 등 화학적 메커니즘과 연계하여 기획하도록 지도</td>
-                  <th style="text-align:center; white-space:nowrap;">활동지</th>
+                  <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                   <td>
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 4, 'student')">
-                        <span>📝 학생용</span>
+                        <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 4, 'teacher')">
-                        <span>💡 교사용</span>
+                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 4)">
+                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
                   </td>
@@ -2999,7 +2996,7 @@ result = job.<span class="c-fn">result</span>()
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 지구상의 모든 모래알 수는 약 $10^{23}$개이고, 관측 가능한 우주 전체의 모든 원자 수는 약 $10^{80}$개입니다. 이 사실을 바탕으로, 왜 슈퍼컴퓨터로도 작은 약품 분자 하나를 계산하지 못하는지 '지수 폭발'의 관점에서 서술해 보자.</p>
             <div class="answer-box">
-              ☞ 서술: 
+              <i data-lucide="corner-down-right"></i> 서술: 
             </div>
           </div>
 
@@ -3037,7 +3034,7 @@ result = job.<span class="c-fn">result</span>()
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 미로 찾기를 할 때, 일반 컴퓨터의 탐색 방식과 양자 컴퓨터의 동시 병렬 처리 방식의 차이를 일상적 언어로 비유하여 설명해 보자.</p>
             <div class="answer-box">
-              ☞ 비유 설명: 
+              <i data-lucide="corner-down-right"></i> 비유 설명: 
             </div>
           </div>
 
@@ -3052,7 +3049,7 @@ result = job.<span class="c-fn">result</span>()
               ⬇ 수치 전달<br>
               [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 분자의 결합 각도와 거리를 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )<br>
               ⬇ 반복(루프)<br>
-              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태 도달! → 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
             </div>
           </div>
 
@@ -3087,7 +3084,7 @@ result = job.<span class="c-fn">result</span>()
               <tr>
                 <th>사회적 및 생태적<br>기대 효과</th>
                 <td colspan="3">
-                  ☞ 탄소 배출 저감, 식량난 해결, 난치병 극복 등 기대 효과 서술:
+                  <i data-lucide="corner-down-right"></i> 탄소 배출 저감, 식량난 해결, 난치병 극복 등 기대 효과 서술:
                 </td>
               </tr>
             </table>
@@ -3162,7 +3159,7 @@ result = job.<span class="c-fn">result</span>()
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 슈퍼컴퓨터의 한계와 지수 폭발 서술</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
               분자 속 전자가 1개 늘어날 때마다 계산해야 하는 양자역학적 상태의 수가 2배씩 곱해지는 <strong>'지수 폭발($2^N$)'</strong>이 발생하기 때문입니다. 전자가 100개만 넘어가도 조합의 수가 지구상 모든 모래알의 수($10^{23}$)나 전 우주의 모든 원자 수($10^{80}$)를 아득히 뛰어넘어, 현존하는 가장 강력한 슈퍼컴퓨터로도 화학 분자의 전자 구름을 계산하는 것이 물리적으로 불가능합니다.
             </div>
           </div>
@@ -3202,7 +3199,7 @@ result = job.<span class="c-fn">result</span>()
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 미로 찾기 비유</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
               일반 컴퓨터(비트)는 미로를 탐색할 때 한 사람이 한 갈래 길씩 끝까지 가보고 벽에 막히면 되돌아 나오는 <strong>'순차 탐색'</strong> 방식입니다. 반면 양자 컴퓨터(큐비트)는 중첩의 성질을 이용하여 <strong>1,024명의 분신이 모든 갈래 길을 '동시에 단 한 번에' 쏟아져 들어가서</strong> 출구를 즉각 발견하는 <strong>'동시 병렬 처리'</strong> 방식입니다.
             </div>
           </div>
@@ -3215,7 +3212,7 @@ result = job.<span class="c-fn">result</span>()
             
             <p style="font-size:0.9rem; margin-bottom:0.4rem;"><strong>1. 화학 분자의 결합 상태 빈칸</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
             </div>
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. VQE 협동 순서도 완성</strong></p>
@@ -3224,7 +3221,7 @@ result = job.<span class="c-fn">result</span>()
               ⬇ 수치 전달<br>
               [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <strong class="model-answer">미세 조정(최적화)</strong> )<br>
               ⬇ 반복(피드백 루프)<br>
-              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! → 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
             </div>
           </div>
 
@@ -3271,7 +3268,7 @@ result = job.<span class="c-fn">result</span>()
 
           <!-- 지도상 유의점 및 교사 팁 -->
           <div style="margin-top:2rem;">
-            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;">💡 [지도상 유의점 및 수업 지도 팁]</h3>
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;"><i data-lucide="lightbulb"></i> [지도상 유의점 및 수업 지도 팁]</h3>
             
             <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed;">
               <strong>1. 학생 오개념 지도 요령: "양자 컴퓨터가 나오면 모든 일반 컴퓨터가 사라지나요?"</strong><br>
@@ -3361,7 +3358,7 @@ result = job.<span class="c-fn">result</span>()
           <!-- 본문 섹션 1 -->
           <article style="line-height:1.85; font-size:1rem; color:#334155; margin-bottom:2rem;">
             <h2 style="color:#5b21b6; font-size:1.35rem; margin:1.5rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>🌾 1장. 슈퍼컴퓨터도 무릎 꿇은 분자의 미시세계: 지수 폭발</span>
+              <span><i data-lucide="cpu"></i> 1장. 슈퍼컴퓨터도 무릎 꿇은 분자의 미시세계: 지수 폭발</span>
             </h2>
             <p style="margin-bottom:1rem;">
               옛날 인도의 왕과 지혜로운 학자의 '체스판과 쌀알' 이야기를 아시나요? 첫 번째 칸에 쌀 1톨, 두 번째 칸에 2톨, 세 번째 칸에 4톨… 매 칸마다 2배씩 늘려가면 64번째 칸에는 전 세계 쌀 생산량의 수백 배가 넘는 어마어마한 쌀알이 필요합니다. 거듭제곱의 무서운 힘입니다!
@@ -3374,7 +3371,7 @@ result = job.<span class="c-fn">result</span>()
             </p>
 
             <h2 style="color:#5b21b6; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>🪙 2장. 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트</span>
+              <span><i data-lucide="coins"></i> 2장. 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트</span>
             </h2>
             <p style="margin-bottom:1rem;">
               천재 물리학자 리처드 파인만은 기막힌 아이디어를 냈습니다. <em>"자연의 분자가 양자역학으로 움직인다면, 컴퓨터 자체를 양자역학으로 만들면 되지 않겠는가!"</em> 이렇게 탄생한 것이 바로 <strong>'양자 컴퓨터(Quantum Computer)'</strong>입니다.
@@ -3390,7 +3387,7 @@ result = job.<span class="c-fn">result</span>()
             </p>
 
             <h2 style="color:#5b21b6; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>⛰️ 3장. 환상의 2인 3각 달리기: VQE 알고리즘과 골짜기 바닥 상태</span>
+              <span><i data-lucide="mountain"></i> 3장. 환상의 2인 3각 달리기: VQE 알고리즘과 골짜기 바닥 상태</span>
             </h2>
             <p style="margin-bottom:1rem;">
               가파른 언덕에서 축구공을 굴리면 공은 어디로 굴러가서 멈출까요? 당연히 가장 낮은 골짜기 바닥입니다! 자연계의 모든 원자와 분자도 에너지가 가장 낮고 편안한 <strong>'바닥 상태(Ground State)'</strong>를 찾아 서로 단단하게 결합합니다.
@@ -3407,7 +3404,7 @@ result = job.<span class="c-fn">result</span>()
             </p>
 
             <h2 style="color:#5b21b6; font-size:1.35rem; margin:2rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>🌍 4장. 비커 없는 미래 실험실과 틴에이저 양자 화학 스타트업</span>
+              <span><i data-lucide="globe"></i> 4장. 비커 없는 미래 실험실과 틴에이저 양자 화학 스타트업</span>
             </h2>
             <p style="margin-bottom:1rem;">
               이제 화학은 위험한 폭발 위험과 유독 가스가 가득한 비커와 시험관의 시대를 지나, 컴퓨터 안에서 분자를 시뮬레이션하는 <strong>'양자 계산 화학(Quantum Computational Chemistry)'</strong>의 시대로 진화하고 있습니다.
@@ -3428,7 +3425,7 @@ result = job.<span class="c-fn">result</span>()
           <!-- 중학생 핵심 용어 사전 -->
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-top:2rem;">
             <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
-              <span>📚 중학생 핵심 과학 용어 사전</span>
+              <span><i data-lucide="book-open"></i> 중학생 핵심 과학 용어 사전</span>
             </h3>
 
             <dl style="font-size:0.92rem; line-height:1.75;">
@@ -3469,7 +3466,7 @@ result = job.<span class="c-fn">result</span>()
                 <span class="slide-counter" style="color:#9ca3af; font-size:0.85rem;">1 / 10</span>
                 <div>
                   <button class="topbar-btn" onclick="changeQuantumSlide(-1)">이전</button>
-                  <button class="topbar-btn primary" onclick="changeQuantumSlide(1)">다음 ➔</button>
+                  <button class="topbar-btn primary" onclick="changeQuantumSlide(1)"><span>다음</span> <i data-lucide="arrow-right"></i></button>
                 </div>
               </div>
             </div>
@@ -3565,7 +3562,7 @@ result = job.<span class="c-fn">result</span>()
 
           <!-- 세특 기재 예시 3종 -->
           <div style="margin-top:2rem;">
-            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;">💡 [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;"><i data-lucide="lightbulb"></i> [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
 
             <!-- 예시 1: 우수 학생 -->
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
@@ -4564,15 +4561,15 @@ result = job.<span class="c-fn">result</span>()
   <!-- Slide Deck Data -->
   <script>
     const oledSlideData = [
-      { tag: "1차시 탐구 · [9과10-03]", title: "자외선 형광 탐정단: 일상 속 숨은 빛의 발견", body: "• 토닉워터(퀴닌): 자외선 아래서 선명한 사파이어 파란색 발광<br>• 비타민(리보플라빈): 밝은 형광 연두색 발광<br>• 올리브유(엽록소): 붉은색 형광 발광<br>👉 보이지 않는 자외선을 흡수하여 가시광선 빛을 방출하는 현상" },
-      { tag: "빛의 스펙트럼", title: "빛의 파장과 에너지: 파장이 짧을수록 높은 에너지", body: "• 자외선(300~400nm): 고에너지 광자<br>• 가시광선(400~700nm): 인간의 눈으로 볼 수 있는 색채 영역<br>👉 높은 에너지를 흡수하여 낮은 에너지를 방출할 때, 차이나는 에너지는 어디로 갈까?" },
+      { tag: "1차시 탐구 · [9과10-03]", title: "자외선 형광 탐정단: 일상 속 숨은 빛의 발견", body: "• 토닉워터(퀴닌): 자외선 아래서 선명한 사파이어 파란색 발광<br>• 비타민(리보플라빈): 밝은 형광 연두색 발광<br>• 올리브유(엽록소): 붉은색 형광 발광<br>→ 보이지 않는 자외선을 흡수하여 가시광선 빛을 방출하는 현상" },
+      { tag: "빛의 스펙트럼", title: "빛의 파장과 에너지: 파장이 짧을수록 높은 에너지", body: "• 자외선(300~400nm): 고에너지 광자<br>• 가시광선(400~700nm): 인간의 눈으로 볼 수 있는 색채 영역<br>→ 높은 에너지를 흡수하여 낮은 에너지를 방출할 때, 차이나는 에너지는 어디로 갈까?" },
       { tag: "2차시 탐구 · [9과11-02]", title: "전자의 에너지 준위 전이: 3단계 상태 변화", body: "• 1단계 (흡수): 바닥 상태(1층) 전자가 자외선을 흡수하여 들뜬 상태(3층)로 전이<br>• 2단계 (진동 이완): 분자 진동을 통해 일부 에너지를 열(Heat)로 방출<br>• 3단계 (형광 방출): 남은 에너지를 가시광선 형광빛으로 방출하며 착지" },
       { tag: "[9과14-03] 에너지 보존", title: "스토크스 이동과 에너지 보존의 법칙", body: "<div style='background:#f8fafc; border:1px solid #e2e8f0; padding:1rem; border-radius:4px; text-align:center; color:#0075de; font-size:1.15rem; font-weight:600;'>[ 흡수한 자외선 에너지 ] = [ 방출된 형광빛 에너지 ] + [ 방출된 열에너지 ]</div><br>• 미시세계 전자의 에너지 준위 전이에서도 대자연의 에너지 보존 법칙이 엄격히 성립합니다." },
       { tag: "3차시 탐구 · 스핀 모형", title: "전자의 스핀 다중도: 단일항과 삼중항", body: "• 단일항(Singlet, ↑↓): 반대 방향 스핀 쌍. 1억 분의 1초 만에 바닥 상태로 전이하며 형광 방출<br>• 삼중항(Triplet, ↑↑): 같은 방향 스핀 쌍. 스핀 금지 전이로 인해 상온에서 빛 대신 열 방출<br>• 형광펜(즉시 소광)과 야광 물질(지연 방출)의 근본적 차이" },
-      { tag: "[9과14-02] OLED 난제", title: "스핀 통계 한계: 스마트폰 OLED의 75% 열 손실", body: "• 배터리 전기를 유기 분자에 주입할 때의 양자 스핀 통계 확률<br>• 25%만 단일항이 되어 유용한 빛을 방출<br>• 75%는 삼중항에 갇혀 빛 대신 디스플레이 발열 유발<br>👉 배터리 소모와 발열, 패널 수명 단축의 근본 원인" },
-      { tag: "4차시 탐구 · KAIST 성과", title: "KAIST CPRL의 해결책: 핫 엑시톤 및 역간교차", body: "• 핫 엑시톤(Hot Exciton): 고에너지 삼중항 옥상에서 단일항으로 초고속 역간교차(RISC) 우회로 구축<br>• 분자 진동 모드를 활용한 스핀 반전 촉진<br>👉 버려지던 75% 삼중항 전자를 100% 빛으로 전환하는 기술 완성" },
+      { tag: "[9과14-02] OLED 난제", title: "스핀 통계 한계: 스마트폰 OLED의 75% 열 손실", body: "• 배터리 전기를 유기 분자에 주입할 때의 양자 스핀 통계 확률<br>• 25%만 단일항이 되어 유용한 빛을 방출<br>• 75%는 삼중항에 갇혀 빛 대신 디스플레이 발열 유발<br>→ 배터리 소모와 발열, 패널 수명 단축의 근본 원인" },
+      { tag: "4차시 탐구 · KAIST 성과", title: "KAIST CPRL의 해결책: 핫 엑시톤 및 역간교차", body: "• 핫 엑시톤(Hot Exciton): 고에너지 삼중항 옥상에서 단일항으로 초고속 역간교차(RISC) 우회로 구축<br>• 분자 진동 모드를 활용한 스핀 반전 촉진<br>→ 버려지던 75% 삼중항 전자를 100% 빛으로 전환하는 기술 완성" },
       { tag: "모둠 프로젝트", title: "차세대 청색 OLED 분자 설계 프로젝트", body: "• 청색(Blue)의 난제: 높은 밴드갭 에너지로 분자 결합 손상 및 번인 발생<br>• 탐구 과제: 붕소-질소 다중 공명 결합을 활용한 고효율 청색 발광 분자 설계<br>• 발열 최소화, 배터리 수명 극대화, 차세대 투명 롤러블 디스플레이 구현" },
-      { tag: "단원 총정리", title: "핵심 개념 정리 및 진로 탐색", body: "1. 자외선 흡수 ➔ 진동 완화(열 방출) ➔ 가시광선 형광 방출 (에너지 보존)<br>2. 전자의 스핀 통계: 단일항 25% 발광 vs 삼중항 75% 열 손실<br>3. KAIST 핫 엑시톤 기술을 통한 100% 내부 양자 효율 달성" }
+      { tag: "단원 총정리", title: "핵심 개념 정리 및 진로 탐색", body: "1. 자외선 흡수 → 진동 완화(열 방출) → 가시광선 형광 방출 (에너지 보존)<br>2. 전자의 스핀 통계: 단일항 25% 발광 vs 삼중항 75% 열 손실<br>3. KAIST 핫 엑시톤 기술을 통한 100% 내부 양자 효율 달성" }
     ];
 
     let oCurrentSlide = 1;
@@ -4601,7 +4598,7 @@ result = job.<span class="c-fn">result</span>()
               <span class="slide-counter" style="color:#9ca3af; font-size:0.85rem;">1 / 10</span>
               <div>
                 <button class="topbar-btn" disabled style="opacity:0.5;">이전</button>
-                <button class="topbar-btn primary" onclick="changeOledSlide(1)">다음 ➔</button>
+                <button class="topbar-btn primary" onclick="changeOledSlide(1)"><span>다음</span> <i data-lucide="arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -4619,22 +4616,25 @@ result = job.<span class="c-fn">result</span>()
               <span class="slide-counter" style="color:#9ca3af; font-size:0.85rem;">${oCurrentSlide} / 10</span>
               <div>
                 <button class="topbar-btn" onclick="changeOledSlide(-1)">이전</button>
-                <button class="topbar-btn primary" ${oCurrentSlide === 10 ? 'disabled style="opacity:0.5;"' : ''} onclick="changeOledSlide(1)">다음 ➔</button>
+                <button class="topbar-btn primary" ${oCurrentSlide === 10 ? 'disabled style="opacity:0.5;"' : ''} onclick="changeOledSlide(1)"><span>다음</span> <i data-lucide="arrow-right"></i></button>
               </div>
             </div>
           </div>
         `;
       }
+      if (window.lucide) {
+        try { lucide.createIcons(); } catch(e) {}
+      }
     }
 
     // Quantum Slides Data
     const quantumSlideData = [
-      { tag: "1차시 탐구 · 거듭제곱의 원리", title: "체스판과 쌀알 퀴즈: 거듭제곱의 폭발적 증가", body: "• 1칸 1톨, 2칸 2톨, 3칸 4톨, 4칸 8톨...<br>• 64번째 칸: 2^63 ≈ 922경 톨 (인류 연간 쌀 생산량의 수백 배)<br>👉 2배씩 증가하는 지수 함수는 순식간에 천문학적 규모에 도달합니다." },
-      { tag: "[9과11-01] [9과11-02]", title: "슈퍼컴퓨터의 한계: 분자 속 전자의 지수 폭발", body: "• 물 분자(H2O, 전자 10개): 2^10 = 1,024가지 상태<br>• 카페인(전자 102개): 2^102 ≈ 10^30가지 (지구 전체 모래알 수 초과)<br>• 페니실린(전자 280개): 10^84가지 (관측 가능한 우주 전체 원자 수 초과)<br>👉 기존 컴퓨터로는 작은 의약품 분자 하나도 엄밀 계산 불가" },
+      { tag: "1차시 탐구 · 거듭제곱의 원리", title: "체스판과 쌀알 퀴즈: 거듭제곱의 폭발적 증가", body: "• 1칸 1톨, 2칸 2톨, 3칸 4톨, 4칸 8톨...<br>• 64번째 칸: 2^63 ≈ 922경 톨 (인류 연간 쌀 생산량의 수백 배)<br>→ 2배씩 증가하는 지수 함수는 순식간에 천문학적 규모에 도달합니다." },
+      { tag: "[9과11-01] [9과11-02]", title: "슈퍼컴퓨터의 한계: 분자 속 전자의 지수 폭발", body: "• 물 분자(H2O, 전자 10개): 2^10 = 1,024가지 상태<br>• 카페인(전자 102개): 2^102 ≈ 10^30가지 (지구 전체 모래알 수 초과)<br>• 페니실린(전자 280개): 10^84가지 (관측 가능한 우주 전체 원자 수 초과)<br>→ 기존 컴퓨터로는 작은 의약품 분자 하나도 엄밀 계산 불가" },
       { tag: "2차시 탐구 · [9정01-03]", title: "0과 1이 공존하는 양자 큐비트 중첩", body: "• 고전 비트(Bit): 0 또는 1 중 하나의 상태만 유지<br>• 양자 큐비트(Qubit): 회전하는 동전처럼 0과 1의 상태가 동시에 존재하는 '중첩(Superposition)'<br>• n개의 큐비트는 2^n개의 상태를 동시에 표현 가능" },
       { tag: "동시 병렬 연산", title: "미로 탐색 비교: 순차 탐색 vs 동시 병렬 처리", body: "• 일반 컴퓨터: 1,024개의 경로를 하나씩 차례대로 검증<br>• 양자 컴퓨터: 1,024개의 분신이 모든 경로를 동시에 탐색<br><div style='background:#f8fafc; border:1px solid #e2e8f0; padding:1rem; border-radius:4px; text-align:center; color:#5e5ce6; font-size:1.1rem; font-weight:600; margin-top:1rem;'>큐비트 수가 증가할수록 연산 공간이 지수적으로 확장됩니다.</div>" },
       { tag: "3차시 탐구 · [9과16-01]", title: "골짜기 바닥 상태: 화학 결합과 에너지 최저화", body: "• 경사면에서 굴러 떨어진 공은 가장 낮은 골짜기 바닥에서 정지<br>• 원자와 분자도 에너지가 가장 낮은 '바닥 상태(Ground State)'에서 안정적으로 결합 형성<br>• 결합 형성 시 에너지가 방출되며 결합 거리 유지" },
-      { tag: "[9정02-02] 하이브리드 알고리즘", title: "고전-양자 협력: VQE 알고리즘", body: "• 양자 프로세서: 큐비트 중첩을 이용해 분자 파동함수의 결합 에너지 기댓값 측정<br>• 고전 프로세서: 측정된 에너지를 기반으로 경사하강법을 통해 원자 간 결합 파라미터 갱신<br>👉 두 시스템의 협력 루프를 통해 화학 분자의 최저 바닥 상태 도달" },
+      { tag: "[9정02-02] 하이브리드 알고리즘", title: "고전-양자 협력: VQE 알고리즘", body: "• 양자 프로세서: 큐비트 중첩을 이용해 분자 파동함수의 결합 에너지 기댓값 측정<br>• 고전 프로세서: 측정된 에너지를 기반으로 경사하강법을 통해 원자 간 결합 파라미터 갱신<br>→ 두 시스템의 협력 루프를 통해 화학 분자의 최저 바닥 상태 도달" },
       { tag: "미래 첨단 기술", title: "비커 없는 화학 실험실: 가상 분자 시뮬레이션", body: "• 유독성 시약과 위험한 반응 조건 없이 컴퓨터 내부에서 정밀 분자 합성<br>• 10년 이상 소요되던 신약 개발 및 촉매 스크리닝 기간을 수 주 단위로 단축<br>• 친환경 상온 비료 합성 촉매, 고효율 전고체 배터리 전해질 설계" },
       { tag: "4차시 프로젝트", title: "청소년 양자 화학 스타트업 프로젝트", body: "• 과제 1 (탄소중립): 고에너지가 소모되는 하버-보슈법을 대체할 상온 질소 고정 촉매 설계<br>• 과제 2 (차세대 모빌리티): 화재 위험 없는 전고체 리튬 배터리 고체 전해질 설계<br>• 과제 3 (난치병 극복): 바이러스 표적 단백질에 정확히 결합하는 맞춤형 화합물 도킹 시뮬레이션" },
       { tag: "단원 총정리", title: "핵심 개념 정리 및 진로 전망", body: "1. 전자의 얽힘으로 인한 지수 폭발(2^N)과 슈퍼컴퓨터의 한계<br>2. 회전하는 동전 팽이(큐비트 중첩)를 통한 동시 병렬 처리<br>3. 고전-양자 협업 VQE 알고리즘을 통한 분자 바닥 상태 계산" }
@@ -4666,7 +4666,7 @@ result = job.<span class="c-fn">result</span>()
               <span class="slide-counter" style="color:#9ca3af; font-size:0.85rem;">1 / 10</span>
               <div>
                 <button class="topbar-btn" disabled style="opacity:0.5;">이전</button>
-                <button class="topbar-btn primary" style="background:#5e5ce6; border-color:#5e5ce6;" onclick="changeQuantumSlide(1)">다음 ➔</button>
+                <button class="topbar-btn primary" style="background:#5e5ce6; border-color:#5e5ce6;" onclick="changeQuantumSlide(1)"><span>다음</span> <i data-lucide="arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -4684,14 +4684,18 @@ result = job.<span class="c-fn">result</span>()
               <span class="slide-counter" style="color:#9ca3af; font-size:0.85rem;">${qCurrentSlide} / 10</span>
               <div>
                 <button class="topbar-btn" onclick="changeQuantumSlide(-1)">이전</button>
-                <button class="topbar-btn primary" style="background:#5e5ce6; border-color:#5e5ce6;" ${qCurrentSlide === 10 ? 'disabled style="opacity:0.5;"' : ''} onclick="changeQuantumSlide(1)">다음 ➔</button>
+                <button class="topbar-btn primary" style="background:#5e5ce6; border-color:#5e5ce6;" ${qCurrentSlide === 10 ? 'disabled style="opacity:0.5;"' : ''} onclick="changeQuantumSlide(1)"><span>다음</span> <i data-lucide="arrow-right"></i></button>
               </div>
             </div>
           </div>
         `;
       }
+      if (window.lucide) {
+        try { lucide.createIcons(); } catch(e) {}
+      }
     }
   </script>
   <script src="assets/js/worksheet-modal.js"></script>
+  <script src="assets/js/presentation-modal.js"></script>
 </body>
 </html>

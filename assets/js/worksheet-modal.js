@@ -36,16 +36,16 @@ const worksheetModalData = {
 
         <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인가?</p>
         <div class="answer-box">
-          ☞ 답: 
+          <i data-lucide="corner-down-right"></i> 답: 
         </div>
 
         <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 알록달록 가시광선이 나오는지, 들어간 자외선과 나온 형광 빛의 에너지 차이는 어떻게 되었을지 토의하여 써 보자.</p>
         <div class="answer-box">
-          ☞ 토의 내용: 
+          <i data-lucide="corner-down-right"></i> 토의 내용: 
         </div>
 
         <div class="callout-box callout-danger" style="margin-top:1.2rem; font-size:0.88rem;">
-          <strong>🚨 실험 안전 수칙:</strong> 보안경 착용, 자외선(UV-A)을 눈이나 피부에 비추지 않기. 시약 음용 금지
+          <strong><i data-lucide="alert-triangle"></i> 실험 안전 수칙:</strong> 보안경 착용, 자외선(UV-A)을 눈이나 피부에 비추지 않기. 시약 음용 금지
         </div>
       `,
       teacher: `
@@ -69,18 +69,18 @@ const worksheetModalData = {
 
         <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">2. 파장과 에너지 관계 모범 답안</h4>
         <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-          <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+          <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
           자외선(300~400nm)이 가시광선(400~700nm)보다 파장이 짧고 광자의 에너지가 더 큽니다. (파장이 짧을수록 에너지가 셈)
         </div>
 
         <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">3. 형광 현상과 에너지 보존 모범 답안</h4>
         <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-          <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+          <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
           물질 속 분자가 센 에너지의 자외선을 흡수하여 전자가 들뜬 상태로 점프한 뒤, 분자 진동을 통해 일부 에너지를 <strong>'열'</strong>로 잃어버립니다. 그 후 남은 에너지만을 파장이 더 긴 <strong>'가시광선(형광)'</strong>으로 방출합니다. 차이 나는 에너지는 주변으로 방출된 <strong>열에너지</strong>로 보존됩니다. (스토크스 이동 및 에너지 보존 법칙)
         </div>
 
         <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1rem; font-size:0.88rem;">
-          <strong>💡 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 학생들에게 "왜 토닉워터는 파란색인데 올리브유는 붉은색일까?" 질문하여 분자마다 에너지 계단의 높이 차이가 다름을 자연스럽게 유도하세요.
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 학생들에게 "왜 토닉워터는 파란색인데 올리브유는 붉은색일까?" 질문하여 분자마다 에너지 계단의 높이 차이가 다름을 자연스럽게 유도하세요.
         </div>
       `
     },
@@ -145,11 +145,11 @@ const worksheetModalData = {
 
         <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">2. 에너지 보존 관계식</h4>
         <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; text-align:center; font-size:1rem;">
-          <span class="answer-arrow">☞</span> <strong>[ 흡수한 자외선 에너지 ] = [ <span class="model-answer">방출된 형광빛 에너지</span> ] + [ <span class="model-answer">흘린 열에너지</span> ]</strong>
+          <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>[ 흡수한 자외선 에너지 ] = [ <span class="model-answer">방출된 형광빛 에너지</span> ] + [ <span class="model-answer">흘린 열에너지</span> ]</strong>
         </div>
 
         <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed; margin-top:1rem; font-size:0.88rem;">
-          <strong>💡 수업 지도 팁:</strong> 양자역학의 파동방정식 대신 "1층, 2층, 3층 아파트 계단" 비유를 사용하여 중간 층간(1.5층)에는 전자가 머물 수 없다는 '에너지 양자화' 개념을 직관적으로 이해시킵니다.
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 양자역학의 파동방정식 대신 "1층, 2층, 3층 아파트 계단" 비유를 사용하여 중간 층간(1.5층)에는 전자가 머물 수 없다는 '에너지 양자화' 개념을 직관적으로 이해시킵니다.
         </div>
       `
     },
@@ -199,7 +199,7 @@ const worksheetModalData = {
 
         <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 스마트폰 배터리 전기로 화면을 켤 때 무려 75%의 전자가 빛을 내지 못하고 스마트폰을 뜨겁게 달구는 까닭을 위의 확률과 관련지어 설명해 보자.</p>
         <div class="answer-box">
-          ☞ 까닭: 
+          <i data-lucide="corner-down-right"></i> 까닭: 
         </div>
       `,
       teacher: `
@@ -238,12 +238,12 @@ const worksheetModalData = {
 
         <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">2. 75% 열 손실 모범 답안</h4>
         <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-          <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+          <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
           전기(전류)를 유기 분자에 주입하면 양자역학적 스핀 조합 확률에 의해 단 25%만 즉시 빛을 내는 '단일항'이 되고, 나머지 75%는 빛을 내뿜는 비상문이 잠긴 '삼중항'에 갇히게 됩니다. 이 75%의 전자는 빛을 내지 못하고 분자를 부르르 떨게 만들어 열에너지로 낭비되기 때문에 스마트폰이 뜨거워집니다.
         </div>
 
         <div class="callout-box" style="background:#f8fafc; border-left-color:#059669; margin-top:1rem; font-size:0.88rem;">
-          <strong>💡 수업 지도 팁:</strong> 형광펜(빛을 끄면 즉시 소광)과 야광 스티커(불 꺼도 오래 지속)의 실물 관찰을 통해 단일항(형광)과 삼중항(인광)의 방출 시간 차이를 체감하게 합니다.
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 형광펜(빛을 끄면 즉시 소광)과 야광 스티커(불 꺼도 오래 지속)의 실물 관찰을 통해 단일항(형광)과 삼중항(인광)의 방출 시간 차이를 체감하게 합니다.
         </div>
       `
     },
@@ -283,13 +283,13 @@ const worksheetModalData = {
             <th>75% 구출 메커니즘<br>적용 방안</th>
             <td colspan="3">
               [ 핫 엑시톤 구름다리 우회로 / TADF 열 흡수 역전이 ] 중 선택:<br>
-              ☞ 구출 원리 서술: 
+              <i data-lucide="corner-down-right"></i> 구출 원리 서술: 
             </td>
           </tr>
           <tr>
             <th>미래 사회 기대 효과</th>
             <td colspan="3">
-              ☞ 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
+              <i data-lucide="corner-down-right"></i> 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
             </td>
           </tr>
         </table>
@@ -377,7 +377,7 @@ const worksheetModalData = {
 
         <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 지구상의 모든 모래알 수는 약 10²³개이고, 우주 전체의 모든 원자 수는 약 10⁸⁰개입니다. 이 사실을 바탕으로 왜 슈퍼컴퓨터로도 작은 약품 분자 하나를 계산하지 못하는지 '지수 폭발'의 관점에서 서술해 보자.</p>
         <div class="answer-box">
-          ☞ 서술 내용: 
+          <i data-lucide="corner-down-right"></i> 서술 내용: 
         </div>
       `,
       teacher: `
@@ -402,12 +402,12 @@ const worksheetModalData = {
 
         <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">2. 슈퍼컴퓨터의 한계 서술 모범 답안</h4>
         <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-          <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+          <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
           분자 속 전자가 1개 늘어날 때마다 계산해야 하는 양자역학적 상태의 수가 2배씩 곱해지는 <strong>'지수 폭발(2ᴺ)'</strong>이 발생하기 때문입니다. 전자가 100개만 넘어가도 조합의 수가 전 우주의 모든 원자 수(10⁸⁰)를 아득히 뛰어넘어, 현존하는 가장 강력한 슈퍼컴퓨터로도 계산이 물리적으로 불가능합니다.
         </div>
 
         <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed; margin-top:1rem; font-size:0.88rem;">
-          <strong>💡 수업 지도 팁:</strong> 체스판 쌀알 퀴즈(1칸 1톨, 2칸 2톨... 64번째 칸엔 1800경 톨)를 도입에 제시하여 거듭제곱의 무서운 증가 속도를 직관적으로 체감하게 하세요.
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 체스판 쌀알 퀴즈(1칸 1톨, 2칸 2톨... 64번째 칸엔 1800경 톨)를 도입에 제시하여 거듭제곱의 무서운 증가 속도를 직관적으로 체감하게 하세요.
         </div>
       `
     },
@@ -452,7 +452,7 @@ const worksheetModalData = {
 
         <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 미로 찾기 비유에서 왜 양자 컴퓨터가 슈퍼컴퓨터보다 압도적으로 빠른지 서술해 보자.</p>
         <div class="answer-box">
-          ☞ 서술 내용: 
+          <i data-lucide="corner-down-right"></i> 서술 내용: 
         </div>
       `,
       teacher: `
@@ -486,12 +486,12 @@ const worksheetModalData = {
 
         <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">2. 미로 찾기 비유 모범 답안</h4>
         <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-          <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+          <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
           일반 컴퓨터는 한 갈래 길씩 가보고 막히면 되돌아 나오는 <strong>'순차 탐색'</strong> 방식입니다. 반면 양자 컴퓨터는 중첩의 성질을 이용하여 <strong>1,024명의 분신이 모든 갈래 길을 '동시에 단 한 번에' 쏟아져 들어가서</strong> 최단 경로를 즉각 찾아내는 <strong>'동시 병렬 처리'</strong> 방식이기 때문입니다.
         </div>
 
         <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1rem; font-size:0.88rem;">
-          <strong>💡 수업 지도 팁:</strong> 학생들이 동전을 돌릴 때 떨어지지 않도록 트레이를 사용하고, "도는 동안 앞면인가요 뒷면인가요?"라는 발문으로 측정 전 공존 상태(중첩)를 온몸으로 느끼게 합니다.
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 동전을 돌릴 때 떨어지지 않도록 트레이를 사용하고, "도는 동안 앞면인가요 뒷면인가요?"라는 발문으로 측정 전 공존 상태(중첩)를 온몸으로 느끼게 합니다.
         </div>
       `
     },
@@ -508,7 +508,7 @@ const worksheetModalData = {
 
         <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 자연계의 모든 화학 분자가 결합할 때 나타나는 에너지 특징을 완성해 보자.</p>
         <div class="answer-box">
-          ☞ 자연계의 모든 화학 분자는 에너지가 가장 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 최저 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )를 찾아 결합합니다.
+          <i data-lucide="corner-down-right"></i> 자연계의 모든 화학 분자는 에너지가 가장 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 최저 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )를 찾아 결합합니다.
         </div>
 
         <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 2인 1조 역할극을 바탕으로 양자 컴퓨터와 일반 컴퓨터의 VQE 협동 순서도를 완성해 보자.</p>
@@ -517,13 +517,13 @@ const worksheetModalData = {
           ⬇ 수치 전달<br>
           [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )<br>
           ⬇ 반복(피드백 루프)<br>
-          [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+          [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! <i data-lucide="arrow-right"></i> 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
         </div>
       `,
       teacher: `
         <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">1. 화학 분자의 결합 모범 답안</h4>
         <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-          <span class="answer-arrow">☞</span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
+          <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
         </div>
 
         <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">2. VQE 협동 순서도 모범 답안</h4>
@@ -532,11 +532,11 @@ const worksheetModalData = {
           ⬇ 수치 전달<br>
           [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <strong class="model-answer">미세 조정(최적화)</strong> )<br>
           ⬇ 반복(피드백 루프)<br>
-          [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+          [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! <i data-lucide="arrow-right"></i> 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
         </div>
 
         <div class="callout-box" style="background:#f8fafc; border-left-color:#059669; margin-top:1rem; font-size:0.88rem;">
-          <strong>💡 수업 지도 팁:</strong> 학생 A는 양자 계산기 역할(에너지 계산), 학생 B는 네비게이션 역할(파라미터 조정)을 맡겨 공이 골짜기 바닥으로 굴러 떨어지는 최적화 루프를 온몸으로 체험하게 합니다.
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생 A는 양자 계산기 역할(에너지 계산), 학생 B는 네비게이션 역할(파라미터 조정)을 맡겨 공이 골짜기 바닥으로 굴러 떨어지는 최적화 루프를 온몸으로 체험하게 합니다.
         </div>
       `
     },
@@ -562,18 +562,18 @@ const worksheetModalData = {
           </tr>
           <tr>
             <th>해결할 지구 난제</th>
-            <td colspan="3">[ 친환경 상온 비료 / 전고체 배터리 / 표적 신약 ] 중 선택:<br>☞ 선택 이유:</td>
+            <td colspan="3">[ 친환경 상온 비료 / 전고체 배터리 / 표적 신약 ] 중 선택:<br><i data-lucide="corner-down-right"></i> 선택 이유:</td>
           </tr>
           <tr>
             <th>양자 컴퓨터로 설계할<br>가상 분자 아이디어</th>
             <td colspan="3">
-              ☞ 설계할 촉매, 전해질, 또는 약품 분자의 핵심 원리 서술:
+              <i data-lucide="corner-down-right"></i> 설계할 촉매, 전해질, 또는 약품 분자의 핵심 원리 서술:
             </td>
           </tr>
           <tr>
             <th>사회적 및 생태적<br>기대 효과</th>
             <td colspan="3">
-              ☞ 탄소 중립, 식량난 해결, 질병 극복 등 인류 공헌 효과 서술:
+              <i data-lucide="corner-down-right"></i> 탄소 중립, 식량난 해결, 질병 극복 등 인류 공헌 효과 서술:
             </td>
           </tr>
         </table>
@@ -642,18 +642,22 @@ function ensureWorksheetModalExists() {
           <div class="worksheet-modal-title-wrap">
             <div style="display:flex; align-items:center; gap:0.65rem; flex-wrap:wrap;">
               <h3 id="worksheet-modal-title" class="worksheet-modal-title">활동지</h3>
-              <span id="worksheet-modal-type-badge" class="worksheet-modal-type-badge badge-student">📝 학생용 활동지</span>
+              <span id="worksheet-modal-type-badge" class="worksheet-modal-type-badge badge-student">
+                <i data-lucide="file-text"></i> <span>학생용 활동지</span>
+              </span>
             </div>
           </div>
 
           <div class="worksheet-modal-actions">
             <button type="button" id="modal-mode-toggle-btn" class="modal-toggle-btn" onclick="toggleModalMode()" title="다른 자료로 바로 전환">
-              <span>💡 교사용 보기</span>
+              <i data-lucide="lightbulb"></i> <span>모범답안 보기</span>
             </button>
             <button type="button" class="topbar-btn primary modal-print-btn" onclick="printModalWorksheet()" title="현재 열린 문서를 A4로 인쇄합니다">
-              <span>🖨️ A4 인쇄</span>
+              <i data-lucide="printer"></i> <span>A4 인쇄</span>
             </button>
-            <button type="button" class="modal-close-btn" onclick="closeWorksheetModal()" title="닫기 (ESC)">✕</button>
+            <button type="button" class="modal-close-btn" onclick="closeWorksheetModal()" title="닫기 (ESC)">
+              <i data-lucide="x"></i>
+            </button>
           </div>
         </div>
 
@@ -695,6 +699,10 @@ function openWorksheetModal(moduleType, lessonNum, tabType = 'student') {
   const modalEl = document.getElementById('worksheet-modal');
   modalEl.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 }
 
 function closeWorksheetModal() {
@@ -723,23 +731,27 @@ function setModalMode(tabType) {
     paneTeacher.classList.remove('active');
     if (typeBadge) {
       typeBadge.className = 'worksheet-modal-type-badge badge-student';
-      typeBadge.innerText = '📝 학생용 활동지';
+      typeBadge.innerHTML = '<i data-lucide="file-text"></i> <span>학생용 활동지</span>';
     }
     if (toggleBtn) {
       toggleBtn.className = 'modal-toggle-btn to-teacher';
-      toggleBtn.innerHTML = '<span>💡 교사용 보기</span>';
+      toggleBtn.innerHTML = '<i data-lucide="lightbulb"></i> <span>모범답안 보기</span>';
     }
   } else {
     paneTeacher.classList.add('active');
     paneStudent.classList.remove('active');
     if (typeBadge) {
       typeBadge.className = 'worksheet-modal-type-badge badge-teacher';
-      typeBadge.innerText = '💡 교사용 지도자료';
+      typeBadge.innerHTML = '<i data-lucide="lightbulb"></i> <span>교사용 모범답안</span>';
     }
     if (toggleBtn) {
       toggleBtn.className = 'modal-toggle-btn to-student';
-      toggleBtn.innerHTML = '<span>📝 학생용 활동지 보기</span>';
+      toggleBtn.innerHTML = '<i data-lucide="file-text"></i> <span>학생용 보기</span>';
     }
+  }
+
+  if (window.lucide) {
+    lucide.createIcons();
   }
 }
 

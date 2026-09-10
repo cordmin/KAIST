@@ -47,6 +47,7 @@
       overflow: hidden;
     }
   </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -58,12 +59,12 @@
     <main class="main-content">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
-          <span class="current-view-title">🧪 [가상실험실] 큐비트 중첩 & VQE 알고리즘 시뮬레이터</span>
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+          <span class="current-view-title"><i data-lucide="flask-conical"></i> [가상실험실] 큐비트 중첩 & VQE 알고리즘 시뮬레이터</span>
         </div>
         <div class="topbar-actions">
-          <a href="worksheet.html" class="topbar-btn">📝 활동지 작성하기</a>
-          <button class="topbar-btn primary" style="background:#7c3aed; border-color:#7c3aed;" onclick="toggleFullScreen()">🖥️ 전체화면</button>
+          <a href="worksheet.html" class="topbar-btn"><i data-lucide="file-text"></i> <span>활동지 작성하기</span></a>
+          <button class="topbar-btn primary" style="background:#7c3aed; border-color:#7c3aed;" onclick="toggleFullScreen()"><i data-lucide="maximize-2"></i> <span>전체화면</span></button>
         </div>
       </header>
 
@@ -72,7 +73,7 @@
         <!-- 실험 1: 큐비트 중첩 시뮬레이터 -->
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">🪙 [가상 실험 1] 0과 1이 공존하는 동전 팽이와 양자 큐비트 중첩</h2>
+            <h2 class="card-title"><i data-lucide="coins"></i> [가상 실험 1] 0과 1이 공존하는 동전 팽이와 양자 큐비트 중첩</h2>
             <span class="badge" style="background:#f5f3ff; color:#6d28d9;">성취기준 [9정01-03] [9과01-02]</span>
           </div>
           <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem;">
@@ -85,9 +86,9 @@
               <input type="range" id="theta-slider" min="0" max="180" value="90" oninput="updateQubitAngle()" style="width:180px; cursor:pointer;">
               <span id="theta-val" style="font-weight:700; color:#ddd6fe; min-width:50px;">90° (50:50 중첩)</span>
 
-              <button class="lab-btn" onclick="spinCoin()">🌀 동전 팽이 돌리기!</button>
-              <button class="lab-btn green" onclick="measureQubit100()">📊 100회 연속 측정</button>
-              <button class="lab-btn orange" onclick="resetLab1()">🔄 초기화</button>
+              <button class="lab-btn" onclick="spinCoin()"><i data-lucide="loader-2"></i> <span>동전 팽이 돌리기!</span></button>
+              <button class="lab-btn green" onclick="measureQubit100()"><i data-lucide="bar-chart-2"></i> <span>100회 연속 측정</span></button>
+              <button class="lab-btn orange" onclick="resetLab1()"><i data-lucide="rotate-ccw"></i> <span>초기화</span></button>
             </div>
 
             <div class="canvas-container">
@@ -99,7 +100,7 @@
         <!-- 실험 2: 2인 3각 VQE 알고리즘 시뮬레이터 -->
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">⛰️ [가상 실험 2] 환상의 2인 3각 VQE: 화학 결합의 최저 바닥 상태 찾기</h2>
+            <h2 class="card-title"><i data-lucide="mountain"></i> [가상 실험 2] 환상의 2인 3각 VQE: 화학 결합의 최저 바닥 상태 찾기</h2>
             <span class="badge" style="background:#ecfdf5; color:#047857;">성취기준 [9과16-01] [9과16-06] [9정02-02]</span>
           </div>
           <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem;">
@@ -112,8 +113,8 @@
               <input type="range" id="dist-slider" min="30" max="250" value="180" oninput="manualDistanceChange()" style="width:180px; cursor:pointer;">
               <span id="dist-val" style="font-weight:700; color:#60a5fa; min-width:80px;">1.80 Å</span>
 
-              <button class="lab-btn green" id="btn-vqe" onclick="runVQE()">🚀 VQE 자동 최적화 루프 실행</button>
-              <button class="lab-btn orange" onclick="resetLab2()">🔄 초기화</button>
+              <button class="lab-btn green" id="btn-vqe" onclick="runVQE()"><i data-lucide="rocket"></i> <span>VQE 자동 최적화 루프 실행</span></button>
+              <button class="lab-btn orange" onclick="resetLab2()"><i data-lucide="rotate-ccw"></i> <span>초기화</span></button>
 
               <div style="margin-left:auto; display:flex; gap:1.5rem; font-weight:700;">
                 <span style="color:#ddd6fe;">현재 결합 에너지: <span id="energy-val" style="font-size:1.2rem;">-0.850 a.u.</span></span>
@@ -243,7 +244,7 @@
       ctx1.strokeStyle = '#475569'; ctx1.strokeRect(bx, by, 270, 240);
 
       ctx1.fillStyle = '#f8fafc'; ctx1.font = 'bold 15px Pretendard';
-      ctx1.fillText('📊 양자 측정 결과 (총 100회)', bx + 35, by + 30);
+      ctx1.fillText('[양자 측정 결과 (총 100회)]', bx + 35, by + 30);
 
       // Bar 0
       ctx1.fillStyle = '#60a5fa';
@@ -294,7 +295,7 @@
     function runVQE() {
       if (isVQERunning) return;
       isVQERunning = true;
-      document.getElementById('vqe-status').innerText = '🤖 2인 3각 최적화 루프 실행 중...';
+      document.getElementById('vqe-status').innerText = '2인 3각 최적화 루프 실행 중...';
       document.getElementById('btn-vqe').disabled = true;
 
       const targetDist = 0.74;
@@ -310,7 +311,7 @@
           clearInterval(interval);
           isVQERunning = false;
           document.getElementById('btn-vqe').disabled = false;
-          document.getElementById('vqe-status').innerText = '🎉 최저 바닥 상태 도달! (-1.137 a.u.) 화학 결합 완성!';
+          document.getElementById('vqe-status').innerText = '최저 바닥 상태 도달! (-1.137 a.u.) 화학 결합 완성!';
         }
       }, 80);
     }
@@ -382,7 +383,7 @@
       const minX = gx + 40 + (0.74 - 0.3) / 2.2 * (gw - 70);
       const minY = gy + gh - 30 - (((-1.137) - (-1.2)) / 1.5) * (gh - 60);
       ctx2.fillStyle = '#10b981';
-      ctx2.fillText('★ 최저 바닥 상태 (0.74Å, -1.137 a.u.)', minX - 70, minY + 25);
+      ctx2.fillText('최저 바닥 상태 (0.74Å, -1.137 a.u.)', minX - 70, minY + 25);
 
       // Draw Current Ball on Curve
       const curX = gx + 40 + (currentDist - 0.3) / 2.2 * (gw - 70);
@@ -399,6 +400,11 @@
     }
     updateVQEInfo();
     drawLab2();
+  </script>
+  <script>
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch(e) {}
+    }
   </script>
 </body>
 </html>

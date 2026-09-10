@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[학생 활동지] 양자 컴퓨터와 계산 화학의 미래 - KAIST 첨단과학 탐구</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -16,12 +17,12 @@
     <main class="main-content">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
-          <span class="current-view-title">📝 [학생 활동지] 양자 컴퓨터와 계산 화학의 미래</span>
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+          <span class="current-view-title"><i data-lucide="file-text"></i> [학생 활동지] 양자 컴퓨터와 계산 화학의 미래</span>
         </div>
         <div class="topbar-actions">
-          <a href="teacher-guide.html" class="topbar-btn">💡 교사도움자료(정답) 보기</a>
-          <button class="topbar-btn primary" onclick="window.print()">🖨️ 활동지 A4 인쇄</button>
+          <a href="teacher-guide.html" class="topbar-btn"><i data-lucide="lightbulb"></i> <span>교사도움자료(정답) 보기</span></a>
+          <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>활동지 A4 인쇄</span></button>
         </div>
       </header>
 
@@ -139,7 +140,7 @@
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 지구상의 모든 모래알 수는 약 $10^{23}$개이고, 관측 가능한 우주 전체의 모든 원자 수는 약 $10^{80}$개입니다. 이 사실을 바탕으로, 왜 슈퍼컴퓨터로도 작은 약품 분자 하나를 계산하지 못하는지 '지수 폭발'의 관점에서 서술해 보자.</p>
             <div class="answer-box">
-              ☞ 서술: 
+              <i data-lucide="corner-down-right"></i> 서술: 
             </div>
           </div>
 
@@ -177,7 +178,7 @@
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 미로 찾기를 할 때, 일반 컴퓨터의 탐색 방식과 양자 컴퓨터의 동시 병렬 처리 방식의 차이를 일상적 언어로 비유하여 설명해 보자.</p>
             <div class="answer-box">
-              ☞ 비유 설명: 
+              <i data-lucide="corner-down-right"></i> 비유 설명: 
             </div>
           </div>
 
@@ -192,7 +193,7 @@
               ⬇ 수치 전달<br>
               [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 분자의 결합 각도와 거리를 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )<br>
               ⬇ 반복(루프)<br>
-              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태 도달! → 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
             </div>
           </div>
 
@@ -227,7 +228,7 @@
               <tr>
                 <th>사회적 및 생태적<br>기대 효과</th>
                 <td colspan="3">
-                  ☞ 탄소 배출 저감, 식량난 해결, 난치병 극복 등 기대 효과 서술:
+                  <i data-lucide="corner-down-right"></i> 탄소 배출 저감, 식량난 해결, 난치병 극복 등 기대 효과 서술:
                 </td>
               </tr>
             </table>
@@ -250,6 +251,11 @@
   <script src="../assets/js/sidebar.js"></script>
   <script>
     renderSidebar('quantum', 'worksheet');
+  </script>
+  <script>
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch(e) {}
+    }
   </script>
 </body>
 </html>

@@ -1637,3 +1637,1069 @@ h3.sub-heading {
   }
 }
 
+/* ==========================================================================
+   Lucide Icons Standard Integration
+   ========================================================================== */
+.lucide,
+svg.lucide {
+  width: 1.15em;
+  height: 1.15em;
+  display: inline-block;
+  vertical-align: -0.18em;
+  stroke-width: 2.2;
+}
+
+.topbar-btn .lucide,
+.lab-btn .lucide,
+.sim-btn .lucide,
+.modal-toggle-btn .lucide,
+.btn-worksheet-teacher .lucide,
+.modal-action-btn .lucide {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.15em;
+  margin-right: 0.2rem;
+}
+
+.sidebar-toggle-btn .lucide {
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: -0.2em;
+  margin: 0;
+}
+
+.meta-icon .lucide,
+.meta-icon svg.lucide {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  color: #38bdf8;
+}
+
+.answer-arrow .lucide,
+.answer-arrow svg.lucide {
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.18em;
+  color: #e11d48;
+}
+
+/* ==========================================================================
+   Presentation Modal & Button Styles
+   ========================================================================== */
+.btn-presentation {
+  background: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(124, 58, 237, 0.3) !important;
+  box-shadow: 0 1px 3px rgba(124, 58, 237, 0.25);
+  transition: all 0.15s ease;
+}
+
+.btn-presentation:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 100%) !important;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.4);
+  transform: translateY(-1px);
+}
+
+.presentation-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.presentation-modal.open {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+
+.presentation-modal-window {
+  width: 92vw;
+  max-width: 1040px;
+  height: 86vh;
+  max-height: 740px;
+  background: #0b0f19;
+  color: #f8fafc;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.presentation-modal-header {
+  padding: 0.9rem 1.4rem;
+  background: #111827;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pres-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pres-modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0;
+}
+
+.badge-purple {
+  background: rgba(124, 58, 237, 0.2);
+  color: #c4b5fd;
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pres-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pres-btn-fullscreen {
+  background: #1e293b !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.pres-btn-fullscreen:hover {
+  background: #0f172a !important;
+  border-color: #38bdf8 !important;
+}
+
+.presentation-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top right, #172554, #0b0f19 70%);
+}
+
+.presentation-slide-screen {
+  width: 100%;
+  max-width: 920px;
+}
+
+.pres-slide-card {
+  background: rgba(17, 24, 39, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2.2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.pres-slide-tag {
+  display: inline-block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.15);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.pres-slide-heading {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.35;
+}
+
+.pres-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.pres-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.pres-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.pres-card.pres-highlight {
+  border-color: rgba(99, 102, 241, 0.5);
+  background: rgba(99, 102, 241, 0.12);
+}
+
+.pres-card.pres-danger {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.pres-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #93c5fd;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pres-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.pres-list li {
+  margin-bottom: 0.45rem;
+}
+
+.pres-badge-box {
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #e2e8f0;
+}
+
+.pres-steps-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.pres-step-box {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.step-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #38bdf8;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.step-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.pres-step-arrow {
+  display: flex;
+  align-items: center;
+  color: #64748b;
+}
+
+.pres-equation-card {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.6), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.eq-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #93c5fd;
+  margin-bottom: 0.5rem;
+}
+
+.eq-formula {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.pres-callout {
+  background: rgba(30, 41, 59, 0.7);
+  border-left: 4px solid #3b82f6;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.pres-callout.pres-danger {
+  border-left-color: #ef4444;
+}
+
+.pres-subpixel {
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pres-subpixel.sub-red { border-top: 4px solid #ef4444; }
+.pres-subpixel.sub-green { border-top: 4px solid #22c55e; }
+.pres-subpixel.sub-blue { border-top: 4px solid #3b82f6; background: rgba(59, 130, 246, 0.12); }
+
+.pres-subpixel .sub-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.presentation-modal-footer {
+  padding: 0.75rem 1.4rem;
+  background: #111827;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pres-slide-counter {
+  color: #94a3b8;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.pres-nav-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   Presentation Modal - Fullscreen Mode Optimization (TV / 빔프로젝터 / 전자칠판)
+   ========================================================================== */
+
+/* Fullscreen Window */
+.presentation-modal-window:fullscreen,
+.presentation-modal-window:-webkit-full-screen,
+.presentation-modal-window.is-fullscreen,
+.presentation-modal.fullscreen-active .presentation-modal-window,
+body.presentation-fullscreen-mode .presentation-modal-window {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: #090d16 !important;
+}
+
+/* Header & Footer in Fullscreen */
+.is-fullscreen .presentation-modal-header,
+:fullscreen .presentation-modal-header,
+:-webkit-full-screen .presentation-modal-header,
+.presentation-modal.fullscreen-active .presentation-modal-header,
+body.presentation-fullscreen-mode .presentation-modal-header {
+  padding: 1.1rem 2.5rem !important;
+  background: #0f172a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.is-fullscreen .pres-modal-title,
+:fullscreen .pres-modal-title,
+:-webkit-full-screen .pres-modal-title,
+.presentation-modal.fullscreen-active .pres-modal-title,
+body.presentation-fullscreen-mode .pres-modal-title {
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+}
+
+.is-fullscreen .badge-purple,
+:fullscreen .badge-purple,
+:-webkit-full-screen .badge-purple,
+.presentation-modal.fullscreen-active .badge-purple,
+body.presentation-fullscreen-mode .badge-purple {
+  font-size: 0.95rem !important;
+  padding: 0.35rem 0.85rem !important;
+}
+
+.is-fullscreen .pres-btn-fullscreen,
+:fullscreen .pres-btn-fullscreen,
+:-webkit-full-screen .pres-btn-fullscreen,
+.presentation-modal.fullscreen-active .pres-btn-fullscreen,
+body.presentation-fullscreen-mode .pres-btn-fullscreen {
+  font-size: 1rem !important;
+  padding: 0.5rem 1.1rem !important;
+}
+
+.is-fullscreen .presentation-modal-footer,
+:fullscreen .presentation-modal-footer,
+:-webkit-full-screen .presentation-modal-footer,
+.presentation-modal.fullscreen-active .presentation-modal-footer,
+body.presentation-fullscreen-mode .presentation-modal-footer {
+  padding: 1rem 2.5rem !important;
+  background: #0f172a !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.is-fullscreen .pres-slide-counter,
+:fullscreen .pres-slide-counter,
+:-webkit-full-screen .pres-slide-counter,
+.presentation-modal.fullscreen-active .pres-slide-counter,
+body.presentation-fullscreen-mode .pres-slide-counter {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+}
+
+.is-fullscreen .pres-nav-btns .topbar-btn,
+:fullscreen .pres-nav-btns .topbar-btn,
+:-webkit-full-screen .pres-nav-btns .topbar-btn,
+.presentation-modal.fullscreen-active .pres-nav-btns .topbar-btn,
+body.presentation-fullscreen-mode .pres-nav-btns .topbar-btn {
+  font-size: 1.15rem !important;
+  padding: 0.6rem 1.6rem !important;
+  border-radius: 8px !important;
+}
+
+/* Body & Slide Container in Fullscreen */
+.is-fullscreen .presentation-modal-body,
+:fullscreen .presentation-modal-body,
+:-webkit-full-screen .presentation-modal-body,
+.presentation-modal.fullscreen-active .presentation-modal-body,
+body.presentation-fullscreen-mode .presentation-modal-body {
+  padding: 2.5vh 3.5vw !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: radial-gradient(circle at 50% 30%, #1e293b 0%, #0b0f19 80%) !important;
+}
+
+.is-fullscreen .presentation-slide-screen,
+:fullscreen .presentation-slide-screen,
+:-webkit-full-screen .presentation-slide-screen,
+.presentation-modal.fullscreen-active .presentation-slide-screen,
+body.presentation-fullscreen-mode .presentation-slide-screen {
+  width: 95vw !important;
+  max-width: 1560px !important;
+  margin: 0 auto !important;
+}
+
+.is-fullscreen .pres-slide-card,
+:fullscreen .pres-slide-card,
+:-webkit-full-screen .pres-slide-card,
+.presentation-modal.fullscreen-active .pres-slide-card,
+body.presentation-fullscreen-mode .pres-slide-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: clamp(2.2rem, 3.8vh, 3.8rem) clamp(2.8rem, 4.2vw, 4.5rem) !important;
+  border-radius: 20px !important;
+  background: rgba(15, 23, 42, 0.94) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65) !important;
+  min-height: clamp(520px, 70vh, 820px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* Tag & Big Heading */
+.is-fullscreen .pres-slide-tag,
+:fullscreen .pres-slide-tag,
+:-webkit-full-screen .pres-slide-tag,
+.presentation-modal.fullscreen-active .pres-slide-tag,
+body.presentation-fullscreen-mode .pres-slide-tag {
+  font-size: clamp(1rem, 1.2vw, 1.25rem) !important;
+  padding: 0.4rem 1.1rem !important;
+  border-radius: 8px !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.is-fullscreen .pres-slide-heading,
+:fullscreen .pres-slide-heading,
+:-webkit-full-screen .pres-slide-heading,
+.presentation-modal.fullscreen-active .pres-slide-heading,
+body.presentation-fullscreen-mode .pres-slide-heading {
+  font-size: clamp(2.2rem, 2.8vw, 3rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  margin-bottom: 2rem !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Grids in Fullscreen */
+.is-fullscreen .pres-grid-2,
+:fullscreen .pres-grid-2,
+:-webkit-full-screen .pres-grid-2,
+.presentation-modal.fullscreen-active .pres-grid-2,
+body.presentation-fullscreen-mode .pres-grid-2 {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: clamp(1.5rem, 2.2vw, 2.5rem) !important;
+}
+
+.is-fullscreen .pres-grid-3,
+:fullscreen .pres-grid-3,
+:-webkit-full-screen .pres-grid-3,
+.presentation-modal.fullscreen-active .pres-grid-3,
+body.presentation-fullscreen-mode .pres-grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: clamp(1.2rem, 1.8vw, 2rem) !important;
+}
+
+/* Content Cards */
+.is-fullscreen .pres-card,
+:fullscreen .pres-card,
+:-webkit-full-screen .pres-card,
+.presentation-modal.fullscreen-active .pres-card,
+body.presentation-fullscreen-mode .pres-card {
+  padding: clamp(1.5rem, 2vh, 2.2rem) clamp(1.6rem, 2vw, 2.4rem) !important;
+  font-size: clamp(1.15rem, 1.45vw, 1.4rem) !important;
+  line-height: 1.8 !important;
+  border-radius: 14px !important;
+}
+
+.is-fullscreen .pres-card p,
+:fullscreen .pres-card p,
+:-webkit-full-screen .pres-card p,
+.presentation-modal.fullscreen-active .pres-card p,
+body.presentation-fullscreen-mode .pres-card p {
+  font-size: clamp(1.15rem, 1.45vw, 1.4rem) !important;
+  line-height: 1.8 !important;
+}
+
+.is-fullscreen .pres-card-title,
+:fullscreen .pres-card-title,
+:-webkit-full-screen .pres-card-title,
+.presentation-modal.fullscreen-active .pres-card-title,
+body.presentation-fullscreen-mode .pres-card-title {
+  font-size: clamp(1.35rem, 1.7vw, 1.75rem) !important;
+  font-weight: 800 !important;
+  margin-bottom: 1.2rem !important;
+  gap: 0.6rem !important;
+}
+
+.is-fullscreen .pres-card-title svg,
+.is-fullscreen .pres-card-title i,
+:fullscreen .pres-card-title svg,
+:fullscreen .pres-card-title i,
+:-webkit-full-screen .pres-card-title svg,
+:-webkit-full-screen .pres-card-title i,
+.presentation-modal.fullscreen-active .pres-card-title svg,
+.presentation-modal.fullscreen-active .pres-card-title i,
+body.presentation-fullscreen-mode .pres-card-title svg,
+body.presentation-fullscreen-mode .pres-card-title i {
+  width: 1.5em !important;
+  height: 1.5em !important;
+}
+
+/* Lists */
+.is-fullscreen .pres-list,
+:fullscreen .pres-list,
+:-webkit-full-screen .pres-list,
+.presentation-modal.fullscreen-active .pres-list,
+body.presentation-fullscreen-mode .pres-list {
+  padding-left: 1.5rem !important;
+}
+
+.is-fullscreen .pres-list li,
+:fullscreen .pres-list li,
+:-webkit-full-screen .pres-list li,
+.presentation-modal.fullscreen-active .pres-list li,
+body.presentation-fullscreen-mode .pres-list li {
+  font-size: clamp(1.15rem, 1.4vw, 1.38rem) !important;
+  line-height: 1.8 !important;
+  margin-bottom: 0.85rem !important;
+}
+
+/* Callout */
+.is-fullscreen .pres-callout,
+:fullscreen .pres-callout,
+:-webkit-full-screen .pres-callout,
+.presentation-modal.fullscreen-active .pres-callout,
+body.presentation-fullscreen-mode .pres-callout {
+  padding: 1.4rem 1.8rem !important;
+  font-size: clamp(1.15rem, 1.4vw, 1.38rem) !important;
+  line-height: 1.75 !important;
+  border-left-width: 6px !important;
+  border-radius: 0 12px 12px 0 !important;
+  margin-top: 1.8rem !important;
+  gap: 0.8rem !important;
+}
+
+.is-fullscreen .pres-callout svg,
+.is-fullscreen .pres-callout i,
+:fullscreen .pres-callout svg,
+:fullscreen .pres-callout i,
+:-webkit-full-screen .pres-callout svg,
+:-webkit-full-screen .pres-callout i,
+.presentation-modal.fullscreen-active .pres-callout svg,
+.presentation-modal.fullscreen-active .pres-callout i,
+body.presentation-fullscreen-mode .pres-callout svg,
+body.presentation-fullscreen-mode .pres-callout i {
+  width: 1.6em !important;
+  height: 1.6em !important;
+}
+
+/* Equation Card */
+.is-fullscreen .pres-equation-card,
+:fullscreen .pres-equation-card,
+:-webkit-full-screen .pres-equation-card,
+.presentation-modal.fullscreen-active .pres-equation-card,
+body.presentation-fullscreen-mode .pres-equation-card {
+  padding: 1.8rem 2.2rem !important;
+  border-radius: 14px !important;
+}
+
+.is-fullscreen .eq-title,
+:fullscreen .eq-title,
+:-webkit-full-screen .eq-title,
+.presentation-modal.fullscreen-active .eq-title,
+body.presentation-fullscreen-mode .eq-title {
+  font-size: clamp(1.1rem, 1.35vw, 1.35rem) !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.is-fullscreen .eq-formula,
+:fullscreen .eq-formula,
+:-webkit-full-screen .eq-formula,
+.presentation-modal.fullscreen-active .eq-formula,
+body.presentation-fullscreen-mode .eq-formula {
+  font-size: clamp(1.6rem, 2.2vw, 2.4rem) !important;
+  font-weight: 800 !important;
+}
+
+/* Steps Row */
+.is-fullscreen .pres-steps-row,
+:fullscreen .pres-steps-row,
+:-webkit-full-screen .pres-steps-row,
+.presentation-modal.fullscreen-active .pres-steps-row,
+body.presentation-fullscreen-mode .pres-steps-row {
+  gap: 1.25rem !important;
+}
+
+.is-fullscreen .pres-step-box,
+:fullscreen .pres-step-box,
+:-webkit-full-screen .pres-step-box,
+.presentation-modal.fullscreen-active .pres-step-box,
+body.presentation-fullscreen-mode .pres-step-box {
+  padding: 1.5rem !important;
+  border-radius: 12px !important;
+}
+
+.is-fullscreen .step-num,
+:fullscreen .step-num,
+:-webkit-full-screen .step-num,
+.presentation-modal.fullscreen-active .step-num,
+body.presentation-fullscreen-mode .step-num {
+  font-size: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.is-fullscreen .step-title,
+:fullscreen .step-title,
+:-webkit-full-screen .step-title,
+.presentation-modal.fullscreen-active .step-title,
+body.presentation-fullscreen-mode .step-title {
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem) !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.is-fullscreen .pres-step-box p,
+.is-fullscreen .pres-step-box ul,
+:fullscreen .pres-step-box p,
+:fullscreen .pres-step-box ul,
+:-webkit-full-screen .pres-step-box p,
+:-webkit-full-screen .pres-step-box ul,
+.presentation-modal.fullscreen-active .pres-step-box p,
+.presentation-modal.fullscreen-active .pres-step-box ul,
+body.presentation-fullscreen-mode .pres-step-box p,
+body.presentation-fullscreen-mode .pres-step-box ul {
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem) !important;
+  line-height: 1.7 !important;
+}
+
+/* Subpixel Cards */
+.is-fullscreen .pres-subpixel,
+:fullscreen .pres-subpixel,
+:-webkit-full-screen .pres-subpixel,
+.presentation-modal.fullscreen-active .pres-subpixel,
+body.presentation-fullscreen-mode .pres-subpixel {
+  padding: 1.6rem !important;
+  border-radius: 12px !important;
+}
+
+.is-fullscreen .pres-subpixel .sub-title,
+:fullscreen .pres-subpixel .sub-title,
+:-webkit-full-screen .pres-subpixel .sub-title,
+.presentation-modal.fullscreen-active .pres-subpixel .sub-title,
+body.presentation-fullscreen-mode .pres-subpixel .sub-title {
+  font-size: clamp(1.3rem, 1.6vw, 1.6rem) !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.is-fullscreen .pres-subpixel p,
+.is-fullscreen .pres-subpixel ul,
+:fullscreen .pres-subpixel p,
+:fullscreen .pres-subpixel ul,
+:-webkit-full-screen .pres-subpixel p,
+:-webkit-full-screen .pres-subpixel ul,
+.presentation-modal.fullscreen-active .pres-subpixel p,
+.presentation-modal.fullscreen-active .pres-subpixel ul,
+body.presentation-fullscreen-mode .pres-subpixel p,
+body.presentation-fullscreen-mode .pres-subpixel ul {
+  font-size: clamp(1.1rem, 1.35vw, 1.3rem) !important;
+  line-height: 1.7 !important;
+}
+
+/* Badge Box */
+.is-fullscreen .pres-badge-box,
+:fullscreen .pres-badge-box,
+:-webkit-full-screen .pres-badge-box,
+.presentation-modal.fullscreen-active .pres-badge-box,
+body.presentation-fullscreen-mode .pres-badge-box {
+  padding: 1.2rem 1.6rem !important;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem) !important;
+  border-radius: 10px !important;
+}
+
+/* Pie / Charts */
+.is-fullscreen .pres-pie-legend,
+:fullscreen .pres-pie-legend,
+:-webkit-full-screen .pres-pie-legend,
+.presentation-modal.fullscreen-active .pres-pie-legend,
+body.presentation-fullscreen-mode .pres-pie-legend {
+  font-size: clamp(1.15rem, 1.45vw, 1.4rem) !important;
+  gap: 1.5rem !important;
+}
+
+.is-fullscreen .leg-item,
+:fullscreen .leg-item,
+:-webkit-full-screen .leg-item,
+.presentation-modal.fullscreen-active .leg-item,
+body.presentation-fullscreen-mode .leg-item {
+  font-size: clamp(1.15rem, 1.45vw, 1.4rem) !important;
+}
+
+.is-fullscreen .dot,
+:fullscreen .dot,
+:-webkit-full-screen .dot,
+.presentation-modal.fullscreen-active .dot,
+body.presentation-fullscreen-mode .dot {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* ==========================================================================
+   Presentation Extension: Lab Tools, Safety, Answers & Multi-Lesson Tabs
+   ========================================================================== */
+
+/* Tools Visual Layout */
+.pres-tool-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.pres-tool-img-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #0f172a;
+}
+
+.pres-tool-img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.pres-tool-img-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0));
+  padding: 1.5rem 1rem 0.6rem 1rem;
+  font-size: 0.85rem;
+  color: #93c5fd;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pres-tool-tag-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pres-tool-item {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pres-tool-item.quantum-accent {
+  border-left-color: #8b5cf6;
+}
+
+.pres-tool-item-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pres-tool-item.quantum-accent .pres-tool-item-icon {
+  background: rgba(139, 92, 246, 0.2);
+  color: #c084fc;
+}
+
+.pres-tool-name {
+  font-weight: 700;
+  color: #f8fafc;
+  font-size: 0.98rem;
+}
+
+.pres-tool-desc {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-top: 0.15rem;
+}
+
+/* Safety Grid */
+.pres-safety-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.pres-safety-card {
+  background: rgba(30, 41, 59, 0.85);
+  border-radius: 12px;
+  padding: 1.4rem 1.2rem;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pres-safety-card.safe-blue {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.pres-safety-card.safe-amber {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.pres-safety-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.pres-safety-card.safe-blue .pres-safety-icon {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.pres-safety-card.safe-amber .pres-safety-icon {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.pres-safety-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.pres-safety-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+/* Observation & Answer Table for Presentation */
+.pres-table-wrap {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  overflow: hidden;
+}
+
+.pres-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.pres-table th {
+  background: rgba(30, 41, 59, 0.95);
+  color: #93c5fd;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  white-space: nowrap;
+}
+
+.pres-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  color: #e2e8f0;
+}
+
+.pres-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pres-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pres-ans-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.pres-ans-text {
+  color: #fde047;
+  font-weight: 700;
+}
+
+/* Fullscreen adjustments for tools, tables & safety */
+.is-fullscreen .pres-tool-img,
+:fullscreen .pres-tool-img,
+:-webkit-full-screen .pres-tool-img,
+.presentation-modal.fullscreen-active .pres-tool-img,
+body.presentation-fullscreen-mode .pres-tool-img {
+  height: clamp(260px, 32vh, 380px) !important;
+}
+
+.is-fullscreen .pres-table,
+:fullscreen .pres-table,
+:-webkit-full-screen .pres-table,
+.presentation-modal.fullscreen-active .pres-table,
+body.presentation-fullscreen-mode .pres-table {
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem) !important;
+}
+
+.is-fullscreen .pres-safety-title,
+:fullscreen .pres-safety-title,
+:-webkit-full-screen .pres-safety-title,
+.presentation-modal.fullscreen-active .pres-safety-title,
+body.presentation-fullscreen-mode .pres-safety-title {
+  font-size: clamp(1.2rem, 1.5vw, 1.45rem) !important;
+}
+
+.is-fullscreen .pres-safety-desc,
+:fullscreen .pres-safety-desc,
+:-webkit-full-screen .pres-safety-desc,
+.presentation-modal.fullscreen-active .pres-safety-desc,
+body.presentation-fullscreen-mode .pres-safety-desc {
+  font-size: clamp(1.05rem, 1.25vw, 1.25rem) !important;
+  line-height: 1.7 !important;
+}
+
+/* Slide Lesson Switcher Tabs in standalone slides.html */
+.slide-lesson-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: #1e293b;
+  padding: 0.35rem;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  width: fit-content;
+}
+
+.slide-lesson-btn {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 7px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.slide-lesson-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.slide-lesson-btn.active {
+  background: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.35);
+}
+
+.slide-lesson-btn.active.purple-theme {
+  background: #8b5cf6;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.35);
+}

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[교사 도움 자료] 양자 컴퓨터와 계산 화학의 미래 - KAIST 첨단과학 탐구</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -16,13 +17,13 @@
     <main class="main-content">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
-          <span class="current-view-title">💡 [교사 도움 자료] 활동지 모범답안 및 지도 팁</span>
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+          <span class="current-view-title"><i data-lucide="lightbulb"></i> [교사 도움 자료] 활동지 모범답안 및 지도 팁</span>
         </div>
         <div class="topbar-actions">
-          <a href="worksheet.html" class="topbar-btn">📝 학생활동지 원본</a>
-          <a href="lesson-plan.html" class="topbar-btn">📋 교사용 지도안</a>
-          <button class="topbar-btn primary" onclick="window.print()">🖨️ 도움자료 A4 인쇄</button>
+          <a href="worksheet.html" class="topbar-btn"><i data-lucide="file-text"></i> <span>학생활동지 원본</span></a>
+          <a href="lesson-plan.html" class="topbar-btn"><i data-lucide="clipboard-list"></i> <span>교사용 지도안</span></a>
+          <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>도움자료 A4 인쇄</span></button>
         </div>
       </header>
 
@@ -84,7 +85,7 @@
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 슈퍼컴퓨터의 한계와 지수 폭발 서술</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
               분자 속 전자가 1개 늘어날 때마다 계산해야 하는 양자역학적 상태의 수가 2배씩 곱해지는 <strong>'지수 폭발($2^N$)'</strong>이 발생하기 때문입니다. 전자가 100개만 넘어가도 조합의 수가 지구상 모든 모래알의 수($10^{23}$)나 전 우주의 모든 원자 수($10^{80}$)를 아득히 뛰어넘어, 현존하는 가장 강력한 슈퍼컴퓨터로도 화학 분자의 전자 구름을 계산하는 것이 물리적으로 불가능합니다.
             </div>
           </div>
@@ -124,7 +125,7 @@
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. 미로 찾기 비유</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> <strong>모범 답안:</strong> 
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
               일반 컴퓨터(비트)는 미로를 탐색할 때 한 사람이 한 갈래 길씩 끝까지 가보고 벽에 막히면 되돌아 나오는 <strong>'순차 탐색'</strong> 방식입니다. 반면 양자 컴퓨터(큐비트)는 중첩의 성질을 이용하여 <strong>1,024명의 분신이 모든 갈래 길을 '동시에 단 한 번에' 쏟아져 들어가서</strong> 출구를 즉각 발견하는 <strong>'동시 병렬 처리'</strong> 방식입니다.
             </div>
           </div>
@@ -137,7 +138,7 @@
             
             <p style="font-size:0.9rem; margin-bottom:0.4rem;"><strong>1. 화학 분자의 결합 상태 빈칸</strong></p>
             <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
-              <span class="answer-arrow">☞</span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
+              <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
             </div>
 
             <p style="font-size:0.9rem; margin:0.75rem 0 0.3rem;"><strong>2. VQE 협동 순서도 완성</strong></p>
@@ -146,7 +147,7 @@
               ⬇ 수치 전달<br>
               [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <strong class="model-answer">미세 조정(최적화)</strong> )<br>
               ⬇ 반복(피드백 루프)<br>
-              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! ➔ 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+              [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! → 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
             </div>
           </div>
 
@@ -193,7 +194,7 @@
 
           <!-- 지도상 유의점 및 교사 팁 -->
           <div style="margin-top:2rem;">
-            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;">💡 [지도상 유의점 및 수업 지도 팁]</h3>
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:0.75rem;"><i data-lucide="lightbulb"></i> [지도상 유의점 및 수업 지도 팁]</h3>
             
             <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed;">
               <strong>1. 학생 오개념 지도 요령: "양자 컴퓨터가 나오면 모든 일반 컴퓨터가 사라지나요?"</strong><br>
@@ -220,6 +221,11 @@
   <script src="../assets/js/sidebar.js"></script>
   <script>
     renderSidebar('quantum', 'teacher-guide');
+  </script>
+  <script>
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch(e) {}
+    }
   </script>
 </body>
 </html>

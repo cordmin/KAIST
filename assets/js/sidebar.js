@@ -10,7 +10,6 @@ function renderSidebar(pkg, currentKey) {
     { key: 'lesson-plan', name: '교사용 지도안', file: 'lesson-plan.html' },
     { key: 'lab', name: '가상실험실', file: 'lab.html' },
     { key: 'textbook', name: '학생용 읽기자료', file: 'textbook.html' },
-    { key: 'slides', name: '발표 슬라이드', file: 'slides.html' },
     { key: 'curriculum', name: '2022 성취기준 연계표', file: 'curriculum.html' }
   ];
 

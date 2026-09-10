@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[교사용 지도안] 분자의 빛과 디스플레이의 과학 - KAIST 첨단과학 탐구</title>
   <link rel="stylesheet" href="../assets/css/style.css?v=20260910b">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     .data-table {
       border-collapse: collapse !important;
@@ -29,13 +30,13 @@
     <main class="main-content">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
-          <span class="current-view-title">📋 [교사용 지도안] 분자의 빛과 디스플레이의 과학</span>
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+          <span class="current-view-title"><i data-lucide="clipboard-list"></i> [교사용 지도안] 분자의 빛과 디스플레이의 과학</span>
         </div>
         <div class="topbar-actions">
-          <a href="worksheet.html" class="topbar-btn">📝 학생활동지 보기</a>
-          <a href="teacher-guide.html" class="topbar-btn">💡 교사도움자료(정답)</a>
-          <button class="topbar-btn primary" onclick="window.print()">🖨️ 지도안 A4 인쇄</button>
+          <a href="worksheet.html" class="topbar-btn"><i data-lucide="file-text"></i> <span>학생활동지 보기</span></a>
+          <a href="teacher-guide.html" class="topbar-btn"><i data-lucide="lightbulb"></i> <span>교사도움자료(정답)</span></a>
+          <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>지도안 A4 인쇄</span></button>
         </div>
       </header>
 
@@ -45,7 +46,7 @@
           <!-- 5페이지 크롬 탭 바 -->
           <div class="chrome-tab-bar" role="tablist">
             <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true">
-              <span>📋 <span class="tab-text-full">지도안 개요</span><span class="tab-text-short">개요</span></span>
+              <span><i data-lucide="clipboard-list"></i> <span class="tab-text-full">지도안 개요</span><span class="tab-text-short">개요</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
               <span>[1차시] <span class="tab-text-full">자외선과 형광</span><span class="tab-text-short">1차시</span></span>
@@ -61,11 +62,11 @@
             </button>
           </div>
 
-          <!-- [탭 0]: 📋 지도안 개요 -->
+          <!-- [탭 0]: 지도안 개요 -->
           <div class="chrome-tab-panel active" role="tabpanel">
             <div class="card-header" style="margin-bottom:1rem;">
-              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);">📋 분자의 빛과 디스플레이의 과학</h2>
-              <button class="topbar-btn primary" onclick="window.print()">🖨️ 전체 지도안 인쇄</button>
+              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 분자의 빛과 디스플레이의 과학</h2>
+              <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
             </div>
 
             <table class="data-table">
@@ -103,7 +104,7 @@
             </table>
 
             <div class="callout-box callout-danger" style="margin-top:1.25rem;">
-              <strong style="color:#b91c1c;">🚨 필수 안전 수칙</strong><br>
+              <strong style="color:#b91c1c;"><i data-lucide="alert-triangle"></i> 필수 안전 수칙</strong><br>
               <strong>1. UV 램프 보안경 착용:</strong> 자외선(UV-A) 광원을 직접 눈으로 보거나 타인에게 비추지 않도록 보안경 착용 지도 및 암실 상자 활용.<br>
               <strong>2. 시약 음용 금지:</strong> 음료류(토닉워터, 비타민)는 실험용이므로 마시지 않도록 사전 지도 및 폐액 분리 수거.
             </div>
@@ -135,14 +136,14 @@
               <tr>
                 <th style="text-align:center; white-space:nowrap;">주의사항</th>
                 <td>보안경 착용, 자외선(UV-A)을 눈이나 피부에 비추지 않기. 시약 음용 금지</td>
-                <th style="text-align:center; white-space:nowrap;">활동지</th>
+                <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                 <td>
                   <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                     <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 1, 'student')">
-                      <span>📝 학생용</span>
+                      <i data-lucide="file-text"></i> <span>활동지</span>
                     </button>
-                    <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 1, 'teacher')">
-                      <span>💡 교사용</span>
+                    <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 1)">
+                      <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                     </button>
                   </div>
                 </td>
@@ -202,14 +203,14 @@
               <tr>
                 <th style="text-align:center; white-space:nowrap;">주의사항</th>
                 <td>가상실험실 접속 시 과도한 기기 사용으로 인한 눈 피로 방지 및 에너지 계단 비유로 직관적 이해 유도</td>
-                <th style="text-align:center; white-space:nowrap;">활동지</th>
+                <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                 <td>
                   <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                     <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 2, 'student')">
-                      <span>📝 학생용</span>
+                      <i data-lucide="file-text"></i> <span>활동지</span>
                     </button>
-                    <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 2, 'teacher')">
-                      <span>💡 교사용</span>
+                    <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 2)">
+                      <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                     </button>
                   </div>
                 </td>
@@ -269,14 +270,14 @@
               <tr>
                 <th style="text-align:center; white-space:nowrap;">주의사항</th>
                 <td>단일항과 삼중항의 양자역학 수식 대신 '회전 팽이 방향(↑↓ vs ↑↑)'과 비상문 비유로 지도</td>
-                <th style="text-align:center; white-space:nowrap;">활동지</th>
+                <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                 <td>
                   <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                     <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 3, 'student')">
-                      <span>📝 학생용</span>
+                      <i data-lucide="file-text"></i> <span>활동지</span>
                     </button>
-                    <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 3, 'teacher')">
-                      <span>💡 교사용</span>
+                    <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 3)">
+                      <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                     </button>
                   </div>
                 </td>
@@ -336,14 +337,14 @@
               <tr>
                 <th style="text-align:center; white-space:nowrap;">주의사항</th>
                 <td>빛의 삼원색 합성 원리와 화학 결합 안정성을 융합적으로 고려하고 루브릭 기반 상호 평가 유도</td>
-                <th style="text-align:center; white-space:nowrap;">활동지</th>
+                <th style="text-align:center; white-space:nowrap;">수업 자료</th>
                 <td>
                   <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
                     <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 4, 'student')">
-                      <span>📝 학생용</span>
+                      <i data-lucide="file-text"></i> <span>활동지</span>
                     </button>
-                    <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 4, 'teacher')">
-                      <span>💡 교사용</span>
+                    <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 4)">
+                      <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                     </button>
                   </div>
                 </td>
@@ -364,7 +365,7 @@
                 <tr>
                   <td style="text-align:center; vertical-align:middle;"><strong>전개</strong></td>
                   <td style="text-align:center; vertical-align:middle;">32분</td>
-                  <td>• <strong>KAIST의 두 가지 구출 마법:</strong><br>  1) <strong>핫 엑시톤(Hot Exciton):</strong> 고에너지 옥상 우회로로 번개처럼 단일항으로 건너가는 초고속 구름다리<br>  2) <strong>TADF(열활성 지연형광):</strong> 주변 공기의 미세한 열을 흡수해 단일항으로 점프<br>  👉 <strong>결과: 75%를 구출하여 100% 발광 효율 달성!</strong><br>• <strong>빛의 삼원색과 영상 장치:</strong> 스마트폰 화면의 RGB 화소 관찰 [9과10-03]<br>• <strong>청색(Blue) OLED의 난제:</strong> 에너지가 너무 세서 쉽게 깨지는 파란색 분자의 수명 한계<br>• <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강한 나만의 고효율 파란색 발광 분자 및 롤러블 디스플레이 기획서 작성 [9과23-01]</td>
+                  <td>• <strong>KAIST의 두 가지 구출 마법:</strong><br>  1) <strong>핫 엑시톤(Hot Exciton):</strong> 고에너지 옥상 우회로로 번개처럼 단일항으로 건너가는 초고속 구름다리<br>  2) <strong>TADF(열활성 지연형광):</strong> 주변 공기의 미세한 열을 흡수해 단일항으로 점프<br>  <i data-lucide="check-circle-2"></i> <strong>결과: 75%를 구출하여 100% 발광 효율 달성!</strong><br>• <strong>빛의 삼원색과 영상 장치:</strong> 스마트폰 화면의 RGB 화소 관찰 [9과10-03]<br>• <strong>청색(Blue) OLED의 난제:</strong> 에너지가 너무 세서 쉽게 깨지는 파란색 분자의 수명 한계<br>• <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강한 나만의 고효율 파란색 발광 분자 및 롤러블 디스플레이 기획서 작성 [9과23-01]</td>
                   <td>• 화학 분자 설계 + 물리 빛 합성 + 디스플레이 공학 융합 유도<br>• <strong>[산출물평가]</strong> 분자 디자이너 기획서 창의성 및 과학적 타당성 평가 (루브릭 적용)</td>
                 </tr>
                 <tr>
@@ -385,6 +386,7 @@
 
   <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/worksheet-modal.js"></script>
+  <script src="../assets/js/presentation-modal.js"></script>
   <script>
     renderSidebar('oled', 'lesson-plan');
 
@@ -410,6 +412,13 @@
       if (rect.top < 0) {
         window.scrollTo({ top: window.pageYOffset + rect.top - 80, behavior: 'smooth' });
       }
+      if (window.lucide) {
+        try { lucide.createIcons(); } catch(e) {}
+      }
+    }
+
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch(e) {}
     }
   </script>
 </body>

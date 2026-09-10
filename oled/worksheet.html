@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[학생 활동지] 분자의 빛과 디스플레이의 과학 - KAIST 첨단과학 탐구</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -16,12 +17,12 @@
     <main class="main-content">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
-          <span class="current-view-title">📝 [학생 활동지] 분자의 빛과 디스플레이의 과학</span>
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+          <span class="current-view-title"><i data-lucide="file-text"></i> [학생 활동지] 분자의 빛과 디스플레이의 과학</span>
         </div>
         <div class="topbar-actions">
-          <a href="teacher-guide.html" class="topbar-btn">💡 교사도움자료(정답) 보기</a>
-          <button class="topbar-btn primary" onclick="window.print()">🖨️ 활동지 A4 인쇄</button>
+          <a href="teacher-guide.html" class="topbar-btn"><i data-lucide="lightbulb"></i> <span>교사도움자료(정답) 보기</span></a>
+          <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>활동지 A4 인쇄</span></button>
         </div>
       </header>
 
@@ -134,12 +135,12 @@
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인가?</p>
             <div class="answer-box">
-              ☞ 답: 
+              <i data-lucide="corner-down-right"></i> 답: 
             </div>
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 눈부신 알록달록 가시광선이 뿜어져 나오는지, 그리고 들어간 에너지와 나온 빛의 에너지 차이는 어떻게 되었을지 토의하여 써 보자.</p>
             <div class="answer-box">
-              ☞ 토의 내용: 
+              <i data-lucide="corner-down-right"></i> 토의 내용: 
             </div>
           </div>
 
@@ -213,7 +214,7 @@
 
             <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 스마트폰 배터리 전기로 화면을 켤 때 무려 75%의 전자가 빛을 내지 못하고 스마트폰을 뜨겁게 달구는 까닭을 위의 확률과 관련지어 설명해 보자.</p>
             <div class="answer-box">
-              ☞ 까닭: 
+              <i data-lucide="corner-down-right"></i> 까닭: 
             </div>
           </div>
 
@@ -245,13 +246,13 @@
                 <th>75% 구출 메커니즘<br>적용 방안</th>
                 <td colspan="3">
                   [ 핫 엑시톤 구름다리 우회로 / TADF 열 흡수 역전이 ] 중 선택:<br>
-                  ☞ 구출 원리 서술: 
+                  <i data-lucide="corner-down-right"></i> 구출 원리 서술: 
                 </td>
               </tr>
               <tr>
                 <th>미래 사회 기대 효과</th>
                 <td colspan="3">
-                  ☞ 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
+                  <i data-lucide="corner-down-right"></i> 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
                 </td>
               </tr>
             </table>
@@ -274,6 +275,11 @@
   <script src="../assets/js/sidebar.js"></script>
   <script>
     renderSidebar('oled', 'worksheet');
+  </script>
+  <script>
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch(e) {}
+    }
   </script>
 </body>
 </html>

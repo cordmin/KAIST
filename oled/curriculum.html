@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[2022 성취기준 연계표] 분자의 빛과 디스플레이의 과학 - KAIST 첨단과학 탐구</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -16,12 +17,12 @@
     <main class="main-content">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
-          <span class="current-view-title">🎯 [2022 성취기준 연계표] 분자의 빛과 디스플레이의 과학</span>
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+          <span class="current-view-title"><i data-lucide="target"></i> [2022 성취기준 연계표] 분자의 빛과 디스플레이의 과학</span>
         </div>
         <div class="topbar-actions">
-          <a href="lesson-plan.html" class="topbar-btn">📋 교사용 지도안</a>
-          <button class="topbar-btn primary" onclick="window.print()">🖨️ 연계표 A4 인쇄</button>
+          <a href="lesson-plan.html" class="topbar-btn"><i data-lucide="clipboard-list"></i> <span>교사용 지도안</span></a>
+          <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>연계표 A4 인쇄</span></button>
         </div>
       </header>
 
@@ -115,7 +116,7 @@
 
           <!-- 세특 기재 예시 3종 -->
           <div style="margin-top:2rem;">
-            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;">💡 [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
+            <h3 style="color:#1e293b; font-size:1.15rem; margin-bottom:1rem;"><i data-lucide="lightbulb"></i> [학교생활기록부 교과 세부능력 및 특기사항(세특)] 기재 예시 3종</h3>
 
             <!-- 예시 1: 우수 학생 -->
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1.25rem; margin-bottom:1rem;">
@@ -152,6 +153,11 @@
   <script src="../assets/js/sidebar.js"></script>
   <script>
     renderSidebar('oled', 'curriculum');
+  </script>
+  <script>
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch(e) {}
+    }
   </script>
 </body>
 </html>

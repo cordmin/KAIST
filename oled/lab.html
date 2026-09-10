@@ -47,6 +47,7 @@
       overflow: hidden;
     }
   </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -58,12 +59,12 @@
     <main class="main-content">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
-          <span class="current-view-title">🧪 [가상실험실] 전자의 에너지 계단 & OLED 스핀 시뮬레이터</span>
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+          <span class="current-view-title"><i data-lucide="flask-conical"></i> [가상실험실] 전자의 에너지 계단 & OLED 스핀 시뮬레이터</span>
         </div>
         <div class="topbar-actions">
-          <a href="worksheet.html" class="topbar-btn">📝 활동지 작성하기</a>
-          <button class="topbar-btn primary" onclick="toggleFullScreen()">🖥️ 전체화면</button>
+          <a href="worksheet.html" class="topbar-btn"><i data-lucide="file-text"></i> <span>활동지 작성하기</span></a>
+          <button class="topbar-btn primary" onclick="toggleFullScreen()"><i data-lucide="maximize-2"></i> <span>전체화면</span></button>
         </div>
       </header>
 
@@ -72,7 +73,7 @@
         <!-- 실험 1: 전자의 계단 점프 시뮬레이터 -->
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">🔬 [가상 실험 1] 꼬마 전자의 에너지 계단과 형광 발광 (스토크스 이동)</h2>
+            <h2 class="card-title"><i data-lucide="microscope"></i> [가상 실험 1] 꼬마 전자의 에너지 계단과 형광 발광 (스토크스 이동)</h2>
             <span class="badge" style="background:#eff6ff; color:#1d4ed8;">성취기준 [9과11-02] [9과14-03]</span>
           </div>
           <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem;">
@@ -81,8 +82,8 @@
 
           <div class="lab-panel" id="labPanel1">
             <div class="lab-controls">
-              <button class="lab-btn" id="btn-fire-photon" onclick="firePhoton()">⚡ 자외선(UV) 광자 흡수 & 점프!</button>
-              <button class="lab-btn orange" onclick="resetLab1()">🔄 실험 초기화</button>
+              <button class="lab-btn" id="btn-fire-photon" onclick="firePhoton()"><i data-lucide="zap"></i> <span>자외선(UV) 광자 흡수 & 점프!</span></button>
+              <button class="lab-btn orange" onclick="resetLab1()"><i data-lucide="rotate-ccw"></i> <span>실험 초기화</span></button>
               <div style="margin-left:auto; display:flex; align-items:center; gap:0.5rem; font-size:0.9rem;">
                 <span id="lab1-status" style="color:#60a5fa; font-weight:700;">대기 중: 전자가 1층 바닥 상태에 머물러 있습니다.</span>
               </div>
@@ -97,7 +98,7 @@
         <!-- 실험 2: OLED 스핀 확률과 핫 엑시톤 구출 시뮬레이터 -->
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">💡 [가상 실험 2] 스마트폰 OLED의 75% 배터리 도둑 & KAIST 구출 작전</h2>
+            <h2 class="card-title"><i data-lucide="lightbulb"></i> [가상 실험 2] 스마트폰 OLED의 75% 배터리 도둑 & KAIST 구출 작전</h2>
             <span class="badge" style="background:#ecfdf5; color:#047857;">성취기준 [9과14-02] [9과01-02]</span>
           </div>
           <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem;">
@@ -106,8 +107,8 @@
 
           <div class="lab-panel">
             <div class="lab-controls">
-              <button class="lab-btn" onclick="injectElectricity()">⚡ 배터리 전류 주입 (100개 엑시톤 생성)</button>
-              <button class="lab-btn green" id="btn-kaist-rescue" onclick="toggleKaistRescue()">🚀 KAIST 핫 엑시톤 구출 스위치: OFF</button>
+              <button class="lab-btn" onclick="injectElectricity()"><i data-lucide="zap"></i> <span>배터리 전류 주입</span> (100개 엑시톤 생성)</button>
+              <button class="lab-btn green" id="btn-kaist-rescue" onclick="toggleKaistRescue()"><i data-lucide="rocket"></i> <span>KAIST 핫 엑시톤 구출 스위치</span>: OFF</button>
               <div style="margin-left:auto; display:flex; gap:1.5rem; font-weight:700;">
                 <span style="color:#60a5fa;">발광 효율: <span id="eff-val" style="font-size:1.2rem;">0%</span></span>
                 <span style="color:#f87171;">열 손실: <span id="heat-val" style="font-size:1.2rem;">0%</span></span>
@@ -203,7 +204,7 @@
         electronY = 100 + (Math.sin(vibrationTimer * 0.8) * 6);
         // Draw heat waves
         ctx1.fillStyle = '#ea580c';
-        ctx1.fillText('🔥 열에너지 방출~', 530, 95);
+        ctx1.fillText('열에너지 방출~', 530, 95);
         if (vibrationTimer <= 0) {
           electronY = 160;
           electronState = 'falling';
@@ -240,7 +241,7 @@
       ctx1.strokeRect(890, 80, 190, 250);
       ctx1.fillStyle = '#f8fafc';
       ctx1.font = 'bold 14px Pretendard';
-      ctx1.fillText('⚡ 에너지 수지 분석', 910, 110);
+      ctx1.fillText('에너지 수지 분석', 910, 110);
 
       ctx1.fillStyle = '#c084fc'; ctx1.fillRect(910, 130, 30, 120);
       ctx1.fillStyle = '#ffffff'; ctx1.font = '11px Pretendard'; ctx1.fillText('자외선 100%', 900, 265);
@@ -296,7 +297,7 @@
       isKaistRescue = !isKaistRescue;
       const btn = document.getElementById('btn-kaist-rescue');
       if (isKaistRescue) {
-        btn.innerText = '🚀 KAIST 핫 엑시톤 구출 스위치: ON (구출 가동!)';
+        btn.innerText = '<i data-lucide="rocket"></i> <span>KAIST 핫 엑시톤 구출 스위치</span>: ON (구출 가동!)';
         btn.classList.remove('green');
         btn.style.background = '#38bdf8';
         btn.style.color = '#0f172a';
@@ -304,7 +305,7 @@
           if (e.type === 'triplet') e.rescued = true;
         });
       } else {
-        btn.innerText = '🚀 KAIST 핫 엑시톤 구출 스위치: OFF';
+        btn.innerText = '<i data-lucide="rocket"></i> <span>KAIST 핫 엑시톤 구출 스위치</span>: OFF';
         btn.classList.add('green');
         btn.style.background = '#059669';
         btn.style.color = '#ffffff';
@@ -356,6 +357,11 @@
       requestAnimationFrame(drawLab2);
     }
     drawLab2();
+  </script>
+  <script>
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch(e) {}
+    }
   </script>
 </body>
 </html>
