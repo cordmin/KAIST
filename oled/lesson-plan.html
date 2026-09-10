@@ -4,7 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[교사용 지도안] 분자의 빛과 디스플레이의 과학 - KAIST 첨단과학 탐구</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20260910b">
+  <style>
+    .data-table {
+      border-collapse: collapse !important;
+      border: 1px solid #94a3b8 !important;
+      width: 100%;
+    }
+    .data-table th, .data-table td {
+      border: 1px solid #94a3b8 !important;
+    }
+    .data-table th {
+      background-color: #f1f5f9 !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -51,7 +64,7 @@
           <!-- [탭 0]: 📋 지도안 개요 -->
           <div class="chrome-tab-panel active" role="tabpanel">
             <div class="card-header" style="margin-bottom:1rem;">
-              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);">📋 분자의 빛과 디스플레이의 과학: 지도안 개요</h2>
+              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);">📋 분자의 빛과 디스플레이의 과학</h2>
               <button class="topbar-btn primary" onclick="window.print()">🖨️ 전체 지도안 인쇄</button>
             </div>
 
@@ -102,25 +115,60 @@
               <h3 style="color:#2563eb; font-size:1.2rem; margin:0;">[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단 (45분)</h3>
               <span class="badge" style="background:#eff6ff; color:#1d4ed8; font-size:0.82rem;">성취기준: [9과10-03]</span>
             </div>
-            <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem; line-height:1.6;"><strong>탐구 목표:</strong> 자외선과 가시광선의 파장 및 에너지 관계를 비교하고, 일상 속 형광 물질을 관찰하여 형광 현상을 탐구할 수 있다.</p>
+            
+            <!-- 차시별 탐구 메타 정보 표 -->
+            <table class="data-table" style="margin-bottom:1.25rem;">
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">성취 기준</th>
+                <td colspan="3"><strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">탐구 목표</th>
+                <td colspan="3">자외선과 가시광선의 파장 및 에너지 관계를 비교하고, 일상 속 형광 물질(퀴닌, 리보플라빈, 엽록소)을 관찰하여 형광 현상을 탐구할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">탐구 방법</th>
+                <td style="width:40%;">실물 관찰 실험, 암실 자외선(UV-A) 조사 탐구, 모둠 토의</td>
+                <th style="width:100px; text-align:center; white-space:nowrap;">준비물</th>
+                <td>스마트기기, UV-A 블랙라이트 램프, 보안경, 암실 상자, 토닉워터, 비타민 음료, 올리브유, 형광펜, 지폐</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">주의사항</th>
+                <td>보안경 착용, 자외선(UV-A)을 눈이나 피부에 비추지 않기. 시약 음용 금지</td>
+                <th style="text-align:center; white-space:nowrap;">활동지</th>
+                <td>
+                  <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                    <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 1, 'student')">
+                      <span>📝 학생용</span>
+                    </button>
+                    <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 1, 'teacher')">
+                      <span>💡 교사용</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
             
             <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0 1.25rem 0;">
               <thead>
-                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                <tr><th style="width:8%; text-align:center; white-space:nowrap;">단계</th><th style="width:8%; text-align:center; white-space:nowrap;">시간</th><th style="width:54%;">교수·학습 활동</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>도입<br>(5분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>도입</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">5분</td>
                   <td>• <strong>동기 유발:</strong> 암실 상자에서 블랙라이트(자외선)를 켰을 때 옷과 신발 끈이 눈부시게 빛나는 현상 시연<br>• <strong>학습 문제 제기:</strong> "왜 보이지 않는 빛을 비추었는데 눈부신 알록달록 빛이 나올까?"<br>• 탐구 목표 및 안전 수칙 안내</td>
                   <td>• 자외선 램프를 얼굴에 직접 비추지 않도록 주의 지도</td>
                 </tr>
                 <tr>
-                  <td><strong>전개<br>(32분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>전개</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">32분</td>
                   <td>• <strong>[탐구 활동 1] 자외선 형광 탐정단:</strong> 4인 1조로 토닉워터(퀴닌), 비타민(리보플라빈), 올리브유(엽록소), 지폐에 UV-A 조사 후 색상 변화 관찰 및 기록<br>• <strong>개념 형성:</strong> 자외선(300~400nm) vs 가시광선(400~700nm). 파장이 짧을수록 에너지가 셈을 직관적으로 학습<br>• <strong>질문 토의:</strong> 더 센 에너지(자외선)가 들어가서 순한 에너지(가시광선)가 나오는 이유와 차이 나는 에너지의 행방 추론</td>
                   <td>• <strong>[안전]</strong> 보안경 착용 확인<br>• <strong>[과정평가]</strong> 관찰 결과의 정확한 기록 및 파장-에너지 관계 이해도 점검</td>
                 </tr>
                 <tr>
-                  <td><strong>정리<br>(8분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>정리</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">8분</td>
                   <td>• 모둠별 관찰 결과 공유 및 '형광(Fluorescence)' 개념 정의<br>• "사라진 에너지는 어디로 갔을까?" 질문으로 2차시(전자의 계단 점프) 예고</td>
                   <td>• 활동지 1번 작성 점검</td>
                 </tr>
@@ -134,25 +182,60 @@
               <h3 style="color:#7c3aed; font-size:1.2rem; margin:0;">[2차시] 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환 (45분)</h3>
               <span class="badge" style="background:#f5f3ff; color:#6d28d9; font-size:0.82rem;">성취기준: [9과11-02] [9과14-03]</span>
             </div>
-            <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem; line-height:1.6;"><strong>탐구 목표:</strong> 원자 속 전자가 에너지를 흡수하여 들뜬 상태로 점프했다가 열과 형광 빛을 내며 바닥 상태로 복귀하는 과정을 입자 모형과 에너지 보존으로 설명할 수 있다.</p>
+
+            <!-- 차시별 탐구 메타 정보 표 -->
+            <table class="data-table" style="margin-bottom:1.25rem;">
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">성취 기준</th>
+                <td colspan="3"><strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성됨을 입자 모형을 활용하여 설명할 수 있다.<br><strong>[9과14-03]</strong> 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">탐구 목표</th>
+                <td colspan="3">원자 속 전자가 에너지를 흡수하여 들뜬 상태로 점프했다가 열과 형광 빛을 내며 바닥 상태로 복귀하는 과정을 입자 모형과 에너지 보존 법칙으로 설명할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">탐구 방법</th>
+                <td style="width:40%;">가상실험실(시뮬레이션 조작), 입자 모형 분석, 에너지 전환 관계식 도출</td>
+                <th style="width:100px; text-align:center; white-space:nowrap;">준비물</th>
+                <td>스마트기기(태블릿/노트북), 가상실험실(lab.html) [전자의 계단 점프 시뮬레이터], 활동지</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">주의사항</th>
+                <td>가상실험실 접속 시 과도한 기기 사용으로 인한 눈 피로 방지 및 에너지 계단 비유로 직관적 이해 유도</td>
+                <th style="text-align:center; white-space:nowrap;">활동지</th>
+                <td>
+                  <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                    <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 2, 'student')">
+                      <span>📝 학생용</span>
+                    </button>
+                    <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 2, 'teacher')">
+                      <span>💡 교사용</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
             
             <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0 1.25rem 0;">
               <thead>
-                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                <tr><th style="width:8%; text-align:center; white-space:nowrap;">단계</th><th style="width:8%; text-align:center; white-space:nowrap;">시간</th><th style="width:54%;">교수·학습 활동</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>도입<br>(5분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>도입</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">5분</td>
                   <td>• 전차시 복습: 자외선(센 에너지)과 가시광선(약한 에너지)의 차이 상기<br>• 트램펄린 비유: "사람이 높이 뛰었다가 내려올 때 무슨 일이 일어날까?"</td>
                   <td>• 입자 모형의 시각적 비유 활용</td>
                 </tr>
                 <tr>
-                  <td><strong>전개<br>(32분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>전개</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">32분</td>
                   <td>• <strong>원자 모형 복습:</strong> 원자핵과 주위를 도는 가벼운 음(-)전하 전자<br>• <strong>전자의 에너지 계단 3단계:</strong><br>  1) 바닥 상태 전자가 자외선 광자를 먹고 3층 들뜬 상태로 점프<br>  2) 3층이 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 <strong>열</strong>로 방출<br>  3) 남은 에너지를 알록달록 <strong>가시광선 형광</strong>으로 뿜어내며 1층으로 착지<br>• <strong>시뮬레이션 탐구:</strong> 디지털 전자의 계단 점프 가상 실험실 조작 실습<br>• <strong>에너지 보존:</strong> [흡수한 자외선] = [방출된 형광빛] + [흘린 열에너지]</td>
-                    <td>• 수식 대신 '에너지 보존 계단 그림'으로 정성적 이해 유도<br>• <strong>[과정평가]</strong> 시뮬레이터 조작을 통해 전자의 상태 변화를 구두로 설명할 수 있는지 확인</td>
+                  <td>• 수식 대신 '에너지 보존 계단 그림'으로 정성적 이해 유도<br>• <strong>[과정평가]</strong> 시뮬레이터 조작을 통해 전자의 상태 변화를 구두로 설명할 수 있는지 확인</td>
                 </tr>
                 <tr>
-                  <td><strong>정리<br>(8분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>정리</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">8분</td>
                   <td>• 전자의 에너지 계단 3단계 핵심 낱말 퀴즈<br>• 활동지 [활동 2] 전자의 점프와 사라진 에너지 서술형 문항 작성</td>
                   <td>• 서술형 힌트 제공</td>
                 </tr>
@@ -166,25 +249,60 @@
               <h3 style="color:#059669; font-size:1.2rem; margin:0;">[3차시] 팽이 스핀의 비밀과 스마트폰 OLED의 75% 배터리 도둑 (45분)</h3>
               <span class="badge" style="background:#ecfdf5; color:#047857; font-size:0.82rem;">성취기준: [9과11-02] [9과14-02] [9과14-03]</span>
             </div>
-            <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem; line-height:1.6;"><strong>탐구 목표:</strong> 전자의 스핀 방향(단일항 vs 삼중항)에 따른 발광 차이를 이해하고, 전기 에너지를 사용하는 스마트폰 OLED의 75% 열 손실 문제를 분석할 수 있다.</p>
+
+            <!-- 차시별 탐구 메타 정보 표 -->
+            <table class="data-table" style="margin-bottom:1.25rem;">
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">성취 기준</th>
+                <td colspan="3"><strong>[9과11-02]</strong> 물질의 구성 입자 모형<br><strong>[9과14-02]</strong> 전기 회로와 전류 모형<br><strong>[9과14-03]</strong> 전기 에너지의 다양한 형태 전환과 소비 전력</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">탐구 목표</th>
+                <td colspan="3">전자의 스핀 방향(단일항 vs 삼중항)에 따른 발광 차이를 이해하고, 전기 에너지를 사용하는 스마트폰 OLED의 75% 열 손실 문제를 분석할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">탐구 방법</th>
+                <td style="width:40%;">실물 교구 비교 관찰(형광 vs 인광), 스핀 입자 모형 조작, 확률 계산 및 토의</td>
+                <th style="width:100px; text-align:center; white-space:nowrap;">준비물</th>
+                <td>형광펜, 야광(축광) 스티커, 암실 상자, 스마트폰 디스플레이 구조 자료, 활동지</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">주의사항</th>
+                <td>단일항과 삼중항의 양자역학 수식 대신 '회전 팽이 방향(↑↓ vs ↑↑)'과 비상문 비유로 지도</td>
+                <th style="text-align:center; white-space:nowrap;">활동지</th>
+                <td>
+                  <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                    <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 3, 'student')">
+                      <span>📝 학생용</span>
+                    </button>
+                    <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 3, 'teacher')">
+                      <span>💡 교사용</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
             
             <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0 1.25rem 0;">
               <thead>
-                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                <tr><th style="width:8%; text-align:center; white-space:nowrap;">단계</th><th style="width:8%; text-align:center; white-space:nowrap;">시간</th><th style="width:54%;">교수·학습 활동</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>도입<br>(5분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>도입</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">5분</td>
                   <td>• 실물 비교: 형광펜(조명 끄면 즉시 꺼짐) vs 야광 스티커(불 꺼도 수 시간 동안 빛남)<br>• "왜 둘은 빛을 내뿜는 시간에 엄청난 차이가 날까?"</td>
                   <td>• 실물 교구 조작으로 흥미 유발</td>
                 </tr>
                 <tr>
-                  <td><strong>전개<br>(32분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>전개</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">32분</td>
                   <td>• <strong>전자의 팽이 회전(스핀) 모형:</strong><br>  - 마주보고 도는 전자쌍 (단일항, ↑↓): 비상문 활짝 열려 1억 분의 1초 만에 형광 방출<br>  - 나란히 도는 전자쌍 (삼중항, ↑↑): 비상문 잠겨 천천히 갇혀서 인광 방출<br>• <strong>스마트폰 화면(OLED) 구동:</strong> 배터리의 전기(전류)를 유기 반도체 분자에 직접 주입 [9과14-02]<br>• <strong>75% 배터리 도둑의 충격적 확률:</strong><br>  - 전기를 넣으면 4개 중 <strong>단 1개(25%)만</strong> 단일항이 되어 빛을 냄<br>  - 무려 <strong>3개(75%)는</strong> 삼중항에 갇혀 빛 대신 <strong>열</strong>을 내뿜어 스마트폰을 뜨겁게 달굼!<br>• 스마트폰 소비 전력, 발열, 배터리 수명 저하의 과학적 원인 토의 [9과14-03]</td>
                   <td>• 양자 스핀 수식 대신 '회전 팽이' 비유로 직관화<br>• <strong>[과정평가]</strong> 단일항과 삼중항의 차이를 전자의 회전 방향과 연결하여 구분하는지 평가</td>
                 </tr>
                 <tr>
-                  <td><strong>정리<br>(8분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>정리</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">8분</td>
                   <td>• 25% 발광 vs 75% 열 손실 딜레마 정리<br>• "갇혀서 열만 내는 75%의 전자를 구출할 방법은 없을까?" 질문으로 4차시 예고</td>
                   <td>• 활동지 3번 연계</td>
                 </tr>
@@ -198,25 +316,60 @@
               <h3 style="color:#d97706; font-size:1.2rem; margin:0;">[4차시] KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너 (45분)</h3>
               <span class="badge" style="background:#fffbeb; color:#b45309; font-size:0.82rem;">성취기준: [9과10-03] [9과01-02] [9과23-01]</span>
             </div>
-            <p style="font-size:0.92rem; color:#64748b; margin-bottom:1rem; line-height:1.6;"><strong>탐구 목표:</strong> KAIST CPRL의 핫 엑시톤 구출 메커니즘을 이해하고, 빛의 삼원색(RGB) 원리를 바탕으로 차세대 청색 OLED 분자 디자이너 프로젝트를 수행할 수 있다.</p>
+
+            <!-- 차시별 탐구 메타 정보 표 -->
+            <table class="data-table" style="margin-bottom:1.25rem;">
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">성취 기준</th>
+                <td colspan="3"><strong>[9과10-03]</strong> 영상 장치에서 빛의 합성 원리<br><strong>[9과01-02]</strong> 첨단 과학기술이 가져올 미래 사회의 변화<br><strong>[9과23-01]</strong> 과학기술의 발달과 미래 사회 직업 변화</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">탐구 목표</th>
+                <td colspan="3">KAIST CPRL의 핫 엑시톤 구출 메커니즘을 이해하고, 빛의 삼원색(RGB) 원리를 바탕으로 차세대 청색 OLED 분자 디자이너 프로젝트를 수행할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">탐구 방법</th>
+                <td style="width:40%;">빛의 삼원색(RGB) 관찰, 신소재 분자 구조 스케치 및 모둠 기획서 작성, 1분 피칭 발표</td>
+                <th style="width:100px; text-align:center; white-space:nowrap;">준비물</th>
+                <td>스마트기기, 분자 디자이너 기획서 양식, 색연필/마커, 평가 루브릭</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">주의사항</th>
+                <td>빛의 삼원색 합성 원리와 화학 결합 안정성을 융합적으로 고려하고 루브릭 기반 상호 평가 유도</td>
+                <th style="text-align:center; white-space:nowrap;">활동지</th>
+                <td>
+                  <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                    <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 4, 'student')">
+                      <span>📝 학생용</span>
+                    </button>
+                    <button type="button" class="topbar-btn btn-worksheet-teacher" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 4, 'teacher')">
+                      <span>💡 교사용</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
             
             <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0 1.25rem 0;">
               <thead>
-                <tr><th style="width:15%;">단계(시간)</th><th style="width:55%;">교수·학습 활동 (교사-학생 상호작용)</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+                <tr><th style="width:8%; text-align:center; white-space:nowrap;">단계</th><th style="width:8%; text-align:center; white-space:nowrap;">시간</th><th style="width:54%;">교수·학습 활동</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>도입<br>(5분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>도입</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">5분</td>
                   <td>• 전차시 상기: 75%의 갇힌 전자를 구출하는 대한민국의 최첨단 과학 뉴스 소개 (KAIST CPRL 이영민 교수팀 연구 성과)</td>
                   <td>• 첨단 과학 연구에 대한 자긍심 고취</td>
                 </tr>
                 <tr>
-                  <td><strong>전개<br>(32분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>전개</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">32분</td>
                   <td>• <strong>KAIST의 두 가지 구출 마법:</strong><br>  1) <strong>핫 엑시톤(Hot Exciton):</strong> 고에너지 옥상 우회로로 번개처럼 단일항으로 건너가는 초고속 구름다리<br>  2) <strong>TADF(열활성 지연형광):</strong> 주변 공기의 미세한 열을 흡수해 단일항으로 점프<br>  👉 <strong>결과: 75%를 구출하여 100% 발광 효율 달성!</strong><br>• <strong>빛의 삼원색과 영상 장치:</strong> 스마트폰 화면의 RGB 화소 관찰 [9과10-03]<br>• <strong>청색(Blue) OLED의 난제:</strong> 에너지가 너무 세서 쉽게 깨지는 파란색 분자의 수명 한계<br>• <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강한 나만의 고효율 파란색 발광 분자 및 롤러블 디스플레이 기획서 작성 [9과23-01]</td>
                   <td>• 화학 분자 설계 + 물리 빛 합성 + 디스플레이 공학 융합 유도<br>• <strong>[산출물평가]</strong> 분자 디자이너 기획서 창의성 및 과학적 타당성 평가 (루브릭 적용)</td>
                 </tr>
                 <tr>
-                  <td><strong>정리<br>(8분)</strong></td>
+                  <td style="text-align:center; vertical-align:middle;"><strong>정리</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">8분</td>
                   <td>• 모둠별 분자 디자인 아이디어 1분 스피치 발표<br>• 3차원 루브릭 기반 학생 상호평가 및 단원 총정리, 미래 과학 기술 진로 로드맵 공유</td>
                   <td>• 세특 기재용 관찰 기록 작성</td>
                 </tr>
@@ -231,6 +384,7 @@
   </div>
 
   <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/worksheet-modal.js"></script>
   <script>
     renderSidebar('oled', 'lesson-plan');
 

@@ -8,8 +8,6 @@ function renderSidebar(pkg, currentKey) {
   const pages = [
     ...(isOled ? [] : [{ key: 'quantum-guide', name: '양자 컴퓨터란?', file: 'quantum_deep_dive_guide.html' }]),
     { key: 'lesson-plan', name: '교사용 지도안', file: 'lesson-plan.html' },
-    { key: 'worksheet', name: '학생 활동지', file: 'worksheet.html' },
-    { key: 'teacher-guide', name: '교사 도움자료', file: 'teacher-guide.html' },
     { key: 'lab', name: '가상실험실', file: 'lab.html' },
     { key: 'textbook', name: '학생용 읽기자료', file: 'textbook.html' },
     { key: 'slides', name: '발표 슬라이드', file: 'slides.html' },
