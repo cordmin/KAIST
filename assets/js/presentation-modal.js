@@ -27,7 +27,7 @@ function getToolAsset(filename) {
 
 const presentationModalData = {
   // =========================================================================
-  // [패키지 01] 분자의 빛과 디스플레이의 과학 (OLED)
+  // [패키지 01] 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학
   // =========================================================================
   oled: {
     // -----------------------------------------------------------------------
@@ -1069,7 +1069,7 @@ const presentationModalData = {
         },
         {
           tag: '4차시 정리 · 전체 패키지 마무리',
-          title: '[OLED 패키지 수료] 분자의 빛과 디스플레이의 과학 완주!',
+          title: '[OLED 패키지 수료] 스마트폰 속 75% 배터리 도둑을 잡아라! 완주!',
           content: `
             <div class="pres-card" style="text-align:center; padding:2rem;">
               <div style="font-size:3rem; margin-bottom:1rem;">🏆</div>
