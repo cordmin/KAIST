@@ -803,8 +803,19 @@ body.in-iframe .content-container {
 
 /* Print Styles */
 @media print {
-  .sidebar, .topbar, .topbar-actions, .sidebar-toggle-btn, .pkg-switcher-wrapper, .pkg-tab-container, .no-print, .print-btn {
+  .sidebar, .topbar, .topbar-actions, .sidebar-toggle-btn, .pkg-switcher-wrapper, .pkg-tab-container, .no-print, .print-btn, .chrome-tab-bar, .lesson-plan-nav-footer {
     display: none !important;
+  }
+  .chrome-window {
+    margin-bottom: 0 !important;
+  }
+  .chrome-tab-panel {
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-bottom: 2.2rem !important;
+    page-break-inside: avoid;
   }
   .main-content {
     margin-left: 0 !important;
