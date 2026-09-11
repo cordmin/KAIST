@@ -27,34 +27,36 @@ KAIST 화학과 **계산 광동역학 연구실(Computational Photodynamics Rese
 
 ```
 KAIST/
-├── index.html                           # 메인 포털 허브 대시보드
+├── index.html                           # 메인 포털 허브 SPA 대시보드
+├── quantum_deep_dive_guide.html         # ⚛️ 고등학생을 위한 양자 컴퓨터 심층 완벽 해부 가이드
 ├── assets/
-│   ├── css/style.css                    # 공통 반응형 CSS & 인쇄 최적화 스타일
-│   └── js/sidebar.js                    # 공통 사이드바 렌더링 & 1-Click 스위처 스크립트
+│   ├── css/style.css                    # 공통 반응형 CSS, SPA 뷰, 캔버스 실험실 및 인쇄 최적화 스타일
+│   └── js/
+│       ├── app-router.js                # SPA 해시 라우팅, 패키지 전환 및 모달 제어
+│       ├── simulations.js               # 가상실험실 Canvas 시뮬레이션 엔진 4종 (OLED/Quantum)
+│       ├── slide-viewer.js              # 10장 핵심 발표 슬라이드 덱 렌더러 및 데이터
+│       ├── sidebar.js                   # 서브 페이지 공통 사이드바 렌더링 스크립트
+│       ├── presentation-modal.js        # 차시별 9장 표준 프레젠테이션 모달 시스템
+│       ├── worksheet-modal.js           # 충남교육청 표준 활동지/도움자료 모달 시스템
+│       └── textbook-modal.js            # 학생용 교과서 스토리텔링 읽기자료 모달 시스템
 ├── oled/                                # 🌈 [패키지 01] 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학
-│   ├── index.html                       # 패키지 대시보드
-│   ├── lesson-plan.html                 # 📋 교사용 지도안 (4차시)
+│   ├── index.html                       # 패키지 대시보드 (lesson-plan.html 리다이렉트)
+│   ├── lesson-plan.html                 # 📋 교사용 지도안 (성취수준 연계 + 4차시 지도안)
 │   ├── worksheet.html                   # 📝 학생 활동지 (충남교육청 표준 서식)
 │   ├── teacher-guide.html               # 💡 교사 도움 자료 (모범답안 & 지도팁)
 │   ├── lab.html                         # 🧪 가상실험실 (계단점프 & OLED 스핀 시뮬레이터)
 │   ├── textbook.html                    # 📖 학생용 읽기자료 & 용어사전
-│   ├── slides.html                      # 📽️ 발표 슬라이드 (10장 슬라이드 덱)
-│   └── curriculum.html                  # 🎯 2022 성취기준 연계표 & 3D 루브릭 & 세특 예시
+│   └── slides.html                      # 📽️ 발표 슬라이드 (10장 슬라이드 덱)
 ├── quantum/                             # ⚛️ [패키지 02] 양자 컴퓨터와 계산 화학의 미래
-│   ├── index.html                       # 패키지 대시보드
-│   ├── lesson-plan.html                 # 📋 교사용 지도안 (4차시)
+│   ├── index.html                       # 패키지 대시보드 (lesson-plan.html 리다이렉트)
+│   ├── lesson-plan.html                 # 📋 교사용 지도안 (성취수준 연계 + 4차시 지도안)
 │   ├── worksheet.html                   # 📝 학생 활동지 (충남교육청 표준 서식)
 │   ├── teacher-guide.html               # 💡 교사 도움 자료 (모범답안 & 지도팁)
 │   ├── lab.html                         # 🧪 가상실험실 (큐비트 중첩 & VQE 최적화 시뮬레이터)
 │   ├── textbook.html                    # 📖 학생용 읽기자료 & 용어사전
-│   ├── slides.html                      # 📽️ 발표 슬라이드 (10장 슬라이드 덱)
-│   └── curriculum.html                  # 🎯 2022 성취기준 연계표 & 3D 루브릭 & 세특 예시
+│   └── slides.html                      # 📽️ 발표 슬라이드 (10장 슬라이드 덱)
+├── 논문/                                # 📄 원천 연구 학술 논문 PDF 자료실
 └── 참고자료/                            # 📚 교육부 및 교육청 공인 원본 자료실
-    ├── 2025 지능형 과학탐구 실험수업 도움자료(중학교).pdf
-    ├── 2025 지능형 과학탐구 실험수업 도움자료(한글파일_중학교).hwp
-    ├── 2022 개정 교육과정 성취기준별 성취수준(과학).pdf
-    ├── 2022 개정 교육과정 영역별 성취수준(과학).pdf
-    └── 2022개정 교육과정 총론(과학과).pdf
 ```
 
 ---
