@@ -76,7 +76,7 @@ function switchMediaTab(e, index) {
 
 // App State
 let currentPkg = 'oled'; // 'oled' | 'quantum'
-let currentView = 'lesson-plan'; // 'lesson-plan' | 'worksheet' | 'teacher-guide' | 'lab' | 'textbook' | 'slides' | 'curriculum' | 'cprl-research' | 'cprl-academic'
+let currentView = 'lesson-plan'; // 'lesson-plan' | 'worksheet' | 'teacher-guide' | 'lab' | 'slides' | 'curriculum' | 'cprl-research' | 'cprl-academic'
 
 const viewTitles = {
   'oled-guide': 'OLED란?',
@@ -84,7 +84,6 @@ const viewTitles = {
   'worksheet': '학생 활동지',
   'teacher-guide': '교사 도움자료',
   'lab': '가상 실험실',
-  'textbook': '학생용 읽기자료',
   'slides': '발표 슬라이드',
   'curriculum': '2022 성취기준 연계표',
   'cprl-intro': 'KAIST 화학과 CPRL 소개',

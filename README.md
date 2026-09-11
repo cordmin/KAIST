@@ -38,14 +38,12 @@ KAIST/
 │       ├── sidebar.js                   # 서브 페이지 공통 사이드바 렌더링 스크립트
 │       ├── presentation-modal.js        # 차시별 9장 표준 프레젠테이션 모달 시스템
 │       ├── worksheet-modal.js           # 충남교육청 표준 활동지/도움자료 모달 시스템
-│       └── textbook-modal.js            # 학생용 교과서 스토리텔링 읽기자료 모달 시스템
 ├── oled/                                # 🌈 [패키지 01] 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학
 │   ├── index.html                       # 패키지 대시보드 (lesson-plan.html 리다이렉트)
 │   ├── lesson-plan.html                 # 📋 교사용 지도안 (성취수준 연계 + 4차시 지도안)
 │   ├── worksheet.html                   # 📝 학생 활동지 (충남교육청 표준 서식)
 │   ├── teacher-guide.html               # 💡 교사 도움 자료 (모범답안 & 지도팁)
 │   ├── lab.html                         # 🧪 가상실험실 (계단점프 & OLED 스핀 시뮬레이터)
-│   ├── textbook.html                    # 📖 학생용 읽기자료 (차시별 독립 모달 & 인라인 핵심 개념 돋보기)
 │   └── slides.html                      # 📽️ 발표 슬라이드 (10장 슬라이드 덱)
 ├── quantum/                             # ⚛️ [패키지 02] 양자 컴퓨터와 계산 화학의 미래
 │   ├── index.html                       # 패키지 대시보드 (lesson-plan.html 리다이렉트)
@@ -53,7 +51,6 @@ KAIST/
 │   ├── worksheet.html                   # 📝 학생 활동지 (충남교육청 표준 서식)
 │   ├── teacher-guide.html               # 💡 교사 도움 자료 (모범답안 & 지도팁)
 │   ├── lab.html                         # 🧪 가상실험실 (큐비트 중첩 & VQE 최적화 시뮬레이터)
-│   ├── textbook.html                    # 📖 학생용 읽기자료 (차시별 독립 모달 & 인라인 핵심 개념 돋보기)
 │   └── slides.html                      # 📽️ 발표 슬라이드 (10장 슬라이드 덱)
 ├── 논문/                                # 📄 원천 연구 학술 논문 PDF 자료실
 └── 참고자료/                            # 📚 교육부 및 교육청 공인 원본 자료실
