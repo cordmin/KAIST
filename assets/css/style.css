@@ -671,7 +671,7 @@ body {
 
 /* Content Container — Widened Layout */
 .content-container {
-  padding: 1.25rem 1.75rem 1.5rem;
+  padding: 1rem 1.5rem 1rem;
   max-width: 1600px;
   width: 100%;
   margin: 0 auto;
@@ -741,7 +741,7 @@ body {
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.25rem 0;
+  margin: 0.75rem 0;
   font-size: 0.92rem;
   background-color: var(--color-pure-white);
   border: 1px solid #94a3b8;
@@ -750,9 +750,9 @@ body {
 .data-table th,
 .data-table td {
   border: 1px solid #94a3b8;
-  padding: 0.75rem 1rem;
+  padding: 0.55rem 0.85rem;
   text-align: left;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .data-table th {
@@ -1145,7 +1145,7 @@ h3.sub-heading {
    CPRL Research Area Chrome Tabbed Window (Sidebar Tab Header Style)
    ========================================================================== */
 .chrome-window {
-  margin-bottom: 2.25rem;
+  margin-bottom: 1rem;
 }
 
 .chrome-tab-bar {
@@ -1235,10 +1235,18 @@ h3.sub-heading {
   background: var(--color-pure-white);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 1.5rem 1.8rem;
+  padding: 1.15rem 1.4rem;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
   position: relative;
   z-index: 1;
+}
+
+.chrome-tab-panel > .data-table:first-child {
+  margin-top: 0;
+}
+
+.chrome-tab-panel > .data-table:last-child {
+  margin-bottom: 0;
 }
 
 .chrome-tab-panel.active {
