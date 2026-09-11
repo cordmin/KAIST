@@ -760,6 +760,7 @@ body {
   color: var(--color-charcoal);
   font-weight: 600;
   border: 1px solid #94a3b8;
+  text-align: center;
   width: auto;
 }
 
