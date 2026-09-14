@@ -146,9 +146,9 @@ const presentationModalData = {
           `
         },
 
-        // Slide 4: 준비 · 주의사항 (안전 수칙)
+        // Slide 4: 준비 · 주의 사항 (안전 수칙)
         {
-          tag: '1차시 준비 · 주의사항',
+          tag: '1차시 준비 · 주의 사항',
           title: '실험실 필수 안전 수칙 (Safety First)',
           content: `
             <div class="pres-safety-grid">
