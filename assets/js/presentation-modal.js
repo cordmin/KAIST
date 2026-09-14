@@ -37,21 +37,7 @@ const presentationModalData = {
       lessonTitle: '[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단',
       badge: 'OLED 1차시 · 자외선과 형광',
       slides: [
-        // Slide 1: 탐구 질문 (표지 - 불필요한 태그/타이틀/뱃지 전면 배제, 질문 단독 집중)
-        {
-          tag: '',
-          title: '',
-          content: `
-            <div class="pres-hero-question">
-              <p class="hero-q-text">
-                "눈에 보이지 않는 빛(자외선)을 비추었는데,<br>
-                어떻게 우리 눈에 보이는 형광빛으로 바뀌어 나오는 것일까?"
-              </p>
-            </div>
-          `
-        },
-
-        // Slide 2: 학습목표 (단독 슬라이드)
+        // Slide 1: 학습목표 (단독 슬라이드)
         {
           tag: '',
           title: '학습목표',
