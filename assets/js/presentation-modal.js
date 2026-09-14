@@ -391,26 +391,6 @@ const presentationModalData = {
               </div>
             </div>
           `
-        },
-
-        // Slide 12: 다음 차시 예고
-        {
-          tag: '',
-          title: '다음 차시 예고',
-          content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:340px; text-align:center;">
-              <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:16px; padding:2.5rem 3rem; max-width:860px; width:100%;">
-                <div style="font-size:1.1rem; font-weight:800; color:#1d4ed8; margin-bottom:0.8rem;">다음 시간 안내</div>
-                <p style="font-size:1.5rem; font-weight:800; color:#1e3a8a; margin:0 0 1.2rem 0; word-break:keep-all;">
-                  [2차시] 전자의 에너지 준위와 들뜬 상태
-                </p>
-                <p style="font-size:1.12rem; line-height:1.8; color:#3b82f6; margin:0; word-break:keep-all;">
-                  "분자 속 전자는 자외선 에너지를 어떻게 흡수했다가 방출하는 걸까?"<br>
-                  <strong>가상실험실(lab.html)</strong>에서 전자의 에너지 준위 이동을 직접 탐구해 봅니다.
-                </p>
-              </div>
-            </div>
-          `
         }
       ]
     },
