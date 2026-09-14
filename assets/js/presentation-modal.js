@@ -37,113 +37,108 @@ const presentationModalData = {
       lessonTitle: '[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단',
       badge: 'OLED 1차시 · 자외선과 형광',
       slides: [
-        // Slide 1: 도입 (핵심 질문 & 탐구 목표)
+        // Slide 1: 표지 및 문제 인식 & 학습 목표 (지도안 원문 100% 일치)
         {
           tag: '1차시 도입 · [9과10-03]',
-          title: '어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단',
+          title: '[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단',
           content: `
             <div class="pres-stack">
               <div class="pres-card pres-highlight" style="padding:1.4rem 1.6rem;">
-                <div class="pres-card-title"><i data-lucide="help-circle"></i> 오늘의 핵심 탐구 질문</div>
-                <p style="font-size:1.28rem; font-weight:800; line-height:1.6; color:#1e40af; margin:0.35rem 0;">
-                  "눈에 보이지 않는 자외선을 비추었는데, 왜 알록달록 형광 빛이 나올까?"
+                <div class="pres-card-title"><i data-lucide="help-circle"></i> [문제 인식]</div>
+                <p style="font-size:1.25rem; font-weight:800; line-height:1.6; color:#1e40af; margin:0.35rem 0;">
+                  "눈에 보이지 않는 빛(자외선)을 비추었는데, 어떻게 우리 눈에 보이는 알록달록한 형광빛(가시광선)으로 바뀌어 나오는 것일까?"
                 </p>
-                <div style="font-size:0.95rem; color:#475569; margin-top:0.4rem;">
-                  들어간 자외선과 나온 형광 빛의 <strong>에너지 차이는 어떨지</strong> 탐구하여 서술해 봅시다.
-                </div>
               </div>
 
-              <div class="pres-card" style="padding:1.15rem 1.6rem;">
-                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 탐구 목표</div>
-                <ul class="pres-list" style="font-size:1.02rem; line-height:1.75;">
-                  <li>자외선과 가시광선의 <strong>파장과 에너지 차이</strong>를 서술할 수 있다.</li>
-                  <li>일상 물질에 자외선을 비추었을 때의 <strong>색상 변화를 관찰하고 기록</strong>한다.</li>
-                  <li>빛과 열의 관계를 이해하고 <strong>에너지 보존 법칙</strong>으로 설명할 수 있다.</li>
-                </ul>
+              <div class="pres-card" style="padding:1.3rem 1.6rem;">
+                <div class="pres-card-title"><i data-lucide="target"></i> [학습 목표]</div>
+                <p style="font-size:1.15rem; font-weight:700; line-height:1.7; color:#0f172a; margin:0.25rem 0;">
+                  자외선과 가시광선의 파장 및 에너지 차이를 비교하고, 일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.
+                </p>
               </div>
             </div>
           `
         },
 
-        // Slide 2: 도입 (동기 유발 현상)
+        // Slide 2: 도입 · 동기 유발 (3분)
         {
-          tag: '1차시 도입 · 동기 유발',
-          title: '어두운 방에서 켠 블랙라이트: 일상 속 숨은 빛을 찾아라!',
+          tag: '1차시 도입 · 동기 유발 3분',
+          title: '어두운 교실에서 켠 블랙라이트: 눈부신 형광의 발견',
           content: `
             <div class="pres-stack">
               <div class="pres-card" style="padding:1.25rem 1.6rem;">
-                <div class="pres-card-title"><i data-lucide="sparkles"></i> 블랙라이트(UV) 아래 놀라운 색상 변화</div>
+                <div class="pres-card-title"><i data-lucide="sparkles"></i> 암실 속 UV-A 블랙라이트 현상 시연</div>
                 <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; margin-top:0.6rem;">
                   <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:0.9rem; text-align:center;">
                     <div style="font-size:1.4rem; margin-bottom:0.25rem;">👟</div>
-                    <strong style="color:#0f172a; font-size:0.98rem;">하얀 운동화 끈</strong>
-                    <p style="font-size:0.86rem; color:#2563eb; font-weight:700; margin:0.25rem 0 0;">눈부신 청색 발광</p>
+                    <strong style="color:#0f172a; font-size:0.98rem;">흰 운동화 끈 & 옷</strong>
+                    <p style="font-size:0.86rem; color:#2563eb; font-weight:700; margin:0.25rem 0 0;">어둠 속 눈부신 푸른빛 발광</p>
                   </div>
                   <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:0.9rem; text-align:center;">
-                    <div style="font-size:1.4rem; margin-bottom:0.25rem;">💵</div>
-                    <strong style="color:#0f172a; font-size:0.98rem;">지폐 & 여권</strong>
-                    <p style="font-size:0.86rem; color:#d97706; font-weight:700; margin:0.25rem 0 0;">숨겨진 형광 보안 섬유</p>
+                    <div style="font-size:1.4rem; margin-bottom:0.25rem;">🖍️</div>
+                    <strong style="color:#0f172a; font-size:0.98rem;">형광펜 메모 & 종이</strong>
+                    <p style="font-size:0.86rem; color:#16a34a; font-weight:700; margin:0.25rem 0 0;">선명한 형광빛 발광</p>
                   </div>
                   <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:0.9rem; text-align:center;">
-                    <div style="font-size:1.4rem; margin-bottom:0.25rem;">🍸</div>
-                    <strong style="color:#0f172a; font-size:0.98rem;">투명한 토닉워터</strong>
-                    <p style="font-size:0.86rem; color:#0284c7; font-weight:700; margin:0.25rem 0 0;">사파이어 보석빛 형광</p>
+                    <div style="font-size:1.4rem; margin-bottom:0.25rem;">🧤</div>
+                    <strong style="color:#0f172a; font-size:0.98rem;">흰색 면장갑</strong>
+                    <p style="font-size:0.86rem; color:#7c3aed; font-weight:700; margin:0.25rem 0 0;">자외선 아래 푸른빛 방출</p>
                   </div>
                 </div>
               </div>
 
-              <div class="pres-card pres-highlight" style="padding:1.2rem 1.6rem; text-align:center;">
-                <div class="pres-card-title" style="justify-content:center;"><i data-lucide="zap"></i> 생각 열기 질문</div>
-                <p style="font-size:1.15rem; font-weight:700; color:#1e3a8a; margin:0.3rem 0;">
-                  "보이지 않는 빛 에너지를 흡수했는데, 어떻게 새로운 색깔 빛이 뿜어져 나올까?"
+              <div class="pres-card pres-highlight" style="padding:1.2rem 1.6rem;">
+                <div class="pres-card-title"><i data-lucide="message-circle-question"></i> [교사 발문 & 학생 생각 유도]</div>
+                <p style="font-size:1.15rem; font-weight:700; color:#1e3a8a; margin:0.25rem 0;">
+                  "블랙라이트는 어두운 보랏빛으로 거의 보이지 않는데, 왜 신발 끈과 종이는 눈부신 형광빛을 뿜어낼까요?"
                 </p>
-                <div style="color:#2563eb; font-weight:800; font-size:1.02rem; margin-top:0.4rem;">
-                  👉 물질 속 분자와 전자의 비밀을 파헤쳐 봅시다!
-                </div>
+                <p style="font-size:0.95rem; color:#475569; margin:0.4rem 0 0;">
+                  👉 <em>"스스로 빛을 낸다?", "빛을 반사한다?", "형광 물질이 들어있다?"</em> — 탐구로 확인해 봅시다!
+                </p>
               </div>
             </div>
           `
         },
 
-        // Slide 3: 준비 (실물 실험도구 안내)
+        // Slide 3: 준비 · 실험 준비물 안내
         {
-          tag: '1차시 준비 · 실물 실험도구',
-          title: '탐구 활동 준비물 안내 (실제 실험 도구 세트)',
+          tag: '1차시 준비 · 실험 준비물',
+          title: '1차시 탐구 활동 준비물 안내 (모둠별 1세트)',
           content: `
             <div class="pres-tool-layout">
               <div class="pres-tool-img-wrap">
                 <img src="${getToolAsset('oled_tools_1.jpg')}" alt="1차시 실험 준비물 실사 사진" class="pres-tool-img">
                 <div class="pres-tool-img-caption">
-                  <i data-lucide="camera"></i> <span>실제 실험대 위 준비물 세트 (모둠별 1세트)</span>
+                  <i data-lucide="camera"></i> <span>실제 실험대 위 준비물 세트</span>
                 </div>
               </div>
               <div class="pres-tool-tag-list">
                 <div class="pres-tool-item">
                   <div class="pres-tool-item-icon"><i data-lucide="flashlight"></i></div>
                   <div>
-                    <div class="pres-tool-name">UV-A 블랙라이트 램프 (365nm)</div>
-                    <div class="pres-tool-desc">형광 분자를 들뜨게 만드는 자외선 광원</div>
-                  </div>
-                </div>
-                <div class="pres-tool-item">
-                  <div class="pres-tool-item-icon"><i data-lucide="glasses"></i></div>
-                  <div>
-                    <div class="pres-tool-name">자외선 차단 실험 보안경</div>
-                    <div class="pres-tool-desc">눈을 안전하게 보호하는 필수 안전 장비</div>
+                    <div class="pres-tool-name">UV-A 블랙라이트 램프 & 보안경</div>
+                    <div class="pres-tool-desc">365nm 자외선 광원 및 눈 보호 안전 장비</div>
                   </div>
                 </div>
                 <div class="pres-tool-item">
                   <div class="pres-tool-item-icon"><i data-lucide="flask-round"></i></div>
                   <div>
-                    <div class="pres-tool-name">시약 3종 (토닉워터 / 비타민 / 올리브유)</div>
-                    <div class="pres-tool-desc">퀴닌, 리보플라빈, 엽록소 형광 관찰용</div>
+                    <div class="pres-tool-name">시약 3종 (토닉워터 / 비타민 음료 / 올리브유)</div>
+                    <div class="pres-tool-desc">퀴닌, 리보플라빈, 엽록소 분자 형광 관찰용</div>
+                  </div>
+                </div>
+                <div class="pres-tool-item">
+                  <div class="pres-tool-item-icon"><i data-lucide="box"></i></div>
+                  <div>
+                    <div class="pres-tool-name">암실 상자 & 검은색 종이</div>
+                    <div class="pres-tool-desc">외부 빛을 완벽히 차단하는 암실 관찰 환경 조성</div>
                   </div>
                 </div>
                 <div class="pres-tool-item">
                   <div class="pres-tool-item-icon"><i data-lucide="banknote"></i></div>
                   <div>
-                    <div class="pres-tool-name">암실 상자, 지폐, 형광펜</div>
-                    <div class="pres-tool-desc">암실 환경 조성 및 보안 형광 섬유 확인</div>
+                    <div class="pres-tool-name">천원권 지폐 & 형광펜 & 스마트기기</div>
+                    <div class="pres-tool-desc">보안 형광 섬유 관찰 및 디지털 활동지 작성용</div>
                   </div>
                 </div>
               </div>
@@ -151,68 +146,70 @@ const presentationModalData = {
           `
         },
 
-        // Slide 4: 준비 (필수 안전 수칙)
+        // Slide 4: 준비 · 주의사항 (안전 수칙)
         {
-          tag: '1차시 준비 · 안전 수칙',
+          tag: '1차시 준비 · 주의사항',
           title: '실험실 필수 안전 수칙 (Safety First)',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card">
-                <div class="pres-safety-icon"><i data-lucide="alert-triangle"></i></div>
-                <div class="pres-safety-title">1. 자외선 직시 절대 금지</div>
+                <div class="pres-safety-icon"><i data-lucide="glasses"></i></div>
+                <div class="pres-safety-title">1. 보안경 상시 착용 필수</div>
                 <div class="pres-safety-desc">
-                  자외선(UV-A) 광원을 직접 눈으로 보거나 피부에 비추지 마세요. <strong>보안경을 반드시 착용</strong>합니다.
+                  자외선(UV-A) 램프를 얼굴이나 눈, 친구 피부에 직접 비추지 마세요. <strong>실험 종료 시까지 보안경을 상시 착용</strong>합니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-amber">
                 <div class="pres-safety-icon"><i data-lucide="ban"></i></div>
                 <div class="pres-safety-title">2. 시약 음용 절대 금지</div>
                 <div class="pres-safety-desc">
-                  토닉워터, 비타민 음료, 올리브유는 <strong>실험 관찰 전용 시약</strong>입니다. 절대 마시거나 맛보지 않습니다.
+                  토닉워터, 비타민 음료, 올리브유는 <strong>실험용 관찰 시약</strong>입니다. 어떠한 경우에도 맛보거나 마시지 않습니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-blue">
                 <div class="pres-safety-icon"><i data-lucide="shield-check"></i></div>
-                <div class="pres-safety-title">3. 암실 상자 & 폐액 분리</div>
+                <div class="pres-safety-title">3. 암실 상자 & 전용 폐액 분리</div>
                 <div class="pres-safety-desc">
-                  <strong>암실 상자 내부에서만 램프를 작동</strong>하고, 실험 후 시약은 지정된 폐액통에 분리 수거합니다.
+                  암실 상자 덮개를 밀착하고 <strong>45도 각도로 조사</strong>하며, 실험 후 시약은 <strong>지정 폐액통에 분리 수거</strong>합니다.
                 </div>
               </div>
             </div>
           `
         },
 
-        // Slide 5: 전개 (탐구 절차 Step 1-2-3)
+        // Slide 5: 전개 · 실험 탐구 (14분)
         {
-          tag: '1차시 전개 · 탐구 절차',
-          title: '탐구 활동: 일상 속 형광 탐정단 3단계 미션',
+          tag: '1차시 전개 · 실험 탐구 14분',
+          title: '탐구 활동: 일상 속 형광 물질 관찰하기',
           content: `
-            <div class="pres-steps-row">
-              <div class="pres-step-box">
-                <div class="step-num">Step 1</div>
-                <div class="step-title">시약 준비 & 암실 정렬</div>
-                <p>비커 3종(토닉워터, 비타민 음료, 올리브유)을 30mL씩 따르고 암실 상자 안에 나란히 정렬합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 2</div>
-                <div class="step-title">자외선 조사 & 색상 관찰</div>
-                <p>보안경 착용 후 UV-A 램프를 비추어 일반 조명과 자외선 아래 색상 변화를 비교 관찰합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 3</div>
-                <div class="step-title">지폐 보안 섬유 & 기록</div>
-                <p>지폐와 형광펜의 발광을 확인하고, <strong>색상 변화를 활동지 표에 기록</strong>합니다.</p>
+            <div class="pres-stack">
+              <div class="pres-steps-row">
+                <div class="pres-step-box">
+                  <div class="step-num">Step 1</div>
+                  <div class="step-title">실험 기구 및 시약 준비</div>
+                  <p>3개 비커에 토닉워터, 비타민 음료, 올리브유를 <strong>각 30mL씩 담아 암실 상자에 배치</strong>합니다. 천원권 지폐와 형광펜 메모 종이를 준비합니다.</p>
+                </div>
+                <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
+                <div class="pres-step-box">
+                  <div class="step-num">Step 2</div>
+                  <div class="step-title">1단계: 형광등 아래 기본 색상 기록</div>
+                  <p>일반 실내 조명 아래에서 4가지 관찰 대상의 <strong>원래 기본 색상을 활동지 표에 객관적으로 기록</strong>합니다.</p>
+                </div>
+                <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
+                <div class="pres-step-box">
+                  <div class="step-num">Step 3</div>
+                  <div class="step-title">2단계: UV-A 램프 조사 & 형광 관찰</div>
+                  <p>보안경을 쓰고 암실 상자 투입구로 UV-A 램프를 비추며 <strong>새롭게 뿜어져 나오는 형광 발광 색상을 표에 기록</strong>합니다.</p>
+                </div>
               </div>
             </div>
           `
         },
 
-        // Slide 6: 전개 (관찰 결과 및 모범 정답)
+        // Slide 6: 전개 · 관찰 결과 및 모범 답안 (활동지 1번)
         {
-          tag: '1차시 전개 · 탐구 기록 및 정답',
-          title: '활동지 관찰 결과 및 모범 정답',
+          tag: '1차시 전개 · 결과 기록',
+          title: '활동지 관찰 결과 및 모범 답안 (활동지 1번)',
           content: `
             <div class="pres-table-wrap">
               <table class="pres-table">
@@ -220,33 +217,33 @@ const presentationModalData = {
                   <tr>
                     <th style="width:20%;">실험 물질</th>
                     <th style="width:22%;">포함된 핵심 분자</th>
-                    <th style="width:24%;">일반 조명 아래 색상</th>
+                    <th style="width:24%;">형광등 아래 기본 색상</th>
                     <th style="width:34%;">자외선을 쬐었을 때 관찰 결과 (모범 답안)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><strong>토닉워터</strong></td>
-                    <td>퀴닌 (Quinine)</td>
-                    <td>투명한 무색</td>
-                    <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">밝은 파란색 (Blue) 형광</span></td>
+                    <td>퀴닌 분자 (Quinine)</td>
+                    <td>무색투명</td>
+                    <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">파란색 형광 발광</span></td>
                   </tr>
                   <tr>
                     <td><strong>비타민 음료</strong></td>
                     <td>리보플라빈 (비타민 B2)</td>
-                    <td>투명한 노란색</td>
-                    <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">눈부신 황록색 (Green) 형광</span></td>
+                    <td>맑은 노란색</td>
+                    <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">연두색 형광 발광</span></td>
                   </tr>
                   <tr>
                     <td><strong>올리브유</strong></td>
-                    <td>엽록소 (Chlorophyll)</td>
-                    <td>연한 노란초록색</td>
-                    <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">선명한 붉은색 (Red) 형광</span></td>
+                    <td>엽록소 분자 (Chlorophyll)</td>
+                    <td>연초록색</td>
+                    <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">붉은색 형광 발광</span></td>
                   </tr>
                   <tr>
-                    <td><strong>지폐 / 여권</strong></td>
-                    <td>위조방지 형광염료</td>
-                    <td>평범한 종이 무늬</td>
+                    <td><strong>지폐 & 형광펜</strong></td>
+                    <td>형광염료 (위조방지)</td>
+                    <td>일반 종이색 / 기본 잉크색</td>
                     <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">숨겨진 형광 보안 섬유 발광</span></td>
                   </tr>
                 </tbody>
@@ -255,105 +252,116 @@ const presentationModalData = {
           `
         },
 
-        // Slide 7: 전개 (핵심 원리: 파장과 에너지)
+        // Slide 7: 전개 · 개념 강의: 빛의 파장과 에너지 (10분)
         {
-          tag: '1차시 전개 · 개념 원리',
-          title: '빛의 스펙트럼: 파장이 짧을수록 에너지가 크다!',
+          tag: '1차시 전개 · 개념 강의 10분',
+          title: "빛의 파장과 에너지: '파도의 촘촘함과 충격량' 비유",
           content: `
             <div class="pres-stack">
               <div class="pres-spectrum-wrap">
                 <div class="pres-spectrum-bar">
                   <div class="spec-part spec-uv">
-                    <strong>자외선 (300~400nm)</strong><br>
-                    <span class="spec-sub">짧은 파장 · 고에너지 · 눈에 안 보임</span>
+                    <strong>자외선 (UV-A, 300~400nm)</strong><br>
+                    <span class="spec-sub">파장 짧음 · 에너지가 큼 · 눈에 보이지 않음</span>
                   </div>
                   <div class="spec-part spec-vis">
                     <strong>가시광선 (400~700nm)</strong><br>
-                    <span class="spec-sub">사람이 보는 무지개 (보라 ➔ 파랑 ➔ 초록 ➔ 빨강)</span>
+                    <span class="spec-sub">파장 김 · 에너지가 상대적으로 작음 · 눈에 보이는 무지개</span>
                   </div>
                   <div class="spec-part spec-ir">
                     <strong>적외선 (700nm~)</strong><br>
-                    <span class="spec-sub">긴 파장 · 저에너지 · 따뜻한 열선</span>
+                    <span class="spec-sub">파장 가장 김 · 저에너지 · 열선</span>
                   </div>
                 </div>
               </div>
 
-              <div class="pres-card" style="padding:1.15rem 1.6rem; background:#eff6ff; border-color:#bfdbfe;">
-                <div class="pres-card-title" style="color:#1e40af;"><i data-lucide="waves"></i> 빛의 파장과 에너지 관계: '파도의 촘촘함과 충격량' 비유</div>
+              <div class="pres-card pres-highlight" style="padding:1.15rem 1.6rem;">
+                <div class="pres-card-title"><i data-lucide="waves"></i> 빛의 파장과 에너지 관계 (활동지 2번)</div>
                 <p style="font-size:1.12rem; line-height:1.65; color:#1e3a8a; margin:0.2rem 0;">
-                  파도가 <strong>촘촘하게 칠수록(파장이 짧을수록)</strong> 방파제를 때리는 충격량(에너지)이 큽니다.<br>
-                  따라서 <strong>파장이 짧은 자외선</strong>은 가시광선보다 훨씬 큰 에너지를 가지고 있습니다!
+                  • <strong>'파도의 촘촘함과 충격량' 비유:</strong> 파도가 촘촘할수록(파장이 짧을수록) 방파제를 때리는 충격량(에너지)이 큽니다.<br>
+                  • <strong>결론:</strong> 자외선(300~400nm)은 가시광선(400~700nm)보다 <strong>파장이 더 짧고 에너지가 더 큰 빛</strong>입니다.
                 </p>
               </div>
 
-              <div class="pres-card" style="padding:1.15rem 1.6rem; background:#f8fafc;">
-                <div class="pres-card-title"><i data-lucide="help-circle"></i> 에너지 전환의 핵심 의문</div>
-                <p style="font-size:1.05rem; line-height:1.6; color:#334155; margin:0.2rem 0;">
-                  분자에 <strong>센 에너지(자외선)</strong>가 들어갔는데 왜 <strong>약한 에너지(가시광선)</strong>가 나왔을까요?<br>
-                  👉 <strong>차이만큼의 에너지</strong>는 어디로 사라진 것일까요?
+              <div class="pres-card" style="padding:1rem 1.6rem; background:#f8fafc;">
+                <div class="pres-card-title"><i data-lucide="sparkles"></i> [형광의 정의]</div>
+                <p style="font-size:1.05rem; line-height:1.6; color:#0f172a; margin:0.2rem 0;">
+                  물질 속 분자가 보이지 않는 <strong>자외선(큰 에너지)</strong>을 흡수한 뒤, 에너지가 더 낮은 <strong>가시광선(작은 에너지)</strong>으로 변환하여 방출하는 현상
                 </p>
               </div>
             </div>
           `
         },
 
-        // Slide 8: 정리 (결론: 에너지 보존 법칙)
+        // Slide 8: 전개 · 모둠 토의 및 에너지 보존 결론 (8분)
         {
-          tag: '1차시 정리 · 결론 및 법칙',
-          title: '탐구 결론: 에너지 보존의 법칙 (사라진 에너지는 어디로?)',
+          tag: '1차시 전개 · 모둠 토의 8분',
+          title: '모둠 토의: 사라진 30의 에너지는 어디로 갔을까? (활동지 3번)',
           content: `
             <div class="pres-stack">
+              <div class="pres-card pres-highlight" style="padding:1.2rem 1.6rem;">
+                <div class="pres-card-title"><i data-lucide="users"></i> [교사 질문 & 모둠별 토의]</div>
+                <p style="font-size:1.2rem; font-weight:800; color:#1e40af; margin:0.25rem 0;">
+                  "자외선 에너지를 100이라고 하면, 방출된 형광빛의 에너지는 70~80입니다. 그렇다면 30의 에너지는 어디로 갔을까요?"
+                </p>
+                <p style="font-size:0.95rem; color:#475569; margin:0.35rem 0 0;">
+                  모둠원과 함께 들어간 자외선과 나온 형광빛 사이의 <strong>에너지 차이</strong>를 토의하여 활동지 3번에 서술해 봅시다.
+                </p>
+              </div>
+
               <div class="pres-equation-card">
-                <div class="eq-title">[ 대자연의 철칙: 에너지 보존 법칙 (Energy Conservation) ]</div>
+                <div class="eq-title">[ 대자연의 철칙: 에너지 보존 법칙 ]</div>
                 <div class="eq-formula">
-                  [ 흡수한 자외선 에너지 ] = [ 방출된 형광빛 에너지 ] + [ 분자가 흘린 열(Heat) ]
+                  [ 흡수한 자외선 에너지 ] = [ 방출된 형광빛 에너지 ] + [ 분자가 흘린 열(진동) 에너지 ]
                 </div>
               </div>
 
-              <div class="pres-card" style="padding:1.2rem 1.6rem; background:#f8fafc;">
-                <div class="pres-card-title"><i data-lucide="check-circle-2"></i> 오늘 확인한 핵심 과학 원리</div>
-                <ul class="pres-list" style="font-size:1.05rem; line-height:1.8;">
-                  <li><strong>형광 현상:</strong> 눈에 보이지 않는 자외선을 흡수하여, 눈에 보이는 가시광선으로 방출하는 현상</li>
-                  <li><strong>에너지 손실(열):</strong> 들뜬 전자가 진동하며 <strong>열을 흘리고 내려오므로</strong> 방출되는 빛의 에너지가 작아짐(파장이 길어짐)</li>
-                  <li><strong>완벽한 에너지 보존:</strong> 에너지는 결코 소멸하지 않고 <strong>빛 + 열</strong>의 합으로 100% 보존됨</li>
-                </ul>
+              <div class="pres-card" style="padding:1.1rem 1.6rem; background:#f8fafc;">
+                <div class="pres-card-title"><i data-lucide="check-circle-2"></i> [에너지 보존 결론]</div>
+                <p style="font-size:1.02rem; line-height:1.7; color:#334155; margin:0.2rem 0;">
+                  에너지가 결코 소멸한 것이 아니라, 분자가 에너지를 흡수한 후 진동하며 <strong>'미세한 열(열에너지)'</strong> 형태로 방출하여 에너지의 총합은 완벽히 보존됩니다!
+                </p>
               </div>
             </div>
           `
         },
 
-        // Slide 9: 정리 (학습 정리 및 2차시 예고)
+        // Slide 9: 정리 · 결과 정리 및 2차시 예고 (8분)
         {
-          tag: '1차시 정리 · 차시 예고',
-          title: '1차시 배움 정리 및 다음 2차시 탐구 예고',
+          tag: '1차시 정리 · 8분',
+          title: '1차시 학습 내용 정리 및 다음 2차시 탐구 예고',
           content: `
             <div class="pres-stack">
               <div class="pres-card" style="padding:1.2rem 1.6rem; background:#f8fafc;">
-                <div class="pres-card-title"><i data-lucide="list-checks"></i> 1차시 배움 확인</div>
+                <div class="pres-card-title"><i data-lucide="list-checks"></i> 1차시 배움 정리</div>
                 <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; margin-top:0.5rem;">
                   <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:0.8rem; text-align:center;">
                     <strong style="color:#0f172a; font-size:0.95rem;">자외선 vs 가시광선</strong>
-                    <p style="font-size:0.85rem; color:#64748b; margin:0.2rem 0 0;">파장이 짧을수록 에너지 큼</p>
+                    <p style="font-size:0.85rem; color:#64748b; margin:0.2rem 0 0;">파장이 짧을수록 에너지가 큼</p>
                   </div>
                   <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:0.8rem; text-align:center;">
-                    <strong style="color:#0f172a; font-size:0.95rem;">형광 색상 관찰</strong>
-                    <p style="font-size:0.85rem; color:#64748b; margin:0.2rem 0 0;">토닉(청)·비타민(녹)·오일(적)</p>
+                    <strong style="color:#0f172a; font-size:0.95rem;">4대 물질 형광 관찰</strong>
+                    <p style="font-size:0.85rem; color:#64748b; margin:0.2rem 0 0;">토닉(청)·비타민(녹)·오일(적)·지폐</p>
                   </div>
                   <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:0.8rem; text-align:center;">
                     <strong style="color:#0f172a; font-size:0.95rem;">에너지 보존 법칙</strong>
-                    <p style="font-size:0.85rem; color:#64748b; margin:0.2rem 0 0;">자외선 = 형광빛 + 열</p>
+                    <p style="font-size:0.85rem; color:#64748b; margin:0.2rem 0 0;">자외선 = 형광빛 + 열(진동)</p>
                   </div>
                 </div>
+                <p style="font-size:0.9rem; color:#475569; margin:0.75rem 0 0;">
+                  • <strong>일상 속 형광 기술 활용:</strong> 위조지폐·여권 감별, 형광펜, 야간 안전 조끼 등<br>
+                  • <strong>정리 점검:</strong> 시약은 전용 폐액통에 분리 수거하고 실험 기구 제자리 정돈
+                </p>
               </div>
 
               <div class="pres-card pres-highlight" style="padding:1.2rem 1.6rem;">
                 <div class="pres-card-title"><i data-lucide="arrow-right-circle"></i> 다음 2차시 탐구 예고</div>
                 <p style="font-size:1.15rem; line-height:1.6; color:#1e3a8a; margin:0.2rem 0;">
                   <strong>[2차시] 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환</strong><br>
-                  "원자 속 전자는 어떻게 계단을 뛰어오르고, 어떻게 열과 형광을 내며 착지할까?"
+                  "분자 속 전자는 자외선 에너지를 어떻게 흡수했다가 방출하는 걸까?"
                 </p>
                 <div style="color:#2563eb; font-weight:700; font-size:0.95rem; margin-top:0.4rem;">
-                  👉 <strong>인터랙티브 가상실험실(Lab 1)</strong>에서 파장 슬라이더를 조작하며 전자를 직접 점프시켜 봅니다!
+                  👉 <strong>가상실험실(lab.html)</strong>을 활용하여 원자 속 전자의 계단 점프 과정을 직접 탐구합니다!
                 </div>
               </div>
             </div>
