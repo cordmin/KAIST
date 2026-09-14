@@ -1,4 +1,4 @@
-﻿/**
+/**
  * KAIST CPRL × 2022 개정 중학 과학 첨단 탐구 플랫폼
  * Interactive HTML5 Canvas Simulation Engines (simulations.js)
  * 
@@ -58,7 +58,7 @@ function drawOledLab1() {
       oElectronState = 'jumping';
       oTargetY = 90;
       const st = document.getElementById('oled-lab1-status');
-      if (st) st.innerText = '1단계: 자외선 광자 흡수 후 3층으로 전이';
+      if (st) st.innerText = '1단계: 자외선 흡수 후 3층으로 전이';
     }
   }
 

@@ -768,8 +768,9 @@ body {
   color: var(--color-graphite);
 }
 
-.data-table tr:hover td {
-  background-color: #faf9f8;
+.data-table.text-center td,
+.data-table td.text-center {
+  text-align: center;
 }
 
 /* Badges */
@@ -1307,6 +1308,112 @@ h3.sub-heading {
   }
 }
 
+/* ==========================================================================
+   지도안 표 내부 가독성 향상용 미니 카드 컴포넌트 시스템 (단정하고 절제된 학술/공교육 스타일)
+   ========================================================================== */
+.plan-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.plan-card:last-child {
+  margin-bottom: 0;
+}
+.plan-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.45rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.88rem;
+}
+.plan-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.plan-card-badge {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  white-space: nowrap;
+}
+
+/* 지도상 유의점 및 평가 전용 단정 카드 (차분한 슬레이트 모노톤) */
+.plan-note-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 5px;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #334155;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+.plan-note-card:last-child {
+  margin-bottom: 0;
+}
+.plan-note-card svg,
+.plan-note-card i {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  margin-top: 0.12rem;
+  color: inherit;
+}
+.plan-note-title {
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+/* 물질 4종 미니 그리드 (단정하고 담백한 표 형태, 한 행 4열 나란히 배치) */
+.substance-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+  margin: 0.45rem 0 0.3rem 0;
+}
+.substance-mini-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.83rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1.45;
+  color: #1e293b;
+  word-break: keep-all;
+}
+@media (max-width: 900px) {
+  .substance-mini-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 540px) {
+  .substance-mini-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* CPRL 대표 논문 옹기종기 미니 카드 */
 .mini-paper-grid {
   display: grid;
@@ -1773,8 +1880,195 @@ h3.sub-heading {
   animation: fadeIn 0.2s ease;
 }
 
+/* ==========================================================================
+   Digital Interactive Worksheet Inputs (Tablet & Smart Device Friendly)
+   ========================================================================== */
+.ws-student-meta {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+  background: #f1f5f9;
+  border-radius: 0.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ws-mini-input {
+  border: 1.5px solid #cbd5e1;
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.ws-mini-input:hover {
+  border-color: #94a3b8;
+}
+
+.ws-mini-input:focus {
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+}
+
+.ws-table-input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 38px;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.92rem;
+  color: #1e293b;
+  text-align: center;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.ws-table-input:hover {
+  background: #ffffff;
+  border-color: #94a3b8;
+}
+
+.ws-table-input:focus {
+  background: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+}
+
+.ws-table-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.ws-text-input {
+  flex: 1;
+  min-width: 160px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 38px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.92rem;
+  color: #1e293b;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ws-text-input:hover {
+  border-color: #94a3b8;
+}
+
+.ws-text-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+}
+
+.ws-text-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.87rem;
+  font-weight: 400;
+}
+
+.ws-textarea-input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 72px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #1e293b;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ws-textarea-input:hover {
+  border-color: #94a3b8;
+}
+
+.ws-textarea-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+}
+
+.ws-textarea-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.87rem;
+  font-weight: 400;
+}
+
+/* Model answer active state when filled into student worksheet */
+.ws-table-input.is-model-answer,
+.ws-text-input.is-model-answer,
+.ws-textarea-input.is-model-answer,
+.ws-mini-input.is-model-answer {
+  color: #c22e1b !important;
+  font-weight: 700 !important;
+  background-color: #fff8f7 !important;
+  border-color: rgba(246, 73, 50, 0.45) !important;
+  box-shadow: 0 0 0 2px rgba(246, 73, 50, 0.12) !important;
+  cursor: default;
+}
+
+.ws-teacher-tip {
+  animation: fadeIn 0.25s ease;
+}
+
 /* Modal Print Rules */
 @media print {
+  .ws-table-input,
+  .ws-text-input,
+  .ws-textarea-input,
+  .ws-mini-input {
+    border: none !important;
+    border-bottom: 1px solid #475569 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+    border-radius: 0 !important;
+    padding: 2px 4px !important;
+    font-size: 0.95rem !important;
+    resize: none !important;
+  }
+
+  .ws-table-input.is-model-answer,
+  .ws-text-input.is-model-answer,
+  .ws-textarea-input.is-model-answer,
+  .ws-mini-input.is-model-answer {
+    color: #b91c1c !important;
+    font-weight: 700 !important;
+    border-bottom: 1.5px solid #b91c1c !important;
+  }
+
+  .ws-table-input::placeholder,
+  .ws-text-input::placeholder,
+  .ws-textarea-input::placeholder,
+  .ws-mini-input::placeholder {
+    color: transparent !important;
+    opacity: 0 !important;
+  }
+
   body.printing-modal {
     background: #ffffff !important;
     padding: 0 !important;

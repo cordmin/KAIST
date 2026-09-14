@@ -197,7 +197,7 @@ const presentationModalData = {
                     <th>관찰 대상</th>
                     <th>포함된 핵심 분자</th>
                     <th>일반 조명 아래 색</th>
-                    <th>자외선(UV-A) 조사 시 관찰 결과 (정답)</th>
+                    <th>자외선을 쬐었을 때 관찰 결과 (정답)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -236,15 +236,15 @@ const presentationModalData = {
           content: `
             <div class="pres-spectrum-wrap">
               <div class="pres-spectrum-bar">
-                <div class="spec-part spec-uv">자외선 (300~400nm)<br><span class="spec-sub">고에너지 · 눈에 안 보임</span></div>
+                <div class="spec-part spec-uv">자외선 (300~400nm)<br><span class="spec-sub">에너지가 큼 · 눈에 안 보임</span></div>
                 <div class="spec-part spec-vis">가시광선 (400~700nm)<br><span class="spec-sub">인간이 보는 무지개 (파랑 ➔ 초록 ➔ 빨강)</span></div>
                 <div class="spec-part spec-ir">적외선 (700nm~)<br><span class="spec-sub">저에너지 · 열선</span></div>
               </div>
             </div>
             <div class="pres-grid-2" style="margin-top:1.25rem;">
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="zap"></i> 파장과 광자 에너지</div>
-                <p>빛은 알갱이(광자)입니다. 파장이 짧은 <strong>자외선(UV) 광자</strong>는 마치 빠른 강펀치처럼 에너지가 매우 큽니다!</p>
+                <div class="pres-card-title"><i data-lucide="zap"></i> 파장과 빛 에너지</div>
+                <p>파장이 촘촘하게 짧은 <strong>자외선(UV)</strong>은 파도가 거세게 치듯 에너지가 매우 큽니다!</p>
               </div>
               <div class="pres-card pres-highlight">
                 <div class="pres-card-title"><i data-lucide="scale"></i> 에너지의 변신 법칙</div>
@@ -270,7 +270,7 @@ const presentationModalData = {
               <div class="pres-card">
                 <div class="pres-card-title"><i data-lucide="check-circle-2"></i> 오늘 확인한 과학 원리</div>
                 <ul class="pres-list">
-                  <li>형광은 보이지 않는 고에너지 자외선을 흡수하여 가시광선으로 뿜는 현상입니다.</li>
+                  <li>형광은 보이지 않는 자외선을 흡수하여 가시광선으로 뿜는 현상입니다.</li>
                   <li>빛의 에너지는 절대 사라지지 않고 <strong>빛 + 열</strong>로 완벽히 보존됩니다.</li>
                 </ul>
               </div>
@@ -289,8 +289,8 @@ const presentationModalData = {
               <div class="pres-card">
                 <div class="pres-card-title"><i data-lucide="list-checks"></i> 1차시 배움 확인</div>
                 <ul class="pres-list">
-                  <li>✅ 자외선(고에너지) vs 가시광선(저에너지) 파장 관계 이해</li>
-                  <li>✅ 퀴닌(파랑), 리보플라빈(연두), 엽록소(빨강) 형광 관찰 완료</li>
+                  <li>✅ 자외선 vs 가시광선 파장·에너지 관계 이해</li>
+                  <li>✅ 토닉워터(파랑), 비타민(연두), 올리브유(빨강), 지폐(주황) 형광 관찰 완료</li>
                   <li>✅ 에너지 보존 법칙 (자외선 = 형광빛 + 열) 수식 도출</li>
                 </ul>
               </div>
@@ -349,7 +349,7 @@ const presentationModalData = {
                 <div class="pres-card-title"><i data-lucide="activity"></i> 트램펄린 놀이터의 전자</div>
                 <ul class="pres-list">
                   <li><strong>바닥 상태 (1층):</strong> 트램펄린 매트 위에서 편안하게 쉬고 있는 안정된 상태</li>
-                  <li><strong>광자 흡수 (도약):</strong> 아래에서 강한 힘을 받아 옥상(3층)으로 껑충 점프!</li>
+                  <li><strong>자외선 흡수 (도약):</strong> 아래에서 강한 에너지를 받아 옥상(3층)으로 껑충 점프!</li>
                   <li><strong>들뜬 상태 (3층):</strong> 너무 높아 불안정하므로 반드시 바닥으로 떨어져야 함!</li>
                 </ul>
               </div>
@@ -423,7 +423,7 @@ const presentationModalData = {
                 <div class="pres-safety-icon"><i data-lucide="sliders"></i></div>
                 <div class="pres-safety-title">2. 단계별 시뮬레이션 준수</div>
                 <div class="pres-safety-desc">
-                  버튼을 무작위로 연타하지 말고, <strong>광자 발사 ➔ 진동 ➔ 방출</strong> 과정을 순서대로 관찰합니다.
+                  버튼을 무작위로 연타하지 말고, <strong>자외선 흡수 ➔ 진동 ➔ 형광 방출</strong> 과정을 순서대로 관찰합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
@@ -443,8 +443,8 @@ const presentationModalData = {
             <div class="pres-steps-row">
               <div class="pres-step-box">
                 <div class="step-num">Step 1</div>
-                <div class="step-title">자외선 광자 발사 (흡수)</div>
-                <p>가상실험실에서 <strong>[⚡ 자외선 광자 발사!]</strong>를 클릭하여 1층 전자가 3층(S₁)으로 솟구치는 순간을 확인합니다.</p>
+                <div class="step-title">자외선 흡수 & 도약</div>
+                <p>가상실험실에서 <strong>[⚡ 자외선(UV) 흡수 & 점프!]</strong>를 클릭하여 1층 전자가 3층(S₁)으로 솟구치는 순간을 확인합니다.</p>
               </div>
               <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
               <div class="pres-step-box">
@@ -456,7 +456,7 @@ const presentationModalData = {
               <div class="pres-step-box">
                 <div class="step-num">Step 3</div>
                 <div class="step-title">형광 가시광선 방출</div>
-                <p>2층에서 1층(S₀)으로 수직 착지하면서 사방으로 <strong>눈부신 파란 형광 광자(450nm)</strong>를 뿜어내는 모습을 기록합니다.</p>
+                <p>2층에서 1층(S₀)으로 수직 착지하면서 사방으로 <strong>눈부신 파란 형광빛(450nm)</strong>을 뿜어내는 모습을 기록합니다.</p>
               </div>
             </div>
           `
@@ -479,7 +479,7 @@ const presentationModalData = {
                   <tr>
                     <td><strong>1단계: 흡수</strong></td>
                     <td>1층(S₀) ➔ 3층(S₁) 옥상</td>
-                    <td>자외선 광자 흡수</td>
+                    <td>자외선 흡수</td>
                     <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">들뜬 상태(Excited State) 도달 (에너지 축적)</span></td>
                   </tr>
                   <tr>
@@ -491,7 +491,7 @@ const presentationModalData = {
                   <tr>
                     <td><strong>3단계: 형광 방출</strong></td>
                     <td>2층 출발선 ➔ 1층(S₀) 바닥</td>
-                    <td>가시광선 광자 방출</td>
+                    <td>가시광선(형광) 방출</td>
                     <td><span class="pres-ans-badge">정답</span> <span class="pres-ans-text">사파이어 파란 형광(450nm) 1억 분의 1초 만에 방출</span></td>
                   </tr>
                 </tbody>
@@ -510,7 +510,7 @@ const presentationModalData = {
                   물질이 <strong>흡수한 빛의 파장보다 방출하는 빛의 파장이 더 길어지는 현상</strong>을 발견자 조지 스토크스의 이름을 따서 <strong>스토크스 이동</strong>이라고 부릅니다.
                 </p>
                 <div class="pres-badge-box" style="margin-top:1rem;">
-                  파장이 길어졌다 = 광자 에너지가 작아졌다!
+                  파장이 길어졌다 = 빛의 에너지가 작아졌다!
                 </div>
               </div>
               <div class="pres-card pres-highlight">
@@ -530,7 +530,7 @@ const presentationModalData = {
             <div class="pres-equation-card">
               <div class="eq-title">[ 전자의 3단계 에너지 수지 방정식 ]</div>
               <div class="eq-formula">
-                E(자외선 광자) = E(형광 광자) + E(진동 열에너지)
+                E(흡수한 자외선) = E(방출된 형광빛) + E(진동 열에너지)
               </div>
             </div>
             <div class="pres-grid-2" style="margin-top:1.25rem;">

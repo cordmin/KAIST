@@ -1,4 +1,4 @@
-﻿/**
+/**
  * KAIST CPRL × 2022 개정 중학 과학 첨단 탐구 플랫폼
  * SPA Router & State Controller (app-router.js)
  */
@@ -40,6 +40,9 @@ function switchLessonPlanTab(e, index, targetWindowId) {
   const rect = container.getBoundingClientRect();
   if (rect.top < 0) {
     window.scrollTo({ top: window.pageYOffset + rect.top - 80, behavior: 'smooth' });
+  }
+  if (window.lucide) {
+    try { lucide.createIcons(); } catch(e) {}
   }
 }
 

@@ -50,7 +50,7 @@
               </td>
             </tr>
             <tr>
-              <th>탐구목표</th>
+              <th>학습목표</th>
               <td colspan="3">
                 1. 자외선과 가시광선의 에너지 차이를 알고, 일상 속 형광 물질의 발광 원리를 입자 모형으로 설명할 수 있다.<br>
                 2. 원자 속 전자의 들뜬 상태 전이 및 회전 팽이(스핀) 모형을 통해 OLED의 75% 열 손실 문제를 분석할 수 있다.<br>
@@ -65,22 +65,22 @@
             </tr>
             <tr>
               <th>준비물</th>
-              <td colspan="3">스마트기기, UV-A 블랙라이트 램프, 자외선 차단 보안경, 암실 상자, 토닉워터, 비타민 음료, 올리브유, 형광펜, 지폐</td>
+              <td colspan="3">스마트기기, UV-A 블랙라이트 램프, 자외선 차단 보안경, 암실 상자, 토닉워터, 비타민 음료, 올리브유, 형광펜, 천원권 지폐, 검은색 종이</td>
             </tr>
           </table>
 
-          <div style="display:flex; justify-content:flex-end; gap:1.5rem; margin:1rem 0; font-size:0.95rem; font-weight:600; padding:0.5rem; background:#f1f5f9; border-radius:0.4rem;">
-            <span>제 2 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
-            <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
-            <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
-            <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+          <div class="ws-student-meta">
+            <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 반</span>
+            <span><input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 번</span>
+            <span>이름: <input type="text" class="ws-mini-input" style="width:84px;" placeholder=" "></span>
+            <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 모둠</span>
           </div>
 
           <!-- 1. 탐구 과정 -->
           <div class="inquiry-step-title">1. 탐구 과정</div>
           
           <div style="margin-bottom:1rem; line-height:1.75; font-size:0.93rem;">
-            <p><strong>【탐구 1】 자외선 형광 탐정단: 일상 속 숨은 빛 찾기</strong></p>
+            <p><strong>【탐구 1】 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단</strong></p>
             <ol style="margin-left:1.5rem; margin-top:0.3rem;">
               <li>자외선 차단 보안경을 착용하고, 암실 상자 안에 토닉워터, 비타민 음료, 올리브유, 지폐를 배치한다.</li>
               <li>일반 조명(가시광선) 아래에서의 물질 색상을 관찰하여 기록한다.</li>
@@ -90,7 +90,7 @@
             <p style="margin-top:0.75rem;"><strong>【탐구 2】 꼬마 전자의 트램펄린 점프: 전자의 에너지 계단</strong></p>
             <ol style="margin-left:1.5rem; margin-top:0.3rem;">
               <li>스마트기기를 통해 <strong>가상실험실 (lab.html)</strong>의 [전자의 에너지 계단 시뮬레이터]에 접속한다.</li>
-              <li>바닥 상태(1층)의 전자에 자외선 광자(센 에너지)를 흡수시켜 들뜬 상태(3층)로 점프시킨다.</li>
+              <li>바닥 상태(1층)의 전자에 자외선(센 에너지)을 흡수시켜 들뜬 상태(3층)로 점프시킨다.</li>
               <li>전자가 불안정하여 부르르 떨며 열을 방출하고, 남은 에너지를 형광빛으로 방출하며 바닥으로 착지하는 과정을 관찰한다.</li>
             </ol>
 
@@ -114,33 +114,59 @@
           <!-- 탐구 1 활동 -->
           <div style="margin-top:0.75rem;">
             <p><strong>【탐구 1】 자외선 형광 탐정단 관찰 결과 기록</strong></p>
-            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록해 보자.</p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록하시오.</p>
             
-            <table class="data-table">
+            <table class="data-table text-center">
               <thead>
                 <tr>
                   <th style="width:22%;">실험 물질</th>
-                  <th style="width:26%;">포함된 핵심 분자</th>
-                  <th style="width:26%;">일반 조명 아래 색상</th>
-                  <th style="width:26%;">자외선(UV-A) 조사 시 색상</th>
+                  <th style="width:24%;">포함된 핵심 분자</th>
+                  <th style="width:27%;">일반 조명 아래 색상</th>
+                  <th style="width:27%;">자외선을 쬐었을 때 색상</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr><td>토닉워터</td><td>퀴닌 (Quinine)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-                <tr><td>비타민 음료</td><td>리보플라빈 (비타민 $B_2$)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-                <tr><td>올리브유</td><td>엽록소 (Chlorophyll)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-                <tr><td>대한민국 지폐</td><td>형광 인쇄 섬유</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+              <tbody style="text-align:center;">
+                <tr>
+                  <td style="text-align:center;">토닉워터</td>
+                  <td style="text-align:center;">퀴닌 (Quinine)</td>
+                  <td><input type="text" class="ws-table-input" placeholder="관찰 색상 입력..."></td>
+                  <td><input type="text" class="ws-table-input" placeholder="관찰 색상 입력..."></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;">비타민 음료</td>
+                  <td style="text-align:center;">리보플라빈 (비타민 $B_2$)</td>
+                  <td><input type="text" class="ws-table-input" placeholder="관찰 색상 입력..."></td>
+                  <td><input type="text" class="ws-table-input" placeholder="관찰 색상 입력..."></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;">올리브유</td>
+                  <td style="text-align:center;">엽록소 (Chlorophyll)</td>
+                  <td><input type="text" class="ws-table-input" placeholder="관찰 색상 입력..."></td>
+                  <td><input type="text" class="ws-table-input" placeholder="관찰 색상 입력..."></td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;">천원권 지폐</td>
+                  <td style="text-align:center;">형광 인쇄 섬유</td>
+                  <td><input type="text" class="ws-table-input" placeholder="관찰 색상 입력..."></td>
+                  <td><input type="text" class="ws-table-input" placeholder="관찰 색상 입력..."></td>
+                </tr>
               </tbody>
             </table>
 
-            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인가?</p>
-            <div class="answer-box">
-              <i data-lucide="corner-down-right"></i> 답: 
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인지 서술하시오.</p>
+            <div class="answer-box" style="display:flex; align-items:center; gap:0.6rem; padding:0.6rem 0.85rem;">
+              <span style="white-space:nowrap; display:inline-flex; align-items:center; gap:0.25rem; font-weight:600; color:#1e293b;">
+                <i data-lucide="corner-down-right"></i> 답:
+              </span>
+              <input type="text" class="ws-text-input" placeholder="파장이 더 짧고 에너지가 더 큰 빛을 서술하세요...">
             </div>
 
-            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 눈부신 알록달록 가시광선이 뿜어져 나오는지, 그리고 들어간 에너지와 나온 빛의 에너지 차이는 어떻게 되었을지 토의하여 써 보자.</p>
-            <div class="answer-box">
-              <i data-lucide="corner-down-right"></i> 토의 내용: 
+            <p style="font-size:0.88rem; color:#475569; margin:0.75rem 0 0.3rem;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 형광 빛이 나오는지, 들어간 자외선과 형광 빛의 에너지 차이는 어떨지 토의하여 서술하시오.</p>
+            <div class="answer-box" style="padding:0.75rem 0.85rem;">
+              <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
+                <i data-lucide="corner-down-right"></i> <span>토의 내용:</span>
+              </div>
+              <textarea class="ws-textarea-input" rows="3" placeholder="자외선 흡수와 방출된 형광 빛의 에너지 차이 및 이유를 자유롭게 작성해 보세요..."></textarea>
             </div>
           </div>
 

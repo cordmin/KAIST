@@ -6,71 +6,97 @@
 const worksheetModalData = {
   oled: {
     1: {
-      title: '[1차시] 자외선 형광 탐정단: 일상 속 숨은 빛 찾기',
+      title: '[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단',
       badge: 'OLED 모듈 1차시 | 성취기준 [9과10-03]',
       student: `
-        <div style="display:flex; justify-content:flex-end; gap:1.2rem; margin-bottom:1rem; font-size:0.9rem; font-weight:600; padding:0.5rem 0.8rem; background:#f1f5f9; border-radius:0.4rem;">
-          <span>제 2 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
-          <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
-          <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
-          <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+        <div class="ws-student-meta">
+          <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 반</span>
+          <span><input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 번</span>
+          <span>이름: <input type="text" class="ws-mini-input" style="width:84px;" placeholder=" "></span>
+          <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 모둠</span>
         </div>
 
-        <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록해 보자.</p>
-        <table class="data-table" style="margin-bottom:1.25rem;">
+        <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록하시오.</p>
+        <table class="data-table text-center" style="margin-bottom:1.25rem;">
           <thead>
             <tr>
-              <th style="width:24%;">실험 물질</th>
-              <th style="width:26%;">포함된 핵심 분자</th>
-              <th style="width:25%;">일반 조명 아래 색상</th>
-              <th style="width:25%;">자외선(UV-A) 조사 시 색상</th>
+              <th style="width:22%;">실험 물질</th>
+              <th style="width:24%;">포함된 핵심 분자</th>
+              <th style="width:27%;">일반 조명 아래 색상</th>
+              <th style="width:27%;">자외선을 쬐었을 때 색상</th>
             </tr>
           </thead>
-          <tbody>
-            <tr><td>토닉워터</td><td>퀴닌 (Quinine)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-            <tr><td>비타민 음료</td><td>리보플라빈 (비타민 B₂)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-            <tr><td>올리브유</td><td>엽록소 (Chlorophyll)</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-            <tr><td>대한민국 지폐</td><td>형광 인쇄 섬유</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          <tbody style="text-align:center;">
+            <tr>
+              <td style="text-align:center;">토닉워터</td>
+              <td style="text-align:center;">퀴닌 (Quinine)</td>
+              <td><input type="text" class="ws-table-input" data-answer="투명한 무색" placeholder="관찰 색상 입력..."></td>
+              <td><input type="text" class="ws-table-input" data-answer="눈부신 푸른색 (Blue) 형광" placeholder="관찰 색상 입력..."></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">비타민 음료</td>
+              <td style="text-align:center;">리보플라빈 (비타민 B₂)</td>
+              <td><input type="text" class="ws-table-input" data-answer="노란색" placeholder="관찰 색상 입력..."></td>
+              <td><input type="text" class="ws-table-input" data-answer="밝은 형광 연두색 / 황록색" placeholder="관찰 색상 입력..."></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">올리브유</td>
+              <td style="text-align:center;">엽록소 (Chlorophyll)</td>
+              <td><input type="text" class="ws-table-input" data-answer="연한 초록색 / 노란색" placeholder="관찰 색상 입력..."></td>
+              <td><input type="text" class="ws-table-input" data-answer="선명한 붉은색 (Red) 형광" placeholder="관찰 색상 입력..."></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;">천원권 지폐</td>
+              <td style="text-align:center;">형광 인쇄 섬유</td>
+              <td><input type="text" class="ws-table-input" data-answer="일반 인쇄만 보임" placeholder="관찰 색상 입력..."></td>
+              <td><input type="text" class="ws-table-input" data-answer="숨겨진 형광 보안 섬유 발광" placeholder="관찰 색상 입력..."></td>
+            </tr>
           </tbody>
         </table>
 
-        <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인가?</p>
-        <div class="answer-box">
-          <i data-lucide="corner-down-right"></i> 답: 
+        <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 자외선(300~400nm)과 가시광선(400~700nm) 중 파장이 더 짧고 에너지가 더 큰 빛은 무엇인지 서술하시오.</p>
+        <div class="answer-box" style="display:flex; align-items:center; gap:0.6rem; padding:0.6rem 0.85rem;">
+          <span style="white-space:nowrap; display:inline-flex; align-items:center; gap:0.25rem; font-weight:600; color:#1e293b;">
+            <i data-lucide="corner-down-right"></i> 답:
+          </span>
+          <input type="text" class="ws-text-input" data-answer="자외선(300~400nm)이 가시광선(400~700nm)보다 파장이 짧고 에너지가 더 큽니다." placeholder="파장이 더 짧고 에너지가 더 큰 빛을 서술하세요...">
         </div>
 
-        <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 알록달록 가시광선이 나오는지, 들어간 자외선과 나온 형광 빛의 에너지 차이는 어떻게 되었을지 토의하여 써 보자.</p>
-        <div class="answer-box">
-          <i data-lucide="corner-down-right"></i> 토의 내용: 
+        <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 형광 빛이 나오는지, 들어간 자외선과 형광 빛의 에너지 차이는 어떨지 토의하여 서술하시오.</p>
+        <div class="answer-box" style="padding:0.75rem 0.85rem;">
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
+            <i data-lucide="corner-down-right"></i> <span>토의 내용:</span>
+          </div>
+          <textarea class="ws-textarea-input" rows="3" data-answer="물질 속 분자가 센 에너지의 자외선을 흡수하여 전자가 들뜬 상태로 점프한 뒤, 분자 진동을 통해 일부 에너지를 '열'로 잃어버립니다. 그 후 남은 에너지만을 파장이 더 긴 '가시광선(형광)'으로 방출하기 때문입니다. 차이 나는 에너지는 주변으로 방출된 열에너지로 보존됩니다." placeholder="자외선 흡수와 방출된 형광 빛의 에너지 차이 및 이유를 자유롭게 작성해 보세요..."></textarea>
         </div>
 
-        <div class="callout-box callout-danger" style="margin-top:1.2rem; font-size:0.88rem;">
-          <strong><i data-lucide="alert-triangle"></i> 실험 안전 수칙:</strong> 보안경 착용, 자외선(UV-A)을 눈이나 피부에 비추지 않기. 시약 음용 금지
+        <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#2563eb; margin-top:1.2rem; font-size:0.88rem;">
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 학생들에게 &quot;왜 토닉워터는 파란색인데 올리브유는 붉은색일까?&quot; 질문하여 분자마다 에너지 계단의 높이 차이가 다름을 자연스럽게 유도하세요.
         </div>
       `,
       teacher: `
         <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">1. 각 물질의 관찰 결과 예시표</h4>
-        <table class="data-table" style="margin-bottom:1.25rem;">
+        <table class="data-table text-center" style="margin-bottom:1.25rem;">
           <thead>
             <tr>
               <th style="width:24%;">실험 물질</th>
               <th style="width:26%;">포함된 핵심 분자</th>
               <th style="width:25%;">일반 조명 아래 색상</th>
-              <th style="width:25%;">자외선(UV-A) 조사 시 색상 (예시 답안)</th>
+              <th style="width:25%;">자외선을 쬐었을 때 색상 (예시 답안)</th>
             </tr>
           </thead>
-          <tbody>
-            <tr><td><strong>토닉워터</strong></td><td>퀴닌 (Quinine)</td><td>투명한 무색</td><td><strong class="model-answer">눈부신 푸른색 (Blue) 형광</strong></td></tr>
-            <tr><td><strong>비타민 음료</strong></td><td>리보플라빈 (비타민 B₂)</td><td>노란색</td><td><strong class="model-answer">밝은 형광 연두색 / 황록색</strong></td></tr>
-            <tr><td><strong>올리브유</strong></td><td>엽록소 (Chlorophyll)</td><td>연한 초록색/노란색</td><td><strong class="model-answer">선명한 붉은색 (Red) 형광</strong></td></tr>
-            <tr><td><strong>대한민국 지폐</strong></td><td>형광 인쇄 섬유</td><td>일반 인쇄만 보임</td><td><strong class="model-answer">숨겨진 형광 보안 섬유 발광 (주황/청록)</strong></td></tr>
+          <tbody style="text-align:center;">
+            <tr><td style="text-align:center;"><strong>토닉워터</strong></td><td style="text-align:center;">퀴닌 (Quinine)</td><td style="text-align:center;">투명한 무색</td><td style="text-align:center;"><strong class="model-answer">눈부신 푸른색 (Blue) 형광</strong></td></tr>
+            <tr><td style="text-align:center;"><strong>비타민 음료</strong></td><td style="text-align:center;">리보플라빈 (비타민 B₂)</td><td style="text-align:center;">노란색</td><td style="text-align:center;"><strong class="model-answer">밝은 형광 연두색 / 황록색</strong></td></tr>
+            <tr><td style="text-align:center;"><strong>올리브유</strong></td><td style="text-align:center;">엽록소 (Chlorophyll)</td><td style="text-align:center;">연한 초록색/노란색</td><td style="text-align:center;"><strong class="model-answer">선명한 붉은색 (Red) 형광</strong></td></tr>
+            <tr><td style="text-align:center;"><strong>천원권 지폐</strong></td><td style="text-align:center;">형광 인쇄 섬유</td><td style="text-align:center;">일반 인쇄만 보임</td><td style="text-align:center;"><strong class="model-answer">숨겨진 형광 보안 섬유 발광</strong></td></tr>
           </tbody>
         </table>
 
         <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">2. 파장과 에너지 관계 모범 답안</h4>
         <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
           <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
-          자외선(300~400nm)이 가시광선(400~700nm)보다 파장이 짧고 광자의 에너지가 더 큽니다. (파장이 짧을수록 에너지가 셈)
+          자외선(300~400nm)이 가시광선(400~700nm)보다 파장이 짧고 에너지가 더 큽니다. (파장이 짧을수록 에너지가 셈)
         </div>
 
         <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">3. 형광 현상과 에너지 보존 모범 답안</h4>
@@ -88,11 +114,11 @@ const worksheetModalData = {
       title: '[2차시] 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환',
       badge: 'OLED 모듈 2차시 | 성취기준 [9과11-02] [9과14-03]',
       student: `
-        <div style="display:flex; justify-content:flex-end; gap:1.2rem; margin-bottom:1rem; font-size:0.9rem; font-weight:600; padding:0.5rem 0.8rem; background:#f1f5f9; border-radius:0.4rem;">
-          <span>제 2 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
-          <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
-          <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
-          <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+        <div class="ws-student-meta">
+          <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 반</span>
+          <span><input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 번</span>
+          <span>이름: <input type="text" class="ws-mini-input" style="width:84px;" placeholder=" "></span>
+          <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 모둠</span>
         </div>
 
         <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 가상실험실(lab.html)의 [전자의 에너지 계단 시뮬레이터]를 관찰하고, 3단계 과정을 아래 빈칸에 정리해 보자.</p>
@@ -103,22 +129,30 @@ const worksheetModalData = {
           <tbody>
             <tr>
               <td><strong>1단계: 흡수</strong></td>
-              <td>바닥 상태(1층)의 전자가 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 에너지를 먹고 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 상태(3층)로 높이 점프한다.</td>
+              <td>바닥 상태(1층)의 전자가 ( <input type="text" class="ws-mini-input" style="width:130px;" data-answer="자외선(높은 에너지)" placeholder="흡수한 빛"> ) 에너지를 먹고 ( <input type="text" class="ws-mini-input" style="width:70px;" data-answer="들뜬" placeholder="상태"> ) 상태(3층)로 높이 점프한다.</td>
             </tr>
             <tr>
               <td><strong>2단계: 진동</strong></td>
-              <td>3층이 너무 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 에너지 형태로 잃어버린다.</td>
+              <td>3층이 너무 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 ( <input type="text" class="ws-mini-input" style="width:70px;" data-answer="열" placeholder="에너지 형태"> ) 에너지 형태로 잃어버린다.</td>
             </tr>
             <tr>
               <td><strong>3단계: 방출</strong></td>
-              <td>남은 에너지를 알록달록한 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 빛으로 번쩍 뿜어내며 바닥 상태로 사뿐히 착지한다.</td>
+              <td>남은 에너지를 알록달록한 ( <input type="text" class="ws-mini-input" style="width:130px;" data-answer="가시광선 형광" placeholder="방출된 빛"> ) 빛으로 번쩍 뿜어내며 바닥 상태로 사뿐히 착지한다.</td>
             </tr>
           </tbody>
         </table>
 
         <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 에너지 보존 법칙의 관점에서, [흡수한 자외선 에너지]와 [방출된 형광빛], [흘린 열에너지] 사이의 관계식을 완성해 보자.</p>
-        <div class="answer-box" style="text-align:center; font-size:1rem;">
-          [ 흡수한 자외선 에너지 ] = [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] + [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]
+        <div class="answer-box" style="text-align:center; font-size:0.95rem; display:flex; align-items:center; justify-content:center; gap:0.4rem; flex-wrap:wrap; padding:0.75rem 0.85rem;">
+          <span>[ 흡수한 자외선 에너지 ] = [</span>
+          <input type="text" class="ws-mini-input" style="width:150px; text-align:center;" data-answer="방출된 형광빛 에너지" placeholder="방출된 빛 에너지">
+          <span>] + [</span>
+          <input type="text" class="ws-mini-input" style="width:130px; text-align:center;" data-answer="흘린 열에너지" placeholder="흘린 열에너지">
+          <span>]</span>
+        </div>
+
+        <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#7c3aed; margin-top:1.2rem; font-size:0.88rem;">
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 양자역학의 파동방정식 대신 &quot;1층, 2층, 3층 아파트 계단&quot; 비유를 사용하여 중간 층간(1.5층)에는 전자가 머물 수 없다는 '에너지 양자화' 개념을 직관적으로 이해시킵니다.
         </div>
       `,
       teacher: `
@@ -157,15 +191,15 @@ const worksheetModalData = {
       title: '[3차시] 팽이 스핀과 스마트폰 OLED의 75% 배터리 도둑',
       badge: 'OLED 모듈 3차시 | 성취기준 [9과11-02] [9과14-02] [9과14-03]',
       student: `
-        <div style="display:flex; justify-content:flex-end; gap:1.2rem; margin-bottom:1rem; font-size:0.9rem; font-weight:600; padding:0.5rem 0.8rem; background:#f1f5f9; border-radius:0.4rem;">
-          <span>제 2 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
-          <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
-          <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
-          <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+        <div class="ws-student-meta">
+          <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 반</span>
+          <span><input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 번</span>
+          <span>이름: <input type="text" class="ws-mini-input" style="width:84px;" placeholder=" "></span>
+          <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 모둠</span>
         </div>
 
         <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 전자의 회전 팽이(스핀) 모형에 따른 단일항과 삼중항의 차이를 비교해 보자.</p>
-        <table class="data-table" style="margin-bottom:1.25rem;">
+        <table class="data-table text-center" style="margin-bottom:1.25rem;">
           <thead>
             <tr>
               <th style="width:24%;">구분</th>
@@ -176,30 +210,37 @@ const worksheetModalData = {
           <tbody>
             <tr>
               <td><strong>전자 팽이 회전 방향</strong></td>
-              <td>서로 ( 마주보고 / 나란히 ) 회전 (↑↓)</td>
-              <td>서로 ( 마주보고 / 나란히 ) 회전 (↑↑)</td>
+              <td><input type="text" class="ws-table-input" data-answer="마주보고 회전 (↑↓)" placeholder="마주보고 / 나란히"></td>
+              <td><input type="text" class="ws-table-input" data-answer="나란히 회전 (↑↑)" placeholder="마주보고 / 나란히"></td>
             </tr>
             <tr>
               <td><strong>방출되는 빛의 종류</strong></td>
-              <td>( 형광 / 인광 )</td>
-              <td>( 형광 / 인광 )</td>
+              <td><input type="text" class="ws-table-input" data-answer="형광" placeholder="형광 / 인광"></td>
+              <td><input type="text" class="ws-table-input" data-answer="인광" placeholder="형광 / 인광"></td>
             </tr>
             <tr>
               <td><strong>빛을 내뿜는 속도</strong></td>
-              <td>1억 분의 1초 만에 ( 즉시 방출 / 갇혀서 천천히 방출 )</td>
-              <td>비상문이 잠겨 ( 즉시 방출 / 갇혀서 천천히 방출 )</td>
+              <td><input type="text" class="ws-table-input" data-answer="1억 분의 1초 만에 즉시 방출" placeholder="즉시 방출 / 천천히 방출"></td>
+              <td><input type="text" class="ws-table-input" data-answer="비상문이 잠겨 갇혀서 천천히 방출" placeholder="즉시 방출 / 천천히 방출"></td>
             </tr>
             <tr>
               <td><strong>전기 주입 시 생성 확률</strong></td>
-              <td>( &nbsp;&nbsp;&nbsp;&nbsp; ) %</td>
-              <td>( &nbsp;&nbsp;&nbsp;&nbsp; ) %</td>
+              <td><input type="text" class="ws-mini-input" style="width:60px;" data-answer="25" placeholder=" "> %</td>
+              <td><input type="text" class="ws-mini-input" style="width:60px;" data-answer="75" placeholder=" "> %</td>
             </tr>
           </tbody>
         </table>
 
         <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 스마트폰 배터리 전기로 화면을 켤 때 무려 75%의 전자가 빛을 내지 못하고 스마트폰을 뜨겁게 달구는 까닭을 위의 확률과 관련지어 설명해 보자.</p>
-        <div class="answer-box">
-          <i data-lucide="corner-down-right"></i> 까닭: 
+        <div class="answer-box" style="padding:0.75rem 0.85rem;">
+          <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
+            <i data-lucide="corner-down-right"></i> <span>까닭:</span>
+          </div>
+          <textarea class="ws-textarea-input" rows="3" data-answer="전기(전류)를 유기 분자에 주입하면 양자역학적 스핀 조합 확률에 의해 단 25%만 즉시 빛을 내는 '단일항'이 되고, 나머지 75%는 빛을 내뿜는 비상문이 잠긴 '삼중항'에 갇히게 됩니다. 이 75%의 전자는 빛을 내지 못하고 분자를 부르르 떨게 만들어 열에너지로 낭비되기 때문에 스마트폰이 뜨거워집니다." placeholder="스마트폰 화면을 켤 때 75%의 전자가 빛을 내지 못하고 열로 변하는 이유를 서술해 보세요..."></textarea>
+        </div>
+
+        <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#059669; margin-top:1.2rem; font-size:0.88rem;">
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 형광펜(빛을 끄면 즉시 소광)과 야광 스티커(불 꺼도 오래 지속)의 실물 관찰을 통해 단일항(형광)과 삼중항(인광)의 방출 시간 차이를 체감하게 합니다.
         </div>
       `,
       teacher: `
@@ -251,11 +292,11 @@ const worksheetModalData = {
       title: '[4차시] KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너',
       badge: 'OLED 모듈 4차시 | 성취기준 [9과10-03] [9과01-02] [9과23-01]',
       student: `
-        <div style="display:flex; justify-content:flex-end; gap:1.2rem; margin-bottom:1rem; font-size:0.9rem; font-weight:600; padding:0.5rem 0.8rem; background:#f1f5f9; border-radius:0.4rem;">
-          <span>제 2 학년 ( &nbsp;&nbsp;&nbsp;&nbsp; ) 반</span>
-          <span>( &nbsp;&nbsp;&nbsp;&nbsp; ) 번</span>
-          <span>이름: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
-          <span>모둠: ( &nbsp;&nbsp;&nbsp;&nbsp; ) 모둠</span>
+        <div class="ws-student-meta">
+          <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 반</span>
+          <span><input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 번</span>
+          <span>이름: <input type="text" class="ws-mini-input" style="width:84px;" placeholder=" "></span>
+          <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 모둠</span>
         </div>
 
         <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. KAIST CPRL 연구실의 핫 엑시톤(Hot Exciton) 및 TADF 원리를 적용하여, 우리 모둠만의 차세대 청색 OLED 발광 분자 디자이너 기획서를 작성해 보자.</p>
@@ -263,36 +304,38 @@ const worksheetModalData = {
         <table class="data-table" style="margin-bottom:1.25rem;">
           <tr>
             <th style="width:22%;">스타트업 회사명</th>
-            <td style="width:28%;">&nbsp;</td>
+            <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="블루 퀀텀 퓨처스 (Blue Quantum)" placeholder="회사명 입력..."></td>
             <th style="width:22%;">대표 분자 디자이너</th>
-            <td style="width:28%;">&nbsp;</td>
+            <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="김청색 수석 디자이너 외 3명" placeholder="성명 입력..."></td>
           </tr>
           <tr>
             <th>해결할 과제</th>
             <td colspan="3">청색(Blue) OLED는 에너지가 너무 높아 분자가 쉽게 깨져 화면 수명이 짧고 번인(Burn-in)이 발생함.</td>
           </tr>
           <tr>
-            <th>나만의 청색 분자<br>구조 스케치 및 아이디어</th>
+            <th>나만의 청색 분자<br>구조 아이디어</th>
             <td colspan="3">
-              <div class="answer-box" style="height:90px; display:flex; align-items:center; justify-content:center; color:#94a3b8;">
-                (여기에 분자의 결합을 단단하게 고정한 모양을 스케치해 보세요)
-              </div>
+              <textarea class="ws-textarea-input" rows="3" data-answer="단단한 벤젠 다환 고리로 원자들을 강력하게 결합하여 진동에 의한 열 손실을 억제하고 분자 깨짐을 원천 차단함." placeholder="단단한 결합 구조 아이디어 또는 모양을 서술해 보세요..."></textarea>
             </td>
           </tr>
           <tr>
             <th>75% 구출 메커니즘<br>적용 방안</th>
             <td colspan="3">
-              [ 핫 엑시톤 구름다리 우회로 / TADF 열 흡수 역전이 ] 중 선택:<br>
-              <i data-lucide="corner-down-right"></i> 구출 원리 서술: 
+              <div style="font-weight:600; margin-bottom:0.35rem;">[ 핫 엑시톤 구름다리 우회로 / TADF 열 흡수 역전이 ] 중 선택 및 서술:</div>
+              <textarea class="ws-textarea-input" rows="2" data-answer="KAIST CPRL의 [핫 엑시톤 구름다리 우회로] 적용: 갇힌 삼중항이 바닥으로 내려가기 전 옥상 고에너지 통로를 통해 단일항으로 초고속 이동시켜 100% 청색 형광으로 전환." placeholder="선택한 구출 메커니즘과 작동 원리를 서술하세요..."></textarea>
             </td>
           </tr>
           <tr>
             <th>미래 사회 기대 효과</th>
             <td colspan="3">
-              <i data-lucide="corner-down-right"></i> 디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과 서술:
+              <textarea class="ws-textarea-input" rows="2" data-answer="스마트폰 배터리 사용 시간 2배 증대, 10년 이상 잔상 없는 초고화질 롤러블 OLED TV 상용화, 에너지 절감에 기여." placeholder="디스플레이 수명 연장, 배터리 지속 시간, 롤러블/접는 스마트폰 등 기대 효과를 서술하세요..."></textarea>
             </td>
           </tr>
         </table>
+
+        <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#d97706; margin-top:1.2rem; font-size:0.88rem;">
+          <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 KAIST 연구의 핵심인 &quot;열로 버려질 삼중항을 빛을 내는 단일항으로 구출하는 역발상&quot;을 창의적인 비즈니스 모델로 연결할 수 있도록 피드백합니다.
+        </div>
       `,
       teacher: `
         <h4 style="color:#d97706; margin:0.8rem 0 0.4rem;">1. 차세대 청색 분자 디자이너 기획서 예시 산출물</h4>
@@ -629,6 +672,43 @@ const worksheetModalData = {
 let currentModalModule = 'oled';
 let currentModalLesson = 1;
 let currentModalTab = 'student';
+let isModelAnswerMode = false;
+
+function autoResizeTextarea(textarea) {
+  if (!textarea) return;
+  textarea.style.height = 'auto';
+  if (textarea.scrollHeight > textarea.clientHeight) {
+    textarea.style.height = (textarea.scrollHeight + 4) + 'px';
+  }
+}
+
+function saveWorksheetInputs(moduleType, lessonNum) {
+  if (isModelAnswerMode) return;
+  const pane = document.getElementById('modal-pane-student');
+  if (!pane) return;
+  const inputs = pane.querySelectorAll('input, textarea');
+  const values = [];
+  inputs.forEach(input => values.push(input.value));
+  try {
+    sessionStorage.setItem(`ws_${moduleType}_${lessonNum}`, JSON.stringify(values));
+  } catch (e) {}
+}
+
+function restoreWorksheetInputs(moduleType, lessonNum) {
+  const pane = document.getElementById('modal-pane-student');
+  if (!pane) return;
+  try {
+    const saved = sessionStorage.getItem(`ws_${moduleType}_${lessonNum}`);
+    const values = saved ? JSON.parse(saved) : [];
+    const inputs = pane.querySelectorAll('input, textarea');
+    inputs.forEach((input, index) => {
+      input.value = (values[index] !== undefined) ? values[index] : '';
+    });
+  } catch (e) {
+    const inputs = pane.querySelectorAll('input, textarea');
+    inputs.forEach(input => { input.value = ''; });
+  }
+}
 
 function ensureWorksheetModalExists() {
   if (document.getElementById('worksheet-modal')) return;
@@ -649,7 +729,7 @@ function ensureWorksheetModalExists() {
           </div>
 
           <div class="worksheet-modal-actions">
-            <button type="button" id="modal-mode-toggle-btn" class="modal-toggle-btn" onclick="toggleModalMode()" title="다른 자료로 바로 전환">
+            <button type="button" id="modal-mode-toggle-btn" class="modal-toggle-btn to-teacher" onclick="toggleModalMode()" title="빈칸에 모범답안을 채워 확인합니다">
               <i data-lucide="lightbulb"></i> <span>모범답안 보기</span>
             </button>
             <button type="button" class="topbar-btn primary modal-print-btn" onclick="printModalWorksheet()" title="현재 열린 문서를 A4로 인쇄합니다">
@@ -673,6 +753,17 @@ function ensureWorksheetModalExists() {
 
   document.body.insertAdjacentHTML('beforeend', modalHtml);
 
+  // Auto-save student inputs on input
+  const studentPane = document.getElementById('modal-pane-student');
+  if (studentPane) {
+    studentPane.addEventListener('input', function (e) {
+      if (e.target && e.target.tagName === 'TEXTAREA') {
+        autoResizeTextarea(e.target);
+      }
+      saveWorksheetInputs(currentModalModule, currentModalLesson);
+    });
+  }
+
   // Close on Escape key
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
@@ -689,6 +780,7 @@ function openWorksheetModal(moduleType, lessonNum, tabType = 'student') {
 
   currentModalModule = moduleType;
   currentModalLesson = lessonNum;
+  isModelAnswerMode = false;
 
   document.getElementById('worksheet-modal-title').innerText = data.title;
   document.getElementById('modal-pane-student').innerHTML = data.student;
@@ -720,15 +812,81 @@ function handleModalBackdropClick(event) {
 }
 
 function setModalMode(tabType) {
-  currentModalTab = tabType;
   const paneStudent = document.getElementById('modal-pane-student');
   const paneTeacher = document.getElementById('modal-pane-teacher');
   const typeBadge = document.getElementById('worksheet-modal-type-badge');
   const toggleBtn = document.getElementById('modal-mode-toggle-btn');
+  if (!paneStudent) return;
 
-  if (tabType === 'student') {
+  const answerInputs = paneStudent.querySelectorAll('[data-answer]');
+  const hasInteractiveAnswers = answerInputs.length > 0;
+
+  if (tabType === 'teacher') {
+    // 1. Save student inputs before switching
+    if (!isModelAnswerMode) {
+      saveWorksheetInputs(currentModalModule, currentModalLesson);
+    }
+    isModelAnswerMode = true;
+    currentModalTab = 'teacher';
+
+    if (hasInteractiveAnswers) {
+      // Stay on student pane and fill blanks with model answers
+      paneStudent.classList.add('active');
+      if (paneTeacher) paneTeacher.classList.remove('active');
+
+      answerInputs.forEach(el => {
+        el.value = el.getAttribute('data-answer') || '';
+        el.classList.add('is-model-answer');
+        el.readOnly = true;
+        if (el.tagName === 'TEXTAREA') {
+          autoResizeTextarea(el);
+        }
+      });
+
+      // Show teacher tips
+      const tips = paneStudent.querySelectorAll('.ws-teacher-tip');
+      tips.forEach(tip => { tip.style.display = 'block'; });
+    } else {
+      // Fallback for sheets without [data-answer]
+      if (paneTeacher) paneTeacher.classList.add('active');
+      paneStudent.classList.remove('active');
+    }
+
+    if (typeBadge) {
+      typeBadge.className = 'worksheet-modal-type-badge badge-teacher';
+      typeBadge.innerHTML = '<i data-lucide="lightbulb"></i> <span>교사용 모범답안</span>';
+    }
+    if (toggleBtn) {
+      toggleBtn.className = 'modal-toggle-btn to-student';
+      toggleBtn.innerHTML = '<i data-lucide="file-text"></i> <span>내 작성답안 보기</span>';
+      toggleBtn.title = '내가 작성했던 답안으로 복원합니다';
+    }
+  } else {
+    // Student mode
+    isModelAnswerMode = false;
+    currentModalTab = 'student';
+
     paneStudent.classList.add('active');
-    paneTeacher.classList.remove('active');
+    if (paneTeacher) paneTeacher.classList.remove('active');
+
+    if (hasInteractiveAnswers) {
+      answerInputs.forEach(el => {
+        el.classList.remove('is-model-answer');
+        el.readOnly = false;
+        if (el.tagName === 'TEXTAREA') {
+          el.style.height = '';
+        }
+      });
+
+      // Hide teacher tips
+      const tips = paneStudent.querySelectorAll('.ws-teacher-tip');
+      tips.forEach(tip => { tip.style.display = 'none'; });
+    }
+
+    // Restore student's typed values
+    restoreWorksheetInputs(currentModalModule, currentModalLesson);
+    paneStudent.querySelectorAll('textarea').forEach(ta => autoResizeTextarea(ta));
+
     if (typeBadge) {
       typeBadge.className = 'worksheet-modal-type-badge badge-student';
       typeBadge.innerHTML = '<i data-lucide="file-text"></i> <span>학생용 활동지</span>';
@@ -736,17 +894,7 @@ function setModalMode(tabType) {
     if (toggleBtn) {
       toggleBtn.className = 'modal-toggle-btn to-teacher';
       toggleBtn.innerHTML = '<i data-lucide="lightbulb"></i> <span>모범답안 보기</span>';
-    }
-  } else {
-    paneTeacher.classList.add('active');
-    paneStudent.classList.remove('active');
-    if (typeBadge) {
-      typeBadge.className = 'worksheet-modal-type-badge badge-teacher';
-      typeBadge.innerHTML = '<i data-lucide="lightbulb"></i> <span>교사용 모범답안</span>';
-    }
-    if (toggleBtn) {
-      toggleBtn.className = 'modal-toggle-btn to-student';
-      toggleBtn.innerHTML = '<i data-lucide="file-text"></i> <span>학생용 보기</span>';
+      toggleBtn.title = '빈칸에 모범답안을 채워 확인합니다';
     }
   }
 
