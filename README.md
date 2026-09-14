@@ -31,13 +31,16 @@ KAIST/
 ├── quantum_deep_dive_guide.html         # ⚛️ 고등학생을 위한 양자 컴퓨터 심층 완벽 해부 가이드
 ├── assets/
 │   ├── css/style.css                    # 공통 반응형 CSS, SPA 뷰, 캔버스 실험실 및 인쇄 최적화 스타일
+│   ├── data/
+│   │   ├── worksheet-data-oled.js       # OLED 1~4차시 활동지/도움자료 데이터 모듈
+│   │   └── worksheet-data-quantum.js    # 양자컴퓨터 1~4차시 활동지/도움자료 데이터 모듈
 │   └── js/
 │       ├── app-router.js                # SPA 해시 라우팅, 패키지 전환 및 모달 제어
 │       ├── simulations.js               # 가상실험실 Canvas 시뮬레이션 엔진 4종 (OLED/Quantum)
 │       ├── slide-viewer.js              # 10장 핵심 발표 슬라이드 덱 렌더러 및 데이터
 │       ├── sidebar.js                   # 서브 페이지 공통 사이드바 렌더링 스크립트
 │       ├── presentation-modal.js        # 차시별 9장 표준 프레젠테이션 모달 시스템
-│       ├── worksheet-modal.js           # 충남교육청 표준 활동지/도움자료 모달 시스템
+│       └── worksheet-modal.js           # 충남교육청 표준 활동지/도움자료 모달 컨트롤러
 ├── oled/                                # 🌈 [패키지 01] 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학
 │   ├── index.html                       # 패키지 대시보드 (lesson-plan.html 리다이렉트)
 │   ├── lesson-plan.html                 # 📋 교사용 지도안 (성취수준 연계 + 4차시 지도안)
