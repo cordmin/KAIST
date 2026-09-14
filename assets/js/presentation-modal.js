@@ -355,39 +355,49 @@ const presentationModalData = {
           `
         },
 
-        // Slide 11: 오늘의 배움 정리
+        // Slide 11: 일상 속 형광 기술 활용
         {
           tag: '',
-          title: '오늘의 배움 정리',
+          title: '일상 속 형광 기술 활용',
           content: `
-            <div class="pres-stack" style="gap:1.5rem; max-width:920px; margin:0 auto; width:100%;">
-              <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2rem;">
-                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem; text-align:center;">
-                  <strong style="color:#0f172a; font-size:1.1rem; display:block; margin-bottom:0.5rem;">자외선 vs 가시광선</strong>
-                  <p style="font-size:0.95rem; color:#64748b; margin:0; line-height:1.6; word-break:keep-all;">
-                    파장이 짧을수록<br>에너지가 더 크다
-                  </p>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem; text-align:center;">
-                  <strong style="color:#0f172a; font-size:1.1rem; display:block; margin-bottom:0.5rem;">형광 물질 관찰</strong>
-                  <p style="font-size:0.95rem; color:#64748b; margin:0; line-height:1.6; word-break:keep-all;">
-                    자외선을 흡수하여<br>가시광선으로 방출
-                  </p>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem; text-align:center;">
-                  <strong style="color:#0f172a; font-size:1.1rem; display:block; margin-bottom:0.5rem;">에너지 보존</strong>
-                  <p style="font-size:0.95rem; color:#64748b; margin:0; line-height:1.6; word-break:keep-all;">
-                    흡수한 자외선 =<br>형광빛 + 열에너지
-                  </p>
+            <div class="pres-tool-layout" style="align-items:center;">
+              <div class="pres-tool-img-wrap">
+                <img src="${getToolAsset('fluorescence_apps.jpg')}" alt="일상 속 형광 기술 활용 실사 사진" class="pres-tool-img" style="height:330px; object-fit:cover;">
+                <div class="pres-tool-img-caption">
+                  <span>위조지폐·여권 감별, 형광펜, 야간 안전 장비</span>
                 </div>
               </div>
-
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem 1.8rem;">
-                <div style="font-size:1.05rem; font-weight:700; color:#0f172a; margin-bottom:0.5rem;">실험실 뒷정리 수칙</div>
-                <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.7; word-break:keep-all;">
-                  • 사용한 관찰 시약은 지정된 <strong>전용 폐액통에 분리 수거</strong>합니다.<br>
-                  • UV-A 램프 전원을 끄고 보안경과 실험 도구를 제자리에 정돈합니다.
-                </p>
+              <div class="pres-tool-tag-list" style="gap:0.9rem;">
+                <div class="pres-tool-item" style="padding:1.1rem 1.3rem;">
+                  <div>
+                    <div style="font-size:1.22rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
+                      위조지폐 및 신분증 감별
+                    </div>
+                    <div style="font-size:1.05rem; line-height:1.65; color:#475569; word-break:keep-all;">
+                      지폐나 여권에 자외선(UV)을 비추면 숨겨진 <strong>형광 보안 섬유와 워터마크가 발광</strong>하여 위조 여부를 즉시 판별합니다.
+                    </div>
+                  </div>
+                </div>
+                <div class="pres-tool-item" style="padding:1.1rem 1.3rem;">
+                  <div>
+                    <div style="font-size:1.22rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
+                      형광펜 및 형광 염료
+                    </div>
+                    <div style="font-size:1.05rem; line-height:1.65; color:#475569; word-break:keep-all;">
+                      눈에 보이지 않는 자외선을 흡수한 뒤, 사람의 눈에 매우 잘 띄는 <strong>선명하고 밝은 가시광선으로 바꾸어 방출</strong>합니다.
+                    </div>
+                  </div>
+                </div>
+                <div class="pres-tool-item" style="padding:1.1rem 1.3rem;">
+                  <div>
+                    <div style="font-size:1.22rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
+                      야간 안전 조끼 및 장비
+                    </div>
+                    <div style="font-size:1.05rem; line-height:1.65; color:#475569; word-break:keep-all;">
+                      어두운 환경에서 미세한 빛을 받아 <strong>강하게 형광빛을 방출하여 보행자와 작업자의 안전을 확보</strong>합니다.
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           `
