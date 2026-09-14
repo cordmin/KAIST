@@ -290,13 +290,16 @@ const presentationModalData = {
                 </div>
               </div>
 
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem 1.6rem;">
-                <p style="font-size:1.15rem; line-height:1.75; color:#0f172a; margin:0 0 0.85rem 0;">
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.15rem 1.6rem;">
+                <p style="font-size:1.15rem; line-height:1.7; color:#0f172a; margin:0; word-break:keep-all;">
                   자외선(300~400nm)은 가시광선(400~700nm)보다 <strong>파장이 더 짧고 에너지가 더 큰 빛</strong>입니다.
                 </p>
-                <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:0.9rem 1.2rem; font-size:1.05rem; color:#1e40af; font-weight:600;">
+              </div>
+
+              <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:12px; padding:1.15rem 1.6rem;">
+                <p style="font-size:1.12rem; line-height:1.7; color:#1e40af; margin:0; word-break:keep-all;">
                   <strong>형광이란?</strong> 물질 속 분자가 큰 에너지(자외선)를 흡수한 뒤, 에너지가 더 작은 가시광선으로 바꾸어 방출하는 현상
-                </div>
+                </p>
               </div>
             </div>
           `
