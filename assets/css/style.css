@@ -918,6 +918,37 @@ body.sidebar-collapsed .main-content {
   }
 }
 
+/* 대화면 고해상도 반응형 레이아웃 (32인치 QHD 2560px, 4K 3840px 등 대형 디스플레이 최적화) */
+@media (min-width: 1921px) {
+  html {
+    font-size: 17.5px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .content-container {
+    max-width: min(94vw, 2200px);
+    padding: 1.5rem 2.2rem 2.5rem;
+  }
+}
+
+@media (min-width: 2561px) {
+  html {
+    font-size: 19px;
+  }
+
+  body {
+    font-size: 17px;
+  }
+
+  .content-container {
+    max-width: min(94vw, 2550px);
+    padding: 1.8rem 2.8rem 3rem;
+  }
+}
+
 /* If embedded in iframe, hide nested sidebar & topbar */
 body.in-iframe {
   background: transparent !important;
@@ -1235,7 +1266,7 @@ h3.sub-heading {
   background: var(--color-pure-white);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 1.5rem 1.8rem;
+  padding: 1.8rem;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
   position: relative;
   z-index: 1;
@@ -1243,6 +1274,14 @@ h3.sub-heading {
 
 .chrome-tab-panel.active {
   display: block;
+}
+
+.chrome-tab-panel > .data-table:first-child {
+  margin-top: 0;
+}
+
+.chrome-tab-panel > .data-table:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 1100px) {
@@ -1264,7 +1303,7 @@ h3.sub-heading {
   .tab-text-short { display: inline; }
   .chrome-tab-panel {
     border-radius: 10px;
-    padding: 1.25rem 1.15rem 1.5rem;
+    padding: 1.15rem;
   }
 }
 
