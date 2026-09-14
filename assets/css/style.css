@@ -2333,7 +2333,7 @@ svg.lucide {
 }
 
 .pres-slide-heading {
-  font-size: 1.5rem;
+  font-size: 1.85rem;
   font-weight: 800;
   color: #0f172a;
   margin: 0 0 1.25rem 0;
@@ -2514,7 +2514,7 @@ svg.lucide {
 }
 
 .pres-objective-box {
-  padding: 3.5rem 2.5rem;
+  padding: 3.5rem 1.6rem;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
@@ -2523,12 +2523,17 @@ svg.lucide {
 }
 
 .objective-main {
-  font-size: 1.45rem;
+  font-size: 1.72rem;
   font-weight: 700;
-  line-height: 1.8;
+  line-height: 1.85;
   color: #0f172a;
   margin: 0;
   word-break: keep-all;
+}
+
+.objective-main span {
+  display: block;
+  white-space: nowrap;
 }
 
 .pres-inquiry-box {
@@ -2899,7 +2904,7 @@ body.presentation-fullscreen-mode .pres-objective-box {
 :-webkit-full-screen .objective-main,
 .presentation-modal.fullscreen-active .objective-main,
 body.presentation-fullscreen-mode .objective-main {
-  font-size: clamp(1.7rem, 2.2vw, 2.4rem) !important;
+  font-size: clamp(2rem, 2.6vw, 2.8rem) !important;
   line-height: 1.85 !important;
 }
 

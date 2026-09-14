@@ -58,8 +58,8 @@ const presentationModalData = {
           content: `
             <div class="pres-objective-box">
               <p class="objective-main">
-                자외선과 가시광선의 파장 및 에너지 차이를 비교하고,<br>
-                일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.
+                <span>자외선과 가시광선의 파장 및 에너지 차이를 비교하고,</span>
+                <span>일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.</span>
               </p>
             </div>
           `
