@@ -199,9 +199,6 @@ const presentationModalData = {
           title: '형광 물질 관찰 결과',
           content: `
             <div class="pres-table-wrap">
-              <div style="display:flex; justify-content:flex-end; margin-bottom:0.6rem;">
-                <button type="button" class="pres-reveal-btn" onclick="toggleAllPresResults(this)">전체 결과 보기</button>
-              </div>
               <table class="pres-table">
                 <thead>
                   <tr>
