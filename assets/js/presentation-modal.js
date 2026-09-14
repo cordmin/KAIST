@@ -110,29 +110,25 @@ const presentationModalData = {
                   <span>실제 실험대 위 준비물 세트</span>
                 </div>
               </div>
-              <div class="pres-tool-tag-list">
-                <div class="pres-tool-item">
-                  <div>
-                    <div class="pres-tool-name">UV-A 블랙라이트 램프 & 보안경</div>
-                    <div class="pres-tool-desc">365nm 자외선 광원 및 눈 보호 안전 장비</div>
+              <div class="pres-tool-tag-list" style="gap:0.9rem;">
+                <div class="pres-tool-item" style="padding:1.1rem 1.4rem;">
+                  <div class="pres-tool-name" style="font-size:1.15rem; font-weight:700; color:#0f172a;">
+                    UV-A 블랙라이트 램프 & 보안경
                   </div>
                 </div>
-                <div class="pres-tool-item">
-                  <div>
-                    <div class="pres-tool-name">시약 3종 (토닉워터 / 비타민 음료 / 올리브유)</div>
-                    <div class="pres-tool-desc">퀴닌, 리보플라빈, 엽록소 분자 형광 관찰용</div>
+                <div class="pres-tool-item" style="padding:1.1rem 1.4rem;">
+                  <div class="pres-tool-name" style="font-size:1.15rem; font-weight:700; color:#0f172a;">
+                    시약 3종 (토닉워터 / 비타민 음료 / 올리브유)
                   </div>
                 </div>
-                <div class="pres-tool-item">
-                  <div>
-                    <div class="pres-tool-name">암실 상자 & 검은색 종이</div>
-                    <div class="pres-tool-desc">외부 빛을 차단하는 최적의 암실 관찰 환경 조성</div>
+                <div class="pres-tool-item" style="padding:1.1rem 1.4rem;">
+                  <div class="pres-tool-name" style="font-size:1.15rem; font-weight:700; color:#0f172a;">
+                    암실 상자 & 검은색 종이
                   </div>
                 </div>
-                <div class="pres-tool-item">
-                  <div>
-                    <div class="pres-tool-name">천원권 지폐 & 형광펜</div>
-                    <div class="pres-tool-desc">보안 형광 섬유 및 잉크 발광 관찰용</div>
+                <div class="pres-tool-item" style="padding:1.1rem 1.4rem;">
+                  <div class="pres-tool-name" style="font-size:1.15rem; font-weight:700; color:#0f172a;">
+                    천원권 지폐 & 형광펜
                   </div>
                 </div>
               </div>
