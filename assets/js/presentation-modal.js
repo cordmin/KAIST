@@ -298,12 +298,11 @@ const presentationModalData = {
               </div>
 
               <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem 1.6rem;">
-                <p style="font-size:1.15rem; line-height:1.75; color:#0f172a; margin:0 0 0.75rem 0;">
-                  • <strong>'파도의 촘촘함과 충격량' 비유:</strong> 파도가 촘촘할수록(파장이 짧을수록) 방파제를 때리는 충격량(에너지)이 큽니다.<br>
-                  • <strong>결론:</strong> 자외선(300~400nm)은 가시광선(400~700nm)보다 <strong>파장이 더 짧고 에너지가 더 큰 빛</strong>입니다.
+                <p style="font-size:1.15rem; line-height:1.75; color:#0f172a; margin:0 0 0.85rem 0;">
+                  자외선(300~400nm)은 가시광선(400~700nm)보다 <strong>파장이 더 짧고 에너지가 더 큰 빛</strong>입니다.
                 </p>
-                <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:0.85rem 1.2rem; font-size:1.05rem; color:#1e40af; font-weight:600;">
-                  💡 <strong>형광(Fluorescence)이란?</strong> 물질 속 분자가 큰 에너지(자외선)를 흡수한 뒤, 에너지가 더 작은 가시광선으로 바꾸어 방출하는 현상
+                <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:0.9rem 1.2rem; font-size:1.05rem; color:#1e40af; font-weight:600;">
+                  <strong>형광이란?</strong> 물질 속 분자가 큰 에너지(자외선)를 흡수한 뒤, 에너지가 더 작은 가시광선으로 바꾸어 방출하는 현상
                 </div>
               </div>
             </div>
