@@ -1,0 +1,424 @@
+/**
+ * KAIST CPRL - 양자컴퓨터 수업 지도안 모듈 데이터 (개요 + 1~4차시)
+ * assets/data/lesson-plan-data-quantum.js
+ */
+window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-plan-chrome-window">
+          <!-- 6페이지 크롬 탭 바 (성취수준 연계 신설) -->
+          <div class="chrome-tab-bar" role="tablist">
+            <button type="button" class="chrome-tab-btn tab-purple active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true">
+              <span><span class="tab-text-full">성취수준 연계</span><span class="tab-text-short">성취수준</span></span>
+            </button>
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
+              <span><span class="tab-text-full">수업 지도안 개요</span><span class="tab-text-short">개요</span></span>
+            </button>
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 2)" role="tab" aria-selected="false">
+              <span>[1차시] <span class="tab-text-full">지수 폭발</span><span class="tab-text-short">1차시</span></span>
+            </button>
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 3)" role="tab" aria-selected="false">
+              <span>[2차시] <span class="tab-text-full">동전과 큐비트</span><span class="tab-text-short">2차시</span></span>
+            </button>
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false">
+              <span>[3차시] <span class="tab-text-full">VQE 알고리즘</span><span class="tab-text-short">3차시</span></span>
+            </button>
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 5)" role="tab" aria-selected="false">
+              <span>[4차시] <span class="tab-text-full">스타트업 CEO</span><span class="tab-text-short">4차시</span></span>
+            </button>
+          </div>
+
+          <!-- [탭 0]: 성취수준 연계 (2022 개정 교육과정 연계표) -->
+          <div class="chrome-tab-panel active" role="tabpanel">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:17%; min-width:155px; text-align:center;">영역</th>
+                  <th style="width:29%; text-align:center;">성취기준</th>
+                  <th style="width:23%; text-align:center;">본 프로그램 탐구 연계 요소</th>
+                  <th style="width:31%; text-align:center;">프로그램 연계 성취수준</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center;"><strong>물질의 구성</strong></td>
+                  <td>
+                    <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                    <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.
+                  </td>
+                  <td>
+                    • 다전자 분자 구조와 전자 배치<br>
+                    • 전자 간 반발력과 계산 조합의 수(지수 폭발, $2^N$)
+                  </td>
+                  <td>
+                    <strong>[A]</strong> 원자 속 전자 간 상호작용으로 인해 전자가 늘어날수록 분자 상태 수가 지수적으로 폭발함을 논리적으로 설명하고 화학식으로 표현함.<br>
+                    <strong>[B]</strong> 분자가 원자와 전자로 이루어져 있음을 이해함.<br>
+                    <strong>[C]</strong> 원자 속에 전자가 있음을 안다.
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;"><strong>화학 반응의 규칙성</strong></td>
+                  <td>
+                    <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                    <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                    <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.
+                  </td>
+                  <td>
+                    • 원자 재배열과 최저 바닥 상태 결합<br>
+                    • 상온 비료 합성 촉매 설계를 통한 화학 반응 에너지 장벽 극복
+                  </td>
+                  <td>
+                    <strong>[A]</strong> 화학 반응에서 원자 배열이 변할 때 에너지가 출입함을 이해하고, VQE 알고리즘이 분자의 바닥 상태를 찾아가는 과정을 화학 결합과 연결하여 서술함.<br>
+                    <strong>[B]</strong> 화학 반응 시 에너지가 출입함을 설명함.<br>
+                    <strong>[C]</strong> 화학 반응으로 물질이 변함을 안다.
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;"><strong>데이터·알고리즘</strong></td>
+                  <td>
+                    <strong>[9정01-03]</strong> 2진수 데이터 표현<br>
+                    <strong>[9정02-02]</strong> 문제 해결 알고리즘과 시뮬레이션 모델링
+                  </td>
+                  <td>
+                    • 고전 0과 1의 비트 vs 동전 회전 중첩(큐비트)<br>
+                    • VQE 양자-고전 하이브리드 최적화 피드백 루프
+                  </td>
+                  <td>
+                    <strong>[A]</strong> 비트와 큐비트의 차이(중첩)를 바탕으로 양자 컴퓨터의 동시 병렬 처리 장점을 명확히 비교하고 VQE 피드백 루프를 분석함.<br>
+                    <strong>[B]</strong> 큐비트가 중첩 상태임을 동전 비유로 설명함.<br>
+                    <strong>[C]</strong> 컴퓨터가 0과 1을 씀을 안다.
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; line-height:1.55;">
+                    <strong>과학과 인류의 지속가능한 삶</strong><br>
+                    <span style="display:inline-block; margin-top:0.35rem;"><strong>과학과 나의 미래</strong></span>
+                  </td>
+                  <td>
+                    <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                    <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
+                  </td>
+                  <td>
+                    • 3대 지구 난제(비료, 배터리, 신약) 해결<br>
+                    • 틴에이저 양자 화학 스타트업 CEO 기획
+                  </td>
+                  <td>
+                    <strong>[A]</strong> 양자 계산 화학 기술이 기후 위기 및 의학에 기여하는 구체적 해결책을 창의적으로 기획하고 진로 포부를 논리적으로 피력함.<br>
+                    <strong>[B]</strong> 양자 컴퓨터가 신소재 개발에 미치는 영향을 설명함.<br>
+                    <strong>[C]</strong> 첨단 과학기술의 유용성을 인식함.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- [탭 1]: 지도안 개요 -->
+          <div class="chrome-tab-panel" role="tabpanel">
+            <div class="card-header" style="margin-bottom:1rem;">
+              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 양자 컴퓨터와 계산 화학의 미래</h2>
+              <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
+            </div>
+
+            <table class="data-table">
+              <tr>
+                <th style="width:100px; white-space:nowrap; text-align:center;">관련 단원</th>
+                <td>중학교 과학 &lt;물질의 구성&gt;, &lt;화학 반응의 규칙성&gt;, &lt;과학과 사회&gt; & 정보과 &lt;데이터와 알고리즘&gt; 융합 심화</td>
+                <th style="width:100px; white-space:nowrap; text-align:center;">차시</th>
+                <td><strong>총 4차시</strong> (90분 블록타임 2회 운영 가능)</td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">성취기준</th>
+                <td colspan="3">
+                  <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                  <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                  <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                  <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                  <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                  <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.<br>
+                  <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.<br>
+                  <strong>[정보과 연계]</strong> [9정01-03] 2진수 데이터 표현 / [9정02-02] 문제 해결 알고리즘과 시뮬레이션 모델링
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">학습목표</th>
+                <td colspan="3">
+                  <strong>[지식·이해]</strong> 다전자 분자에서 전자 간 반발력으로 인해 발생하는 계산 복잡도와 비트 vs 큐비트 중첩의 차이를 설명할 수 있다.<br>
+                  <strong>[과정·기능]</strong> 동전 돌리기 조작 실험 및 인터랙티브 시뮬레이터를 통해 VQE 바닥 상태 탐색 과정을 시각적으로 추론할 수 있다.<br>
+                  <strong>[가치·태도]</strong> 양자 화학이 기후 위기 및 난치병 극복에 기여함을 인식하고 융합 진로에 주도적으로 참여한다.
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">탐구방법</th>
+                <td>동전 조작 실험, 가상실험실(시뮬레이션), 2인 1조 알고리즘 역할극, 스타트업 CEO 프로젝트</td>
+                <th style="text-align:center;">준비물</th>
+                <td>스마트기기, 동전(학생당 1개), 역할 카드(양자 컴퓨터 / 고전 컴퓨터), 스타트업 기획서 양식</td>
+              </tr>
+            </table>
+
+            <div class="callout-box" style="margin-top:1.25rem;">
+              <strong><i data-lucide="lightbulb"></i> [수식 없는 양자역학 지도 팁]:</strong> 수식이나 파동방정식을 지양하고, <strong>"바닥에 놓인 동전(비트) vs 도는 팽이 동전(큐비트)"</strong>과 <strong>"2인 3각 산골짜기 바닥 찾기(VQE)"</strong>라는 직관적 은유를 활용하여 지도합니다.
+            </div>
+          </div>
+
+          <!-- [탭 1]: 1차시 -->
+          <div class="chrome-tab-panel" role="tabpanel">
+            <div style="margin-bottom:0.75rem;">
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#7c3aed;">[1차시]</span> 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발 (45분)</h3>
+            </div>
+            
+            <!-- 차시별 탐구 메타 정보 표 -->
+            <table class="data-table" style="margin-bottom:1.25rem;">
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">성취기준</th>
+                <td colspan="3"><strong>[9과11-01]</strong> 원소와 화합물의 화학식 표현<br><strong>[9과11-02]</strong> 원자 구성 입자 모형<br><strong>[9과01-02]</strong> 첨단 과학기술이 가져올 미래 사회의 변화</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                <td colspan="3">분자 속 전자가 증가함에 따라 전자 간 반발력으로 인해 계산 조합의 수가 2의 N제곱(2ᴺ)으로 폭발하는 '지수 폭발'의 한계를 체험하고 설명할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">탐구방법</th>
+                <td style="width:40%;">사고 실험, 거듭제곱 수치 계산 체험, 모둠 데이터 분석 및 토의</td>
+                <th style="width:100px; text-align:center; white-space:nowrap;">준비물</th>
+                <td>스마트기기(계산기 기능), 바둑알 또는 쌀알 모형, 지수 폭발 체험 활동지</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">주의사항</th>
+                <td>수학적 거듭제곱 계산에 매몰되지 않고 카페인 분자조차 우주 원자 수(10⁸⁰)를 초과한다는 극적인 대비를 체감하도록 지도</td>
+                <th style="text-align:center; white-space:nowrap;">수업자료</th>
+                <td>
+                  <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                    <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 1, 'student')">
+                      <i data-lucide="file-text"></i> <span>활동지</span>
+                    </button>
+                    <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 1)">
+                      <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0 1.25rem 0;">
+              <thead>
+                <tr><th style="width:8%; text-align:center; white-space:nowrap;">단계</th><th style="width:8%; text-align:center; white-space:nowrap;">시간</th><th style="width:54%;">교수·학습 활동</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>도입</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">5분</td>
+                  <td>• <strong>동기 유발:</strong> 체스판과 쌀알 퀴즈 (1칸 1톨, 2칸 2톨, 3칸 4톨... 64칸엔 전 세계 쌀 생산량의 수백 배!)<br>• <strong>문제 인식:</strong> "왜 세상에서 가장 비싼 슈퍼컴퓨터도 커피 한 잔 속 카페인 분자 하나를 계산하지 못할까?"</td>
+                  <td>• 거듭제곱의 무서운 증가 속도를 직관적으로 체감하도록 지도</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>전개</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">32분</td>
+                  <td>• <strong>분자의 미시세계 복습:</strong> 원자핵 주위를 도는 음(-)전하 전자들의 반발력과 끊임없는 상호작용 [9과11-02]<br>• <strong>[탐구 활동 1] 지수 폭발 체험표 채우기:</strong><br>  - 수소(H, 전자 1개) $\\rightarrow 2^1 = 2$가지 (즉시 계산)<br>  - 물($H_2O$, 전자 10개) $\\rightarrow 2^{10} = 1,024$가지 (0.1초)<br>  - 카페인(전자 102개) $\\rightarrow 2^{102} \\approx 10^{30}$가지 (지구상 모든 모래알 수 초과!)<br>  - 페니실린(항생제) $\\rightarrow 10^{86}$가지 (우주 전체 모든 원자 수 초과, 계산 불가!)<br>• <strong>신약·신소재 개발의 현실 한계:</strong> 컴퓨터가 계산을 못해 화학자들이 비커에 약품을 섞어가며 수천 번 실패해야 함(10년 이상, 수조 원 소요)</td>
+                  <td>• <strong>[과정평가]</strong> 전자의 증가와 계산 복잡도의 관계를 수치 및 그래프로 바르게 추론하는지 평가 (활동지 점검)</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>정리</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">8분</td>
+                  <td>• 파인만의 명언("자연을 계산하려면 컴퓨터 자체를 양자역학으로 만들어라") 소개<br>• 다음 차시(0과 1이 춤추는 큐비트) 예고</td>
+                  <td>• 활동지 1번 작성 확인</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- [탭 2]: 2차시 -->
+          <div class="chrome-tab-panel" role="tabpanel">
+            <div style="margin-bottom:0.75rem;">
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#2563eb;">[2차시]</span> 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트 (45분)</h3>
+            </div>
+
+            <!-- 차시별 탐구 메타 정보 표 -->
+            <table class="data-table" style="margin-bottom:1.25rem;">
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">성취기준</th>
+                <td colspan="3"><strong>[정보과 연계] [9정01-03]</strong> 2진수 데이터 표현<br><strong>[9정02-02]</strong> 문제 해결 알고리즘과 모델링<br><strong>[9과01-02]</strong> 첨단 과학기술과 미래 사회 변화</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                <td colspan="3">바닥에 놓인 동전(고전 비트: 0 또는 1)과 회전하는 동전 팽이(양자 큐비트: 0과 1의 '중첩')를 비교하여 양자 컴퓨터의 동시 병렬 처리 원리를 설명할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">탐구방법</th>
+                <td style="width:40%;">동전 회전 조작 실험, 가상실험실 [큐비트 구 시뮬레이터] 조작, 병렬 처리 모형 비교</td>
+                <th style="width:100px; text-align:center; white-space:nowrap;">준비물</th>
+                <td>동전(학생 1인당 1개), 스마트기기, 가상실험실(lab.html), 활동지</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">주의사항</th>
+                <td>동전 회전 실험 시 트레이를 활용하고, 측정 전 0과 1이 공존하는 상태임을 체감하도록 지도</td>
+                <th style="text-align:center; white-space:nowrap;">수업자료</th>
+                <td>
+                  <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                    <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 2, 'student')">
+                      <i data-lucide="file-text"></i> <span>활동지</span>
+                    </button>
+                    <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 2)">
+                      <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0 1.25rem 0;">
+              <thead>
+                <tr><th style="width:8%; text-align:center; white-space:nowrap;">단계</th><th style="width:8%; text-align:center; white-space:nowrap;">시간</th><th style="width:54%;">교수·학습 활동</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>도입</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">5분</td>
+                  <td>• 전등 스위치 켜기/끄기 조작 vs 책상 위 동전 팽이 돌리기 비교 시연<br>• "바닥에 누운 동전과 도는 동전은 무엇이 다를까?"</td>
+                  <td>• 학생들에게 동전을 1개씩 배부하여 직접 조작하도록 유도</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>전개</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">32분</td>
+                  <td>• <strong>[조작 실험] 동전 팽이와 양자 중첩:</strong> 멈추기 전 도는 동전을 관찰하며 0(앞)과 1(뒤)이 공존하는 <strong>'중첩(Superposition)'</strong> 개념 발견<br>• <strong>비트(Bit) vs 큐비트(Qubit) 대조:</strong><br>  - 비트: 꺼짐(0) 또는 켜짐(1) 하나만 선택 (바닥의 동전)<br>  - 큐비트: 0과 1이 동시에 섞여 있음 (회전하는 팽이 동전)<br>• <strong>동시 병렬 처리의 힘:</strong> 비트 10개는 1,024개 길 중 1개씩 순서대로 검사하지만, 큐비트 10개는 1,024개 길을 <strong>동시에 단 한 번에</strong> 탐색!<br>• <strong>시뮬레이션 탐구:</strong> 인터랙티브 큐비트 구 시뮬레이터로 큐비트 회전 및 중첩 상태 만들기 실습</td>
+                  <td>• 복잡한 양자 상태 벡터 수식 대신 '동전 비유' 철저 유지<br>• <strong>[과정평가]</strong> 비트와 큐비트의 정보 처리 방식 차이를 자기 언어로 설명할 수 있는지 확인 (구술평가)</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>정리</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">8분</td>
+                  <td>• 큐비트 중첩의 핵심 원리 요약 퀴즈<br>• 활동지 [활동 2] Q1(비트 vs 큐비트 차이) 서술형 작성 및 3차시 예고</td>
+                  <td>• 활동지 작성 지도</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- [탭 3]: 3차시 -->
+          <div class="chrome-tab-panel" role="tabpanel">
+            <div style="margin-bottom:0.75rem;">
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#059669;">[3차시]</span> 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태 (45분)</h3>
+            </div>
+
+            <!-- 차시별 탐구 메타 정보 표 -->
+            <table class="data-table" style="margin-bottom:1.25rem;">
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">성취기준</th>
+                <td colspan="3"><strong>[9과16-01]</strong> 화학 변화에서 새로운 물질 생성<br><strong>[9과16-06]</strong> 화학 반응에서 열에너지 출입<br><strong>[정보과 연계] [9정02-02]</strong> 문제 해결 알고리즘과 시뮬레이션 모델링</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                <td colspan="3">화학 반응에서 원자가 가장 안정한 최저 바닥 상태를 찾아 결합함을 이해하고, 양자 컴퓨터와 일반 컴퓨터가 협력하는 VQE 알고리즘을 2인 1조 역할극으로 설명할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">탐구방법</th>
+                <td style="width:40%;">2인 1조 협동 역할극(양자 탐험가 + 고전 내비게이션), 가상실험실 [VQE 최적화 루프 시뮬레이터] 조작</td>
+                <th style="width:100px; text-align:center; white-space:nowrap;">준비물</th>
+                <td>역할 카드(양자 컴퓨터 / 일반 컴퓨터), 스마트기기, 가상실험실(lab.html), 활동지</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">주의사항</th>
+                <td>역할극 중 양자 컴퓨터(에너지 계산)와 일반 컴퓨터(피드백 최적화)의 협동 피드백 루프를 온몸으로 체득하도록 역할 교대 실습</td>
+                <th style="text-align:center; white-space:nowrap;">수업자료</th>
+                <td>
+                  <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                    <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 3, 'student')">
+                      <i data-lucide="file-text"></i> <span>활동지</span>
+                    </button>
+                    <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 3)">
+                      <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0 1.25rem 0;">
+              <thead>
+                <tr><th style="width:8%; text-align:center; white-space:nowrap;">단계</th><th style="width:8%; text-align:center; white-space:nowrap;">시간</th><th style="width:54%;">교수·학습 활동</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>도입</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">5분</td>
+                  <td>• 굴러가는 공 비유: "언덕에서 공을 굴리면 어디서 멈출까?" $\\rightarrow$ 가장 낮은 골짜기 바닥!<br>• 자연과 화학 분자도 에너지가 가장 낮은 <strong>'바닥 상태'</strong>를 찾아 결합함을 상기 [9과16-06]</td>
+                  <td>• 일상적 비유로 최적화 개념 접근</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>전개</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">32분</td>
+                  <td>• <strong>화학 반응과 에너지 출입:</strong> 원자 재배열 시 가장 안정한 결합 형태 탐구 [9과16-01]<br>• <strong>VQE(변분 양자 고유값 계산기) 2인 1조 협동 역할극:</strong><br>  - 학생 A (양자 컴퓨터, 빠른 탐험가): 큐비트 중첩으로 복잡한 전자 구름 계산 후 "현재 분자 모양의 에너지는 -0.45입니다!" 전달<br>  - 학생 B (일반 컴퓨터, 똑똑한 내비게이션): 에너지 수치를 분석하여 "오른쪽으로 기울었으니 결합 각도를 5도 좁히세요!" 피드백 전달<br>• <strong>시뮬레이션 탐구:</strong> VQE 최적화 루프 시뮬레이터로 공이 골짜기 바닥(-1.137)으로 안착하는 과정 조작<br>• <strong>KAIST 연구 성과:</strong> 이온 트랩 양자 컴퓨터로 분자의 결합 에너지를 초정밀 계산한 연구 소개</td>
+                  <td>• <strong>[협동학습]</strong> 2인 1조 역할극을 통해 알고리즘의 피드백 루프를 온몸으로 체득<br>• <strong>[과정평가]</strong> VQE의 2인 3각 협력 구조를 정확히 파악하였는지 평가</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>정리</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">8분</td>
+                  <td>• VQE 협동 알고리즘 요약 정리 및 활동지 [활동 2] Q2 작성<br>• 다음 차시(틴에이저 양자 스타트업 CEO 프로젝트) 과제 안내</td>
+                  <td>• 4차시 프로젝트 모둠 구성</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- [탭 4]: 4차시 -->
+          <div class="chrome-tab-panel" role="tabpanel">
+            <div style="margin-bottom:0.75rem;">
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#d97706;">[4차시]</span> 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트 (45분)</h3>
+            </div>
+
+            <!-- 차시별 탐구 메타 정보 표 -->
+            <table class="data-table" style="margin-bottom:1.25rem;">
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">성취기준</th>
+                <td colspan="3"><strong>[9과01-02]</strong> 첨단 과학기술이 가져올 미래 사회의 변화<br><strong>[9과16-01]</strong> 물리 변화와 화학 변화의 차이<br><strong>[9과23-01]</strong> 과학기술의 발달과 미래 사회 직업 변화</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                <td colspan="3">양자 계산 화학이 인류의 3대 지구 난제를 해결하는 생태전환적 가치를 인식하고, 미래 스타트업 CEO 기획서를 작성·발표할 수 있다.</td>
+              </tr>
+              <tr>
+                <th style="width:100px; text-align:center; white-space:nowrap;">탐구방법</th>
+                <td style="width:40%;">지구적 난제 해결 모둠 프로젝트, 스타트업 기획서 구안, 2분 엘리베이터 피칭</td>
+                <th style="width:100px; text-align:center; white-space:nowrap;">준비물</th>
+                <td>스마트기기, 스타트업 CEO 프로젝트 기획서 양식, 발표 평가 루브릭</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">주의사항</th>
+                <td>단순 상상에 그치지 않고 질소 분자 절단 에너지 절감, 전고체 배터리 화재 방지 등 화학적 메커니즘과 연계하여 기획하도록 지도</td>
+                <th style="text-align:center; white-space:nowrap;">수업자료</th>
+                <td>
+                  <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                    <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 4, 'student')">
+                      <i data-lucide="file-text"></i> <span>활동지</span>
+                    </button>
+                    <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 4)">
+                      <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            
+            <table class="data-table" style="font-size:0.88rem; margin:0.5rem 0 1.25rem 0;">
+              <thead>
+                <tr><th style="width:8%; text-align:center; white-space:nowrap;">단계</th><th style="width:8%; text-align:center; white-space:nowrap;">시간</th><th style="width:54%;">교수·학습 활동</th><th style="width:30%;">지도상 유의점 및 평가</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>도입</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">5분</td>
+                  <td>• "위험한 화학 약품과 비커 없이 컴퓨터로 신물질을 만든다면?" 비커 없는 화학 실험실 비전 제시</td>
+                  <td>• 환경·안전·지속가능성 가치 부각</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>전개</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">32분</td>
+                  <td>• <strong>양자 컴퓨터가 해결할 인류의 3대 지구 난제 탐구:</strong><br>  1) <strong>친환경 상온 비료:</strong> 전 세계 전기의 2%를 쓰는 비료 공장 대신 상온 질소 고정 촉매 분자 계산 $\\rightarrow$ 식량난 및 온실가스 동시 해결<br>  2) <strong>전고체 배터리:</strong> 전기차 화재를 막고 10배 빨리 충전되는 꿈의 고체 전해질 설계<br>  3) <strong>표적 신약:</strong> 변종 바이러스 단백질 열쇠구멍에 꼭 맞는 치료제 분자 가상 스크리닝<br>• <strong>[프로젝트] 틴에이저 양자 화학 스타트업 CEO 기획서 작성:</strong><br>  - 4인 1조 창업팀 구성, 3대 난제 중 1개 선택<br>  - 회사명, 도전 과제, 양자 컴퓨터로 설계할 가상 분자 아이디어, 사회적 기대 효과 구안<br>• <strong>모둠별 피칭:</strong> 2분 엘리베이터 스피치 발표 및 질의응답</td>
+                  <td>• <strong>[생태전환교육]</strong> 기후 위기 및 탄소 중립과 기술의 연계성 강조<br>• <strong>[산출물평가]</strong> CEO 기획서의 창의성, 공공성, 과학적 설득력 평가 (루브릭 적용)</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; vertical-align:middle; background-color:#f1f5f9;"><strong>정리</strong></td>
+                  <td style="text-align:center; vertical-align:middle;">8분</td>
+                  <td>• 상호 동료 평가 및 교사 피드백<br>• 양자 계산 과학자 진로 탐색 및 3차원 루브릭 자가평가, 전체 프로그램 마무리</td>
+                  <td>• 학생생활기록부 세특 기재 연계</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>`;

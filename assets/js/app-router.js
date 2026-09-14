@@ -149,6 +149,7 @@ window.addEventListener('resize', () => {
 });
 
 function renderView() {
+  initLessonPlanContainers();
   // 1. Update Package Switcher Cards & Headers
   const cardOled = document.getElementById('pkg-card-oled');
   const cardQuantum = document.getElementById('pkg-card-quantum');
@@ -313,3 +314,22 @@ window.addEventListener('DOMContentLoaded', () => {
     try { lucide.createIcons(); } catch(e) {}
   }
 });
+
+// Initialize Dynamic Lesson Plan Window Containers
+function initLessonPlanContainers() {
+  const oledCont = document.getElementById('oled-lesson-plan-container');
+  if (oledCont && window.oledLessonPlanHtml && !oledCont.hasChildNodes()) {
+    oledCont.innerHTML = window.oledLessonPlanHtml;
+  }
+  const quantumCont = document.getElementById('quantum-lesson-plan-container');
+  if (quantumCont && window.quantumLessonPlanHtml && !quantumCont.hasChildNodes()) {
+    quantumCont.innerHTML = window.quantumLessonPlanHtml;
+  }
+  if (window.lucide) {
+    try { lucide.createIcons(); } catch(e) {}
+  }
+}
+document.addEventListener('DOMContentLoaded', initLessonPlanContainers);
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  initLessonPlanContainers();
+}
