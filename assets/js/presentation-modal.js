@@ -203,6 +203,9 @@ const presentationModalData = {
           title: '형광 물질 관찰 결과',
           content: `
             <div class="pres-table-wrap">
+              <div style="display:flex; justify-content:flex-end; margin-bottom:0.6rem;">
+                <button type="button" class="pres-reveal-btn" onclick="toggleAllPresResults(this)">전체 결과 보기</button>
+              </div>
               <table class="pres-table">
                 <thead>
                   <tr>
@@ -217,25 +220,53 @@ const presentationModalData = {
                     <td><strong>토닉워터</strong></td>
                     <td>퀴닌 분자 (Quinine)</td>
                     <td>무색투명</td>
-                    <td><span class="pres-ans-badge">관찰 결과</span> <span class="pres-ans-text">파란색 형광 발광</span></td>
+                    <td>
+                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
+                        <button type="button" class="pres-reveal-btn">결과 확인</button>
+                        <div class="pres-reveal-content">
+                          <strong style="color:#2563eb; font-size:1.02rem;">파란색 형광 발광</strong>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <td><strong>비타민 음료</strong></td>
                     <td>리보플라빈 (비타민 B2)</td>
                     <td>맑은 노란색</td>
-                    <td><span class="pres-ans-badge">관찰 결과</span> <span class="pres-ans-text">연두색 형광 발광</span></td>
+                    <td>
+                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
+                        <button type="button" class="pres-reveal-btn">결과 확인</button>
+                        <div class="pres-reveal-content">
+                          <strong style="color:#16a34a; font-size:1.02rem;">연두색 형광 발광</strong>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <td><strong>올리브유</strong></td>
                     <td>엽록소 분자 (Chlorophyll)</td>
                     <td>연초록색</td>
-                    <td><span class="pres-ans-badge">관찰 결과</span> <span class="pres-ans-text">붉은색 형광 발광</span></td>
+                    <td>
+                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
+                        <button type="button" class="pres-reveal-btn">결과 확인</button>
+                        <div class="pres-reveal-content">
+                          <strong style="color:#dc2626; font-size:1.02rem;">붉은색 형광 발광</strong>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
                     <td><strong>지폐 & 형광펜</strong></td>
                     <td>형광 염료 (위조방지)</td>
                     <td>일반 종이색 / 기본 잉크색</td>
-                    <td><span class="pres-ans-badge">관찰 결과</span> <span class="pres-ans-text">숨겨진 형광 보안 섬유 발광</span></td>
+                    <td>
+                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
+                        <button type="button" class="pres-reveal-btn">결과 확인</button>
+                        <div class="pres-reveal-content">
+                          <strong style="color:#d97706; font-size:1.02rem;">숨겨진 형광 보안 섬유 발광</strong>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -2404,4 +2435,19 @@ function updateFullscreenButtonState() {
       try { lucide.createIcons(); } catch(e) {}
     }
   }
+}
+
+function toggleAllPresResults(btn) {
+  const wrap = btn.closest('.pres-table-wrap');
+  if (!wrap) return;
+  const cells = wrap.querySelectorAll('.pres-reveal-cell');
+  const allRevealed = Array.from(cells).every(c => c.classList.contains('revealed'));
+  cells.forEach(c => {
+    if (allRevealed) {
+      c.classList.remove('revealed');
+    } else {
+      c.classList.add('revealed');
+    }
+  });
+  btn.innerText = allRevealed ? '전체 결과 보기' : '전체 결과 가리기';
 }
