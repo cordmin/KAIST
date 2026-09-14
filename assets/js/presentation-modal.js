@@ -37,21 +37,21 @@ const presentationModalData = {
       lessonTitle: '[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단',
       badge: 'OLED 1차시 · 자외선과 형광',
       slides: [
-        // Slide 1: 학습목표 (단독 슬라이드)
+        // Slide 1: 표지 (제목 단독 심플 페이지)
         {
           tag: '',
-          title: '학습목표',
+          title: '',
           content: `
-            <div class="pres-objective-box">
-              <p class="objective-main">
-                <span>자외선과 가시광선의 파장 및 에너지 차이를 비교하고,</span>
-                <span>일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.</span>
-              </p>
+            <div class="pres-hero-question">
+              <h1 class="hero-q-text" style="font-size:2.2rem; font-weight:800; letter-spacing:-0.5px; color:#0f172a; word-break:keep-all; line-height:1.5;">
+                어둠 속을 밝히는 빛의 마법:<br>
+                자외선과 형광 탐정단
+              </h1>
             </div>
           `
         },
 
-        // Slide 3: 어두운 교실에서 켠 블랙라이트 (동기 유발)
+        // Slide 2: 어두운 교실에서 켠 블랙라이트 (동기 유발)
         {
           tag: '',
           title: '어두운 교실에서 켠 블랙라이트',
@@ -80,6 +80,20 @@ const presentationModalData = {
                   "블랙라이트는 어두운 보랏빛인데, 왜 물체들은 눈부신 형광빛을 뿜어낼까?"
                 </div>
               </div>
+            </div>
+          `
+        },
+
+        // Slide 3: 학습목표 (단독 슬라이드)
+        {
+          tag: '',
+          title: '학습목표',
+          content: `
+            <div class="pres-objective-box">
+              <p class="objective-main">
+                <span>자외선과 가시광선의 파장 및 에너지 차이를 비교하고,</span>
+                <span>일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.</span>
+              </p>
             </div>
           `
         },
