@@ -93,9 +93,6 @@ const presentationModalData = {
                 <div class="inquiry-q">
                   "블랙라이트는 어두운 보랏빛인데, 왜 물체들은 눈부신 형광빛을 뿜어낼까?"
                 </div>
-                <p class="inquiry-hint">
-                  스스로 빛을 내는 걸까? 빛을 반사하는 걸까? 형광 물질의 비밀을 직접 실험으로 찾아봅시다.
-                </p>
               </div>
             </div>
           `

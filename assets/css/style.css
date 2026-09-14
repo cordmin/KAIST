@@ -2542,22 +2542,25 @@ svg.lucide {
   border: 1px solid #bfdbfe;
   border-radius: 12px;
   margin-top: 0.5rem;
+  text-align: center;
 }
 
 .inquiry-q {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: #1e40af;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  margin: 0;
   word-break: keep-all;
+  text-align: center;
 }
 
 .inquiry-hint {
   font-size: 0.95rem;
   color: #475569;
-  margin: 0;
+  margin-top: 0.5rem;
   line-height: 1.6;
+  text-align: center;
 }
 
 .pres-subpixel {
