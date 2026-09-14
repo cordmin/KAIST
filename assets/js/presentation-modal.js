@@ -52,10 +52,10 @@ const presentationModalData = {
           `
         },
 
-        // Slide 2: 학습 목표 (단독 슬라이드)
+        // Slide 2: 학습목표 (단독 슬라이드)
         {
-          tag: '학습 목표',
-          title: '오늘 우리가 도달할 학습 목표',
+          tag: '학습목표',
+          title: '오늘 우리가 도달할 학습목표',
           content: `
             <div class="pres-objective-box">
               <p class="objective-main">
@@ -379,7 +379,7 @@ const presentationModalData = {
                 </div>
               </div>
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습 목표</div>
+                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습목표</div>
                 <ul class="pres-list">
                   <li>원자 속 전자가 <strong>정해진 궤도(에너지 준위)</strong>에만 존재함을 모형으로 설명한다.</li>
                   <li>가상실험실을 통해 <strong>흡수 ➔ 진동 이완 ➔ 형광 방출</strong> 3단계를 조작한다.</li>
@@ -643,7 +643,7 @@ const presentationModalData = {
                 </div>
               </div>
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습 목표</div>
+                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습목표</div>
                 <ul class="pres-list">
                   <li>스마트폰 화면 속 <strong>RGB 서브픽셀</strong>을 간이 루페로 관찰한다.</li>
                   <li>전자의 스핀 방향에 따라 <strong>단일항(25%)과 삼중항(75%)</strong>이 생김을 이해한다.</li>
@@ -903,7 +903,7 @@ const presentationModalData = {
                 </div>
               </div>
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습 목표</div>
+                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습목표</div>
                 <ul class="pres-list">
                   <li>KAIST CPRL 연구진의 <strong>핫 엑시톤 메커니즘</strong>을 설명할 수 있다.</li>
                   <li>가장 깨지기 쉬운 <strong>청색(Blue) OLED</strong>의 난제 해결 과정을 탐구한다.</li>
@@ -1165,7 +1165,7 @@ const presentationModalData = {
                 </div>
               </div>
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습 목표</div>
+                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습목표</div>
                 <ul class="pres-list">
                   <li>고전 컴퓨터의 <strong>비트(Bit)</strong>와 양자 컴퓨터의 <strong>큐비트(Qubit)</strong> 차이를 설명한다.</li>
                   <li>회전하는 동전 모형으로 <strong>양자 중첩 현상</strong>을 직관적으로 이해한다.</li>
@@ -1418,7 +1418,7 @@ const presentationModalData = {
                 </div>
               </div>
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습 목표</div>
+                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습목표</div>
                 <ul class="pres-list">
                   <li><strong>블록 구(Bloch Sphere) 모형</strong>을 통해 양자 상태를 3차원으로 시각화한다.</li>
                   <li>양자 게이트(회전)를 조작하여 <strong>중첩 상태의 확률 변화</strong>를 관찰한다.</li>
@@ -1673,7 +1673,7 @@ const presentationModalData = {
                 </div>
               </div>
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습 목표</div>
+                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습목표</div>
                 <ul class="pres-list">
                   <li><strong>양자 프로세서(QPU)</strong>와 <strong>고전 컴퓨터(CPU)</strong>의 역할 분담을 설명한다.</li>
                   <li><strong>골짜기 지형도 모형</strong>을 통해 바닥 상태 에너지 탐색 원리를 이해한다.</li>
@@ -1932,7 +1932,7 @@ const presentationModalData = {
                 </div>
               </div>
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습 목표</div>
+                <div class="pres-card-title"><i data-lucide="target"></i> 오늘의 학습목표</div>
                 <ul class="pres-list">
                   <li>수소 분자(H₂)의 <strong>핵간 거리별 결합 에너지 곡선</strong>을 해석한다.</li>
                   <li>KAIST 연구실의 <strong>파이썬/Qiskit 양자 시뮬레이션</strong> 과정을 이해한다.</li>
