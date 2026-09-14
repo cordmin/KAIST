@@ -2198,13 +2198,18 @@ svg.lucide {
   transform: translateY(-1px);
 }
 
+/* ==========================================================================
+   Presentation Modal - Light Theme (Unified with Website Design)
+   ========================================================================== */
+
 .presentation-modal {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
@@ -2217,14 +2222,14 @@ svg.lucide {
 
 .presentation-modal-window {
   width: 92vw;
-  max-width: 1040px;
-  height: 86vh;
-  max-height: 740px;
-  background: #0b0f19;
-  color: #f8fafc;
+  max-width: 1060px;
+  height: 88vh;
+  max-height: 780px;
+  background: #ffffff;
+  color: #0f172a;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -2233,8 +2238,8 @@ svg.lucide {
 
 .presentation-modal-header {
   padding: 0.9rem 1.4rem;
-  background: #111827;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2249,17 +2254,17 @@ svg.lucide {
 }
 
 .pres-modal-title {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #0f172a;
   margin: 0;
 }
 
 .badge-purple {
-  background: rgba(124, 58, 237, 0.2);
-  color: #c4b5fd;
-  border: 1px solid rgba(124, 58, 237, 0.4);
-  padding: 0.2rem 0.6rem;
+  background: #f5f3ff;
+  color: #7c3aed;
+  border: 1px solid #ddd6fe;
+  padding: 0.2rem 0.65rem;
   border-radius: 9999px;
   font-size: 0.78rem;
   font-weight: 600;
@@ -2275,59 +2280,73 @@ svg.lucide {
 }
 
 .pres-btn-fullscreen {
-  background: #1e293b !important;
-  color: #38bdf8 !important;
-  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  background: #ffffff !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
   font-size: 0.85rem;
   padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .pres-btn-fullscreen:hover {
-  background: #0f172a !important;
-  border-color: #38bdf8 !important;
+  background: #f8fafc !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
 }
 
 .presentation-modal-body {
   flex: 1;
   overflow-y: auto;
-  padding: 1.75rem 2rem;
+  padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at top right, #172554, #0b0f19 70%);
+  background: #f8fafc;
 }
 
 .presentation-slide-screen {
   width: 100%;
-  max-width: 920px;
+  max-width: 960px;
 }
 
 .pres-slide-card {
-  background: rgba(17, 24, 39, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 2.2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .pres-slide-tag {
   display: inline-block;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  color: #60a5fa;
-  background: rgba(59, 130, 246, 0.15);
-  padding: 0.25rem 0.75rem;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 0.25rem 0.7rem;
   border-radius: 6px;
   margin-bottom: 0.75rem;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  border: 1px solid #bfdbfe;
 }
 
 .pres-slide-heading {
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 1.5rem 0;
+  color: #0f172a;
+  margin: 0 0 1.25rem 0;
   line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* Stack Layout: 상/하 배치로 문장 줄바꿈 최소화 및 가독성 극대화 */
+.pres-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 }
 
 .pres-grid-2 {
@@ -2343,37 +2362,42 @@ svg.lucide {
 }
 
 .pres-card {
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
-  padding: 1.25rem;
+  padding: 1.15rem 1.4rem;
   font-size: 0.95rem;
   line-height: 1.65;
+  color: #334155;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .pres-card.pres-highlight {
-  border-color: rgba(99, 102, 241, 0.5);
-  background: rgba(99, 102, 241, 0.12);
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #1e3a8a;
 }
 
 .pres-card.pres-danger {
-  border-color: rgba(239, 68, 68, 0.5);
-  background: rgba(239, 68, 68, 0.12);
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
 }
 
 .pres-card-title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #93c5fd;
-  margin-bottom: 0.75rem;
+  color: #0f172a;
+  margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
 .pres-list {
   margin: 0;
   padding-left: 1.2rem;
+  color: #334155;
 }
 
 .pres-list li {
@@ -2381,13 +2405,13 @@ svg.lucide {
 }
 
 .pres-badge-box {
-  background: rgba(124, 58, 237, 0.15);
-  border: 1px solid rgba(124, 58, 237, 0.35);
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
   border-radius: 8px;
   padding: 0.75rem 1rem;
   font-size: 0.92rem;
   line-height: 1.55;
-  color: #e2e8f0;
+  color: #6b21a8;
 }
 
 .pres-steps-row {
@@ -2398,36 +2422,37 @@ svg.lucide {
 
 .pres-step-box {
   flex: 1;
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 
 .step-num {
   font-size: 0.75rem;
   font-weight: 800;
-  color: #38bdf8;
+  color: #2563eb;
   text-transform: uppercase;
   margin-bottom: 0.25rem;
 }
 
 .step-title {
-  font-size: 0.98rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   margin-bottom: 0.4rem;
 }
 
 .pres-step-arrow {
   display: flex;
   align-items: center;
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .pres-equation-card {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.6), rgba(15, 23, 42, 0.8));
-  border: 1px solid rgba(96, 165, 250, 0.4);
+  background: #f0fdf4;
+  border: 1px solid #86efac;
   border-radius: 10px;
   padding: 1.25rem;
   text-align: center;
@@ -2436,19 +2461,19 @@ svg.lucide {
 .eq-title {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #93c5fd;
+  color: #166534;
   margin-bottom: 0.5rem;
 }
 
 .eq-formula {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: #38bdf8;
+  color: #15803d;
 }
 
 .pres-callout {
-  background: rgba(30, 41, 59, 0.7);
-  border-left: 4px solid #3b82f6;
+  background: #f8fafc;
+  border-left: 4px solid #2563eb;
   padding: 0.9rem 1.2rem;
   border-radius: 0 8px 8px 0;
   font-size: 0.92rem;
@@ -2456,42 +2481,45 @@ svg.lucide {
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
+  color: #334155;
 }
 
 .pres-callout.pres-danger {
   border-left-color: #ef4444;
+  background: #fef2f2;
 }
 
 .pres-subpixel {
   border-radius: 8px;
   padding: 1rem;
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
 }
 
 .pres-subpixel.sub-red { border-top: 4px solid #ef4444; }
 .pres-subpixel.sub-green { border-top: 4px solid #22c55e; }
-.pres-subpixel.sub-blue { border-top: 4px solid #3b82f6; background: rgba(59, 130, 246, 0.12); }
+.pres-subpixel.sub-blue { border-top: 4px solid #3b82f6; background: #eff6ff; }
 
 .pres-subpixel .sub-title {
   font-weight: 700;
   font-size: 0.95rem;
   margin-bottom: 0.35rem;
+  color: #0f172a;
 }
 
 .presentation-modal-footer {
   padding: 0.75rem 1.4rem;
-  background: #111827;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .pres-slide-counter {
-  color: #94a3b8;
+  color: #475569;
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .pres-nav-btns {
@@ -2500,10 +2528,9 @@ svg.lucide {
 }
 
 /* ==========================================================================
-   Presentation Modal - Fullscreen Mode Optimization (TV / 빔프로젝터 / 전자칠판)
+   Presentation Modal - Fullscreen Mode Optimization (Light Theme)
    ========================================================================== */
 
-/* Fullscreen Window */
 .presentation-modal-window:fullscreen,
 .presentation-modal-window:-webkit-full-screen,
 .presentation-modal-window.is-fullscreen,
@@ -2516,18 +2543,17 @@ body.presentation-fullscreen-mode .presentation-modal-window {
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
-  background: #090d16 !important;
+  background: #f8fafc !important;
 }
 
-/* Header & Footer in Fullscreen */
 .is-fullscreen .presentation-modal-header,
 :fullscreen .presentation-modal-header,
 :-webkit-full-screen .presentation-modal-header,
 .presentation-modal.fullscreen-active .presentation-modal-header,
 body.presentation-fullscreen-mode .presentation-modal-header {
   padding: 1.1rem 2.5rem !important;
-  background: #0f172a !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
 }
 
 .is-fullscreen .pres-modal-title,
@@ -2537,6 +2563,7 @@ body.presentation-fullscreen-mode .presentation-modal-header {
 body.presentation-fullscreen-mode .pres-modal-title {
   font-size: 1.35rem !important;
   font-weight: 700 !important;
+  color: #0f172a !important;
 }
 
 .is-fullscreen .badge-purple,
@@ -2563,8 +2590,8 @@ body.presentation-fullscreen-mode .pres-btn-fullscreen {
 .presentation-modal.fullscreen-active .presentation-modal-footer,
 body.presentation-fullscreen-mode .presentation-modal-footer {
   padding: 1rem 2.5rem !important;
-  background: #0f172a !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: #ffffff !important;
+  border-top: 1px solid #e2e8f0 !important;
 }
 
 .is-fullscreen .pres-slide-counter,
@@ -2574,6 +2601,7 @@ body.presentation-fullscreen-mode .presentation-modal-footer {
 body.presentation-fullscreen-mode .pres-slide-counter {
   font-size: 1.25rem !important;
   font-weight: 700 !important;
+  color: #475569 !important;
 }
 
 .is-fullscreen .pres-nav-btns .topbar-btn,
@@ -2586,7 +2614,6 @@ body.presentation-fullscreen-mode .pres-nav-btns .topbar-btn {
   border-radius: 8px !important;
 }
 
-/* Body & Slide Container in Fullscreen */
 .is-fullscreen .presentation-modal-body,
 :fullscreen .presentation-modal-body,
 :-webkit-full-screen .presentation-modal-body,
@@ -2596,7 +2623,7 @@ body.presentation-fullscreen-mode .presentation-modal-body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: radial-gradient(circle at 50% 30%, #1e293b 0%, #0b0f19 80%) !important;
+  background: #f1f5f9 !important;
 }
 
 .is-fullscreen .presentation-slide-screen,
@@ -2618,16 +2645,15 @@ body.presentation-fullscreen-mode .pres-slide-card {
   max-width: 100% !important;
   padding: clamp(2.2rem, 3.8vh, 3.8rem) clamp(2.8rem, 4.2vw, 4.5rem) !important;
   border-radius: 20px !important;
-  background: rgba(15, 23, 42, 0.94) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65) !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08) !important;
   min-height: clamp(520px, 70vh, 820px) !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
 }
 
-/* Tag & Big Heading */
 .is-fullscreen .pres-slide-tag,
 :fullscreen .pres-slide-tag,
 :-webkit-full-screen .pres-slide-tag,
@@ -2646,12 +2672,12 @@ body.presentation-fullscreen-mode .pres-slide-tag {
 body.presentation-fullscreen-mode .pres-slide-heading {
   font-size: clamp(2.2rem, 2.8vw, 3rem) !important;
   font-weight: 800 !important;
+  color: #0f172a !important;
   line-height: 1.3 !important;
   margin-bottom: 2rem !important;
   letter-spacing: -0.02em !important;
 }
 
-/* Grids in Fullscreen */
 .is-fullscreen .pres-grid-2,
 :fullscreen .pres-grid-2,
 :-webkit-full-screen .pres-grid-2,
@@ -2672,7 +2698,14 @@ body.presentation-fullscreen-mode .pres-grid-3 {
   gap: clamp(1.2rem, 1.8vw, 2rem) !important;
 }
 
-/* Content Cards */
+.is-fullscreen .pres-stack,
+:fullscreen .pres-stack,
+:-webkit-full-screen .pres-stack,
+.presentation-modal.fullscreen-active .pres-stack,
+body.presentation-fullscreen-mode .pres-stack {
+  gap: clamp(1.2rem, 1.8vh, 1.8rem) !important;
+}
+
 .is-fullscreen .pres-card,
 :fullscreen .pres-card,
 :-webkit-full-screen .pres-card,
@@ -2682,6 +2715,19 @@ body.presentation-fullscreen-mode .pres-card {
   font-size: clamp(1.15rem, 1.45vw, 1.4rem) !important;
   line-height: 1.8 !important;
   border-radius: 14px !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+.is-fullscreen .pres-card.pres-highlight,
+:fullscreen .pres-card.pres-highlight,
+:-webkit-full-screen .pres-card.pres-highlight,
+.presentation-modal.fullscreen-active .pres-card.pres-highlight,
+body.presentation-fullscreen-mode .pres-card.pres-highlight {
+  background: #eff6ff !important;
+  border-color: #bfdbfe !important;
+  color: #1e3a8a !important;
 }
 
 .is-fullscreen .pres-card p,
@@ -2700,6 +2746,7 @@ body.presentation-fullscreen-mode .pres-card p {
 body.presentation-fullscreen-mode .pres-card-title {
   font-size: clamp(1.35rem, 1.7vw, 1.75rem) !important;
   font-weight: 800 !important;
+  color: #0f172a !important;
   margin-bottom: 1.2rem !important;
   gap: 0.6rem !important;
 }
@@ -2718,13 +2765,13 @@ body.presentation-fullscreen-mode .pres-card-title i {
   height: 1.5em !important;
 }
 
-/* Lists */
 .is-fullscreen .pres-list,
 :fullscreen .pres-list,
 :-webkit-full-screen .pres-list,
 .presentation-modal.fullscreen-active .pres-list,
 body.presentation-fullscreen-mode .pres-list {
   padding-left: 1.5rem !important;
+  color: #334155 !important;
 }
 
 .is-fullscreen .pres-list li,
@@ -2737,7 +2784,6 @@ body.presentation-fullscreen-mode .pres-list li {
   margin-bottom: 0.85rem !important;
 }
 
-/* Callout */
 .is-fullscreen .pres-callout,
 :fullscreen .pres-callout,
 :-webkit-full-screen .pres-callout,
@@ -2750,23 +2796,10 @@ body.presentation-fullscreen-mode .pres-callout {
   border-radius: 0 12px 12px 0 !important;
   margin-top: 1.8rem !important;
   gap: 0.8rem !important;
+  background: #f8fafc !important;
+  color: #334155 !important;
 }
 
-.is-fullscreen .pres-callout svg,
-.is-fullscreen .pres-callout i,
-:fullscreen .pres-callout svg,
-:fullscreen .pres-callout i,
-:-webkit-full-screen .pres-callout svg,
-:-webkit-full-screen .pres-callout i,
-.presentation-modal.fullscreen-active .pres-callout svg,
-.presentation-modal.fullscreen-active .pres-callout i,
-body.presentation-fullscreen-mode .pres-callout svg,
-body.presentation-fullscreen-mode .pres-callout i {
-  width: 1.6em !important;
-  height: 1.6em !important;
-}
-
-/* Equation Card */
 .is-fullscreen .pres-equation-card,
 :fullscreen .pres-equation-card,
 :-webkit-full-screen .pres-equation-card,
@@ -2774,6 +2807,8 @@ body.presentation-fullscreen-mode .pres-callout i {
 body.presentation-fullscreen-mode .pres-equation-card {
   padding: 1.8rem 2.2rem !important;
   border-radius: 14px !important;
+  background: #f0fdf4 !important;
+  border: 1px solid #86efac !important;
 }
 
 .is-fullscreen .eq-title,
@@ -2783,6 +2818,7 @@ body.presentation-fullscreen-mode .pres-equation-card {
 body.presentation-fullscreen-mode .eq-title {
   font-size: clamp(1.1rem, 1.35vw, 1.35rem) !important;
   margin-bottom: 0.6rem !important;
+  color: #166534 !important;
 }
 
 .is-fullscreen .eq-formula,
@@ -2792,9 +2828,9 @@ body.presentation-fullscreen-mode .eq-title {
 body.presentation-fullscreen-mode .eq-formula {
   font-size: clamp(1.6rem, 2.2vw, 2.4rem) !important;
   font-weight: 800 !important;
+  color: #15803d !important;
 }
 
-/* Steps Row */
 .is-fullscreen .pres-steps-row,
 :fullscreen .pres-steps-row,
 :-webkit-full-screen .pres-steps-row,
@@ -2810,6 +2846,8 @@ body.presentation-fullscreen-mode .pres-steps-row {
 body.presentation-fullscreen-mode .pres-step-box {
   padding: 1.5rem !important;
   border-radius: 12px !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
 }
 
 .is-fullscreen .step-num,
@@ -2819,6 +2857,7 @@ body.presentation-fullscreen-mode .pres-step-box {
 body.presentation-fullscreen-mode .step-num {
   font-size: 1rem !important;
   margin-bottom: 0.5rem !important;
+  color: #2563eb !important;
 }
 
 .is-fullscreen .step-title,
@@ -2828,6 +2867,7 @@ body.presentation-fullscreen-mode .step-num {
 body.presentation-fullscreen-mode .step-title {
   font-size: clamp(1.2rem, 1.5vw, 1.5rem) !important;
   margin-bottom: 0.6rem !important;
+  color: #0f172a !important;
 }
 
 .is-fullscreen .pres-step-box p,
@@ -2842,81 +2882,11 @@ body.presentation-fullscreen-mode .pres-step-box p,
 body.presentation-fullscreen-mode .pres-step-box ul {
   font-size: clamp(1.05rem, 1.3vw, 1.25rem) !important;
   line-height: 1.7 !important;
-}
-
-/* Subpixel Cards */
-.is-fullscreen .pres-subpixel,
-:fullscreen .pres-subpixel,
-:-webkit-full-screen .pres-subpixel,
-.presentation-modal.fullscreen-active .pres-subpixel,
-body.presentation-fullscreen-mode .pres-subpixel {
-  padding: 1.6rem !important;
-  border-radius: 12px !important;
-}
-
-.is-fullscreen .pres-subpixel .sub-title,
-:fullscreen .pres-subpixel .sub-title,
-:-webkit-full-screen .pres-subpixel .sub-title,
-.presentation-modal.fullscreen-active .pres-subpixel .sub-title,
-body.presentation-fullscreen-mode .pres-subpixel .sub-title {
-  font-size: clamp(1.3rem, 1.6vw, 1.6rem) !important;
-  margin-bottom: 0.75rem !important;
-}
-
-.is-fullscreen .pres-subpixel p,
-.is-fullscreen .pres-subpixel ul,
-:fullscreen .pres-subpixel p,
-:fullscreen .pres-subpixel ul,
-:-webkit-full-screen .pres-subpixel p,
-:-webkit-full-screen .pres-subpixel ul,
-.presentation-modal.fullscreen-active .pres-subpixel p,
-.presentation-modal.fullscreen-active .pres-subpixel ul,
-body.presentation-fullscreen-mode .pres-subpixel p,
-body.presentation-fullscreen-mode .pres-subpixel ul {
-  font-size: clamp(1.1rem, 1.35vw, 1.3rem) !important;
-  line-height: 1.7 !important;
-}
-
-/* Badge Box */
-.is-fullscreen .pres-badge-box,
-:fullscreen .pres-badge-box,
-:-webkit-full-screen .pres-badge-box,
-.presentation-modal.fullscreen-active .pres-badge-box,
-body.presentation-fullscreen-mode .pres-badge-box {
-  padding: 1.2rem 1.6rem !important;
-  font-size: clamp(1.15rem, 1.4vw, 1.35rem) !important;
-  border-radius: 10px !important;
-}
-
-/* Pie / Charts */
-.is-fullscreen .pres-pie-legend,
-:fullscreen .pres-pie-legend,
-:-webkit-full-screen .pres-pie-legend,
-.presentation-modal.fullscreen-active .pres-pie-legend,
-body.presentation-fullscreen-mode .pres-pie-legend {
-  font-size: clamp(1.15rem, 1.45vw, 1.4rem) !important;
-  gap: 1.5rem !important;
-}
-
-.is-fullscreen .leg-item,
-:fullscreen .leg-item,
-:-webkit-full-screen .leg-item,
-.presentation-modal.fullscreen-active .leg-item,
-body.presentation-fullscreen-mode .leg-item {
-  font-size: clamp(1.15rem, 1.45vw, 1.4rem) !important;
-}
-
-.is-fullscreen .dot,
-:fullscreen .dot,
-:-webkit-full-screen .dot,
-.presentation-modal.fullscreen-active .dot,
-body.presentation-fullscreen-mode .dot {
-  width: 18px !important;
-  height: 18px !important;
+  color: #475569 !important;
 }
 
 /* ==========================================================================
-   Presentation Extension: Lab Tools, Safety, Answers & Multi-Lesson Tabs
+   Presentation Extension: Lab Tools, Safety, Answers & Spectrum Light Mode
    ========================================================================== */
 
 /* Tools Visual Layout */
@@ -2931,9 +2901,9 @@ body.presentation-fullscreen-mode .dot {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: #0f172a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
 }
 
 .pres-tool-img {
@@ -2941,7 +2911,6 @@ body.presentation-fullscreen-mode .dot {
   height: 270px;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
 }
 
 .pres-tool-img-caption {
@@ -2949,10 +2918,10 @@ body.presentation-fullscreen-mode .dot {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0));
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0));
   padding: 1.5rem 1rem 0.6rem 1rem;
   font-size: 0.85rem;
-  color: #93c5fd;
+  color: #ffffff;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -2966,14 +2935,15 @@ body.presentation-fullscreen-mode .dot {
 }
 
 .pres-tool-item {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-left: 4px solid #3b82f6;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2563eb;
   border-radius: 8px;
   padding: 0.65rem 0.9rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .pres-tool-item.quantum-accent {
@@ -2984,8 +2954,8 @@ body.presentation-fullscreen-mode .dot {
   width: 28px;
   height: 28px;
   border-radius: 6px;
-  background: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
+  background: #eff6ff;
+  color: #2563eb;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2993,23 +2963,23 @@ body.presentation-fullscreen-mode .dot {
 }
 
 .pres-tool-item.quantum-accent .pres-tool-item-icon {
-  background: rgba(139, 92, 246, 0.2);
-  color: #c084fc;
+  background: #f5f3ff;
+  color: #8b5cf6;
 }
 
 .pres-tool-name {
   font-weight: 700;
-  color: #f8fafc;
+  color: #0f172a;
   font-size: 0.98rem;
 }
 
 .pres-tool-desc {
   font-size: 0.82rem;
-  color: #94a3b8;
+  color: #64748b;
   margin-top: 0.15rem;
 }
 
-/* Safety Grid */
+/* Safety Grid Light Mode */
 .pres-safety-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3017,29 +2987,33 @@ body.presentation-fullscreen-mode .dot {
 }
 
 .pres-safety-card {
-  background: rgba(30, 41, 59, 0.85);
+  background: #ffffff;
   border-radius: 12px;
   padding: 1.4rem 1.2rem;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ef4444;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 
 .pres-safety-card.safe-blue {
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: #bfdbfe;
+  border-left-color: #3b82f6;
 }
 
 .pres-safety-card.safe-amber {
-  border-color: rgba(245, 158, 11, 0.3);
+  border-color: #fde68a;
+  border-left-color: #f59e0b;
 }
 
 .pres-safety-icon {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
+  background: #fee2e2;
+  color: #ef4444;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3047,33 +3021,42 @@ body.presentation-fullscreen-mode .dot {
 }
 
 .pres-safety-card.safe-blue .pres-safety-icon {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
+  background: #eff6ff;
+  color: #2563eb;
 }
 
 .pres-safety-card.safe-amber .pres-safety-icon {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
+  background: #fffbeb;
+  color: #d97706;
 }
 
 .pres-safety-title {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #991b1b;
+}
+
+.pres-safety-card.safe-blue .pres-safety-title {
+  color: #1e40af;
+}
+
+.pres-safety-card.safe-amber .pres-safety-title {
+  color: #92400e;
 }
 
 .pres-safety-desc {
   font-size: 0.92rem;
   line-height: 1.6;
-  color: #cbd5e1;
+  color: #475569;
 }
 
 /* Observation & Answer Table for Presentation */
 .pres-table-wrap {
-  background: rgba(15, 23, 42, 0.7);
+  background: #ffffff;
   border-radius: 10px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid #e2e8f0;
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
 
 .pres-table {
@@ -3084,18 +3067,18 @@ body.presentation-fullscreen-mode .dot {
 }
 
 .pres-table th {
-  background: rgba(30, 41, 59, 0.95);
-  color: #93c5fd;
+  background: #f8fafc;
+  color: #334155;
   padding: 0.8rem 1rem;
   font-weight: 700;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  border-bottom: 1px solid #e2e8f0;
   white-space: nowrap;
 }
 
 .pres-table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-  color: #e2e8f0;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
 }
 
 .pres-table tr:last-child td {
@@ -3103,7 +3086,7 @@ body.presentation-fullscreen-mode .dot {
 }
 
 .pres-table tr:nth-child(even) td {
-  background: rgba(255, 255, 255, 0.02);
+  background: #fafafa;
 }
 
 .pres-ans-badge {
@@ -3114,14 +3097,63 @@ body.presentation-fullscreen-mode .dot {
   border-radius: 6px;
   font-size: 0.82rem;
   font-weight: 700;
-  background: rgba(34, 197, 94, 0.2);
-  color: #4ade80;
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
 }
 
 .pres-ans-text {
-  color: #fde047;
+  color: #1d4ed8;
   font-weight: 700;
+}
+
+/* Spectrum Bar Light Mode */
+.pres-spectrum-wrap {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.pres-spectrum-bar {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+
+.spec-part {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.spec-part.spec-uv {
+  background: #f5f3ff;
+  color: #6d28d9;
+  flex: 1.1;
+  border-right: 1px solid #ddd6fe;
+}
+
+.spec-part.spec-vis {
+  background: linear-gradient(90deg, #eff6ff, #ecfdf5, #fefce8, #fef2f2);
+  color: #1e293b;
+  flex: 1.8;
+  border-right: 1px solid #e2e8f0;
+}
+
+.spec-part.spec-ir {
+  background: #fef2f2;
+  color: #991b1b;
+  flex: 1;
+}
+
+.spec-sub {
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.85;
 }
 
 /* Fullscreen adjustments for tools, tables & safety */
@@ -3158,21 +3190,21 @@ body.presentation-fullscreen-mode .pres-safety-desc {
   line-height: 1.7 !important;
 }
 
-/* Slide Lesson Switcher Tabs in standalone slides.html */
+/* Slide Lesson Switcher Tabs in standalone slides.html (Light Mode) */
 .slide-lesson-tabs {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
-  background: #1e293b;
+  background: #f1f5f9;
   padding: 0.35rem;
   border-radius: 10px;
-  border: 1px solid #334155;
+  border: 1px solid #e2e8f0;
   width: fit-content;
 }
 
 .slide-lesson-btn {
   background: transparent;
-  color: #94a3b8;
+  color: #64748b;
   border: none;
   padding: 0.55rem 1.1rem;
   border-radius: 7px;
@@ -3186,19 +3218,19 @@ body.presentation-fullscreen-mode .pres-safety-desc {
 }
 
 .slide-lesson-btn:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
+  color: #0f172a;
+  background: #ffffff;
 }
 
 .slide-lesson-btn.active {
-  background: #3b82f6;
+  background: #2563eb;
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.35);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
 }
 
 .slide-lesson-btn.active.purple-theme {
-  background: #8b5cf6;
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.35);
+  background: #7c3aed;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
 }
 
 /* ======================================================= */
@@ -3253,9 +3285,9 @@ body.presentation-fullscreen-mode .pres-safety-desc {
   margin-bottom: 0.95rem;
 }
 
-/* Slide Deck Viewer */
+/* Slide Deck Viewer (Light Theme) */
 .aio-slide-viewer {
-  background: #191919;
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 2.25rem 2.5rem;
@@ -3263,8 +3295,8 @@ body.presentation-fullscreen-mode .pres-safety-desc {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #ffffff;
-  box-shadow: var(--shadow-md);
+  color: var(--color-charcoal);
+  box-shadow: var(--shadow-sm);
 }
 .aio-slide-item { display: none; }
 .aio-slide-item.active {
@@ -3277,34 +3309,34 @@ body.presentation-fullscreen-mode .pres-safety-desc {
 }
 .aio-slide-tag {
   display: inline-block;
-  padding: 0.2rem 0.65rem;
+  padding: 0.25rem 0.75rem;
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.12);
-  color: #cbd5e1;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
   margin-bottom: 0.75rem;
   width: fit-content;
 }
 .aio-slide-title {
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.3;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #0f172a;
 }
 .aio-slide-body {
   font-size: 1.02rem;
   line-height: 1.8;
-  color: #d1d5db;
+  color: #334155;
   flex: 1;
 }
 .aio-slide-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid #e2e8f0;
   padding-top: 1rem;
   margin-top: 1.25rem;
 }

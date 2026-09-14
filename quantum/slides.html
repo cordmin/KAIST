@@ -7,23 +7,23 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
     .slide-viewer {
-      background: #0f172a;
+      background: #ffffff;
       border-radius: var(--radius);
       padding: 2.2rem 2.8rem;
       min-height: 600px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      color: #ffffff;
-      box-shadow: var(--shadow-lg);
+      color: var(--color-charcoal);
+      box-shadow: var(--shadow-sm);
       position: relative;
-      border: 1px solid #334155;
+      border: 1px solid #e2e8f0;
     }
     .slide-viewer:fullscreen,
     .slide-viewer:-webkit-full-screen {
       padding: clamp(2rem, 3.5vh, 3.5rem) clamp(2.5rem, 4vw, 4.5rem) !important;
       border-radius: 0 !important;
-      background: #0b1120 !important;
+      background: #ffffff !important;
       height: 100vh !important;
       width: 100vw !important;
       box-sizing: border-box !important;
@@ -47,9 +47,9 @@
       border-radius: 9999px;
       font-size: 0.88rem;
       font-weight: 700;
-      background: rgba(139, 92, 246, 0.25);
-      color: #ddd6fe;
-      border: 1px solid rgba(139, 92, 246, 0.4);
+      background: #f5f3ff;
+      color: #7c3aed;
+      border: 1px solid #ddd6fe;
       margin-bottom: 0.85rem;
       width: fit-content;
     }
@@ -58,27 +58,27 @@
       font-weight: 800;
       line-height: 1.35;
       margin-bottom: 1.25rem;
-      color: #f8fafc;
+      color: #0f172a;
       letter-spacing: -0.015em;
     }
     .slide-body {
       font-size: 1.15rem;
       line-height: 1.8;
-      color: #cbd5e1;
+      color: #334155;
       flex: 1;
     }
     .slide-footer-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid #334155;
+      border-top: 1px solid #e2e8f0;
       padding-top: 1.25rem;
       margin-top: 1.5rem;
     }
     .slide-btn {
-      background: #1e293b;
-      color: #ffffff;
-      border: 1px solid #475569;
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid #cbd5e1;
       padding: 0.55rem 1.25rem;
       border-radius: 0.5rem;
       cursor: pointer;
@@ -87,6 +87,20 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
+    }
+    .slide-btn:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      color: #0f172a;
+    }
+    .slide-btn.primary {
+      background: #7c3aed;
+      color: #ffffff;
+      border-color: #7c3aed;
+    }
+    .slide-btn.primary:hover {
+      background: #6d28d9;
+      border-color: #6d28d9;
     }
     .slide-btn:hover:not(:disabled) { background: #334155; border-color: #94a3b8; }
     .slide-btn.purple-btn { background: #8b5cf6; border-color: #a78bfa; }
