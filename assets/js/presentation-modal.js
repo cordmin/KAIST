@@ -37,13 +37,12 @@ const presentationModalData = {
       lessonTitle: '[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단',
       badge: 'OLED 1차시 · 자외선과 형광',
       slides: [
-        // Slide 1: 탐구 열기 (도입 탐구 질문 - 표지)
+        // Slide 1: 탐구 질문 (표지 - 불필요한 태그/타이틀/뱃지 전면 배제, 질문 단독 집중)
         {
-          tag: '탐구 열기',
-          title: '어둠 속을 밝히는 빛의 마법: 자외선과 형광',
+          tag: '',
+          title: '',
           content: `
             <div class="pres-hero-question">
-              <div class="hero-q-label">오늘의 핵심 탐구 질문</div>
               <p class="hero-q-text">
                 "눈에 보이지 않는 빛(자외선)을 비추었는데,<br>
                 어떻게 우리 눈에 보이는 형광빛(가시광선)으로 바뀌어 나오는 것일까?"
@@ -54,8 +53,8 @@ const presentationModalData = {
 
         // Slide 2: 학습목표 (단독 슬라이드)
         {
-          tag: '학습목표',
-          title: '오늘 우리가 도달할 학습목표',
+          tag: '',
+          title: '학습목표',
           content: `
             <div class="pres-objective-box">
               <p class="objective-main">
@@ -66,10 +65,10 @@ const presentationModalData = {
           `
         },
 
-        // Slide 3: 생각 열기 (동기 유발 시연)
+        // Slide 3: 어두운 교실에서 켠 블랙라이트 (동기 유발)
         {
-          tag: '생각 열기',
-          title: '어두운 교실에서 켠 블랙라이트: 눈부신 형광의 발견',
+          tag: '',
+          title: '어두운 교실에서 켠 블랙라이트',
           content: `
             <div class="pres-stack">
               <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2rem;">
@@ -102,10 +101,10 @@ const presentationModalData = {
           `
         },
 
-        // Slide 4: 실험 준비 (탐구 준비물 안내)
+        // Slide 4: 실험 준비물
         {
-          tag: '실험 준비',
-          title: '탐구 활동 준비물 (모둠별 1세트)',
+          tag: '',
+          title: '실험 준비물',
           content: `
             <div class="pres-tool-layout">
               <div class="pres-tool-img-wrap">
@@ -144,10 +143,10 @@ const presentationModalData = {
           `
         },
 
-        // Slide 5: 안전 수칙
+        // Slide 5: 실험실 안전 수칙
         {
-          tag: '안전 수칙',
-          title: '실험실 필수 안전 수칙 (Safety First)',
+          tag: '',
+          title: '실험실 안전 수칙',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card">
@@ -172,10 +171,10 @@ const presentationModalData = {
           `
         },
 
-        // Slide 6: 탐구 활동 (관찰 절차)
+        // Slide 6: 형광 물질 관찰 순서
         {
-          tag: '탐구 활동',
-          title: '일상 속 형광 물질 관찰 순서',
+          tag: '',
+          title: '형광 물질 관찰 순서',
           content: `
             <div class="pres-stack">
               <div class="pres-steps-row">
@@ -201,10 +200,10 @@ const presentationModalData = {
           `
         },
 
-        // Slide 7: 탐구 결과 (관찰 결과표)
+        // Slide 7: 형광 물질 관찰 결과
         {
-          tag: '탐구 결과',
-          title: '일상 속 형광 물질 관찰 결과',
+          tag: '',
+          title: '형광 물질 관찰 결과',
           content: `
             <div class="pres-table-wrap">
               <table class="pres-table">
@@ -247,10 +246,10 @@ const presentationModalData = {
           `
         },
 
-        // Slide 8: 원리 탐구 (빛의 파장과 에너지)
+        // Slide 8: 빛의 파장과 에너지
         {
-          tag: '원리 탐구',
-          title: "빛의 파장과 에너지: '파도의 촘촘함과 충격량'",
+          tag: '',
+          title: '빛의 파장과 에너지',
           content: `
             <div class="pres-stack">
               <div class="pres-spectrum-wrap">
@@ -283,9 +282,9 @@ const presentationModalData = {
           `
         },
 
-        // Slide 9: 생각해보기 (모둠 토의 & 에너지 보존)
+        // Slide 9: 생각해보기
         {
-          tag: '생각해보기',
+          tag: '',
           title: '사라진 30의 에너지는 어디로 갔을까?',
           content: `
             <div class="pres-stack">
@@ -314,10 +313,10 @@ const presentationModalData = {
           `
         },
 
-        // Slide 10: 배움 정리 & 2차시 예고
+        // Slide 10: 오늘의 배움 정리
         {
-          tag: '배움 정리',
-          title: '1차시 배움 정리 및 다음 차시 예고',
+          tag: '',
+          title: '오늘의 배움 정리',
           content: `
             <div class="pres-stack">
               <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.2rem 1.6rem;">
@@ -2181,9 +2180,6 @@ function ensurePresentationModalExists() {
         <div class="presentation-modal-header">
           <div class="pres-header-left">
             <h3 id="pres-modal-title" class="pres-modal-title">발표 슬라이드</h3>
-            <span id="pres-modal-badge" class="badge badge-purple">
-              <i data-lucide="presentation"></i> <span id="pres-badge-text">프리젠테이션</span>
-            </span>
           </div>
 
           <div class="pres-header-actions">
@@ -2260,7 +2256,8 @@ function openPresentationModal(moduleType, lessonNum) {
   if (!deck) return;
 
   document.getElementById('pres-modal-title').innerText = deck.lessonTitle;
-  document.getElementById('pres-badge-text').innerText = deck.badge;
+  const badgeEl = document.getElementById('pres-badge-text');
+  if (badgeEl) badgeEl.innerText = deck.badge;
 
   renderCurrentPresentationSlide();
 
