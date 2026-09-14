@@ -309,72 +309,104 @@ const presentationModalData = {
           `
         },
 
-        // Slide 9: 생각해보기
+        // Slide 9: 생각해보기 (모둠 토의 질문)
         {
           tag: '',
           title: '사라진 30의 에너지는 어디로 갔을까?',
           content: `
-            <div class="pres-stack">
-              <div class="pres-inquiry-box" style="margin-top:0;">
-                <div class="inquiry-q">
-                  "흡수한 자외선 에너지가 100이라면, 방출된 형광빛의 에너지는 70~80입니다. 그렇다면 30의 에너지는 어디로 갔을까요?"
+            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:340px;">
+              <div class="pres-inquiry-box" style="margin:0; width:100%; max-width:860px; padding:2.5rem 2rem;">
+                <div class="inquiry-q" style="font-size:1.4rem; line-height:1.7; margin-bottom:1.2rem;">
+                  "흡수한 자외선 에너지가 100이라면, 방출된 형광빛의 에너지는 70~80입니다.<br>
+                  그렇다면 나머지 20~30의 에너지는 어디로 갔을까요?"
                 </div>
-                <p class="inquiry-hint">
+                <p class="inquiry-hint" style="font-size:1.08rem; margin:0; color:#2563eb; font-weight:600;">
                   들어간 빛 에너지와 나온 빛 에너지 사이의 차이를 모둠원과 함께 토의해 봅시다.
-                </p>
-              </div>
-
-              <div class="pres-equation-card">
-                <div class="eq-title">[ 대자연의 철칙: 에너지 보존 법칙 ]</div>
-                <div class="eq-formula">
-                  [ 흡수한 자외선 에너지 ] = [ 방출된 형광빛 에너지 ] + [ 분자가 흘린 열(진동) 에너지 ]
-                </div>
-              </div>
-
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.1rem 1.5rem;">
-                <p style="font-size:1.05rem; line-height:1.7; color:#334155; margin:0;">
-                  에너지는 결코 소멸한 것이 아닙니다. 분자가 에너지를 흡수한 후 미세하게 진동하며 <strong>'열(열에너지)'</strong> 형태로 주변에 방출하기 때문에, 우주의 <strong>에너지 총합은 완벽히 보존</strong>됩니다.
                 </p>
               </div>
             </div>
           `
         },
 
-        // Slide 10: 오늘의 배움 정리
+        // Slide 10: 에너지 보존 법칙
+        {
+          tag: '',
+          title: '에너지 보존 법칙',
+          content: `
+            <div class="pres-stack" style="justify-content:center; gap:1.5rem; max-width:880px; margin:0 auto; width:100%;">
+              <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:14px; padding:1.8rem 2.2rem; text-align:center;">
+                <div style="font-size:1.1rem; font-weight:800; color:#047857; margin-bottom:0.75rem;">
+                  에너지 보존 법칙
+                </div>
+                <div style="font-size:1.4rem; font-weight:800; color:#065f46; word-break:keep-all;">
+                  [ 흡수한 자외선 에너지 ] = [ 방출된 형광빛 에너지 ] + [ 열에너지 ]
+                </div>
+              </div>
+
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:1.6rem 2.2rem;">
+                <p style="font-size:1.15rem; line-height:1.8; color:#334155; margin:0 0 0.8rem 0; word-break:keep-all;">
+                  • 에너지는 사라진 것이 아니라 <strong>다른 형태의 에너지로 전환</strong>된 것입니다.
+                </p>
+                <p style="font-size:1.15rem; line-height:1.8; color:#334155; margin:0; word-break:keep-all;">
+                  • 분자가 자외선을 흡수한 후 미세하게 진동하면서 일부 에너지를 <strong>'열(열에너지)'</strong> 형태로 방출합니다.
+                </p>
+              </div>
+            </div>
+          `
+        },
+
+        // Slide 11: 오늘의 배움 정리
         {
           tag: '',
           title: '오늘의 배움 정리',
           content: `
-            <div class="pres-stack">
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.2rem 1.6rem;">
-                <div style="font-size:1.1rem; font-weight:800; color:#0f172a; margin-bottom:0.75rem;">1차시 배움 핵심 정리</div>
-                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem;">
-                  <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:0.9rem; text-align:center;">
-                    <strong style="color:#0f172a; font-size:0.98rem; display:block; margin-bottom:0.25rem;">자외선 vs 가시광선</strong>
-                    <p style="font-size:0.88rem; color:#64748b; margin:0;">파장이 짧을수록 에너지가 큼</p>
-                  </div>
-                  <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:0.9rem; text-align:center;">
-                    <strong style="color:#0f172a; font-size:0.98rem; display:block; margin-bottom:0.25rem;">4대 물질 형광 관찰</strong>
-                    <p style="font-size:0.88rem; color:#64748b; margin:0;">토닉(청)·비타민(녹)·오일(적)·지폐</p>
-                  </div>
-                  <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:0.9rem; text-align:center;">
-                    <strong style="color:#0f172a; font-size:0.98rem; display:block; margin-bottom:0.25rem;">에너지 보존 법칙</strong>
-                    <p style="font-size:0.88rem; color:#64748b; margin:0;">자외선 = 형광빛 + 열(진동)</p>
-                  </div>
+            <div class="pres-stack" style="gap:1.5rem; max-width:920px; margin:0 auto; width:100%;">
+              <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2rem;">
+                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem; text-align:center;">
+                  <strong style="color:#0f172a; font-size:1.1rem; display:block; margin-bottom:0.5rem;">자외선 vs 가시광선</strong>
+                  <p style="font-size:0.95rem; color:#64748b; margin:0; line-height:1.6; word-break:keep-all;">
+                    파장이 짧을수록<br>에너지가 더 크다
+                  </p>
                 </div>
-                <p style="font-size:0.92rem; color:#475569; margin:0.85rem 0 0; line-height:1.6;">
-                  • <strong>일상 속 형광 기술 활용:</strong> 위조지폐·여권 감별, 형광펜, 야간 안전 조끼 등<br>
-                  • <strong>실험 정리:</strong> 시약은 전용 폐액통에 분리 수거하고 실험 기구 제자리 정돈
-                </p>
+                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem; text-align:center;">
+                  <strong style="color:#0f172a; font-size:1.1rem; display:block; margin-bottom:0.5rem;">형광 물질 관찰</strong>
+                  <p style="font-size:0.95rem; color:#64748b; margin:0; line-height:1.6; word-break:keep-all;">
+                    자외선을 흡수하여<br>가시광선으로 방출
+                  </p>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem; text-align:center;">
+                  <strong style="color:#0f172a; font-size:1.1rem; display:block; margin-bottom:0.5rem;">에너지 보존</strong>
+                  <p style="font-size:0.95rem; color:#64748b; margin:0; line-height:1.6; word-break:keep-all;">
+                    흡수한 자외선 =<br>형광빛 + 열에너지
+                  </p>
+                </div>
               </div>
 
-              <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:12px; padding:1.2rem 1.6rem;">
-                <div style="font-size:1.05rem; font-weight:800; color:#1d4ed8; margin-bottom:0.35rem;">다음 2차시 탐구 예고</div>
-                <p style="font-size:1.12rem; font-weight:700; color:#1e3a8a; margin:0 0 0.35rem 0;">
-                  [2차시] 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.3rem 1.8rem;">
+                <div style="font-size:1.05rem; font-weight:700; color:#0f172a; margin-bottom:0.5rem;">실험실 뒷정리 수칙</div>
+                <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.7; word-break:keep-all;">
+                  • 사용한 관찰 시약은 지정된 <strong>전용 폐액통에 분리 수거</strong>합니다.<br>
+                  • UV-A 램프 전원을 끄고 보안경과 실험 도구를 제자리에 정돈합니다.
                 </p>
-                <p style="font-size:0.95rem; color:#3b82f6; margin:0;">
-                  "분자 속 전자는 자외선 에너지를 어떻게 흡수했다가 방출하는 걸까?" — 가상실험실(lab.html)에서 직접 전자의 점프를 탐구합니다!
+              </div>
+            </div>
+          `
+        },
+
+        // Slide 12: 다음 차시 예고
+        {
+          tag: '',
+          title: '다음 차시 예고',
+          content: `
+            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:340px; text-align:center;">
+              <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:16px; padding:2.5rem 3rem; max-width:860px; width:100%;">
+                <div style="font-size:1.1rem; font-weight:800; color:#1d4ed8; margin-bottom:0.8rem;">다음 시간 안내</div>
+                <p style="font-size:1.5rem; font-weight:800; color:#1e3a8a; margin:0 0 1.2rem 0; word-break:keep-all;">
+                  [2차시] 전자의 에너지 준위와 들뜬 상태
+                </p>
+                <p style="font-size:1.12rem; line-height:1.8; color:#3b82f6; margin:0; word-break:keep-all;">
+                  "분자 속 전자는 자외선 에너지를 어떻게 흡수했다가 방출하는 걸까?"<br>
+                  <strong>가상실험실(lab.html)</strong>에서 전자의 에너지 준위 이동을 직접 탐구해 봅니다.
                 </p>
               </div>
             </div>
