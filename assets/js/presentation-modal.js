@@ -45,7 +45,7 @@ const presentationModalData = {
             <div class="pres-hero-question">
               <p class="hero-q-text">
                 "눈에 보이지 않는 빛(자외선)을 비추었는데,<br>
-                어떻게 우리 눈에 보이는 형광빛(가시광선)으로 바뀌어 나오는 것일까?"
+                어떻게 우리 눈에 보이는 형광빛으로 바뀌어 나오는 것일까?"
               </p>
             </div>
           `
