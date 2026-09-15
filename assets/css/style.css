@@ -3024,6 +3024,440 @@ body.presentation-fullscreen-mode .pres-step-box ul {
 }
 
 /* ==========================================================================
+   Presentation Slides Specific Modules (Slides 4, 8, 9, 10, 11)
+   ========================================================================== */
+
+/* Slide 10: 에너지 보존 법칙 */
+.pres-conservation-stack {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  gap: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pres-equation-box {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 14px;
+  padding: 1.8rem 2.2rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.06);
+}
+.pres-equation-text {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #065f46;
+  word-break: keep-all;
+  line-height: 1.4;
+}
+.pres-law-desc-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.6rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.pres-law-desc-p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #334155;
+  margin: 0;
+  word-break: keep-all;
+}
+
+/* Slide 9: 생각해보기 */
+.pres-inquiry-stack {
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  width: 100%;
+}
+.pres-inquiry-box {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 920px;
+  padding: 3.2rem 1.4rem;
+  text-align: center;
+  box-sizing: border-box;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.05);
+}
+.inquiry-line {
+  font-size: 1.4rem;
+  font-weight: 800;
+  white-space: nowrap;
+  display: block;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+  line-height: 1.85;
+}
+.inquiry-line.inquiry-accent {
+  margin-top: 0.75rem;
+  color: #1d4ed8;
+}
+
+/* Slide 8: 빛의 파장과 에너지 */
+.pres-spectrum-stack {
+  gap: 1.1rem;
+  width: 100%;
+}
+.pres-spectrum-img-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+}
+.pres-spectrum-img-card svg {
+  width: 100%;
+  max-width: 820px;
+  height: auto;
+  margin: 0 auto;
+}
+.pres-spectrum-img {
+  max-width: 520px;
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  display: block;
+}
+.pres-key-point-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.2rem 1.8rem;
+  text-align: center;
+}
+.pres-key-point-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #0f172a;
+  margin: 0;
+  word-break: keep-all;
+}
+.pres-def-card {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 1.2rem 1.8rem;
+  text-align: center;
+}
+.pres-def-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #1e40af;
+  margin: 0;
+  word-break: keep-all;
+}
+.pres-def-lead {
+  font-size: 1.26rem;
+  color: #1d4ed8;
+}
+
+/* Slide 4: 실험 준비물 */
+.pres-tools-stack {
+  gap: 0.85rem;
+  width: 100%;
+}
+.pres-tools-img-box {
+  width: 100%;
+  max-height: 360px;
+  aspect-ratio: 1376/646;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pres-tools-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.pres-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+.pres-tool-name-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.85rem 0.6rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.02rem;
+  color: #0f172a;
+  word-break: keep-all;
+}
+
+/* Slide 11: 일상 속 형광 기술 활용 */
+.pres-apps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.pres-app-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.pres-app-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  background: #0f172a;
+}
+.pres-app-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pres-app-title {
+  color: #0f172a;
+  font-size: 1.38rem;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.pres-app-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+  word-break: keep-all;
+}
+
+/* ==========================================================================
+   Fullscreen Dynamic Scaling for Modules (전체화면 동적 비례 확대)
+   ========================================================================== */
+.is-fullscreen .pres-conservation-stack,
+:fullscreen .pres-conservation-stack,
+:-webkit-full-screen .pres-conservation-stack,
+.presentation-modal.fullscreen-active .pres-conservation-stack,
+body.presentation-fullscreen-mode .pres-conservation-stack {
+  gap: clamp(1.8rem, 3.2vh, 3rem) !important;
+  max-width: 100% !important;
+}
+
+.is-fullscreen .pres-equation-box,
+:fullscreen .pres-equation-box,
+:-webkit-full-screen .pres-equation-box,
+.presentation-modal.fullscreen-active .pres-equation-box,
+body.presentation-fullscreen-mode .pres-equation-box {
+  padding: clamp(2.5rem, 4.5vh, 4.2rem) clamp(2.5rem, 4vw, 5rem) !important;
+  border-radius: 22px !important;
+}
+
+.is-fullscreen .pres-equation-text,
+:fullscreen .pres-equation-text,
+:-webkit-full-screen .pres-equation-text,
+.presentation-modal.fullscreen-active .pres-equation-text,
+body.presentation-fullscreen-mode .pres-equation-text {
+  font-size: clamp(2rem, 2.7vw, 3.4rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+}
+
+.is-fullscreen .pres-law-desc-box,
+:fullscreen .pres-law-desc-box,
+:-webkit-full-screen .pres-law-desc-box,
+.presentation-modal.fullscreen-active .pres-law-desc-box,
+body.presentation-fullscreen-mode .pres-law-desc-box {
+  padding: clamp(2rem, 3.5vh, 3.5rem) clamp(2.5rem, 4vw, 5rem) !important;
+  border-radius: 22px !important;
+  gap: 1.4rem !important;
+}
+
+.is-fullscreen .pres-law-desc-p,
+:fullscreen .pres-law-desc-p,
+:-webkit-full-screen .pres-law-desc-p,
+.presentation-modal.fullscreen-active .pres-law-desc-p,
+body.presentation-fullscreen-mode .pres-law-desc-p {
+  font-size: clamp(1.4rem, 1.8vw, 2.1rem) !important;
+  line-height: 1.85 !important;
+}
+
+/* Slide 9: 생각해보기 전체화면 확대 */
+.is-fullscreen .pres-inquiry-box,
+:fullscreen .pres-inquiry-box,
+:-webkit-full-screen .pres-inquiry-box,
+.presentation-modal.fullscreen-active .pres-inquiry-box,
+body.presentation-fullscreen-mode .pres-inquiry-box {
+  padding: clamp(3.5rem, 6vh, 6rem) clamp(2.5rem, 4vw, 5rem) !important;
+  border-radius: 22px !important;
+  max-width: 100% !important;
+}
+
+.is-fullscreen .inquiry-line,
+:fullscreen .inquiry-line,
+:-webkit-full-screen .inquiry-line,
+.presentation-modal.fullscreen-active .inquiry-line,
+body.presentation-fullscreen-mode .inquiry-line {
+  font-size: clamp(1.6rem, 2.3vw, 2.6rem) !important;
+  line-height: 1.7 !important;
+}
+
+/* Slide 8: 스펙트럼 전체화면 확대 */
+.is-fullscreen .pres-spectrum-stack,
+:fullscreen .pres-spectrum-stack,
+:-webkit-full-screen .pres-spectrum-stack,
+.presentation-modal.fullscreen-active .pres-spectrum-stack,
+body.presentation-fullscreen-mode .pres-spectrum-stack {
+  gap: clamp(1.4rem, 2.2vh, 2.4rem) !important;
+}
+
+.is-fullscreen .pres-spectrum-img-card,
+:fullscreen .pres-spectrum-img-card,
+:-webkit-full-screen .pres-spectrum-img-card,
+.presentation-modal.fullscreen-active .pres-spectrum-img-card,
+body.presentation-fullscreen-mode .pres-spectrum-img-card {
+  padding: clamp(1.5rem, 2.5vh, 2.5rem) !important;
+  border-radius: 20px !important;
+}
+
+.is-fullscreen .pres-spectrum-img-card svg,
+:fullscreen .pres-spectrum-img-card svg,
+:-webkit-full-screen .pres-spectrum-img-card svg,
+.presentation-modal.fullscreen-active .pres-spectrum-img-card svg,
+body.presentation-fullscreen-mode .pres-spectrum-img-card svg {
+  max-width: clamp(750px, 75vw, 1100px) !important;
+  max-height: clamp(260px, 34vh, 380px) !important;
+  width: 100% !important;
+}
+
+.is-fullscreen .pres-spectrum-img,
+:fullscreen .pres-spectrum-img,
+:-webkit-full-screen .pres-spectrum-img,
+.presentation-modal.fullscreen-active .pres-spectrum-img,
+body.presentation-fullscreen-mode .pres-spectrum-img {
+  max-width: clamp(650px, 55vw, 950px) !important;
+  max-height: clamp(280px, 35vh, 420px) !important;
+}
+
+.is-fullscreen .pres-key-point-card,
+:fullscreen .pres-key-point-card,
+:-webkit-full-screen .pres-key-point-card,
+.presentation-modal.fullscreen-active .pres-key-point-card,
+body.presentation-fullscreen-mode .pres-key-point-card {
+  padding: clamp(1.6rem, 2.5vh, 2.6rem) clamp(2rem, 3vw, 4rem) !important;
+  border-radius: 18px !important;
+}
+
+.is-fullscreen .pres-key-point-text,
+:fullscreen .pres-key-point-text,
+:-webkit-full-screen .pres-key-point-text,
+.presentation-modal.fullscreen-active .pres-key-point-text,
+body.presentation-fullscreen-mode .pres-key-point-text {
+  font-size: clamp(1.6rem, 2.2vw, 2.4rem) !important;
+}
+
+.is-fullscreen .pres-def-card,
+:fullscreen .pres-def-card,
+:-webkit-full-screen .pres-def-card,
+.presentation-modal.fullscreen-active .pres-def-card,
+body.presentation-fullscreen-mode .pres-def-card {
+  padding: clamp(1.6rem, 2.5vh, 2.6rem) clamp(2rem, 3vw, 4rem) !important;
+  border-radius: 18px !important;
+}
+
+.is-fullscreen .pres-def-text,
+:fullscreen .pres-def-text,
+:-webkit-full-screen .pres-def-text,
+.presentation-modal.fullscreen-active .pres-def-text,
+body.presentation-fullscreen-mode .pres-def-text {
+  font-size: clamp(1.4rem, 1.8vw, 2rem) !important;
+}
+
+.is-fullscreen .pres-def-lead,
+:fullscreen .pres-def-lead,
+:-webkit-full-screen .pres-def-lead,
+.presentation-modal.fullscreen-active .pres-def-lead,
+body.presentation-fullscreen-mode .pres-def-lead {
+  font-size: clamp(1.5rem, 1.9vw, 2.1rem) !important;
+}
+
+/* Slide 4: 준비물 전체화면 확대 */
+.is-fullscreen .pres-tools-img-box,
+:fullscreen .pres-tools-img-box,
+:-webkit-full-screen .pres-tools-img-box,
+.presentation-modal.fullscreen-active .pres-tools-img-box,
+body.presentation-fullscreen-mode .pres-tools-img-box {
+  max-height: clamp(380px, 50vh, 560px) !important;
+  border-radius: 18px !important;
+}
+
+.is-fullscreen .pres-tool-name-card,
+:fullscreen .pres-tool-name-card,
+:-webkit-full-screen .pres-tool-name-card,
+.presentation-modal.fullscreen-active .pres-tool-name-card,
+body.presentation-fullscreen-mode .pres-tool-name-card {
+  padding: clamp(1.2rem, 1.8vh, 1.8rem) 1rem !important;
+  font-size: clamp(1.2rem, 1.4vw, 1.55rem) !important;
+  border-radius: 14px !important;
+}
+
+/* Slide 11: 앱 활용 전체화면 확대 */
+.is-fullscreen .pres-apps-grid,
+:fullscreen .pres-apps-grid,
+:-webkit-full-screen .pres-apps-grid,
+.presentation-modal.fullscreen-active .pres-apps-grid,
+body.presentation-fullscreen-mode .pres-apps-grid {
+  gap: clamp(1.5rem, 2vw, 2.2rem) !important;
+}
+
+.is-fullscreen .pres-app-card,
+:fullscreen .pres-app-card,
+:-webkit-full-screen .pres-app-card,
+.presentation-modal.fullscreen-active .pres-app-card,
+body.presentation-fullscreen-mode .pres-app-card {
+  padding: clamp(1.5rem, 2.2vh, 2.4rem) !important;
+  border-radius: 18px !important;
+}
+
+.is-fullscreen .pres-app-title,
+:fullscreen .pres-app-title,
+:-webkit-full-screen .pres-app-title,
+.presentation-modal.fullscreen-active .pres-app-title,
+body.presentation-fullscreen-mode .pres-app-title {
+  font-size: clamp(1.5rem, 1.9vw, 2.05rem) !important;
+  font-weight: 800 !important;
+}
+
+.is-fullscreen .pres-app-desc,
+:fullscreen .pres-app-desc,
+:-webkit-full-screen .pres-app-desc,
+.presentation-modal.fullscreen-active .pres-app-desc,
+body.presentation-fullscreen-mode .pres-app-desc {
+  font-size: clamp(1.05rem, 1.3vw, 1.35rem) !important;
+  line-height: 1.75 !important;
+}
+
+/* ==========================================================================
    Presentation Extension: Lab Tools, Safety, Answers & Spectrum Light Mode
    ========================================================================== */
 

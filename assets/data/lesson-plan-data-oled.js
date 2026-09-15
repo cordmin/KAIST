@@ -162,7 +162,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
           <!-- [탭 1]: 1차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#2563eb;">[1차시]</span> 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단 (45분)</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#2563eb;">[1차시]</span> 어둠 속을 밝히는 형광빛의 원리 (45분)</h3>
             </div>
             
             <!-- [1차시] 통합 수업 지도안 표 -->

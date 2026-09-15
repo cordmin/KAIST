@@ -6,7 +6,7 @@ window.worksheetModalData = window.worksheetModalData || {};
 
 window.worksheetModalData.oled = {
   1: {
-    title: '[1차시] 어둠 속을 밝히는 빛의 마법: 자외선과 형광 탐정단',
+    title: '[1차시] 어둠 속을 밝히는 형광빛의 원리',
     badge: 'OLED 모듈 1차시 | 성취기준 [9과10-03]',
     student: `
       <div class="ws-student-meta">
