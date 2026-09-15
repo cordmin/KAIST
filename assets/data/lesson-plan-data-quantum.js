@@ -248,11 +248,11 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>단순 수학 공식 암기가 아닌, 실생활 분자(카페인)와 슈퍼컴퓨터의 한계를 연결하여 호기심 유발.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>숫자가 너무 커지므로 지수 표기법($10^{30}$)의 개념을 알기 쉽게 짚어줌.</span>
                     </div>
                   </td>
@@ -307,11 +307,11 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[과정평가]</strong> 활동지 지수 폭발 수치표를 바르게 채우고 우주 원자 수와 비교하여 한계를 서술하는지 관찰 평가.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>스마트폰 공학용 계산기 앱을 활용하여 $2^{10}, 2^{20}$을 직접 입력해보도록 유도.</span>
                     </div>
                   </td>
@@ -345,7 +345,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>활동지 1차시 탐구 정리 서술형 1~2번 모둠 상호 확인 후 제출 지도.</span>
                     </div>
                   </td>
@@ -444,7 +444,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>학생 1인당 동전 1개씩을 배부하여 직접 팽이처럼 돌리는 촉각적 조작 활동 참여 유도.</span>
                     </div>
                   </td>
@@ -496,11 +496,11 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[과정평가]</strong> 비트와 큐비트의 차이를 '동전 비유'와 '미로 찾기'를 활용하여 자기 언어로 구술 설명할 수 있는지 확인.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>복잡한 행렬식이나 양자 게이트 수식은 절대 언급하지 않고, 3차원 구면과 회전 동전 은유에 집중.</span>
                     </div>
                   </td>
@@ -534,7 +534,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>활동지 2차시 표 작성 확인 및 동전 수거.</span>
                     </div>
                   </td>
@@ -633,7 +633,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>2인 3각 활동 전 교실 바닥의 가방과 의자를 정리하여 통행 안전 공간 사전 확보.</span>
                     </div>
                   </td>
@@ -680,11 +680,11 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span><strong>[협동학습]</strong> QPU와 CPU의 역할을 번갈아 체험하며 알고리즘의 피드백 루프를 몸소 이해하도록 지도.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[과정평가]</strong> 활동지 2번 VQE 3단계 협동 순서도(QPU 측정 ➔ CPU 최적화 ➔ 바닥 상태 도달)를 정확히 서술하는지 점검.</span>
                     </div>
                   </td>
@@ -718,7 +718,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>활동지 3차시 순서도 작성 확인 및 4차시 모둠(4인 1조) 사전 구성.</span>
                     </div>
                   </td>
@@ -817,7 +817,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>학생들에게 '틴에이저 CEO'와 '수석 양자과학자' 역할을 부여하여 자긍심과 주도성 고취.</span>
                     </div>
                   </td>
@@ -866,11 +866,11 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[생태전환교육]</strong> 탄소 중립, 기후 위기 극복, 인류 보건과의 연계성을 핵심 평가 지표로 반영.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[산출물평가]</strong> 기획서의 과학적 원리 접목도와 사회적 파급력을 루브릭으로 다면 평가.</span>
                     </div>
                   </td>
@@ -903,7 +903,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>학생들의 창의적 아이디어를 학교생활기록부 교과학습발달상황 세부능력및특기사항(세특) 기재 자료로 적극 연계.</span>
                     </div>
                   </td>

@@ -244,11 +244,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>자외선 램프를 얼굴이나 눈에 직접 비추지 않도록 주의 지도. 실험 종료 시까지 보안경 상시 착용 필수.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>극적인 시각 발광 연출을 통해 호기심을 유도하되, 교실 환경이 산만해지지 않도록 정돈된 분위기 유지.</span>
                     </div>
                   </td>
@@ -323,23 +323,23 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>토닉워터, 비타민 음료 등은 실험용 시약이므로 절대 맛보거나 마시지 않도록 순회 지도.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>암실 상자 덮개를 밀착하여 외부 빛을 차단하고, 램프를 45도 각도로 조사하여 최적의 형광 발광을 관찰하도록 유도.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>각 물질의 본래 색과 자외선을 쬐었을 때의 형광 색상을 왜곡 없이 객관적으로 기록하는지 점검 (활동지 1번).</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>파장과 빛 에너지의 관계(파장이 짧을수록 에너지가 큼)를 올바르게 이해하고 설명할 수 있는지 확인 (활동지 2번).</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>에너지가 '소멸'한 것이 아니라 '열'로 형태가 변환되었음을 강조하여 에너지 보존 법칙의 기초 개념 확립.</span>
                     </div>
                   </td>
@@ -379,11 +379,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>"자외선과 방출된 형광빛 중 파장이 더 길고 에너지가 작은 빛은 무엇인가?" 구두 질문을 통한 성취기준 달성도 점검.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>시약 잔여물을 하수구에 무단 방류하지 않고 지정된 폐액통에 올바르게 분리 수거하도록 철저 지도.</span>
                     </div>
                   </td>
@@ -477,7 +477,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>복잡한 양자역학 파동방정식 대신 1층(바닥)과 3층(들뜬) 아파트 계단 비유로 직관화.</span>
                     </div>
                   </td>
@@ -531,15 +531,15 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>태블릿 접속 및 가상실험실 조작 순회 지도. 눈 피로 방지를 위해 밝기 적정 유지.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[과정평가]</strong> 전자의 3단계 여정(흡수→진동→방출)을 활동지 1번 표에 올바르게 기록하는지 확인.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[과정평가]</strong> 에너지 보존 법칙 관계식을 도출할 수 있는지 점검 (활동지 2번).</span>
                     </div>
                   </td>
@@ -572,7 +572,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>"빛의 파장이 길어지면 에너지는 어떻게 되는가?" 구두 질문으로 성취기준 달성 점검.</span>
                     </div>
                   </td>
@@ -666,7 +666,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>학생들이 매일 접하는 스마트폰 배터리 소모와 발열 현상을 출발점으로 삼아 높은 몰입도 유도.</span>
                     </div>
                   </td>
@@ -718,15 +718,15 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>루페 클립 보호 패드를 확인하여 스마트폰 액정에 스크래치가 생기지 않도록 주의 지도.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[과정평가]</strong> 단일항과 삼중항의 차이를 전자의 스핀 회전 방향과 연결하여 활동지 1번 표에 올바르게 기록하는지 확인.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[과정평가]</strong> 75% 열 손실의 원인을 양자 스핀 확률과 연결하여 서술할 수 있는지 점검 (활동지 2번).</span>
                     </div>
                   </td>
@@ -759,7 +759,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>"전기를 넣었을 때 단일항과 삼중항의 생성 비율은 각각 몇 %인가?" 구두 질문으로 성취기준 달성도 점검.</span>
                     </div>
                   </td>
@@ -853,7 +853,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>세계 최고 권위의 대한민국 KAIST CPRL 연구진 성과를 소개해 학생들의 자긍심 고취.</span>
                     </div>
                   </td>
@@ -902,11 +902,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle"></i>
                       <span>구리 테이프 절단 시 단면에 손이 베이지 않도록 안전 지도 및 전지 극성 확인.</span>
                     </div>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span><strong>[산출물평가]</strong> 미래 청색 분자 디자이너 기획서의 과학적 타당성(핫 엑시톤 구름다리 적용 여부)을 평가 (루브릭 적용).</span>
                     </div>
                   </td>
@@ -939,7 +939,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="pencil" class="note-icon-eval"></i>
+                      <i data-lucide="pencil"></i>
                       <span>활동지 산출물과 피칭 태도를 종합하여 학교생활기록부 교과학습발달상황 세특 기재 연계.</span>
                     </div>
                   </td>
