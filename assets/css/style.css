@@ -1376,6 +1376,12 @@ h3.sub-heading {
   margin-top: 0.12rem;
   color: inherit;
 }
+.note-icon-warn {
+  color: #d97706 !important; /* 주의 아이콘: 차분한 앰버 */
+}
+.note-icon-eval {
+  color: #2563eb !important; /* 평가 아이콘: 단정한 블루 */
+}
 .plan-note-title {
   font-weight: 700;
   color: #0f172a;

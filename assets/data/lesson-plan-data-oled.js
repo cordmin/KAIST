@@ -449,7 +449,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 동기 유발 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#f3e8ff; color:#7c3aed;">동기 유발 3분</span>
+                        <span class="plan-card-badge">동기 유발 3분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 꼬마 전자의 트램펄린 점프 비유: "사람이 트램펄린에서 뛰어올랐다가 내려올 때와 전자가 빛을 받을 때의 공통점은 무엇일까?"
@@ -463,7 +463,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: 학습목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#f3e8ff; color:#7c3aed;">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
@@ -477,7 +477,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="info" class="note-icon-info"></i>
+                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
                       <span>복잡한 양자역학 파동방정식 대신 1층(바닥)과 3층(들뜬) 아파트 계단 비유로 직관화.</span>
                     </div>
                   </td>
@@ -490,7 +490,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 원자 모형과 에너지 계단 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#f3e8ff; color:#7c3aed;">개념 모형 8분</span>
+                        <span class="plan-card-badge">개념 모형 8분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>원자 모형 복습:</strong> 원자핵(+)과 주위를 도는 전자(-)<br>
@@ -501,7 +501,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: 가상실험실 탐구 16분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#f3e8ff; color:#7c3aed;">가상실험실 탐구 16분</span>
+                        <span class="plan-card-badge">가상실험실 탐구 16분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 디지털 가상실험실(lab.html) [전자의 계단 점프 시뮬레이터] 조작 실습<br>
@@ -518,7 +518,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 3: 모둠 토의 및 에너지 보존식 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#f3e8ff; color:#7c3aed;">모둠 토의 8분</span>
+                        <span class="plan-card-badge">모둠 토의 8분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.35rem; color:#334155;">
                         <strong>[교사 질문]</strong> "자외선 에너지(100) = 방출된 형광빛(75) + 잃어버린 열(25). 에너지는 사라졌을까요?"<br>
@@ -531,7 +531,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="laptop" class="note-icon-info"></i>
+                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
                       <span>태블릿 접속 및 가상실험실 조작 순회 지도. 눈 피로 방지를 위해 밝기 적정 유지.</span>
                     </div>
                     <div class="plan-note-card">
@@ -552,7 +552,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 결과 정리 5분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#f3e8ff; color:#7c3aed;">결과 정리 5분</span>
+                        <span class="plan-card-badge">결과 정리 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 2차시 핵심 배움 확인: 1) 양자화(불연속 계단), 2) 전자의 3단계 여정, 3) 스토크스 이동 및 에너지 보존<br>
@@ -563,7 +563,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: 차시 예고 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#f3e8ff; color:#7c3aed;">차시 예고 3분</span>
+                        <span class="plan-card-badge">차시 예고 3분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; color:#334155; font-size:0.83rem;">
                         <strong>[3차시 예고]</strong> "스마트폰 배터리 전기로 전자를 점프시키면 왜 75%나 빛을 내지 못하고 열로 낭비될까? (단일항 vs 삼중항)"
@@ -572,7 +572,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="check-circle-2" class="note-icon-eval"></i>
+                      <i data-lucide="pencil" class="note-icon-eval"></i>
                       <span>"빛의 파장이 길어지면 에너지는 어떻게 되는가?" 구두 질문으로 성취기준 달성 점검.</span>
                     </div>
                   </td>
@@ -638,7 +638,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 동기 유발 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#ecfdf5; color:#059669;">동기 유발 3분</span>
+                        <span class="plan-card-badge">동기 유발 3분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 스마트폰 발열 현상 상기: "유튜브나 게임을 오래 하면 왜 화면 뒤쪽이 점점 뜨거워지고 배터리가 닳을까?"
@@ -652,7 +652,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: 학습목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#ecfdf5; color:#059669;">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
@@ -666,7 +666,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="info" class="note-icon-info"></i>
+                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
                       <span>학생들이 매일 접하는 스마트폰 배터리 소모와 발열 현상을 출발점으로 삼아 높은 몰입도 유도.</span>
                     </div>
                   </td>
@@ -679,7 +679,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 서브픽셀 관찰 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#ecfdf5; color:#059669;">서브픽셀 관찰 8분</span>
+                        <span class="plan-card-badge">서브픽셀 관찰 8분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 마이크로 루페(60배)로 스마트폰 화면의 하얀 바탕 초근접 관찰: 빨강(R), 초록(G), 파랑(B) 다이아몬드 배열 확인 [9과10-03]<br>
@@ -690,7 +690,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: 가상실험실 및 스핀 통계 16분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#ecfdf5; color:#059669;">가상실험실 & 통계 16분</span>
+                        <span class="plan-card-badge">가상실험실 & 통계 16분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>스핀 통계 1:3의 양자역학적 비밀:</strong> 전기를 넣으면 전자(-)와 정공(+)이 만날 때 4가지 스핀 조합 형성<br>
@@ -705,7 +705,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 3: 모둠 토의 및 발열 메커니즘 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#ecfdf5; color:#059669;">모둠 토의 8분</span>
+                        <span class="plan-card-badge">모둠 토의 8분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.35rem; color:#334155;">
                         <strong>[교사 질문]</strong> "삼중항에 갇힌 75%의 전자는 스마트폰에 어떤 치명적인 피해를 줄까요?"<br>
@@ -718,7 +718,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="shield" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
                       <span>루페 클립 보호 패드를 확인하여 스마트폰 액정에 스크래치가 생기지 않도록 주의 지도.</span>
                     </div>
                     <div class="plan-note-card">
@@ -739,7 +739,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 결과 정리 5분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#ecfdf5; color:#059669;">결과 정리 5분</span>
+                        <span class="plan-card-badge">결과 정리 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 3차시 핵심 배움 확인: 1) RGB 서브픽셀 빛의 합성, 2) 스핀 확률 1:3(단일항 25% vs 삼중항 75%), 3) 75% 발열 난제<br>
@@ -750,7 +750,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: 차시 예고 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#ecfdf5; color:#059669;">차시 예고 3분</span>
+                        <span class="plan-card-badge">차시 예고 3분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; color:#334155; font-size:0.83rem;">
                         <strong>[4차시 예고]</strong> "갇혀서 열만 내는 75%의 전자를 구출할 기적의 방법은 없을까? (KAIST의 핫 엑시톤 원천 기술과 청색 분자 디자이너)"
@@ -759,7 +759,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="check-circle-2" class="note-icon-eval"></i>
+                      <i data-lucide="pencil" class="note-icon-eval"></i>
                       <span>"전기를 넣었을 때 단일항과 삼중항의 생성 비율은 각각 몇 %인가?" 구두 질문으로 성취기준 달성도 점검.</span>
                     </div>
                   </td>
@@ -825,7 +825,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 동기 유발 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#fffbeb; color:#d97706;">동기 유발 3분</span>
+                        <span class="plan-card-badge">동기 유발 3분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 스마트폰 화면 번인(Burn-in) 상기: "스마트폰 화면을 오래 쓰면 왜 항상 파란색이 먼저 타서 누런 잔상이 남을까?"
@@ -839,7 +839,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: 학습목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#fffbeb; color:#d97706;">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
@@ -853,7 +853,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="award" class="note-icon-info"></i>
+                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
                       <span>세계 최고 권위의 대한민국 KAIST CPRL 연구진 성과를 소개해 학생들의 자긍심 고취.</span>
                     </div>
                   </td>
@@ -866,7 +866,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 회로 점등 및 청색 난제 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#fffbeb; color:#d97706;">회로 점등 & 난제 8분</span>
+                        <span class="plan-card-badge">회로 점등 & 난제 8분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 코인 전지와 구리 테이프로 LED 회로를 구성하여 점등 실습 (전기 ➔ 빛 전환 체험)<br>
@@ -877,7 +877,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: KAIST 핫 엑시톤 원리 규명 16분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#fffbeb; color:#d97706;">핫 엑시톤 메커니즘 16분</span>
+                        <span class="plan-card-badge">핫 엑시톤 메커니즘 16분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>옥상 위의 초고속 구름다리(Hot Exciton):</strong><br>
@@ -892,7 +892,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 3: 모둠 발표 및 상호 평가 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#fffbeb; color:#d97706;">피칭 발표 8분</span>
+                        <span class="plan-card-badge">피칭 발표 8분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.35rem; color:#334155;">
                         <strong>[모둠별 1분 피칭]</strong> 스타트업 회사명, 대표 디자이너, 단단한 분자 구조 아이디어, 75% 구출 메커니즘 적용 방안 발표<br>
@@ -902,7 +902,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="scissors" class="note-icon-warn"></i>
+                      <i data-lucide="alert-triangle" class="note-icon-warn"></i>
                       <span>구리 테이프 절단 시 단면에 손이 베이지 않도록 안전 지도 및 전지 극성 확인.</span>
                     </div>
                     <div class="plan-note-card">
@@ -919,7 +919,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 결과 정리 및 모듈 완주 5분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#fffbeb; color:#d97706;">단원 총정리 5분</span>
+                        <span class="plan-card-badge">단원 총정리 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • OLED 4차시 총정리: 1) 자외선과 형광, 2) 전자의 계단 점프와 스토크스 이동, 3) 1:3 스핀 확률과 75% 배터리 도둑, 4) KAIST 핫 엑시톤 100% 구출 원천 기술<br>
@@ -930,7 +930,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 2: 미래 진로 탐색 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge" style="background:#fffbeb; color:#d97706;">진로 로드맵 3분</span>
+                        <span class="plan-card-badge">진로 로드맵 3분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; color:#334155; font-size:0.83rem;">
                         <strong>[미래 진로 로드맵]</strong> 컴퓨터로 분자를 프로그래밍하는 <strong>계산화학자</strong>, 접히고 말리는 디스플레이를 만드는 <strong>신소재 나노공학자</strong>로의 꿈 연결 [9과23-01]
@@ -939,7 +939,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                   <td>
                     <div class="plan-note-card">
-                      <i data-lucide="award" class="note-icon-eval"></i>
+                      <i data-lucide="pencil" class="note-icon-eval"></i>
                       <span>활동지 산출물과 피칭 태도를 종합하여 학교생활기록부 교과학습발달상황 세특 기재 연계.</span>
                     </div>
                   </td>
