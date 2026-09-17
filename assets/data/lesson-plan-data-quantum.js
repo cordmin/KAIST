@@ -6,22 +6,22 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <!-- 6페이지 크롬 탭 바 (성취수준 연계 신설) -->
           <div class="chrome-tab-bar" role="tablist">
             <button type="button" class="chrome-tab-btn active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true">
-              <span><span class="tab-text-full">성취수준 연계</span><span class="tab-text-short">성취수준</span></span>
+              <span><span class="tab-text-full">성취수준 연계</span><span class="tab-text-mid">성취수준</span><span class="tab-text-short">성취수준</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
-              <span><span class="tab-text-full">수업 지도안 개요</span><span class="tab-text-short">개요</span></span>
+              <span><span class="tab-text-full">수업 지도안 개요</span><span class="tab-text-mid">지도안 개요</span><span class="tab-text-short">개요</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 2)" role="tab" aria-selected="false">
-              <span>[1차시] <span class="tab-text-full">지수 폭발</span><span class="tab-text-short">1차시</span></span>
+              <span><span class="tab-text-full">[1차시] 지수 폭발</span><span class="tab-text-mid">[1차시]</span><span class="tab-text-short">[1차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 3)" role="tab" aria-selected="false">
-              <span>[2차시] <span class="tab-text-full">동전과 큐비트</span><span class="tab-text-short">2차시</span></span>
+              <span><span class="tab-text-full">[2차시] 동전과 큐비트</span><span class="tab-text-mid">[2차시]</span><span class="tab-text-short">[2차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false">
-              <span>[3차시] <span class="tab-text-full">VQE 알고리즘</span><span class="tab-text-short">3차시</span></span>
+              <span><span class="tab-text-full">[3차시] VQE 알고리즘</span><span class="tab-text-mid">[3차시]</span><span class="tab-text-short">[3차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 5)" role="tab" aria-selected="false">
-              <span>[4차시] <span class="tab-text-full">스타트업 CEO</span><span class="tab-text-short">4차시</span></span>
+              <span><span class="tab-text-full">[4차시] 스타트업 CEO</span><span class="tab-text-mid">[4차시]</span><span class="tab-text-short">[4차시]</span></span>
             </button>
           </div>
 

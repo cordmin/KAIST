@@ -10,10 +10,10 @@ window.worksheetModalData.oled = {
     badge: 'OLED 모듈 1차시 | 성취기준 [9과10-03]',
     student: `
       <div class="ws-student-meta">
-        <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 반</span>
-        <span><input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 번</span>
-        <span>이름: <input type="text" class="ws-mini-input" style="width:84px;" placeholder=" "></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 모둠</span>
+        <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
+        <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
+        <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
+        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
       <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록하시오.</p>
@@ -29,27 +29,27 @@ window.worksheetModalData.oled = {
         <tbody style="text-align:center;">
           <tr>
             <td style="text-align:center;">토닉워터</td>
-            <td style="text-align:center;">퀴닌 (Quinine)</td>
-            <td><input type="text" class="ws-table-input" data-answer="투명한 무색" placeholder="관찰 색상 입력..."></td>
-            <td><input type="text" class="ws-table-input" data-answer="눈부신 푸른색 (Blue) 형광" placeholder="관찰 색상 입력..."></td>
+            <td style="text-align:center;">퀴닌</td>
+            <td><input type="text" class="ws-table-input" data-answer="무색투명"></td>
+            <td><input type="text" class="ws-table-input" data-answer="푸른색 형광"></td>
           </tr>
           <tr>
             <td style="text-align:center;">비타민 음료</td>
-            <td style="text-align:center;">리보플라빈 (비타민 B₂)</td>
-            <td><input type="text" class="ws-table-input" data-answer="노란색" placeholder="관찰 색상 입력..."></td>
-            <td><input type="text" class="ws-table-input" data-answer="밝은 형광 연두색 / 황록색" placeholder="관찰 색상 입력..."></td>
+            <td style="text-align:center;">리보플라빈</td>
+            <td><input type="text" class="ws-table-input" data-answer="노란색"></td>
+            <td><input type="text" class="ws-table-input" data-answer="연두색 형광"></td>
           </tr>
           <tr>
             <td style="text-align:center;">올리브유</td>
-            <td style="text-align:center;">엽록소 (Chlorophyll)</td>
-            <td><input type="text" class="ws-table-input" data-answer="연한 초록색 / 노란색" placeholder="관찰 색상 입력..."></td>
-            <td><input type="text" class="ws-table-input" data-answer="선명한 붉은색 (Red) 형광" placeholder="관찰 색상 입력..."></td>
+            <td style="text-align:center;">엽록소</td>
+            <td><input type="text" class="ws-table-input" data-answer="연초록색"></td>
+            <td><input type="text" class="ws-table-input" data-answer="붉은색 형광"></td>
           </tr>
           <tr>
             <td style="text-align:center;">천원권 지폐</td>
-            <td style="text-align:center;">형광 인쇄 섬유</td>
-            <td><input type="text" class="ws-table-input" data-answer="일반 인쇄만 보임" placeholder="관찰 색상 입력..."></td>
-            <td><input type="text" class="ws-table-input" data-answer="숨겨진 형광 보안 섬유 발광" placeholder="관찰 색상 입력..."></td>
+            <td style="text-align:center;">형광 섬유</td>
+            <td><input type="text" class="ws-table-input" data-answer="일반 인쇄"></td>
+            <td><input type="text" class="ws-table-input" data-answer="형광 섬유 발광"></td>
           </tr>
         </tbody>
       </table>
@@ -59,7 +59,7 @@ window.worksheetModalData.oled = {
         <span style="white-space:nowrap; display:inline-flex; align-items:center; gap:0.25rem; font-weight:600; color:#1e293b;">
           <i data-lucide="corner-down-right"></i> 답:
         </span>
-        <input type="text" class="ws-text-input" data-answer="자외선(300~400nm)이 가시광선(400~700nm)보다 파장이 짧고 에너지가 더 큽니다." placeholder="파장이 더 짧고 에너지가 더 큰 빛을 서술하세요...">
+        <input type="text" class="ws-text-input" data-answer="자외선 (파장이 짧고 에너지가 큼)">
       </div>
 
       <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 눈에 보이지 않는 자외선을 비추었는데 왜 형광 빛이 나오는지, 들어간 자외선과 형광 빛의 에너지 차이는 어떨지 토의하여 서술하시오.</p>
@@ -67,11 +67,11 @@ window.worksheetModalData.oled = {
         <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
           <i data-lucide="corner-down-right"></i> <span>토의 내용:</span>
         </div>
-        <textarea class="ws-textarea-input" rows="3" data-answer="물질 속 분자가 센 에너지의 자외선을 흡수하여 전자가 들뜬 상태로 점프한 뒤, 분자 진동을 통해 일부 에너지를 '열'로 잃어버립니다. 그 후 남은 에너지만을 파장이 더 긴 '가시광선(형광)'으로 방출하기 때문입니다. 차이 나는 에너지는 주변으로 방출된 열에너지로 보존됩니다." placeholder="자외선 흡수와 방출된 형광 빛의 에너지 차이 및 이유를 자유롭게 작성해 보세요..."></textarea>
+        <textarea class="ws-textarea-input" rows="3" data-answer="자외선을 흡수한 물질이 일부 에너지를 열로 먼저 방출하고, 남은 에너지를 가시광선(형광빛)으로 방출하기 때문입니다. (자외선 에너지 = 형광빛 에너지 + 열에너지)"></textarea>
       </div>
 
       <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#2563eb; margin-top:1.2rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 학생들에게 &quot;왜 토닉워터는 파란색인데 올리브유는 붉은색일까?&quot; 질문하여 분자마다 에너지 계단의 높이 차이가 다름을 자연스럽게 유도하세요.
+        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 학생들에게 &quot;왜 토닉워터는 파란색인데 올리브유는 붉은색일까?&quot; 질문하여 물질마다 방출하는 빛의 에너지가 다름을 자연스럽게 유도하세요.
       </div>
     `,
     teacher: `
@@ -86,104 +86,96 @@ window.worksheetModalData.oled = {
           </tr>
         </thead>
         <tbody style="text-align:center;">
-          <tr><td style="text-align:center;"><strong>토닉워터</strong></td><td style="text-align:center;">퀴닌 (Quinine)</td><td style="text-align:center;">투명한 무색</td><td style="text-align:center;"><strong class="model-answer">눈부신 푸른색 (Blue) 형광</strong></td></tr>
-          <tr><td style="text-align:center;"><strong>비타민 음료</strong></td><td style="text-align:center;">리보플라빈 (비타민 B₂)</td><td style="text-align:center;">노란색</td><td style="text-align:center;"><strong class="model-answer">밝은 형광 연두색 / 황록색</strong></td></tr>
-          <tr><td style="text-align:center;"><strong>올리브유</strong></td><td style="text-align:center;">엽록소 (Chlorophyll)</td><td style="text-align:center;">연한 초록색/노란색</td><td style="text-align:center;"><strong class="model-answer">선명한 붉은색 (Red) 형광</strong></td></tr>
-          <tr><td style="text-align:center;"><strong>천원권 지폐</strong></td><td style="text-align:center;">형광 인쇄 섬유</td><td style="text-align:center;">일반 인쇄만 보임</td><td style="text-align:center;"><strong class="model-answer">숨겨진 형광 보안 섬유 발광</strong></td></tr>
+          <tr><td style="text-align:center;"><strong>토닉워터</strong></td><td style="text-align:center;">퀴닌</td><td style="text-align:center;">무색투명</td><td style="text-align:center;"><strong class="model-answer">푸른색 형광</strong></td></tr>
+          <tr><td style="text-align:center;"><strong>비타민 음료</strong></td><td style="text-align:center;">리보플라빈</td><td style="text-align:center;">노란색</td><td style="text-align:center;"><strong class="model-answer">연두색 형광</strong></td></tr>
+          <tr><td style="text-align:center;"><strong>올리브유</strong></td><td style="text-align:center;">엽록소</td><td style="text-align:center;">연초록색</td><td style="text-align:center;"><strong class="model-answer">붉은색 형광</strong></td></tr>
+          <tr><td style="text-align:center;"><strong>천원권 지폐</strong></td><td style="text-align:center;">형광 섬유</td><td style="text-align:center;">일반 인쇄</td><td style="text-align:center;"><strong class="model-answer">형광 섬유 발광</strong></td></tr>
         </tbody>
       </table>
 
       <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">2. 파장과 에너지 관계 모범 답안</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
-        자외선(300~400nm)이 가시광선(400~700nm)보다 파장이 짧고 에너지가 더 큽니다. (파장이 짧을수록 에너지가 셈)
+        자외선 (파장이 짧고 에너지가 큼)
       </div>
 
       <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">3. 형광 현상과 에너지 보존 모범 답안</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
-        물질 속 분자가 센 에너지의 자외선을 흡수하여 전자가 들뜬 상태로 점프한 뒤, 분자 진동을 통해 일부 에너지를 <strong>'열'</strong>로 잃어버립니다. 그 후 남은 에너지만을 파장이 더 긴 <strong>'가시광선(형광)'</strong>으로 방출합니다. 차이 나는 에너지는 주변으로 방출된 <strong>열에너지</strong>로 보존됩니다. (스토크스 이동 및 에너지 보존 법칙)
+        자외선을 흡수한 물질이 일부 에너지를 열로 먼저 방출하고, 남은 에너지를 가시광선(형광빛)으로 방출하기 때문입니다. (자외선 에너지 = 형광빛 에너지 + 열에너지)
       </div>
 
       <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 학생들에게 "왜 토닉워터는 파란색인데 올리브유는 붉은색일까?" 질문하여 분자마다 에너지 계단의 높이 차이가 다름을 자연스럽게 유도하세요.
+        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 학생들에게 "왜 토닉워터는 파란색인데 올리브유는 붉은색일까?" 질문하여 물질마다 방출하는 빛의 에너지가 다름을 자연스럽게 유도하세요.
       </div>
     `
   },
   2: {
-    title: '[2차시] 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환',
+    title: '[2차시] 전자의 에너지 전달',
     badge: 'OLED 모듈 2차시 | 성취기준 [9과11-02] [9과14-03]',
     student: `
       <div class="ws-student-meta">
-        <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 반</span>
-        <span><input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 번</span>
-        <span>이름: <input type="text" class="ws-mini-input" style="width:84px;" placeholder=" "></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;" placeholder=" "> 모둠</span>
+        <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
+        <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
+        <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
+        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 가상실험실(lab.html)의 [전자의 에너지 계단 시뮬레이터]를 관찰하고, 3단계 과정을 아래 빈칸에 정리해 보자.</p>
+      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 가상실험실을 관찰하고, 3단계 과정을 아래 빈칸에 정리해 보자.</p>
       <table class="data-table" style="margin-bottom:1.25rem;">
         <thead>
-          <tr><th style="width:22%;">단계</th><th style="width:78%;">전자의 상태 변화 및 에너지 전환</th></tr>
+          <tr><th style="width:22%; text-align:center;">단계</th><th style="width:78%;">전자의 상태 변화 및 에너지 전환</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>1단계: 흡수</strong></td>
-            <td>바닥 상태(1층)의 전자가 ( <input type="text" class="ws-mini-input" style="width:130px;" data-answer="자외선(높은 에너지)" placeholder="흡수한 빛"> ) 에너지를 먹고 ( <input type="text" class="ws-mini-input" style="width:70px;" data-answer="들뜬" placeholder="상태"> ) 상태(3층)로 높이 점프한다.</td>
+            <td style="text-align:center;"><strong>1단계</strong></td>
+            <td>원자 속 전자가 ( <input type="text" class="ws-mini-input" style="width:90px;" data-answer="자외선"> ) 에너지를 흡수하여 에너지가 높아진 상태가 된다.</td>
           </tr>
           <tr>
-            <td><strong>2단계: 진동</strong></td>
-            <td>3층이 너무 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 ( <input type="text" class="ws-mini-input" style="width:70px;" data-answer="열" placeholder="에너지 형태"> ) 에너지 형태로 잃어버린다.</td>
+            <td style="text-align:center;"><strong>2단계</strong></td>
+            <td>전자가 주변 원자들과 부딪히고 진동하며 일부 에너지를 ( <input type="text" class="ws-mini-input" style="width:90px;" data-answer="열"> ) 형태로 방출한다.</td>
           </tr>
           <tr>
-            <td><strong>3단계: 방출</strong></td>
-            <td>남은 에너지를 알록달록한 ( <input type="text" class="ws-mini-input" style="width:130px;" data-answer="가시광선 형광" placeholder="방출된 빛"> ) 빛으로 번쩍 뿜어내며 바닥 상태로 사뿐히 착지한다.</td>
+            <td style="text-align:center;"><strong>3단계</strong></td>
+            <td>전자가 남은 에너지를 ( <input type="text" class="ws-mini-input" style="width:90px;" data-answer="형광빛"> )으로 방출하며 원래 상태로 되돌아온다.</td>
           </tr>
         </tbody>
       </table>
 
-      <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 에너지 보존 법칙의 관점에서, [흡수한 자외선 에너지]와 [방출된 형광빛], [흘린 열에너지] 사이의 관계식을 완성해 보자.</p>
+      <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">2. 에너지 보존 법칙의 관점에서, [자외선 에너지]와 [형광빛 에너지], [열에너지] 사이의 관계식을 완성해 보자.</p>
       <div class="answer-box" style="text-align:center; font-size:0.95rem; display:flex; align-items:center; justify-content:center; gap:0.4rem; flex-wrap:wrap; padding:0.75rem 0.85rem;">
-        <span>[ 흡수한 자외선 에너지 ] = [</span>
-        <input type="text" class="ws-mini-input" style="width:150px; text-align:center;" data-answer="방출된 형광빛 에너지" placeholder="방출된 빛 에너지">
+        <span>[ 자외선 에너지 ] = [</span>
+        <input type="text" class="ws-mini-input" style="width:120px; text-align:center;" data-answer="형광빛 에너지">
         <span>] + [</span>
-        <input type="text" class="ws-mini-input" style="width:130px; text-align:center;" data-answer="흘린 열에너지" placeholder="흘린 열에너지">
+        <input type="text" class="ws-mini-input" style="width:100px; text-align:center;" data-answer="열에너지">
         <span>]</span>
-      </div>
-
-      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#7c3aed; margin-top:1.2rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 양자역학의 파동방정식 대신 &quot;1층, 2층, 3층 아파트 계단&quot; 비유를 사용하여 중간 층간(1.5층)에는 전자가 머물 수 없다는 '에너지 양자화' 개념을 직관적으로 이해시킵니다.
       </div>
     `,
     teacher: `
-      <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">1. 전자의 에너지 계단 3단계 예시 답안</h4>
+      <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">1. 전자의 3단계 에너지 전달 예시 답안</h4>
       <table class="data-table" style="margin-bottom:1.25rem;">
         <thead>
-          <tr><th style="width:22%;">단계</th><th style="width:78%;">전자의 상태 변화 및 에너지 전환 (예시 답안)</th></tr>
+          <tr><th style="width:22%; text-align:center;">단계</th><th style="width:78%;">전자의 상태 변화 및 에너지 전환 (예시 답안)</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>1단계: 흡수</strong></td>
-            <td>바닥 상태(1층)의 전자가 (<strong class="model-answer">&nbsp;자외선(높은 에너지)&nbsp;</strong>) 에너지를 먹고 (<strong class="model-answer">&nbsp;들뜬&nbsp;</strong>) 상태(3층)로 높이 점프한다.</td>
+            <td style="text-align:center;"><strong>1단계</strong></td>
+            <td>원자 속 전자가 (<strong class="model-answer">&nbsp;자외선&nbsp;</strong>) 에너지를 흡수하여 에너지가 높아진 상태가 된다.</td>
           </tr>
           <tr>
-            <td><strong>2단계: 진동</strong></td>
-            <td>3층이 너무 불안정하여 전자가 부르르 떨며(분자 진동) 에너지를 (<strong class="model-answer">&nbsp;열&nbsp;</strong>) 에너지 형태로 잃어버린다.</td>
+            <td style="text-align:center;"><strong>2단계</strong></td>
+            <td>전자가 주변 원자들과 부딪히고 진동하며 일부 에너지를 (<strong class="model-answer">&nbsp;열&nbsp;</strong>) 형태로 방출한다.</td>
           </tr>
           <tr>
-            <td><strong>3단계: 방출</strong></td>
-            <td>남은 에너지를 알록달록한 (<strong class="model-answer">&nbsp;가시광선 형광&nbsp;</strong>) 빛으로 번쩍 뿜어내며 바닥 상태로 사뿐히 착지한다.</td>
+            <td style="text-align:center;"><strong>3단계</strong></td>
+            <td>전자가 남은 에너지를 (<strong class="model-answer">&nbsp;형광빛&nbsp;</strong>)으로 방출하며 원래 상태로 되돌아온다.</td>
           </tr>
         </tbody>
       </table>
 
       <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">2. 에너지 보존 관계식</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; text-align:center; font-size:1rem;">
-        <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>[ 흡수한 자외선 에너지 ] = [ <span class="model-answer">방출된 형광빛 에너지</span> ] + [ <span class="model-answer">흘린 열에너지</span> ]</strong>
-      </div>
-
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed; margin-top:1rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 양자역학의 파동방정식 대신 "1층, 2층, 3층 아파트 계단" 비유를 사용하여 중간 층간(1.5층)에는 전자가 머물 수 없다는 '에너지 양자화' 개념을 직관적으로 이해시킵니다.
+        <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>[ 자외선 에너지 ] = [ <span class="model-answer">형광빛 에너지</span> ] + [ <span class="model-answer">열에너지</span> ]</strong>
       </div>
     `
   },

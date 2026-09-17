@@ -1729,9 +1729,11 @@ h3.sub-heading {
 
 .worksheet-modal-container {
   background: #ffffff;
-  width: 100%;
+  width: 94vw;
   max-width: 960px;
-  max-height: 90vh;
+  height: 86vh;
+  max-height: 840px;
+  min-height: 520px;
   border-radius: 12px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -2094,8 +2096,11 @@ h3.sub-heading {
   }
 
   body.printing-modal .worksheet-modal-container {
+    width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
     max-height: none !important;
+    min-height: 0 !important;
     border: none !important;
     box-shadow: none !important;
     transform: none !important;
@@ -2523,9 +2528,9 @@ svg.lucide {
 }
 
 .objective-main {
-  font-size: 1.72rem;
+  font-size: clamp(1.25rem, 1.7vw, 1.6rem);
   font-weight: 700;
-  line-height: 1.85;
+  line-height: 1.8;
   color: #0f172a;
   margin: 0;
   word-break: keep-all;
@@ -2533,7 +2538,7 @@ svg.lucide {
 
 .objective-main span {
   display: block;
-  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .pres-inquiry-box {
@@ -2995,7 +3000,6 @@ body.presentation-fullscreen-mode .pres-step-box {
 body.presentation-fullscreen-mode .step-num {
   font-size: 1rem !important;
   margin-bottom: 0.5rem !important;
-  color: #2563eb !important;
 }
 
 .is-fullscreen .step-title,
@@ -3044,12 +3048,47 @@ body.presentation-fullscreen-mode .pres-step-box ul {
   padding: 1.8rem 2.2rem;
   text-align: center;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.06);
+  overflow-x: auto;
 }
 .pres-equation-text {
   font-size: 1.45rem;
   font-weight: 800;
   color: #065f46;
   word-break: keep-all;
+  line-height: 1.4;
+}
+.pres-equation-grid {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: center;
+  justify-items: center;
+  column-gap: 1.2rem;
+  row-gap: 0.55rem;
+}
+.pres-eq-term {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #065f46;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.pres-eq-sign {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #065f46;
+  line-height: 1.4;
+}
+.pres-eq-num {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #047857;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+.pres-eq-num-sign {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #047857;
   line-height: 1.4;
 }
 .pres-law-desc-box {
@@ -3279,6 +3318,50 @@ body.presentation-fullscreen-mode .pres-equation-box {
 .presentation-modal.fullscreen-active .pres-equation-text,
 body.presentation-fullscreen-mode .pres-equation-text {
   font-size: clamp(2rem, 2.7vw, 3.4rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+}
+
+.is-fullscreen .pres-equation-grid,
+:fullscreen .pres-equation-grid,
+:-webkit-full-screen .pres-equation-grid,
+.presentation-modal.fullscreen-active .pres-equation-grid,
+body.presentation-fullscreen-mode .pres-equation-grid {
+  column-gap: clamp(1.2rem, 2.2vw, 3rem) !important;
+  row-gap: clamp(0.6rem, 1.2vh, 1.4rem) !important;
+}
+
+.is-fullscreen .pres-eq-term,
+:fullscreen .pres-eq-term,
+:-webkit-full-screen .pres-eq-term,
+.presentation-modal.fullscreen-active .pres-eq-term,
+body.presentation-fullscreen-mode .pres-eq-term {
+  font-size: clamp(1.8rem, 2.5vw, 3.2rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+}
+
+.is-fullscreen .pres-eq-sign,
+:fullscreen .pres-eq-sign,
+:-webkit-full-screen .pres-eq-sign,
+.presentation-modal.fullscreen-active .pres-eq-sign,
+body.presentation-fullscreen-mode .pres-eq-sign {
+  font-size: clamp(1.9rem, 2.7vw, 3.4rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+}
+
+.is-fullscreen .pres-eq-num,
+:fullscreen .pres-eq-num,
+:-webkit-full-screen .pres-eq-num,
+.presentation-modal.fullscreen-active .pres-eq-num,
+body.presentation-fullscreen-mode .pres-eq-num,
+.is-fullscreen .pres-eq-num-sign,
+:fullscreen .pres-eq-num-sign,
+:-webkit-full-screen .pres-eq-num-sign,
+.presentation-modal.fullscreen-active .pres-eq-num-sign,
+body.presentation-fullscreen-mode .pres-eq-num-sign {
+  font-size: clamp(1.65rem, 2.2vw, 2.9rem) !important;
   font-weight: 800 !important;
   line-height: 1.4 !important;
 }
@@ -3645,6 +3728,7 @@ body.presentation-fullscreen-mode .pres-app-desc {
   padding: 0.85rem 1rem;
   border-bottom: 1px solid #f1f5f9;
   color: #334155;
+  vertical-align: middle;
 }
 
 .pres-table tr:last-child td {
@@ -3677,8 +3761,10 @@ body.presentation-fullscreen-mode .pres-app-desc {
 .pres-reveal-cell {
   display: inline-flex;
   align-items: center;
+  min-height: 36px;
   cursor: pointer;
   user-select: none;
+  vertical-align: middle;
 }
 
 .pres-reveal-btn {
@@ -3689,6 +3775,8 @@ body.presentation-fullscreen-mode .pres-app-desc {
   border: 1px solid #cbd5e1;
   color: #475569;
   padding: 0.35rem 0.85rem;
+  height: 36px;
+  box-sizing: border-box;
   border-radius: 6px;
   font-size: 0.88rem;
   font-weight: 700;
@@ -3704,6 +3792,11 @@ body.presentation-fullscreen-mode .pres-app-desc {
 
 .pres-reveal-content {
   display: none;
+  height: 36px;
+  padding: 0.35rem 0.85rem;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  line-height: 1;
 }
 
 .pres-reveal-cell.revealed .pres-reveal-btn {
@@ -3715,11 +3808,30 @@ body.presentation-fullscreen-mode .pres-app-desc {
   align-items: center;
 }
 
+.is-fullscreen .pres-reveal-cell,
+:fullscreen .pres-reveal-cell,
+:-webkit-full-screen .pres-reveal-cell,
+.presentation-modal.fullscreen-active .pres-reveal-cell,
+body.presentation-fullscreen-mode .pres-reveal-cell {
+  min-height: 44px !important;
+}
+
 .is-fullscreen .pres-reveal-btn,
 :fullscreen .pres-reveal-btn,
 :-webkit-full-screen .pres-reveal-btn,
 .presentation-modal.fullscreen-active .pres-reveal-btn,
 body.presentation-fullscreen-mode .pres-reveal-btn {
+  height: 44px !important;
+  padding: 0.5rem 1.2rem !important;
+  font-size: 1.05rem !important;
+}
+
+.is-fullscreen .pres-reveal-content,
+:fullscreen .pres-reveal-content,
+:-webkit-full-screen .pres-reveal-content,
+.presentation-modal.fullscreen-active .pres-reveal-content,
+body.presentation-fullscreen-mode .pres-reveal-content {
+  height: 44px !important;
   padding: 0.5rem 1.2rem !important;
   font-size: 1.05rem !important;
 }

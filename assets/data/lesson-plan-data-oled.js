@@ -6,22 +6,22 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
           <!-- 6페이지 크롬 탭 바 (성취수준 연계 신설) -->
           <div class="chrome-tab-bar" role="tablist">
             <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true">
-              <span><span class="tab-text-full">성취수준 연계</span><span class="tab-text-short">성취수준</span></span>
+              <span><span class="tab-text-full">성취수준 연계</span><span class="tab-text-mid">성취수준</span><span class="tab-text-short">성취수준</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
-              <span><span class="tab-text-full">수업 지도안 개요</span><span class="tab-text-short">개요</span></span>
+              <span><span class="tab-text-full">수업 지도안 개요</span><span class="tab-text-mid">지도안 개요</span><span class="tab-text-short">개요</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 2)" role="tab" aria-selected="false">
-              <span>[1차시] <span class="tab-text-full">자외선과 형광</span><span class="tab-text-short">1차시</span></span>
+              <span><span class="tab-text-full">[1차시] 형광빛의 원리</span><span class="tab-text-mid">[1차시]</span><span class="tab-text-short">[1차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 3)" role="tab" aria-selected="false">
-              <span>[2차시] <span class="tab-text-full">전자의 점프</span><span class="tab-text-short">2차시</span></span>
+              <span><span class="tab-text-full">[2차시] 전자의 에너지 전달</span><span class="tab-text-mid">[2차시]</span><span class="tab-text-short">[2차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false">
-              <span>[3차시] <span class="tab-text-full">스핀과 OLED</span><span class="tab-text-short">3차시</span></span>
+              <span><span class="tab-text-full">[3차시] 스핀과 OLED</span><span class="tab-text-mid">[3차시]</span><span class="tab-text-short">[3차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 5)" role="tab" aria-selected="false">
-              <span>[4차시] <span class="tab-text-full">KAIST 구출작전</span><span class="tab-text-short">4차시</span></span>
+              <span><span class="tab-text-full">[4차시] KAIST 구출작전</span><span class="tab-text-mid">[4차시]</span><span class="tab-text-short">[4차시]</span></span>
             </button>
           </div>
 
@@ -359,7 +359,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         • 일상 속 형광 기술 활용 사례 (위조지폐·여권 감별, 형광펜, 야간 안전 조끼 등) 소개
                       </p>
                       <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:4px; padding:0.45rem 0.75rem; text-align:center; font-weight:700; color:#0f172a; font-size:0.88rem;">
-                        [흡수한 자외선 에너지] = [방출된 형광빛 에너지] + [분자가 흘린 열(진동) 에너지]
+                        [흡수한 자외선 에너지] = [방출된 형광빛 에너지] + [방출된 열에너지]
                       </div>
                     </div>
 
@@ -373,7 +373,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         • 시약은 전용 폐액통에 분리 수거하고 실험 기구 제자리 정돈
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; color:#334155; font-size:0.83rem;">
-                        <strong>[2차시 예고]</strong> "분자 속 전자는 자외선 에너지를 어떻게 흡수했다가 방출하는 걸까? (가상실험실 활용 전자의 계단 점프 탐구)"
+                        <strong>[2차시 예고]</strong> "전자는 자외선 에너지를 어떻게 흡수하여 빛과 열로 전달할까? (가상실험실 활용)"
                       </div>
                     </div>
                   </td>
@@ -395,7 +395,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
           <!-- [탭 2]: 2차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#7c3aed;">[2차시]</span> 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환 (45분)</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#7c3aed;">[2차시]</span> 전자의 에너지 전달 (45분)</h3>
             </div>
 
             <!-- [2차시] 통합 수업 지도안 표 -->
@@ -414,17 +414,17 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">학습목표</th>
-                  <td colspan="4">물질이 자외선을 흡수하여 형광 빛과 열로 전환되는 과정을 모형과 에너지 보존 법칙으로 설명할 수 있다.</td>
+                  <td colspan="4">전자의 에너지 전달 과정을 에너지 보존 법칙으로 설명할 수 있다.</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">탐구방법</th>
-                  <td>가상실험실(시뮬레이션 조작), 입자 모형 분석, 에너지 전환 관계식 도출</td>
+                  <td>가상실험실(시뮬레이션 조작), 원자 입자 모형 분석, 에너지 전환 관계식 도출</td>
                   <th style="text-align:center; white-space:nowrap;">준비물</th>
-                  <td colspan="2">스마트기기(태블릿/노트북), 가상실험실(lab.html) [전자의 계단 점프 시뮬레이터], 스펙트럼 자, 활동지</td>
+                  <td colspan="2">스마트기기(태블릿/노트북), 가상실험실, 스펙트럼 자, 활동지</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
-                  <td>가상실험실 접속 시 과도한 기기 사용으로 인한 눈 피로 방지 및 에너지 계단 비유로 직관적 이해 유도</td>
+                  <td>가상실험실 접속 시 과도한 기기 사용으로 인한 눈 피로 방지 지도 및 전자가 에너지를 흡수·전달하는 직관적 입자 모형 탐구 유도</td>
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
@@ -452,11 +452,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">동기 유발 3분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 꼬마 전자의 트램펄린 점프 비유: "사람이 트램펄린에서 뛰어올랐다가 내려올 때와 전자가 빛을 받을 때의 공통점은 무엇일까?"
+                        • 전자의 에너지 흡수와 전달 비유: "탁구채로 공을 때리면 에너지를 받아 날아가듯, 원자 속 전자가 자외선 빛 에너지를 받으면 어떤 일이 일어날까?"
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; margin-top:0.35rem; color:#334155;">
-                        <strong>[교사 발문]</strong> "전자는 왜 아무 높이로나 점프하지 않고, 딱 정해진 계단으로만 점프할까요?"<br>
-                        <strong>[학생 반응]</strong> "원자 안에 정해진 궤도가 있어서", "에너지가 계단처럼 나뉘어 있어서" 등
+                        <strong>[교사 발문]</strong> "1차시에서 형광 물질이 자외선을 받아 가시광선과 열을 뿜어냈습니다. 이 에너지를 실제로 받아서 전달하는 물질 속 입자는 누구일까요?"<br>
+                        <strong>[학생 반응]</strong> "원자 속에 있는 전자요!", "전자가 에너지를 흡수해서 움직여요!" 등 원자 모형 속 전자의 역할 상기
                       </div>
                     </div>
 
@@ -467,10 +467,10 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
-                          <strong>[핵심 질문]</strong> "자외선 에너지를 먹은 전자는 어디로 점프하며, 어떻게 눈부신 형광빛으로 방출할까?"
+                          <strong>[핵심 질문]</strong> "원자 속 전자는 자외선 에너지를 어떻게 흡수하여 형광빛과 열 형태로 전달하고 전환할까?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 물질이 자외선을 흡수하여 형광 빛과 열로 전환되는 과정을 모형과 에너지 보존 법칙으로 설명할 수 있다.
+                          <strong>[학습목표]</strong> 원자 모형을 바탕으로 전자가 자외선 에너지를 흡수하여 형광 빛과 열로 전달·전환하는 과정을 에너지 보존 법칙으로 설명할 수 있다.
                         </div>
                       </div>
                     </div>
@@ -478,7 +478,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <td>
                     <div class="plan-note-card">
                       <i data-lucide="alert-triangle"></i>
-                      <span>복잡한 양자역학 파동방정식 대신 1층(바닥)과 3층(들뜬) 아파트 계단 비유로 직관화.</span>
+                      <span>고등학교 수준의 '들뜬 상태', '전자의 궤도', '에너지 준위 양자화' 등 과도한 용어 주입을 지양하고, 중2 교육과정의 원자 모형(원자핵과 전자) 및 에너지 전달·전환 개념에 집중하도록 지도.</span>
                     </div>
                   </td>
                 </tr>
@@ -487,14 +487,14 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                 <tr>
                   <td style="text-align:center; vertical-align:middle; white-space:nowrap; background-color:#f1f5f9;"><strong>전개</strong></td>
                   <td colspan="3">
-                    <!-- 카드 1: 원자 모형과 에너지 계단 8분 -->
+                    <!-- 카드 1: 원자 모형과 전자의 에너지 변화 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
                         <span class="plan-card-badge">개념 모형 8분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • <strong>원자 모형 복습:</strong> 원자핵(+)과 주위를 도는 전자(-)<br>
-                        • <strong>에너지 준위의 양자화:</strong> 전자는 1층(바닥 상태)과 3층(들뜬 상태)에만 발을 디딜 수 있으며, 1.5층 중간에는 머물 수 없음
+                        • <strong>원자 모형 복습:</strong> 물질을 이루는 원자는 중심의 원자핵(+)과 그 주위를 구성하는 전자(-)로 이루어짐<br>
+                        • <strong>전자의 에너지 흡수와 상태 변화:</strong> 전자는 외부에서 빛 에너지를 받으면 에너지가 높은 상태가 되며, 이 에너지를 밖으로 전달·방출하며 다시 안정된 원래 상태로 되돌아감
                       </p>
                     </div>
 
@@ -504,14 +504,14 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">가상실험실 탐구 16분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 디지털 가상실험실(lab.html) [전자의 계단 점프 시뮬레이터] 조작 실습<br>
-                        • <strong>전자의 3단계 여정:</strong><br>
-                        &nbsp;&nbsp;1) <strong>Step 1 흡수:</strong> 자외선(365nm, 높은 에너지)을 흡수하여 바닥(1층)에서 3층 들뜬 상태로 수직 점프<br>
-                        &nbsp;&nbsp;2) <strong>Step 2 진동:</strong> 3층이 너무 불안정하여 부르르 떨며(분자 진동) 미세한 <strong>열</strong>을 방출<br>
-                        &nbsp;&nbsp;3) <strong>Step 3 방출:</strong> 남은 에너지를 파란색 <strong>가시광선 형광(450nm)</strong>으로 방출하며 바닥으로 착지
+                        • 가상실험실 조작 실습<br>
+                        • <strong>전자의 3단계 에너지 전달 과정:</strong><br>
+                        &nbsp;&nbsp;• 1단계 (에너지 흡수): 전자가 높은 에너지의 자외선(365nm)을 흡수하여 에너지가 풍부한 상태가 됨<br>
+                        &nbsp;&nbsp;• 2단계 (열에너지 전달): 전자가 주변 원자들과 상호작용(진동)하며 일부 에너지를 미세한 열 형태로 먼저 방출<br>
+                        &nbsp;&nbsp;• 3단계 (형광빛 방출): 전자가 남은 에너지를 파란색 가시광선 형광빛(450nm)으로 방출하며 안정된 원래 상태로 복귀
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; color:#0f172a;">
-                        <strong>[스토크스 이동 (Stokes Shift)]</strong> 흡수한 빛(365nm)보다 방출된 빛(450nm)의 파장이 더 길고 에너지가 감소하는 물리 현상
+                        <strong>[빛 에너지의 변화]</strong> 전자가 자외선 에너지를 받은 후 일부를 열로 먼저 방출하고 남은 에너지를 빛으로 내보내므로, 방출되는 형광빛은 흡수한 자외선보다 에너지가 작고 파장이 긴 가시광선으로 나타남
                       </div>
                     </div>
 
@@ -521,26 +521,26 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">모둠 토의 8분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.35rem; color:#334155;">
-                        <strong>[교사 질문]</strong> "자외선 에너지(100) = 방출된 형광빛(75) + 잃어버린 열(25). 에너지는 사라졌을까요?"<br>
-                        <strong>[학생 토의]</strong> 에너지는 사라지지 않고 보존됨을 확인
+                        <strong>[교사 질문]</strong> "전자가 흡수한 자외선 에너지가 100인데, 방출된 형광빛 에너지는 75에 불과합니다. 그렇다면 나머지 에너지는 어디로 갔을까요?"<br>
+                        <strong>[학생 토의]</strong> "사라진 것이 아니라 열로 방출되었다", "빛과 열을 합치면 처음 에너지와 같다" 등 에너지 보존 도출
                       </div>
                       <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:4px; padding:0.45rem 0.75rem; text-align:center; font-weight:700; color:#0f172a; font-size:0.88rem;">
-                        [흡수한 자외선 에너지] = [방출된 형광빛 에너지] + [흘린 열에너지]
+                        [전자가 흡수한 자외선 에너지] = [방출된 형광빛 에너지] + [방출된 열에너지]
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class="plan-note-card">
                       <i data-lucide="alert-triangle"></i>
-                      <span>태블릿 접속 및 가상실험실 조작 순회 지도. 눈 피로 방지를 위해 밝기 적정 유지.</span>
+                      <span>태블릿 접속 및 가상실험실 조작 순회 지도. 눈 피로 방지를 위해 화면 밝기 적정 유지.</span>
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 전자의 3단계 여정(흡수→진동→방출)을 활동지 1번 표에 올바르게 기록하는지 확인.</span>
+                      <span><strong>[과정평가]</strong> 전자의 3단계 에너지 전달 과정(흡수 → 열 방출 → 형광빛 방출)을 활동지 1번 표에 올바르게 기록하는지 확인.</span>
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 에너지 보존 법칙 관계식을 도출할 수 있는지 점검 (활동지 2번).</span>
+                      <span><strong>[과정평가]</strong> 전자의 에너지 전달·전환과 에너지 보존 법칙 관계식을 도출할 수 있는지 점검 (활동지 2번).</span>
                     </div>
                   </td>
                 </tr>
@@ -555,7 +555,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">결과 정리 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 2차시 핵심 배움 확인: 1) 양자화(불연속 계단), 2) 전자의 3단계 여정, 3) 스토크스 이동 및 에너지 보존<br>
+                        • 2차시 핵심 배움 확인: 1) 원자 모형 속 전자의 역할, 2) 전자의 3단계 에너지 전달(흡수→열 방출→형광 방출), 3) 에너지 전환과 보존 법칙<br>
                         • 활동지 1, 2번 작성 완료 확인 및 모둠 간 상호 검토
                       </p>
                     </div>
@@ -566,14 +566,14 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">차시 예고 3분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; color:#334155; font-size:0.83rem;">
-                        <strong>[3차시 예고]</strong> "스마트폰 배터리 전기로 전자를 점프시키면 왜 75%나 빛을 내지 못하고 열로 낭비될까? (단일항 vs 삼중항)"
+                        <strong>[3차시 예고]</strong> "배터리의 75%를 열에너지로 낭비하고 있는 스마트폰"
                       </div>
                     </div>
                   </td>
                   <td>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span>"빛의 파장이 길어지면 에너지는 어떻게 되는가?" 구두 질문으로 성취기준 달성 점검.</span>
+                      <span>"전자가 흡수한 자외선 에너지와 방출된 형광빛·열 에너지의 합은 왜 같은가?" 구두 질문으로 성취기준 달성 점검.</span>
                     </div>
                   </td>
                 </tr>
@@ -922,7 +922,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">단원 총정리 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • OLED 4차시 총정리: 1) 자외선과 형광, 2) 전자의 계단 점프와 스토크스 이동, 3) 1:3 스핀 확률과 75% 배터리 도둑, 4) KAIST 핫 엑시톤 100% 구출 원천 기술<br>
+                        • OLED 4차시 총정리: 1) 형광빛의 원리, 2) 전자의 에너지 전달, 3) 1:3 스핀 확률과 75% 배터리 도둑, 4) KAIST 핫 엑시톤 100% 구출 원천 기술<br>
                         • 우수 분자 디자이너 모둠 선정 및 축하
                       </p>
                     </div>

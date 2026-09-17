@@ -443,11 +443,11 @@ window.presentationModalData.oled = {
     },
 
     // -----------------------------------------------------------------------
-    // OLED 2차시: 전자의 점프와 에너지 준위
+    // OLED 2차시: 전자의 에너지 전달
     // -----------------------------------------------------------------------
     2: {
-      lessonTitle: '[2차시] 꼬마 전자의 트램펄린 점프: 들뜬 상태와 에너지 전환',
-      badge: 'OLED 2차시 · 전자의 에너지 준위',
+      lessonTitle: '[2차시] 전자의 에너지 전달 (45분)',
+      badge: 'OLED 2차시 · 전자의 에너지 전달',
       slides: [
         // Slide 1: 표지
         {
@@ -456,7 +456,7 @@ window.presentationModalData.oled = {
           content: `
             <div class="pres-hero-question">
               <h1 class="hero-q-text" style="font-size:2.2rem; font-weight:800; letter-spacing:-0.5px; color:#0f172a; word-break:keep-all; line-height:1.5;">
-                꼬마 전자의 트램펄린 점프:<br><span style="color:#7c3aed;">들뜬 상태와 에너지 전환</span>
+                원자 속 전자의 에너지 전달
               </h1>
             </div>
           `
@@ -465,27 +465,31 @@ window.presentationModalData.oled = {
         // Slide 2: 동기 유발 & 핵심 질문
         {
           tag: '',
-          title: '전자는 왜 정해진 높이로만 점프할까?',
+          title: '원자 속 전자가 에너지를 받으면?',
           content: `
-            <div class="pres-stack" style="gap:1.2rem;">
-              <div class="pres-inquiry-box" style="padding:2.2rem 1.6rem;">
-                <div class="inquiry-q" style="font-size:1.35rem; line-height:1.7;">
-                  "전자는 계단과 계단 사이 허공에 서 있을 수 있을까?<br>
-                  <span style="color:#7c3aed;">왜 정확히 정해진 높이로만 점프할까?</span>"
+            <div class="pres-stack" style="gap:0.85rem;">
+              <div class="pres-inquiry-box" style="padding:0.85rem 1.25rem;">
+                <div class="inquiry-q" style="font-size:1.15rem; line-height:1.5;">
+                  "탁구채로 공을 때리면 에너지를 받아 날아가듯,<br>
+                  <span style="color:#7c3aed;">원자 속 전자가 자외선 빛 에너지를 받으면 어떤 일이 일어날까?</span>"
                 </div>
               </div>
-              <div class="pres-grid-2">
-                <div class="pres-card">
-                  <div class="pres-card-title"><i data-lucide="activity"></i> 트램펄린 놀이터의 전자</div>
-                  <p style="font-size:1.1rem; line-height:1.75; color:#334155; margin:0;">
-                    바닥(1층)에서 쉬던 전자가 <strong>강한 자외선 에너지</strong>를 받으면 옥상(3층)으로 껑충 뛰어오릅니다!
-                  </p>
+              <div class="pres-grid-2" style="gap:0.85rem;">
+                <div class="pres-card" style="padding:0.75rem; text-align:center; display:flex; flex-direction:column; justify-content:space-between; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px;">
+                  <div style="width:100%; aspect-ratio:4/3; max-height:220px; border-radius:8px; overflow:hidden; margin-bottom:0.6rem; background:#0f172a; border:1px solid #e2e8f0;">
+                    <img src="${getToolAsset('table_tennis_hit.jpg')}" alt="탁구채에 맞아 에너지를 받는 탁구공" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  </div>
+                  <div>
+                    <strong style="color:#0f172a; font-size:1rem; display:block; word-break:keep-all;">탁구채의 강한 운동 에너지를 받아 튕겨 날아가는 탁구공</strong>
+                  </div>
                 </div>
-                <div class="pres-card pres-highlight" style="background:#f5f3ff; border-color:#ddd6fe;">
-                  <div class="pres-card-title" style="color:#6d28d9;"><i data-lucide="sparkles"></i> 미시세계의 규칙: 양자화</div>
-                  <p style="font-size:1.1rem; line-height:1.75; color:#4c1d95; margin:0;">
-                    전자는 1.5층이나 2.3층 같은 어중간한 높이에는 결코 머물 수 없습니다. 이것이 바로 <strong>에너지의 양자화(불연속 계단)</strong>입니다.
-                  </p>
+                <div class="pres-card pres-highlight" style="padding:0.75rem; text-align:center; display:flex; flex-direction:column; justify-content:space-between; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:12px;">
+                  <div style="width:100%; aspect-ratio:4/3; max-height:220px; border-radius:8px; overflow:hidden; margin-bottom:0.6rem; background:#0f172a; border:1px solid #ddd6fe;">
+                    <img src="${getToolAsset('electron_uv_absorb.jpg')}" alt="자외선 빛 에너지를 흡수하는 원자 속 전자" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  </div>
+                  <div>
+                    <strong style="color:#6d28d9; font-size:1rem; display:block; word-break:keep-all;">자외선 빛 에너지를 받은 전자는?</strong>
+                  </div>
                 </div>
               </div>
             </div>
@@ -499,8 +503,8 @@ window.presentationModalData.oled = {
           content: `
             <div class="pres-objective-box">
               <p class="objective-main">
-                <span>원자 속 전자의 에너지 준위(불연속 계단)를 모형으로 설명하고,</span>
-                <span>흡수 ➔ 진동 열 방출 ➔ 형광 3단계를 조작하여 스토크스 이동을 탐구할 수 있다.</span>
+                <span>전자의 에너지 전달 과정을</span>
+                <span>에너지 보존 법칙으로 설명할 수 있다.</span>
               </p>
             </div>
           `
@@ -515,30 +519,30 @@ window.presentationModalData.oled = {
               <div class="pres-tools-grid" style="grid-template-columns: repeat(4, 1fr); gap:1rem;">
                 <div class="pres-card" style="text-align:center; padding:1.4rem 1rem;">
                   <div style="font-size:2.2rem; margin-bottom:0.6rem;">💻</div>
-                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">스마트 태블릿</strong>
-                  <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">HTML5 가상실험실(Lab 1) 구동</p>
+                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">스마트 태블릿/노트북</strong>
+                  <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">가상실험실 접속</p>
                 </div>
                 <div class="pres-card" style="text-align:center; padding:1.4rem 1rem;">
-                  <div style="font-size:2.2rem; margin-bottom:0.6rem;">🃏</div>
-                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">에너지 준위 모형 카드</strong>
-                  <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">S₀ 바닥 상태 & S₁ 들뜬 상태</p>
+                  <div style="font-size:2.2rem; margin-bottom:0.6rem;">🧪</div>
+                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">가상실험실</strong>
+                  <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">전자의 에너지 전달 탐구</p>
                 </div>
                 <div class="pres-card" style="text-align:center; padding:1.4rem 1rem;">
                   <div style="font-size:2.2rem; margin-bottom:0.6rem;">📏</div>
                   <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">컬러 스펙트럼 자</strong>
-                  <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">파장과 에너지 수치 비교</p>
+                  <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">파장과 빛 에너지 비교</p>
                 </div>
                 <div class="pres-card" style="text-align:center; padding:1.4rem 1rem;">
                   <div style="font-size:2.2rem; margin-bottom:0.6rem;">📝</div>
-                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">탐구 활동지 2번</strong>
-                  <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">시뮬레이션 관찰표 기록</p>
+                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">탐구 활동지</strong>
+                  <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">전자의 에너지 전달 기록</p>
                 </div>
               </div>
             </div>
           `
         },
 
-        // Slide 5: 실험실 안전 수칙
+        // Slide 5: 실험실 안전 및 실습 수칙
         {
           tag: '',
           title: '실험실 안전 및 실습 수칙',
@@ -548,21 +552,21 @@ window.presentationModalData.oled = {
                 <div class="pres-safety-icon"><i data-lucide="smartphone"></i></div>
                 <div class="pres-safety-title">1. 스마트기기 안전 관리</div>
                 <div class="pres-safety-desc">
-                  태블릿 거치대를 안정적으로 설치하고, 물기 있는 손으로 만지지 않습니다.
+                  태블릿을 책상 위에 안정적으로 거치하고, 조작 시 충격이나 낙하에 주의합니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-amber">
                 <div class="pres-safety-icon"><i data-lucide="sliders"></i></div>
                 <div class="pres-safety-title">2. 단계별 시뮬레이션 준수</div>
                 <div class="pres-safety-desc">
-                  버튼을 무작위로 누르지 않고, <strong>자외선 흡수 ➔ 진동 ➔ 형광 방출</strong> 과정을 순서대로 관찰합니다.
+                  <strong>자외선 흡수 ➔ 열 방출 ➔ 형광빛 방출</strong> 과정을 순서대로 차근차근 관찰합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
                 <div class="pres-safety-icon"><i data-lucide="users"></i></div>
-                <div class="pres-safety-title">3. 모둠원 역할 분담</div>
+                <div class="pres-safety-title">3. 모둠원 협력 탐구</div>
                 <div class="pres-safety-desc">
-                  시뮬레이터 조작 담당과 관찰 기록 담당을 번갈아 가며 모든 학생이 체험합니다.
+                  시뮬레이터 조작 담당과 관찰 기록 담당을 번갈아 가며 모든 모둠원이 참여합니다.
                 </div>
               </div>
             </div>
@@ -572,26 +576,23 @@ window.presentationModalData.oled = {
         // Slide 6: 가상실험실 전자의 3단계 여정
         {
           tag: '',
-          title: '가상실험실(Lab 1): 전자의 3단계 여정',
+          title: '가상실험실: 전자의 에너지 전달 3단계',
           content: `
             <div class="pres-stack">
               <div class="pres-steps-row">
                 <div class="pres-step-box">
-                  <div class="step-num">Step 1</div>
-                  <div class="step-title">자외선 흡수 & 도약</div>
-                  <p>가상실험실에서 <strong>[자외선 흡수 & 점프]</strong>를 클릭하여 1층 전자가 3층(S₁) 옥상으로 수직 도약하는 모습을 확인합니다.</p>
+                  <div class="step-num" style="background:#7c3aed !important; color:#ffffff !important; font-weight:800; border-radius:4px; padding:0.2rem 0.6rem; display:inline-block; font-size:0.88rem; margin-bottom:0.6rem;">1단계</div>
+                  <p>가상실험실에서 전자가 <strong>자외선 빛 에너지</strong>를 흡수하는 모습을 관찰합니다.</p>
                 </div>
                 <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
                 <div class="pres-step-box">
-                  <div class="step-num">Step 2</div>
-                  <div class="step-title">진동 열 방출 (이완)</div>
-                  <p>3층에서 전자가 바들바들 떨며(분자 진동) 미세한 <strong>열에너지</strong>를 방출하고 2층 출발선으로 내려앉는 과정을 관찰합니다.</p>
+                  <div class="step-num" style="background:#ea580c !important; color:#ffffff !important; font-weight:800; border-radius:4px; padding:0.2rem 0.6rem; display:inline-block; font-size:0.88rem; margin-bottom:0.6rem;">2단계</div>
+                  <p>전자가 에너지를 전달하는 과정에서 일부 에너지가 <strong>열(열에너지)</strong> 형태로 방출되는 모습을 확인합니다.</p>
                 </div>
                 <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
                 <div class="pres-step-box">
-                  <div class="step-num">Step 3</div>
-                  <div class="step-title">형광 가시광선 방출</div>
-                  <p>2층에서 1층(S₀)으로 착지하며 사방으로 <strong>선명한 파란 형광빛(450nm)</strong>을 1억 분의 1초 만에 방출하는 모습을 기록합니다.</p>
+                  <div class="step-num" style="background:#2563eb !important; color:#ffffff !important; font-weight:800; border-radius:4px; padding:0.2rem 0.6rem; display:inline-block; font-size:0.88rem; margin-bottom:0.6rem;">3단계</div>
+                  <p>남은 에너지가 눈에 보이는 선명한 <strong>파란 형광빛(가시광선)</strong>으로 방출되는 모습을 기록합니다.</p>
                 </div>
               </div>
             </div>
@@ -607,48 +608,48 @@ window.presentationModalData.oled = {
               <table class="pres-table">
                 <thead>
                   <tr>
-                    <th style="width:20%;">단계</th>
-                    <th style="width:26%;">전자의 위치 이동</th>
-                    <th style="width:22%;">에너지 출입 형태</th>
-                    <th style="width:32%;">물리적 의미 및 정답</th>
+                    <th style="width:20%; text-align:center;">단계</th>
+                    <th style="width:26%;">에너지 출입 형태</th>
+                    <th style="width:26%;">전자의 에너지 전달 과정</th>
+                    <th style="width:28%;">관찰 결과 및 정답</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>1단계: 흡수</strong></td>
-                    <td>1층(S₀) ➔ 3층(S₁) 옥상</td>
-                    <td>자외선 흡수</td>
+                    <td style="text-align:center;"><strong>1단계</strong></td>
+                    <td>자외선 빛 에너지</td>
+                    <td>전자가 자외선 빛 에너지를 흡수함</td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
-                          <strong style="color:#6d28d9; font-size:1.02rem;">들뜬 상태 도달 (에너지 축적)</strong>
+                          <strong style="color:#6d28d9; font-size:1.02rem;">자외선</strong>
                         </div>
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td><strong>2단계: 진동 이완</strong></td>
-                    <td>3층 높은 곳 ➔ 2층 출발선</td>
-                    <td>미세 열에너지 방출</td>
+                    <td style="text-align:center;"><strong>2단계</strong></td>
+                    <td>열(열에너지)</td>
+                    <td>흡수한 에너지의 일부를 열로 방출함</td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
-                          <strong style="color:#ea580c; font-size:1.02rem;">분자 진동으로 열 방출 (에너지 손실)</strong>
+                          <strong style="color:#ea580c; font-size:1.02rem;">열</strong>
                         </div>
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td><strong>3단계: 형광 방출</strong></td>
-                    <td>2층 출발선 ➔ 1층(S₀) 바닥</td>
-                    <td>가시광선(형광) 방출</td>
+                    <td style="text-align:center;"><strong>3단계</strong></td>
+                    <td>형광빛(가시광선)</td>
+                    <td>남은 에너지를 형광빛으로 방출함</td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
-                          <strong style="color:#2563eb; font-size:1.02rem;">파란 형광빛(450nm) 나노초 단위 방출</strong>
+                          <strong style="color:#2563eb; font-size:1.02rem;">형광빛</strong>
                         </div>
                       </div>
                     </td>
@@ -659,148 +660,72 @@ window.presentationModalData.oled = {
           `
         },
 
-        // Slide 8: 스토크스 이동 (Stokes Shift)
+        // Slide 8: 빛의 파장과 에너지의 관계
         {
           tag: '',
-          title: '스토크스 이동 (Stokes Shift)의 원리',
+          title: '빛의 파장과 에너지의 관계',
           content: `
-            <div class="pres-stack pres-spectrum-stack">
-              <div class="pres-spectrum-img-card" style="padding:1rem 1.4rem;">
-                <svg viewBox="0 0 860 215" width="100%" height="100%" style="max-height:240px; display:block; font-family:'Pretendard', sans-serif;">
-                  <defs>
-                    <marker id="arrowUp2" viewBox="0 0 10 10" refX="5" refY="2" markerWidth="6" markerHeight="6" orient="auto">
-                      <path d="M 1 10 L 5 1 L 9 10 z" fill="#7c3aed" />
-                    </marker>
-                    <marker id="arrowDown2" viewBox="0 0 10 10" refX="5" refY="8" markerWidth="6" markerHeight="6" orient="auto">
-                      <path d="M 1 0 L 5 9 L 9 0 z" fill="#2563eb" />
-                    </marker>
-                  </defs>
-
-                  <!-- 1층 S0 바닥 상태 레벨 -->
-                  <line x1="80" y1="165" x2="480" y2="165" stroke="#0f172a" stroke-width="3" />
-                  <rect x="80" y="172" width="120" height="26" rx="6" fill="#f1f5f9" />
-                  <text x="140" y="190" font-size="13" font-weight="800" fill="#334155" text-anchor="middle">1층: 바닥 상태 (S₀)</text>
-
-                  <!-- 3층 S1 들뜬 상태 -->
-                  <line x1="80" y1="45" x2="480" y2="45" stroke="#7c3aed" stroke-width="2.5" />
-                  <line x1="80" y1="58" x2="480" y2="58" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="4,3" />
-                  <line x1="80" y1="71" x2="480" y2="71" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="4,3" />
-                  <!-- 2층 S1 최저 준위 -->
-                  <line x1="80" y1="84" x2="480" y2="84" stroke="#6d28d9" stroke-width="2.5" />
-                  <rect x="80" y="15" width="130" height="26" rx="6" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1" />
-                  <text x="145" y="33" font-size="13" font-weight="800" fill="#6d28d9" text-anchor="middle">2~3층: 들뜬 상태 (S₁)</text>
-
-                  <!-- 과정 1: 자외선 흡수 화살표 -->
-                  <line x1="220" y1="165" x2="220" y2="50" stroke="#7c3aed" stroke-width="3.5" marker-end="url(#arrowUp2)" />
-                  <rect x="155" y="95" width="130" height="24" rx="5" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1" />
-                  <text x="220" y="112" font-size="12" font-weight="800" fill="#6d28d9" text-anchor="middle">① 자외선 흡수 (365nm)</text>
-
-                  <!-- 과정 2: 진동 열 방출 화살표 -->
-                  <path d="M 230 45 Q 245 55 230 65 T 230 84" fill="none" stroke="#ea580c" stroke-width="3" />
-                  <text x="310" y="66" font-size="12" font-weight="800" fill="#ea580c" text-anchor="start">② 진동 열 방출 (손실)</text>
-
-                  <!-- 과정 3: 형광 가시광선 방출 화살표 -->
-                  <line x1="420" y1="84" x2="420" y2="160" stroke="#2563eb" stroke-width="3.5" marker-end="url(#arrowDown2)" />
-                  <rect x="355" y="115" width="130" height="24" rx="5" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1" />
-                  <text x="420" y="132" font-size="12" font-weight="800" fill="#1d4ed8" text-anchor="middle">③ 형광 방출 (450nm)</text>
-
-                  <!-- 우측: 스토크스 이동 요약 박스 -->
-                  <g transform="translate(530, 20)">
-                    <rect x="0" y="0" width="300" height="175" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2" />
-                    <text x="150" y="32" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">스토크스 이동 (Stokes Shift)</text>
-                    <line x1="20" y1="46" x2="280" y2="46" stroke="#e2e8f0" stroke-width="1" />
-                    
-                    <text x="30" y="76" font-size="13" font-weight="700" fill="#6d28d9">• 흡수한 빛: 파장 365nm (자외선)</text>
-                    <text x="30" y="102" font-size="13" font-weight="700" fill="#1d4ed8">• 방출된 빛: 파장 450nm (가시광선)</text>
-                    
-                    <rect x="20" y="122" width="260" height="38" rx="8" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
-                    <text x="150" y="146" font-size="12.5" font-weight="800" fill="#065f46" text-anchor="middle">파장이 길어짐 = 빛 에너지가 줄어듦!</text>
-                  </g>
-                </svg>
+            <div class="pres-stack" style="gap:1rem;">
+              <div class="pres-card" style="padding:0.6rem; text-align:center; background:#080d1a; border:1px solid #1e293b; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.12);">
+                <div style="width:100%; aspect-ratio:16/9; max-height:clamp(250px, 42vh, 480px); border-radius:10px; overflow:hidden; margin:0 auto; background:#080d1a; display:flex; align-items:center; justify-content:center;">
+                  <img src="${getToolAsset('light_energy_wave.jpg')}" alt="빛의 파장과 에너지 전달 모형" style="width:100%; height:100%; object-fit:contain; display:block;">
+                </div>
               </div>
 
               <div class="pres-def-card">
                 <p class="pres-def-text">
-                  <strong class="pres-def-lead">스토크스 이동이란?</strong> 물질이 흡수한 빛의 파장보다 방출하는 형광빛의 파장이 더 길어지는 현상 (에너지 감소)
+                  <strong class="pres-def-lead">에너지와 파장의 관계:</strong> 흡수한 자외선(365nm) 에너지 중 일부를 열로 방출했기 때문에, 남은 에너지가 형광빛(450nm)으로 나올 때는 에너지가 작아져 파장이 더 긴 가시광선(파란빛)이 됩니다.
                 </p>
               </div>
             </div>
           `
         },
 
-        // Slide 9: 에너지 보존 법칙
+        // Slide 9: 생각해보기 (질문)
+        {
+          tag: '',
+          title: '사라진 에너지는 어디로?',
+          content: `
+            <div class="pres-stack pres-inquiry-stack" style="justify-content:center; align-items:center; min-height:280px;">
+              <div class="pres-inquiry-box" style="padding:2.8rem 2rem; max-width:880px; width:100%; text-align:center; box-sizing:border-box;">
+                <div class="inquiry-q" style="font-size:1.35rem; line-height:1.8;">
+                  <span class="inquiry-line">전자가 흡수한 자외선 에너지가 100인데, 방출된 형광빛 에너지는 75에 불과합니다.</span>
+                  <span class="inquiry-line inquiry-accent" style="color:#7c3aed; display:block; margin-top:0.6rem;">그렇다면 나머지 에너지는 어디로 갔을까요?</span>
+                </div>
+              </div>
+            </div>
+          `
+        },
+
+        // Slide 10: 에너지 보존 법칙 (결과 및 공식)
         {
           tag: '',
           title: '에너지 보존 법칙',
           content: `
             <div class="pres-stack pres-conservation-stack">
               <div class="pres-equation-box">
-                <div class="pres-equation-text">
-                  [ 흡수한 자외선 에너지 ] = [ 방출된 형광빛 에너지 ] + [ 잃어버린 열에너지 ]
+                <div class="pres-equation-grid">
+                  <div class="pres-eq-term">흡수한 자외선 에너지</div>
+                  <div class="pres-eq-sign">=</div>
+                  <div class="pres-eq-term">방출된 형광빛 에너지</div>
+                  <div class="pres-eq-sign">+</div>
+                  <div class="pres-eq-term">방출된 열에너지</div>
+
+                  <div class="pres-eq-num">(100)</div>
+                  <div class="pres-eq-num-sign">=</div>
+                  <div class="pres-eq-num">(75)</div>
+                  <div class="pres-eq-num-sign">+</div>
+                  <div class="pres-eq-num">(25)</div>
                 </div>
               </div>
 
               <div class="pres-law-desc-box">
                 <p class="pres-law-desc-p">
-                  • 미시세계의 원자와 전자도 <strong>대자연의 에너지 보존 법칙</strong>을 한 치의 오차 없이 엄격하게 준수합니다.
+                  • 에너지는 사라진 것이 아니라 <strong>'열' 형태로 방출</strong>된 것입니다.
                 </p>
                 <p class="pres-law-desc-p">
-                  • 2단계에서 분자가 진동하며 흘린 열에너지(20~30%)만큼, 3단계에서 방출되는 빛의 에너지가 감소하여 파장이 긴 가시광선으로 바뀝니다.
+                  • 에너지는 사라지지 않고 형태만 바뀌며, <strong>전체 에너지의 총합은 항상 일정하게 보존</strong>됩니다.
                 </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 10: 2차시 배움 확인
-        {
-          tag: '',
-          title: '2차시 핵심 배움 확인',
-          content: `
-            <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🪜</div>
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">에너지 양자화</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  전자는 불연속적인 특정 에너지 계단(궤도)에만 존재하며, 중간 층간에는 머물 수 없습니다.
-                </p>
-              </div>
-              <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🔄</div>
-                <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">전자의 3단계 여정</strong>
-                <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
-                  <strong>자외선 흡수(도약) ➔ 진동 열 방출(손실) ➔ 형광 방출(착지)</strong>의 3단계를 거칩니다.
-                </p>
-              </div>
-              <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">📉</div>
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">스토크스 이동</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  흘린 열에너지 때문에 방출되는 형광의 에너지가 줄어들어 파장이 더 길어집니다.
-                </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 11: 다음 시간에는?
-        {
-          tag: '',
-          title: '다음 시간에는?',
-          content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:300px;">
-              <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
-                <div style="font-size:1.15rem; font-weight:800; color:#2563eb; margin-bottom:0.8rem;">
-                  [3차시] 팽이 스핀과 스마트폰 OLED의 75% 배터리 도둑
-                </div>
-                <div class="inquiry-q" style="line-height:1.8;">
-                  <span style="font-size:1.35rem; font-weight:800; color:#0f172a; display:block;">
-                    "스마트폰 화면을 켜두면 왜 점점 뜨거워지고 배터리가 닳을까요?"
-                  </span>
-                  <span style="font-size:1.35rem; font-weight:800; color:#dc2626; display:block; margin-top:0.6rem;">
-                    전자가 팽이처럼 회전하는 '스핀' 속에 숨겨진 75% 에너지 도둑의 비밀을 파헤칩니다!
-                  </span>
-                </div>
               </div>
             </div>
           `
@@ -1523,7 +1448,7 @@ window.presentationModalData.oled = {
                 <div style="font-size:2.8rem; margin-bottom:0.8rem;">🏆</div>
                 <h3 style="font-size:1.6rem; color:#1d4ed8; margin-bottom:0.8rem; font-weight:800;">4차시 첨단 탐구 여정을 훌륭히 마쳤습니다!</h3>
                 <p style="font-size:1.05rem; line-height:1.8; color:#475569; max-width:680px; margin:0 auto 1.4rem auto; word-break:keep-all;">
-                  어둠 속 형광 탐정단(1차시)부터, 전자의 트램펄린 점프(2차시), 75% 배터리 도둑(3차시), 
+                  어둠 속을 밝히는 형광빛의 원리(1차시)부터, 전자의 에너지 전달(2차시), 75% 배터리 도둑(3차시), 
                   그리고 KAIST 핫 엑시톤 100% 구출 작전(4차시)까지 대한민국의 첨단 과학을 완벽히 정복했습니다.
                 </p>
                 <div style="display:inline-flex; gap:0.8rem; flex-wrap:wrap; justify-content:center;">
