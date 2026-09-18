@@ -1391,16 +1391,16 @@ window.presentationModalData.oled = {
             <div class="pres-grid-2">
               <div class="pres-card">
                 <div class="pres-card-title"><i data-lucide="shield-check"></i> 전략 1: 단단한 분자 결합 설계</div>
-                <p>원자 사이를 강력한 결합 구조로 꽁꽁 묶어 결합이 진동으로 흔들리며 깨지는 것을 원천 차단합니다.</p>
-                <div class="pres-badge-box" style="margin-top:1rem; background:#f0fdf4; border-color:#bbf7d0; color:#15803d;">
-                  <i data-lucide="check"></i> <strong>분자 깨짐 방지 ➔ 화면 번인(Burn-in) 종식!</strong>
+                <p>원자 사이를 강력한 결합 구조로 묶어 결합이 진동으로 흔들리며 깨지는 것을 방지합니다.</p>
+                <div class="pres-badge-box" style="margin-top:1rem; background:#f8fafc; border-color:#e2e8f0; color:#0f172a;">
+                  <i data-lucide="check"></i> <strong>분자 파괴 방지 및 화면 번인(잔상) 방지</strong>
                 </div>
               </div>
-              <div class="pres-card pres-highlight">
+              <div class="pres-card">
                 <div class="pres-card-title"><i data-lucide="zap"></i> 전략 2: 초고속 에너지 전환 경로 연결</div>
-                <p>KAIST CPRL의 초고속 에너지 전환 경로를 분자에 적용하여, 갇혀서 열만 내던 75%의 에너지를 100% 청색 빛으로 구출합니다.</p>
-                <div class="pres-badge-box" style="margin-top:1rem;">
-                  <i data-lucide="sparkles"></i> <strong>배터리 2배 지속 & 이론 효율 100% 달성!</strong>
+                <p>KAIST의 초고속 에너지 전환 경로를 적용하여, 열로 식어버리기 전에 75%의 에너지를 100% 청색 빛으로 전환합니다.</p>
+                <div class="pres-badge-box" style="margin-top:1rem; background:#f8fafc; border-color:#e2e8f0; color:#0f172a;">
+                  <i data-lucide="check"></i> <strong>배터리 효율 2배 향상 및 100% 발광 달성</strong>
                 </div>
               </div>
             </div>

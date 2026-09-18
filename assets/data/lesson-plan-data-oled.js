@@ -869,8 +869,8 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">회로 점등 & 난제 8분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 코인 전지와 구리 테이프로 LED 회로를 구성하여 점등 실습 (전기 ➔ 빛 전환 체험)<br>
-                        • <strong>청색(Blue) OLED의 비극:</strong> 빨강·초록과 달리 파란색은 에너지가 너무 높아 화학 결합이 쉽게 분해됨
+                        • 코인 전지와 구리 테이프로 LED 회로를 구성하여 점등 실습 (전기 → 빛 전환 확인)<br>
+                        • <strong>청색(Blue) OLED의 난제:</strong> 빨강·초록에 비해 빛의 에너지가 높아 분자 결합이 쉽게 파괴되는 한계 분석
                       </p>
                     </div>
 
@@ -881,11 +881,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>열로 식기 전에 빛으로 되돌리는 초고속 에너지 전환 경로:</strong><br>
-                        &nbsp;&nbsp;- 75%의 에너지가 열(분자 진동)로 완전히 식어버리기 전에, 에너지가 높은 상태에서 빛을 낼 수 있는 쪽으로 방향을 틀어주는 <strong>초고속 에너지 전환 경로(KAIST 핫 엑시톤 원천 기술)</strong> 설계!<br>
-                        &nbsp;&nbsp;- <i data-lucide="sparkles" style="width:14px; height:14px; vertical-align:middle; color:#2563eb;"></i> <strong>결과: 비싼 희귀 금속 없이 100% 청색 발광 전환 & 배터리 사용 시간 2배 증대 달성!</strong>
+                        - 75%의 에너지가 열(분자 진동)로 완전히 식어 갇히기 전, 높은 에너지 상태에서 빛을 내는 상태로 방향을 틀어주는 <strong>초고속 에너지 전환 경로(KAIST 핫 엑시톤 기술)</strong> 분석<br>
+                        - <strong>전환 효과:</strong> 희귀 금속 없이 100% 청색 발광 전환 및 배터리 사용 효율 향상
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; color:#0f172a;">
-                        <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강하고 열을 빛으로 바꾸는 나만의 고효율 청색 발광 분자 기획서 작성 [9과23-01]
+                        <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강하고 열을 빛으로 전환하는 고효율 청색 발광 분자 기획서 작성 [9과23-01]
                       </div>
                     </div>
 
@@ -895,8 +895,8 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">피칭 발표 8분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.35rem; color:#334155;">
-                        <strong>[모둠별 1분 피칭]</strong> 스타트업 회사명, 대표 디자이너, 단단한 분자 구조 아이디어, 75% 열-빛 초고속 전환 적용 방안 발표<br>
-                        <strong>[동료 평가]</strong> 3차원 루브릭(과학적 타당성, 창의성 및 기획력) 기반 모둠 간 상호 평가
+                        <strong>[모둠별 1분 피칭]</strong> 스타트업 회사명, 대표 디자이너, 단단한 분자 결합 구조, 75% 열-빛 초고속 전환 적용 방안 발표<br>
+                        <strong>[동료 평가]</strong> 3차원 루브릭(과학적 타당성, 창의성, 기획력) 기반 모둠 간 상호 평가
                       </div>
                     </div>
                   </td>
