@@ -439,6 +439,26 @@ window.presentationModalData.oled = {
             </div>
           `
         },
+
+        // Slide 12: 다음 시간에는? (차시 예고)
+        {
+          tag: '',
+          title: '다음 시간에는?',
+          content: `
+            <div class="pres-stack pres-inquiry-stack" style="justify-content:center; align-items:center; min-height:280px;">
+              <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:960px; width:100%; text-align:center; box-sizing:border-box;">
+                <div class="inquiry-q" style="line-height:1.5;">
+                  <span class="pres-preview-question">
+                    "전자는 자외선 에너지를 어떻게 흡수하여 빛과 열로 전달할까?"
+                  </span>
+                  <span class="pres-preview-subtext">
+                    눈에 보이지 않는 원자 속 전자의 에너지 이동을 가상실험실로 직접 관찰합니다!
+                  </span>
+                </div>
+              </div>
+            </div>
+          `
+        }
       ]
     },
 
@@ -726,6 +746,26 @@ window.presentationModalData.oled = {
                 <p class="pres-law-desc-p">
                   • 에너지는 사라지지 않고 형태만 바뀌며, <strong>전체 에너지의 총합은 항상 일정하게 보존</strong>됩니다.
                 </p>
+              </div>
+            </div>
+          `
+        },
+
+        // Slide 11: 다음 시간에는? (차시 예고)
+        {
+          tag: '',
+          title: '다음 시간에는?',
+          content: `
+            <div class="pres-stack pres-inquiry-stack" style="justify-content:center; align-items:center; min-height:280px;">
+              <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:960px; width:100%; text-align:center; box-sizing:border-box;">
+                <div class="inquiry-q" style="line-height:1.5;">
+                  <span class="pres-preview-question">
+                    "스마트폰은 얼마나 배터리를 낭비하고 있을까?"
+                  </span>
+                  <span class="pres-preview-subtext">
+                    영상이나 게임을 할 때 뜨거워지는 화면 속 1:3 에너지 전환의 비밀이 공개됩니다!
+                  </span>
+                </div>
               </div>
             </div>
           `
