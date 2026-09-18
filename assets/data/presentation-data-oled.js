@@ -608,17 +608,17 @@ window.presentationModalData.oled = {
               <table class="pres-table">
                 <thead>
                   <tr>
-                    <th style="width:20%; text-align:center;">단계</th>
-                    <th style="width:26%;">에너지 출입 형태</th>
-                    <th style="width:26%;">전자의 에너지 전달 과정</th>
-                    <th style="width:28%;">관찰 결과 및 정답</th>
+                    <th style="width:12%; text-align:center;">단계</th>
+                    <th style="width:20%;">에너지 출입 형태</th>
+                    <th style="width:48%;">전자의 에너지 전달 과정</th>
+                    <th style="width:20%;">관찰 결과 및 정답</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td style="text-align:center;"><strong>1단계</strong></td>
                     <td>자외선 빛 에너지</td>
-                    <td>전자가 자외선 빛 에너지를 흡수함</td>
+                    <td style="white-space:nowrap;">전자가 자외선 빛 에너지를 흡수함</td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
@@ -631,7 +631,7 @@ window.presentationModalData.oled = {
                   <tr>
                     <td style="text-align:center;"><strong>2단계</strong></td>
                     <td>열(열에너지)</td>
-                    <td>흡수한 에너지의 일부를 열로 방출함</td>
+                    <td style="white-space:nowrap;">흡수한 에너지의 일부를 열로 방출함</td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
@@ -644,7 +644,7 @@ window.presentationModalData.oled = {
                   <tr>
                     <td style="text-align:center;"><strong>3단계</strong></td>
                     <td>형광빛(가시광선)</td>
-                    <td>남은 에너지를 형광빛으로 방출함</td>
+                    <td style="white-space:nowrap;">남은 에너지를 형광빛으로 방출함</td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
