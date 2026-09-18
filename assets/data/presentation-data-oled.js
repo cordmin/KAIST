@@ -767,11 +767,11 @@ window.presentationModalData.oled = {
                   <strong style="color:#0f172a; font-size:1.02rem; display:block; word-break:keep-all;">영상이나 게임을 오래 하면 뜨거워지는 스마트폰</strong>
                 </div>
 
-                <div class="pres-card pres-highlight" style="padding:0.85rem; text-align:center; background:#fff1f2; border:1px solid #fecdd3; border-radius:12px;">
-                  <div style="width:100%; aspect-ratio:4/3; max-height:220px; border-radius:8px; overflow:hidden; margin-bottom:0.6rem; background:#0f172a; border:1px solid #fecdd3;">
+                <div class="pres-card" style="padding:0.85rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px;">
+                  <div style="width:100%; aspect-ratio:4/3; max-height:220px; border-radius:8px; overflow:hidden; margin-bottom:0.6rem; background:#0f172a; border:1px solid #e2e8f0;">
                     <img src="${getToolAsset('smartphone_battery_drain.jpg')}" alt="발열과 함께 빠르게 소모되는 배터리" style="width:100%; height:100%; object-fit:cover; display:block;">
                   </div>
-                  <strong style="color:#be123c; font-size:1.02rem; display:block; word-break:keep-all;">발열과 함께 순식간에 닳아버리는 배터리</strong>
+                  <strong style="color:#0f172a; font-size:1.02rem; display:block; word-break:keep-all;">발열과 함께 순식간에 닳아버리는 배터리</strong>
                 </div>
               </div>
 
@@ -876,11 +876,11 @@ window.presentationModalData.oled = {
                       눈에는 하얗게 보이지만, 루페로 초근접 확대하면 <strong>빨강(R), 초록(G), 파랑(B)</strong> 화소가 빛을 합성하여 흰색을 만듭니다.
                     </p>
                   </div>
-                  <div class="pres-card pres-highlight" style="padding:1.2rem 1.4rem; background:#eff6ff; border-left:4px solid #3b82f6;">
-                    <div style="font-size:1.15rem; font-weight:800; color:#1d4ed8; margin-bottom:0.45rem;">
+                  <div class="pres-card" style="padding:1.2rem 1.4rem; background:#ffffff; border-left:4px solid #2563eb;">
+                    <div style="font-size:1.15rem; font-weight:800; color:#0f172a; margin-bottom:0.45rem;">
                       스스로 빛을 내는 분자 (OLED)
                     </div>
-                    <p style="font-size:0.98rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
+                    <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                       화면의 작은 화소 하나하나는 배터리 전기를 받아 <strong>스스로 빛을 내는 분자</strong>들로 이루어져 있습니다.
                     </p>
                   </div>
@@ -985,16 +985,16 @@ window.presentationModalData.oled = {
                   버려진 75%의 열이 스마트폰 내부 온도를 높여 기기를 뜨겁게 달굽니다.
                 </p>
               </div>
-              <div class="pres-card pres-highlight" style="text-align:center; padding:1.6rem 1.2rem; background:#fff1f2; border:1px solid #fecdd3;">
+              <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
                 <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔋</div>
-                <strong style="font-size:1.25rem; color:#b91c1c; display:block; margin-bottom:0.6rem;">배터리 조기 방전</strong>
-                <p style="font-size:0.98rem; color:#9f1239; margin:0; line-height:1.6; word-break:keep-all;">
+                <strong style="font-size:1.25rem; color:#dc2626; display:block; margin-bottom:0.6rem;">배터리 조기 방전</strong>
+                <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   전기의 75%가 열로 버려지기 때문에 배터리가 순식간에 닳아 사용 시간이 줄어듭니다.
                 </p>
               </div>
               <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
                 <div style="font-size:2.4rem; margin-bottom:0.75rem;">⚠️</div>
-                <strong style="font-size:1.25rem; color:#d97706; display:block; margin-bottom:0.6rem;">화면 잔상 (번인)</strong>
+                <strong style="font-size:1.25rem; color:#dc2626; display:block; margin-bottom:0.6rem;">화면 잔상 (번인)</strong>
                 <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   지속적인 열에 노출된 분자가 손상되어 화면에 영구적인 얼룩 잔상이 남습니다.
                 </p>
@@ -1016,10 +1016,10 @@ window.presentationModalData.oled = {
                   스마트폰 화면은 빨강, 초록, 파랑 스스로 빛을 내는 화소의 빛 합성으로 색을 만듭니다.
                 </p>
               </div>
-              <div class="pres-card pres-highlight" style="text-align:center; padding:1.6rem 1.2rem; background:#eff6ff; border:1px solid #bfdbfe;">
+              <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
                 <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔄</div>
-                <strong style="font-size:1.25rem; color:#1d4ed8; display:block; margin-bottom:0.6rem;">1:3 에너지 전환</strong>
-                <p style="font-size:0.98rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
+                <strong style="font-size:1.25rem; color:#0f172a; display:block; margin-bottom:0.6rem;">1:3 에너지 전환</strong>
+                <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   배터리 전기를 공급하면 <strong>빛을 내는 분자 25%</strong>, <strong>열을 내는 분자 75%</strong>가 발생합니다.
                 </p>
               </div>
