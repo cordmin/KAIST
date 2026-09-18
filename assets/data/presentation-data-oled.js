@@ -914,7 +914,7 @@ window.presentationModalData.oled = {
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
-                          <strong style="color:#2563eb; font-size:1.02rem;">유용한 화면 빛 방출!</strong>
+                          <strong style="color:#2563eb; font-size:1.05rem;">화면으로 빛을 방출</strong>
                         </div>
                       </div>
                     </td>
@@ -927,7 +927,7 @@ window.presentationModalData.oled = {
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
-                          <strong style="color:#dc2626; font-size:1.02rem;">빛을 내지 못하고 100% 열로 낭비!</strong>
+                          <strong style="color:#dc2626; font-size:1.05rem;">뜨거운 발열로 낭비</strong>
                         </div>
                       </div>
                     </td>
