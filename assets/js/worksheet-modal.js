@@ -102,6 +102,43 @@ function ensureWorksheetModalExists() {
       }
       saveWorksheetInputs(currentModalModule, currentModalLesson);
     });
+
+    // Interactive clicks for OX buttons and Choice Chips
+    studentPane.addEventListener('click', function (e) {
+      if (isModelAnswerMode) return;
+
+      const oxBtn = e.target.closest('.ws-ox-btn');
+      if (oxBtn) {
+        const group = oxBtn.closest('.ws-ox-group');
+        if (group) {
+          const isSelected = oxBtn.classList.contains('selected');
+          group.querySelectorAll('.ws-ox-btn').forEach(b => b.classList.remove('selected'));
+          if (!isSelected) {
+            oxBtn.classList.add('selected');
+            group.setAttribute('data-user-choice', oxBtn.getAttribute('data-choice') || '');
+          } else {
+            group.removeAttribute('data-user-choice');
+          }
+        }
+        return;
+      }
+
+      const chipBtn = e.target.closest('.ws-chip-btn');
+      if (chipBtn) {
+        const group = chipBtn.closest('.ws-chip-group');
+        if (group) {
+          const isSelected = chipBtn.classList.contains('selected');
+          group.querySelectorAll('.ws-chip-btn').forEach(b => b.classList.remove('selected'));
+          if (!isSelected) {
+            chipBtn.classList.add('selected');
+            group.setAttribute('data-user-choice', chipBtn.getAttribute('data-choice') || chipBtn.innerText.trim());
+          } else {
+            group.removeAttribute('data-user-choice');
+          }
+        }
+        return;
+      }
+    });
   }
 
   // Close on Escape key
@@ -175,12 +212,35 @@ function setModalMode(tabType) {
       if (paneTeacher) paneTeacher.classList.remove('active');
 
       answerInputs.forEach(el => {
-        el.value = el.getAttribute('data-answer') || '';
-        el.classList.add('is-model-answer');
-        el.readOnly = true;
-        if (el.tagName === 'TEXTAREA') {
-          autoResizeTextarea(el);
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.value = el.getAttribute('data-answer') || '';
+          el.classList.add('is-model-answer');
+          el.readOnly = true;
+          if (el.tagName === 'TEXTAREA') {
+            autoResizeTextarea(el);
+          }
         }
+      });
+
+      // Highlight OX Groups and Choice Chips in Teacher mode
+      paneStudent.querySelectorAll('.ws-ox-group[data-answer]').forEach(group => {
+        const ans = group.getAttribute('data-answer');
+        group.querySelectorAll('.ws-ox-btn').forEach(btn => {
+          btn.classList.remove('is-model-answer', 'is-correct');
+          if (btn.getAttribute('data-choice') === ans) {
+            btn.classList.add('is-model-answer', 'is-correct');
+          }
+        });
+      });
+
+      paneStudent.querySelectorAll('.ws-chip-group[data-answer]').forEach(group => {
+        const ans = group.getAttribute('data-answer');
+        group.querySelectorAll('.ws-chip-btn').forEach(btn => {
+          btn.classList.remove('is-model-answer', 'is-correct');
+          if (btn.getAttribute('data-choice') === ans || btn.innerText.trim() === ans) {
+            btn.classList.add('is-model-answer', 'is-correct');
+          }
+        });
       });
 
       // Show teacher tips
@@ -211,11 +271,32 @@ function setModalMode(tabType) {
 
     if (hasInteractiveAnswers) {
       answerInputs.forEach(el => {
-        el.classList.remove('is-model-answer');
-        el.readOnly = false;
-        if (el.tagName === 'TEXTAREA') {
-          el.style.height = '';
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.classList.remove('is-model-answer');
+          el.readOnly = false;
+          if (el.tagName === 'TEXTAREA') {
+            el.style.height = '';
+          }
         }
+      });
+
+      // Reset OX and Chip highlights, restore student selections
+      paneStudent.querySelectorAll('.ws-ox-btn, .ws-chip-btn').forEach(btn => {
+        btn.classList.remove('is-model-answer', 'is-correct');
+      });
+
+      paneStudent.querySelectorAll('.ws-ox-group').forEach(group => {
+        const userChoice = group.getAttribute('data-user-choice');
+        group.querySelectorAll('.ws-ox-btn').forEach(btn => {
+          btn.classList.toggle('selected', btn.getAttribute('data-choice') === userChoice);
+        });
+      });
+
+      paneStudent.querySelectorAll('.ws-chip-group').forEach(group => {
+        const userChoice = group.getAttribute('data-user-choice');
+        group.querySelectorAll('.ws-chip-btn').forEach(btn => {
+          btn.classList.toggle('selected', (btn.getAttribute('data-choice') === userChoice || btn.innerText.trim() === userChoice));
+        });
       });
 
       // Hide teacher tips

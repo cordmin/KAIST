@@ -446,7 +446,7 @@ window.presentationModalData.oled = {
     // OLED 2차시: 전자의 에너지 전달
     // -----------------------------------------------------------------------
     2: {
-      lessonTitle: '[2차시] 전자의 에너지 전달 (45분)',
+      lessonTitle: '[2차시] 전자의 에너지 전달',
       badge: 'OLED 2차시 · 전자의 에너지 전달',
       slides: [
         // Slide 1: 표지
@@ -734,212 +734,200 @@ window.presentationModalData.oled = {
     },
 
     // -----------------------------------------------------------------------
-    // OLED 3차시: 스핀과 OLED 75% 배터리 도둑
+    // OLED 3차시: 스마트폰의 배터리 낭비 (1:3 에너지 전환)
     // -----------------------------------------------------------------------
     3: {
-      lessonTitle: '[3차시] 팽이 스핀의 비밀과 스마트폰 OLED의 75% 배터리 도둑',
-      badge: 'OLED 3차시 · 스핀 통계 & 난제',
+      lessonTitle: '[3차시] 스마트폰의 배터리 낭비',
+      badge: 'OLED 3차시 · 1:3 낭비 법칙 & 배터리 난제',
       slides: [
-        // Slide 1: 단독 질문형 표지
+        // Slide 1: 표지
         {
-          tag: '3차시 · 질문',
+          tag: '',
           title: '이번 시간에는?',
           content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:280px;">
-              <div class="pres-inquiry-box" style="padding:2.8rem 2rem; max-width:880px; width:100%; text-align:center; box-sizing:border-box;">
-                <div class="inquiry-q" style="line-height:1.7;">
-                  <span style="font-size:1.3rem; font-weight:700; color:#475569; display:block; margin-bottom:0.5rem;">[3차시] 팽이 스핀과 스마트폰 OLED</span>
-                  <span style="font-size:1.65rem; font-weight:800; color:#0f172a; display:block; white-space:nowrap; letter-spacing:-0.5px;">스마트폰 속 75% 배터리 도둑: 단일항과 삼중항</span>
-                </div>
-              </div>
+            <div class="pres-hero-question">
+              <h1 class="hero-q-text" style="font-size:2.2rem; font-weight:800; letter-spacing:-0.5px; color:#0f172a; word-break:keep-all; line-height:1.5;">
+                스마트폰의 배터리 낭비
+              </h1>
             </div>
           `
         },
 
-        // Slide 2: 동기 유발 & 핵심 질문
+        // Slide 2: 동기 유발 (실사 사진 2컷 + 질문 상자)
         {
-          tag: '3차시 도입 · 핵심 질문',
-          title: '동기 유발: 스마트폰을 켜두면 왜 점점 뜨거워질까?',
+          tag: '',
+          title: '스마트폰을 쓰면 왜 뜨거워질까?',
           content: `
-            <div class="pres-grid-2">
-              <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="smartphone"></i> 일상 속 스마트폰 발열 현상</div>
-                <ul class="pres-list">
-                  <li>스마트폰으로 유튜브를 보거나 게임을 하면 화면 뒤쪽이 점점 따뜻해집니다.</li>
-                  <li>배터리가 닳는 속도도 빨라져 하루에도 몇 번씩 충전기를 찾아야 합니다.</li>
-                  <li>화면을 켜기 위해 넣은 <strong>전기 에너지</strong>는 왜 빛 대신 열로 변하는 걸까요?</li>
-                </ul>
+            <div class="pres-stack" style="gap:0.9rem;">
+              <div class="pres-grid-2" style="gap:1rem;">
+                <div class="pres-card" style="padding:0.85rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px;">
+                  <div style="width:100%; aspect-ratio:4/3; max-height:220px; border-radius:8px; overflow:hidden; margin-bottom:0.6rem; background:#0f172a; border:1px solid #e2e8f0;">
+                    <img src="${getToolAsset('smartphone_heat_demo.jpg')}" alt="장시간 사용 시 뜨거워지는 스마트폰" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  </div>
+                  <strong style="color:#0f172a; font-size:1.02rem; display:block; word-break:keep-all;">영상이나 게임을 오래 하면 뜨거워지는 스마트폰</strong>
+                </div>
+
+                <div class="pres-card pres-highlight" style="padding:0.85rem; text-align:center; background:#fff1f2; border:1px solid #fecdd3; border-radius:12px;">
+                  <div style="width:100%; aspect-ratio:4/3; max-height:220px; border-radius:8px; overflow:hidden; margin-bottom:0.6rem; background:#0f172a; border:1px solid #fecdd3;">
+                    <img src="${getToolAsset('smartphone_battery_drain.jpg')}" alt="발열과 함께 빠르게 소모되는 배터리" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  </div>
+                  <strong style="color:#be123c; font-size:1.02rem; display:block; word-break:keep-all;">발열과 함께 순식간에 닳아버리는 배터리</strong>
+                </div>
               </div>
-              <div class="pres-card pres-highlight">
-                <div class="pres-card-title"><i data-lucide="help-circle"></i> 오늘의 핵심 질문</div>
-                <p style="font-size:1.25rem; font-weight:700; line-height:1.7; color:#fde047;">
-                  "스마트폰 화면에 전기를 주입하면, 왜 25%만 빛이 되고 무려 75%는 쓸모없는 열로 버려질까?"
-                </p>
-                <div class="pres-badge-box" style="margin-top:1.2rem;">
-                  <i data-lucide="rotate-cw"></i> <strong>전자의 자전 팽이: 스핀(Spin) 양자 통계의 비밀!</strong>
+
+              <div class="pres-inquiry-box" style="padding:0.9rem 1.4rem;">
+                <div class="inquiry-q" style="font-size:1.15rem; line-height:1.5;">
+                  "화면을 켜기 위해 배터리 전기를 100 넣었는데,<br>
+                  <span style="color:#e11d48;">왜 화면은 점점 뜨거워지고 배터리는 순식간에 사라질까?</span>"
                 </div>
               </div>
             </div>
           `
         },
 
-        // Slide 3: 학습 목표
+        // Slide 3: 학습목표 (단독 박스 2줄)
         {
-          tag: '3차시 도입 · 학습 목표',
-          title: '오늘의 학습 목표',
+          tag: '',
+          title: '학습목표',
           content: `
-            <div class="pres-stack">
-              <div class="pres-card" style="padding:2.2rem 2.5rem; max-width:820px; margin:0 auto; box-sizing:border-box;">
-                <div class="pres-card-title" style="font-size:1.25rem; margin-bottom:1.4rem;"><i data-lucide="target"></i> 오늘의 학습 목표</div>
-                <ul class="pres-list" style="font-size:1.12rem; line-height:2.0;">
-                  <li>스마트폰 화면 속 <strong>RGB 서브픽셀</strong>을 간이 루페로 관찰하여 색 합성 원리를 탐구한다.</li>
-                  <li>전자의 스핀 방향에 따라 생성되는 <strong>단일항(25%)과 삼중항(75%)</strong>의 확률을 분석한다.</li>
-                  <li>스마트폰 OLED 디스플레이의 <strong>발열 및 배터리 소모 원인</strong>을 과학적으로 설명한다.</li>
-                </ul>
-              </div>
+            <div class="pres-objective-box">
+              <p class="objective-main">
+                <span>스마트폰 화면 속 화소를 관찰하고,</span>
+                <span>전기 공급 시 75%의 전기가 열로 낭비되는 원인을 설명할 수 있다.</span>
+              </p>
             </div>
           `
         },
 
-        // Slide 4: 4열 실습 준비물 카드
+        // Slide 4: 탐구 준비물 (실사 사진 1컷 + 4개 교구명 카드)
         {
-          tag: '3차시 준비 · 실험 교구',
-          title: '3차시 탐구 준비물',
+          tag: '',
+          title: '탐구 준비물',
           content: `
-            <div class="pres-stack">
-              <div class="pres-tools-4col">
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('oled_tool_smartphone.jpg')}" alt="스마트폰 OLED 디스플레이" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">스마트폰 디스플레이</strong>
-                  <p class="tool-card-desc">RGB 서브픽셀 다이아몬드 배열 관찰 화면</p>
+            <div class="pres-stack pres-tools-stack">
+              <div class="pres-tools-img-box">
+                <img src="${getToolAsset('oled_tools_3.jpg')}" alt="3차시 탐구 준비물 실사 사진" class="pres-tools-img">
+              </div>
+              <div class="pres-tools-grid">
+                <div class="pres-tool-name-card">
+                  <strong>마이크로 루페 (60배)</strong>
                 </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('oled_tool_loupe.jpg')}" alt="마이크로 루페 60배" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">마이크로 루페 (60배)</strong>
-                  <p class="tool-card-desc">화면 픽셀을 초근접 확대하는 광학 렌즈</p>
+                <div class="pres-tool-name-card">
+                  <strong>스마트폰 디스플레이</strong>
                 </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('oled_tool_spintop.jpg')}" alt="양자 스핀 회전 팽이" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">양자 스핀 팽이 교구</strong>
-                  <p class="tool-card-desc">전자의 업(↑) / 다운(↓) 스핀 조합 모형</p>
+                <div class="pres-tool-name-card">
+                  <strong>가상실험실</strong>
                 </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('oled_tool_worksheet.jpg')}" alt="스핀 통계 탐구 활동지" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">스핀 탐구 활동지</strong>
-                  <p class="tool-card-desc">확률 계산 및 75% 발열 분석 활동지</p>
+                <div class="pres-tool-name-card">
+                  <strong>탐구 활동지</strong>
                 </div>
               </div>
             </div>
           `
         },
 
-        // Slide 5: 관찰 및 안전 수칙
+        // Slide 5: 관찰 및 기기 보호 수칙 (3열 카드)
         {
-          tag: '3차시 준비 · 관찰 수칙',
-          title: '정밀 광학 관찰 및 기기 보호 수칙',
+          tag: '',
+          title: '관찰 및 기기 보호 수칙',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card safe-blue">
                 <div class="pres-safety-icon"><i data-lucide="shield"></i></div>
                 <div class="pres-safety-title">1. 화면 스크래치 방지</div>
                 <div class="pres-safety-desc">
-                  루페 렌즈의 금속 부위가 스마트폰 액정에 직접 닿지 않도록 클립 보호 패드를 확인합니다.
+                  루페 렌즈의 금속 부위가 액정에 직접 닿지 않도록 <strong>클립 보호 패드를 반드시 확인</strong>합니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-icon"><i data-lucide="eye"></i></div>
-                <div class="pres-safety-title">2. 초점 맞추기 주의</div>
+                <div class="pres-safety-icon"><i data-lucide="smartphone"></i></div>
+                <div class="pres-safety-title">2. 카메라 화면으로 관찰</div>
                 <div class="pres-safety-desc">
-                  너무 가까이 보아 눈이 피로해지지 않도록 스마트폰 카메라 화면으로 미러링하여 함께 관찰합니다.
+                  눈의 피로를 줄이기 위해 루페를 스마트폰 카메라 렌즈에 맞추고 <strong>화면을 보며 함께 관찰</strong>합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
                 <div class="pres-safety-icon"><i data-lucide="battery-warning"></i></div>
-                <div class="pres-safety-title">3. 고온 발열 주의</div>
+                <div class="pres-safety-title">3. 화면 발열 및 전원 관리</div>
                 <div class="pres-safety-desc">
-                  화면 밝기를 최대치로 장시간 켜두면 기기가 뜨거워지므로 관찰 후 화면을 잠시 꺼둡니다.
+                  화면을 장시간 최대 밝기로 켜두면 과열되므로 <strong>관찰 후 스마트폰 화면을 잠시 꺼둡니다</strong>.
                 </div>
               </div>
             </div>
           `
         },
 
-        // Slide 6: 가상실험실(Lab 2) & 스핀 탐구 3단계
+        // Slide 6: 스마트폰 화면 초근접 관찰 (루페 60배 매크로 실사 사진 + 빛의 합성 원리)
         {
-          tag: '3차시 전개 · 탐구 절차',
-          title: '탐구 절차: 서브픽셀 관찰 & 팽이 스핀 확률 실험',
+          tag: '',
+          title: '스마트폰 화면 초근접 관찰',
           content: `
-            <div class="pres-steps-row">
-              <div class="pres-step-box">
-                <div class="step-num">Step 1</div>
-                <div class="step-title">RGB 서브픽셀 관찰</div>
-                <p>스마트폰에 흰색 이미지를 띄운 뒤 마이크로 루페로 R, G, B 다이아몬드 배열 화소를 사진으로 촬영합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 2</div>
-                <div class="step-title">스핀 팽이 조합 매칭</div>
-                <p>두 개의 스핀 팽이를 돌려 서로 반대로 도는 경우(↑↓)와 같은 방향으로 도는 경우(↑↑)의 수를 카운트합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 3</div>
-                <div class="step-title">발광 효율 1:3 계산</div>
-                <p>가상실험실(Lab 2)에서 전자와 정공이 만날 때 단일항과 삼중항이 생성되는 비율을 시뮬레이션합니다.</p>
+            <div class="pres-stack" style="gap:1rem;">
+              <div class="pres-grid-2" style="align-items:center; gap:1.4rem;">
+                <div style="background:#0f172a; border:2px solid #334155; border-radius:14px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 8px 24px rgba(0,0,0,0.25);">
+                  <img src="${getToolAsset('oled_subpixel_macro.jpg')}" alt="루페 60배로 본 스마트폰 화면 화소" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+                <div style="display:flex; flex-direction:column; gap:1rem;">
+                  <div class="pres-card" style="padding:1.2rem 1.4rem; background:#ffffff; border-left:4px solid #2563eb;">
+                    <div style="font-size:1.15rem; font-weight:800; color:#0f172a; margin-bottom:0.45rem;">
+                      빨강 · 초록 · 파랑 화소의 빛 합성
+                    </div>
+                    <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
+                      눈에는 하얗게 보이지만, 루페로 초근접 확대하면 <strong>빨강(R), 초록(G), 파랑(B)</strong> 화소가 빛을 합성하여 흰색을 만듭니다.
+                    </p>
+                  </div>
+                  <div class="pres-card pres-highlight" style="padding:1.2rem 1.4rem; background:#eff6ff; border-left:4px solid #3b82f6;">
+                    <div style="font-size:1.15rem; font-weight:800; color:#1d4ed8; margin-bottom:0.45rem;">
+                      스스로 빛을 내는 분자 (OLED)
+                    </div>
+                    <p style="font-size:0.98rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
+                      화면의 작은 화소 하나하나는 배터리 전기를 받아 <strong>스스로 빛을 내는 분자</strong>들로 이루어져 있습니다.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           `
         },
 
-        // Slide 7: 시뮬레이션 관찰 결과표
+        // Slide 7: 1:3 에너지 전환 법칙 (인터랙티브 결과표)
         {
-          tag: '3차시 전개 · 결과 분석',
-          title: '스핀 통계 및 발광 확률 결과표',
+          tag: '',
+          title: '전기 공급 시 1:3 에너지 전환 결과',
           content: `
             <div class="pres-table-wrap">
               <table class="pres-table">
                 <thead>
                   <tr>
-                    <th style="width:22%;">상태 이름</th>
-                    <th style="width:24%;">스핀 회전 방향</th>
-                    <th style="width:20%;">생성 확률</th>
-                    <th style="width:34%;">빛 방출 여부 & 결과</th>
+                    <th style="width:26%;">구분</th>
+                    <th style="width:24%;">에너지 방출 형태</th>
+                    <th style="width:20%;">생성 비율</th>
+                    <th style="width:30%;">결과 및 특성</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>단일항 (Singlet, S₁)</strong></td>
-                    <td>서로 반대 방향 (↑↓)</td>
-                    <td><strong style="color:#2563eb; font-size:1.1rem;">25%</strong> (1/4)</td>
+                    <td><strong>빛을 내는 분자</strong></td>
+                    <td>유용한 화면 빛</td>
+                    <td><strong style="color:#2563eb; font-size:1.2rem;">25%</strong> (1/4)</td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
-                          <strong style="color:#2563eb; font-size:1.02rem;">비상문 열림 ➔ 1억 분의 1초 만에 빛 방출 성공!</strong>
+                          <strong style="color:#2563eb; font-size:1.02rem;">유용한 화면 빛 방출!</strong>
                         </div>
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td><strong>삼중항 (Triplet, T₁)</strong></td>
-                    <td>서로 같은 방향 (↑↑)</td>
-                    <td><strong style="color:#dc2626; font-size:1.1rem;">75%</strong> (3/4)</td>
+                    <td><strong>열을 내는 분자</strong></td>
+                    <td>쓸모없는 발열</td>
+                    <td><strong style="color:#dc2626; font-size:1.2rem;">75%</strong> (3/4)</td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
-                          <strong style="color:#dc2626; font-size:1.02rem;">비상문 잠김 ➔ 빛을 못 내고 100% '열'로 소멸!</strong>
+                          <strong style="color:#dc2626; font-size:1.02rem;">빛을 내지 못하고 100% 열로 낭비!</strong>
                         </div>
                       </div>
                     </td>
@@ -950,140 +938,118 @@ window.presentationModalData.oled = {
           `
         },
 
-        // Slide 8: 인라인 SVG 단일항 vs 삼중항 전자 스핀 벡터 다이어그램
+        // Slide 8: 에너지 보존 법칙 (수업지도안 공식 완벽 일치)
         {
-          tag: '3차시 전개 · 과학 다이어그램',
-          title: '전자의 팽이 스핀과 1:3 양자 확률 통계',
-          content: `
-            <div class="pres-stack pres-spectrum-stack">
-              <div class="pres-spectrum-img-card" style="padding:0.8rem 1.2rem;">
-                <svg viewBox="0 0 860 215" width="100%" height="100%" style="max-height:240px; display:block; font-family:'Pretendard', sans-serif;">
-                  <!-- 단일항 카드 (25%) -->
-                  <g transform="translate(30, 15)">
-                    <rect x="0" y="0" width="370" height="185" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2" />
-                    <rect x="15" y="12" width="130" height="26" rx="6" fill="#2563eb" />
-                    <text x="80" y="30" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">단일항 (Singlet, S₁)</text>
-                    <text x="355" y="32" font-size="18" font-weight="900" fill="#2563eb" text-anchor="end">25% (1/4)</text>
-
-                    <!-- 스핀 모형 (마주보고 회전: ↑↓) -->
-                    <circle cx="85" cy="95" r="32" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
-                    <text x="85" y="103" font-size="26" font-weight="900" fill="#2563eb" text-anchor="middle">↑</text>
-                    <text x="130" y="101" font-size="16" font-weight="800" fill="#64748b" text-anchor="middle">+</text>
-                    <circle cx="175" cy="95" r="32" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
-                    <text x="175" y="103" font-size="26" font-weight="900" fill="#2563eb" text-anchor="middle">↓</text>
-
-                    <!-- 상태 설명 -->
-                    <text x="230" y="80" font-size="13.5" font-weight="800" fill="#1e40af">• 서로 반대 회전 (합 = 0)</text>
-                    <text x="230" y="104" font-size="13.5" font-weight="800" fill="#1e40af">• 탈출 비상문 활짝 열림</text>
-                    <rect x="230" y="118" width="125" height="28" rx="6" fill="#dbeafe" />
-                    <text x="292" y="137" font-size="12.5" font-weight="800" fill="#1d4ed8" text-anchor="middle">✨ 100% 형광 방출</text>
-                    <text x="185" y="172" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">1억 분의 1초(나노초) 만에 번쩍 발광!</text>
-                  </g>
-
-                  <!-- 삼중항 카드 (75%) -->
-                  <g transform="translate(460, 15)">
-                    <rect x="0" y="0" width="370" height="185" rx="12" fill="#fff1f2" stroke="#fecdd3" stroke-width="2" />
-                    <rect x="15" y="12" width="130" height="26" rx="6" fill="#e11d48" />
-                    <text x="80" y="30" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">삼중항 (Triplet, T₁)</text>
-                    <text x="355" y="32" font-size="18" font-weight="900" fill="#e11d48" text-anchor="end">75% (3/4)</text>
-
-                    <!-- 스핀 모형 (나란히 회전: ↑↑) -->
-                    <circle cx="85" cy="95" r="32" fill="#ffffff" stroke="#f43f5e" stroke-width="2" />
-                    <text x="85" y="103" font-size="26" font-weight="900" fill="#e11d48" text-anchor="middle">↑</text>
-                    <text x="130" y="101" font-size="16" font-weight="800" fill="#64748b" text-anchor="middle">+</text>
-                    <circle cx="175" cy="95" r="32" fill="#ffffff" stroke="#f43f5e" stroke-width="2" />
-                    <text x="175" y="103" font-size="26" font-weight="900" fill="#e11d48" text-anchor="middle">↑</text>
-
-                    <!-- 상태 설명 -->
-                    <text x="230" y="80" font-size="13.5" font-weight="800" fill="#9f1239">• 같은 방향 회전 (합 = 1)</text>
-                    <text x="230" y="104" font-size="13.5" font-weight="800" fill="#9f1239">• 탈출 비상문 굳게 잠김</text>
-                    <rect x="230" y="118" width="125" height="28" rx="6" fill="#ffe4e6" />
-                    <text x="292" y="137" font-size="12.5" font-weight="800" fill="#be123c" text-anchor="middle">🔥 100% 열로 낭비</text>
-                    <text x="185" y="172" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">빛을 내지 못하고 스마트폰을 뜨겁게 달굼!</text>
-                  </g>
-                </svg>
-              </div>
-
-              <div class="pres-def-card">
-                <p class="pres-def-text">
-                  <strong class="pres-def-lead">스핀 통계 1:3이란?</strong> 전기를 넣으면 양자 스핀 조합 확률에 의해 단일항(25%)과 삼중항(75%)이 생성되는 양자역학적 물리 법칙
-                </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 9: 75% 배터리 도둑의 진실
-        {
-          tag: '3차시 전개 · 핵심 원리',
-          title: '스마트폰 화면 속 75% 배터리 도둑',
+          tag: '',
+          title: '에너지 보존 법칙',
           content: `
             <div class="pres-stack pres-conservation-stack">
               <div class="pres-equation-box">
-                <div class="pres-equation-text">
-                  [ 주입된 배터리 전기 ] = [ 25% 유용한 형광빛 ] + [ 75% 버려지는 열에너지 ]
+                <div class="pres-equation-grid">
+                  <div class="pres-eq-term">공급된 배터리 전기</div>
+                  <div class="pres-eq-sign">=</div>
+                  <div class="pres-eq-term">유용한 화면 빛</div>
+                  <div class="pres-eq-sign">+</div>
+                  <div class="pres-eq-term">버려지는 열에너지</div>
+
+                  <div class="pres-eq-num">(100)</div>
+                  <div class="pres-eq-num-sign">=</div>
+                  <div class="pres-eq-num">(25)</div>
+                  <div class="pres-eq-num-sign">+</div>
+                  <div class="pres-eq-num">(75)</div>
                 </div>
               </div>
 
               <div class="pres-law-desc-box">
                 <p class="pres-law-desc-p">
-                  • <strong>양자역학적 선택 규칙:</strong> 삼중항 전자는 바닥 상태와 스핀 방향이 달라 빛을 내며 내려오는 비상문이 굳게 닫힙니다.
+                  • 전기를 넣었을 때 <strong>분자의 75%는 빛을 내지 못하고</strong> 심하게 진동하며 열을 방출합니다.
                 </p>
                 <p class="pres-law-desc-p">
-                  • <strong>치명적 75% 열 손실:</strong> 갇힌 삼중항 전자는 빛을 뿜지 못하고 분자를 부르르 떨게 만들어 화면 발열과 번인(Burn-in)을 유발합니다.
+                  • 에너지는 사라진 것이 아니라 열로 바뀐 것이며, <strong>전체 에너지의 총합은 항상 보존</strong>됩니다.
                 </p>
               </div>
             </div>
           `
         },
 
-        // Slide 10: 3차시 핵심 배움 확인
+        // Slide 9: 75% 열 손실이 스마트폰에 주는 영향 (지도안 모둠 토의 3대 피해)
         {
-          tag: '3차시 정리 · 배움 확인',
-          title: '3차시 핵심 배움 확인',
+          tag: '',
+          title: '75% 열 손실이 스마트폰에 주는 영향',
           content: `
             <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🔍</div>
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">RGB 서브픽셀</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  스마트폰 화면은 빨강(R), 초록(G), 파랑(B) 미세 화소의 빛 합성으로 모든 색을 표현합니다.
+              <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
+                <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔥</div>
+                <strong style="font-size:1.25rem; color:#dc2626; display:block; margin-bottom:0.6rem;">기기 과열 (발열)</strong>
+                <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
+                  버려진 75%의 열이 스마트폰 내부 온도를 높여 기기를 뜨겁게 달굽니다.
                 </p>
               </div>
-              <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🔄</div>
-                <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">스핀 확률 1:3</strong>
-                <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
-                  전기를 넣으면 <strong>단일항(25%)</strong>만 빛을 내고, <strong>삼중항(75%)</strong>은 빛을 못 냅니다.
+              <div class="pres-card pres-highlight" style="text-align:center; padding:1.6rem 1.2rem; background:#fff1f2; border:1px solid #fecdd3;">
+                <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔋</div>
+                <strong style="font-size:1.25rem; color:#b91c1c; display:block; margin-bottom:0.6rem;">배터리 조기 방전</strong>
+                <p style="font-size:0.98rem; color:#9f1239; margin:0; line-height:1.6; word-break:keep-all;">
+                  전기의 75%가 열로 버려지기 때문에 배터리가 순식간에 닳아 사용 시간이 줄어듭니다.
                 </p>
               </div>
-              <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">⚠️</div>
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">75% 발열 난제</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  삼중항에 갇힌 75%의 전자가 열을 뿜어 배터리를 소모시키고 스마트폰을 뜨겁게 달굽니다.
+              <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
+                <div style="font-size:2.4rem; margin-bottom:0.75rem;">⚠️</div>
+                <strong style="font-size:1.25rem; color:#d97706; display:block; margin-bottom:0.6rem;">화면 잔상 (번인)</strong>
+                <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
+                  지속적인 열에 노출된 분자가 손상되어 화면에 영구적인 얼룩 잔상이 남습니다.
                 </p>
               </div>
             </div>
           `
         },
 
-        // Slide 11: 다음 시간에는?
+        // Slide 10: 3차시 핵심 배움 정리
         {
-          tag: '3차시 정리 · 차시 예고',
+          tag: '',
+          title: '3차시 핵심 배움 정리',
+          content: `
+            <div class="pres-grid-3">
+              <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
+                <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔍</div>
+                <strong style="font-size:1.25rem; color:#0f172a; display:block; margin-bottom:0.6rem;">화소와 빛의 합성</strong>
+                <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
+                  스마트폰 화면은 빨강, 초록, 파랑 스스로 빛을 내는 화소의 빛 합성으로 색을 만듭니다.
+                </p>
+              </div>
+              <div class="pres-card pres-highlight" style="text-align:center; padding:1.6rem 1.2rem; background:#eff6ff; border:1px solid #bfdbfe;">
+                <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔄</div>
+                <strong style="font-size:1.25rem; color:#1d4ed8; display:block; margin-bottom:0.6rem;">1:3 에너지 전환</strong>
+                <p style="font-size:0.98rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
+                  배터리 전기를 공급하면 <strong>빛을 내는 분자 25%</strong>, <strong>열을 내는 분자 75%</strong>가 발생합니다.
+                </p>
+              </div>
+              <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
+                <div style="font-size:2.4rem; margin-bottom:0.75rem;">⚡</div>
+                <strong style="font-size:1.25rem; color:#0f172a; display:block; margin-bottom:0.6rem;">75% 배터리 난제</strong>
+                <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
+                  빛을 내지 못한 75%가 열로 낭비되어 화면 발열과 배터리 조기 소모를 일으킵니다.
+                </p>
+              </div>
+            </div>
+          `
+        },
+
+        // Slide 11: 다음 시간에는? (차시 예고)
+        {
+          tag: '',
           title: '다음 시간에는?',
           content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:300px;">
-              <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
+            <div class="pres-stack pres-inquiry-stack" style="justify-content:center; align-items:center; min-height:280px;">
+              <div class="pres-inquiry-box" style="padding:3rem 2rem; max-width:900px; width:100%; text-align:center; box-sizing:border-box;">
                 <div style="font-size:1.15rem; font-weight:800; color:#2563eb; margin-bottom:0.8rem;">
                   [4차시] KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너
                 </div>
-                <div class="inquiry-q" style="line-height:1.8;">
-                  <span style="font-size:1.35rem; font-weight:800; color:#0f172a; display:block;">
-                    "갇혀서 열만 내는 75%의 전자를 구출할 기적의 방법은 없을까?"
+                <div class="inquiry-q" style="font-size:1.35rem; line-height:1.8;">
+                  <span style="color:#0f172a; display:block;">
+                    "열로 식어버리는 75%의 에너지를 빛으로 구출할 방법은 없을까?"
                   </span>
-                  <span style="font-size:1.35rem; font-weight:800; color:#2563eb; display:block; margin-top:0.6rem;">
-                    대한민국 KAIST CPRL 연구팀의 세계적 원천 기술, '핫 엑시톤 구름다리'가 공개됩니다!
+                  <span style="color:#2563eb; display:block; margin-top:0.6rem; font-size:1.2rem;">
+                    열로 식기 전에 빛으로 되돌리는 대한민국 KAIST의 초고속 에너지 전환 기술이 공개됩니다!
                   </span>
                 </div>
               </div>
@@ -1109,7 +1075,7 @@ window.presentationModalData.oled = {
               <div class="pres-inquiry-box" style="padding:2.8rem 2rem; max-width:880px; width:100%; text-align:center; box-sizing:border-box;">
                 <div class="inquiry-q" style="line-height:1.7;">
                   <span style="font-size:1.3rem; font-weight:700; color:#475569; display:block; margin-bottom:0.5rem;">[4차시] KAIST의 75% 구출 작전</span>
-                  <span style="font-size:1.65rem; font-weight:800; color:#0f172a; display:block; white-space:nowrap; letter-spacing:-0.5px;">KAIST 핫 엑시톤 기술과 미래 청색 분자 디자이너</span>
+                  <span style="font-size:1.65rem; font-weight:800; color:#0f172a; display:block; white-space:nowrap; letter-spacing:-0.5px;">KAIST 초고속 에너지 전환 기술과 미래 청색 분자 디자이너</span>
                 </div>
               </div>
             </div>
@@ -1133,10 +1099,10 @@ window.presentationModalData.oled = {
               <div class="pres-card pres-highlight">
                 <div class="pres-card-title"><i data-lucide="help-circle"></i> 오늘의 핵심 질문</div>
                 <p style="font-size:1.25rem; font-weight:700; line-height:1.7; color:#fde047;">
-                  "KAIST 연구팀은 어떻게 갇혀 있던 75%의 삼중항 전자를 빛으로 구출하여 효율 100%를 달성했을까?"
+                  "KAIST 연구팀은 어떻게 열로 버려지던 75%의 에너지를 빛으로 구출하여 효율 100%를 달성했을까?"
                 </p>
                 <div class="pres-badge-box" style="margin-top:1.2rem;">
-                  <i data-lucide="rocket"></i> <strong>핫 엑시톤(Hot Exciton) 옥상 초고속 구름다리의 비밀!</strong>
+                  <i data-lucide="zap"></i> <strong>열로 식기 전에 빛으로 되돌리는 초고속 에너지 전환 기술!</strong>
                 </div>
               </div>
             </div>
@@ -1152,7 +1118,7 @@ window.presentationModalData.oled = {
               <div class="pres-card" style="padding:2.2rem 2.5rem; max-width:820px; margin:0 auto; box-sizing:border-box;">
                 <div class="pres-card-title" style="font-size:1.25rem; margin-bottom:1.4rem;"><i data-lucide="target"></i> 오늘의 학습 목표</div>
                 <ul class="pres-list" style="font-size:1.12rem; line-height:2.0;">
-                  <li>KAIST CPRL 연구진의 <strong>핫 엑시톤(Hot Exciton) 원천 기술</strong> 원리를 설명할 수 있다.</li>
+                  <li>KAIST CPRL 연구진의 <strong>초고속 에너지 전환 원천 기술</strong> 원리를 설명할 수 있다.</li>
                   <li>차세대 디스플레이의 최대 난제인 <strong>청색(Blue) OLED 수명 및 효율</strong> 문제 해결 방안을 탐구한다.</li>
                   <li>첨단 디스플레이를 개발하는 <strong>미래 분자 디자이너 프로젝트 기획서</strong>를 작성하고 발표한다.</li>
                 </ul>
@@ -1189,7 +1155,7 @@ window.presentationModalData.oled = {
                     <img src="${getToolAsset('oled_tool_tablet.jpg')}" alt="KAIST 분자 설계 태블릿" class="tool-img-real">
                   </div>
                   <strong class="tool-card-title">분자 시뮬레이터 앱</strong>
-                  <p class="tool-card-desc">핫 엑시톤 구름다리를 설계하는 디지털 앱</p>
+                  <p class="tool-card-desc">초고속 에너지 전환 경로를 설계하는 디지털 앱</p>
                 </div>
 
                 <div class="pres-tool-card">
@@ -1238,7 +1204,7 @@ window.presentationModalData.oled = {
         // Slide 6: 프로젝트 3단계
         {
           tag: '4차시 전개 · 탐구 절차',
-          title: '탐구 활동: KAIST 핫 엑시톤 구름다리 연결 미션',
+          title: '탐구 활동: KAIST 초고속 에너지 전환 미션',
           content: `
             <div class="pres-steps-row">
               <div class="pres-step-box">
@@ -1249,14 +1215,14 @@ window.presentationModalData.oled = {
               <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
               <div class="pres-step-box">
                 <div class="step-num">Step 2</div>
-                <div class="step-title">핫 엑시톤 구름다리 조작</div>
-                <p>가상실험실(Lab 3)에서 옥상 삼중항(T₂)과 단일항(S₁) 사이에 <strong>초고속 역간교차(RISC) 구름다리</strong>를 연결합니다.</p>
+                <div class="step-title">초고속 에너지 전환 경로 연결</div>
+                <p>가상실험실(Lab 3)에서 열로 식어버리기 전에 빛을 낼 수 있는 상태로 방향을 전환하는 <strong>초고속 에너지 전환 경로</strong>를 연결합니다.</p>
               </div>
               <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
               <div class="pres-step-box">
                 <div class="step-num">Step 3</div>
                 <div class="step-title">발광 효율 100% 달성</div>
-                <p>갇혀 있던 75%의 전자가 구름다리를 건너 단일항으로 변신한 뒤 100% 찬란한 빛으로 뿜어져 나오는 효율을 확인합니다.</p>
+                <p>버려지던 75%의 에너지가 초고속으로 전환되어 100% 찬란한 빛으로 뿜어져 나오는 효율을 확인합니다.</p>
               </div>
             </div>
           `
@@ -1280,7 +1246,7 @@ window.presentationModalData.oled = {
                 <tbody>
                   <tr>
                     <td><strong>1세대 (형광)</strong></td>
-                    <td>단일항 전자만 발광</td>
+                    <td>빛을 내는 분자만 발광</td>
                     <td>최대 <strong>25%</strong></td>
                     <td>75% 열 손실로 화면 과열 및 배터리 소모 심함</td>
                   </tr>
@@ -1291,8 +1257,8 @@ window.presentationModalData.oled = {
                     <td>희귀 금속으로 매우 비쌈, <strong>청색 인광은 수명 극히 짧음</strong></td>
                   </tr>
                   <tr>
-                    <td><strong>4세대 (KAIST 핫 엑시톤)</strong></td>
-                    <td>고에너지 옥상 구름다리 (RISC)</td>
+                    <td><strong>4세대 (KAIST 초고속 에너지 전환)</strong></td>
+                    <td>열로 식기 전 초고속 빛 전환 (핫 엑시톤 기술)</td>
                     <td><strong style="color:#2563eb; font-size:1.1rem;">100%</strong></td>
                     <td>
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
@@ -1309,10 +1275,10 @@ window.presentationModalData.oled = {
           `
         },
 
-        // Slide 8: 인라인 SVG KAIST 핫 엑시톤 메커니즘 벡터 다이어그램
+        // Slide 8: 인라인 SVG KAIST 초고속 에너지 전환 메커니즘 다이어그램
         {
           tag: '4차시 전개 · 과학 다이어그램',
-          title: 'KAIST CPRL 핫 엑시톤(Hot Exciton) 옥상 구름다리 메커니즘',
+          title: 'KAIST CPRL 초고속 에너지 전환 메커니즘 (핫 엑시톤 기술)',
           content: `
             <div class="pres-stack pres-spectrum-stack">
               <div class="pres-spectrum-img-card" style="padding:0.8rem 1.2rem;">
@@ -1326,47 +1292,47 @@ window.presentationModalData.oled = {
                     </marker>
                   </defs>
 
-                  <!-- 1층 S0 바닥 상태 레벨 -->
+                  <!-- 1층 바닥 상태 레벨 -->
                   <line x1="60" y1="175" x2="520" y2="175" stroke="#0f172a" stroke-width="3" />
-                  <text x="70" y="195" font-size="13" font-weight="800" fill="#475569">바닥 상태 (S₀)</text>
+                  <text x="70" y="195" font-size="13" font-weight="800" fill="#475569">바닥 상태 (안정된 상태)</text>
 
-                  <!-- 삼중항 사다리 (좌측: T1 바닥 vs T2 옥상) -->
-                  <!-- 옥상 T2 -->
+                  <!-- 에너지 상태 사다리 (좌측: 높은 상태 vs 열 식는 경로) -->
+                  <!-- 높은 상태 -->
                   <line x1="80" y1="50" x2="220" y2="50" stroke="#dc2626" stroke-width="3" />
-                  <rect x="75" y="24" width="115" height="22" rx="5" fill="#fef2f2" stroke="#fecaca" stroke-width="1" />
-                  <text x="132" y="40" font-size="12" font-weight="800" fill="#dc2626" text-anchor="middle">옥상 삼중항 (T₂)</text>
+                  <rect x="75" y="24" width="130" height="22" rx="5" fill="#fef2f2" stroke="#fecaca" stroke-width="1" />
+                  <text x="140" y="40" font-size="12" font-weight="800" fill="#dc2626" text-anchor="middle">에너지가 높은 상태</text>
 
-                  <!-- 1층 T1 (갇힌 곳) -->
+                  <!-- 열로 식어버리는 경로 (갇힌 곳) -->
                   <line x1="80" y1="120" x2="220" y2="120" stroke="#991b1b" stroke-width="2.5" stroke-dasharray="4,3" />
-                  <text x="150" y="138" font-size="11.5" font-weight="700" fill="#991b1b" text-anchor="middle">갇힌 삼중항 (T₁) ➔ 열 손실</text>
+                  <text x="150" y="138" font-size="11.5" font-weight="700" fill="#991b1b" text-anchor="middle">열로 식어버리는 경로 (75% 손실)</text>
 
-                  <!-- 단일항 레벨 (우측: S1) -->
+                  <!-- 빛을 내는 상태 레벨 (우측) -->
                   <line x1="360" y1="65" x2="500" y2="65" stroke="#2563eb" stroke-width="3" />
                   <rect x="375" y="38" width="110" height="22" rx="5" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1" />
-                  <text x="430" y="54" font-size="12" font-weight="800" fill="#1d4ed8" text-anchor="middle">단일항 (S₁)</text>
+                  <text x="430" y="54" font-size="12" font-weight="800" fill="#1d4ed8" text-anchor="middle">빛을 내는 상태</text>
 
-                  <!-- KAIST 핫 엑시톤 초고속 구름다리 화살표 (T2 -> S1) -->
+                  <!-- KAIST 초고속 에너지 전환 경로 화살표 -->
                   <path d="M 220 50 Q 290 35 355 60" fill="none" stroke="#2563eb" stroke-width="4" marker-end="url(#arrowR4)" />
-                  <rect x="235" y="12" width="120" height="24" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2" />
-                  <text x="295" y="28" font-size="11.5" font-weight="900" fill="#1d4ed8" text-anchor="middle">⚡ 초고속 RISC 구름다리</text>
+                  <rect x="225" y="12" width="150" height="24" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.2" />
+                  <text x="300" y="28" font-size="11.5" font-weight="900" fill="#1d4ed8" text-anchor="middle">⚡ 초고속 에너지 전환 경로</text>
 
-                  <!-- T1으로 떨어지기 전 옥상에서 구출 화살표 -->
-                  <text x="145" y="85" font-size="11" font-weight="800" fill="#dc2626" text-anchor="middle">떨어지기 전에 옥상 탈출!</text>
+                  <!-- 식어버리기 전 전환 화살표 설명 -->
+                  <text x="145" y="85" font-size="11" font-weight="800" fill="#dc2626" text-anchor="middle">식어버리기 전에 빛으로 전환!</text>
 
-                  <!-- 100% 청색 형광 방출 화살표 (S1 -> S0) -->
+                  <!-- 100% 청색 형광 방출 화살표 -->
                   <line x1="430" y1="65" x2="430" y2="170" stroke="#2563eb" stroke-width="4" marker-end="url(#arrowDown4)" />
                   <rect x="445" y="105" width="125" height="26" rx="6" fill="#2563eb" />
-                  <text x="507" y="122" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">✨ 100% 청색 형광 방출</text>
+                  <text x="507" y="122" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">✨ 100% 청색 빛 방출</text>
 
                   <!-- 우측: 핵심 원리 요약 박스 -->
                   <g transform="translate(560, 20)">
                     <rect x="0" y="0" width="280" height="175" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2" />
-                    <text x="140" y="30" font-size="14.5" font-weight="800" fill="#0f172a" text-anchor="middle">KAIST 핫 엑시톤 원리</text>
+                    <text x="140" y="30" font-size="14.5" font-weight="800" fill="#0f172a" text-anchor="middle">KAIST 초고속 전환 원리</text>
                     <line x1="15" y1="44" x2="265" y2="44" stroke="#e2e8f0" stroke-width="1" />
                     
-                    <text x="20" y="72" font-size="12.5" font-weight="700" fill="#991b1b">• 갇힌 75% 삼중항이 바닥으로</text>
-                    <text x="32" y="92" font-size="12" font-weight="700" fill="#991b1b">내려가기 전 옥상(T₂)에서 포착</text>
-                    <text x="20" y="118" font-size="12.5" font-weight="700" fill="#1d4ed8">• 단일항(S₁)으로 번개처럼 우회</text>
+                    <text x="20" y="72" font-size="12.5" font-weight="700" fill="#991b1b">• 75%의 에너지가 열로 완전히</text>
+                    <text x="32" y="92" font-size="12" font-weight="700" fill="#991b1b">식기 전 높은 에너지에서 포착</text>
+                    <text x="20" y="118" font-size="12.5" font-weight="700" fill="#1d4ed8">• 빛을 내는 상태로 초고속 전환</text>
                     
                     <rect x="15" y="132" width="250" height="34" rx="7" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
                     <text x="140" y="154" font-size="12" font-weight="800" fill="#065f46" text-anchor="middle">75% 열 손실 ➔ 100% 빛으로 완벽 구출!</text>
@@ -1376,7 +1342,7 @@ window.presentationModalData.oled = {
 
               <div class="pres-def-card">
                 <p class="pres-def-text">
-                  <strong class="pres-def-lead">핫 엑시톤(Hot Exciton)이란?</strong> 에너지가 높은 옥상 삼중항(T₂) 상태에서 단일항(S₁)으로 초고속 역간교차(RISC)하여 100% 빛으로 전환하는 KAIST 원천 기술
+                  <strong class="pres-def-lead">초고속 에너지 전환(핫 엑시톤)이란?</strong> 75%의 에너지가 열로 식어버리기 전, 에너지가 높은 상태에서 빛을 낼 수 있는 상태로 초고속 전환시켜 100% 빛을 내게 하는 KAIST 원천 기술
                 </p>
               </div>
             </div>
@@ -1390,15 +1356,15 @@ window.presentationModalData.oled = {
           content: `
             <div class="pres-grid-2">
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="shield-check"></i> 전략 1: 단단한 벤젠 결합 설계</div>
-                <p>원자 사이를 강력한 다환 방향족 결합(벤젠 고리)으로 꽁꽁 묶어 결합이 진동으로 흔들리며 깨지는 것을 원천 차단합니다.</p>
+                <div class="pres-card-title"><i data-lucide="shield-check"></i> 전략 1: 단단한 분자 결합 설계</div>
+                <p>원자 사이를 강력한 결합 구조로 꽁꽁 묶어 결합이 진동으로 흔들리며 깨지는 것을 원천 차단합니다.</p>
                 <div class="pres-badge-box" style="margin-top:1rem; background:#f0fdf4; border-color:#bbf7d0; color:#15803d;">
                   <i data-lucide="check"></i> <strong>분자 깨짐 방지 ➔ 화면 번인(Burn-in) 종식!</strong>
                 </div>
               </div>
               <div class="pres-card pres-highlight">
-                <div class="pres-card-title"><i data-lucide="git-merge"></i> 전략 2: 핫 엑시톤 우회로 연결</div>
-                <p>KAIST CPRL 핫 엑시톤 구름다리 구조를 분자에 프로그래밍하여, 갇혀서 열만 내던 75%의 삼중항을 100% 청색 형광으로 탈출시킵니다.</p>
+                <div class="pres-card-title"><i data-lucide="zap"></i> 전략 2: 초고속 에너지 전환 경로 연결</div>
+                <p>KAIST CPRL의 초고속 에너지 전환 경로를 분자에 적용하여, 갇혀서 열만 내던 75%의 에너지를 100% 청색 빛으로 구출합니다.</p>
                 <div class="pres-badge-box" style="margin-top:1rem;">
                   <i data-lucide="sparkles"></i> <strong>배터리 2배 지속 & 이론 효율 100% 달성!</strong>
                 </div>
@@ -1421,10 +1387,10 @@ window.presentationModalData.oled = {
                 </p>
               </div>
               <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🌉</div>
-                <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">핫 엑시톤 원천 기술</strong>
+                <div style="font-size:2rem; margin-bottom:0.6rem;">⚡</div>
+                <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">초고속 에너지 전환</strong>
                 <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
-                  옥상 삼중항(T₂)에서 단일항(S₁)으로 번개처럼 건너가는 역간교차 초고속 구름다리
+                  열로 식어버리기 전에 빛을 내는 상태로 순식간에 방향을 바꾸는 초고속 에너지 전환 원천 기술
                 </p>
               </div>
               <div class="pres-card" style="text-align:center;">
@@ -1449,7 +1415,7 @@ window.presentationModalData.oled = {
                 <h3 style="font-size:1.6rem; color:#1d4ed8; margin-bottom:0.8rem; font-weight:800;">4차시 첨단 탐구 여정을 훌륭히 마쳤습니다!</h3>
                 <p style="font-size:1.05rem; line-height:1.8; color:#475569; max-width:680px; margin:0 auto 1.4rem auto; word-break:keep-all;">
                   어둠 속을 밝히는 형광빛의 원리(1차시)부터, 전자의 에너지 전달(2차시), 75% 배터리 도둑(3차시), 
-                  그리고 KAIST 핫 엑시톤 100% 구출 작전(4차시)까지 대한민국의 첨단 과학을 완벽히 정복했습니다.
+                  그리고 KAIST 초고속 에너지 전환 100% 구출 작전(4차시)까지 대한민국의 첨단 과학을 완벽히 정복했습니다.
                 </p>
                 <div style="display:inline-flex; gap:0.8rem; flex-wrap:wrap; justify-content:center;">
                   <span style="background:#eff6ff; color:#1d4ed8; font-size:0.95rem; font-weight:700; padding:0.5rem 1.1rem; border-radius:9999px; border:1px solid #bfdbfe;">계산화학자 진로</span>

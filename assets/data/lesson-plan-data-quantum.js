@@ -97,7 +97,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                   <td>
                     • 3대 지구 난제(비료, 배터리, 신약) 해결<br>
-                    • 틴에이저 양자 화학 스타트업 CEO 기획
+                    • 양자 화학 시뮬레이션 기반 분자 설계 기획
                   </td>
                   <td>
                     <strong>[A]</strong> 양자 계산 화학 기술이 기후 위기 및 의학에 기여하는 구체적 해결책을 창의적으로 기획하고 진로 포부를 논리적으로 피력함.<br>
@@ -160,7 +160,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <!-- [탭 2]: 1차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#7c3aed;">[1차시]</span> 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발 (45분)</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#7c3aed;">[1차시]</span> 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발</h3>
             </div>
             
             <!-- [1차시] 통합 수업 지도안 표 -->
@@ -357,7 +357,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <!-- [탭 3]: 2차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#2563eb;">[2차시]</span> 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트 (45분)</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#2563eb;">[2차시]</span> 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트</h3>
             </div>
 
             <!-- [2차시] 통합 수업 지도안 표 -->
@@ -546,7 +546,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <!-- [탭 4]: 3차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#059669;">[3차시]</span> 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태 (45분)</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#059669;">[3차시]</span> 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태</h3>
             </div>
 
             <!-- [3차시] 통합 수업 지도안 표 -->
@@ -711,8 +711,8 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                         <span class="plan-card-badge">차시 예고 3분</span>
                       </div>
                       <p style="margin:0; color:#334155;">
-                        • <strong>[4차시 예고]</strong> 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트<br>
-                        • 비커 없이 컴퓨터로 인류 3대 지구 난제(비료, 배터리, 신약)를 해결하는 스타트업 창업 프로젝트 예고
+                        • <strong>[4차시 예고]</strong> 양자 화학 시뮬레이션 기반 분자 설계 프로젝트<br>
+                        • 비커 없이 컴퓨터로 인류 3대 지구 난제(비료, 배터리, 신약)를 해결하는 분자 설계 기획 프로젝트 예고
                       </p>
                     </div>
                   </td>
@@ -730,7 +730,8 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <!-- [탭 5]: 4차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#d97706;">[4차시]</span> 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트 (45분)</h3>
+              <!-- 4차시 지도안 -->
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#d97706;">[4차시]</span> 양자 화학 시뮬레이션 기반 분자 설계 프로젝트</h3>
             </div>
 
             <!-- [4차시] 통합 수업 지도안 표 -->

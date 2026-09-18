@@ -1927,7 +1927,7 @@ h3.sub-heading {
   width: 100%;
   box-sizing: border-box;
   min-height: 38px;
-  background: #f8fafc;
+  background-color: #ffffff;
   border: 1.5px solid #cbd5e1;
   border-radius: 6px;
   padding: 0.45rem 0.6rem;
@@ -1940,12 +1940,12 @@ h3.sub-heading {
 }
 
 .ws-table-input:hover {
-  background: #ffffff;
+  background-color: #ffffff;
   border-color: #94a3b8;
 }
 
 .ws-table-input:focus {
-  background: #ffffff;
+  background-color: #ffffff;
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
 }
@@ -1954,6 +1954,36 @@ h3.sub-heading {
   color: #94a3b8;
   font-size: 0.85rem;
   font-weight: 400;
+}
+
+/* 활동지 표 전용 균형 크기 인풋 (방출형태 & 생성비율 크기 통일) */
+.ws-cell-input {
+  width: 130px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  font-size: 0.96rem !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  vertical-align: middle;
+}
+
+.ws-input-unit-wrap {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ws-input-unit-wrap .ws-unit-label {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #475569;
+  white-space: nowrap;
 }
 
 .ws-text-input {
@@ -2025,16 +2055,192 @@ h3.sub-heading {
 .ws-text-input.is-model-answer,
 .ws-textarea-input.is-model-answer,
 .ws-mini-input.is-model-answer {
-  color: #c22e1b !important;
+  color: #b91c1c !important;
   font-weight: 700 !important;
-  background-color: #fff8f7 !important;
-  border-color: rgba(246, 73, 50, 0.45) !important;
-  box-shadow: 0 0 0 2px rgba(246, 73, 50, 0.12) !important;
+  background-color: #ffffff !important;
+  border-color: #f87171 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15) !important;
   cursor: default;
 }
 
 .ws-teacher-tip {
   animation: fadeIn 0.25s ease;
+}
+
+/* ==========================================================================
+   Interactive Worksheet Components: OX Quiz, Choice Chips, Match Cards
+   ========================================================================== */
+
+/* 1. OX Fact Check Quiz */
+.ws-ox-quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0.8rem 0 1.25rem 0;
+}
+
+.ws-ox-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 0.65rem 0.95rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.ws-ox-item:hover {
+  border-color: #cbd5e1;
+  background: #fafbfc;
+}
+
+.ws-ox-statement {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.ws-ox-statement strong {
+  color: #0f172a;
+}
+
+.ws-ox-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.ws-ox-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 1.15rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.ws-ox-btn:hover {
+  border-color: #3b82f6;
+  color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.ws-ox-btn.selected {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+  box-shadow: 0 2px 6px rgba(37,99,235,0.25);
+}
+
+.ws-ox-btn[data-choice="X"].selected {
+  background: #e11d48;
+  color: #ffffff;
+  border-color: #be123c;
+  box-shadow: 0 2px 6px rgba(225,29,72,0.25);
+}
+
+/* Model answer highlight for OX */
+.ws-ox-btn.is-model-answer {
+  border-width: 2px !important;
+}
+
+.ws-ox-btn.is-model-answer.is-correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #15803d !important;
+  box-shadow: 0 0 0 3px rgba(22,163,74,0.2) !important;
+  font-weight: 900 !important;
+}
+
+/* 2. Choice Chips (양자택일 / 다중 선택 칩) */
+.ws-chip-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.ws-chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 9999px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.ws-chip-btn:hover {
+  border-color: #3b82f6;
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.ws-chip-btn.selected {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+  box-shadow: 0 2px 6px rgba(37,99,235,0.2);
+}
+
+.ws-chip-btn.is-model-answer.is-correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #15803d !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 0 2px rgba(22,163,74,0.25) !important;
+}
+
+/* 3. Match and Relay Cards */
+.ws-match-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 0.8rem 0 1.2rem 0;
+}
+
+.ws-match-card {
+  padding: 0.65rem 0.85rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: #1e293b;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ws-match-card.accent {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
 }
 
 /* Modal Print Rules */

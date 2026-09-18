@@ -1159,14 +1159,14 @@ window.presentationModalData.quantum = {
             <div class="pres-stack" style="justify-content:center; align-items:center; min-height:300px;">
               <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
                 <div style="font-size:1.15rem; font-weight:800; color:#2563eb; margin-bottom:0.8rem;">
-                  [4차시] 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트
+                  [4차시] 양자 화학 시뮬레이션 기반 분자 설계 프로젝트
                 </div>
                 <div class="inquiry-q" style="line-height:1.8;">
                   <span style="font-size:1.35rem; font-weight:800; color:#0f172a; display:block;">
                     "비커와 시험관 없이, 양자 컴퓨터로 지구의 미래를 구할 수 있을까?"
                   </span>
                   <span style="font-size:1.35rem; font-weight:800; color:#2563eb; display:block; margin-top:0.6rem;">
-                    친환경 상온 비료, 전고체 배터리, 표적 신약을 직접 기획하는 스타트업 CEO가 되어봅니다!
+                    친환경 상온 비료, 전고체 배터리, 표적 신약 분자를 직접 설계해 봅니다!
                   </span>
                 </div>
               </div>
@@ -1177,11 +1177,11 @@ window.presentationModalData.quantum = {
     },
 
     // -----------------------------------------------------------------------
-    // Quantum 4차시: 틴에이저 양자 화학 스타트업 CEO 프로젝트
+    // Quantum 4차시: 양자 화학 시뮬레이션 기반 분자 설계 프로젝트
     // -----------------------------------------------------------------------
     4: {
-      lessonTitle: '[4차시] 지구를 구하는 틴에이저 양자 화학 스타트업 CEO 프로젝트',
-      badge: '양자 4차시 · 스타트업 CEO 프로젝트',
+      lessonTitle: '[4차시] 양자 화학 시뮬레이션 기반 분자 설계 프로젝트',
+      badge: '양자 4차시 · 분자 설계 프로젝트',
       slides: [
         // Slide 1: 단독 표지
         {
@@ -1194,7 +1194,7 @@ window.presentationModalData.quantum = {
                 "비커와 시험관 없이, 양자 컴퓨터로 지구의 미래를 구할 수 있을까?"
               </div>
               <div class="pres-cover-sub">
-                인류 3대 지구 난제를 해결하는 틴에이저 양자 화학 스타트업 CEO 프로젝트
+                인류 3대 지구 난제를 해결하는 양자 화학 시뮬레이션 기반 분자 설계 프로젝트
               </div>
             </div>
           `
