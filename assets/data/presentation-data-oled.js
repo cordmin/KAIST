@@ -899,18 +899,15 @@ window.presentationModalData.oled = {
               <table class="pres-table">
                 <thead>
                   <tr>
-                    <th style="width:26%; text-align:center;">구분</th>
-                    <th style="width:24%;">에너지 방출 형태</th>
-                    <th style="width:20%;">생성 비율</th>
-                    <th style="width:30%;">결과 및 특성</th>
+                    <th style="width:32%; text-align:center;">구분</th>
+                    <th style="width:42%; text-align:center;">에너지 방출 형태</th>
+                    <th style="width:26%; text-align:center;">생성 비율</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td style="text-align:center;"><strong>빛을 내는 분자</strong></td>
-                    <td>유용한 화면 빛</td>
-                    <td><strong style="color:#2563eb; font-size:1.2rem;">25%</strong></td>
-                    <td>
+                    <td style="text-align:center;">
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
@@ -918,12 +915,11 @@ window.presentationModalData.oled = {
                         </div>
                       </div>
                     </td>
+                    <td style="text-align:center;"><strong style="color:#2563eb; font-size:1.25rem;">25%</strong></td>
                   </tr>
                   <tr>
                     <td style="text-align:center;"><strong>열을 내는 분자</strong></td>
-                    <td>쓸모없는 발열</td>
-                    <td><strong style="color:#dc2626; font-size:1.2rem;">75%</strong></td>
-                    <td>
+                    <td style="text-align:center;">
                       <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
                         <button type="button" class="pres-reveal-btn">결과 확인</button>
                         <div class="pres-reveal-content">
@@ -931,6 +927,7 @@ window.presentationModalData.oled = {
                         </div>
                       </div>
                     </td>
+                    <td style="text-align:center;"><strong style="color:#dc2626; font-size:1.25rem;">75%</strong></td>
                   </tr>
                 </tbody>
               </table>
