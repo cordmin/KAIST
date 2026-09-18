@@ -3347,6 +3347,26 @@ body.presentation-fullscreen-mode .pres-step-box ul {
   color: #1d4ed8;
 }
 
+.pres-preview-question {
+  font-size: clamp(1.2rem, 1.65vw, 1.85rem);
+  font-weight: 800;
+  color: #0f172a;
+  white-space: nowrap;
+  display: block;
+  letter-spacing: -0.5px;
+  line-height: 1.45;
+}
+
+.pres-preview-subtext {
+  font-size: clamp(1rem, 1.2vw, 1.3rem);
+  font-weight: 700;
+  color: #2563eb;
+  display: block;
+  margin-top: 1.2rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
 /* Slide 8: 빛의 파장과 에너지 */
 .pres-spectrum-stack {
   gap: 1.1rem;
@@ -3609,6 +3629,26 @@ body.presentation-fullscreen-mode .pres-inquiry-box {
 body.presentation-fullscreen-mode .inquiry-line {
   font-size: clamp(1.6rem, 2.3vw, 2.6rem) !important;
   line-height: 1.7 !important;
+}
+
+.is-fullscreen .pres-preview-question,
+:fullscreen .pres-preview-question,
+:-webkit-full-screen .pres-preview-question,
+.presentation-modal.fullscreen-active .pres-preview-question,
+body.presentation-fullscreen-mode .pres-preview-question {
+  font-size: clamp(1.8rem, 2.45vw, 2.85rem) !important;
+  line-height: 1.5 !important;
+  white-space: nowrap !important;
+}
+
+.is-fullscreen .pres-preview-subtext,
+:fullscreen .pres-preview-subtext,
+:-webkit-full-screen .pres-preview-subtext,
+.presentation-modal.fullscreen-active .pres-preview-subtext,
+body.presentation-fullscreen-mode .pres-preview-subtext {
+  font-size: clamp(1.35rem, 1.7vw, 2rem) !important;
+  line-height: 1.6 !important;
+  margin-top: 2rem !important;
 }
 
 /* Slide 8: 스펙트럼 전체화면 확대 */
