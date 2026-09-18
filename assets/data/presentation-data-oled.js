@@ -1040,15 +1040,12 @@ window.presentationModalData.oled = {
           title: '다음 시간에는?',
           content: `
             <div class="pres-stack pres-inquiry-stack" style="justify-content:center; align-items:center; min-height:280px;">
-              <div class="pres-inquiry-box" style="padding:3rem 2rem; max-width:900px; width:100%; text-align:center; box-sizing:border-box;">
-                <div style="font-size:1.15rem; font-weight:800; color:#2563eb; margin-bottom:0.8rem;">
-                  [4차시] KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너
-                </div>
-                <div class="inquiry-q" style="font-size:1.35rem; line-height:1.8;">
-                  <span style="color:#0f172a; display:block;">
+              <div class="pres-inquiry-box" style="padding:3.4rem 2.2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
+                <div class="inquiry-q" style="line-height:1.5;">
+                  <span style="font-size:clamp(1.95rem, 2.7vw, 2.45rem) !important; font-weight:800; color:#0f172a; display:block; word-break:keep-all; letter-spacing:-0.5px; line-height:1.45;">
                     "열로 식어버리는 75%의 에너지를 빛으로 구출할 방법은 없을까?"
                   </span>
-                  <span style="color:#2563eb; display:block; margin-top:0.6rem; font-size:1.2rem;">
+                  <span style="color:#2563eb; display:block; margin-top:1.4rem; font-size:1.25rem; font-weight:700; word-break:keep-all; line-height:1.6;">
                     열로 식기 전에 빛으로 되돌리는 대한민국 KAIST의 초고속 에너지 전환 기술이 공개됩니다!
                   </span>
                 </div>
