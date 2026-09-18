@@ -449,7 +449,7 @@ window.presentationModalData.oled = {
               <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:960px; width:100%; text-align:center; box-sizing:border-box;">
                 <div class="inquiry-q" style="line-height:1.5;">
                   <span class="pres-preview-question">
-                    "전자는 자외선 에너지를 어떻게 흡수하여 빛과 열로 전달할까?"
+                    "전자가 자외선 빛 에너지를 받으면 어떤 일이 일어날까?"
                   </span>
                   <span class="pres-preview-subtext">
                     눈에 보이지 않는 원자 속 전자의 에너지 이동을 가상실험실로 직접 관찰합니다!
