@@ -763,7 +763,7 @@ window.presentationModalData.oled = {
                     "스마트폰은 얼마나 배터리를 낭비하고 있을까?"
                   </span>
                   <span class="pres-preview-subtext">
-                    영상이나 게임을 할 때 뜨거워지는 화면 속 1:3 에너지 전환의 비밀이 공개됩니다!
+                    영상이나 게임을 할 때 뜨거워지는 스마트폰의 에너지 전환의 비밀이 공개됩니다!
                   </span>
                 </div>
               </div>
