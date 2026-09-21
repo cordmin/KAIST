@@ -883,7 +883,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">핫 엑시톤 메커니즘 & 읽기 자료 16분</span>
                       </div>
                       <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.4rem; color:#0369a1; font-size:0.84rem;">
-                        <strong>[읽기 자료 탐독]</strong> '스마트폰 속 75% 배터리 도둑을 잡아라!' (동화책 뷰어): 빗맞은 하이파이브(박자 불일치 헛진동 75% 열) 비유를 통해, 분자의 고유 진동수 불일치와 열 손실 원리를 직관적으로 이해
+                        <strong>[읽기 자료 탐독]</strong> '스마트폰 속 75% 배터리 도둑을 잡아라!' (동화책 뷰어): 빗맞은 야구 배트(스위트 스폿 불일치로 인한 손 저림 헛진동 75% 열) 비유를 통해, 분자의 고유 진동수 불일치와 열 손실 원리를 직관적으로 이해
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>양자 시뮬레이션 기반 초고속 에너지 전환 원천 기술:</strong><br>
@@ -913,7 +913,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="book-open"></i>
-                      <span><strong>[수업도움]</strong> 하이파이브 빗맞음(헛진동/열) 비유를 상기시켜 여학생·남학생 전원이 분자 진동수 조절 원리를 쉽게 체감하도록 유도.</span>
+                      <span><strong>[수업도움]</strong> 야구 배트 빗맞음(스위트 스폿을 벗어났을 때의 헛진동과 손 저림) 비유를 상기시켜 학생들이 분자 진동수 조절 원리를 쉽게 체감하도록 유도.</span>
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>

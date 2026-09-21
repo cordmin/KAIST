@@ -1250,7 +1250,7 @@ window.presentationModalData.oled = {
               <div class="pres-step-box">
                 <div class="step-num">Step 2</div>
                 <div class="step-title">양자 시뮬레이션 & 진동수 조절</div>
-                <p>[읽기 자료]의 빗맞은 하이파이브 비유처럼, 슈퍼컴퓨터로 분자 진동수를 맞추어 헛떨림(열)을 없애고 <strong>초고속 빛 전환 경로</strong>를 연결합니다.</p>
+                <p>[읽기 자료]의 빗맞은 야구 배트 비유처럼, 슈퍼컴퓨터로 분자 진동수를 스위트 스폿에 맞추어 헛떨림(열)을 없애고 <strong>초고속 빛 전환 경로</strong>를 연결합니다.</p>
               </div>
               <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
               <div class="pres-step-box">
