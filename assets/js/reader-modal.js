@@ -108,29 +108,19 @@ function ensureReaderModalExists() {
       font-size: 1.7rem;
       font-weight: 800;
       color: #0f172a;
-      margin: 0 0 1.1rem 0;
+      margin: 0 0 1.25rem 0;
       letter-spacing: -0.5px;
       line-height: 1.35;
       word-break: keep-all;
     }
-    .reader-lead-text {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #1e293b;
-      line-height: 1.7;
-      margin-bottom: 1.1rem;
-      word-break: keep-all;
-    }
-    .reader-body-para {
-      font-size: 0.98rem;
-      color: #334155;
-      line-height: 1.8;
-      margin: 0 0 0.85rem 0;
-      word-break: keep-all;
-    }
-    .reader-body-para strong {
-      color: #0f172a;
+    .reader-body-text {
+      font-size: 1.08rem;
       font-weight: 700;
+      color: #0f172a;
+      line-height: 2.05;
+      letter-spacing: -0.2px;
+      margin: 0;
+      word-break: keep-all;
     }
     .reader-img-pane {
       display: flex;
@@ -295,15 +285,14 @@ function renderCurrentReaderChapter() {
 
   const bodyEl = document.getElementById('reader-modal-body');
   if (bodyEl) {
-    const parasHtml = ch.paragraphs.map(p => `<p class="reader-body-para">${p}</p>`).join('');
+    const fullText = ch.text || (ch.paragraphs ? ch.paragraphs.join(' ') : '');
 
     bodyEl.innerHTML = `
       <div class="reader-book-grid">
-        <!-- Text Pane: Title + Lead + Paragraphs (No Tag Badge, No Callout Box) -->
+        <!-- Text Pane: Title + Continuous Bold Text -->
         <div class="reader-text-pane">
           <h2 class="reader-chapter-title">${ch.title}</h2>
-          <div class="reader-lead-text">${ch.lead}</div>
-          ${parasHtml}
+          <p class="reader-body-text">${fullText}</p>
         </div>
 
         <!-- Image Pane: Large Illustration Only (No Image Caption) -->
