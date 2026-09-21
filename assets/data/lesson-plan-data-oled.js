@@ -21,7 +21,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
               <span><span class="tab-text-full">[3차시] 스마트폰의 배터리 낭비</span><span class="tab-text-mid">[3차시]</span><span class="tab-text-short">[3차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 5)" role="tab" aria-selected="false">
-              <span><span class="tab-text-full">[4차시] KAIST 구출작전</span><span class="tab-text-mid">[4차시]</span><span class="tab-text-short">[4차시]</span></span>
+              <span><span class="tab-text-full">[4차시] KAIST의 배터리 연구</span><span class="tab-text-mid">[4차시]</span><span class="tab-text-short">[4차시]</span></span>
             </button>
           </div>
 
@@ -771,7 +771,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
           <!-- [탭 4]: 4차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#d97706;">[4차시]</span> KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#d97706;">[4차시]</span> KAIST의 배터리 연구</h3>
             </div>
 
             <!-- [4차시] 통합 수업 지도안 표 -->

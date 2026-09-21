@@ -1097,7 +1097,7 @@ window.presentationModalData.oled = {
     // OLED 4차시: KAIST 핫 엑시톤 100% 구출작전
     // -----------------------------------------------------------------------
     4: {
-      lessonTitle: '[4차시] KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너',
+      lessonTitle: '[4차시] KAIST의 배터리 연구',
       badge: 'OLED 4차시 · KAIST 연구 성과',
       slides: [
         // Slide 1: 단독 질문형 표지
@@ -1108,7 +1108,7 @@ window.presentationModalData.oled = {
             <div class="pres-stack" style="justify-content:center; align-items:center; min-height:280px;">
               <div class="pres-inquiry-box" style="padding:2.8rem 2rem; max-width:880px; width:100%; text-align:center; box-sizing:border-box;">
                 <div class="inquiry-q" style="line-height:1.7;">
-                  <span style="font-size:1.3rem; font-weight:700; color:#475569; display:block; margin-bottom:0.5rem;">[4차시] KAIST의 75% 구출 작전</span>
+                  <span style="font-size:1.3rem; font-weight:700; color:#475569; display:block; margin-bottom:0.5rem;">[4차시] KAIST의 배터리 연구</span>
                   <span style="font-size:1.65rem; font-weight:800; color:#0f172a; display:block; white-space:nowrap; letter-spacing:-0.5px;">KAIST 초고속 에너지 전환 기술과 미래 청색 분자 디자이너</span>
                 </div>
               </div>

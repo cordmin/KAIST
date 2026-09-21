@@ -353,7 +353,7 @@ window.worksheetModalData.oled = {
     `
   },
   4: {
-    title: '[4차시] KAIST의 75% 구출 작전과 미래의 청색 OLED 분자 디자이너',
+    title: '[4차시] KAIST의 배터리 연구',
     badge: 'OLED 모듈 4차시 | 성취기준 [9과10-03] [9과01-02] [9과23-01]',
     student: `
       <div class="ws-student-meta">
