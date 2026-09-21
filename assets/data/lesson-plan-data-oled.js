@@ -794,13 +794,13 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">탐구방법</th>
-                  <td>회로 제작 실습, 가상실험실 분자 시뮬레이션, 모둠별 분자 디자이너 기획서 작성, 1분 피칭 발표</td>
+                  <td>회로 제작 실습, 가상실험실 분자 시뮬레이션, 모둠별 분자 디자이너 기획서 작성, 1분 발표하기</td>
                   <th style="text-align:center; white-space:nowrap;">준비물</th>
                   <td colspan="2">초소형 LED/OLED 발광 소자 키트, 구리 테이프, 3V 코인 전지, 분자 시뮬레이터 태블릿, 기획서 활동지</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
-                  <td>빛의 합성 원리와 화학 결합 안정성을 융합적으로 고려하고 3차원 루브릭 기반 상호 평가 유도</td>
+                  <td>빛의 합성 원리와 화학 결합 안정성을 융합적으로 고려하고 평가 기준표에 따른 상호 평가 유도</td>
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">

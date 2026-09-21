@@ -349,9 +349,9 @@ window.worksheetModalData.quantum = {
 
       <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
-          <th style="width:22%;">모둠명 / 프로젝트명</th>
+          <th style="width:22%;">프로젝트 과제명</th>
           <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="퀀텀 카탈리스트 (Quantum Catalyst)"></td>
-          <th style="width:22%;">작성자(모둠원)</th>
+          <th style="width:22%;">작성자(연구원)</th>
           <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="이양자 외 3명"></td>
         </tr>
         <tr>
@@ -403,9 +403,9 @@ window.worksheetModalData.quantum = {
       <h4 style="color:#d97706; margin:1.25rem 0 0.8rem;">1. 분자 설계 기획서 예시 답안</h4>
       <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
-          <th style="width:22%;">모둠명 / 프로젝트명</th>
+          <th style="width:22%;">프로젝트 과제명</th>
           <td style="width:28%;"><strong class="model-answer">퀀텀 카탈리스트 (Quantum Catalyst)</strong></td>
-          <th style="width:22%;">작성자(모둠원)</th>
+          <th style="width:22%;">작성자(연구원)</th>
           <td style="width:28%;"><strong class="model-answer">이양자 외 3명</strong></td>
         </tr>
         <tr>

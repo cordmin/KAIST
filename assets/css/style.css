@@ -1883,6 +1883,21 @@ h3.sub-heading {
 }
 
 /* ==========================================================================
+   Worksheet Question Spacing & Visual Rhythm
+   ========================================================================== */
+.worksheet-modal-body .data-table {
+  margin-bottom: 2.25rem;
+}
+
+.worksheet-modal-body .ws-ox-quiz {
+  margin-bottom: 2.25rem;
+}
+
+.worksheet-modal-body .answer-box {
+  margin-bottom: 2.25rem;
+}
+
+/* ==========================================================================
    Digital Interactive Worksheet Inputs (Tablet & Smart Device Friendly)
    ========================================================================== */
 .ws-student-meta {

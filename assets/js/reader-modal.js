@@ -180,7 +180,7 @@ function ensureReaderModalExists() {
         <!-- Header: Minimal Title + Close -->
         <div class="reader-modal-header">
           <div class="reader-title-box">
-            <h3 id="reader-header-title">스마트폰 배터리를 삼키는 75%의 비밀</h3>
+            <h3 id="reader-header-title">스마트폰은 왜 뜨거워질까? 75%의 비밀</h3>
           </div>
 
           <div class="reader-header-actions">
