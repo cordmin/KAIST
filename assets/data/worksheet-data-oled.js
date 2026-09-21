@@ -13,11 +13,10 @@ window.worksheetModalData.oled = {
         <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
         <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록하시오.</p>
-      <table class="data-table text-center" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 각 물질에 일반 조명과 자외선(UV-A)을 비추었을 때의 색상 변화를 표에 기록하시오.</p>
+      <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
             <th style="width:22%;">실험 물질</th>
@@ -54,8 +53,8 @@ window.worksheetModalData.oled = {
         </tbody>
       </table>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
-      <div class="ws-ox-quiz" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
+      <div class="ws-ox-quiz" style="margin-bottom:2.25rem;">
         <div class="ws-ox-item">
           <span class="ws-ox-statement">(1) 자외선(300~400nm)은 가시광선(400~700nm)보다 파장이 더 짧고 에너지가 더 크다.</span>
           <div class="ws-ox-group" data-answer="O">
@@ -79,21 +78,21 @@ window.worksheetModalData.oled = {
         </div>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 자외선을 비추었을 때 형광빛이 나오는 이유를 에너지 보존 법칙과 관련지어 서술하시오.</p>
-      <div class="answer-box" style="padding:0.75rem 0.85rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 자외선을 비추었을 때 형광빛이 나오는 이유를 에너지 보존 법칙과 관련지어 서술하시오.</p>
+      <div class="answer-box" style="padding:0.85rem 1rem; margin-bottom:2rem;">
         <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
           <i data-lucide="corner-down-right"></i> <span>서술 내용:</span>
         </div>
         <textarea class="ws-textarea-input" rows="3" data-answer="자외선을 흡수한 물질 속 분자가 일부 에너지를 열로 먼저 방출하고, 남은 에너지를 파장이 더 길고 에너지가 낮은 가시광선(형광빛)으로 방출하기 때문입니다. (자외선 에너지 = 형광빛 에너지 + 열에너지)"></textarea>
       </div>
 
-      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#2563eb; margin-top:1.2rem; font-size:0.88rem;">
+      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#2563eb; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 물질마다 방출하는 빛의 에너지가 다름을 자연스럽게 유도하세요.
       </div>
     `,
     teacher: `
-      <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">1. 각 물질의 관찰 결과 예시표</h4>
-      <table class="data-table text-center" style="margin-bottom:1.25rem;">
+      <h4 style="color:#2563eb; margin:1.25rem 0 0.8rem;">1. 각 물질의 관찰 결과 예시표</h4>
+      <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
             <th style="width:24%;">실험 물질</th>
@@ -110,20 +109,20 @@ window.worksheetModalData.oled = {
         </tbody>
       </table>
 
-      <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">2. O / X 퀴즈 정답 및 해설</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75;">
+      <h4 style="color:#2563eb; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
         (1) <strong>O</strong> : 빛은 파장이 짧을수록 진동수가 높고 광자당 에너지가 큽니다. 자외선(300~400nm)이 가시광선(400~700nm)보다 에너지가 큽니다.<br>
         (2) <strong>X</strong> : 에너지 보존 법칙에 의해 흡수한 자외선 에너지는 방출된 형광빛 에너지와 발생한 열에너지의 합과 같으므로, 흡수한 자외선이 항상 더 큽니다.<br>
         (3) <strong>O</strong> : 흡수된 자외선의 높은 에너지는 일부 열로 빠져나가고 남은 에너지가 형광빛으로 방출됩니다.
       </div>
 
-      <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">3. 형광 현상과 에너지 보존 모범 답안</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+      <h4 style="color:#2563eb; margin:2.25rem 0 0.8rem;">3. 형광 현상과 에너지 보존 모범 답안</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
         자외선을 흡수한 물질 속 분자가 일부 에너지를 열로 먼저 방출하고, 남은 에너지를 파장이 더 길고 에너지가 낮은 가시광선(형광빛)으로 방출하기 때문입니다. (자외선 에너지 = 형광빛 에너지 + 열에너지)
       </div>
 
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1rem; font-size:0.88rem;">
+      <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 암실 상자를 활용하면 형광 빛의 선명도가 극대화됩니다. 물질마다 방출하는 빛의 에너지가 다름을 자연스럽게 유도하세요.
       </div>
     `
@@ -136,11 +135,10 @@ window.worksheetModalData.oled = {
         <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
         <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 가상실험실을 관찰하고, 전자의 3단계 에너지 전달 과정을 빈칸에 정리하시오.</p>
-      <table class="data-table" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 가상실험실을 관찰하고, 전자의 3단계 에너지 전달 과정을 빈칸에 정리하시오.</p>
+      <table class="data-table" style="margin-bottom:2.25rem;">
         <thead>
           <tr><th style="width:22%; text-align:center;">단계</th><th style="width:78%;">전자의 상태 변화 및 에너지 전환</th></tr>
         </thead>
@@ -160,8 +158,8 @@ window.worksheetModalData.oled = {
         </tbody>
       </table>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
-      <div class="ws-ox-quiz" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
+      <div class="ws-ox-quiz" style="margin-bottom:2.25rem;">
         <div class="ws-ox-item">
           <span class="ws-ox-statement">(1) 전자가 자외선을 흡수하면 에너지가 가장 낮은 바닥 상태에서 들뜬 상태로 뛰어오른다.</span>
           <div class="ws-ox-group" data-answer="O">
@@ -185,8 +183,8 @@ window.worksheetModalData.oled = {
         </div>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 에너지 보존 법칙의 관점에서 에너지 관계식을 완성하시오.</p>
-      <div class="answer-box" style="text-align:center; font-size:0.95rem; display:flex; align-items:center; justify-content:center; gap:0.4rem; flex-wrap:wrap; padding:0.75rem 0.85rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 에너지 보존 법칙의 관점에서 에너지 관계식을 완성하시오.</p>
+      <div class="answer-box" style="text-align:center; font-size:0.95rem; display:flex; align-items:center; justify-content:center; gap:0.4rem; flex-wrap:wrap; padding:0.85rem 1rem; margin-bottom:2rem;">
         <span>[ 자외선 에너지 ] = [</span>
         <input type="text" class="ws-mini-input" style="width:120px; text-align:center;" data-answer="형광빛 에너지">
         <span>] + [</span>
@@ -195,8 +193,8 @@ window.worksheetModalData.oled = {
       </div>
     `,
     teacher: `
-      <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">1. 전자의 3단계 에너지 전달 예시 답안</h4>
-      <table class="data-table" style="margin-bottom:1.25rem;">
+      <h4 style="color:#7c3aed; margin:1.25rem 0 0.8rem;">1. 전자의 3단계 에너지 전달 예시 답안</h4>
+      <table class="data-table" style="margin-bottom:2.25rem;">
         <thead>
           <tr><th style="width:22%; text-align:center;">단계</th><th style="width:78%;">전자의 상태 변화 및 에너지 전환 (예시 답안)</th></tr>
         </thead>
@@ -216,15 +214,15 @@ window.worksheetModalData.oled = {
         </tbody>
       </table>
 
-      <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">2. O / X 퀴즈 정답 및 해설</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75;">
+      <h4 style="color:#7c3aed; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
         (1) <strong>O</strong> : 전자는 외부 에너지를 흡수하면 높은 에너지 준위인 들뜬 상태로 도약합니다.<br>
         (2) <strong>X</strong> : 들뜬 상태는 매우 불안정하므로 전자는 즉시 열과 빛을 방출하고 가장 안정한 바닥 상태로 되돌아옵니다.<br>
         (3) <strong>O</strong> : 에너지는 새롭게 생기거나 소멸하지 않고 형태만 전환되므로 흡수한 총에너지는 방출된 열과 빛의 합과 일치합니다.
       </div>
 
-      <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">3. 에너지 보존 관계식</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; text-align:center; font-size:1rem;">
+      <h4 style="color:#7c3aed; margin:2.25rem 0 0.8rem;">3. 에너지 보존 관계식</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; text-align:center; font-size:1rem; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>[ 자외선 에너지 ] = [ <span class="model-answer">형광빛 에너지</span> ] + [ <span class="model-answer">열에너지</span> ]</strong>
       </div>
     `
@@ -237,11 +235,10 @@ window.worksheetModalData.oled = {
         <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
         <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 배터리 전기가 스마트폰에 공급될 때 화면을 이루고 있는 두 가지 분자를 비교하여 표의 빈칸을 채우시오.</p>
-      <table class="data-table text-center" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 배터리 전기가 스마트폰에 공급될 때 화면을 이루고 있는 두 가지 분자를 비교하여 표의 빈칸을 채우시오.</p>
+      <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
             <th style="width:24%;">구분</th>
@@ -273,8 +270,8 @@ window.worksheetModalData.oled = {
         </tbody>
       </table>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
-      <div class="ws-ox-quiz" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
+      <div class="ws-ox-quiz" style="margin-bottom:2.25rem;">
         <div class="ws-ox-item">
           <span class="ws-ox-statement">(1) 배터리 전기가 공급되면 스마트폰 화면 속 모든 분자(100%)가 화면 빛을 방출한다.</span>
           <div class="ws-ox-group" data-answer="X">
@@ -298,21 +295,21 @@ window.worksheetModalData.oled = {
         </div>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 스마트폰 화면에 전기를 공급했을 때 75%의 에너지가 열로 버려져 일어나는 문제점을 서술하시오.</p>
-      <div class="answer-box" style="padding:0.75rem 0.85rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 스마트폰 화면에 전기를 공급했을 때 75%의 에너지가 열로 버려져 일어나는 문제점을 서술하시오.</p>
+      <div class="answer-box" style="padding:0.85rem 1rem; margin-bottom:2rem;">
         <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
           <i data-lucide="corner-down-right"></i> <span>서술 내용:</span>
         </div>
         <textarea class="ws-textarea-input" rows="3" data-answer="스마트폰 배터리 전기가 공급되면 분자의 75%가 빛을 내지 못하고 발열로 전부 낭비됩니다. 이로 인해 배터리가 빠르게 닳아 사용 시간이 단축되고, 기기가 뜨거워지며, 지속적인 열 때문에 발광 분자가 손상되어 화면 수명이 줄어들고 잔상(번인)이 발생하는 심각한 문제가 일어납니다."></textarea>
       </div>
 
-      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#059669; margin-top:1.2rem; font-size:0.88rem;">
+      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#059669; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 일상에서 스마트폰을 오래 쓸 때 화면이 뜨거워지고 배터리가 빨리 닳는 경험을 떠올리게 하여, 1:3 에너지 낭비 특성(빛 25% vs 열 75%)과 연결하도록 유도합니다.
       </div>
     `,
     teacher: `
-      <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">1. 빛을 내는 분자 vs 열을 내는 분자 비교 예시표</h4>
-      <table class="data-table text-center" style="margin-bottom:1.25rem;">
+      <h4 style="color:#059669; margin:1.25rem 0 0.8rem;">1. 빛을 내는 분자 vs 열을 내는 분자 비교 예시표</h4>
+      <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
             <th style="width:24%;">구분</th>
@@ -334,20 +331,20 @@ window.worksheetModalData.oled = {
         </tbody>
       </table>
 
-      <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">2. O / X 퀴즈 정답 및 해설</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75;">
+      <h4 style="color:#059669; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
         (1) <strong>X</strong> : 배터리 전기가 공급되면 1:3 자연 법칙에 의해 유용한 빛을 내는 분자는 25%에 불과하며 75%는 빛을 내지 못합니다.<br>
         (2) <strong>O</strong> : 75%에 해당하는 분자는 빛을 내지 못하고 강한 진동 에너지로 바뀌어 기기 발열로 전부 버려집니다.<br>
         (3) <strong>O</strong> : 낭비된 열은 배터리 조기 방전의 주범이며, 높은 온도로 인해 유기 분자가 파괴되면서 화면 번인(잔상) 현상을 유발합니다.
       </div>
 
-      <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">3. 75% 열 손실 문제점 모범 답안</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+      <h4 style="color:#059669; margin:2.25rem 0 0.8rem;">3. 75% 열 손실 문제점 모범 답안</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
         스마트폰 배터리 전기가 공급되면 화면 속 분자의 75%가 빛을 내지 못하고 발열로 전부 낭비됩니다. 이로 인해 배터리가 빠르게 닳아 사용 시간이 단축되고, 기기가 뜨거워지며, 지속적인 열 때문에 발광 분자가 손상되어 화면 수명이 줄어들고 잔상(번인)이 발생하는 심각한 문제가 일어납니다.
       </div>
 
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#059669; margin-top:1rem; font-size:0.88rem;">
+      <div class="callout-box" style="background:#f8fafc; border-left-color:#059669; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 스마트폰 발열과 배터리 소모 현상을 상기시켜 1:3 낭비 법칙(빛 25% vs 열 75%)을 체감하도록 지도합니다.
       </div>
     `
@@ -360,12 +357,11 @@ window.worksheetModalData.oled = {
         <span>제 2 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
         <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. [읽기 자료]의 비유와 탐구 내용을 바탕으로, KAIST의 양자 시뮬레이션 진동수 조절 기술을 적용하여 차세대 청색 OLED 분자 기획서를 작성하시오.</p>
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. [읽기 자료]의 비유와 탐구 내용을 바탕으로, KAIST의 양자 시뮬레이션 진동수 조절 기술을 적용하여 차세대 청색 OLED 분자 기획서를 작성하시오.</p>
 
-      <table class="data-table" style="margin-bottom:1.25rem;">
+      <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
           <th style="width:22%;">스타트업 회사명</th>
           <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="블루 퀀텀 퓨처스"></td>
@@ -396,8 +392,8 @@ window.worksheetModalData.oled = {
         </tr>
       </table>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
-      <div class="ws-ox-quiz" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
+      <div class="ws-ox-quiz" style="margin-bottom:2rem;">
         <div class="ws-ox-item">
           <span class="ws-ox-statement">(1) 청색(Blue) 빛은 빨강·초록빛보다 에너지가 높아 분자 결합이 깨지기 쉽고 수명이 가장 짧다.</span>
           <div class="ws-ox-group" data-answer="O">
@@ -421,13 +417,13 @@ window.worksheetModalData.oled = {
         </div>
       </div>
 
-      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#d97706; margin-top:1.2rem; font-size:0.88rem;">
+      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#d97706; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 KAIST 연구의 핵심인 "열로 버려지기 전에 빛을 내는 상태로 되돌리는 초고속 에너지 전환"을 비즈니스 모델로 연결할 수 있도록 피드백합니다.
       </div>
     `,
     teacher: `
-      <h4 style="color:#d97706; margin:0.8rem 0 0.4rem;">1. 차세대 청색 분자 디자이너 기획서 예시 산출물</h4>
-      <table class="data-table" style="margin-bottom:1.25rem;">
+      <h4 style="color:#d97706; margin:1.25rem 0 0.8rem;">1. 차세대 청색 분자 디자이너 기획서 예시 산출물</h4>
+      <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
           <th style="width:22%;">스타트업 회사명</th>
           <td style="width:28%;"><strong class="model-answer">블루 퀀텀 퓨처스</strong></td>
@@ -452,15 +448,15 @@ window.worksheetModalData.oled = {
         </tr>
       </table>
 
-      <h4 style="color:#d97706; margin:0.8rem 0 0.4rem;">2. O / X 퀴즈 정답 및 해설</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75;">
+      <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
         (1) <strong>O</strong> : 파란색 빛은 가시광선 중 파장이 가장 짧고 에너지가 가장 높아 결합 손상이 잦아 OLED의 난제로 꼽힙니다.<br>
         (2) <strong>X</strong> : 열로 완전히 식어 주변으로 흩어지면 다시 모으는 것이 불가능하므로, 열로 식기 전에 빛을 내는 상태로 초고속 전환시켜야 합니다.<br>
         (3) <strong>O</strong> : 25%의 형광 빛에 더해 75%의 버려지는 에너지를 빛으로 전환하면 이론상 100% 내부 발광 효율을 달성할 수 있습니다.
       </div>
 
-      <h4 style="color:#d97706; margin:0.8rem 0 0.4rem;">3. 3차원 평가 루브릭</h4>
-      <table class="data-table" style="font-size:0.88rem;">
+      <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">3. 3차원 평가 루브릭</h4>
+      <table class="data-table" style="font-size:0.88rem; margin-bottom:2rem;">
         <thead>
           <tr><th style="width:20%;">평가 영역</th><th style="width:26%;">탁월 (A)</th><th style="width:27%;">보통 (B)</th><th style="width:27%;">노력요함 (C)</th></tr>
         </thead>

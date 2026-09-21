@@ -536,11 +536,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 전자의 3단계 에너지 전달 과정(흡수 → 열 방출 → 형광빛 방출)을 활동지 1번 표에 올바르게 기록하는지 확인.</span>
+                      <span>전자의 3단계 에너지 전달 과정(흡수 → 열 방출 → 형광빛 방출)을 활동지 1번 표에 올바르게 기록하는지 확인.</span>
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 전자의 에너지 전달·전환과 에너지 보존 법칙 관계식을 도출할 수 있는지 점검 (활동지 2번).</span>
+                      <span>전자의 에너지 전달·전환과 에너지 보존 법칙 관계식을 도출할 수 있는지 점검 (활동지 2번).</span>
                     </div>
                   </td>
                 </tr>
@@ -723,11 +723,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 전기를 넣었을 때 빛과 열로 나뉘는 비율(1:3)을 활동지 1번에 올바르게 기록하는지 확인.</span>
+                      <span>전기를 넣었을 때 빛과 열로 나뉘는 비율(1:3)을 활동지 1번에 올바르게 기록하는지 확인.</span>
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 75% 열 손실로 인해 일어나는 스마트폰 문제점을 에너지 전환과 연결하여 서술할 수 있는지 점검 (활동지 2번).</span>
+                      <span>75% 열 손실로 인해 일어나는 스마트폰 문제점을 에너지 전환과 연결하여 서술할 수 있는지 점검 (활동지 2번).</span>
                     </div>
                   </td>
                 </tr>
@@ -910,7 +910,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 미래 청색 분자 디자이너 기획서의 과학적 타당성(열로 식기 전에 빛으로 전환하는 원리 적용 여부)을 평가 (루브릭 적용).</span>
+                      <span>미래 청색 분자 디자이너 기획서의 과학적 타당성(열로 식기 전에 빛으로 전환하는 원리 적용 여부)을 평가 (루브릭 적용).</span>
                     </div>
                   </td>
                 </tr>

@@ -13,11 +13,10 @@ window.worksheetModalData.quantum = {
         <span>제 3 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
         <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 분자 속 전자 수에 따른 상태 조합의 수(2ᴺ)와 슈퍼컴퓨터 계산 시간을 정리하시오.</p>
-      <table class="data-table text-center" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 분자 속 전자 수에 따른 상태 조합의 수(2ᴺ)와 슈퍼컴퓨터 계산 시간을 정리하시오.</p>
+      <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
             <th style="width:20%;">물질명</th>
@@ -59,8 +58,8 @@ window.worksheetModalData.quantum = {
         </tbody>
       </table>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
-      <div class="ws-ox-quiz" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
+      <div class="ws-ox-quiz" style="margin-bottom:2.25rem;">
         <div class="ws-ox-item">
           <span class="ws-ox-statement">(1) 분자 속 전자가 1개 늘어날 때마다 계산해야 할 양자 상태의 수는 2배씩 곱해지는 '지수 폭발(2ᴺ)'이 일어난다.</span>
           <div class="ws-ox-group" data-answer="O">
@@ -84,21 +83,21 @@ window.worksheetModalData.quantum = {
         </div>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 지구상의 모든 모래알 수는 약 10²³개이고 우주 전체 원자 수는 약 10⁸⁰개이다. 현존하는 최고 성능의 슈퍼컴퓨터로도 작은 약품 분자 하나를 계산하지 못하는 이유를 서술하시오.</p>
-      <div class="answer-box" style="padding:0.75rem 0.85rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 지구상의 모든 모래알 수는 약 10²³개이고 우주 전체 원자 수는 약 10⁸⁰개이다. 현존하는 최고 성능의 슈퍼컴퓨터로도 작은 약품 분자 하나를 계산하지 못하는 이유를 서술하시오.</p>
+      <div class="answer-box" style="padding:0.85rem 1rem; margin-bottom:2rem;">
         <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
           <i data-lucide="corner-down-right"></i> <span>서술:</span>
         </div>
         <textarea class="ws-textarea-input" rows="3" data-answer="분자 속 전자가 증가함에 따라 양자 상태가 2의 거듭제곱으로 곱해지는 '지수 폭발(2ᴺ)'이 발생하기 때문입니다. 페니실린 같은 작은 분자도 계산해야 할 경우의 수가 10⁸⁴가지로 전 우주의 원자 수(10⁸⁰)를 훌쩍 뛰어넘어, 일반 컴퓨터 방식으로는 우주 나이 동안 계산해도 불가능합니다."></textarea>
       </div>
 
-      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#7c3aed; margin-top:1.2rem; font-size:0.88rem;">
+      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#7c3aed; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 체스판 쌀알 퀴즈(1칸 1톨, 2칸 2톨... 64번째 칸엔 1800경 톨)를 도입에 제시하여 거듭제곱의 무서운 증가 속도를 직관적으로 체감하게 하세요.
       </div>
     `,
     teacher: `
-      <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">1. 표 예시 답안</h4>
-      <table class="data-table text-center" style="margin-bottom:1.25rem;">
+      <h4 style="color:#7c3aed; margin:1.25rem 0 0.8rem;">1. 표 예시 답안</h4>
+      <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
             <th style="width:20%;">물질명</th>
@@ -116,20 +115,20 @@ window.worksheetModalData.quantum = {
         </tbody>
       </table>
 
-      <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">2. O / X 퀴즈 정답 및 해설</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75;">
+      <h4 style="color:#7c3aed; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
         (1) <strong>O</strong> : 양자역학에 의해 전자들이 취할 수 있는 스핀 조합은 전자가 1개 추가될 때마다 2배씩 기하급수적으로 폭발합니다.<br>
         (2) <strong>X</strong> : 계산 상태 수(10⁸⁴가지)가 관측 가능한 우주 전체 원자 수(10⁸⁰개)보다 훨씬 많아 슈퍼컴퓨터로 영원히 계산할 수 없습니다.<br>
         (3) <strong>O</strong> : 미시 세계의 전자 스핀 조합은 거시 세계 우주 원자 총수보다 훨씬 커지는 역설적 규모를 갖습니다.
       </div>
 
-      <h4 style="color:#7c3aed; margin:0.8rem 0 0.4rem;">3. 서술형 문항 모범 답안</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+      <h4 style="color:#7c3aed; margin:2.25rem 0 0.8rem;">3. 서술형 문항 모범 답안</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
         분자 속 전자가 증가함에 따라 양자 상태가 2의 거듭제곱으로 곱해지는 '지수 폭발(2ᴺ)'이 발생하기 때문입니다. 페니실린 같은 작은 분자도 계산해야 할 경우의 수가 10⁸⁴가지로 전 우주의 원자 수(10⁸⁰)를 훌쩍 뛰어넘어, 일반 컴퓨터 방식으로는 우주 나이 동안 계산해도 불가능합니다.
       </div>
 
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed; margin-top:1rem; font-size:0.88rem;">
+      <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 체스판 쌀알 퀴즈(1칸 1톨, 2칸 2톨... 64번째 칸엔 1800경 톨)를 도입에 제시하여 거듭제곱의 무서운 증가 속도를 직관적으로 체감하게 하세요.
       </div>
     `
@@ -142,11 +141,10 @@ window.worksheetModalData.quantum = {
         <span>제 3 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
         <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 회전하는 동전 실험을 바탕으로 고전 비트와 양자 큐비트의 차이를 비교하여 표의 빈칸을 채우시오.</p>
-      <table class="data-table text-center" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 회전하는 동전 실험을 바탕으로 고전 비트와 양자 큐비트의 차이를 비교하여 표의 빈칸을 채우시오.</p>
+      <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
             <th style="width:24%;">비교 항목</th>
@@ -173,8 +171,8 @@ window.worksheetModalData.quantum = {
         </tbody>
       </table>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
-      <div class="ws-ox-quiz" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
+      <div class="ws-ox-quiz" style="margin-bottom:2.25rem;">
         <div class="ws-ox-item">
           <span class="ws-ox-statement">(1) 책상 위에서 빠르게 회전하는 동전은 손으로 멈춰 확인하기 전까지 앞면과 뒷면이 동시에 공존하는 상태다.</span>
           <div class="ws-ox-group" data-answer="O">
@@ -198,21 +196,21 @@ window.worksheetModalData.quantum = {
         </div>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin:0.9rem 0 0.4rem; font-weight:600;">3. 미로 찾기 비유를 바탕으로 일반 컴퓨터와 양자 컴퓨터의 정보 처리 방식 차이를 서술하시오.</p>
-      <div class="answer-box" style="padding:0.75rem 0.85rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 미로 찾기 비유를 바탕으로 일반 컴퓨터와 양자 컴퓨터의 정보 처리 방식 차이를 서술하시오.</p>
+      <div class="answer-box" style="padding:0.85rem 1rem; margin-bottom:2rem;">
         <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
           <i data-lucide="corner-down-right"></i> <span>서술:</span>
         </div>
         <textarea class="ws-textarea-input" rows="3" data-answer="일반 컴퓨터는 한 갈래 길씩 가보고 막히면 되돌아 나오는 '순차 탐색' 방식을 씁니다. 반면 양자 컴퓨터는 큐비트의 '중첩' 성질을 활용하여 1,024명의 분신이 모든 갈래 길을 단 한 번에 '동시에 쏟아져 들어가는 초병렬 처리'를 수행하므로 압도적으로 빠릅니다."></textarea>
       </div>
 
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1rem; font-size:0.88rem;">
+      <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 동전을 돌릴 때 떨어지지 않도록 트레이를 사용하고, "도는 동안 앞면인가요 뒷면인가요?"라는 발문으로 측정 전 공존 상태(중첩)를 온몸으로 느끼게 합니다.
       </div>
     `,
     teacher: `
-      <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">1. 표 예시 답안</h4>
-      <table class="data-table text-center" style="margin-bottom:1.25rem;">
+      <h4 style="color:#2563eb; margin:1.25rem 0 0.8rem;">1. 표 예시 답안</h4>
+      <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
             <th style="width:24%;">비교 항목</th>
@@ -239,20 +237,20 @@ window.worksheetModalData.quantum = {
         </tbody>
       </table>
 
-      <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">2. O / X 퀴즈 정답 및 해설</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75;">
+      <h4 style="color:#2563eb; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
         (1) <strong>O</strong> : 회전하는 동안 동전은 앞면(1)과 뒷면(0)이 확률적으로 뒤섞여 공존하는 상태(중첩)입니다.<br>
         (2) <strong>X</strong> : 일반 컴퓨터는 한 번에 하나의 길만 시도하는 직렬 순차 탐색을 하므로 갈래가 많아지면 극도로 느려집니다.<br>
         (3) <strong>O</strong> : 큐비트의 중첩과 얽힘 덕분에 2ᴺ개의 모든 상태를 단 1회의 연산 단계에서 동시에 검사할 수 있습니다.
       </div>
 
-      <h4 style="color:#2563eb; margin:0.8rem 0 0.4rem;">3. 서술형 문항 모범 답안</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+      <h4 style="color:#2563eb; margin:2.25rem 0 0.8rem;">3. 서술형 문항 모범 답안</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
         일반 컴퓨터는 한 갈래 길씩 가보고 막히면 되돌아 나오는 '순차 탐색' 방식을 씁니다. 반면 양자 컴퓨터는 큐비트의 '중첩' 성질을 활용하여 1,024명의 분신이 모든 갈래 길을 단 한 번에 '동시에 쏟아져 들어가는 초병렬 처리'를 수행하므로 압도적으로 빠릅니다.
       </div>
 
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1rem; font-size:0.88rem;">
+      <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 동전을 돌릴 때 떨어지지 않도록 트레이를 사용하고, "도는 동안 앞면인가요 뒷면인가요?"라는 발문으로 측정 전 공존 상태(중첩)를 온몸으로 느끼게 합니다.
       </div>
     `
@@ -265,16 +263,15 @@ window.worksheetModalData.quantum = {
         <span>제 3 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
         <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 다음 빈칸에 알맞은 말을 쓰시오.</p>
-      <div class="answer-box" style="padding:0.75rem 0.85rem; line-height:1.8;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 다음 빈칸에 알맞은 말을 쓰시오.</p>
+      <div class="answer-box" style="padding:0.85rem 1rem; line-height:1.8; margin-bottom:2.25rem;">
         자연계의 모든 화학 분자는 에너지가 가장 ( <input type="text" class="ws-mini-input" style="width:70px; text-align:center;" data-answer="낮은"> ) 상태인 최저 ( <input type="text" class="ws-mini-input" style="width:130px; text-align:center;" data-answer="바닥 상태"> )를 찾아 결합합니다.
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">2. 양자 컴퓨터와 일반 컴퓨터의 협동 알고리즘(VQE) 순서도의 빈칸을 채우시오.</p>
-      <div class="answer-box" style="line-height:2.2; padding:0.85rem 1rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 양자 컴퓨터와 일반 컴퓨터의 협동 알고리즘(VQE) 순서도의 빈칸을 채우시오.</p>
+      <div class="answer-box" style="line-height:2.2; padding:0.85rem 1rem; margin-bottom:2.25rem;">
         <div>[ 1단계: <strong>양자 컴퓨터의 임무</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( <input type="text" class="ws-mini-input" style="width:110px; text-align:center;" data-answer="에너지 값"> ) 계산하기</div>
         <div style="color:#64748b; font-size:0.88rem; padding-left:1.5rem;">⬇ 계산된 수치 전달</div>
         <div>[ 2단계: <strong>일반 컴퓨터의 임무</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <input type="text" class="ws-mini-input" style="width:130px; text-align:center;" data-answer="미세 조정"> )하기</div>
@@ -282,8 +279,8 @@ window.worksheetModalData.quantum = {
         <div>[ 3단계: <strong>최종 목표 달성</strong> ] 골짜기 최저 바닥 상태 도달! <i data-lucide="arrow-right"></i> 가장 안정한 <strong>신물질 분자 구조</strong> 완성!</div>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">3. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
-      <div class="ws-ox-quiz" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
+      <div class="ws-ox-quiz" style="margin-bottom:2rem;">
         <div class="ws-ox-item">
           <span class="ws-ox-statement">(1) 양자 컴퓨터 혼자서 모든 계산과 장비 제어를 100% 독립적으로 처리하는 것이 가장 효율적이다.</span>
           <div class="ws-ox-group" data-answer="X">
@@ -307,18 +304,18 @@ window.worksheetModalData.quantum = {
         </div>
       </div>
 
-      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#059669; margin-top:1.2rem; font-size:0.88rem;">
+      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#059669; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생 A는 양자 계산기 역할(에너지 계산), 학생 B는 네비게이션 역할(파라미터 조정)을 맡겨 공이 골짜기 바닥으로 굴러 떨어지는 최적화 루프를 온몸으로 체험하게 합니다.
       </div>
     `,
     teacher: `
-      <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">1. 문항 예시 답안</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48;">
+      <h4 style="color:#059669; margin:1.25rem 0 0.8rem;">1. 문항 예시 답안</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2.25rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
       </div>
 
-      <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">2. 순서도 예시 답안</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; line-height:2;">
+      <h4 style="color:#059669; margin:2.25rem 0 0.8rem;">2. 순서도 예시 답안</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; line-height:2; margin-bottom:2.25rem;">
         [ 1단계: <strong>양자 컴퓨터</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( <strong class="model-answer">에너지 값</strong> ) 계산<br>
         ⬇ 수치 전달<br>
         [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <strong class="model-answer">미세 조정(최적화)</strong> )<br>
@@ -326,14 +323,14 @@ window.worksheetModalData.quantum = {
         [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! <i data-lucide="arrow-right"></i> 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
       </div>
 
-      <h4 style="color:#059669; margin:0.8rem 0 0.4rem;">3. O / X 퀴즈 정답 및 해설</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75;">
+      <h4 style="color:#059669; margin:2.25rem 0 0.8rem;">3. O / X 퀴즈 정답 및 해설</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2rem;">
         (1) <strong>X</strong> : 현재의 양자 컴퓨터(NISQ)는 노이즈가 있어 일반 컴퓨터와의 하이브리드 협동(VQE)이 실용화의 핵심입니다.<br>
         (2) <strong>O</strong> : 양자 컴퓨터는 지수 폭발이 일어나는 분자 상태 에너지만 계산하고, 경로를 찾는 네비게이션은 일반 컴퓨터가 분담합니다.<br>
         (3) <strong>O</strong> : 분자는 에너지가 가장 낮을 때 결합이 가장 안정해지므로 골짜기 최저점(바닥 상태)을 찾는 것이 분자 설계의 최종 목표입니다.
       </div>
 
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#059669; margin-top:1rem; font-size:0.88rem;">
+      <div class="callout-box" style="background:#f8fafc; border-left-color:#059669; margin-top:1.5rem; font-size:0.88rem;">
         <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생 A는 양자 계산기 역할(에너지 계산), 학생 B는 네비게이션 역할(파라미터 조정)을 맡겨 공이 골짜기 바닥으로 굴러 떨어지는 최적화 루프를 온몸으로 체험하게 합니다.
       </div>
     `
@@ -346,12 +343,11 @@ window.worksheetModalData.quantum = {
         <span>제 3 학년 <input type="text" class="ws-mini-input" style="width:36px;"> 반</span>
         <span><input type="text" class="ws-mini-input" style="width:36px;"> 번</span>
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
-        <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. 컴퓨터를 이용한 양자 화학 시뮬레이션 기반 분자 설계 기획서를 작성하시오.</p>
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 컴퓨터를 이용한 양자 화학 시뮬레이션 기반 분자 설계 기획서를 작성하시오.</p>
 
-      <table class="data-table" style="margin-bottom:1.25rem;">
+      <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
           <th style="width:22%;">모둠명 / 프로젝트명</th>
           <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="퀀텀 카탈리스트 (Quantum Catalyst)"></td>
@@ -378,8 +374,8 @@ window.worksheetModalData.quantum = {
         </tr>
       </table>
 
-      <p style="font-size:0.92rem; color:#334155; margin:1rem 0 0.5rem; font-weight:600;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
-      <div class="ws-ox-quiz" style="margin-bottom:1.25rem;">
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
+      <div class="ws-ox-quiz" style="margin-bottom:2rem;">
         <div class="ws-ox-item">
           <span class="ws-ox-statement">(1) 위험한 화학 시약과 비커 없이도 양자 컴퓨터 시뮬레이션을 통해 수만 가지 가상 분자를 미리 합성해 볼 수 있다.</span>
           <div class="ws-ox-group" data-answer="O">
@@ -404,8 +400,8 @@ window.worksheetModalData.quantum = {
       </div>
     `,
     teacher: `
-      <h4 style="color:#d97706; margin:0.8rem 0 0.4rem;">1. 분자 설계 기획서 예시 답안</h4>
-      <table class="data-table" style="margin-bottom:1.25rem;">
+      <h4 style="color:#d97706; margin:1.25rem 0 0.8rem;">1. 분자 설계 기획서 예시 답안</h4>
+      <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
           <th style="width:22%;">모둠명 / 프로젝트명</th>
           <td style="width:28%;"><strong class="model-answer">퀀텀 카탈리스트 (Quantum Catalyst)</strong></td>
@@ -426,15 +422,15 @@ window.worksheetModalData.quantum = {
         </tr>
       </table>
 
-      <h4 style="color:#d97706; margin:0.8rem 0 0.4rem;">2. O / X 퀴즈 정답 및 해설</h4>
-      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75;">
+      <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
+      <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
         (1) <strong>O</strong> : 비커 없는 '인실리코(In-silico)' 양자 화학 시뮬레이션으로 실험실 폐기물 없이 신물질을 스크리닝할 수 있습니다.<br>
         (2) <strong>X</strong> : 하버-보슈 공정은 엄청난 화석연료와 전력을 소모하여 전 세계 온실가스의 주요 배출원으로 꼽혀 상온 대체 기술이 시급합니다.<br>
         (3) <strong>O</strong> : 분자 후보 물질 수백만 개 중 가장 결합 에너지가 낮은 최적 구조를 양자 컴퓨터로 즉시 선별하여 R&D 기간을 획기적으로 줄입니다.
       </div>
 
-      <h4 style="color:#d97706; margin:0.8rem 0 0.4rem;">3. 3차원 평가 루브릭</h4>
-      <table class="data-table" style="font-size:0.88rem;">
+      <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">3. 3차원 평가 루브릭</h4>
+      <table class="data-table" style="font-size:0.88rem; margin-bottom:2rem;">
         <thead>
           <tr><th style="width:20%;">평가 영역</th><th style="width:26%;">탁월 (A)</th><th style="width:27%;">보통 (B)</th><th style="width:27%;">노력요함 (C)</th></tr>
         </thead>

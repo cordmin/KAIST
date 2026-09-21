@@ -308,7 +308,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   <td>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 활동지 지수 폭발 수치표를 바르게 채우고 우주 원자 수와 비교하여 한계를 서술하는지 관찰 평가.</span>
+                      <span>활동지 지수 폭발 수치표를 바르게 채우고 우주 원자 수와 비교하여 한계를 서술하는지 관찰 평가.</span>
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="alert-triangle"></i>
@@ -497,7 +497,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   <td>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 비트와 큐비트의 차이를 '동전 비유'와 '미로 찾기'를 활용하여 자기 언어로 구술 설명할 수 있는지 확인.</span>
+                      <span>비트와 큐비트의 차이를 '동전 비유'와 '미로 찾기'를 활용하여 자기 언어로 구술 설명할 수 있는지 확인.</span>
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="alert-triangle"></i>
@@ -685,7 +685,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[과정평가]</strong> 활동지 2번 VQE 3단계 협동 순서도(QPU 측정 ➔ CPU 최적화 ➔ 바닥 상태 도달)를 정확히 서술하는지 점검.</span>
+                      <span>활동지 2번 VQE 3단계 협동 순서도(QPU 측정 ➔ CPU 최적화 ➔ 바닥 상태 도달)를 정확히 서술하는지 점검.</span>
                     </div>
                   </td>
                 </tr>
