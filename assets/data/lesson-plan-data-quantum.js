@@ -137,7 +137,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                 </td>
               </tr>
               <tr>
-                <th style="text-align:center;">학습목표</th>
+                <th style="text-align:center;">학습 목표</th>
                 <td colspan="3">
                   <strong>[지식·이해]</strong> 다전자 분자에서 전자 간 반발력으로 인해 발생하는 계산 복잡도와 비트 vs 큐비트 중첩의 차이를 설명할 수 있다.<br>
                   <strong>[과정·기능]</strong> 동전 돌리기 조작 실험 및 인터랙티브 시뮬레이터를 통해 VQE 바닥 상태 탐색 과정을 시각적으로 추론할 수 있다.<br>
@@ -182,7 +182,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                 </tr>
                 <tr>
-                  <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                  <th style="text-align:center; white-space:nowrap;">학습 목표</th>
                   <td colspan="4">분자 속 전자가 증가함에 따라 전자 간 반발력으로 인해 계산 조합의 수가 2의 N제곱(2ᴺ)으로 폭발하는 '지수 폭발'의 한계를 체험하고 설명할 수 있다.</td>
                 </tr>
                 <tr>
@@ -231,17 +231,17 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                       </div>
                     </div>
 
-                    <!-- 카드 2: 학습목표 안내 2분 -->
+                    <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습 목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
                           <strong>[문제 인식]</strong> "왜 1초에 100경 번 계산하는 수천억 원짜리 슈퍼컴퓨터도 우리가 매일 마시는 커피 한 잔 속 카페인 분자 하나를 완벽히 계산하지 못할까?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 분자 속 전자가 증가함에 따라 전자 간 반발력으로 인해 계산 조합의 수가 2의 N제곱(2ᴺ)으로 폭발하는 '지수 폭발'의 한계를 체험하고 설명할 수 있다.
+                          <strong>[학습 목표]</strong> 분자 속 전자가 증가함에 따라 전자 간 반발력으로 인해 계산 조합의 수가 2의 N제곱(2ᴺ)으로 폭발하는 '지수 폭발'의 한계를 체험하고 설명할 수 있다.
                         </div>
                       </div>
                     </div>
@@ -379,7 +379,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                 </tr>
                 <tr>
-                  <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                  <th style="text-align:center; white-space:nowrap;">학습 목표</th>
                   <td colspan="4">바닥에 놓인 동전(고전 비트: 0 또는 1)과 회전하는 동전 팽이(양자 큐비트: 0과 1의 '중첩')를 비교하여 양자 컴퓨터의 동시 병렬 처리 원리를 설명할 수 있다.</td>
                 </tr>
                 <tr>
@@ -427,17 +427,17 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                       </div>
                     </div>
 
-                    <!-- 카드 2: 학습목표 안내 2분 -->
+                    <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습 목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
                           <strong>[문제 인식]</strong> "0과 1이 동시에 섞여 있는 '양자 중첩' 상태를 이용하면 어떻게 1,024개의 길을 한꺼번에 찾아낼 수 있을까?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 바닥에 놓인 동전과 회전하는 동전 팽이를 비교하여 양자 컴퓨터의 동시 병렬 처리 원리를 설명할 수 있다.
+                          <strong>[학습 목표]</strong> 바닥에 놓인 동전과 회전하는 동전 팽이를 비교하여 양자 컴퓨터의 동시 병렬 처리 원리를 설명할 수 있다.
                         </div>
                       </div>
                     </div>
@@ -568,7 +568,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                 </tr>
                 <tr>
-                  <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                  <th style="text-align:center; white-space:nowrap;">학습 목표</th>
                   <td colspan="4">화학 반응에서 원자가 가장 안정한 최저 바닥 상태를 찾아 결합함을 이해하고, 양자 프로세서(QPU)와 일반 슈퍼컴퓨터(CPU)가 협력하는 VQE 하이브리드 알고리즘을 2인 1조 역할극으로 설명할 수 있다.</td>
                 </tr>
                 <tr>
@@ -616,17 +616,17 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                       </div>
                     </div>
 
-                    <!-- 카드 2: 학습목표 안내 2분 -->
+                    <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습 목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
                           <strong>[문제 인식]</strong> "자연계의 모든 분자는 에너지가 가장 낮은 '바닥 상태'에서 안정하게 결합하는데, 슈퍼컴퓨터 혼자 못 찾는 이 지점을 양자와 어떻게 협력하여 찾아낼까?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 바닥 상태의 개념을 이해하고, QPU와 CPU가 협력하는 VQE 하이브리드 알고리즘의 원리를 2인 1조 역할극으로 설명할 수 있다.
+                          <strong>[학습 목표]</strong> 바닥 상태의 개념을 이해하고, QPU와 CPU가 협력하는 VQE 하이브리드 알고리즘의 원리를 2인 1조 역할극으로 설명할 수 있다.
                         </div>
                       </div>
                     </div>
@@ -753,7 +753,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   </td>
                 </tr>
                 <tr>
-                  <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                  <th style="text-align:center; white-space:nowrap;">학습 목표</th>
                   <td colspan="4">양자 계산 화학이 인류가 직면한 3대 지구 환경 과제를 해결하는 생태전환적 가치를 인식하고, 가상 분자 설계 아이디어를 바탕으로 미래 스타트업 CEO 창업 기획서를 작성·발표할 수 있다.</td>
                 </tr>
                 <tr>
@@ -811,7 +811,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                           <strong>[문제 인식]</strong> "인류의 3대 지구 과제(식량, 청정 에너지, 질병)를 해결할 양자 화학 스타트업을 우리 손으로 창업한다면?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 양자 계산 화학의 생태전환 가치를 인식하고, 가상 분자 설계 아이디어를 바탕으로 미래 스타트업 CEO 창업 기획서를 작성·발표할 수 있다.
+                          <strong>[학습 목표]</strong> 양자 계산 화학의 생태전환 가치를 인식하고, 가상 분자 설계 아이디어를 바탕으로 미래 스타트업 CEO 창업 기획서를 작성·발표할 수 있다.
                         </div>
                       </div>
                     </div>

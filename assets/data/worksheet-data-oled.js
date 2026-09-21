@@ -228,7 +228,7 @@ window.worksheetModalData.oled = {
     `
   },
   3: {
-    title: '[3차시] 스마트폰의 배터리 낭비',
+    title: '[3차시] 스마트폰의 에너지 낭비',
     badge: 'OLED 모듈 3차시 | 성취기준 [9과11-02] [9과14-02] [9과14-03]',
     student: `
       <div class="ws-student-meta">
@@ -345,12 +345,12 @@ window.worksheetModalData.oled = {
       </div>
 
       <div class="callout-box" style="background:#f8fafc; border-left-color:#059669; margin-top:1.5rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 스마트폰 발열과 배터리 소모 현상을 상기시켜 1:3 낭비 법칙(빛 25% vs 열 75%)을 체감하도록 지도합니다.
+        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 스마트폰 발열과 배터리 소모 경험을 떠올리도록 유도하여 1:3 낭비 법칙(빛 25% vs 열 75%)을 체감하도록 지도합니다.
       </div>
     `
   },
   4: {
-    title: '[4차시] KAIST의 배터리 연구',
+    title: '[4차시] KAIST의 분자 연구',
     badge: 'OLED 모듈 4차시 | 성취기준 [9과10-03] [9과01-02] [9과23-01]',
     student: `
       <div class="ws-student-meta">
@@ -359,35 +359,19 @@ window.worksheetModalData.oled = {
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
       </div>
 
-      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. [읽기 자료]의 비유와 탐구 내용을 바탕으로, KAIST의 양자 시뮬레이션 진동수 조절 기술을 적용하여 차세대 청색 OLED 분자 기획서를 작성하시오.</p>
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. KAIST 연구진의 초고속 에너지 전환 기술(열로 빠져나가기 전 빛으로 전환)을 탐구하고, 아래 질문에 답하시오.</p>
 
       <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
-          <th style="width:22%;">스타트업 회사명</th>
-          <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="블루 퀀텀 퓨처스"></td>
-          <th style="width:22%;">대표 분자 디자이너</th>
-          <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="김청색 수석 디자이너"></td>
-        </tr>
-        <tr>
-          <th>해결할 과제</th>
-          <td colspan="3">청색(Blue) OLED는 빛 에너지가 높아 분자가 쉽게 깨져 화면 수명이 짧고, 공급된 전기의 75%가 진동수 불일치로 인한 헛떨림(열)으로 낭비됨.</td>
-        </tr>
-        <tr>
-          <th>청색 분자 구조 아이디어</th>
-          <td colspan="3">
-            <textarea class="ws-textarea-input" rows="3" data-answer="단단한 다환 고리 구조로 원자 결합을 강력하게 붙잡아 진동에 의한 열 손실을 억제하고 분자 깨짐을 방지함."></textarea>
+          <th style="width:28%; text-align:center;">(1) 해결된 문제점</th>
+          <td>
+            <textarea class="ws-textarea-input" rows="2" placeholder="기존 스마트폰 화면에서 75%의 열 낭비로 인해 발생하던 문제점(기기 발열, 배터리 소모, 번인 등) 중 해결된 점을 서술하시오." data-answer="75%의 열 손실을 빛으로 구출하여 화면 발열을 크게 줄이고, 배터리 사용 시간을 최대 2배 늘렸으며 화면 번인(잔상) 문제를 해결함."></textarea>
           </td>
         </tr>
         <tr>
-          <th>75% 구출 기술 및 원리</th>
-          <td colspan="3">
-            <textarea class="ws-textarea-input" rows="2" data-answer="KAIST 초고속 에너지 전환 기술: 슈퍼컴퓨터 양자 시뮬레이션으로 분자의 고유 진동수를 빛의 박자에 맞추어 헛떨림(열)을 방지하고, 열로 식기 전 75% 에너지를 100% 청색 정타 빛으로 구출함."></textarea>
-          </td>
-        </tr>
-        <tr>
-          <th>미래 사회 기대 효과</th>
-          <td colspan="3">
-            <textarea class="ws-textarea-input" rows="2" data-answer="스마트폰 배터리 사용 시간 2배 증대, 10년 이상 잔상 없는 초고화질 롤러블 OLED 디스플레이 상용화, 에너지 절감 기여."></textarea>
+          <th style="width:28%; text-align:center;">(2) 미래 사회 기대 효과</th>
+          <td>
+            <textarea class="ws-textarea-input" rows="2" placeholder="이 첨단 기술이 적용되었을 때 우리가 미래에 사용하게 될 새로운 디스플레이 제품의 모습을 상상하여 서술하시오." data-answer="배터리 걱정 없이 하루 종일 쓰는 초경량 스마트폰, 잔상 없이 10년 이상 선명한 롤러블/폴더블 화면, 친환경 저전력 대형 디스플레이 등."></textarea>
           </td>
         </tr>
       </table>
@@ -418,33 +402,19 @@ window.worksheetModalData.oled = {
       </div>
 
       <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#d97706; margin-top:1.5rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 KAIST 연구의 핵심인 "열로 버려지기 전에 빛을 내는 상태로 되돌리는 초고속 에너지 전환"을 비즈니스 모델로 연결할 수 있도록 피드백합니다.
+        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> KAIST의 첨단 기술이 가져올 일상생활의 혁신적 변화(배터리 2배, 발열 억제, 롤러블 등)와 미래 디스플레이 연구원 진로를 연결하여 지도합니다.
       </div>
     `,
     teacher: `
-      <h4 style="color:#d97706; margin:1.25rem 0 0.8rem;">1. 차세대 청색 분자 디자이너 기획서 예시 산출물</h4>
+      <h4 style="color:#d97706; margin:1.25rem 0 0.8rem;">1. KAIST 첨단 기술 및 미래 사회 변화 예시 답안</h4>
       <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
-          <th style="width:22%;">스타트업 회사명</th>
-          <td style="width:28%;"><strong class="model-answer">블루 퀀텀 퓨처스</strong></td>
-          <th style="width:22%;">대표 분자 디자이너</th>
-          <td style="width:28%;"><strong class="model-answer">김청색 수석 디자이너</strong></td>
+          <th style="width:28%; text-align:center;">(1) 해결된 문제점</th>
+          <td><strong class="model-answer">75%의 열 손실을 100% 빛으로 구출하여 스마트폰 기기 발열을 크게 낮추고, 배터리 사용 시간을 최대 2배 늘렸으며 화면 잔상(번인) 문제를 원천적으로 해결함.</strong></td>
         </tr>
         <tr>
-          <th>해결할 과제</th>
-          <td colspan="3">높은 에너지로 인해 쉽게 분해되는 청색 발광 분자의 열화(번인) 방지 및 발광 효율 100% 달성</td>
-        </tr>
-        <tr>
-          <th>분자 구조 아이디어</th>
-          <td colspan="3"><strong class="model-answer">단단한 다환 고리 구조로 원자 결합을 강력하게 붙잡아 진동에 의한 열 손실을 억제하고 분자 깨짐을 방지함.</strong></td>
-        </tr>
-        <tr>
-          <th>75% 구출 메커니즘</th>
-          <td colspan="3"><strong class="model-answer">KAIST [초고속 에너지 전환 기술]: 슈퍼컴퓨터 양자 시뮬레이션으로 분자의 고유 진동수를 빛의 방출 박자에 맞추어 헛떨림(열 진동)을 억제하고, 열로 완전히 식기 전에 100% 청색 정타 빛으로 초고속 전환시켜 구출함.</strong></td>
-        </tr>
-        <tr>
-          <th>미래 사회 기대 효과</th>
-          <td colspan="3"><strong class="model-answer">스마트폰 배터리 사용 시간 2배 증대, 10년 이상 잔상 없는 초고화질 롤러블 OLED TV 상용화, 에너지 절감에 기여.</strong></td>
+          <th style="width:28%; text-align:center;">(2) 미래 사회 기대 효과</th>
+          <td><strong class="model-answer">배터리 걱정 없이 얇고 가벼운 차세대 스마트폰 상용화, 10년 이상 써도 얼룩 잔상이 남지 않는 초고화질 롤러블/투명 디스플레이 출시, 디스플레이 소비전력 절감으로 친환경 기여.</strong></td>
         </tr>
       </table>
 
@@ -463,15 +433,15 @@ window.worksheetModalData.oled = {
         <tbody>
           <tr>
             <td><strong>과학적 타당성</strong></td>
-            <td>양자 시뮬레이션 진동수 조절과 열로 식기 전 빛으로 전환하는 KAIST 초고속 기술 원리를 정확히 적용함</td>
-            <td>구출 원리는 이해했으나 분자 구조 설명이 다소 모호함</td>
-            <td>구출 메커니즘 적용이 미흡하고 단순 상상에 의존함</td>
+            <td>열로 식기 전 빛으로 전환하는 KAIST 초고속 기술 원리와 발열·배터리 해결 관계를 정확히 설명함</td>
+            <td>기술 원리는 이해했으나 기존 문제점 해결 설명이 다소 모호함</td>
+            <td>기술 원리 이해가 미흡하고 단순 상상에 의존함</td>
           </tr>
           <tr>
-            <td><strong>창의성 및 기획력</strong></td>
-            <td>미래 사회 문제와 연결된 혁신적 디스플레이 구안</td>
-            <td>기존 제품의 단순 개선 수준에 머무름</td>
-            <td>기획 내용의 구체성이 부족함</td>
+            <td><strong>창의성 및 미래 영향</strong></td>
+            <td>미래 사회 문제와 연결된 혁신적 디스플레이 제품의 변화를 구체적으로 제시함</td>
+            <td>기존 스마트폰의 단순 개선 수준에 머무름</td>
+            <td>미래 변화에 대한 서술이 부족함</td>
           </tr>
         </tbody>
       </table>

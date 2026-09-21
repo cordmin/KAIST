@@ -18,10 +18,10 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
               <span><span class="tab-text-full">[2차시] 전자의 에너지 전달</span><span class="tab-text-mid">[2차시]</span><span class="tab-text-short">[2차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false">
-              <span><span class="tab-text-full">[3차시] 스마트폰의 배터리 낭비</span><span class="tab-text-mid">[3차시]</span><span class="tab-text-short">[3차시]</span></span>
+              <span><span class="tab-text-full">[3차시] 스마트폰의 에너지 낭비</span><span class="tab-text-mid">[3차시]</span><span class="tab-text-short">[3차시]</span></span>
             </button>
             <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 5)" role="tab" aria-selected="false">
-              <span><span class="tab-text-full">[4차시] KAIST의 배터리 연구</span><span class="tab-text-mid">[4차시]</span><span class="tab-text-short">[4차시]</span></span>
+              <span><span class="tab-text-full">[4차시] KAIST의 분자 연구</span><span class="tab-text-mid">[4차시]</span><span class="tab-text-short">[4차시]</span></span>
             </button>
           </div>
 
@@ -97,11 +97,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
                   </td>
                   <td>
-                    • 버려지는 열을 빛으로 바꾸는 KAIST 첨단 발광 기술<br>
+                    • 버려지는 열을 빛으로 바꾸는 KAIST 첨단 기술<br>
                     • 미래 디스플레이를 만드는 화학과 연구원 진로 탐구
                   </td>
                   <td>
-                    <strong>[A]</strong> 버려지는 열을 빛으로 바꾸는 첨단 발광 기술의 필요성을 설명하고, 미래 디스플레이를 위한 분자 설계 기획서를 타당하게 작성하여 발표함.<br>
+                    <strong>[A]</strong> 버려지는 열을 빛으로 바꾸는 첨단 기술의 필요성을 설명하고, 첨단 디스플레이 기술이 가져올 미래 사회 변화를 타당하게 설명함.<br>
                     <strong>[B]</strong> 미래 디스플레이를 개발하는 화학과 연구원이 하는 일을 조사하고 발표함.<br>
                     <strong>[C]</strong> 첨단 디스플레이 기술이 일상생활에 활용되는 사례를 조사하여 제시함.
                   </td>
@@ -136,11 +136,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                 </td>
               </tr>
               <tr>
-                <th style="text-align:center;">학습목표</th>
+                <th style="text-align:center;">학습 목표</th>
                 <td colspan="3">
                   <strong>[지식·이해]</strong> 자외선과 가시광선의 파장 및 에너지 차이를 비교하고, 형광 물질에서 일어나는 빛과 열의 에너지 전환 과정을 설명할 수 있다.<br>
                   <strong>[과정·기능]</strong> 스마트폰 픽셀(RGB)과 일상 속 형광 물질을 관찰하고, 가상실험실을 활용하여 스마트폰 화면(OLED)의 발광 원리와 열 손실(에너지 낭비) 원인을 탐구할 수 있다.<br>
-                  <strong>[가치·태도]</strong> 버려지는 열을 빛으로 바꾸는 첨단 발광 기술이 일상생활에 미치는 영향을 인식하고, 미래 디스플레이를 개발하는 화학과 연구원 진로에 흥미와 호기심을 갖는다.
+                  <strong>[가치·태도]</strong> 버려지는 열을 빛으로 바꾸는 첨단 기술이 일상생활에 미치는 영향을 인식하고, 미래 디스플레이를 개발하는 화학과 연구원 진로에 흥미와 호기심을 갖는다.
                 </td>
               </tr>
               <tr>
@@ -180,7 +180,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <td colspan="4"><strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.</td>
                 </tr>
                 <tr>
-                  <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                  <th style="text-align:center; white-space:nowrap;">학습 목표</th>
                   <td colspan="4">자외선과 가시광선의 파장 및 에너지 차이를 비교하고, 일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.</td>
                 </tr>
                 <tr>
@@ -227,17 +227,17 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       </div>
                     </div>
 
-                    <!-- 카드 2: 학습목표 안내 2분 -->
+                    <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습 목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
                           <strong>[문제 인식]</strong> "눈에 보이지 않는 빛(자외선)을 비추었는데, 어떻게 우리 눈에 보이는 형광빛으로 바뀌어 나오는 것일까?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 자외선과 가시광선의 파장 및 에너지 차이를 비교하고, 일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.
+                          <strong>[학습 목표]</strong> 자외선과 가시광선의 파장 및 에너지 차이를 비교하고, 일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.
                         </div>
                       </div>
                     </div>
@@ -413,7 +413,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <td colspan="4"><strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성됨을 입자 모형을 활용하여 설명할 수 있다.<br><strong>[9과14-03]</strong> 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.</td>
                 </tr>
                 <tr>
-                  <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                  <th style="text-align:center; white-space:nowrap;">학습 목표</th>
                   <td colspan="4">전자의 에너지 전달 과정을 에너지 보존 법칙으로 설명할 수 있다.</td>
                 </tr>
                 <tr>
@@ -456,21 +456,21 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; margin-top:0.35rem; color:#334155;">
                         <strong>[교사 발문]</strong> "1차시에서 형광 물질이 자외선을 받아 가시광선과 열을 뿜어냈습니다. 이 에너지를 실제로 받아서 전달하는 물질 속 입자는 누구일까요?"<br>
-                        <strong>[학생 반응]</strong> "원자 속에 있는 전자요!", "전자가 에너지를 흡수해서 움직여요!" 등 원자 모형 속 전자의 역할 상기
+                        <strong>[학생 반응]</strong> "원자 속에 있는 전자요!", "전자가 에너지를 흡수해서 움직여요!" 등 원자 모형 속 전자의 역할 떠올리기
                       </div>
                     </div>
 
-                    <!-- 카드 2: 학습목표 안내 2분 -->
+                    <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습 목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
                           <strong>[핵심 질문]</strong> "원자 속 전자는 자외선 에너지를 어떻게 흡수하여 형광빛과 열 형태로 전달하고 전환할까?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 원자 모형을 바탕으로 전자가 자외선 에너지를 흡수하여 형광 빛과 열로 전달·전환하는 과정을 에너지 보존 법칙으로 설명할 수 있다.
+                          <strong>[학습 목표]</strong> 원자 모형을 바탕으로 전자가 자외선 에너지를 흡수하여 형광 빛과 열로 전달·전환하는 과정을 에너지 보존 법칙으로 설명할 수 있다.
                         </div>
                       </div>
                     </div>
@@ -566,7 +566,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">차시 예고 3분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; color:#334155; font-size:0.83rem;">
-                        <strong>[3차시 예고]</strong> "스마트폰은 얼마나 배터리를 낭비하고 있을까?"
+                        <strong>[3차시 예고]</strong> "스마트폰은 얼마나 에너지를 낭비하고 있을까?"
                       </div>
                     </div>
                   </td>
@@ -584,7 +584,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
           <!-- [탭 3]: 3차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#059669;">[3차시]</span> 스마트폰의 배터리 낭비</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#059669;">[3차시]</span> 스마트폰의 에너지 낭비</h3>
             </div>
 
             <!-- [3차시] 통합 수업 지도안 표 -->
@@ -602,7 +602,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <td colspan="4"><strong>[9과10-03]</strong> 영상 장치에서 빛의 합성 원리<br><strong>[9과11-02]</strong> 물질의 구성 입자 모형<br><strong>[9과14-03]</strong> 전기 에너지의 다양한 형태 전환과 소비 전력</td>
                 </tr>
                 <tr>
-                  <th style="text-align:center; white-space:nowrap;">학습목표</th>
+                  <th style="text-align:center; white-space:nowrap;">학습 목표</th>
                   <td colspan="4">스마트폰 화면(OLED)에 전류가 흐를 때 일어나는 에너지 전환을 탐구하고, 75%의 전기가 열로 낭비되는 원인을 설명할 수 있다.</td>
                 </tr>
                 <tr>
@@ -641,7 +641,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">동기 유발 3분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 스마트폰 발열 현상 상기: "유튜브나 게임을 오래 하면 왜 화면 뒤쪽이 점점 뜨거워지고 배터리가 빨리 닳을까?"
+                        • 스마트폰 발열 경험 떠올리기: "유튜브나 게임을 오래 하면 왜 화면 뒤쪽이 점점 뜨거워지고 배터리가 빨리 닳을까?"
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; margin-top:0.35rem; color:#334155;">
                         <strong>[교사 발문]</strong> "화면을 켜기 위해 배터리 전기를 100 넣었는데, 왜 화면은 뜨거워지고 배터리는 순식간에 사라질까요?"<br>
@@ -649,17 +649,17 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       </div>
                     </div>
 
-                    <!-- 카드 2: 학습목표 안내 2분 -->
+                    <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습 목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
                           <strong>[핵심 질문]</strong> "스마트폰 화면에 전기를 넣으면, 왜 25%만 빛이 되고 무려 75%는 쓸모없는 열로 버려질까?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 스마트폰 화면(OLED)에 전류가 흐를 때 일어나는 에너지 전환을 탐구하고, 75%의 전기가 열로 낭비되는 원인을 설명할 수 있다.
+                          <strong>[학습 목표]</strong> 스마트폰 화면(OLED)에 전류가 흐를 때 일어나는 에너지 전환을 탐구하고, 75%의 전기가 열로 낭비되는 원인을 설명할 수 있다.
                         </div>
                       </div>
                     </div>
@@ -698,7 +698,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         &nbsp;&nbsp;2) <strong>열을 내는 분자 (75%):</strong> 빛을 내지 못하고 <strong>발열로 전부 낭비!</strong>
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; color:#0f172a;">
-                        <strong>[스마트폰 배터리 낭비의 진실]</strong> 자연 법칙상 4개 중 1개만 빛을 내고 3개는 열만 내므로, 전기의 75%가 화면을 뜨겁게 달구며 배터리를 낭비함
+                        <strong>[스마트폰 에너지 낭비의 진실]</strong> 자연 법칙상 4개 중 1개만 빛을 내고 3개는 열만 내므로, 전기의 75%가 화면을 뜨겁게 달구며 에너지를 낭비함
                       </div>
                     </div>
 
@@ -742,7 +742,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">결과 정리 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 3차시 핵심 배움 확인: 1) RGB 서브픽셀 빛의 합성, 2) 전기 투입 시 1:3 전환 법칙(빛 25% vs 열 75%), 3) 75% 배터리 낭비와 발열 문제<br>
+                        • 3차시 핵심 배움 확인: 1) RGB 서브픽셀 빛의 합성, 2) 전기 투입 시 1:3 전환 법칙(빛 25% vs 열 75%), 3) 75% 에너지 낭비와 발열 문제<br>
                         • 활동지 1, 2번 기록 점검 및 상호 피드백
                       </p>
                     </div>
@@ -753,7 +753,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">차시 예고 3분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; color:#334155; font-size:0.83rem;">
-                        <strong>[4차시 예고]</strong> "열로 빠져나가는 75%의 에너지를 빛으로 구출할 방법은 없을까? (KAIST의 에너지 초고속 전환 기술과 청색 분자 디자이너)"
+                        <strong>[4차시 예고]</strong> "열로 빠져나가는 75%의 에너지를 빛으로 구출할 방법은 없을까? (KAIST의 초고속 에너지 전환 기술과 미래 디스플레이)"
                       </div>
                     </div>
                   </td>
@@ -771,7 +771,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
           <!-- [탭 4]: 4차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#d97706;">[4차시]</span> KAIST의 배터리 연구</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#d97706;">[4차시]</span> KAIST의 분자 연구</h3>
             </div>
 
             <!-- [4차시] 통합 수업 지도안 표 -->
@@ -789,18 +789,18 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <td colspan="4"><strong>[9과10-03]</strong> 영상 장치에서 빛의 합성 원리<br><strong>[9과01-02]</strong> 첨단 과학기술이 가져올 미래 사회의 변화<br><strong>[9과23-01]</strong> 과학기술의 발달과 미래 사회 직업 변화</td>
                 </tr>
                 <tr>
-                  <th style="text-align:center; white-space:nowrap;">학습목표</th>
-                  <td colspan="4">버려지는 열을 빛으로 바꾸는 KAIST 첨단 발광 기술을 탐구하고, 미래 디스플레이를 위한 화학과 연구원 프로젝트(분자 기획서 작성)를 수행할 수 있다.</td>
+                  <th style="text-align:center; white-space:nowrap;">학습 목표</th>
+                  <td colspan="4">버려지는 열을 빛으로 바꾸는 KAIST 첨단 기술을 탐구하고, 첨단 디스플레이 기술이 가져올 미래 사회의 변화와 진로를 탐구할 수 있다.</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">탐구방법</th>
-                  <td>회로 제작 실습, 가상실험실 분자 시뮬레이션, 모둠별 분자 디자이너 기획서 작성, 1분 발표하기</td>
+                  <td>회로 제작 실습, 가상실험실 탐구, 첨단 기술 분석 및 미래 사회 변화 탐구</td>
                   <th style="text-align:center; white-space:nowrap;">준비물</th>
-                  <td colspan="2">초소형 LED/OLED 발광 소자 키트, 구리 테이프, 3V 코인 전지, 분자 시뮬레이터 태블릿, 기획서 활동지</td>
+                  <td colspan="2">초소형 LED/OLED 발광 소자 키트, 구리 테이프, 3V 코인 전지, 가상실험실 태블릿, 탐구 활동지</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
-                  <td>빛의 합성 원리와 화학 결합 안정성을 융합적으로 고려하고 평가 기준표에 따른 상호 평가 유도</td>
+                  <td>빛의 합성 원리와 에너지 전환을 융합적으로 고려하고, 첨단 기술이 일상생활에 미치는 긍정적 영향을 탐구하도록 지도</td>
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
@@ -831,25 +831,25 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">동기 유발 3분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 스마트폰 화면 번인(Burn-in) 상기: "스마트폰 화면을 오래 쓰면 왜 항상 파란색이 먼저 타서 누런 잔상이 남을까?"
+                        • 스마트폰 화면 번인(Burn-in) 현상 떠올리기: "스마트폰 화면을 오래 쓰면 왜 항상 파란색이 먼저 타서 누런 잔상이 남을까?"
                       </p>
-                      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; margin-top:0.35rem; color:#334155;">
-                        <strong>[교사 발문]</strong> "파란색은 에너지가 너무 높아 분자가 쉽게 깨집니다. 갇혀서 열만 내는 75%의 전자를 구출하여 파란색 OLED를 살릴 방법은 없을까요?"<br>
-                        <strong>[학생 반응]</strong> "분자를 더 튼튼하게 만든다", "열을 빛으로 바꾸는 우회로를 만든다" 등
+                      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.75rem; font-size:0.84rem; margin-top:0.35rem; color:#334155; line-height:1.6;">
+                        <strong>[교사 발문]</strong> "가스레인지 파란 불꽃이 붉은 불꽃보다 훨씬 뜨겁듯, 파란빛은 에너지가 가장 강합니다. 파란색 분자는 강한 빛을 내느라 제자리에서 심하게 떨며 열받고 스트레스를 받아 금방 깨져버리죠(번인). 분자를 <strong>덜 떨게 해서 덜 열받고 덜 스트레스 받게 하여</strong> 파란색 OLED를 오래 살릴 방법은 없을까요?"<br>
+                        <strong>[학생 반응]</strong> "분자 뼈대를 단단하게 고정한다", "열로 새기 전에 빛으로 빨리 빠져나가게 한다" 등
                       </div>
                     </div>
 
-                    <!-- 카드 2: 학습목표 안내 2분 -->
+                    <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습목표 안내 2분</span>
+                        <span class="plan-card-badge">학습 목표 안내 2분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
                           <strong>[핵심 질문]</strong> "KAIST 연구팀은 어떻게 열로 버려지려던 75%의 에너지를 다시 빛으로 전환하여 100% 효율을 달성했을까?"
                         </div>
                         <div>
-                          <strong>[학습목표]</strong> 버려지는 열을 빛으로 바꾸는 KAIST 첨단 발광 기술을 탐구하고, 미래 디스플레이를 위한 화학과 연구원 프로젝트(분자 기획서 작성)를 수행할 수 있다.
+                          <strong>[학습 목표]</strong> 버려지는 열을 빛으로 바꾸는 KAIST 첨단 기술을 탐구하고, 첨단 디스플레이 기술이 가져올 미래 사회의 변화와 진로를 탐구할 수 있다.
                         </div>
                       </div>
                     </div>
@@ -873,37 +873,36 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 코인 전지와 구리 테이프로 LED 회로를 구성하여 점등 실습 (전기 → 빛 전환 확인)<br>
-                        • <strong>청색(Blue) OLED의 해결 과제:</strong> 빨강·초록에 비해 빛의 에너지가 높아 분자 결합이 쉽게 파괴되는 한계 분석
+                        • <strong>청색(Blue) OLED의 해결 과제:</strong> 강한 빛 에너지를 내느라 분자가 심하게 떨리며(75% 열 손실) 열 스트레스로 쉽게 깨지는 한계 분석
                       </p>
                     </div>
 
-                    <!-- 카드 2: KAIST 핫 엑시톤 원리 규명 16분 -->
+                    <!-- 카드 2: KAIST 원리 규명 16분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">핫 엑시톤 메커니즘 16분</span>
+                        <span class="plan-card-badge">카이스트 연구내용 소개 16분</span>
                       </div>
                       <div style="margin:0 0 0.45rem 0; color:#334155; line-height:1.65;">
-                        <p style="margin:0 0 0.35rem 0;">• <strong>열로 빠져나가기 전에 빛으로 되돌리는 초고속 에너지 전환 원리:</strong></p>
-                        <div style="padding-left:1.15rem; text-indent:-1.15rem; margin-bottom:0.35rem;">
-                          - 75%의 에너지가 열(분자 진동)로 빠져나가기 전에, 슈퍼컴퓨터로 분자 진동수를 미세 조정하여 전자의 스핀 상태를 바꾸고 빛을 내뿜게 하는 <strong>초고속 에너지 전환 기술(KAIST 핫 엑시톤 기술)</strong> 분석
+                        <p style="margin:0 0 0.35rem 0;">• <strong>분자를 덜 떨게 하여 100% 빛으로 초고속 전환하는 원리:</strong></p>
+                        <div style="padding-left:0.58rem; text-indent:-0.58rem; margin-bottom:0.35rem;">
+                          - 75%의 에너지가 열(헛떨림)로 빠져나가기 전에, 단단한 뼈대 설계와 슈퍼컴퓨터 진동수 조절로 분자의 열 스트레스를 없애고 전기를 100% 청색 빛으로 전환하는 <strong>초고속 에너지 전환 기술(KAIST 원천 기술)</strong> 분석
                         </div>
-                        <div style="padding-left:1.15rem; text-indent:-1.15rem;">
-                          - <strong>전환 효과:</strong> 희귀 금속 없이 100% 청색 발광 전환 및 배터리 사용 시간 2배 향상
+                        <div style="padding-left:0.58rem; text-indent:-0.58rem;">
+                          - <strong>전환 효과:</strong> 덜 떨고 덜 열받아 분자 수명 획기적 연장(번인 해결), 100% 빛 전환으로 배터리 사용 시간 2배 향상
                         </div>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; color:#0f172a;">
-                        <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강하고 열을 빛으로 전환하는 고효율 청색 발광 분자 기획서 작성 [9과23-01]
+                        <strong>[핵심 탐구] KAIST 초고속 에너지 전환 기술 분석:</strong> 75%의 열 손실을 100% 빛으로 전환하여 스마트폰 발열 억제, 배터리 수명 2배, 번인 방지를 이뤄낸 기술 원리 탐구
                       </div>
                     </div>
 
-                    <!-- 카드 3: 모둠 발표 및 상호 평가 8분 -->
+                    <!-- 카드 3: 미래 사회 변화 탐구 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">발표하기 8분</span>
+                        <span class="plan-card-badge">미래 사회 변화 탐구 8분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.35rem; color:#334155;">
-                        <strong>[모둠별 1분 발표하기]</strong> 스타트업 회사명, 대표 디자이너, 단단한 분자 결합 구조, 75% 열-빛 초고속 전환 적용 방안 발표<br>
-                        <strong>[동료 평가]</strong> 과학적 타당성, 창의성, 기획력 등 구체적인 평가 기준에 따른 모둠 간 상호 평가
+                        <strong>[미래 사회 변화 탐구]</strong> KAIST 첨단 기술이 적용되었을 때 달라질 미래 스마트폰의 문제 해결과 일상생활의 변화(초경량 스마트폰, 잔상 없는 롤러블 화면 등) 탐구 및 발표 [9과01-02]
                       </div>
                     </div>
                   </td>
@@ -914,7 +913,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span>미래 청색 분자 디자이너 기획서의 과학적 타당성(열로 식기 전에 빛으로 전환하는 원리 적용 여부)을 평가 (평가 기준표 적용).</span>
+                      <span>KAIST 초고속 에너지 전환 기술 원리의 이해도와 미래 사회 변화 탐구의 타당성을 평가.</span>
                     </div>
                   </td>
                 </tr>
@@ -929,8 +928,8 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">단원 총정리 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • OLED 4차시 총정리: 1) 형광빛의 원리, 2) 전자의 에너지 전달, 3) 1:3 전기 전환과 75% 배터리 낭비, 4) KAIST 75% 열-빛 초고속 전환 원천 기술<br>
-                        • 우수 분자 디자이너 모둠 선정 및 축하
+                        • OLED 4차시 총정리: 1) 형광빛의 원리, 2) 전자의 에너지 전달, 3) 1:3 전기 전환과 75% 에너지 낭비, 4) KAIST 75% 열-빛 초고속 전환 원천 기술<br>
+                        • 4차시 첨단 탐구 완주 축하 및 질의응답
                       </p>
                     </div>
 
