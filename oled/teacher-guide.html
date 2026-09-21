@@ -21,6 +21,7 @@
           <span class="current-view-title"><i data-lucide="lightbulb"></i> [교사 도움 자료] 활동지 모범답안 및 지도 팁</span>
         </div>
         <div class="topbar-actions">
+          <button type="button" class="topbar-btn" style="background:#0284c7; color:#ffffff; border-color:#0284c7;" onclick="openReaderModal('oled', 4)"><i data-lucide="book-open"></i> <span>읽기 자료 보기</span></button>
           <a href="worksheet.html" class="topbar-btn"><i data-lucide="file-text"></i> <span>학생활동지 원본</span></a>
           <a href="lesson-plan.html" class="topbar-btn"><i data-lucide="clipboard-list"></i> <span>교사용 지도안</span></a>
           <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>도움자료 A4 인쇄</span></button>
@@ -204,7 +205,7 @@
                 <td colspan="3">
                   <strong class="model-answer">
                     KAIST 초고속 에너지 전환 기술 적용:<br>
-                    75%의 에너지가 열로 완전히 식어버리기 전에, 에너지가 높은 상태에서 빛을 낼 수 있는 상태로 초고속 방향 전환시키는 기술을 적용하여 열로 버려지던 75%의 에너지를 유용한 빛으로 전환함.
+                    슈퍼컴퓨터 양자 시뮬레이션을 통해 분자의 고유 진동수를 빛의 방출 박자에 맞추어 헛떨림(열 진동)을 억제하고, 75%의 에너지가 열로 완전히 식어버리기 전에 100% 청색 정타 빛으로 초고속 방향 전환시키는 기술을 적용하여 빛으로 완벽 구출함.
                   </strong>
                 </td>
               </tr>
@@ -255,6 +256,8 @@
   </div>
 
   <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/data/reader-data-oled.js"></script>
+  <script src="../assets/js/reader-modal.js"></script>
   <script>
     renderSidebar('oled', 'teacher-guide');
   </script>

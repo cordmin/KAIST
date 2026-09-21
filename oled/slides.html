@@ -123,6 +123,7 @@
           <span class="current-view-title"><i data-lucide="presentation"></i> [발표 슬라이드] 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학</span>
         </div>
         <div class="topbar-actions">
+          <button type="button" class="topbar-btn" style="background:#0284c7; color:#ffffff; border-color:#0284c7;" onclick="openReaderModal('oled', 4)"><i data-lucide="book-open"></i> <span>읽기 자료</span></button>
           <button class="topbar-btn" onclick="toggleFullScreen()"><i data-lucide="maximize-2"></i> <span>전체화면 발표</span></button>
           <a href="lesson-plan.html" class="topbar-btn"><i data-lucide="clipboard-list"></i> <span>지도안 보기</span></a>
           <a href="lab.html" class="topbar-btn primary"><i data-lucide="flask-conical"></i> <span>가상실험실 바로가기</span></a>
@@ -171,6 +172,8 @@
   </div>
 
   <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/data/reader-data-oled.js"></script>
+  <script src="../assets/js/reader-modal.js"></script>
   <script src="../assets/data/presentation-data-oled.js"></script>
   <script src="../assets/data/presentation-data-quantum.js"></script>
   <script src="../assets/js/presentation-modal.js"></script>

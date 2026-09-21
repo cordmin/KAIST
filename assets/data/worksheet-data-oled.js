@@ -363,7 +363,7 @@ window.worksheetModalData.oled = {
         <span>모둠: <input type="text" class="ws-mini-input" style="width:36px;"> 모둠</span>
       </div>
 
-      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. KAIST의 초고속 에너지 전환 기술을 적용하여 차세대 청색 OLED 분자 기획서를 작성하시오.</p>
+      <p style="font-size:0.92rem; color:#334155; margin-bottom:0.6rem; font-weight:600;">1. [읽기 자료]의 비유와 탐구 내용을 바탕으로, KAIST의 양자 시뮬레이션 진동수 조절 기술을 적용하여 차세대 청색 OLED 분자 기획서를 작성하시오.</p>
 
       <table class="data-table" style="margin-bottom:1.25rem;">
         <tr>
@@ -374,7 +374,7 @@ window.worksheetModalData.oled = {
         </tr>
         <tr>
           <th>해결할 과제</th>
-          <td colspan="3">청색(Blue) OLED는 빛 에너지가 높아 분자가 쉽게 깨져 화면 수명이 짧고, 공급된 전기의 75%가 발열로 낭비됨.</td>
+          <td colspan="3">청색(Blue) OLED는 빛 에너지가 높아 분자가 쉽게 깨져 화면 수명이 짧고, 공급된 전기의 75%가 진동수 불일치로 인한 헛떨림(열)으로 낭비됨.</td>
         </tr>
         <tr>
           <th>청색 분자 구조 아이디어</th>
@@ -385,7 +385,7 @@ window.worksheetModalData.oled = {
         <tr>
           <th>75% 구출 기술 및 원리</th>
           <td colspan="3">
-            <textarea class="ws-textarea-input" rows="2" data-answer="KAIST 초고속 에너지 전환 기술: 75%의 에너지가 열로 식어버리기 전에, 높은 에너지 상태에서 빛을 낼 수 있는 상태로 초고속 방향 전환을 유도하여 100% 청색 빛으로 구출함."></textarea>
+            <textarea class="ws-textarea-input" rows="2" data-answer="KAIST 초고속 에너지 전환 기술: 슈퍼컴퓨터 양자 시뮬레이션으로 분자의 고유 진동수를 빛의 박자에 맞추어 헛떨림(열)을 방지하고, 열로 식기 전 75% 에너지를 100% 청색 정타 빛으로 구출함."></textarea>
           </td>
         </tr>
         <tr>
@@ -444,7 +444,7 @@ window.worksheetModalData.oled = {
         </tr>
         <tr>
           <th>75% 구출 메커니즘</th>
-          <td colspan="3"><strong class="model-answer">KAIST [초고속 에너지 전환 기술]: 75%의 에너지가 열로 완전히 식어버리기 전에, 에너지가 높은 상태에서 빛을 낼 수 있는 상태로 방향을 전환시켜 100% 청색 빛으로 방출되도록 구출함.</strong></td>
+          <td colspan="3"><strong class="model-answer">KAIST [초고속 에너지 전환 기술]: 슈퍼컴퓨터 양자 시뮬레이션으로 분자의 고유 진동수를 빛의 방출 박자에 맞추어 헛떨림(열 진동)을 억제하고, 열로 완전히 식기 전에 100% 청색 정타 빛으로 초고속 전환시켜 구출함.</strong></td>
         </tr>
         <tr>
           <th>미래 사회 기대 효과</th>
@@ -467,7 +467,7 @@ window.worksheetModalData.oled = {
         <tbody>
           <tr>
             <td><strong>과학적 타당성</strong></td>
-            <td>열로 식기 전 빛으로 전환하는 KAIST 초고속 기술 원리를 정확히 적용함</td>
+            <td>양자 시뮬레이션 진동수 조절과 열로 식기 전 빛으로 전환하는 KAIST 초고속 기술 원리를 정확히 적용함</td>
             <td>구출 원리는 이해했으나 분자 구조 설명이 다소 모호함</td>
             <td>구출 메커니즘 적용이 미흡하고 단순 상상에 의존함</td>
           </tr>

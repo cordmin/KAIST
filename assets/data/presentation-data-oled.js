@@ -1249,8 +1249,8 @@ window.presentationModalData.oled = {
               <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
               <div class="pres-step-box">
                 <div class="step-num">Step 2</div>
-                <div class="step-title">초고속 에너지 전환 경로 연결</div>
-                <p>가상실험실(Lab 3)에서 열로 식어버리기 전에 빛을 낼 수 있는 상태로 방향을 전환하는 <strong>초고속 에너지 전환 경로</strong>를 연결합니다.</p>
+                <div class="step-title">양자 시뮬레이션 & 진동수 조절</div>
+                <p>[읽기 자료]의 빗맞은 하이파이브 비유처럼, 슈퍼컴퓨터로 분자 진동수를 맞추어 헛떨림(열)을 없애고 <strong>초고속 빛 전환 경로</strong>를 연결합니다.</p>
               </div>
               <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
               <div class="pres-step-box">
@@ -1376,7 +1376,7 @@ window.presentationModalData.oled = {
 
               <div class="pres-def-card">
                 <p class="pres-def-text">
-                  <strong class="pres-def-lead">초고속 에너지 전환(핫 엑시톤)이란?</strong> 75%의 에너지가 열로 식어버리기 전, 에너지가 높은 상태에서 빛을 낼 수 있는 상태로 초고속 전환시켜 100% 빛을 내게 하는 KAIST 원천 기술
+                  <strong class="pres-def-lead">초고속 에너지 전환(핫 엑시톤)이란?</strong> 75%의 에너지가 열(헛진동)로 식어버리기 전, 양자 시뮬레이션으로 분자의 고유 진동수를 조절하여 빛을 내는 상태로 초고속 전환시켜 100% 정타 빛을 내게 하는 KAIST 원천 기술
                 </p>
               </div>
             </div>
@@ -1391,16 +1391,16 @@ window.presentationModalData.oled = {
             <div class="pres-grid-2">
               <div class="pres-card">
                 <div class="pres-card-title"><i data-lucide="shield-check"></i> 전략 1: 단단한 분자 결합 설계</div>
-                <p>원자 사이를 강력한 결합 구조로 묶어 결합이 진동으로 흔들리며 깨지는 것을 방지합니다.</p>
+                <p>원자 사이의 결합을 강력하게 조여 진동으로 인한 열 손실과 분자 깨짐을 원천 방지합니다.</p>
                 <div class="pres-badge-box" style="margin-top:1rem; background:#f8fafc; border-color:#e2e8f0; color:#0f172a;">
-                  <i data-lucide="check"></i> <strong>분자 파괴 방지 및 화면 번인(잔상) 방지</strong>
+                  <i data-lucide="check"></i> <strong>분자 헛떨림(열) 억제 및 화면 번인(잔상) 방지</strong>
                 </div>
               </div>
               <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="zap"></i> 전략 2: 초고속 에너지 전환 경로 연결</div>
-                <p>KAIST의 초고속 에너지 전환 경로를 적용하여, 열로 식어버리기 전에 75%의 에너지를 100% 청색 빛으로 전환합니다.</p>
+                <div class="pres-card-title"><i data-lucide="zap"></i> 전략 2: 양자 시뮬레이션 기반 진동수 재설계</div>
+                <p>슈퍼컴퓨터로 분자의 떨림 박자(진동수)를 맞추어, 75%의 헛에너지를 100% 시원한 청색 정타 빛으로 전환합니다.</p>
                 <div class="pres-badge-box" style="margin-top:1rem; background:#f8fafc; border-color:#e2e8f0; color:#0f172a;">
-                  <i data-lucide="check"></i> <strong>배터리 효율 2배 향상 및 100% 발광 달성</strong>
+                  <i data-lucide="check"></i> <strong>배터리 수명 2배 향상 및 100% 발광 달성</strong>
                 </div>
               </div>
             </div>

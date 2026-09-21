@@ -21,6 +21,7 @@
           <span class="current-view-title"><i data-lucide="file-text"></i> [학생 활동지] 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학</span>
         </div>
         <div class="topbar-actions">
+          <button type="button" class="topbar-btn" style="background:#0284c7; color:#ffffff; border-color:#0284c7;" onclick="openReaderModal('oled', 4)"><i data-lucide="book-open"></i> <span>읽기 자료 보기</span></button>
           <a href="teacher-guide.html" class="topbar-btn"><i data-lucide="lightbulb"></i> <span>교사도움자료(정답) 보기</span></a>
           <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>활동지 A4 인쇄</span></button>
         </div>
@@ -307,7 +308,7 @@
           <!-- 탐구 4 활동 -->
           <div style="margin-top:1.5rem;">
             <p><strong>【탐구 4】 차세대 청색 OLED 분자 설계 기획서</strong></p>
-            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. KAIST의 초고속 에너지 전환 기술을 적용하여 차세대 청색 OLED 발광 분자 설계 기획서를 작성하시오.</p>
+            <p style="font-size:0.88rem; color:#475569; margin-bottom:0.4rem;">1. [읽기 자료]의 비유와 탐구 내용을 바탕으로, KAIST의 양자 시뮬레이션 진동수 조절 기술을 적용하여 차세대 청색 OLED 발광 분자 설계 기획서를 작성하시오.</p>
 
             <table class="data-table">
               <tr>
@@ -318,7 +319,7 @@
               </tr>
               <tr>
                 <th>해결할 과제</th>
-                <td colspan="3">청색(Blue) OLED는 빛 에너지가 높아 분자가 쉽게 깨져 화면 수명이 짧고, 전기의 75%가 발열로 낭비되는 한계가 있음.</td>
+                <td colspan="3">청색(Blue) OLED는 빛 에너지가 높아 분자가 쉽게 깨져 화면 수명이 짧고, 전기의 75%가 진동수 불일치로 인한 헛떨림(열)으로 낭비되는 한계가 있음.</td>
               </tr>
               <tr>
                 <th>청색 분자 구조<br>스케치 및 설명</th>
@@ -383,6 +384,8 @@
   </div>
 
   <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/data/reader-data-oled.js"></script>
+  <script src="../assets/js/reader-modal.js"></script>
   <script>
     renderSidebar('oled', 'worksheet');
   </script>

@@ -804,6 +804,9 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
+                      <button type="button" class="topbar-btn" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem; background:#0284c7; color:#ffffff; border-color:#0284c7;" onclick="openReaderModal('oled', 4)">
+                        <i data-lucide="book-open"></i> <span>읽기 자료</span>
+                      </button>
                       <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 4, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
@@ -874,18 +877,21 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       </p>
                     </div>
 
-                    <!-- 카드 2: KAIST 핫 엑시톤 원리 규명 16분 -->
+                    <!-- 카드 2: KAIST 핫 엑시톤 원리 규명 & 읽기 자료 탐독 16분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">핫 엑시톤 메커니즘 16분</span>
+                        <span class="plan-card-badge">핫 엑시톤 메커니즘 & 읽기 자료 16분</span>
+                      </div>
+                      <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.4rem; color:#0369a1; font-size:0.84rem;">
+                        <strong>[읽기 자료 탐독]</strong> '스마트폰 속 75% 배터리 도둑을 잡아라!' (동화책 뷰어): 빗맞은 하이파이브(박자 불일치 헛진동 75% 열) 비유를 통해, 분자의 고유 진동수 불일치와 열 손실 원리를 직관적으로 이해
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • <strong>열로 식기 전에 빛으로 되돌리는 초고속 에너지 전환 경로:</strong><br>
-                        - 75%의 에너지가 열(분자 진동)로 완전히 식어 갇히기 전, 높은 에너지 상태에서 빛을 내는 상태로 방향을 틀어주는 <strong>초고속 에너지 전환 경로(KAIST 핫 엑시톤 기술)</strong> 분석<br>
-                        - <strong>전환 효과:</strong> 희귀 금속 없이 100% 청색 발광 전환 및 배터리 사용 효율 향상
+                        • <strong>양자 시뮬레이션 기반 초고속 에너지 전환 원천 기술:</strong><br>
+                        - 75%의 에너지가 열(분자 진동)로 완전히 식어 갇히기 전, 슈퍼컴퓨터로 분자 진동수를 계산하여 원자 결합을 재설계하고 빛을 내는 상태로 초고속 전환하는 <strong>KAIST CPRL 핫 엑시톤 기술</strong> 분석<br>
+                        - <strong>전환 효과:</strong> 희귀 금속 없이 100% 정타 청색 발광 전환 및 배터리 사용 시간 2배 향상
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; color:#0f172a;">
-                        <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강하고 열을 빛으로 전환하는 고효율 청색 발광 분자 기획서 작성 [9과23-01]
+                        <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강하고 분자 진동수를 맞추어 열을 빛으로 전환하는 고효율 청색 발광 분자 기획서 작성 [9과23-01]
                       </div>
                     </div>
 
@@ -906,8 +912,12 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       <span>구리 테이프 절단 시 단면에 손이 베이지 않도록 안전 지도 및 전지 극성 확인.</span>
                     </div>
                     <div class="plan-note-card">
+                      <i data-lucide="book-open"></i>
+                      <span><strong>[수업도움]</strong> 하이파이브 빗맞음(헛진동/열) 비유를 상기시켜 여학생·남학생 전원이 분자 진동수 조절 원리를 쉽게 체감하도록 유도.</span>
+                    </div>
+                    <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[산출물평가]</strong> 미래 청색 분자 디자이너 기획서의 과학적 타당성(열로 식기 전에 빛으로 전환하는 원리 적용 여부)을 평가 (루브릭 적용).</span>
+                      <span><strong>[산출물평가]</strong> 미래 청색 분자 디자이너 기획서의 과학적 타당성(진동수를 제어하여 열로 식기 전 빛으로 전환하는 원리 적용 여부)을 평가 (루브릭 적용).</span>
                     </div>
                   </td>
                 </tr>
