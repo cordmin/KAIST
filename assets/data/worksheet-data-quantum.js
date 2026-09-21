@@ -355,7 +355,7 @@ window.worksheetModalData.quantum = {
           <td style="width:28%;"><input type="text" class="ws-table-input" data-answer="이양자 외 3명"></td>
         </tr>
         <tr>
-          <th>해결할 지구 난제 및 선정 이유</th>
+          <th>해결할 과제 및 선정 이유</th>
           <td colspan="3">
             <textarea class="ws-textarea-input" rows="2" data-answer="친환경 상온 비료 촉매 개발: 400℃ 고온과 200기압을 쓰는 전통 비료 생산 공정이 전 세계 전기의 2%를 소모하고 탄소를 배출하기 때문."></textarea>
           </td>
@@ -409,7 +409,7 @@ window.worksheetModalData.quantum = {
           <td style="width:28%;"><strong class="model-answer">이양자 외 3명</strong></td>
         </tr>
         <tr>
-          <th>해결할 지구 난제 및 선정 이유</th>
+          <th>해결할 과제 및 선정 이유</th>
           <td colspan="3"><strong class="model-answer">[친환경 상온 비료 촉매]: 400℃ 고온과 200기압을 쓰는 하버-보슈 공정을 대체하여 전 세계 전력의 2% 소비 절감</strong></td>
         </tr>
         <tr>
@@ -429,7 +429,7 @@ window.worksheetModalData.quantum = {
         (3) <strong>O</strong> : 분자 후보 물질 수백만 개 중 가장 결합 에너지가 낮은 최적 구조를 양자 컴퓨터로 즉시 선별하여 R&D 기간을 획기적으로 줄입니다.
       </div>
 
-      <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">3. 3차원 평가 루브릭</h4>
+      <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">3. 평가 기준표</h4>
       <table class="data-table" style="font-size:0.88rem; margin-bottom:2rem;">
         <thead>
           <tr><th style="width:20%;">평가 영역</th><th style="width:26%;">탁월 (A)</th><th style="width:27%;">보통 (B)</th><th style="width:27%;">노력요함 (C)</th></tr>
@@ -438,7 +438,7 @@ window.worksheetModalData.quantum = {
           <tr>
             <td><strong>과학적 타당성</strong></td>
             <td>분자 결합 및 양자 컴퓨터 시뮬레이션 원리를 논리적으로 접목함</td>
-            <td>지구 난제는 이해했으나 분자 시뮬레이션 설명이 다소 추상적임</td>
+            <td>해결할 과제는 이해했으나 분자 시뮬레이션 설명이 다소 추상적임</td>
             <td>양자역학 원리 접목 없이 단순 아이디어만 나열함</td>
           </tr>
           <tr>

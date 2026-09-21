@@ -742,7 +742,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">결과 정리 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 3차시 핵심 배움 확인: 1) RGB 서브픽셀 빛의 합성, 2) 전기 투입 시 1:3 전환 법칙(빛 25% vs 열 75%), 3) 75% 배터리 낭비와 발열 난제<br>
+                        • 3차시 핵심 배움 확인: 1) RGB 서브픽셀 빛의 합성, 2) 전기 투입 시 1:3 전환 법칙(빛 25% vs 열 75%), 3) 75% 배터리 낭비와 발열 문제<br>
                         • 활동지 1, 2번 기록 점검 및 상호 피드백
                       </p>
                     </div>
@@ -753,7 +753,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <span class="plan-card-badge">차시 예고 3분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; color:#334155; font-size:0.83rem;">
-                        <strong>[4차시 예고]</strong> "열로 식어버리는 75%의 에너지를 빛으로 구출할 방법은 없을까? (KAIST의 에너지 초고속 전환 기술과 청색 분자 디자이너)"
+                        <strong>[4차시 예고]</strong> "열로 빠져나가는 75%의 에너지를 빛으로 구출할 방법은 없을까? (KAIST의 에너지 초고속 전환 기술과 청색 분자 디자이너)"
                       </div>
                     </div>
                   </td>
@@ -866,14 +866,14 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                 <tr>
                   <td style="text-align:center; vertical-align:middle; white-space:nowrap; background-color:#f1f5f9;"><strong>전개</strong></td>
                   <td colspan="3">
-                    <!-- 카드 1: 회로 점등 및 청색 난제 8분 -->
+                    <!-- 카드 1: 회로 점등 및 해결 과제 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">회로 점등 & 난제 8분</span>
+                        <span class="plan-card-badge">회로 점등 & 해결 과제 8분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 코인 전지와 구리 테이프로 LED 회로를 구성하여 점등 실습 (전기 → 빛 전환 확인)<br>
-                        • <strong>청색(Blue) OLED의 난제:</strong> 빨강·초록에 비해 빛의 에너지가 높아 분자 결합이 쉽게 파괴되는 한계 분석
+                        • <strong>청색(Blue) OLED의 해결 과제:</strong> 빨강·초록에 비해 빛의 에너지가 높아 분자 결합이 쉽게 파괴되는 한계 분석
                       </p>
                     </div>
 
@@ -882,11 +882,15 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       <div class="plan-card-header">
                         <span class="plan-card-badge">핫 엑시톤 메커니즘 16분</span>
                       </div>
-                      <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • <strong>열로 식기 전에 빛으로 되돌리는 초고속 에너지 전환 경로:</strong><br>
-                        - 75%의 에너지가 열(분자 진동)로 완전히 식어 갇히기 전, 슈퍼컴퓨터로 분자 진동수를 계산하여 원자 결합을 재설계하고 빛을 내는 상태로 방향을 틀어주는 <strong>초고속 에너지 전환 경로(KAIST 핫 엑시톤 기술)</strong> 분석<br>
-                        - <strong>전환 효과:</strong> 희귀 금속 없이 100% 청색 발광 전환 및 배터리 사용 시간 2배 향상
-                      </p>
+                      <div style="margin:0 0 0.45rem 0; color:#334155; line-height:1.65;">
+                        <p style="margin:0 0 0.35rem 0;">• <strong>열로 빠져나가기 전에 빛으로 되돌리는 초고속 에너지 전환 원리:</strong></p>
+                        <div style="padding-left:1.15rem; text-indent:-1.15rem; margin-bottom:0.35rem;">
+                          - 75%의 에너지가 열(분자 진동)로 빠져나가기 전에, 슈퍼컴퓨터로 분자 진동수를 미세 조정하여 전자의 스핀 상태를 바꾸고 빛을 내뿜게 하는 <strong>초고속 에너지 전환 기술(KAIST 핫 엑시톤 기술)</strong> 분석
+                        </div>
+                        <div style="padding-left:1.15rem; text-indent:-1.15rem;">
+                          - <strong>전환 효과:</strong> 희귀 금속 없이 100% 청색 발광 전환 및 배터리 사용 시간 2배 향상
+                        </div>
+                      </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; color:#0f172a;">
                         <strong>[모둠 프로젝트] 미래 청색 OLED 분자 디자이너:</strong> 결합을 단단하게 보강하고 열을 빛으로 전환하는 고효율 청색 발광 분자 기획서 작성 [9과23-01]
                       </div>
@@ -895,11 +899,11 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 3: 모둠 발표 및 상호 평가 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">피칭 발표 8분</span>
+                        <span class="plan-card-badge">발표하기 8분</span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.75rem; margin-bottom:0.35rem; color:#334155;">
-                        <strong>[모둠별 1분 피칭]</strong> 스타트업 회사명, 대표 디자이너, 단단한 분자 결합 구조, 75% 열-빛 초고속 전환 적용 방안 발표<br>
-                        <strong>[동료 평가]</strong> 3차원 루브릭(과학적 타당성, 창의성, 기획력) 기반 모둠 간 상호 평가
+                        <strong>[모둠별 1분 발표하기]</strong> 스타트업 회사명, 대표 디자이너, 단단한 분자 결합 구조, 75% 열-빛 초고속 전환 적용 방안 발표<br>
+                        <strong>[동료 평가]</strong> 과학적 타당성, 창의성, 기획력 등 구체적인 평가 기준에 따른 모둠 간 상호 평가
                       </div>
                     </div>
                   </td>
@@ -910,7 +914,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span>미래 청색 분자 디자이너 기획서의 과학적 타당성(열로 식기 전에 빛으로 전환하는 원리 적용 여부)을 평가 (루브릭 적용).</span>
+                      <span>미래 청색 분자 디자이너 기획서의 과학적 타당성(열로 식기 전에 빛으로 전환하는 원리 적용 여부)을 평가 (평가 기준표 적용).</span>
                     </div>
                   </td>
                 </tr>
@@ -943,7 +947,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <td>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span>활동지 산출물과 피칭 태도를 종합하여 학교생활기록부 교과학습발달상황 세특 기재 연계.</span>
+                      <span>활동지 산출물과 발표 태도를 종합하여 학교생활기록부 교과학습발달상황 세특 기재 연계.</span>
                     </div>
                   </td>
                 </tr>

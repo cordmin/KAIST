@@ -754,13 +754,13 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">학습목표</th>
-                  <td colspan="4">양자 계산 화학이 인류의 3대 지구 난제를 해결하는 생태전환적 가치를 인식하고, 가상 분자 설계 아이디어를 바탕으로 미래 스타트업 CEO 창업 기획서를 작성·발표할 수 있다.</td>
+                  <td colspan="4">양자 계산 화학이 인류가 직면한 3대 지구 환경 과제를 해결하는 생태전환적 가치를 인식하고, 가상 분자 설계 아이디어를 바탕으로 미래 스타트업 CEO 창업 기획서를 작성·발표할 수 있다.</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">탐구방법</th>
-                  <td>지구적 난제 해결 모둠 프로젝트, 스타트업 기획서 구안, 2분 엘리베이터 피칭 및 모둠 상호 투자 심사</td>
+                  <td>지구 환경 과제 해결 모둠 프로젝트, 스타트업 기획서 구안, 2분 발표하기 및 모둠 상호 투자 심사</td>
                   <th style="text-align:center; white-space:nowrap;">준비물</th>
-                  <td colspan="2">스마트기기, 스타트업 CEO 창업 기획서 양식, 발표 평가 루브릭, 3대 난제 팩트시트</td>
+                  <td colspan="2">스마트기기, 스타트업 CEO 창업 기획서 양식, 발표 평가 기준표, 3대 과제 안내 자료</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
@@ -808,7 +808,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
-                          <strong>[문제 인식]</strong> "인류의 3대 지구 난제(식량, 청정 에너지, 질병)를 해결할 양자 화학 스타트업을 우리 손으로 창업한다면?"
+                          <strong>[문제 인식]</strong> "인류의 3대 지구 과제(식량, 청정 에너지, 질병)를 해결할 양자 화학 스타트업을 우리 손으로 창업한다면?"
                         </div>
                         <div>
                           <strong>[학습목표]</strong> 양자 계산 화학의 생태전환 가치를 인식하고, 가상 분자 설계 아이디어를 바탕으로 미래 스타트업 CEO 창업 기획서를 작성·발표할 수 있다.
@@ -828,13 +828,13 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                 <tr>
                   <td style="text-align:center; vertical-align:middle; white-space:nowrap; background-color:#f1f5f9;"><strong>전개</strong></td>
                   <td colspan="3">
-                    <!-- 카드 1: 3대 지구 난제 심층 분석 10분 -->
+                    <!-- 카드 1: 3대 지구 과제 심층 분석 10분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">난제 분석 10분</span>
+                        <span class="plan-card-badge">해결 과제 분석 10분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • <strong>인류 3대 지구 난제와 화학 결합 메커니즘:</strong><br>
+                        • <strong>인류의 3대 해결 과제와 화학 결합 메커니즘:</strong><br>
                         1) <strong>친환경 상온 비료:</strong> 400℃, 200기압을 쓰는 하버-보슈 공정을 대체하여, 상온에서 질소(N≡N) 삼중 결합을 끊는 뿌리혹박테리아 철-몰리브덴(Fe-Mo) 클러스터 모사 촉매 설계 (전 세계 전력 2% 절감)<br>
                         2) <strong>전고체 배터리:</strong> 화재 위험 액체 전해질을 대체하는 초고속 리튬($Li^+$) 이동 결정 채널 설계 (폭발 제로 & 에너지 밀도 2배)<br>
                         3) <strong>표적 항암 신약:</strong> 변종 바이러스 단백질 결합 포켓에 딱 들어맞는 분자를 양자 도킹 시뮬레이션하여 10년 걸릴 개발 기간을 1년으로 단축
@@ -849,19 +849,19 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>[모둠 프로젝트] 스타트업 CEO 창업 기획서 작성:</strong><br>
                         - 4인 1조 모둠별 역할 분담 (대표 CEO, 수석 양자화학자, 분자 모델러, ESG 가치 평가자)<br>
-                        - 3대 난제 중 1개 선택, 스타트업 회사명 작명, 가상 분자 핵심 원리 및 사회·생태적 기대 효과 구안<br>
+                        - 3대 과제 중 1개 선택, 스타트업 회사명 작명, 가상 분자 핵심 원리 및 사회·생태적 기대 효과 구안<br>
                         - 모범 사례(퀀텀 카탈리스트, 상온 질소 고정 촉매로 온실가스 1.5% 감축) 벤치마킹
                       </p>
                     </div>
 
-                    <!-- 카드 3: 2분 IR 피칭 & 상호 투자 심사 8분 -->
+                    <!-- 카드 3: 2분 발표하기 & 상호 투자 심사 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">IR 피칭 8분</span>
+                        <span class="plan-card-badge">발표하기 8분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • 모둠별 2분 엘리베이터 스피치 발표<br>
-                        • <strong>3차원 모의 투자 심사:</strong> 과학적 타당성(A/B/C) + 생태전환 가치(A/B/C) 루브릭을 기준으로 다른 모둠 스타트업에 모의 벤처 캐피탈 투자 점수 부여
+                        • 모둠별 2분 발표하기 (엘리베이터 스피치)<br>
+                        • <strong>3차원 모의 투자 심사:</strong> 과학적 타당성(A/B/C)과 생태전환 가치(A/B/C) 평가 기준표를 바탕으로 다른 모둠 스타트업에 모의 투자 점수 부여
                       </p>
                     </div>
                   </td>
@@ -872,7 +872,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     </div>
                     <div class="plan-note-card">
                       <i data-lucide="pencil"></i>
-                      <span><strong>[산출물평가]</strong> 기획서의 과학적 원리 접목도와 사회적 파급력을 루브릭으로 다면 평가.</span>
+                      <span><strong>[산출물평가]</strong> 기획서의 과학적 원리 접목도와 사회적 파급력을 구체적 평가 기준으로 다면 평가.</span>
                     </div>
                   </td>
                 </tr>

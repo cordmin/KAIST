@@ -450,12 +450,12 @@ window.worksheetModalData.oled = {
 
       <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
-        (1) <strong>O</strong> : 파란색 빛은 가시광선 중 파장이 가장 짧고 에너지가 가장 높아 결합 손상이 잦아 OLED의 난제로 꼽힙니다.<br>
+        (1) <strong>O</strong> : 파란색 빛은 가시광선 중 파장이 가장 짧고 에너지가 가장 높아 결합 손상이 잦아 OLED의 오랜 해결 과제로 꼽힙니다.<br>
         (2) <strong>X</strong> : 열로 완전히 식어 주변으로 흩어지면 다시 모으는 것이 불가능하므로, 열로 식기 전에 빛을 내는 상태로 초고속 전환시켜야 합니다.<br>
         (3) <strong>O</strong> : 25%의 형광 빛에 더해 75%의 버려지는 에너지를 빛으로 전환하면 이론상 100% 내부 발광 효율을 달성할 수 있습니다.
       </div>
 
-      <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">3. 3차원 평가 루브릭</h4>
+      <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">3. 평가 기준표</h4>
       <table class="data-table" style="font-size:0.88rem; margin-bottom:2rem;">
         <thead>
           <tr><th style="width:20%;">평가 영역</th><th style="width:26%;">탁월 (A)</th><th style="width:27%;">보통 (B)</th><th style="width:27%;">노력요함 (C)</th></tr>
