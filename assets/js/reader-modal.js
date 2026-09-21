@@ -115,7 +115,7 @@ function ensureReaderModalExists() {
     }
     .reader-body-text {
       font-size: 1.08rem;
-      font-weight: 700;
+      font-weight: 600;
       color: #0f172a;
       line-height: 2.05;
       letter-spacing: -0.2px;
