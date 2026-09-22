@@ -268,7 +268,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                         <span class="plan-card-badge">개념 탐구 10분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • <strong>원자 속 전자의 반발력 [9과11-02]:</strong> 원자핵 주위 음(-)전하를 띤 전자들이 1:1로 서로 밀어내고 끌어당기며 복잡한 전자 구름을 형성<br>
+                        • <strong>원자 속 전자의 반발력:</strong> 원자핵 주위 음(-)전하를 띤 전자들이 1:1로 서로 밀어내고 끌어당기며 복잡한 전자 구름을 형성<br>
                         • <strong>경우의 수 2배 폭발:</strong> 전자 1개가 어디로 갈지 계산할 때 2가지 상태가 있다면, 전자 N개가 모이면 $2^N$개의 상태를 동시에 고려해야 함
                       </p>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.4rem 0.65rem; font-size:0.84rem; color:#334155;">
@@ -649,7 +649,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                         <span class="plan-card-badge">개념 탐구 8분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
-                        • <strong>바닥 상태(Ground State)의 원리 [9과16-01]:</strong> 원자핵 간 반발력과 전자-핵 간 인력이 완벽한 균형을 이루는 에너지 최저점<br>
+                        • <strong>바닥 상태(Ground State)의 원리:</strong> 원자핵 간 반발력과 전자-핵 간 인력이 완벽한 균형을 이루는 에너지 최저점<br>
                         • 너무 가까우면 반발력으로 튕겨 나가고, 너무 멀어지면 결합이 끊어짐 ➔ 오직 골짜기 바닥에 안착할 때만 영구적 신물질 형성
                       </p>
                     </div>
@@ -884,7 +884,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 종합 평가 및 진로 탐색 5분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">진로 로드맵 5분</span>
+                        <span class="plan-card-badge">진로 탐색 5분</span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 모의 투자 심사 결과 공유 및 우수 스타트업 격려<br>
@@ -902,12 +902,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                       </p>
                     </div>
                   </td>
-                  <td>
-                    <div class="plan-note-card">
-                      <i data-lucide="pencil"></i>
-                      <span>학생들의 창의적 아이디어를 학교생활기록부 교과학습발달상황 세부능력및특기사항(세특) 기재 자료로 적극 연계.</span>
-                    </div>
-                  </td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>

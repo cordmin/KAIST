@@ -2781,6 +2781,20 @@ svg.lucide {
   text-align: center;
 }
 
+.pres-burnin-question > span,
+.pres-burnin-prompt > span {
+  display: block;
+  white-space: nowrap;
+}
+
+.pres-burnin-prompt {
+  margin-top: 1.5rem;
+  color: #2563eb;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
 .inquiry-hint {
   font-size: 0.95rem;
   color: #475569;
@@ -3198,6 +3212,25 @@ body.presentation-fullscreen-mode .pres-inquiry-box {
 .presentation-modal.fullscreen-active .inquiry-q,
 body.presentation-fullscreen-mode .inquiry-q {
   font-size: clamp(1.4rem, 1.8vw, 1.9rem) !important;
+  line-height: 1.55 !important;
+}
+
+.is-fullscreen .pres-burnin-question,
+:fullscreen .pres-burnin-question,
+:-webkit-full-screen .pres-burnin-question,
+.presentation-modal.fullscreen-active .pres-burnin-question,
+body.presentation-fullscreen-mode .pres-burnin-question {
+  font-size: clamp(1.5rem, 1.8vw, 2.15rem) !important;
+  line-height: 1.65 !important;
+}
+
+.is-fullscreen .pres-burnin-prompt,
+:fullscreen .pres-burnin-prompt,
+:-webkit-full-screen .pres-burnin-prompt,
+.presentation-modal.fullscreen-active .pres-burnin-prompt,
+body.presentation-fullscreen-mode .pres-burnin-prompt {
+  margin-top: clamp(1.8rem, 3vh, 2.8rem) !important;
+  font-size: clamp(1.4rem, 1.65vw, 1.9rem) !important;
   line-height: 1.55 !important;
 }
 

@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- 배경 그라디언트 -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- 카드 그라디언트 -->
+    <linearGradient id="cardRedGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b2e"/>
+      <stop offset="100%" stop-color="#171523"/>
+    </linearGradient>
+    <linearGradient id="cardGreenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#132426"/>
+      <stop offset="100%" stop-color="#111d20"/>
+    </linearGradient>
+    <linearGradient id="cardBlueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- 전체 배경 -->
+  <rect width="800" height="600" rx="16" fill="url(#bgGrad)"/>
+  <rect width="800" height="600" rx="16" fill="none" stroke="#334155" stroke-width="2"/>
+
+  <!-- 상단 헤더 영역 -->
+  <g transform="translate(30, 24)">
+    <rect x="0" y="0" width="100" height="26" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="50" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="700" fill="#94a3b8" text-anchor="middle">과학 원리 분석</text>
+
+    <text x="115" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="20" font-weight="900" fill="#f8fafc">
+      빛의 색깔별 에너지 크기 비교
+    </text>
+    <text x="115" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="13" font-weight="500" fill="#94a3b8">
+      파장이 짧을수록 빛 에너지가 커집니다 (에너지 크기: 빨강 &lt; 초록 &lt; 파랑)
+    </text>
+  </g>
+
+  <!-- 3열 비교 카드 영역 (Y: 90 ~ 475, 높이: 385) -->
+
+  <!-- 1. 빨간빛 (Red) -->
+  <g transform="translate(30, 95)" filter="url(#cardShadow)">
+    <rect width="225" height="380" rx="14" fill="url(#cardRedGrad)" stroke="#ef4444" stroke-width="1.8" stroke-opacity="0.6"/>
+    
+    <!-- 타이틀 뱃지 -->
+    <rect x="18" y="18" width="80" height="28" rx="6" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="1"/>
+    <text x="58" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="14" font-weight="900" fill="#f87171" text-anchor="middle">빨간빛 (R)</text>
+
+    <!-- 파장 수치 -->
+    <text x="18" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="600" fill="#94a3b8">빛의 파장</text>
+    <text x="18" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="22" font-weight="900" fill="#fca5a5">~ 650 nm</text>
+    <text x="120" y="103" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="700" fill="#ef4444">(긴 파장)</text>
+
+    <!-- 완만한 파동 곡선 시각화 -->
+    <rect x="18" y="125" width="189" height="70" rx="8" fill="#0b0f19" stroke="#334155" stroke-width="1"/>
+    <path d="M 28 160 Q 52 135, 75 160 T 122 160 T 169 160 T 197 160" fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+    <text x="112" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="10.5" font-weight="600" fill="#64748b" text-anchor="middle">완만하고 긴 파동</text>
+
+    <!-- 에너지 수치 및 게이지 -->
+    <text x="18" y="225" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="600" fill="#94a3b8">빛 에너지 크기</text>
+    <text x="18" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="20" font-weight="900" fill="#f8fafc">약 1.9 eV</text>
+    <text x="115" y="249" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="700" fill="#10b981">[낮음]</text>
+
+    <!-- 게이지 바 (35%) -->
+    <rect x="18" y="265" width="189" height="10" rx="5" fill="#1e293b"/>
+    <rect x="18" y="265" width="66" height="10" rx="5" fill="#10b981"/>
+
+    <!-- 분자 상태 요약 -->
+    <rect x="18" y="295" width="189" height="65" rx="8" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="112" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="800" fill="#10b981" text-anchor="middle">에너지 부담 적음</text>
+    <text x="112" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="11" font-weight="600" fill="#a1a1aa" text-anchor="middle">분자 결합 안정 · 긴 수명</text>
+  </g>
+
+  <!-- 2. 초록빛 (Green) -->
+  <g transform="translate(287, 95)" filter="url(#cardShadow)">
+    <rect width="225" height="380" rx="14" fill="url(#cardGreenGrad)" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.6"/>
+    
+    <!-- 타이틀 뱃지 -->
+    <rect x="18" y="18" width="80" height="28" rx="6" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1"/>
+    <text x="58" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="14" font-weight="900" fill="#34d399" text-anchor="middle">초록빛 (G)</text>
+
+    <!-- 파장 수치 -->
+    <text x="18" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="600" fill="#94a3b8">빛의 파장</text>
+    <text x="18" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="22" font-weight="900" fill="#a7f3d0">~ 530 nm</text>
+    <text x="120" y="103" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="700" fill="#10b981">(중간 파장)</text>
+
+    <!-- 중간 파동 곡선 시각화 -->
+    <rect x="18" y="125" width="189" height="70" rx="8" fill="#0b0f19" stroke="#334155" stroke-width="1"/>
+    <path d="M 28 160 Q 44 135, 60 160 T 92 160 T 124 160 T 156 160 T 188 160" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+    <text x="112" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="10.5" font-weight="600" fill="#64748b" text-anchor="middle">중간 주기 파동</text>
+
+    <!-- 에너지 수치 및 게이지 -->
+    <text x="18" y="225" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="600" fill="#94a3b8">빛 에너지 크기</text>
+    <text x="18" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="20" font-weight="900" fill="#f8fafc">약 2.4 eV</text>
+    <text x="115" y="249" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="700" fill="#f59e0b">[보통]</text>
+
+    <!-- 게이지 바 (60%) -->
+    <rect x="18" y="265" width="189" height="10" rx="5" fill="#1e293b"/>
+    <rect x="18" y="265" width="114" height="10" rx="5" fill="#f59e0b"/>
+
+    <!-- 분자 상태 요약 -->
+    <rect x="18" y="295" width="189" height="65" rx="8" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="112" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="800" fill="#f59e0b" text-anchor="middle">에너지 부담 보통</text>
+    <text x="112" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="11" font-weight="600" fill="#a1a1aa" text-anchor="middle">안정적 발광 · 수명 양호</text>
+  </g>
+
+  <!-- 3. 파란빛 (Blue) - 핵심 강조 카드 -->
+  <g transform="translate(545, 95)" filter="url(#cardShadow)">
+    <!-- 하이라이트 테두리 -->
+    <rect width="225" height="380" rx="14" fill="url(#cardBlueGrad)" stroke="#38bdf8" stroke-width="2.5"/>
+    
+    <!-- 타이틀 뱃지 & 경고 태그 -->
+    <rect x="18" y="18" width="80" height="28" rx="6" fill="#0284c7" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="58" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="14" font-weight="900" fill="#38bdf8" text-anchor="middle">파란빛 (B)</text>
+
+    <rect x="115" y="18" width="92" height="28" rx="6" fill="#ef4444" fill-opacity="0.25" stroke="#ef4444" stroke-width="1.2"/>
+    <text x="161" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="11.5" font-weight="900" fill="#f87171" text-anchor="middle">가장 취약!</text>
+
+    <!-- 파장 수치 -->
+    <text x="18" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="600" fill="#94a3b8">빛의 파장</text>
+    <text x="18" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="22" font-weight="900" fill="#bae6fd">~ 450 nm</text>
+    <text x="120" y="103" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="800" fill="#38bdf8">(짧은 파장)</text>
+
+    <!-- 촘촘하고 빠른 고에너지 파동 곡선 시각화 -->
+    <rect x="18" y="125" width="189" height="70" rx="8" fill="#0b0f19" stroke="#0284c7" stroke-width="1.2"/>
+    <path d="M 24 160 Q 34 133, 44 160 T 64 160 T 84 160 T 104 160 T 124 160 T 144 160 T 164 160 T 184 160" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+    <text x="112" y="185" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="10.5" font-weight="800" fill="#38bdf8" text-anchor="middle">촘촘하고 강한 고에너지 파동</text>
+
+    <!-- 에너지 수치 및 게이지 -->
+    <text x="18" y="225" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="600" fill="#94a3b8">빛 에너지 크기</text>
+    <text x="18" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="20" font-weight="900" fill="#f87171">약 3.0 eV</text>
+    <text x="115" y="249" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="900" fill="#ef4444">[최고 에너지!]</text>
+
+    <!-- 게이지 바 (95% 최고치) -->
+    <rect x="18" y="265" width="189" height="10" rx="5" fill="#1e293b"/>
+    <rect x="18" y="265" width="180" height="10" rx="5" fill="#ef4444"/>
+
+    <!-- 분자 상태 요약 -->
+    <rect x="18" y="295" width="189" height="65" rx="8" fill="#450a0a" stroke="#ef4444" stroke-width="1.2"/>
+    <text x="112" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="12" font-weight="900" fill="#fca5a5" text-anchor="middle">극심한 에너지 스트레스</text>
+    <text x="112" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="11" font-weight="800" fill="#f87171" text-anchor="middle">결합 조기 손상 → 번인 발생!</text>
+  </g>
+
+  <!-- 하단 요약 결론 배너 (Y: 495 ~ 575) -->
+  <g transform="translate(30, 498)">
+    <rect width="740" height="74" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="30" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="14" font-weight="900" fill="#38bdf8">
+      핵심 원인:
+    </text>
+    <text x="105" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      파란색 빛은 빨강·초록빛보다 에너지가 훨씬 강력합니다.
+    </text>
+    <text x="30" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif" font-size="13" font-weight="500" fill="#cbd5e1">
+      높은 에너지를 방출하느라 청색 발광 소재가 심한 열 스트레스를 받아 가장 먼저 고장(번인)납니다.
+    </text>
+  </g>
+</svg>

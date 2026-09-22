@@ -127,30 +127,27 @@ window.presentationModalData.quantum = {
           `
         },
 
-        // Slide 5: 관찰 및 안전 수칙
+        // Slide 5: 탐구활동 시 주의 사항
         {
-          tag: '1차시 준비 · 안전 수칙',
-          title: '교구 사용 및 모둠 협동 안전 규칙',
+          tag: '1차시 준비 · 주의 사항',
+          title: '탐구활동 시 주의 사항',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-icon"><i data-lucide="shield"></i></div>
                 <div class="pres-safety-title">1. 모형 부품 분실 방지</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   작은 결합선(본드)과 원자 구슬이 바닥에 떨어져 분실되지 않도록 트레이 안에서 조립합니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-icon"><i data-lucide="calculator"></i></div>
                 <div class="pres-safety-title">2. 자리수 계산 주의</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   거듭제곱 계산 시 지수(N) 값이 커지면 계산기 화면에 지수 표기(E)가 나타나므로 단위에 유의합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
-                <div class="pres-safety-icon"><i data-lucide="users"></i></div>
                 <div class="pres-safety-title">3. 모둠 협동 분석</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   분자별 전자 수를 분담하여 계산하고, 슈퍼컴퓨터의 한계 시간에 대해 의견을 나눕니다.
                 </div>
               </div>
@@ -360,21 +357,18 @@ window.presentationModalData.quantum = {
           content: `
             <div class="pres-grid-3">
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🔬</div>
                 <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">원자의 미시세계</strong>
                 <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   원자핵 주위를 도는 수많은 전자들의 복잡한 반발력과 상호작용
                 </p>
               </div>
               <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">💥</div>
                 <strong style="font-size:1.2rem; color:#dc2626; display:block; margin-bottom:0.5rem;">지수 폭발 (2ᴺ)</strong>
                 <p style="font-size:0.95rem; color:#991b1b; margin:0; line-height:1.6; word-break:keep-all;">
                   전자가 늘어날 때마다 계산 상태 수가 우주의 원자 수(10⁸⁰)를 아득히 초과함
                 </p>
               </div>
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">⚛️</div>
                 <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">양자 컴퓨터의 필연성</strong>
                 <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   복잡한 분자를 계산하기 위해 양자역학으로 작동하는 새로운 컴퓨터 필요
@@ -520,30 +514,27 @@ window.presentationModalData.quantum = {
           `
         },
 
-        // Slide 5: 관찰 및 안전 수칙
+        // Slide 5: 탐구활동 시 주의 사항
         {
-          tag: '2차시 준비 · 안전 수칙',
-          title: '동전 회전 및 양자 시뮬레이션 안전 수칙',
+          tag: '2차시 준비 · 주의 사항',
+          title: '탐구활동 시 주의 사항',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-icon"><i data-lucide="coins"></i></div>
                 <div class="pres-safety-title">1. 동전 튕김 주의</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   동전을 너무 세게 돌려 바깥으로 튕겨 나가지 않도록 트레이 안쪽에서 부드럽게 스핀을 줍니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-icon"><i data-lucide="hand"></i></div>
                 <div class="pres-safety-title">2. 손바닥 측정 주의</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   돌아가는 동전을 멈출 때 손톱에 부딪히지 않도록 손바닥 면 전체로 가볍게 덮어 측정합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
-                <div class="pres-safety-icon"><i data-lucide="eye"></i></div>
                 <div class="pres-safety-title">3. 디지털 시뮬레이션</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   가상실험실에서 3D 블로흐 구를 천천히 드래그하여 적도 지점의 확률 변화를 세심하게 관찰합니다.
                 </div>
               </div>
@@ -732,21 +723,18 @@ window.presentationModalData.quantum = {
           content: `
             <div class="pres-grid-3">
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🪙</div>
                 <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">양자 중첩</strong>
                 <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   0과 1이 동시에 섞여 있는 회전 동전 팽이 상태
                 </p>
               </div>
               <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🌐</div>
                 <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">블로흐 구면</strong>
                 <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
                   3차원 구면 위에서 자유롭게 각도를 조작하고 관측 시 붕괴
                 </p>
               </div>
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">⚡</div>
                 <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">동시 병렬 처리</strong>
                 <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   1,024개 모든 미로 경로를 단 한 번에 동시에 탐색
@@ -837,21 +825,18 @@ window.presentationModalData.quantum = {
           content: `
             <div class="pres-grid-3">
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🤝</div>
                 <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.5rem;">역할 분담 이해</strong>
                 <p style="font-size:0.92rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   양자 컴퓨터(QPU)와 일반 슈퍼컴퓨터(CPU)의 상호 보완적 2인 3각 역할을 구체적으로 설명한다.
                 </p>
               </div>
               <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🔄</div>
                 <strong style="font-size:1.15rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">VQE 피드백 루프</strong>
                 <p style="font-size:0.92rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
                   골짜기 지형도 모델과 인터랙티브 시뮬레이터를 통해 파라미터가 최저 에너지로 수렴하는 과정을 추론한다.
                 </p>
               </div>
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">📐</div>
                 <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.5rem;">변분 원리 체득</strong>
                 <p style="font-size:0.92rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   계산된 에너지가 실제 바닥 상태보다 항상 크거나 같다는 양자역학의 수학적 안전장치를 이해한다.
@@ -891,30 +876,27 @@ window.presentationModalData.quantum = {
           `
         },
 
-        // Slide 5: 안전 및 활동 수칙
+        // Slide 5: 탐구활동 시 주의 사항
         {
-          tag: '3차시 준비 · 활동 수칙',
-          title: '2인 3각 협력 및 시뮬레이터 안전 수칙',
+          tag: '3차시 준비 · 주의 사항',
+          title: '탐구활동 시 주의 사항',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-icon"><i data-lucide="shield-alert"></i></div>
                 <div class="pres-safety-title">1. 발 걸림 및 넘어짐 방지</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   2인 3각 역할극 시 교실 통로의 가방과 의자를 정돈하고, 절대 뛰지 않으며 천천히 호흡을 맞춰 걷습니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-icon"><i data-lucide="users"></i></div>
                 <div class="pres-safety-title">2. QPU와 CPU 구령 일치</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   양자 역할(에너지 측정)과 고전 컴퓨터 역할(각도 조정)이 "하나, 둘" 신호를 교환하며 협동합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
-                <div class="pres-safety-icon"><i data-lucide="line-chart"></i></div>
                 <div class="pres-safety-title">3. 수렴 수치 정밀 기록</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   시뮬레이터에서 반복 회차가 늘어남에 따라 에너지가 바닥에 수렴(-1.137 Hartree)하는 수치를 정밀히 기록합니다.
                 </div>
               </div>
@@ -1127,21 +1109,18 @@ window.presentationModalData.quantum = {
           content: `
             <div class="pres-grid-3">
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🤝</div>
                 <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">2인 3각 하이브리드</strong>
                 <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   QPU(에너지 측정)와 CPU(파라미터 보정)의 상호 피드백
                 </p>
               </div>
               <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">⛰️</div>
                 <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">최저 바닥 상태</strong>
                 <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
                   자연계 분자가 가장 편안하게 안정되는 에너지 골짜기 도달
                 </p>
               </div>
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🛡️</div>
                 <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">변분 원리의 안전성</strong>
                 <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   E(θ) ≥ E_0 보장으로 지속적 하강 시 무조건 최적해 보장
@@ -1232,21 +1211,18 @@ window.presentationModalData.quantum = {
           content: `
             <div class="pres-grid-3">
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🌍</div>
                 <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.5rem;">3대 지구 난제 분석</strong>
                 <p style="font-size:0.92rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   친환경 비료, 전고체 배터리, 표적 신약 개발에 가로놓인 화학 결합의 과학적 난제를 분석한다.
                 </p>
               </div>
               <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">💡</div>
                 <strong style="font-size:1.15rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">가상 분자 설계</strong>
                 <p style="font-size:0.92rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
                   양자 컴퓨터 시뮬레이션을 통해 촉매, 전해질, 항암 분자를 가상으로 설계하는 아이디어를 도출한다.
                 </p>
               </div>
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🚀</div>
                 <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.5rem;">CEO 창업 기획 발표</strong>
                 <p style="font-size:0.92rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   탄소 중립 및 인류 복지에 기여하는 양자 스타트업 기획서를 작성하고 동료 평가를 수행한다.
@@ -1286,30 +1262,27 @@ window.presentationModalData.quantum = {
           `
         },
 
-        // Slide 5: 안전 및 활동 수칙
+        // Slide 5: 탐구활동 시 주의 사항
         {
-          tag: '4차시 준비 · 활동 수칙',
-          title: '모둠 토의 및 스타트업 IR 피칭 수칙',
+          tag: '4차시 준비 · 주의 사항',
+          title: '탐구활동 시 주의 사항',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-icon"><i data-lucide="users-2"></i></div>
                 <div class="pres-safety-title">1. 역할 분담과 경청</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   대표 CEO, 수석 양자화학자, ESG 가치 평가자 등 모둠원 모두가 1개 이상의 전문 역할을 맡아 경청합니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-icon"><i data-lucide="check-square"></i></div>
                 <div class="pres-safety-title">2. 과학적 근거 기반 설계</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   단순한 상상이 아닌, 1~3차시에서 배운 전자 반발력, 큐비트 중첩, 바닥 상태 원리를 접목하여 기획합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
-                <div class="pres-safety-icon"><i data-lucide="leaf"></i></div>
                 <div class="pres-safety-title">3. 생태전환 가치 연계</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   설계한 가상 분자가 전 세계 탄소 배출 저감, 식량난 해결, 질병 극복에 어떤 사회적 파급효과를 주는지 명시합니다.
                 </div>
               </div>
@@ -1428,7 +1401,7 @@ window.presentationModalData.quantum = {
                   <!-- 1. 친환경 상온 비료 -->
                   <g transform="translate(15, 12)">
                     <rect x="0" y="0" width="265" height="150" rx="10" fill="url(#q4Card1Grad)" stroke="#10b981" stroke-width="1.8" />
-                    <text x="132" y="24" font-size="12.5" font-weight="900" fill="#047857" text-anchor="middle">🌱 1. 친환경 상온 비료</text>
+                    <text x="132" y="24" font-size="12.5" font-weight="900" fill="#047857" text-anchor="middle">1. 친환경 상온 비료</text>
                     
                     <!-- 분자 모형 그래픽 -->
                     <circle cx="100" cy="58" r="14" fill="#3b82f6" />
@@ -1448,7 +1421,7 @@ window.presentationModalData.quantum = {
                   <!-- 2. 전고체 배터리 -->
                   <g transform="translate(295, 12)">
                     <rect x="0" y="0" width="270" height="150" rx="10" fill="url(#q4Card2Grad)" stroke="#3b82f6" stroke-width="1.8" />
-                    <text x="135" y="24" font-size="12.5" font-weight="900" fill="#1d4ed8" text-anchor="middle">🔋 2. 화재 없는 전고체 배터리</text>
+                    <text x="135" y="24" font-size="12.5" font-weight="900" fill="#1d4ed8" text-anchor="middle">2. 화재 없는 전고체 배터리</text>
 
                     <!-- 리튬 이온 채널 그래픽 -->
                     <rect x="40" y="45" width="190" height="26" rx="6" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1" />
@@ -1468,7 +1441,7 @@ window.presentationModalData.quantum = {
                   <!-- 3. 표적 항암 신약 -->
                   <g transform="translate(580, 12)">
                     <rect x="0" y="0" width="265" height="150" rx="10" fill="url(#q4Card3Grad)" stroke="#c084fc" stroke-width="1.8" />
-                    <text x="132" y="24" font-size="12.5" font-weight="900" fill="#7e22ce" text-anchor="middle">💊 3. 부작용 제로 표적 신약</text>
+                    <text x="132" y="24" font-size="12.5" font-weight="900" fill="#7e22ce" text-anchor="middle">3. 부작용 제로 표적 신약</text>
 
                     <!-- 수용체 결합 그래픽 -->
                     <path d="M 75 48 C 95 48 105 68 135 68 C 165 68 175 48 195 48" fill="none" stroke="#9333ea" stroke-width="3" />
@@ -1531,21 +1504,18 @@ window.presentationModalData.quantum = {
           content: `
             <div class="pres-grid-3">
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">💻</div>
                 <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">In Silico 가상 실험실</strong>
                 <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   비커 없는 컴퓨터 속 양자 시뮬레이션으로 화학 결합 정밀 설계
                 </p>
               </div>
               <div class="pres-card pres-highlight" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🌍</div>
                 <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">3대 지구 난제 솔루션</strong>
                 <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
                   친환경 비료 촉매, 전고체 배터리, 표적 항암 분자 해결책 도출
                 </p>
               </div>
               <div class="pres-card" style="text-align:center;">
-                <div style="font-size:2rem; margin-bottom:0.6rem;">🚀</div>
                 <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">융합 과학자 CEO</strong>
                 <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   물리·화학·정보를 융합하여 인류 지속가능 미래에 기여하는 진로 포부
@@ -1562,7 +1532,6 @@ window.presentationModalData.quantum = {
           content: `
             <div class="pres-stack" style="justify-content:center; align-items:center; min-height:300px;">
               <div class="pres-inquiry-box" style="padding:3rem 2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
-                <div style="font-size:2.8rem; margin-bottom:0.8rem;">⚛️ 🎉</div>
                 <div style="font-size:1.45rem; font-weight:900; color:#2563eb; margin-bottom:0.8rem;">
                   KAIST CPRL 청소년 양자 계산 화학 아카데미 완주!
                 </div>

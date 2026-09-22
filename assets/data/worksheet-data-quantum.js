@@ -90,10 +90,6 @@ window.worksheetModalData.quantum = {
         </div>
         <textarea class="ws-textarea-input" rows="3" data-answer="분자 속 전자가 증가함에 따라 양자 상태가 2의 거듭제곱으로 곱해지는 '지수 폭발(2ᴺ)'이 발생하기 때문입니다. 페니실린 같은 작은 분자도 계산해야 할 경우의 수가 10⁸⁴가지로 전 우주의 원자 수(10⁸⁰)를 훌쩍 뛰어넘어, 일반 컴퓨터 방식으로는 우주 나이 동안 계산해도 불가능합니다."></textarea>
       </div>
-
-      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#7c3aed; margin-top:1.5rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 체스판 쌀알 퀴즈(1칸 1톨, 2칸 2톨... 64번째 칸엔 1800경 톨)를 도입에 제시하여 거듭제곱의 무서운 증가 속도를 직관적으로 체감하게 하세요.
-      </div>
     `,
     teacher: `
       <h4 style="color:#7c3aed; margin:1.25rem 0 0.8rem;">1. 표 예시 답안</h4>
@@ -126,10 +122,6 @@ window.worksheetModalData.quantum = {
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
         분자 속 전자가 증가함에 따라 양자 상태가 2의 거듭제곱으로 곱해지는 '지수 폭발(2ᴺ)'이 발생하기 때문입니다. 페니실린 같은 작은 분자도 계산해야 할 경우의 수가 10⁸⁴가지로 전 우주의 원자 수(10⁸⁰)를 훌쩍 뛰어넘어, 일반 컴퓨터 방식으로는 우주 나이 동안 계산해도 불가능합니다.
-      </div>
-
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#7c3aed; margin-top:1.5rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 체스판 쌀알 퀴즈(1칸 1톨, 2칸 2톨... 64번째 칸엔 1800경 톨)를 도입에 제시하여 거듭제곱의 무서운 증가 속도를 직관적으로 체감하게 하세요.
       </div>
     `
   },
@@ -203,10 +195,6 @@ window.worksheetModalData.quantum = {
         </div>
         <textarea class="ws-textarea-input" rows="3" data-answer="일반 컴퓨터는 한 갈래 길씩 가보고 막히면 되돌아 나오는 '순차 탐색' 방식을 씁니다. 반면 양자 컴퓨터는 큐비트의 '중첩' 성질을 활용하여 1,024명의 분신이 모든 갈래 길을 단 한 번에 '동시에 쏟아져 들어가는 초병렬 처리'를 수행하므로 압도적으로 빠릅니다."></textarea>
       </div>
-
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1.5rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 동전을 돌릴 때 떨어지지 않도록 트레이를 사용하고, "도는 동안 앞면인가요 뒷면인가요?"라는 발문으로 측정 전 공존 상태(중첩)를 온몸으로 느끼게 합니다.
-      </div>
     `,
     teacher: `
       <h4 style="color:#2563eb; margin:1.25rem 0 0.8rem;">1. 표 예시 답안</h4>
@@ -248,10 +236,6 @@ window.worksheetModalData.quantum = {
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
         일반 컴퓨터는 한 갈래 길씩 가보고 막히면 되돌아 나오는 '순차 탐색' 방식을 씁니다. 반면 양자 컴퓨터는 큐비트의 '중첩' 성질을 활용하여 1,024명의 분신이 모든 갈래 길을 단 한 번에 '동시에 쏟아져 들어가는 초병렬 처리'를 수행하므로 압도적으로 빠릅니다.
-      </div>
-
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#2563eb; margin-top:1.5rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생들이 동전을 돌릴 때 떨어지지 않도록 트레이를 사용하고, "도는 동안 앞면인가요 뒷면인가요?"라는 발문으로 측정 전 공존 상태(중첩)를 온몸으로 느끼게 합니다.
       </div>
     `
   },
@@ -304,9 +288,6 @@ window.worksheetModalData.quantum = {
         </div>
       </div>
 
-      <div class="ws-teacher-tip callout-box" style="display:none; background:#f8fafc; border-left-color:#059669; margin-top:1.5rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생 A는 양자 계산기 역할(에너지 계산), 학생 B는 네비게이션 역할(파라미터 조정)을 맡겨 공이 골짜기 바닥으로 굴러 떨어지는 최적화 루프를 온몸으로 체험하게 합니다.
-      </div>
     `,
     teacher: `
       <h4 style="color:#059669; margin:1.25rem 0 0.8rem;">1. 문항 예시 답안</h4>
@@ -328,10 +309,6 @@ window.worksheetModalData.quantum = {
         (1) <strong>X</strong> : 현재의 양자 컴퓨터(NISQ)는 노이즈가 있어 일반 컴퓨터와의 하이브리드 협동(VQE)이 실용화의 핵심입니다.<br>
         (2) <strong>O</strong> : 양자 컴퓨터는 지수 폭발이 일어나는 분자 상태 에너지만 계산하고, 경로를 찾는 네비게이션은 일반 컴퓨터가 분담합니다.<br>
         (3) <strong>O</strong> : 분자는 에너지가 가장 낮을 때 결합이 가장 안정해지므로 골짜기 최저점(바닥 상태)을 찾는 것이 분자 설계의 최종 목표입니다.
-      </div>
-
-      <div class="callout-box" style="background:#f8fafc; border-left-color:#059669; margin-top:1.5rem; font-size:0.88rem;">
-        <strong><i data-lucide="lightbulb"></i> 수업 지도 팁:</strong> 학생 A는 양자 계산기 역할(에너지 계산), 학생 B는 네비게이션 역할(파라미터 조정)을 맡겨 공이 골짜기 바닥으로 굴러 떨어지는 최적화 루프를 온몸으로 체험하게 합니다.
       </div>
     `
   },

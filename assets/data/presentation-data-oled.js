@@ -113,10 +113,10 @@ window.presentationModalData.oled = {
           `
         },
 
-        // Slide 5: 실험실 안전 수칙
+        // Slide 5: 탐구활동 시 주의 사항
         {
           tag: '',
-          title: '실험실 안전 수칙',
+          title: '탐구활동 시 주의 사항',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card">
@@ -538,22 +538,18 @@ window.presentationModalData.oled = {
             <div class="pres-stack pres-tools-stack">
               <div class="pres-tools-grid" style="grid-template-columns: repeat(4, 1fr); gap:1rem;">
                 <div class="pres-card" style="text-align:center; padding:1.4rem 1rem;">
-                  <div style="font-size:2.2rem; margin-bottom:0.6rem;">💻</div>
                   <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">스마트 태블릿/노트북</strong>
                   <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">가상실험실 접속</p>
                 </div>
                 <div class="pres-card" style="text-align:center; padding:1.4rem 1rem;">
-                  <div style="font-size:2.2rem; margin-bottom:0.6rem;">🧪</div>
                   <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">가상실험실</strong>
                   <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">전자의 에너지 전달 탐구</p>
                 </div>
                 <div class="pres-card" style="text-align:center; padding:1.4rem 1rem;">
-                  <div style="font-size:2.2rem; margin-bottom:0.6rem;">📏</div>
                   <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">컬러 스펙트럼 자</strong>
                   <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">파장과 빛 에너지 비교</p>
                 </div>
                 <div class="pres-card" style="text-align:center; padding:1.4rem 1rem;">
-                  <div style="font-size:2.2rem; margin-bottom:0.6rem;">📝</div>
                   <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.4rem;">탐구 활동지</strong>
                   <p style="font-size:0.95rem; color:#64748b; margin:0; word-break:keep-all;">전자의 에너지 전달 기록</p>
                 </div>
@@ -562,28 +558,25 @@ window.presentationModalData.oled = {
           `
         },
 
-        // Slide 5: 실험실 안전 및 실습 수칙
+        // Slide 5: 탐구활동 시 주의 사항
         {
           tag: '',
-          title: '실험실 안전 및 실습 수칙',
+          title: '탐구활동 시 주의 사항',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-icon"><i data-lucide="smartphone"></i></div>
                 <div class="pres-safety-title">1. 스마트기기 안전 관리</div>
                 <div class="pres-safety-desc">
                   태블릿을 책상 위에 안정적으로 거치하고, 조작 시 충격이나 낙하에 주의합니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-icon"><i data-lucide="sliders"></i></div>
                 <div class="pres-safety-title">2. 단계별 시뮬레이션 준수</div>
                 <div class="pres-safety-desc">
                   <strong>자외선 흡수 ➔ 열 방출 ➔ 형광빛 방출</strong> 과정을 순서대로 차근차근 관찰합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
-                <div class="pres-safety-icon"><i data-lucide="users"></i></div>
                 <div class="pres-safety-title">3. 모둠원 협력 탐구</div>
                 <div class="pres-safety-desc">
                   시뮬레이터 조작 담당과 관찰 기록 담당을 번갈아 가며 모든 모둠원이 참여합니다.
@@ -774,11 +767,11 @@ window.presentationModalData.oled = {
     },
 
     // -----------------------------------------------------------------------
-    // OLED 3차시: 스마트폰의 에너지 낭비 (1:3 에너지 전환)
+    // OLED 3차시: 스마트폰의 에너지 낭비 (전자의 에너지 방출)
     // -----------------------------------------------------------------------
     3: {
       lessonTitle: '[3차시] 스마트폰의 에너지 낭비',
-      badge: 'OLED 3차시 · 1:3 낭비 법칙 & 발열 문제',
+      badge: 'OLED 3차시 · 전자의 에너지 방출 & 발열 문제',
       slides: [
         // Slide 1: 표지
         {
@@ -866,30 +859,27 @@ window.presentationModalData.oled = {
           `
         },
 
-        // Slide 5: 관찰 및 기기 보호 수칙 (3열 카드)
+        // Slide 5: 탐구활동 시 주의 사항 (3열 카드)
         {
           tag: '',
-          title: '관찰 및 기기 보호 수칙',
+          title: '탐구활동 시 주의 사항',
           content: `
             <div class="pres-safety-grid">
               <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-icon"><i data-lucide="shield"></i></div>
                 <div class="pres-safety-title">1. 화면 스크래치 방지</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   루페 렌즈의 금속 부위가 액정에 직접 닿지 않도록 <strong>클립 보호 패드를 반드시 확인</strong>합니다.
                 </div>
               </div>
               <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-icon"><i data-lucide="smartphone"></i></div>
                 <div class="pres-safety-title">2. 카메라 화면으로 관찰</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   눈의 피로를 줄이기 위해 루페를 스마트폰 카메라 렌즈에 맞추고 <strong>화면을 보며 함께 관찰</strong>합니다.
                 </div>
               </div>
               <div class="pres-safety-card">
-                <div class="pres-safety-icon"><i data-lucide="battery-warning"></i></div>
                 <div class="pres-safety-title">3. 화면 발열 및 전원 관리</div>
-                <div class="pres-safety-desc">
+                <div class="pres-safety-desc" style="word-break:keep-all;">
                   화면을 장시간 최대 밝기로 켜두면 과열되므로 <strong>관찰 후 스마트폰 화면을 잠시 꺼둡니다</strong>.
                 </div>
               </div>
@@ -938,13 +928,13 @@ window.presentationModalData.oled = {
             <div class="pres-stack" style="gap:1rem;">
               <div class="pres-card" style="padding:0.6rem; text-align:center; background:#080d1a; border:1px solid #1e293b; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.12);">
                 <div style="width:100%; aspect-ratio:16/9; max-height:clamp(250px, 42vh, 480px); border-radius:10px; overflow:hidden; margin:0 auto; background:#080d1a; display:flex; align-items:center; justify-content:center;">
-                  <img src="${getToolAsset('oled_energy_conversion.jpg')}" alt="전기 주입 시 빛과 열의 1:3 에너지 전환" style="width:100%; height:100%; object-fit:contain; display:block;">
+                  <img src="${getToolAsset('oled_energy_conversion.jpg')}" alt="전기 공급 시 빛 방출과 열 손실" style="width:100%; height:100%; object-fit:contain; display:block;">
                 </div>
               </div>
 
               <div class="pres-def-card">
                 <p class="pres-def-text">
-                  <strong class="pres-def-lead">1:3 에너지 전환:</strong> 스마트폰 화면에 전기를 공급하면 분자 4개 중 <strong>1개(25%)만 유용한 빛</strong>을 내고, 나머지 <strong>3개(75%)는 열로 빠져나가</strong> 화면을 뜨겁게 달굽니다.
+                  스마트폰 화면에 전기를 공급하면, 분자 내 전자의 활동으로 <strong>25%의 에너지만 빛으로 방출</strong>되고 나머지 <strong>75%의 에너지는 열로 손실</strong>되어 화면을 뜨겁게 달굽니다.
                 </p>
               </div>
             </div>
@@ -975,7 +965,7 @@ window.presentationModalData.oled = {
 
               <div class="pres-law-desc-box">
                 <p class="pres-law-desc-p">
-                  • 전기를 넣었을 때 <strong>분자의 75%는 빛을 내지 못하고</strong> 심하게 진동하며 열을 방출합니다.
+                  • 전기를 공급했을 때 <strong>공급된 에너지의 75%는 빛을 내지 못하고</strong> 분자의 진동으로 바뀌어 열을 방출합니다.
                 </p>
                 <p class="pres-law-desc-p">
                   • 에너지는 사라진 것이 아니라 열로 바뀐 것이며, <strong>전체 에너지의 총합은 항상 보존</strong>됩니다.
@@ -992,21 +982,18 @@ window.presentationModalData.oled = {
           content: `
             <div class="pres-grid-3">
               <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
-                <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔥</div>
                 <strong style="font-size:1.25rem; color:#dc2626; display:block; margin-bottom:0.6rem;">기기 과열 (발열)</strong>
                 <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   버려진 75%의 열이 스마트폰 내부 온도를 높여 기기를 뜨겁게 달굽니다.
                 </p>
               </div>
               <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
-                <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔋</div>
                 <strong style="font-size:1.25rem; color:#dc2626; display:block; margin-bottom:0.6rem;">배터리 조기 방전</strong>
                 <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   전기의 75%가 열로 버려지기 때문에 배터리가 순식간에 닳아 사용 시간이 줄어듭니다.
                 </p>
               </div>
               <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
-                <div style="font-size:2.4rem; margin-bottom:0.75rem;">⚠️</div>
                 <strong style="font-size:1.25rem; color:#dc2626; display:block; margin-bottom:0.6rem;">화면 잔상 (번인)</strong>
                 <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   지속적인 열에 노출된 분자가 손상되어 화면에 영구적인 얼룩 잔상이 남습니다.
@@ -1023,21 +1010,18 @@ window.presentationModalData.oled = {
           content: `
             <div class="pres-grid-3">
               <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
-                <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔍</div>
                 <strong style="font-size:1.25rem; color:#0f172a; display:block; margin-bottom:0.6rem;">화소와 빛의 합성</strong>
                 <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   스마트폰 화면은 빨강, 초록, 파랑 스스로 빛을 내는 화소의 빛 합성으로 색을 만듭니다.
                 </p>
               </div>
               <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
-                <div style="font-size:2.4rem; margin-bottom:0.75rem;">🔄</div>
-                <strong style="font-size:1.25rem; color:#0f172a; display:block; margin-bottom:0.6rem;">1:3 에너지 전환</strong>
+                <strong style="font-size:1.25rem; color:#0f172a; display:block; margin-bottom:0.6rem;">에너지 방출 비율</strong>
                 <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  배터리 전기를 공급하면 <strong>빛을 내는 분자 25%</strong>, <strong>열을 내는 분자 75%</strong>가 발생합니다.
+                  전기를 공급하면 분자 내 전자 활동에 의해 <strong>25%는 빛으로 방출</strong>되고, <strong>75%는 열로 손실</strong>됩니다.
                 </p>
               </div>
               <div class="pres-card" style="text-align:center; padding:1.6rem 1.2rem;">
-                <div style="font-size:2.4rem; margin-bottom:0.75rem;">⚡</div>
                 <strong style="font-size:1.25rem; color:#0f172a; display:block; margin-bottom:0.6rem;">75% 에너지 낭비</strong>
                 <p style="font-size:0.98rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
                   빛을 내지 못한 75%가 열로 낭비되어 화면 발열과 배터리 조기 소모를 일으킵니다.
@@ -1094,37 +1078,29 @@ window.presentationModalData.oled = {
           tag: '',
           title: '왜 항상 파란색(Blue) 화소가 먼저 고장 날까?',
           content: `
-            <div class="pres-stack" style="gap:0.9rem;">
-              <div class="pres-grid-2" style="gap:1rem;">
-                <div class="pres-card" style="padding:0.85rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px;">
-                  <div style="width:100%; aspect-ratio:4/3; max-height:210px; border-radius:8px; overflow:hidden; margin-bottom:0.6rem; background:#0f172a; border:1px solid #e2e8f0;">
-                    <img src="${getToolAsset('reader_oled_1_heat.jpg')}" alt="스마트폰 화면의 번인 잔상" style="width:100%; height:100%; object-fit:cover; display:block;">
-                  </div>
-                  <strong style="color:#0f172a; font-size:1.02rem; display:block; word-break:keep-all;">누런 얼룩 잔상이 남는 스마트폰 번인 현상</strong>
-                </div>
-
-                <div class="pres-card" style="padding:0.85rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px;">
-                  <div style="width:100%; aspect-ratio:4/3; max-height:210px; border-radius:8px; overflow:hidden; margin-bottom:0.6rem; background:#0f172a; border:1px solid #e2e8f0;">
-                    <img src="${getToolAsset('reader_oled_2_vibration.jpg')}" alt="강한 에너지로 결합이 깨지는 청색 분자" style="width:100%; height:100%; object-fit:cover; display:block;">
-                  </div>
-                  <strong style="color:#0f172a; font-size:1.02rem; display:block; word-break:keep-all;">강한 빛을 내느라 심하게 떨어 깨지는 청색 분자</strong>
-                </div>
+            <div class="pres-grid-2" style="gap:1.5rem; align-items:stretch; min-height:420px;">
+              <div class="pres-card" style="padding:0.75rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <img src="${getToolAsset('real_burnin_display.jpg')}" alt="실제 스마트폰 화면 번인 현상 사진" style="max-width:100%; max-height:420px; height:100%; object-fit:contain; border-radius:8px; display:block;">
               </div>
 
-              <div class="pres-inquiry-box" style="padding:0.85rem 1.4rem;">
-                <div class="inquiry-q" style="font-size:1.12rem; line-height:1.55;">
-                  "가스레인지 파란 불꽃처럼 강한 빛을 내느라 분자가 심하게 떨며 열받고 스트레스로 깨집니다.<br>
-                  <span style="color:#2563eb;">분자를 덜 떨게 해서 덜 열받고 덜 스트레스 받게 살려낼 방법은 없을까?</span>"
+              <div class="pres-inquiry-box" style="padding:2.5rem 1.8rem; display:flex; flex-direction:column; justify-content:center; text-align:center; border-radius:12px; background:#f0f7ff; border:1px solid #bae6fd;">
+                <div class="inquiry-q pres-burnin-question" style="font-size:1.15rem; line-height:1.8; color:#0f172a; word-break:keep-all;">
+                  <span>"스마트폰 화면을 오래 쓰면 왜 항상</span>
+                  <span>파란색 화소가 먼저 타서 누런 잔상이 남을까?"</span>
+                  <div class="pres-burnin-prompt">
+                    <span>화면이 쉽게 타지 않고 오래 버티게 하려면</span>
+                    <span>어떤 방법이 필요할까?</span>
+                  </div>
                 </div>
               </div>
             </div>
           `
         },
 
-        // Slide 3: 학습목표 (단독 박스 2줄)
+        // Slide 3: 학습 목표 (단독 박스 2줄)
         {
           tag: '',
-          title: '학습목표',
+          title: '학습 목표',
           content: `
             <div class="pres-objective-box">
               <p class="objective-main">
@@ -1135,94 +1111,7 @@ window.presentationModalData.oled = {
           `
         },
 
-        // Slide 4: 탐구 준비물 (실사 1컷 + 4개 교구명 카드)
-        {
-          tag: '',
-          title: '탐구 준비물',
-          content: `
-            <div class="pres-stack pres-tools-stack">
-              <div class="pres-tools-img-box">
-                <img src="${getToolAsset('oled_tools_4.jpg')}" alt="4차시 탐구 준비물 실사 사진" class="pres-tools-img">
-              </div>
-              <div class="pres-tools-grid">
-                <div class="pres-tool-name-card">
-                  <strong>초소형 발광 소자 & 회로 키트</strong>
-                </div>
-                <div class="pres-tool-name-card">
-                  <strong>구리 테이프 & 3V 코인 전지</strong>
-                </div>
-                <div class="pres-tool-name-card">
-                  <strong>분자 시뮬레이터 태블릿</strong>
-                </div>
-                <div class="pres-tool-name-card">
-                  <strong>탐구 활동지</strong>
-                </div>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 5: 회로 제작 및 실습 안전 수칙 (3열 카드)
-        {
-          tag: '',
-          title: '회로 제작 및 실습 안전 수칙',
-          content: `
-            <div class="pres-safety-grid">
-              <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-icon"><i data-lucide="battery-charging"></i></div>
-                <div class="pres-safety-title">1. 배터리 단락 및 과열 주의</div>
-                <div class="pres-safety-desc">
-                  코인 전지의 (+)극과 (-)극을 구리 테이프로 직접 맞닿게 연결하지 않도록 <strong>전지 극성을 반드시 확인</strong>합니다.
-                </div>
-              </div>
-              <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-icon"><i data-lucide="scissors"></i></div>
-                <div class="pres-safety-title">2. 구리 테이프 취급 안전</div>
-                <div class="pres-safety-desc">
-                  구리 테이프 절단면이 날카로울 수 있으므로 <strong>손이 베이지 않도록 가위를 조심히 다룹니다</strong>.
-                </div>
-              </div>
-              <div class="pres-safety-card">
-                <div class="pres-safety-icon"><i data-lucide="check-circle-2"></i></div>
-                <div class="pres-safety-title">3. 과학적 타당성 고려</div>
-                <div class="pres-safety-desc">
-                  열로 손실되기 전에 빛으로 전환하는 <strong>KAIST 원천 기술 원리를 반영</strong>하여 기획서를 작성합니다.
-                </div>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 6: 회로 점등 & 청색 OLED 해결 과제 (3단계 가로 플로우)
-        {
-          tag: '',
-          title: '회로 점등 & 청색 OLED의 해결 과제',
-          content: `
-            <div class="pres-stack">
-              <div class="pres-steps-row">
-                <div class="pres-step-box">
-                  <div class="step-num">Step 1</div>
-                  <div class="step-title">구리 테이프 회로 점등</div>
-                  <p>코인 전지와 구리 테이프로 회로를 연결하여 <strong>전기 에너지가 빛으로 바뀌는 현상</strong>을 직접 확인합니다.</p>
-                </div>
-                <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-                <div class="pres-step-box">
-                  <div class="step-num">Step 2</div>
-                  <div class="step-title">청색 OLED의 해결 과제</div>
-                  <p>파란빛을 내느라 <strong>분자가 심하게 떨며 열 스트레스</strong>를 받아 결합이 쉽게 깨지는 한계를 파악합니다.</p>
-                </div>
-                <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-                <div class="pres-step-box">
-                  <div class="step-num">Step 3</div>
-                  <div class="step-title">75% 열-빛 초고속 구출</div>
-                  <p>분자를 <strong>덜 떨게 하고 열로 빠져나가기 전에 100% 빛으로 초고속 탈출</strong>시키는 원리를 탐구합니다.</p>
-                </div>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 7: OLED 기술 세대별 발광 효율 비교 (인터랙티브 결과표)
+        // Slide 4: OLED 기술 세대별 발광 효율 비교
         {
           tag: '',
           title: 'OLED 기술 세대별 발광 효율 비교',
@@ -1231,37 +1120,26 @@ window.presentationModalData.oled = {
               <table class="pres-table">
                 <thead>
                   <tr>
-                    <th style="width:22%; text-align:center;">기술 세대</th>
-                    <th style="width:26%; text-align:center;">주요 발광 원리</th>
-                    <th style="width:18%; text-align:center;">내부 발광 효율</th>
-                    <th style="width:34%; text-align:center;">특징 및 해결 과제</th>
+                    <th style="width:22%; text-align:center;">기술 구분</th>
+                    <th style="width:35%; text-align:center;">빛을 내는 방식</th>
+                    <th style="width:43%; text-align:center;">특징</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td style="text-align:center;"><strong>1세대 (형광)</strong></td>
-                    <td style="text-align:center;">빛을 내는 분자(25%)만 발광</td>
-                    <td style="text-align:center;"><strong style="color:#64748b; font-size:1.15rem;">최대 25%</strong></td>
-                    <td style="text-align:center; color:#dc2626;">75% 열 손실로 화면 과열 및 배터리 낭비</td>
+                    <td style="text-align:center;"><strong>1세대</strong></td>
+                    <td style="text-align:center;">전기의 25%만 빛으로 전환</td>
+                    <td style="text-align:center; color:#dc2626; font-size:inherit !important; font-weight:500 !important; line-height:1.55;">75%가 열로 낭비되어 기기 발열 및 배터리 소모</td>
                   </tr>
                   <tr>
-                    <td style="text-align:center;"><strong>2세대 (인광)</strong></td>
-                    <td style="text-align:center;">희귀 중금속(이리듐) 첨가</td>
-                    <td style="text-align:center;"><strong style="color:#d97706; font-size:1.15rem;">최대 100%</strong></td>
-                    <td style="text-align:center; color:#d97706;">비싼 희귀 금속 필요, 청색 인광 수명 극히 짧음</td>
+                    <td style="text-align:center;"><strong>2세대</strong></td>
+                    <td style="text-align:center;">금속(이리듐)을 섞어 100% 빛 전환</td>
+                    <td style="text-align:center; color:#d97706; font-size:inherit !important; font-weight:500 !important; line-height:1.55;">비싼 금속 필요, 파란색 화면 수명이 너무 짧음(번인)</td>
                   </tr>
                   <tr>
-                    <td style="text-align:center;"><strong>4세대 (KAIST)</strong></td>
-                    <td style="text-align:center;">열 손실 전 초고속 빛 전환</td>
-                    <td style="text-align:center;"><strong style="color:#2563eb; font-size:1.25rem;">최대 100%</strong></td>
-                    <td style="text-align:center;">
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#2563eb; font-size:1.02rem;">희귀 금속 없이 순수 유기 분자로 100% 청색 발광 & 긴 수명 달성!</strong>
-                        </div>
-                      </div>
-                    </td>
+                    <td style="text-align:center;"><strong>차세대<br>(KAIST)</strong></td>
+                    <td style="text-align:center;">열로 식기 전 100% 빛으로 초고속 전환</td>
+                    <td style="text-align:center; color:#2563eb; font-size:inherit !important; font-weight:500 !important; line-height:1.55;">비싼 금속 없이 100% 빛 전환과 긴 수명 동시 달성!</td>
                   </tr>
                 </tbody>
               </table>
@@ -1269,7 +1147,7 @@ window.presentationModalData.oled = {
           `
         },
 
-        // Slide 8: KAIST 초고속 에너지 전환 메커니즘 (과학 시각화 모형)
+        // Slide 5: KAIST 초고속 에너지 전환 메커니즘 (과학 시각화 모형)
         {
           tag: '',
           title: 'KAIST 초고속 에너지 전환 메커니즘',
@@ -1283,91 +1161,148 @@ window.presentationModalData.oled = {
 
               <div class="pres-def-card">
                 <p class="pres-def-text">
-                  <strong class="pres-def-lead">초고속 에너지 전환 기술:</strong> 분자의 헛떨림(열)을 억제하고, 75%의 에너지가 열로 빠져나가기 전에 분자 진동수를 조절하여 <strong>열 스트레스 없이 100% 시원한 빛</strong>으로 방출하는 KAIST 원천 기술
+                  <strong class="pres-def-lead">초고속 에너지 전환 기술:</strong> 분자의 불필요한 열 진동을 억제하고, 75%의 에너지가 열로 빠져나가기 전에 분자 진동수를 조절하여 <strong>열 스트레스 없이 100% 시원한 빛</strong>으로 방출하는 KAIST 원천 기술
                 </p>
               </div>
             </div>
           `
         },
 
-        // Slide 9: 이해도 점검 O / X 퀴즈 (활동지 2번 연계)
+        // Slide 6: 탐구 준비물 (실사 1컷 + 4개 교구명 카드)
         {
           tag: '',
-          title: '이해도 점검 O / X 퀴즈',
+          title: '탐구 준비물',
           content: `
-            <div class="pres-stack" style="gap:0.85rem;">
-              <div class="pres-card" style="padding:0.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                <div style="font-size:0.96rem; color:#0f172a; line-height:1.5;">
-                  <strong>(1)</strong> 청색(Blue) 빛은 빨강·초록빛보다 에너지가 높아 분자 결합이 깨지기 쉽고 수명이 가장 짧다.
-                </div>
-                <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')" style="flex-shrink:0;">
-                  <button type="button" class="pres-reveal-btn">정답 확인</button>
-                  <div class="pres-reveal-content">
-                    <strong style="color:#2563eb; font-size:1.15rem;">[ O ] 정답</strong>
-                  </div>
-                </div>
+            <div class="pres-stack pres-tools-stack">
+              <div class="pres-tools-img-box">
+                <img src="${getToolAsset('oled_tools_4.jpg')}" alt="4차시 탐구 준비물 실사 사진" class="pres-tools-img">
               </div>
-
-              <div class="pres-card" style="padding:0.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                <div style="font-size:0.96rem; color:#0f172a; line-height:1.5;">
-                  <strong>(2)</strong> KAIST 기술은 75%의 에너지가 열로 완전히 식어버린 후에 외부에서 열을 다시 모으는 방식이다.
+              <div class="pres-tools-grid">
+                <div class="pres-tool-name-card">
+                  <strong>태블릿 (분자 시뮬레이터)</strong>
                 </div>
-                <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')" style="flex-shrink:0;">
-                  <button type="button" class="pres-reveal-btn">정답 확인</button>
-                  <div class="pres-reveal-content">
-                    <strong style="color:#dc2626; font-size:1.15rem;">[ X ] 오답</strong>
-                    <span style="font-size:0.82rem; color:#64748b; margin-left:0.4rem;">(식기 전 초고속 전환)</span>
-                  </div>
+                <div class="pres-tool-name-card">
+                  <strong>4차시 탐구 활동지</strong>
                 </div>
-              </div>
-
-              <div class="pres-card" style="padding:0.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                <div style="font-size:0.96rem; color:#0f172a; line-height:1.5;">
-                  <strong>(3)</strong> 열로 낭비되던 75%를 빛으로 구출하면 이론적으로 스마트폰 발광 효율을 최대 100%까지 끌어올릴 수 있다.
+                <div class="pres-tool-name-card">
+                  <strong>스토리북 읽기 자료</strong>
                 </div>
-                <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')" style="flex-shrink:0;">
-                  <button type="button" class="pres-reveal-btn">정답 확인</button>
-                  <div class="pres-reveal-content">
-                    <strong style="color:#2563eb; font-size:1.15rem;">[ O ] 정답</strong>
-                  </div>
+                <div class="pres-tool-name-card">
+                  <strong>필기도구</strong>
                 </div>
               </div>
             </div>
           `
         },
 
-        // Slide 10: 4차시 핵심 배움 정리
+        // Slide 7: 분자 시뮬레이터 탐구 절차
         {
           tag: '',
-          title: '4차시 핵심 배움 정리',
+          title: '분자 시뮬레이터 탐구',
           content: `
-            <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center; padding:1.4rem 1.1rem;">
-                <div style="font-size:2.2rem; margin-bottom:0.6rem;">💎</div>
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">청색 OLED 해결 과제</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  강한 빛을 내느라 분자가 심하게 떨리고 열 스트레스를 받아 번인이 발생합니다.
-                </p>
+            <div class="pres-stack" style="gap:1rem;">
+              <div class="pres-grid-3" style="gap:1rem;">
+                <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
+                  <div style="font-size:1.7rem; font-weight:800; color:#2563eb; margin-bottom:0.6rem;">1</div>
+                  <strong style="font-size:1.12rem; color:#0f172a; display:block; margin-bottom:0.5rem;">배터리 전류 주입</strong>
+                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">100개의 입자를 생성하고 기본 상태의 발광 효율과 열 손실을 확인합니다.</p>
+                </div>
+                <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
+                  <div style="font-size:1.7rem; font-weight:800; color:#2563eb; margin-bottom:0.6rem;">2</div>
+                  <strong style="font-size:1.12rem; color:#0f172a; display:block; margin-bottom:0.5rem;">KAIST 기술 적용</strong>
+                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">초고속 에너지 전환 기술 스위치를 켜고 수치와 입자 색의 변화를 관찰합니다.</p>
+                </div>
+                <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
+                  <div style="font-size:1.7rem; font-weight:800; color:#2563eb; margin-bottom:0.6rem;">3</div>
+                  <strong style="font-size:1.12rem; color:#0f172a; display:block; margin-bottom:0.5rem;">활동지 기록</strong>
+                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">두 상태의 발광 효율과 열 손실을 비교하고 분자 수명에 미치는 영향을 설명합니다.</p>
+                </div>
               </div>
-              <div class="pres-card" style="text-align:center; padding:1.4rem 1.1rem;">
-                <div style="font-size:2.2rem; margin-bottom:0.6rem;">⚡</div>
-                <strong style="font-size:1.2rem; color:#2563eb; display:block; margin-bottom:0.5rem;">초고속 에너지 전환</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  분자를 덜 떨게 하고 열로 빠져나가기 전에 빛으로 되돌려 100% 발광을 달성합니다.
-                </p>
+              <div class="pres-inquiry-box" style="padding:0.9rem 1.3rem; text-align:center;">
+                <div class="inquiry-q" style="font-size:1.08rem; line-height:1.6; color:#0f172a; word-break:keep-all;">
+                  <strong>관찰 질문:</strong> 열로 손실되던 에너지가 빛으로 전환되면 발열과 분자 수명은 어떻게 달라질까요?
+                </div>
               </div>
-              <div class="pres-card" style="text-align:center; padding:1.4rem 1.1rem;">
-                <div style="font-size:2.2rem; margin-bottom:0.6rem;">🧪</div>
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">첨단 화학 연구원 진로</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  컴퓨터 시뮬레이션으로 미래 첨단 디스플레이를 연구하는 화학 연구원의 길을 엽니다.
+            </div>
+          `
+        },
+
+        // Slide 8: 시뮬레이터 결과 비교
+        {
+          tag: '',
+          title: '시뮬레이터 결과 비교',
+          content: `
+            <div class="pres-stack" style="gap:1rem;">
+              <div class="pres-table-wrap">
+                <table class="pres-table">
+                  <thead>
+                    <tr>
+                      <th style="width:28%; text-align:center;">비교 항목</th>
+                      <th style="width:36%; text-align:center;">기본 상태</th>
+                      <th style="width:36%; text-align:center;">KAIST 기술 적용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="text-align:center;"><strong>발광 효율</strong></td>
+                      <td style="text-align:center; color:#d97706;">약 25%</td>
+                      <td style="text-align:center; color:#2563eb;"><strong>100%</strong></td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center;"><strong>열 손실</strong></td>
+                      <td style="text-align:center; color:#dc2626;">약 75%</td>
+                      <td style="text-align:center; color:#2563eb;"><strong>0%</strong></td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center;"><strong>예상 변화</strong></td>
+                      <td style="text-align:center;">발열과 분자 손상 증가</td>
+                      <td style="text-align:center;">발열 감소와 분자 수명 향상</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pres-def-card">
+                <p class="pres-def-text" style="text-align:center;">
+                  시뮬레이터에 표시된 실제 수치를 활동지에 기록하고, 두 상태의 차이가 생긴 까닭을 설명합니다.
                 </p>
               </div>
             </div>
           `
         },
 
-        // Slide 11: 수료 축하 (신규 넙죽이 & 거위 축하 일러스트)
+        // Slide 9: 미래 사회 변화 탐구
+        {
+          tag: '',
+          title: '미래 디스플레이와 생활의 변화',
+          content: `
+            <div class="pres-stack" style="gap:1rem;">
+              <div class="pres-inquiry-box" style="padding:1rem 1.4rem; text-align:center;">
+                <div class="inquiry-q" style="font-size:1.15rem; line-height:1.6; color:#0f172a; word-break:keep-all;">
+                  KAIST 기술이 적용되면 미래의 스마트폰과 우리 생활은 어떻게 달라질까요?
+                </div>
+              </div>
+              <div class="pres-grid-3" style="gap:1rem;">
+                <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
+                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.55rem;">더 가벼운 스마트폰</strong>
+                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">전력 소모와 발열이 줄어 배터리와 방열 부품의 무게를 줄일 수 있습니다.</p>
+                </div>
+                <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
+                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.55rem;">오래 쓰는 화면</strong>
+                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">열로 인한 분자 손상이 줄어 화면 잔상과 번인 발생을 늦출 수 있습니다.</p>
+                </div>
+                <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
+                  <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.55rem;">얇고 유연한 화면</strong>
+                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">열 관리 부담이 줄어 접거나 말 수 있는 화면을 더 얇게 만들 수 있습니다.</p>
+                </div>
+              </div>
+              <div style="text-align:center; font-size:1rem; color:#334155; font-weight:700;">
+                활동지에 가장 기대되는 변화 한 가지와 그 까닭을 기록합니다.
+              </div>
+            </div>
+          `
+        },
+
+        // Slide 10: 수료 축하 (신규 넙죽이 & 거위 축하 일러스트)
         {
           tag: '',
           title: '수료를 축하합니다!',
