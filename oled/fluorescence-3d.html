@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>형광빛의 원리 | KAIST 가상실험실</title>
+  <style>
+    :root { color-scheme: dark; font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif; background: #030712; color: #e5eefb; }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; min-width: 320px; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .app { min-height: 100vh; display: grid; grid-template-rows: auto minmax(500px, 1fr); }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem clamp(1rem, 2.5vw, 2.5rem); border-bottom: 1px solid #1e293b; }
+    .eyebrow { color: #7dd3fc; font-size: .74rem; font-weight: 800; letter-spacing: .13em; }
+    h1 { margin: .2rem 0 0; font-size: clamp(1.25rem, 2vw, 1.8rem); letter-spacing: -.03em; }
+    .control-card, .stage-card { border: 1px solid #26364d; border-radius: 12px; background: #0b1628; }
+    .workspace { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 1rem; padding: 1rem clamp(1rem, 2.5vw, 2.5rem); }
+    .stage-card { position: relative; min-height: 500px; overflow: hidden; background: radial-gradient(circle at 52% 46%, #14213c 0, #071121 43%, #030712 80%); }
+    #scene { width: 100%; height: 100%; display: block; touch-action: none; }
+    .stage-message { position: absolute; top: 1.25rem; left: 50%; transform: translateX(-50%); max-width: calc(100% - 2rem); pointer-events: none; z-index: 10; transition: opacity 0.4s ease, transform 0.4s ease; }
+    .stage-message.hidden { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+    .status-box { display: flex; align-items: center; justify-content: center; gap: .7rem; padding: 0.75rem 1.6rem; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 12px; background: rgba(6, 16, 30, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45); text-align: center; white-space: nowrap; }
+    .status-box strong { color: #ffffff; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+    .status-step { display: inline-grid; place-items: center; flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: #0284c7; color: white; font-weight: 800; }
+    .energy-label { position: absolute; z-index: 5; transform: translate(-50%, -50%); padding: .25rem .65rem; border: 1px solid currentColor; border-radius: 999px; background: rgba(3, 7, 18, .85); font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 800; pointer-events: none; }
+    #energy-in { color: #c4b5fd; }
+    #energy-heat { color: #fb7185; }
+    #energy-out { color: #7dd3fc; }
+    .lamp-label { position: absolute; z-index: 5; transform: translate(-50%, -50%); padding: .25rem .55rem; border: 1px solid #536585; border-radius: 6px; background: rgba(6, 16, 30, .85); color: #dbeafe; font-size: .85rem; font-weight: 700; pointer-events: none; }
+    aside { display: grid; align-content: start; gap: 1rem; }
+    .control-card { padding: 1rem; }
+    .control-card h2 { margin: 0 0 1rem; font-size: 1rem; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .85rem 0 .4rem; font-size: .88rem; }
+    output { color: #a5b4fc; font-weight: 800; font-variant-numeric: tabular-nums; }
+    input[type="range"] { width: 100%; accent-color: #818cf8; cursor: pointer; }
+    .scale { display: flex; justify-content: space-between; color: #7c90ab; font-size: .78rem; }
+    .spectrum { position: relative; height: 16px; margin: .9rem 0 1rem; border-radius: 99px; background: linear-gradient(90deg, #a78bfa 0%, #8b5cf6 16.67%, #2563eb 33.33%, #16a34a 50%, #eab308 66.67%, #f97316 83.33%, #dc2626 100%); }
+    .spectrum input { position: absolute; inset: -9px 0; width: 100%; height: 34px; margin: 0; appearance: none; background: transparent; }
+    .spectrum input::-webkit-slider-runnable-track { height: 16px; background: transparent; }
+    .spectrum input::-moz-range-track { height: 16px; background: transparent; }
+    .spectrum input::-webkit-slider-thumb { width: 22px; height: 22px; margin-top: -3px; appearance: none; border: 3px solid white; border-radius: 50%; background: #0b1628; box-shadow: 0 0 0 2px #334155; }
+    .spectrum input::-moz-range-thumb { width: 16px; height: 16px; border: 3px solid white; border-radius: 50%; background: #0b1628; box-shadow: 0 0 0 2px #334155; }
+    #speed { height: 34px; margin: .1rem 0; appearance: none; background: transparent; }
+    #speed::-webkit-slider-runnable-track { height: 16px; border-radius: 99px; background: #475569; }
+    #speed::-moz-range-track { height: 16px; border-radius: 99px; background: #475569; }
+    #speed::-webkit-slider-thumb { width: 22px; height: 22px; margin-top: -3px; appearance: none; border: 3px solid white; border-radius: 50%; background: #0b1628; box-shadow: 0 0 0 2px #334155; }
+    #speed::-moz-range-thumb { width: 16px; height: 16px; border: 3px solid white; border-radius: 50%; background: #0b1628; box-shadow: 0 0 0 2px #334155; }
+    .swatch { display: inline-block; width: 10px; height: 10px; margin-right: .35rem; border-radius: 50%; background: var(--light-color, #a78bfa); box-shadow: 0 0 12px var(--light-color, #a78bfa); }
+    .note { color: #afbed2; font-size: .84rem; line-height: 1.55; text-align: center; }
+    .buttons { display: flex; gap: .5rem; margin-top: 1.1rem; }
+    .buttons button { flex: 1; min-width: 0; border: 1px solid #536585; border-radius: 9px; padding: .7rem .65rem; color: #e5eefb; background: #17263d; font-weight: 800; white-space: nowrap; }
+    .buttons button:hover { background: #263b5c; }
+    #fire { border-color: #8b5cf6; background: #6d28d9; color: white; }
+    #fire:hover { background: #7c3aed; }
+    #fire:disabled { opacity: .55; cursor: wait; }
+    .legend { display: grid; gap: 1rem; font-size: clamp(calc(.82rem + 1px), calc(1.5vw + 1px), calc(.9rem + 1px)); line-height: 1.45; white-space: nowrap; color: #c2d0e1; }
+    .legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: .5rem; background: var(--dot); box-shadow: 0 0 8px var(--dot); }
+    .error { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; text-align: center; color: #fecaca; background: #030712; }
+    @media (max-width: 850px) { .workspace { grid-template-columns: 1fr; } aside { grid-template-columns: repeat(2, 1fr); } .stage-card { min-height: 480px; } }
+    @media (max-width: 560px) { header { align-items: center; justify-content: space-between; flex-direction: row; flex-wrap: wrap; gap: .75rem; } aside { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div><div class="eyebrow">KAIST · OLED 가상실험실</div><h1>형광빛의 원리</h1></div>
+    </header>
+
+    <main class="workspace">
+      <section class="stage-card" aria-label="삼차원 분자 관찰 화면">
+        <canvas id="scene"></canvas>
+        <span class="lamp-label" hidden>램프</span>
+        <div class="stage-message"><div class="status-box" aria-live="polite"><span class="status-step" id="status-step" hidden></span><strong id="status-title">형광 물질에 빛을 쬐어보세요</strong></div></div>
+        <span class="energy-label" id="energy-in" hidden>100%</span>
+        <span class="energy-label" id="energy-heat" hidden>25%</span>
+        <span class="energy-label" id="energy-out" hidden>75%</span>
+      </section>
+      <aside>
+        <section class="control-card">
+          <div class="row"><label for="wavelength">형광 물질에 쬐어준 빛의 파장</label><output id="wave-value" for="wavelength">365 nm</output></div>
+          <div class="spectrum"><input id="wavelength" type="range" min="0" max="6" value="0" step="1" aria-label="빛의 색상, 자외선부터 빨간빛까지 7단계"></div>
+          <p class="note"><span class="swatch" id="swatch"></span>선택한 빛: <span id="light-name">자외선</span></p>
+        </section>
+        <section class="control-card">
+          <div class="row"><label for="speed">시뮬레이션 재생 속도</label></div>
+          <input id="speed" type="range" min="0" max="2" value="1" step="1" aria-valuetext="보통">
+          <div class="scale"><span>느리게</span><span>보통</span><span>빠르게</span></div>
+          <div class="buttons"><button id="fire" type="button">빛 쬐어주기</button><button id="pause" type="button" aria-pressed="false">일시정지</button></div>
+        </section>
+        <section class="control-card"><div class="legend"><span style="--dot:#b8bfcc">회색: 평소 전자 분포 (π 궤도)</span><span style="--dot:#b67cff">보라 구름: 흡수 뒤 전자 분포</span><span style="--dot:#ff475e">붉은 빛: 열로 빠진 에너지</span><span style="--dot:#38bdf8">푸른 빛: 형광으로 나온 빛</span></div></section>
+      </aside>
+    </main>
+  </div>
+
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script>
+  <script type="module">
+    const canvas = document.querySelector('#scene');
+    const ui = Object.fromEntries(['wavelength','wave-value','light-name','swatch','speed','fire','pause','status-title','status-step','energy-in','energy-heat','energy-out'].map(id => [id, document.getElementById(id)]));
+    const wavelengths = [365, 405, 450, 520, 580, 605, 650];
+    const lightNames = ['자외선','보라빛','파란빛','초록빛','노란빛','주황빛','빨간빛'];
+    const playbackRates = [.25, 1, 2];
+    const playbackRate = () => playbackRates[Number(ui.speed.value)];
+    const IMPACT_TIME = 1;
+    const ABSORB_MIN = 355, ABSORB_MAX = 375;
+    const photonEv = nm => 1240 / nm;
+    const absorbs = nm => nm >= ABSORB_MIN && nm <= ABSORB_MAX;
+    const splitEnergy = nm => absorbs(nm) ? { heat: photonEv(nm) * .25, light: photonEv(nm) * .75, pass: 0 } : { heat: 0, light: 0, pass: photonEv(nm) };
+    // 최소 자체 점검: 두 파장 모두 에너지가 보존되어야 한다.
+    for (const nm of [365, 520]) { const e = splitEnergy(nm); console.assert(Math.abs(e.heat + e.light + e.pass - photonEv(nm)) < 1e-10, '에너지 수지 오류'); }
+
+    function wavelengthColor(nm) {
+      if (nm < 380) return '#a78bfa';
+      let r = 0, g = 0, b = 0;
+      if (nm < 440) { r = (440 - nm) / 60; b = 1; }
+      else if (nm < 490) { g = (nm - 440) / 50; b = 1; }
+      else if (nm < 510) { g = 1; b = (510 - nm) / 20; }
+      else if (nm < 580) { r = (nm - 510) / 70; g = 1; }
+      else if (nm < 645) { r = 1; g = (645 - nm) / 65; }
+      else r = 1;
+      const hex = v => Math.round(Math.max(.12, v) * 255).toString(16).padStart(2, '0');
+      return `#${hex(r)}${hex(g)}${hex(b)}`;
+    }
+    function updateWavelength() {
+      const index = Number(ui.wavelength.value), nm = wavelengths[index];
+      ui['wave-value'].textContent = `${nm} nm`;
+      ui['light-name'].textContent = lightNames[index];
+      ui.swatch.style.setProperty('--light-color', wavelengthColor(nm));
+      if (spotGlow) {
+        const color=wavelengthColor(nm);
+        for(const plane of [...beamPlanes,...passPlanes]) plane.material.uniforms.uColor.value.set(color);
+        spotGlow.material.color.set(color); spotLight.color.set(color);
+      }
+    }
+
+    let THREE, OrbitControls, renderer, scene, camera, controls, molecule, cloud, cloudMaterial, beamPlanes = [], passPlanes = [], spotGlow, spotLight, heatGlow, heatWaves = [], emissionGlow, emissionWaves = [], flash, burstLight, excitedColor, bonds = [], labelPoint;
+    let phase = 'idle', elapsed = 0, paused = false, lastTime = 0, shotNm = 365, statusKey = '', lastVibration = 0;
+    const stageMsgEl = document.querySelector('.stage-message');
+    const lampLabel = document.querySelector('.lamp-label');
+    const setStatus = (key, title) => {
+      if (statusKey === key) return;
+      statusKey = key;
+      if (!title || key === 'done') {
+        if (stageMsgEl) stageMsgEl.classList.add('hidden');
+        return;
+      }
+      if (stageMsgEl) stageMsgEl.classList.remove('hidden');
+      ui['status-title'].textContent = title;
+      const step = { firing: 1, excited: 2, passed: 2, heat: 3, fluorescence: 4 }[key];
+      ui['status-step'].hidden = !step;
+      if (step) ui['status-step'].textContent = step;
+    };
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const smooth = (a, b, t) => { const x = clamp((t-a)/(b-a), 0, 1); return x*x*(3-2*x); };
+
+    function glowTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 128;
+      const ctx = c.getContext('2d'), grad = ctx.createRadialGradient(64,64,0,64,64,64);
+      grad.addColorStop(0, '#fff'); grad.addColorStop(.13, '#ffffffdd'); grad.addColorStop(.35, '#ffffff88'); grad.addColorStop(1, '#ffffff00');
+      ctx.fillStyle = grad; ctx.fillRect(0,0,128,128);
+      return new THREE.CanvasTexture(c);
+    }
+    function atom(x, y, z, radius, color, labelMaterial) {
+      const mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 32, 24), new THREE.MeshStandardMaterial({color,metalness:.12,roughness:.4}));
+      mesh.position.set(x,y,z); molecule.add(mesh);
+      const label = new THREE.Sprite(labelMaterial);
+      label.position.copy(mesh.position); label.scale.setScalar(radius*1.45); label.renderOrder=10; molecule.add(label);
+    }
+    function atomLabel(symbol, color) {
+      const canvas=document.createElement('canvas'); canvas.width=canvas.height=128;
+      const ctx=canvas.getContext('2d'); ctx.fillStyle=color; ctx.font='bold 86px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(symbol,64,66);
+      const texture=new THREE.CanvasTexture(canvas); texture.colorSpace=THREE.SRGBColorSpace;
+      return new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false,depthWrite:false});
+    }
+    function bond(a, b, radius, color) {
+      const direction = new THREE.Vector3().subVectors(b,a), mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius,radius,direction.length(),16), new THREE.MeshStandardMaterial({ color, metalness: .3, roughness: .42 }));
+      mesh.position.copy(a).add(b).multiplyScalar(.5); mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), direction.normalize()); molecule.add(mesh);
+      mesh.userData.basePositions=mesh.geometry.attributes.position.array.slice(); bonds.push(mesh);
+    }
+    function createMolecule() {
+      molecule = new THREE.Group(); scene.add(molecule);
+      const carbons = [], hydrogens = [];
+      for (let i=0; i<6; i++) {
+        const angle = i * Math.PI / 3, x = Math.cos(angle), y = Math.sin(angle);
+        carbons.push(new THREE.Vector3(x*1.32,y*1.32,0));
+        hydrogens.push(new THREE.Vector3(x*2.12,y*2.12,0));
+      }
+      const carbonLabel=atomLabel('C','#ffffff'), hydrogenLabel=atomLabel('H','#17202b');
+      for (let i=0; i<6; i++) {
+        atom(...carbons[i].toArray(), .23, '#30343b', carbonLabel);
+        atom(...hydrogens[i].toArray(), .13, '#f4f5f7', hydrogenLabel);
+        bond(carbons[i],carbons[(i+1)%6],.065,'#647385');
+        bond(carbons[i],hydrogens[i],.047,'#748395');
+      }
+      const wire = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(carbons), new THREE.LineBasicMaterial({color:0xb0bac6,transparent:true,opacity:.2}));
+      molecule.add(wire);
+    }
+    function createCloud() {
+      const count = 6500, positions = new Float32Array(count*3), seeds = new Float32Array(count);
+      // 점은 개별 전자가 아니라 고리 위아래 π 전자 분포의 표본이다.
+      for (let i=0; i<count; i++) {
+        const a = Math.random()*Math.PI*2, r = 1.08+(Math.random()+Math.random()+Math.random()-1.5)*.45;
+        positions[i*3] = Math.cos(a)*r;
+        positions[i*3+1] = Math.sin(a)*r;
+        positions[i*3+2] = (Math.random()<.5 ? -1 : 1) * (.28 + Math.random()*.42);
+        seeds[i] = Math.random();
+      }
+      const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position',new THREE.BufferAttribute(positions,3)); geometry.setAttribute('aSeed',new THREE.BufferAttribute(seeds,1));
+      excitedColor=new THREE.Color('#b67cff');
+      cloudMaterial = new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.NormalBlending, uniforms:{uTime:{value:0},uExpansion:{value:0},uColor:{value:new THREE.Color('#b8bfcc')},uOpacity:{value:.3}}, vertexShader:`attribute float aSeed; uniform float uTime; uniform float uExpansion; varying float vAlpha; void main(){ vec3 p=position; float pulse=1.0+0.035*sin(uTime*2.5+aSeed*18.0); p.xy*=mix(0.93,1.62,uExpansion)*pulse; p.z*=mix(0.85,1.55,uExpansion)*pulse; vec4 mv=modelViewMatrix*vec4(p,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=min(26.0,(3.0+3.0*aSeed)*42.0/-mv.z); vAlpha=0.35+0.65*aSeed; }`, fragmentShader:`uniform vec3 uColor; uniform float uOpacity; varying float vAlpha; void main(){ float d=length(gl_PointCoord-0.5)*2.0; float alpha=pow(max(0.0,1.0-d),2.2)*vAlpha*uOpacity; gl_FragColor=vec4(uColor,alpha); }`});
+      cloud = new THREE.Points(geometry,cloudMaterial); scene.add(cloud);
+    }
+    function createLauncher() {
+      const group = new THREE.Group(); group.position.set(-4.5,0,0); scene.add(group);
+      const metal = new THREE.MeshStandardMaterial({color:0x6f829e,metalness:.86,roughness:.25});
+      const body = new THREE.Mesh(new THREE.CylinderGeometry(.24,.31,1.05,24),metal); body.rotation.z=-Math.PI/2; group.add(body);
+      const barrel = new THREE.Mesh(new THREE.CylinderGeometry(.17,.17,.45,24),new THREE.MeshStandardMaterial({color:0x172438,metalness:.8,roughness:.3})); barrel.rotation.z=-Math.PI/2; barrel.position.x=.65; group.add(barrel);
+      const rim = new THREE.Mesh(new THREE.TorusGeometry(.18,.035,8,32),new THREE.MeshBasicMaterial({color:0xa78bfa})); rim.rotation.y=Math.PI/2; rim.position.x=.9; group.add(rim);
+      const conePlane = (start,end,near,far,tilt) => {
+        const material=new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,
+          uniforms:{uColor:{value:new THREE.Color('#a78bfa')},uOpacity:{value:0},uNear:{value:near},uFar:{value:far}},
+          vertexShader:`varying vec2 vUv; void main(){vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+          fragmentShader:`varying vec2 vUv; uniform vec3 uColor; uniform float uOpacity,uNear,uFar; void main(){float y=abs(vUv.y-0.5)*4.0; float radius=mix(uNear,uFar,vUv.x); float soft=1.0-smoothstep(radius*0.35,radius,y); float fade=smoothstep(0.0,0.08,vUv.x)*(1.0-smoothstep(0.68,1.0,vUv.x)); gl_FragColor=vec4(uColor,soft*fade*uOpacity);}`});
+        const plane=new THREE.Mesh(new THREE.PlaneGeometry(end-start,4),material);
+        plane.position.x=(start+end)/2; plane.rotation.x=tilt; scene.add(plane); return plane;
+      };
+      beamPlanes.push(conePlane(-3.6,.15,.15,1.12,0));
+      passPlanes.push(conePlane(-3.6,4.3,.15,1.85,0));
+      spotGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:0xa78bfa,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
+      spotGlow.scale.set(3.4,3.4,1); scene.add(spotGlow);
+      spotLight=new THREE.SpotLight(0xa78bfa,0,8,Math.PI/5,.9); spotLight.position.set(-4,0,0); spotLight.target.position.set(0,0,0); scene.add(spotLight,spotLight.target);
+    }
+    function createEffects() {
+      heatGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:0xff5b45,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(heatGlow);
+      for(let i=0;i<2;i++) {
+        const wave=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:i===0?0xff533f:0xff8a45,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
+        scene.add(wave); heatWaves.push(wave);
+      }
+      emissionGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:0x38bdf8,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(emissionGlow);
+      for(let i=0;i<3;i++) {
+        const wave=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:i===0?0xbcecff:0x38bdf8,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
+        scene.add(wave); emissionWaves.push(wave);
+      }
+      flash = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:0xbcecff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false})); flash.scale.set(4,4,1); scene.add(flash);
+      burstLight=new THREE.PointLight(0x86dfff,0,8); scene.add(burstLight);
+    }
+    function reset() {
+      phase='idle'; elapsed=0; ui.fire.disabled=false; ui.wavelength.disabled=false;
+      setStatus('idle','형광 물질에 빛을 쬐어보세요');
+      updateScene(0);
+    }
+    function updateScene(dt) {
+      const t=elapsed, hit=absorbs(shotNm), active=phase==='running';
+      ui['energy-in'].hidden = !active || t >= (hit ? IMPACT_TIME : 1.85);
+      ui['energy-heat'].hidden = !active || !hit || t < 1.55 || t >= 3.02;
+      ui['energy-out'].hidden = !active || !hit || t < 3.02 || t >= 4.5;
+      const lightEnd=hit?IMPACT_TIME:1.7;
+      const illumination=active&&t<lightEnd ? smooth(0,.16,t)*(1-smooth(lightEnd-.2,lightEnd,t)) : 0;
+      for(const plane of beamPlanes) plane.material.uniforms.uOpacity.value=hit?illumination*.24:0;
+      for(const plane of passPlanes) plane.material.uniforms.uOpacity.value=hit?0:illumination*.24;
+      spotGlow.material.opacity=illumination*.35;
+      spotLight.intensity=illumination*55;
+      const expansion=active && hit ? smooth(IMPACT_TIME,IMPACT_TIME+.18,t)*(1-.65*smooth(1.6,1.95,t))*(1-smooth(2.8,3.16,t)) : 0;
+      cloudMaterial.uniforms.uExpansion.value=expansion;
+      cloudMaterial.uniforms.uColor.value.set('#b8bfcc').lerp(excitedColor,expansion);
+      const cloudFade=active&&hit ? 1-.8*smooth(1.55,1.85,t)*(1-smooth(2.72,2.98,t))-.88*smooth(2.98,3.12,t)*(1-smooth(4.08,4.4,t)) : 1;
+      cloudMaterial.uniforms.uOpacity.value=(.3+expansion*.2)*cloudFade;
+      const vibration=active && hit ? smooth(1.45,1.75,t)*(1-smooth(2.52,2.85,t)) : 0;
+      molecule.position.set(Math.sin(t*67)*.035*vibration,Math.cos(t*82)*.035*vibration,Math.sin(t*91)*.035*vibration);
+      molecule.rotation.z=Math.sin(t*48)*.018*vibration;
+      if(vibration || lastVibration) {
+        for(const bondMesh of bonds) {
+          const attr=bondMesh.geometry.attributes.position, base=bondMesh.userData.basePositions;
+          for(let i=0;i<attr.count;i++) {
+            const j=i*3, wave=Math.sin(t*75+base[j+1]*7+i*.4)*.025*vibration;
+            attr.setXYZ(i,base[j]+wave,base[j+1],base[j+2]+wave);
+          }
+          attr.needsUpdate=true;
+        }
+      }
+      lastVibration=vibration;
+      heatGlow.material.opacity=vibration*(.3+.06*Math.sin(t*28));
+      heatGlow.scale.setScalar(3.3+vibration*1.2);
+      for(let i=0;i<heatWaves.length;i++) {
+        const waveAge=active&&hit ? clamp((t-1.58-i*.32)/1.1,0,1) : 0;
+        heatWaves[i].scale.setScalar(1.8+waveAge*7.4);
+        heatWaves[i].material.opacity=waveAge>0&&waveAge<1 ? Math.sin(waveAge*Math.PI)*.46 : 0;
+      }
+      const burst=active&&hit ? clamp((t-3.02)/1.15,0,1) : 0;
+      for(let i=0;i<emissionWaves.length;i++) {
+        const waveAge=active&&hit ? clamp((t-3.02-i*.14)/1.1,0,1) : 0;
+        emissionWaves[i].scale.setScalar(1.6+waveAge*8);
+        emissionWaves[i].material.opacity=waveAge>0&&waveAge<1 ? Math.sin(waveAge*Math.PI)*.25 : 0;
+      }
+      emissionGlow.material.opacity=burst>0 ? Math.sin(burst*Math.PI)*.42 : 0;
+      emissionGlow.scale.setScalar(3+burst*8);
+      flash.material.opacity=burst>0 ? Math.pow(1-burst,5) : 0;
+      flash.scale.setScalar(2+burst*7);
+      burstLight.intensity=burst>0 ? 40*Math.pow(1-burst,3) : 0;
+      if(phase==='idle') return;
+      if(t<IMPACT_TIME) setStatus('firing','빛이 형광 물질에 닿는 중');
+      else if(!hit) {
+        if(t<1.85) setStatus('passed','이 빛은 흡수되지 않았어요');
+        else setStatus('done','');
+      }
+      else if(t<1.55) setStatus('excited','빛을 흡수했어요');
+      else if(t<3.02) setStatus('heat','분자가 떨며 열을 내요');
+      else if(t<4.5) setStatus('fluorescence','형광빛이 퍼져 나와요');
+      else setStatus('done','');
+      if(t>(hit?4.5:1.85)) { phase='done'; ui.fire.disabled=false; ui.wavelength.disabled=false; }
+    }
+    function placeLabel(element, x, y, z=0) {
+      if (element.hidden) return;
+      labelPoint.set(x,y,z).project(camera);
+      element.style.visibility = Math.abs(labelPoint.x)<=1 && Math.abs(labelPoint.y)<=1 && labelPoint.z>=-1 && labelPoint.z<=1 ? 'visible' : 'hidden';
+      element.style.left = `${(labelPoint.x+1)*canvas.clientWidth/2}px`;
+      element.style.top = `${(1-labelPoint.y)*canvas.clientHeight/2}px`;
+    }
+    function positionLabels() {
+      camera.updateMatrixWorld();
+      placeLabel(lampLabel,-4.15,.65);
+      const t=elapsed, hit=absorbs(shotNm);
+      const incoming=hit ? clamp(t/IMPACT_TIME,0,1) : smooth(0,1.85,t);
+      placeLabel(ui['energy-in'],-3.6*(1-incoming),.35+.13*Math.sin(t*10),.2);
+      const heat=smooth(1.55,3.02,t)**1.4;
+      placeLabel(ui['energy-heat'],.3+1.4*heat,.45+1.7*heat+.1*Math.sin(t*12),.2);
+      const out=smooth(3.02,4.5,t);
+      placeLabel(ui['energy-out'],.3+2.4*out,.2+.15*Math.sin(t*10),.2);
+    }
+    function tick(now) {
+      requestAnimationFrame(tick);
+      const dt=Math.min((now-lastTime)/1000,.05); lastTime=now;
+      if(!paused) cloudMaterial.uniforms.uTime.value+=dt*(phase==='running'?playbackRate():1);
+      if(!paused && phase==='running') { elapsed+=dt*playbackRate(); updateScene(dt*playbackRate()); }
+      else if(phase==='idle') updateScene(dt);
+      controls.update();
+      positionLabels();
+      const tilt=-Math.atan2(camera.position.y,camera.position.z);
+      for(const plane of [...beamPlanes,...passPlanes]) plane.rotation.x=tilt;
+      renderer.render(scene,camera);
+    }
+    function resize() { const w=canvas.clientWidth,h=canvas.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+    async function main() {
+      try {
+        THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js');
+        ({OrbitControls}=await import('https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/controls/OrbitControls.js'));
+        renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace;
+        scene=new THREE.Scene(); camera=new THREE.PerspectiveCamera(45,1,.05,100); camera.position.set(2.4,2.8,8.2);
+        controls=new OrbitControls(camera,canvas); controls.enableDamping=true; controls.dampingFactor=.07; controls.enableZoom=false; controls.enablePan=false; controls.target.set(0,0,0);
+        scene.add(new THREE.AmbientLight(0xdce6f2,1.2));
+        const key=new THREE.PointLight(0xffffff,52,20); key.position.set(2,3,5); scene.add(key);
+        const fill=new THREE.PointLight(0x9db8dc,25,18); fill.position.set(-3,-2,-2); scene.add(fill);
+        createMolecule(); createCloud(); createLauncher(); createEffects();
+        labelPoint=new THREE.Vector3(); lampLabel.hidden=false;
+        resize(); new ResizeObserver(resize).observe(canvas.parentElement);
+        ui.wavelength.addEventListener('input',updateWavelength);
+        ui.speed.addEventListener('input',()=>ui.speed.setAttribute('aria-valuetext',['느리게','보통','빠르게'][Number(ui.speed.value)]));
+        ui.fire.addEventListener('click',()=>{ shotNm=wavelengths[Number(ui.wavelength.value)]; elapsed=0; phase='running'; paused=false; ui.pause.textContent='일시정지'; ui.pause.setAttribute('aria-pressed','false'); ui.fire.disabled=true; ui.wavelength.disabled=true; statusKey=''; });
+        ui.pause.addEventListener('click',()=>{ paused=!paused; ui.pause.textContent=paused?'계속 재생':'일시정지'; ui.pause.setAttribute('aria-pressed',String(paused)); });
+        updateWavelength(); reset(); requestAnimationFrame(now=>{lastTime=now;tick(now);});
+      } catch(error) {
+        console.error('3D 실험실 초기화 실패:',error);
+        const message=document.createElement('div'); message.className='error'; message.textContent=`3D 화면을 열 수 없습니다. 인터넷 연결과 WebGL 사용 가능 여부를 확인하세요. (${error.message})`; canvas.after(message);
+      }
+    }
+    main();
+</script>
+</body>
+</html>
