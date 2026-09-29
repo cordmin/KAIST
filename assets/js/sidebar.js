@@ -11,14 +11,12 @@ function renderSidebar(pkg, currentKey) {
 
   const oledPages = [
     { key: 'oled-guide', name: 'OLED란?' },
-    { key: 'lesson-plan', name: '수업 지도안' },
-    { key: 'lab', name: '가상 실험실' }
+    { key: 'lesson-plan', name: '수업 지도안' }
   ];
 
   const quantumPages = [
     { key: 'quantum-guide', name: '양자 컴퓨터란?' },
-    { key: 'lesson-plan', name: '수업 지도안' },
-    { key: 'lab', name: '가상 실험실' }
+    { key: 'lesson-plan', name: '수업 지도안' }
   ];
 
   sidebarEl.innerHTML = `

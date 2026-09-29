@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 function beam(a, b, radius, material, parent) {
   const direction = new THREE.Vector3().subVectors(b, a);
   const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, direction.length(), 10), material);
@@ -8,7 +6,7 @@ function beam(a, b, radius, material, parent) {
   parent.add(mesh);
 }
 
-export function createQuakeBuildings() {
+function createQuakeBuildings() {
   const group = new THREE.Group();
   const platform = new THREE.Group();
   group.add(platform);

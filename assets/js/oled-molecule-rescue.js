@@ -1,7 +1,3 @@
-import * as THREE from 'three';
-import { OrbitControls } from '../vendor/three/OrbitControls.js';
-import { createQuakeBuildings } from './oled-quake-buildings.js';
-
 const $ = id => document.getElementById(id);
 const ui = Object.fromEntries(['scene','stage-card','scene-heading','scene-hint','stage-caption','analogy-labels','energy-overlay','analogy-panel','molecule-panel','energy-panel','comparison-panel','start-quake','analogy-result','show-molecule','show-analogy','basic-mode','kaist-mode','mode-explain','inject','instruction','energy-grid','run-label','light-count','heat-count','basic-light','basic-heat','kaist-light','kaist-heat','takeaway','fullscreen'].map(id => [id, $(id)]));
 const cells = Array.from({ length: 100 }, () => {
@@ -19,11 +15,11 @@ try {
   throw error;
 }
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.outputEncoding = THREE.sRGBEncoding;
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(44, 1, .1, 100);
 camera.position.set(0, 1.5, 8.5);
-const orbit = new OrbitControls(camera, ui.scene);
+const orbit = new THREE.OrbitControls(camera, ui.scene);
 orbit.enableDamping = true;
 orbit.enablePan = false;
 orbit.minDistance = 5.4;
@@ -33,8 +29,8 @@ orbit.maxPolarAngle = 2.35;
 orbit.target.set(0, 0, 0);
 orbit.enabled = false;
 camera.position.set(0, 1.1, 6.8);
-scene.add(new THREE.AmbientLight(0xbad7ff, 2.2));
-const lamp = new THREE.PointLight(0x8ad9ff, 60, 20);
+scene.add(new THREE.AmbientLight(0xbad7ff, .45));
+const lamp = new THREE.PointLight(0x8ad9ff, .8, 20);
 lamp.position.set(1, 3, 4);
 scene.add(lamp);
 const redLamp = new THREE.PointLight(0xff615e, 0, 10);
@@ -302,12 +298,12 @@ function animate(now) {
     if (elapsed < 1.45) setPhase('arrive', '새 전기 100이 분자에 도착합니다.');
     else if (elapsed < 1.95) setPhase('inside', mode === 'basic' ? '분자가 크게 흔들리기 시작합니다.' : '큰 흔들림을 줄이며 에너지가 빠르게 바뀝니다.');
     else setPhase('out', mode === 'basic' ? '푸른빛 25, 붉은 열 75가 나옵니다.' : '에너지 100이 열로 빠지기 전에 푸른빛으로 나옵니다.');
-    redLamp.intensity = mode === 'basic' && elapsed > 1.8 ? 24 + Math.sin(time * 17) * 7 : 0;
-    lamp.intensity = mode === 'kaist' && elapsed > 1.8 ? 85 : 60;
+    redLamp.intensity = mode === 'basic' && elapsed > 1.8 ? 1.2 + Math.sin(time * 17) * .3 : 0;
+    lamp.intensity = mode === 'kaist' && elapsed > 1.8 ? 1.4 : .8;
     if (elapsed > 4.85) finish();
   } else {
     redLamp.intensity = 0;
-    lamp.intensity = 60;
+    lamp.intensity = .8;
   }
   orbit.update();
   renderer.render(scene, camera);

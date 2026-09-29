@@ -299,19 +299,25 @@ window.worksheetModalData.oled = {
 
       <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
-          <th style="width:32%; text-align:center; vertical-align:middle;">
-            (1) KAIST 기술로 기존 스마트폰의 어떤 문제를 해결할 수 있는지 서술하시오.
+          <th style="width:32%; vertical-align:middle; text-align:left; padding:0.75rem 1rem;">
+            <div style="display:flex; align-items:flex-start; gap:0.35rem;">
+              <span>(1)</span>
+              <span>KAIST 기술로 기존 스마트폰의 어떤 문제를 해결할 수 있는지 서술하시오.</span>
+            </div>
           </th>
           <td>
-            <textarea class="ws-textarea-input" rows="3" placeholder="답안을 서술하시오." data-answer="75%의 열 손실을 빛으로 구출하여 화면 발열을 크게 줄이고, 배터리 사용 시간을 최대 2배 늘렸으며 화면 번인(잔상) 문제를 해결함."></textarea>
+            <textarea class="ws-textarea-input" rows="3" data-answer="75%의 열 손실을 빛으로 구출하여 화면 발열을 크게 줄이고, 배터리 사용 시간을 최대 2배 늘렸으며 화면 번인(잔상) 문제를 해결함."></textarea>
           </td>
         </tr>
         <tr>
-          <th style="width:32%; text-align:center; vertical-align:middle;">
-            (2) 이 기술로 미래 디스플레이가 어떻게 달라질지 서술하시오.
+          <th style="width:32%; vertical-align:middle; text-align:left; padding:0.75rem 1rem;">
+            <div style="display:flex; align-items:flex-start; gap:0.35rem;">
+              <span>(2)</span>
+              <span>이 기술로 미래 디스플레이가 어떻게 달라질지 서술하시오.</span>
+            </div>
           </th>
           <td>
-            <textarea class="ws-textarea-input" rows="3" placeholder="답안을 서술하시오." data-answer="소비전력 감소와 무거운 방열판 축소로 무게를 획기적으로 줄인 초경량 스마트폰, 방열판을 넣기 힘든 얇고 유연한 구조에서도 열 손상과 얼룩 잔상 없이 오래 쓸 수 있는 롤러블/폴더블 화면, 저전력 친환경 대형 디스플레이 등."></textarea>
+            <textarea class="ws-textarea-input" rows="3" data-answer="소비전력 감소와 무거운 방열판 축소로 무게를 획기적으로 줄인 초경량 스마트폰, 방열판을 넣기 힘든 얇고 유연한 구조에서도 열 손상과 얼룩 잔상 없이 오래 쓸 수 있는 롤러블/폴더블 화면, 저전력 친환경 대형 디스플레이 등."></textarea>
           </td>
         </tr>
       </table>
@@ -352,14 +358,20 @@ window.worksheetModalData.oled = {
       <h4 style="color:#d97706; margin:1.25rem 0 0.8rem;">1. KAIST 연구 기술 및 미래 사회 변화 예시 답안</h4>
       <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
-          <th style="width:32%; text-align:center; vertical-align:middle;">
-            (1) KAIST 기술로 기존 스마트폰의 어떤 문제를 해결할 수 있는가?
+          <th style="width:32%; vertical-align:middle; text-align:left; padding:0.75rem 1rem;">
+            <div style="display:flex; align-items:flex-start; gap:0.35rem;">
+              <span>(1)</span>
+              <span>KAIST 기술로 기존 스마트폰의 어떤 문제를 해결할 수 있는가?</span>
+            </div>
           </th>
           <td><strong class="model-answer">75%의 열 손실을 100% 빛으로 구출하여 스마트폰 기기 발열을 크게 낮추고, 배터리 사용 시간을 최대 2배 늘렸으며 화면 잔상(번인) 문제를 원천적으로 해결함.</strong></td>
         </tr>
         <tr>
-          <th style="width:32%; text-align:center; vertical-align:middle;">
-            (2) 이 기술로 미래 디스플레이가 어떻게 달라질 수 있는가?
+          <th style="width:32%; vertical-align:middle; text-align:left; padding:0.75rem 1rem;">
+            <div style="display:flex; align-items:flex-start; gap:0.35rem;">
+              <span>(2)</span>
+              <span>이 기술로 미래 디스플레이가 어떻게 달라질 수 있는가?</span>
+            </div>
           </th>
           <td><strong class="model-answer">배터리 용량과 무거운 방열판을 줄여 무게를 혁신적으로 줄인 초경량 스마트폰 상용화, 방열판을 덧대기 어려운 유연한 구조에서도 열 손상과 얼룩 잔상 없이 오래 쓰는 롤러블/폴더블 화면 출시, 디스플레이 소비전력 절감으로 친환경 기여.</strong></td>
         </tr>

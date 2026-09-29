@@ -273,3 +273,77 @@ function toggleAllPresResults(btn) {
   });
   btn.innerText = allRevealed ? '전체 결과 보기' : '전체 결과 가리기';
 }
+
+let virtualLabReturnFocus;
+
+function openVirtualLabModal() {
+  let modal = document.getElementById('virtual-lab-modal');
+  if (!modal) {
+    document.body.insertAdjacentHTML('beforeend', `
+      <div id="virtual-lab-modal" class="virtual-lab-modal" role="dialog" aria-modal="true" aria-label="가상실험실">
+        <div id="virtual-lab-window" class="virtual-lab-window">
+          <div class="virtual-lab-top-actions">
+            <button type="button" id="virtual-lab-fullscreen" class="virtual-lab-action-btn" onclick="toggleVirtualLabFullscreen()">전체 화면</button>
+            <button type="button" id="virtual-lab-close" class="virtual-lab-action-btn" onclick="closeVirtualLabModal()">닫기</button>
+          </div>
+          <iframe class="virtual-lab-frame" title="형광빛의 원리 가상실험실" allow="fullscreen"></iframe>
+        </div>
+      </div>`);
+    modal = document.getElementById('virtual-lab-modal');
+    modal.addEventListener('click', event => { if (event.target === modal) closeVirtualLabModal(); });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && modal.classList.contains('open') && !document.fullscreenElement) closeVirtualLabModal();
+    });
+    document.addEventListener('fullscreenchange', updateVirtualLabFullscreen);
+  }
+  virtualLabReturnFocus = document.activeElement;
+  modal.querySelector('iframe').src = location.pathname.includes('/oled/') ? 'fluorescence-3d.html' : 'oled/fluorescence-3d.html';
+  modal.classList.add('open');
+  document.body.classList.add('virtual-lab-open');
+}
+
+function closeVirtualLabModal() {
+  const modal = document.getElementById('virtual-lab-modal');
+  if (!modal) return;
+  const panel = document.getElementById('virtual-lab-window');
+  if (document.fullscreenElement === panel) document.exitFullscreen().catch(error => console.warn('전체 화면 종료 실패:', error));
+  panel.classList.remove('is-fullscreen');
+  modal.classList.remove('open');
+  modal.querySelector('iframe').removeAttribute('src');
+  document.body.classList.remove('virtual-lab-open');
+  if (virtualLabReturnFocus) virtualLabReturnFocus.focus();
+}
+
+function toggleVirtualLabFullscreen() {
+  const panel = document.getElementById('virtual-lab-window');
+  if (document.fullscreenElement === panel) {
+    document.exitFullscreen().catch(error => console.warn('전체 화면 종료 실패:', error));
+  } else if (panel.classList.contains('is-fullscreen')) {
+    panel.classList.remove('is-fullscreen');
+    updateVirtualLabFullscreen();
+  } else if (panel.requestFullscreen) {
+    panel.requestFullscreen().catch(error => {
+      console.warn('전체 화면 전환 실패, 화면 크기로 확장합니다:', error);
+      panel.classList.add('is-fullscreen');
+      updateVirtualLabFullscreen();
+    });
+  } else {
+    panel.classList.add('is-fullscreen');
+    updateVirtualLabFullscreen();
+  }
+}
+
+function updateVirtualLabFullscreen() {
+  const panel = document.getElementById('virtual-lab-window');
+  if (!panel) return;
+  const full = document.fullscreenElement === panel || panel.classList.contains('is-fullscreen');
+  const btn = document.getElementById('virtual-lab-fullscreen');
+  if (btn) btn.textContent = full ? '창 크기로' : '전체 화면';
+  try {
+    const iframe = panel.querySelector('iframe');
+    if (iframe && iframe.contentWindow && iframe.contentDocument) {
+      const iframeBtn = iframe.contentDocument.getElementById('lab-fullscreen');
+      if (iframeBtn) iframeBtn.textContent = full ? '창 크기로' : '전체 화면';
+    }
+  } catch (e) {}
+}

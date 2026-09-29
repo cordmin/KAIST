@@ -429,6 +429,9 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 2)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
+                      <button type="button" class="topbar-btn btn-virtual-lab" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openVirtualLabModal()">
+                        <i data-lucide="flask-conical"></i> <span>가상실험실</span>
+                      </button>
                     </div>
                   </td>
                 </tr>
