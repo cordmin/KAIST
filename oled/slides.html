@@ -126,7 +126,7 @@
           <button type="button" class="topbar-btn" style="background:#0284c7; color:#ffffff; border-color:#0284c7;" onclick="openReaderModal('oled', 4)"><i data-lucide="book-open"></i> <span>읽기 자료</span></button>
           <button class="topbar-btn" onclick="toggleFullScreen()"><i data-lucide="maximize-2"></i> <span>전체화면 발표</span></button>
           <a href="lesson-plan.html" class="topbar-btn"><i data-lucide="clipboard-list"></i> <span>지도안 보기</span></a>
-          <a href="lab.html" class="topbar-btn primary"><i data-lucide="flask-conical"></i> <span>가상실험실 바로가기</span></a>
+          <a href="lab.html" id="lab-link" class="topbar-btn primary"><i data-lucide="flask-conical"></i> <span>가상실험실 바로가기</span></a>
         </div>
       </header>
 
@@ -226,6 +226,7 @@
     function switchSlideLesson(lessonNum) {
       currentLesson = lessonNum;
       currentSlide = 0;
+      document.getElementById('lab-link').href = lessonNum === 4 ? 'molecule-rescue.html' : 'lab.html';
 
       // Update tab active state
       const tabs = document.querySelectorAll('.slide-lesson-btn');

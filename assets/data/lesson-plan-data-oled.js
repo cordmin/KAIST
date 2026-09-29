@@ -808,6 +808,9 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 4)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
+                      <a href="${location.pathname.includes('/oled/') ? 'molecule-rescue.html' : 'oled/molecule-rescue.html'}" target="_blank" rel="noopener" class="topbar-btn btn-virtual-lab" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;">
+                        <i data-lucide="flask-conical"></i> <span>가상실험실</span>
+                      </a>
                     </div>
                   </td>
                 </tr>
@@ -865,10 +868,10 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                     <!-- 카드 1: 청색 OLED 해결 과제 분석 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">파란색 OLED 해결 과제 분석 8분</span>
+                        <span class="plan-card-badge">청색 OLED 해결 과제 분석 8분</span>
                       </div>
                       <div style="margin:0 0 0.35rem 0; color:#334155; line-height:1.65;">
-                        • <strong>파란색 OLED 해결 과제:</strong> 청색광의 높은 에너지와 전기의 75% 열 손실(격렬한 떨림)이 겹쳐 빛을 내는 분자의 결합이 파괴되는 짧은 수명(번인 현상) 및 발열의 인과관계 분석<br>
+                        • <strong>청색 OLED 해결 과제:</strong> 청색광의 높은 에너지와 75% 열 손실로 인해 빛을 내는 분자가 금방 파괴되는 짧은 수명(번인 현상) 개선 과제 탐구<br>
                         • <strong>기존 상용화 기술의 한계 비교:</strong> 1세대(25% 발광 효율 한계)와 2세대(파란색 화면 수명 한계)를 비교하고 차세대 혁신 기술의 필요성 도출
                       </div>
                     </div>
@@ -899,7 +902,10 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       </div>
                       <div style="margin:0; color:#334155; line-height:1.65;">
                         <div style="padding-left:0.58rem; text-indent:-0.58rem; margin-bottom:0.35rem;">
-                          • 태블릿 가상실험실에서 배터리 전류를 주입한 뒤, 기본 상태와 KAIST 초고속 에너지 전환 기술을 적용한 상태를 차례로 실행
+                          • 가상실험실에서 같은 진동대 위 두 건물 모형을 흔들어 대각선 연결에 따른 움직임을 비교
+                        </div>
+                        <div style="padding-left:0.58rem; text-indent:-0.58rem; margin-bottom:0.35rem;">
+                          • 분자 모형의 기본 상태에 전기 100을 넣고, 움직임을 조절한 상태에 새 전기 100을 다시 넣어 결과 관찰
                         </div>
                         <div style="padding-left:0.58rem; text-indent:-0.58rem;">
                           • 두 상태의 발광 효율과 열 손실 수치를 비교하여 활동지에 기록하고, 에너지 전환 방식이 발열과 분자 수명에 미치는 영향 설명

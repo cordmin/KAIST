@@ -1204,13 +1204,13 @@ window.presentationModalData.oled = {
               <div class="pres-grid-3" style="gap:1rem;">
                 <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
                   <div style="font-size:1.7rem; font-weight:800; color:#2563eb; margin-bottom:0.6rem;">1</div>
-                  <strong style="font-size:1.12rem; color:#0f172a; display:block; margin-bottom:0.5rem;">배터리 전류 주입</strong>
-                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">100개의 입자를 생성하고 기본 상태의 발광 효율과 열 손실을 확인합니다.</p>
+                  <strong style="font-size:1.12rem; color:#0f172a; display:block; margin-bottom:0.5rem;">건물 뼈대 흔들림 비교</strong>
+                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">같은 진동대 위 두 건물의 흔들림을 비교하고, 대각선 연결이 움직임에 미치는 영향을 봅니다.</p>
                 </div>
                 <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
                   <div style="font-size:1.7rem; font-weight:800; color:#2563eb; margin-bottom:0.6rem;">2</div>
-                  <strong style="font-size:1.12rem; color:#0f172a; display:block; margin-bottom:0.5rem;">KAIST 기술 적용</strong>
-                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">초고속 에너지 전환 기술 스위치를 켜고 수치와 입자 색의 변화를 관찰합니다.</p>
+                  <strong style="font-size:1.12rem; color:#0f172a; display:block; margin-bottom:0.5rem;">분자 실험 두 번</strong>
+                  <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">기본 상태에 전기 100을 넣고, 움직임을 조절한 뒤 새 전기 100을 다시 넣습니다.</p>
                 </div>
                 <div class="pres-card" style="text-align:center; padding:1.35rem 1rem;">
                   <div style="font-size:1.7rem; font-weight:800; color:#2563eb; margin-bottom:0.6rem;">3</div>
@@ -1218,6 +1218,7 @@ window.presentationModalData.oled = {
                   <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">두 상태의 발광 효율과 열 손실을 비교하고 분자 수명에 미치는 영향을 설명합니다.</p>
                 </div>
               </div>
+              <a href="${location.pathname.includes('/oled/') ? 'molecule-rescue.html' : 'oled/molecule-rescue.html'}" target="_blank" rel="noopener" style="display:inline-block; align-self:center; padding:0.65rem 1.4rem; border-radius:10px; background:#0369a1; color:#ffffff; font-size:1.08rem; font-weight:800; text-decoration:none;">4차시 분자 시뮬레이션 열기</a>
               <div class="pres-inquiry-box" style="padding:0.9rem 1.3rem; text-align:center;">
                 <div class="inquiry-q" style="font-size:1.08rem; line-height:1.6; color:#0f172a; word-break:keep-all;">
                   <strong>관찰 질문:</strong> 열로 손실되던 에너지가 빛으로 전환되면 발열과 분자 수명은 어떻게 달라질까요?
@@ -1263,7 +1264,7 @@ window.presentationModalData.oled = {
               </div>
               <div class="pres-def-card">
                 <p class="pres-def-text" style="text-align:center;">
-                  시뮬레이터에 표시된 실제 수치를 활동지에 기록하고, 두 상태의 차이가 생긴 까닭을 설명합니다.
+                  시뮬레이터의 수업용 모형 수치를 활동지에 기록하고, 두 상태의 차이가 생긴 까닭을 설명합니다.
                 </p>
               </div>
             </div>

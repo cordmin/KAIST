@@ -287,6 +287,14 @@ window.worksheetModalData.oled = {
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
       </div>
 
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">가상실험실에서 두 건물 뼈대의 흔들림을 비교한 뒤, 두 분자 상태에 새 전기 100을 각각 넣고 결과를 기록하시오.</p>
+      <table class="data-table" style="margin-bottom:1rem; text-align:center;">
+        <tr><th>분자 상태</th><th>빛으로 나온 에너지</th><th>열로 빠진 에너지</th></tr>
+        <tr><th>기본 상태</th><td><input type="text" class="ws-mini-input" style="width:68px;" data-answer="25"> %</td><td><input type="text" class="ws-mini-input" style="width:68px;" data-answer="75"> %</td></tr>
+        <tr><th>움직임 조절</th><td><input type="text" class="ws-mini-input" style="width:68px;" data-answer="100"> %</td><td><input type="text" class="ws-mini-input" style="width:68px;" data-answer="0"> %</td></tr>
+      </table>
+      <p style="font-size:0.82rem; color:#64748b; margin:0;">※ 수치는 원리를 비교하는 수업용 모형의 결과입니다.</p>
+
       <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. KAIST 연구진의 초고속 에너지 전환 기술을 탐구하고, 아래 질문에 답하시오.</p>
 
       <table class="data-table" style="margin-bottom:2.25rem;">
@@ -334,6 +342,13 @@ window.worksheetModalData.oled = {
       </div>
     `,
     teacher: `
+      <h4 style="color:#d97706; margin:1.25rem 0 0.8rem;">가상실험실 결과 예시</h4>
+      <table class="data-table" style="margin-bottom:1rem; text-align:center;">
+        <tr><th>분자 상태</th><th>빛으로 나온 에너지</th><th>열로 빠진 에너지</th></tr>
+        <tr><th>기본 상태</th><td>25%</td><td>75%</td></tr>
+        <tr><th>움직임 조절</th><td>100%</td><td>0%</td></tr>
+      </table>
+      <p style="font-size:0.82rem; color:#64748b; margin:0;">※ 100%는 수업용 이상화 모형에서 이론상 내부 발광의 최대치를 나타냅니다.</p>
       <h4 style="color:#d97706; margin:1.25rem 0 0.8rem;">1. KAIST 연구 기술 및 미래 사회 변화 예시 답안</h4>
       <table class="data-table" style="margin-bottom:2.25rem;">
         <tr>
