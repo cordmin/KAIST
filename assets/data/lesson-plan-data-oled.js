@@ -811,9 +811,9 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                       <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 4)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
-                      <a href="${location.pathname.includes('/oled/') ? 'molecule-rescue.html' : 'oled/molecule-rescue.html'}" target="_blank" rel="noopener" class="topbar-btn btn-virtual-lab" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;">
+                      <button type="button" onclick="openVirtualLabModal(4)" class="topbar-btn btn-virtual-lab" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;">
                         <i data-lucide="flask-conical"></i> <span>가상실험실</span>
-                      </a>
+                      </button>
                     </div>
                   </td>
                 </tr>

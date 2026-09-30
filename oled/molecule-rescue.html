@@ -4,51 +4,43 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>빛으로 가기 전에 | OLED 4차시 가상실험실</title>
-  <link rel="stylesheet" href="../assets/css/oled-molecule-rescue.css?v=2">
+  <link rel="stylesheet" href="../assets/css/oled-molecule-rescue.css?v=8">
 </head>
 <body>
   <main class="app">
     <header class="topbar">
       <div><p class="eyebrow">OLED 4차시 · KAIST의 분자 연구</p><h1>빛으로 가기 전에, 에너지는 어디로 갈까?</h1></div>
-      <button class="plain-button" id="fullscreen" type="button">전체화면</button>
     </header>
 
-    <section class="lesson" aria-label="탐구 순서">
-      <span><b>1</b> 건물 뼈대 흔들림 비교</span><span class="chevron">→</span>
-      <span><b>2</b> 기본 상태에 전기 넣기</span><span class="chevron">→</span>
-      <span><b>3</b> 분자 움직임을 조절하고 다시 넣기</span>
-    </section>
-
     <div class="workspace">
-      <section class="stage-card analogy-view" id="stage-card" aria-label="삼차원 모형 관찰">
-        <div class="stage-top"><strong id="scene-heading">같은 지진을 만나면 어떻게 될까요?</strong><span id="scene-hint">두 건물은 같은 진동대 위에 있습니다</span></div>
-        <canvas id="scene" aria-label="같은 진동대에 놓인 두 건물 모형과 분자 모형"></canvas>
-        <div class="analogy-labels" id="analogy-labels" aria-hidden="true"><span>기본 뼈대</span><span>대각선 연결 추가</span></div>
-        <div class="stage-overlay" id="energy-overlay" aria-hidden="true" hidden><span class="source-label">새 전기 100</span><span class="light-label">푸른빛 ↑</span><span class="heat-label">열 ↓</span></div>
-        <p class="stage-caption" id="stage-caption">오른쪽 건물의 하늘색 대각선 연결을 찾아보세요.</p>
+      <section class="stage-card analogy-view" id="stage-card" aria-label="건물 구조를 KAIST 분자연구에 비유하기">
+        <div class="stage-top"><strong id="scene-heading">건물 구조를 KAIST 분자연구에 비유하기</strong></div>
+        <canvas id="scene" aria-label="같은 진동판에 놓인 두 건물 모형과 분자 모형"></canvas>
+        <div class="analogy-labels" id="analogy-labels" aria-hidden="true"><span>기본 구조</span><span>대각선 고정대 추가</span></div>
+        <div class="stage-overlay" id="energy-overlay" aria-hidden="true" hidden><span class="source-label">전기 에너지 공급</span></div>
       </section>
 
       <aside class="controls">
         <section class="panel analogy-panel" id="analogy-panel">
-          <h2>같은 지진, 다른 건물 뼈대</h2>
-          <p>두 건물 모형이 같은 진동대 위에 서 있습니다. 오른쪽 뼈대에만 <strong>대각선 연결</strong>을 더했습니다. 지진처럼 바닥을 흔들면 건물은 어떻게 달라질까요?</p>
-          <button id="start-quake" class="inject" type="button">진동대 작동하기</button>
-          <p class="instruction" id="analogy-result" role="status" aria-live="polite">어느 건물이 더 크게 흔들릴까요?</p>
-          <button id="show-molecule" class="next-button" type="button" disabled>분자 실험으로 이어가기 →</button>
+          <h2>건물 구조에 따른 흔들림 정도 비교</h2>
+          <p>두 건물 모형이 같은 진동판 위에 서 있습니다. 오른쪽 건물 모형에 <strong>대각선 고정대</strong>를 추가하고 진동판을 흔들면 두 건물의 흔들림은 어떤 차이가 있을까요?</p>
+          <button id="start-quake" class="inject" type="button"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h3l3-5 4 10 3-7 2 2h5"/></svg>인공 지진 발생하기</button>
+        </section>
+        <section class="panel analogy-next-panel" id="analogy-next-panel">
+          <p class="instruction" id="analogy-result" role="status" aria-live="polite">흔들리는 건물의 예시처럼, 진동하는 분자를 고정하면 어떤 효과가 있을까요?</p>
+          <button id="show-molecule" class="inject go-next" type="button"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h15v18M7 5l9 1v13l-9 2V5Z"/><circle cx="13" cy="12" r=".6" fill="currentColor" stroke="none"/></svg>KAIST 분자 실험으로</button>
         </section>
         <section class="panel control-panel" id="molecule-panel" hidden>
           <button id="show-analogy" class="back-button" type="button">← 건물 모형 다시 보기</button>
           <h2>어떤 상태로 실험할까요?</h2>
           <div class="mode-row" role="group" aria-label="분자 상태 선택">
-            <button id="basic-mode" class="mode active" type="button" aria-pressed="true">기본 상태</button>
-            <button id="kaist-mode" class="mode" type="button" aria-pressed="false" disabled>움직임 조절</button>
+            <button id="basic-mode" class="mode active" type="button" aria-pressed="true">기본 분자구조</button>
+            <button id="kaist-mode" class="mode" type="button" aria-pressed="false">고정된 분자구조</button>
           </div>
-          <p class="mode-explain" id="mode-explain">분자가 크게 흔들릴 때를 먼저 관찰합니다.</p>
-          <button id="inject" class="inject" type="button">전기 100 넣기</button>
-          <p class="instruction" id="instruction" role="status" aria-live="polite">먼저 기본 상태에서 실행하세요.</p>
+          <button id="inject" class="inject" type="button"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 5 13h6l-1 9 9-12h-6V2Z"/></svg>분자에 전기 공급하기</button>
         </section>
         <section class="panel energy-panel" id="energy-panel" hidden>
-          <div class="panel-title"><h2>들어간 전기 100은 어디로?</h2><span id="run-label">실험 전</span></div>
+          <div class="panel-title"><h2>공급된 전기에너지는 어디로?</h2><span id="run-label">실험 전</span></div>
           <div class="energy-grid" id="energy-grid" aria-label="에너지 100칸 결과"></div>
           <div class="totals"><div class="blue-total"><small>빛으로 나온 에너지</small><strong id="light-count">—</strong></div><div class="red-total"><small>열로 빠진 에너지</small><strong id="heat-count">—</strong></div></div>
         </section>
@@ -56,28 +48,17 @@
     </div>
 
     <section class="panel comparison-panel" id="comparison-panel" hidden>
-      <div class="comparison-header"><h2>두 번의 실험 결과</h2><p>두 실험 모두 새 전기 100을 넣었습니다.</p></div>
+      <div class="comparison-header"><h2>두 번의 실험 결과</h2></div>
       <div class="comparison-table" role="table" aria-label="두 상태의 빛과 열 비교">
         <div class="table-head" role="row"><span role="columnheader">분자 상태</span><span role="columnheader">빛</span><span role="columnheader">열</span><span role="columnheader">움직임</span></div>
-        <div class="table-row" role="row"><strong role="cell">기본 상태</strong><span id="basic-light" role="cell">—</span><span id="basic-heat" role="cell">—</span><span role="cell">크게 흔들림</span></div>
-        <div class="table-row" role="row"><strong role="cell">움직임 조절</strong><span id="kaist-light" role="cell">—</span><span id="kaist-heat" role="cell">—</span><span role="cell">큰 흔들림 감소</span></div>
+        <div class="table-row" role="row"><strong role="cell">기본 분자구조</strong><span id="basic-light" role="cell">—</span><span id="basic-heat" role="cell">—</span><span role="cell">크게 흔들림</span></div>
+        <div class="table-row" role="row"><strong role="cell">고정된 분자구조</strong><span id="kaist-light" role="cell">—</span><span id="kaist-heat" role="cell">—</span><span role="cell">큰 흔들림 감소</span></div>
       </div>
-      <p class="takeaway" id="takeaway">관찰할 점: 열로 빠져나가기 전에 에너지가 빛으로 바뀌면 무엇이 달라질까요?</p>
-      <p class="scope-note">※ 25%·75%와 100%·0%는 원리를 비교하는 수업용 모형 수치입니다. 실제 스마트폰의 전기 100%가 빛이 된다는 뜻은 아닙니다.</p>
     </section>
-
-    <details class="model-note" open><summary>실제 분자 뼈대와 수업용 모형 비교</summary>
-      <p>건물은 연결이 움직임에 미치는 영향을 보여주는 비유입니다. 뒤이어 나오는 3D 분자도 수업용 모형이며 KAIST 연구 분자의 실제 구조가 아닙니다. 실제 연구에서는 분자의 여러 움직임과 에너지 전환 속도를 함께 분석합니다.</p>
-      <div class="real-structures">
-        <figure><svg viewBox="0 0 360 160" role="img" aria-label="바이페닐: 두 고리가 한 결합으로 연결된 실제 분자 구조"><g><path d="M43 82 L69 37 L121 37 L147 82 L121 127 L69 127 Z M213 82 L239 37 L291 37 L317 82 L291 127 L239 127 Z M54 83 L75 47 M75 117 L115 117 M128 47 L139 82 M222 82 L245 47 M246 117 L286 117 M298 47 L307 82 M147 82 L213 82"/></g><path class="structure-highlight" d="M154 82 L206 82"/></svg><figcaption>바이페닐: 가운데 연결을 따라 회전 가능</figcaption></figure>
-        <figure><svg viewBox="0 0 360 160" role="img" aria-label="플루오렌: 두 고리 사이에 다섯 각형 고리가 생긴 실제 분자 구조"><g><path d="M54 55 L97 30 L140 55 L140 105 L97 130 L54 105 Z M220 55 L263 30 L306 55 L306 105 L263 130 L220 105 Z M65 61 L97 42 M65 99 L97 118 M128 61 L128 99 M232 61 L232 99 M263 42 L295 61 M263 118 L295 99 M140 55 L180 25 L220 55 M140 105 L220 105"/></g><path class="structure-highlight" d="M140 55 L180 25 L220 55"/></svg><figcaption>플루오렌: 연결이 추가되어 회전 제한</figcaption></figure>
-      </div>
-      <p>이 둘은 연결 방식의 차이를 보여주는 실제 분자 예시이며 KAIST 연구 물질의 개선 전후는 아닙니다. 구조 참고: <a href="https://pubchem.ncbi.nlm.nih.gov/compound/Biphenyl" target="_blank" rel="noreferrer">바이페닐</a>, <a href="https://pubchem.ncbi.nlm.nih.gov/compound/6853" target="_blank" rel="noreferrer">플루오렌</a>. 100%는 이론상 내부 발광의 최대치입니다.</p>
-    </details>
   </main>
   <script defer src="../assets/vendor/three/three.min.js"></script>
   <script defer src="../assets/vendor/three/OrbitControls.global.js"></script>
-  <script defer src="../assets/js/oled-quake-buildings.js?v=2"></script>
-  <script defer src="../assets/js/oled-molecule-rescue.js?v=7"></script>
+  <script defer src="../assets/js/oled-quake-buildings.js?v=3"></script>
+  <script defer src="../assets/js/oled-molecule-rescue.js?v=13"></script>
 </body>
 </html>

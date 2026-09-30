@@ -4,6 +4,7 @@ function beam(a, b, radius, material, parent) {
   mesh.position.copy(a).add(b).multiplyScalar(.5);
   mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
   parent.add(mesh);
+  return mesh;
 }
 
 function createQuakeBuildings() {
@@ -23,14 +24,16 @@ function createQuakeBuildings() {
   groundEdge.position.y = -1.5;
   platform.add(groundEdge);
   const frames = [];
+  const structures = [];
 
   [-2.05, 2.05].forEach((x, index) => {
     const frame = new THREE.Group();
     frame.position.set(x, -1.27, 0);
     platform.add(frame);
     frames.push(frame);
+    const columns = [];
     for (const z of [-.42, .42]) {
-      for (const side of [-1, 1]) beam(new THREE.Vector3(side, .05, z), new THREE.Vector3(side, 2.42, z), .055, steel, frame);
+      for (const side of [-1, 1]) columns.push(beam(new THREE.Vector3(side, .05, z), new THREE.Vector3(side, 2.42, z), .055, steel, frame));
       for (const y of [.05, 1.23, 2.42]) beam(new THREE.Vector3(-1, y, z), new THREE.Vector3(1, y, z), .052, steel, frame);
     }
     for (const side of [-1, 1]) {
@@ -65,6 +68,15 @@ function createQuakeBuildings() {
         beam(new THREE.Vector3(.94, 1.25, z), new THREE.Vector3(-.94, 2.39, z), .065, brace, frame);
       }
     }
+    structures.push({
+      columns,
+      parts: frame.children.map(mesh => ({ mesh, x: mesh.position.x, y: mesh.position.y }))
+    });
   });
-  return { group, platform, frames };
+  function sway(index, offset) {
+    const { columns, parts } = structures[index];
+    parts.forEach(({ mesh, x, y }) => { mesh.position.x = x + offset * Math.max(0, y) / 2.5; });
+    columns.forEach(mesh => { mesh.rotation.z = -Math.atan(offset / 2.37); });
+  }
+  return { group, platform, sway };
 }

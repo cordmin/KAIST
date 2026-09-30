@@ -276,7 +276,7 @@ function toggleAllPresResults(btn) {
 
 let virtualLabReturnFocus;
 
-function openVirtualLabModal() {
+function openVirtualLabModal(lessonNum = 2) {
   let modal = document.getElementById('virtual-lab-modal');
   if (!modal) {
     document.body.insertAdjacentHTML('beforeend', `
@@ -286,7 +286,7 @@ function openVirtualLabModal() {
             <button type="button" id="virtual-lab-fullscreen" class="virtual-lab-action-btn" onclick="toggleVirtualLabFullscreen()">전체 화면</button>
             <button type="button" id="virtual-lab-close" class="virtual-lab-action-btn" onclick="closeVirtualLabModal()">닫기</button>
           </div>
-          <iframe class="virtual-lab-frame" title="형광빛의 원리 가상실험실" allow="fullscreen"></iframe>
+          <iframe class="virtual-lab-frame" title="가상실험실" allow="fullscreen"></iframe>
         </div>
       </div>`);
     modal = document.getElementById('virtual-lab-modal');
@@ -297,7 +297,11 @@ function openVirtualLabModal() {
     document.addEventListener('fullscreenchange', updateVirtualLabFullscreen);
   }
   virtualLabReturnFocus = document.activeElement;
-  modal.querySelector('iframe').src = location.pathname.includes('/oled/') ? 'fluorescence-3d.html' : 'oled/fluorescence-3d.html';
+  const labPage = lessonNum === 4 ? 'molecule-rescue.html' : 'fluorescence-3d.html';
+  const iframe = modal.querySelector('iframe');
+  iframe.title = lessonNum === 4 ? '4차시 분자 가상실험실' : '형광빛의 원리 가상실험실';
+  iframe.src = location.pathname.includes('/oled/') ? labPage : `oled/${labPage}`;
+  if (document.fullscreenElement) document.exitFullscreen().catch(error => console.warn('전체 화면 종료 실패:', error));
   modal.classList.add('open');
   document.body.classList.add('virtual-lab-open');
 }

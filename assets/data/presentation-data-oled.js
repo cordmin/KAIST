@@ -1218,7 +1218,7 @@ window.presentationModalData.oled = {
                   <p style="font-size:0.93rem; color:#475569; margin:0; line-height:1.65; word-break:keep-all;">두 상태의 발광 효율과 열 손실을 비교하고 분자 수명에 미치는 영향을 설명합니다.</p>
                 </div>
               </div>
-              <a href="${location.pathname.includes('/oled/') ? 'molecule-rescue.html' : 'oled/molecule-rescue.html'}" target="_blank" rel="noopener" style="display:inline-block; align-self:center; padding:0.65rem 1.4rem; border-radius:10px; background:#0369a1; color:#ffffff; font-size:1.08rem; font-weight:800; text-decoration:none;">4차시 분자 시뮬레이션 열기</a>
+              <button type="button" onclick="openVirtualLabModal(4)" style="display:inline-block; align-self:center; padding:0.65rem 1.4rem; border:0; border-radius:10px; background:#0369a1; color:#ffffff; font-size:1.08rem; font-weight:800; cursor:pointer;">4차시 분자 시뮬레이션 열기</button>
               <div class="pres-inquiry-box" style="padding:0.9rem 1.3rem; text-align:center;">
                 <div class="inquiry-q" style="font-size:1.08rem; line-height:1.6; color:#0f172a; word-break:keep-all;">
                   <strong>관찰 질문:</strong> 열로 손실되던 에너지가 빛으로 전환되면 발열과 분자 수명은 어떻게 달라질까요?
