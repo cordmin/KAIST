@@ -46,6 +46,48 @@ function switchLessonPlanTab(e, index, targetWindowId) {
   }
 }
 
+// OLED 소개 가이드 전용 크롬탭 전환기 (1~5탭)
+function switchOledGuideTab(e, index) {
+  const container = document.getElementById('oled-guide-chrome-window');
+  if (!container) return;
+  const tabs = container.querySelectorAll(':scope > .chrome-tab-bar > .chrome-tab-btn');
+  const panels = container.querySelectorAll(':scope > .chrome-tab-panel');
+  tabs.forEach((tab, i) => {
+    tab.classList.toggle('active', i === index);
+    tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
+  });
+  panels.forEach((panel, i) => {
+    panel.classList.toggle('active', i === index);
+  });
+  const rect = container.getBoundingClientRect();
+  if (rect.top < 0) {
+    window.scrollTo({ top: window.pageYOffset + rect.top - 80, behavior: 'smooth' });
+  }
+  if (window.lucide) {
+    try { lucide.createIcons(); } catch(err) {}
+  }
+}
+
+// OLED 학생 퀴즈 정답 확인 인터랙션
+function checkOledQuiz(quizId, btnEl, isCorrect, explanation) {
+  const item = document.getElementById(quizId);
+  if (!item) return;
+  const buttons = item.querySelectorAll('.og-quiz-btn');
+  buttons.forEach(b => {
+    b.classList.remove('selected-correct', 'selected-wrong');
+  });
+  if (isCorrect) {
+    btnEl.classList.add('selected-correct');
+  } else {
+    btnEl.classList.add('selected-wrong');
+  }
+  const feedbackEl = item.querySelector('.og-quiz-feedback');
+  if (feedbackEl) {
+    feedbackEl.innerHTML = `<strong>${isCorrect ? '[정답]' : '[다시 생각하기]'}</strong> ${explanation}`;
+    feedbackEl.classList.add('show');
+  }
+}
+
 // Media Subtab Switcher (Photos & Videos)
 function switchMediaTab(e, index) {
   const btn = e ? e.currentTarget : null;

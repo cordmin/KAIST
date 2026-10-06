@@ -484,71 +484,450 @@
         <!-- ========================================== -->
 
         <!-- ========================================== -->
-        <!-- [OLED] 0. OLED란? (심층 해부 가이드)       -->
-        <!-- ========================================== -->
+        <!-- [OLED] 0. OLED란? (과학 매거진 에디토리얼 지면) -->
         <section id="view-oled-guide" class="content-view">
-          <div class="quantum-guide-wrapper" style="width: 100%; max-width: 100%; box-sizing: border-box; padding-bottom: 60px;">
-            <header class="hero">
-              <div class="hero-tag">
-                <span><i data-lucide="sparkles"></i> 고등학생 눈높이 과학 심층 탐구</span>
-                <span>•</span>
-                <span>화학 & 물리학 & 첨단 디스플레이 융합 특강</span>
+          <!-- 수업 지도안 스타일 크롬 탭 윈도우 -->
+          <div class="chrome-window" id="oled-guide-chrome-window">
+            <div class="chrome-tab-bar" role="tablist">
+              <button class="chrome-tab-btn tab-blue active" role="tab" aria-selected="true" onclick="switchOledGuideTab(event, 0)">
+                <i data-lucide="scan"></i> <span>[특집 01] 빛의 합성과 미세 화소</span>
+              </button>
+              <button class="chrome-tab-btn tab-blue" role="tab" aria-selected="false" onclick="switchOledGuideTab(event, 1)">
+                <i data-lucide="layers"></i> <span>[비교 분석 02] 광학 구조: 액정과 자체 발광</span>
+              </button>
+              <button class="chrome-tab-btn tab-blue" role="tab" aria-selected="false" onclick="switchOledGuideTab(event, 2)">
+                <i data-lucide="zap"></i> <span>[에너지 역학 03] 빛과 열의 변환 균형</span>
+              </button>
+              <button class="chrome-tab-btn tab-blue" role="tab" aria-selected="false" onclick="switchOledGuideTab(event, 3)">
+                <i data-lucide="microscope"></i> <span>[물질 탐구 04] 전계 발광과 형광 원리</span>
+              </button>
+              <button class="chrome-tab-btn tab-blue" role="tab" aria-selected="false" onclick="switchOledGuideTab(event, 4)">
+                <i data-lucide="check-circle-2"></i> <span>[탐구 점검 05] 핵심 개념 확인</span>
+              </button>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- ==================================================== -->
+            <!-- 탭 1: [특집 01] 빛의 합성과 미세 화소                  -->
+            <!-- ==================================================== -->
+            <div class="chrome-tab-panel active" role="tabpanel">
+              <div class="mag-header-compact">
+                <span class="mag-kicker-badge">빛과 광학</span>
+                <h3 class="mag-article-title">빛의 합성과 미세 화소: 디스플레이가 1,600만 가지 색을 조합하는 원리</h3>
               </div>
-              <h1 class="hero-title">
-                빛나는 분자로 세상을 비추다:<br>
-                <span>OLED의 발광 원리와 화학 분자 디자인</span>
-              </h1>
-              <p class="hero-desc">
-                전기 에너지가 어떻게 아름다운 색의 빛으로 변환될까요? 전자의 들뜬 상태와 스핀 통계, 그리고 스마트폰 발열을 일으키는 75%의 열 손실 딜레마를 극복하는 KAIST CPRL 연구진의 차세대 분자 설계 전략을 심층 해부합니다.
+              <p class="mag-article-deck">
+                스마트폰 화면 표면에는 빨강, 초록, 파랑 세 가지 미세 소자만 존재합니다. 빛이 겹칠수록 밝아지는 '가산 혼합' 법칙으로 모든 색상을 만듭니다.
               </p>
 
-              <div class="meta-grid">
-                <div class="meta-card">
-                  <div class="meta-icon"><i data-lucide="sun"></i></div>
-                  <div class="meta-info">
-                    <h4>발광 핵심 원리</h4>
-                    <p>전계 발광 (Electroluminescence)</p>
+              <div class="mag-split-grid">
+                <!-- 좌측 메인 기사 영역 -->
+                <div class="mag-main-column">
+                  <p class="mag-lead">
+                    <span class="mag-dropcap">우</span>리가 화면에서 보는 노란색이나 흰색은 실제 해당 색 잉크가 아닙니다. 표면을 초점 현미경으로 확대하면 오직 빨강, 초록, 파랑 세 종류의 독립 미세 화소 발광 소자가 촘촘하게 배열되어 빛나고 있습니다.
+                  </p>
+
+                  <!-- 과학 도판: 미세 화소 매크로 촬영 -->
+                  <div class="mag-figure">
+                    <div class="mag-figure-img-wrap">
+                      <img src="image/tools/oled_subpixel_macro.jpg" alt="미세 화소 현미경 확대 사진">
+                    </div>
+                    <div class="mag-figure-caption">
+                      <span class="mag-figure-label">[도판 01] 현미경으로 촬영한 스마트폰 화면의 미세 화소 배열.</span>
+                      1개 화소 속 빨강, 초록, 파랑 소자의 밝기를 각각 256단계로 조절해 1,600만 가지 색을 조합합니다.
+                    </div>
+                  </div>
+
+                  <!-- 에디토리얼 풀쿼트 -->
+                  <div class="mag-pullquote">
+                    <div class="mag-pullquote-text">
+                      "물감은 섞을수록 빛을 흡수해 어두워지지만, 빛은 겹칠수록 에너지가 더해져 순수한 백색광이 됩니다."
+                    </div>
+                    <div class="mag-pullquote-source">— 기초 광학 이론: 빛의 가산 혼합 법칙</div>
                   </div>
                 </div>
-                <div class="meta-card">
-                  <div class="meta-icon"><i data-lucide="flame"></i></div>
-                  <div class="meta-info">
-                    <h4>핵심 딜레마</h4>
-                    <p>75% 삼중항 열 손실 & 청색 수명</p>
+
+                <!-- 우측 사이드바 데이터 & 해설 -->
+                <div class="mag-sidebar-column">
+                  <!-- 데이터 스탯 박스 -->
+                  <div class="mag-stat-grid">
+                    <div class="mag-stat-box">
+                      <div class="mag-stat-value">1,670만</div>
+                      <div class="mag-stat-label">삼원색 조합 가능 색상 수</div>
+                    </div>
+                    <div class="mag-stat-box">
+                      <div class="mag-stat-value highlight">450개+</div>
+                      <div class="mag-stat-label">1인치당 초미세 화소 밀도</div>
+                    </div>
                   </div>
-                </div>
-                <div class="meta-card">
-                  <div class="meta-icon"><i data-lucide="sparkles"></i></div>
-                  <div class="meta-info">
-                    <h4>구출 메커니즘</h4>
-                    <p>핫 엑시톤 (Hot Exciton) & TADF</p>
+
+                  <!-- 사이드바 카드 1: 용어 사전 -->
+                  <div class="mag-sidebar-card">
+                    <div class="mag-sidebar-header">
+                      <i data-lucide="book-open"></i> 핵심 과학 개념
+                    </div>
+                    <div class="mag-glossary-item">
+                      <span class="mag-term-badge">빛의 가산 혼합</span>
+                      <p class="mag-term-desc">빨강+초록=노랑, 빨강+파랑=자홍, 삼원색을 모두 합치면 흰색이 되는 빛의 중첩 원리입니다.</p>
+                    </div>
+                    <div class="mag-glossary-item">
+                      <span class="mag-term-badge">초미세 화소 소자</span>
+                      <p class="mag-term-desc">1개 화소를 이루는 최소 발광 단위(빨강, 초록, 파랑). 눈으로 구별하기 어려울 만큼 작아 단일 색으로 합쳐져 인식됩니다.</p>
+                    </div>
                   </div>
-                </div>
-                <div class="meta-card">
-                  <div class="meta-icon"><i data-lucide="microscope"></i></div>
-                  <div class="meta-info">
-                    <h4>분자 시뮬레이션</h4>
-                    <p>슈퍼컴퓨터 기반 양자 화학 (CPRL)</p>
+
+                  <!-- 사이드바 카드 2: 실험실 관찰 가이드 -->
+                  <div class="mag-sidebar-card">
+                    <div class="mag-sidebar-header">
+                      <i data-lucide="compass"></i> 일상 속 관찰 실험
+                    </div>
+                    <p class="mag-term-desc">
+                      화면에 물 한 방울을 살짝 올려보세요. 둥근 물방울 돋보기를 통해 눈에 보이지 않던 빨강·초록·파랑 미세 격자가 맨눈으로 확인됩니다.
+                    </p>
                   </div>
                 </div>
               </div>
-            </header>
+            </div>
 
-            <div class="container">
-              <!-- 상세 콘텐츠 및 사진 준비 중 안내 플레이스홀더 블록 -->
-              <div class="chapter-block" style="text-align:center; padding: 50px 30px;">
-                <div style="display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); color:#38bdf8; margin-bottom:1.25rem;">
-                  <i data-lucide="file-text" style="width:30px; height:30px;"></i>
+            <!-- ==================================================== -->
+            <!-- 탭 2: [비교 분석 02] 광학 구조 비교: 액정 vs 자발광   -->
+            <!-- ==================================================== -->
+            <div class="chrome-tab-panel" role="tabpanel">
+              <div class="mag-header-compact">
+                <span class="mag-kicker-badge">구조와 신소재</span>
+                <h3 class="mag-article-title">광학 구조 비교: 후면 조명 액정과 스스로 빛나는 유기 발광 소자</h3>
+              </div>
+              <p class="mag-article-deck">
+                항상 켜진 후면 조명을 셔터로 막는 액정 방식과, 수백만 개 화소가 직접 켜지고 꺼지는 유기 박막 자발광의 결정적 차이를 비교합니다.
+              </p>
+
+              <div class="mag-split-grid">
+                <!-- 좌측 메인 기사 영역 -->
+                <div class="mag-main-column">
+                  <p class="mag-lead">
+                    <span class="mag-dropcap">기</span>존 액정 디스플레이는 패널 뒤편에서 항상 켜져 있는 후면 조명(백라이트)을 두고 액정 분자 가림막으로 빛의 통과량을 조절합니다. 블라인드 커튼을 쳐도 틈새로 빛이 새어나오듯 검은색이 짙은 회색으로 들뜨게 됩니다.
+                  </p>
+                  <p class="mag-body-text">
+                    반면 <strong>유기 발광 다이오드</strong>는 후면 조명이 완전히 사라지고, 탄소 화합물 유기 박막이 전기를 받아 스스로 빛을 냅니다. 검은색을 표현할 때는 해당 화소의 전원을 완전히 꺼서 빛 방출을 완전히 차단하는 <strong>'완전한 흑색(순수 검은색)'</strong>을 실현합니다.
+                  </p>
+
+                  <!-- 비교 스펙 테이블 -->
+                  <table class="mag-spec-table">
+                    <thead>
+                      <tr>
+                        <th>비교 항목</th>
+                        <th>액정 디스플레이</th>
+                        <th>유기 발광 다이오드</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>발광 원리</td>
+                        <td>항상 켜진 후면 조명 + 액정 투과 제어</td>
+                        <td>수백만 개 유기 화소의 독립 자체 발광</td>
+                      </tr>
+                      <tr>
+                        <td>구조 두께</td>
+                        <td>두꺼움 (광원·도광판·반사판 필수)</td>
+                        <td>0.1밀리미터 수준의 극한 초박형</td>
+                      </tr>
+                      <tr>
+                        <td>검은색 표현</td>
+                        <td>빛샘 현상으로 짙은 회색빛 감돎</td>
+                        <td>소자 완전 소등으로 완벽한 순수 흑색</td>
+                      </tr>
+                      <tr>
+                        <td>유연성</td>
+                        <td>단단한 평면 유리 기판에 고정</td>
+                        <td>유연한 플라스틱 필름 적용으로 접히는 화면 구현</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-                <h2 class="chap-title" style="margin-bottom:0.75rem;">OLED 심층 해부 가이드 콘텐츠 준비 중</h2>
-                <p class="chap-subtitle" style="max-width:680px; margin:0 auto 1.5rem; word-break:keep-all;">
-                  <strong>'양자 컴퓨터란?'</strong> 가이드와 동일한 방식으로 고해상도 연구 장비 사진, 인포그래픽, 원자/분자 물리 시뮬레이션 해설 콘텐츠가 배치될 예정입니다.
-                </p>
-                <div style="display:flex; justify-content:center; gap:0.65rem; flex-wrap:wrap;">
-                  <span style="font-size:0.82rem; padding:0.4rem 0.85rem; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#94a3b8;">#OLED_발광원리</span>
-                  <span style="font-size:0.82rem; padding:0.4rem 0.85rem; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#94a3b8;">#단일항_삼중항_스핀통계</span>
-                  <span style="font-size:0.82rem; padding:0.4rem 0.85rem; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#94a3b8;">#청색OLED수명_번인</span>
-                  <span style="font-size:0.82rem; padding:0.4rem 0.85rem; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#94a3b8;">#KAIST_CPRL_핫엑시톤</span>
+
+                <!-- 우측 사이드바 데이터 & 해설 -->
+                <div class="mag-sidebar-column">
+                  <!-- 데이터 스탯 박스 -->
+                  <div class="mag-stat-grid">
+                    <div class="mag-stat-box">
+                      <div class="mag-stat-value">0%</div>
+                      <div class="mag-stat-label">검은색 표현 시 빛 방출량 (전원 차단)</div>
+                    </div>
+                    <div class="mag-stat-box">
+                      <div class="mag-stat-value highlight">0.1밀리미터</div>
+                      <div class="mag-stat-label">후면 조명을 없앤 초박막 두께</div>
+                    </div>
+                  </div>
+
+                  <!-- 사이드바 카드 1: 폴더블 원리 -->
+                  <div class="mag-sidebar-card">
+                    <div class="mag-sidebar-header">
+                      <i data-lucide="smartphone"></i> 왜 화면을 접을 수 있을까?
+                    </div>
+                    <p class="mag-term-desc">
+                      두꺼운 유리와 후면 조명판이 겹친 기존 화면과 달리, 얇은 유기물 층을 유연한 플라스틱 필름 위에 올리기 때문에 반으로 접히는 화면이 가능합니다.
+                    </p>
+                  </div>
+
+                  <!-- 사이드바 카드 2: 다크 모드 절전 -->
+                  <div class="mag-sidebar-card">
+                    <div class="mag-sidebar-header">
+                      <i data-lucide="battery-charging"></i> 검은 배경 화면의 절전 효과
+                    </div>
+                    <p class="mag-term-desc">
+                      검은색 영역의 화소는 전원이 꺼져 전기를 소모하지 않으므로 어두운 화면 테마를 사용할 때 배터리 사용 시간을 크게 늘립니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- 탭 3: [에너지 역학 03] 빛과 열의 변환 균형             -->
+            <!-- ==================================================== -->
+            <div class="chrome-tab-panel" role="tabpanel">
+              <div class="mag-header-compact">
+                <span class="mag-kicker-badge">에너지와 열역학</span>
+                <h3 class="mag-article-title">에너지 전환과 발열: 전기 에너지는 왜 빛과 열로 나뉠까?</h3>
+              </div>
+              <p class="mag-article-deck">
+                전기 에너지 100%가 투입되어도 25%만 빛으로 바뀌고 75%는 분자 진동열로 손실되는 물리 역학을 규명합니다.
+              </p>
+
+              <div class="mag-split-grid">
+                <!-- 좌측 메인 기사 영역 -->
+                <div class="mag-main-column">
+                  <p class="mag-lead">
+                    <span class="mag-dropcap">스</span>마트폰을 오래 쓰면 화면이 따뜻해지는 것은 <strong>에너지 보존 법칙</strong>의 직접적인 증거입니다. 배터리의 전기 에너지가 유기물 분자로 들어가 전자를 높은 에너지인 '들뜬상태'로 점프시킵니다.
+                  </p>
+                  <p class="mag-body-text">
+                    들뜬 전자가 원래의 안정된 '바닥상태'로 복귀할 때 낙차만큼 에너지를 방출하며 이것이 <strong>'빛 에너지'</strong>가 됩니다. 그러나 빛으로 나가지 못한 에너지는 주변 분자를 흔드는 <strong>'분자 진동열 손실'</strong>로 빠져나가 화면을 뜨겁게 달굽니다.
+                  </p>
+
+                  <!-- 스탯 그리드: 25% 빛 vs 75% 열 -->
+                  <div class="mag-stat-grid">
+                    <div class="mag-stat-box">
+                      <div class="mag-stat-value">25%</div>
+                      <div class="mag-stat-label">1세대 형광 소자 빛 전환율</div>
+                    </div>
+                    <div class="mag-stat-box">
+                      <div class="mag-stat-value highlight">75%</div>
+                      <div class="mag-stat-label">분자 진동열 손실 비율</div>
+                    </div>
+                  </div>
+
+                  <!-- 에디토리얼 풀쿼트 -->
+                  <div class="mag-pullquote">
+                    <div class="mag-pullquote-text">
+                      "야구 배트의 빗맞은 공이 손을 울리듯, 빛이 되지 못한 에너지는 고스란히 열이 됩니다."
+                    </div>
+                    <div class="mag-pullquote-source">— 에너지 보존 법칙과 분자 열역학</div>
+                  </div>
+                </div>
+
+                <!-- 우측 사이드바 데이터 & 해설 -->
+                <div class="mag-sidebar-column">
+                  <!-- 단계별 에너지 흐름 리스트 -->
+                  <div class="mag-sidebar-card">
+                    <div class="mag-sidebar-header">
+                      <i data-lucide="git-commit"></i> 에너지 전환 3단계
+                    </div>
+                    <div class="mag-step-list">
+                      <div class="mag-step-item">
+                        <span class="mag-step-num">1</span>
+                        <div class="mag-step-content">
+                          <div class="mag-step-title">전기 주입</div>
+                          배터리 전압으로 음(-)전하 전자와 양(+)전하 정공 공급
+                        </div>
+                      </div>
+                      <div class="mag-step-item">
+                        <span class="mag-step-num">2</span>
+                        <div class="mag-step-content">
+                          <div class="mag-step-title">전자 들뜸</div>
+                          에너지를 흡수해 바닥상태에서 들뜬상태로 도약
+                        </div>
+                      </div>
+                      <div class="mag-step-item">
+                        <span class="mag-step-num">3</span>
+                        <div class="mag-step-content">
+                          <div class="mag-step-title">빛과 열 분기</div>
+                          25%는 눈에 보이는 빛 방출, 75%는 분자 진동열로 소실
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 과학자들의 도전 과제 박스 -->
+                  <div class="mag-sidebar-card">
+                    <div class="mag-sidebar-header">
+                      <i data-lucide="flame"></i> 미래 연구: 열과의 싸움
+                    </div>
+                    <p class="mag-term-desc">
+                      차세대 발광 소자(인광, 지연 형광) 연구는 버려지는 75%의 열 손실을 빛으로 회수해 발열을 줄이고 배터리 효율을 100%까지 끌어올리는 것이 핵심 목표입니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- 탭 4: [물질 탐구 04] 전계 발광과 형광 원리             -->
+            <!-- ==================================================== -->
+            <div class="chrome-tab-panel" role="tabpanel">
+              <div class="mag-header-compact">
+                <span class="mag-kicker-badge">발광과 물질</span>
+                <h3 class="mag-article-title">자외선과 전기 자극: 일상 속 광발광과 전계 발광의 원리</h3>
+              </div>
+              <p class="mag-article-deck">
+                빛을 흡수해 빛나는 위조지폐·안전 조끼와 회로 전기를 받아 스스로 빛나는 유기 발광 다이오드를 비교합니다.
+              </p>
+
+              <div class="mag-split-grid">
+                <!-- 좌측 메인 기사 영역 -->
+                <div class="mag-main-column">
+                  <p class="mag-lead">
+                    <span class="mag-dropcap">지</span>폐나 여권의 숨은 잉크는 눈에 안 보이는 높은 에너지의 자외선을 흡수해 전자를 들뜨게 한 뒤 선명한 가시광선을 내뿜는 <strong>'빛을 흡수해 빛나는 광발광'</strong> 물질입니다.
+                  </p>
+
+                  <!-- 2분할 사진 도판 (높이 2배 확장) -->
+                  <div class="mag-figure">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; background:#0f172a;">
+                      <div class="mag-figure-img-wrap" style="min-height:220px; max-height:280px;">
+                        <img src="image/tools/fluo_app_money.jpg" alt="자외선 형광 위조지폐">
+                      </div>
+                      <div class="mag-figure-img-wrap" style="min-height:220px; max-height:280px;">
+                        <img src="image/tools/fluo_app_vest.jpg" alt="안전 조끼 형광 발광">
+                      </div>
+                    </div>
+                    <div class="mag-figure-caption">
+                      <span class="mag-figure-label">[도판 02] 일상 속 발광 물질.</span>
+                      (좌) 자외선 흡수로 녹색 형광을 내는 지폐 감별 (우) 야간 빛 반사 안전 조끼
+                    </div>
+                  </div>
+
+                  <!-- 에디토리얼 풀쿼트 -->
+                  <div class="mag-pullquote">
+                    <div class="mag-pullquote-text">
+                      "외부에서 빛을 비춰주어야 빛나는 것이 '광발광'이라면, 회로에서 전기를 공급받아 스스로 빛나는 것은 '전계 발광'입니다."
+                    </div>
+                    <div class="mag-pullquote-source">— 에너지 공급원에 따른 두 가지 발광 방식 비교</div>
+                  </div>
+                </div>
+
+                <!-- 우측 사이드바 데이터 & 해설 -->
+                <div class="mag-sidebar-column">
+                  <!-- 발광 방식 비교 카드 -->
+                  <div class="mag-sidebar-card">
+                    <div class="mag-sidebar-header">
+                      <i data-lucide="layers"></i> 발광 방식 2대 비교
+                    </div>
+                    <div class="mag-glossary-item">
+                      <span class="mag-term-badge">빛 흡수 발광 (광발광)</span>
+                      <p class="mag-term-desc">
+                        외부 자외선 빛을 흡수하여 눈에 보이는 가시광선으로 재방출합니다. (위조지폐·안전 조끼)
+                      </p>
+                    </div>
+                    <div class="mag-glossary-item">
+                      <span class="mag-term-badge">전기 자극 발광 (전계 발광)</span>
+                      <p class="mag-term-desc">
+                        회로의 전류(전자와 정공)를 직접 받아 유기물이 스스로 빛을 냅니다. (스마트폰 화면 소자)
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 사이드바 카드 2: 스토크스 이동 노트 -->
+                  <div class="mag-sidebar-card">
+                    <div class="mag-sidebar-header">
+                      <i data-lucide="compass"></i> 과학 원리: 파장 변화 현상
+                    </div>
+                    <p class="mag-term-desc">
+                      흡수한 빛보다 내뿜는 빛의 에너지가 열 손실로 인해 작아지기 때문에, 빛의 파장이 더 길고 붉은 쪽으로 이동하는 물리 현상입니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ==================================================== -->
+            <!-- 탭 5: [탐구 개념 확인 05] 탐구 개념 검증                 -->
+            <!-- ==================================================== -->
+            <div class="chrome-tab-panel" role="tabpanel">
+              <div class="mag-header-compact">
+                <span class="mag-kicker-badge">탐구 개념 확인</span>
+                <h3 class="mag-article-title">디스플레이 과학 탐구 평가: 3대 핵심 가설 검증</h3>
+              </div>
+              <p class="mag-article-deck">
+                빛의 가산 혼합, 자발광의 블랙 표현, 에너지 전환과 열 손실 원리를 보기를 클릭해 즉시 검증하세요.
+              </p>
+
+              <!-- 3열 가로 그리드 (스크롤 없는 원스크린 배치) -->
+              <div class="mag-quiz-row-3">
+                <!-- 퀴즈 문항 1 -->
+                <div class="mag-quiz-card" id="oled-quiz-1">
+                  <div class="mag-quiz-header">
+                    <span class="mag-step-num">01</span>
+                    <span class="mag-quiz-tag">빛의 합성</span>
+                  </div>
+                  <div class="mag-quiz-question">
+                    화면에 완전한 순백색을 띄우려면 초미세 화소들은 어떻게 켜져야 할까요?
+                  </div>
+                  <div class="mag-quiz-options">
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-1', this, true, '빛의 삼원색은 겹칠수록 밝아지는 가산 혼합을 따르므로 빨강, 초록, 파랑을 모두 최대로 켤 때 백색광이 됩니다.')">
+                      A. 빨강·초록·파랑 소자를 모두 최대로 켠다.
+                    </button>
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-1', this, false, '별도의 백색 단일 소자는 없으며, 세 원색을 섞어 흰색을 만듭니다.')">
+                      B. 백색 전용 단일 소자 하나만 켠다.
+                    </button>
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-1', this, false, '전원을 끄면 빛이 차단되어 검은색이 됩니다.')">
+                      C. 모든 미세 화소의 전원을 끈다.
+                    </button>
+                  </div>
+                  <div class="og-quiz-feedback"></div>
+                </div>
+
+                <!-- 퀴즈 문항 2 -->
+                <div class="mag-quiz-card" id="oled-quiz-2">
+                  <div class="mag-quiz-header">
+                    <span class="mag-step-num">02</span>
+                    <span class="mag-quiz-tag">구조 비교</span>
+                  </div>
+                  <div class="mag-quiz-question">
+                    스스로 빛나는 화면 소자가 기존 액정 화면과 달리 완벽한 검은색을 낼 수 있는 물리적 이유는?
+                  </div>
+                  <div class="mag-quiz-options">
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-2', this, true, '자발광 방식이므로 검은색 위치의 화소 전류를 차단해 빛 방출을 완전히 끕니다.')">
+                      A. 검은색 화소의 전원을 완전히 꺼버리기 때문
+                    </button>
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-2', this, false, '액정 방식은 후면 조명 틈새로 빛이 새어 나와 회색빛이 돕니다.')">
+                      B. 후면 조명의 빛을 액정으로 가리기 때문
+                    </button>
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-2', this, false, '표면에 검은 페인트를 칠하는 방식이 아닙니다.')">
+                      C. 화면 표면에 검은 안료를 칠했기 때문
+                    </button>
+                  </div>
+                  <div class="og-quiz-feedback"></div>
+                </div>
+
+                <!-- 퀴즈 문항 3 -->
+                <div class="mag-quiz-card" id="oled-quiz-3">
+                  <div class="mag-quiz-header">
+                    <span class="mag-step-num">03</span>
+                    <span class="mag-quiz-tag">에너지 보존</span>
+                  </div>
+                  <div class="mag-quiz-question">
+                    스마트폰 화면을 오래 켜둘 때 열이 발생하는 이유를 에너지 보존 관점에서 설명하면?
+                  </div>
+                  <div class="mag-quiz-options">
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-3', this, true, '빛으로 바뀌지 못한 전기에너지는 분자 진동열로 변환되어 방출됩니다.')">
+                      A. 빛이 되지 못한 에너지가 분자 진동열로 변환
+                    </button>
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-3', this, false, '에너지는 형태만 바뀔 뿐 절대 소멸하지 않습니다.')">
+                      B. 전자가 분자와 충돌해 에너지가 소멸하기 때문
+                    </button>
+                    <button class="og-quiz-btn" onclick="checkOledQuiz('oled-quiz-3', this, false, '전기 에너지가 빛과 열로 분기되는 원리입니다.')">
+                      C. 유리 표면에서 빛이 굴절되어 열이 되기 때문
+                    </button>
+                  </div>
+                  <div class="og-quiz-feedback"></div>
                 </div>
               </div>
             </div>
