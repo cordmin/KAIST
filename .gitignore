@@ -1,2 +1,5 @@
 # Ignore large binary files (>100MB exceeds GitHub push limit)
 *.hwp
+
+# Ignore temporary scratch/verification directory
+scratch/
