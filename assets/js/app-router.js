@@ -41,6 +41,10 @@ function switchLessonPlanTab(e, index, targetWindowId) {
   if (rect.top < 0) {
     window.scrollTo({ top: window.pageYOffset + rect.top - 80, behavior: 'smooth' });
   }
+  if (typeof index === 'number') {
+    currentLessonTabIndex[currentPkg] = index;
+  }
+  syncRebuildSidebar();
   if (window.lucide) {
     try { lucide.createIcons(); } catch(e) {}
   }
@@ -122,6 +126,7 @@ function switchMediaTab(e, index) {
 // App State
 let currentPkg = 'oled'; // 'oled' | 'quantum'
 let currentView = 'lesson-plan'; // 'lesson-plan' | 'worksheet' | 'teacher-guide' | 'lab' | 'slides' | 'curriculum' | 'cprl-research' | 'cprl-academic'
+let currentLessonTabIndex = { oled: 0, quantum: 0 };
 
 const viewTitles = {
   'oled-guide': 'OLED란?',
@@ -137,13 +142,81 @@ const viewTitles = {
   'academic': '교사용 학술 배경 자료'
 };
 
+function switchPackageLessonPlanTab(pkg, tabIndex) {
+  currentPkg = pkg;
+  if (typeof tabIndex === 'number') {
+    currentLessonTabIndex[pkg] = tabIndex;
+  }
+  setAppState(pkg, 'lesson-plan');
+  const winId = (pkg === 'oled') ? 'oled-lesson-plan-chrome-window' : 'quantum-lesson-plan-chrome-window';
+  switchLessonPlanTab(null, tabIndex, winId);
+  syncRebuildSidebar();
+}
+
+function syncRebuildSidebar() {
+  const oledBox = document.getElementById('rb-pkg-box-oled');
+  const quantBox = document.getElementById('rb-pkg-box-quantum');
+  if (oledBox && quantBox) {
+    if (currentPkg === 'oled') {
+      oledBox.classList.add('active-pkg');
+      quantBox.classList.remove('active-pkg');
+    } else {
+      quantBox.classList.add('active-pkg');
+      oledBox.classList.remove('active-pkg');
+    }
+  }
+
+  document.querySelectorAll('.rebuild-nav-item, .rebuild-tree-item').forEach(el => {
+    el.classList.remove('active', 'quantum');
+  });
+
+  if (currentView === 'cprl-intro') {
+    const el = document.getElementById('rb-nav-cprl-intro');
+    if (el) el.classList.add('active');
+  } else if (currentView === 'cprl-research') {
+    const el = document.getElementById('rb-nav-cprl-research');
+    if (el) el.classList.add('active');
+  } else if (currentView === 'oled-guide') {
+    const el = document.getElementById('rb-tree-oled-guide');
+    if (el) el.classList.add('active');
+  } else if (currentView === 'quantum-guide') {
+    const el = document.getElementById('rb-tree-quantum-guide');
+    if (el) el.classList.add('active', 'quantum');
+  } else if (currentView === 'lesson-plan') {
+    const tabIdx = currentLessonTabIndex[currentPkg] || 0;
+    const treeId = `rb-tree-${currentPkg}-tab-${tabIdx}`;
+    const el = document.getElementById(treeId);
+    if (el) {
+      el.classList.add('active');
+      if (currentPkg === 'quantum') el.classList.add('quantum');
+    }
+  } else if (currentView === 'academic') {
+    const el = document.getElementById('rb-nav-academic');
+    if (el) el.classList.add('active');
+  } else if (currentView === 'lab') {
+    const el = document.getElementById('rb-nav-lab');
+    if (el) el.classList.add('active');
+  } else if (currentView === 'slides') {
+    const el = document.getElementById('rb-nav-slides');
+    if (el) el.classList.add('active');
+  }
+
+  if (window.lucide) {
+    try { lucide.createIcons(); } catch(e) {}
+  }
+}
+
 function setAppState(pkg, view) {
   currentPkg = pkg;
   let isCurriculum = (view === 'curriculum');
   let normalizedView = (view === 'overview' || isCurriculum) ? 'lesson-plan' : view;
   if (normalizedView === 'cprl-academic') normalizedView = 'academic';
   currentView = normalizedView;
-  window.location.hash = normalizedView.startsWith('cprl') ? normalizedView : `${pkg}/${currentView}`;
+  window.location.hash = normalizedView.startsWith('cprl') 
+    ? normalizedView 
+    : (normalizedView === 'lesson-plan' 
+       ? `${pkg}/${normalizedView}/${currentLessonTabIndex[pkg] || 0}` 
+       : `${pkg}/${normalizedView}`);
   if (window.innerWidth <= 768) {
     document.body.classList.remove('sidebar-open');
   }
@@ -283,6 +356,8 @@ function renderView() {
     window.dispatchEvent(new Event('resize'));
   }
 
+  syncRebuildSidebar();
+
   if (window.lucide) {
     try { lucide.createIcons(); } catch(e) {}
   }
@@ -320,8 +395,17 @@ function parseHash() {
   const hash = window.location.hash.replace('#', '');
   if (hash) {
     const parts = hash.split('/');
-    if (parts.length === 2) {
-      setAppState(parts[0], parts[1] === 'overview' ? 'lesson-plan' : parts[1]);
+    if (parts.length >= 2) {
+      const pkg = parts[0];
+      const view = (parts[1] === 'overview' ? 'lesson-plan' : parts[1]);
+      if (view === 'lesson-plan' && parts.length === 3) {
+        const tabIdx = parseInt(parts[2], 10);
+        if (!isNaN(tabIdx)) {
+          switchPackageLessonPlanTab(pkg, tabIdx);
+          return;
+        }
+      }
+      setAppState(pkg, view);
       return;
     } else if (parts[0].startsWith('cprl')) {
       setAppState('oled', parts[0]);
