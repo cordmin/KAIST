@@ -3,3 +3,5 @@
 
 # Ignore temporary scratch/verification directory
 scratch/
+*_preview.html
+assets/css/linear-theme.css
