@@ -15,13 +15,38 @@
   --rebuild-sidebar-w: 268px;
   --rebuild-sidebar-bg: #0b0f17;
   --rebuild-sidebar-border: rgba(255, 255, 255, 0.08);
-  --rebuild-content-bg: #f8fafc;
-  --rebuild-doc-white: #ffffff;
-  --rebuild-text-primary: #0f172a;
-  --rebuild-text-secondary: #475569;
-  --rebuild-text-muted: #94a3b8;
+  --rebuild-content-bg: #070a12; /* 프리미엄 다크 테마 본문 캔버스 */
+  --rebuild-doc-white: #ffffff;  /* 수업 지도안 및 표 전용 100% 순백색 표준 */
+  --rebuild-text-primary: #f8fafc;
+  --rebuild-text-secondary: #94a3b8;
+  --rebuild-text-muted: #64748b;
   --rebuild-primary: #0284c7;
   --rebuild-quantum: #7c3aed;
+}
+
+/* 다크 테마 전역 세련된 슬림 스크롤바 */
+html, body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) #070a12;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070a12 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 9999px !important;
+  border: 2px solid #070a12 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.38) !important;
 }
 
 body {
@@ -70,6 +95,7 @@ header.topbar {
   margin: 0 !important; /* 가운데 정렬로 인한 휑한 450px 데드스페이스 영구 제거 */
   padding: 2rem 2.5rem 4rem 2.5rem !important;
   box-sizing: border-box !important;
+  background-color: var(--rebuild-content-bg) !important;
 }
 
 @media (min-width: 2500px) {
@@ -516,8 +542,78 @@ header.topbar {
   font-size: 1.45rem !important;
 }
 
+/* 지도안 내부 본문/활동 박스들 100% 순백색 공문서 톤 방어 */
+.chrome-window .card,
+.chrome-window .plan-card,
+.chrome-window .step-card,
+.chrome-window .plan-step-box {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
 /* --------------------------------------------------------------------------
-   4. 모바일 반응형 햄버거 토글 (상단바 제거에 따른 최소 플로팅 버튼)
+   4. 과학 매거진 및 연구실 지면 다크 테마 일체화 (하얀색 여백 완전 제거)
+   -------------------------------------------------------------------------- */
+#view-oled-guide {
+  background: var(--rebuild-content-bg) !important;
+  border-radius: 0 !important;
+  padding: 0.5rem 0.25rem 3rem 0.25rem !important;
+  box-shadow: none !important;
+}
+
+#view-oled-guide .mag-journey-canvas {
+  max-width: 1400px !important;
+  margin: 0 !important;
+}
+
+#view-quantum-guide {
+  background: var(--rebuild-content-bg) !important;
+  padding: 0.5rem 0.25rem 3rem 0.25rem !important;
+}
+
+#view-quantum-guide .quantum-guide-wrapper {
+  max-width: 1400px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* 연구실 안내 카드 다크 테마 조화 */
+#view-cprl-intro .card {
+  background: #0d121f !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
+  color: #f8fafc !important;
+}
+
+#view-cprl-intro .card-title,
+#view-cprl-intro .card-title span,
+#view-cprl-intro h2,
+#view-cprl-intro h3 {
+  color: #ffffff !important;
+}
+
+#view-cprl-intro p,
+#view-cprl-intro p strong {
+  color: #cbd5e1 !important;
+}
+
+#view-cprl-intro .cprl-prof-info div {
+  color: #ffffff !important;
+}
+
+#view-cprl-intro .cprl-prof-info p {
+  color: #94a3b8 !important;
+}
+
+#view-cprl-intro div[style*="background:#f8fafc"] {
+  background: #090d18 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. 모바일 반응형 햄버거 토글 (상단바 제거에 따른 최소 플로팅 버튼)
    -------------------------------------------------------------------------- */
 .rebuild-mobile-toggle {
   display: none;
@@ -542,3 +638,4 @@ header.topbar {
     display: flex;
   }
 }
+
