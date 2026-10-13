@@ -129,7 +129,7 @@ let currentView = 'lesson-plan'; // 'lesson-plan' | 'worksheet' | 'teacher-guide
 let currentLessonTabIndex = { oled: 0, quantum: 0 };
 
 const viewTitles = {
-  'oled-guide': 'OLED란?',
+  'oled-guide': '디스플레이에 숨은 과학',
   'lesson-plan': '수업 지도안',
   'worksheet': '학생 활동지',
   'teacher-guide': '교사 도움자료',
@@ -325,7 +325,7 @@ function renderView() {
     } else if (currentView === 'quantum-guide') {
       topbarTitle.innerText = '02. 양자컴퓨터: ' + (viewTitles[currentView] || '양자 컴퓨터란?');
     } else if (currentView === 'oled-guide') {
-      topbarTitle.innerText = '01. OLED: ' + (viewTitles[currentView] || 'OLED란?');
+      topbarTitle.innerText = '01. OLED: ' + (viewTitles[currentView] || '디스플레이에 숨은 과학');
     } else {
       const pkgPrefix = currentPkg === 'oled' ? '01. OLED: ' : '02. 양자컴퓨터: ';
       topbarTitle.innerText = `${pkgPrefix}${viewTitles[currentView]}`;

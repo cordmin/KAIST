@@ -10,7 +10,7 @@ function renderSidebar(pkg, currentKey) {
   if (!sidebarEl) return;
 
   const oledPages = [
-    { key: 'oled-guide', name: 'OLED란?' },
+    { key: 'oled-guide', name: '디스플레이에 숨은 과학' },
     { key: 'lesson-plan', name: '수업 지도안' }
   ];
 

@@ -88,11 +88,11 @@ header.topbar {
   flex-direction: column !important;
 }
 
-/* 대화면(32인치 QHD 2560px)에서 데드스페이스가 생기지 않도록 왼쪽 정렬 밀착 및 시원한 전개 */
+/* 대화면(32인치 QHD 2560px)에서 OLED 과학 매거진 폭(1400px)에 모든 페이지 완벽 일치 */
 .content-container {
   width: 100% !important;
-  max-width: 1840px !important;
-  margin: 0 !important; /* 가운데 정렬로 인한 휑한 450px 데드스페이스 영구 제거 */
+  max-width: calc(1400px + 5rem) !important; /* 순수 콘텐츠 가용폭 1400px 완벽 일치 */
+  margin: 0 !important;
   padding: 2rem 2.5rem 4rem 2.5rem !important;
   box-sizing: border-box !important;
   background-color: var(--rebuild-content-bg) !important;
@@ -100,10 +100,16 @@ header.topbar {
 
 @media (min-width: 2500px) {
   .content-container {
-    max-width: 2000px !important;
+    max-width: calc(1400px + 6rem) !important; /* 패딩 3rem*2 + 순수 콘텐츠 1400px */
     padding-left: 3rem !important;
     padding-right: 3rem !important;
   }
+}
+
+.content-view {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 !important;
 }
 
 @media (max-width: 1440px) {
@@ -277,21 +283,34 @@ header.topbar {
 /* 탐구 패키지 다단 트리 카드 컨테이너 */
 .rebuild-pkg-card {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
   margin-bottom: 0.6rem;
   overflow: hidden;
-  transition: border-color 0.15s ease;
+  transition: all 0.15s ease;
 }
 
-.rebuild-pkg-card.active-pkg.oled {
-  border-color: rgba(2, 132, 199, 0.4);
-  background: rgba(2, 132, 199, 0.03);
+/* OLED 카드: 항상 파란색 테두리 상시 유지 */
+.rebuild-pkg-card.oled {
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  background: rgba(2, 132, 199, 0.04);
 }
 
-.rebuild-pkg-card.active-pkg.quantum {
-  border-color: rgba(124, 58, 237, 0.4);
-  background: rgba(124, 58, 237, 0.03);
+.rebuild-pkg-card.oled.active-pkg {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.22);
+  background: rgba(2, 132, 199, 0.08);
+}
+
+/* 양자컴퓨터 카드: 항상 보라색 테두리 상시 유지 */
+.rebuild-pkg-card.quantum {
+  border: 1px solid rgba(192, 132, 252, 0.45) !important;
+  background: rgba(124, 58, 237, 0.04);
+}
+
+.rebuild-pkg-card.quantum.active-pkg {
+  border-color: #c084fc !important;
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.22);
+  background: rgba(124, 58, 237, 0.08);
 }
 
 .rebuild-pkg-head {
@@ -331,12 +350,9 @@ header.topbar {
   color: #c084fc;
 }
 
+/* 카드 우측 상단 배지 영구 제거 */
 .rebuild-pkg-badge {
-  font-size: 0.7rem;
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
+  display: none !important;
 }
 
 /* 직결 다단 트리 서브메뉴 리스트 (규칙 17 핵심) */
