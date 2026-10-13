@@ -129,7 +129,7 @@ let currentView = 'lesson-plan'; // 'lesson-plan' | 'worksheet' | 'teacher-guide
 let currentLessonTabIndex = { oled: 0, quantum: 0 };
 
 const viewTitles = {
-  'oled-guide': '디스플레이에 숨은 과학',
+  'oled-guide': '[0차시] 수업 전 읽기 자료',
   'lesson-plan': '수업 지도안',
   'worksheet': '학생 활동지',
   'teacher-guide': '교사 도움자료',
@@ -138,7 +138,7 @@ const viewTitles = {
   'curriculum': '2022 성취기준 연계표',
   'cprl-intro': 'KAIST 화학과 CPRL 소개',
   'cprl-research': 'CPRL 주요 연구 내용',
-  'quantum-guide': '양자 컴퓨터란?',
+  'quantum-guide': '[0차시] 수업 전 읽기 자료',
   'academic': '교사용 학술 배경 자료'
 };
 
@@ -323,9 +323,9 @@ function renderView() {
     if (currentView.startsWith('cprl')) {
       topbarTitle.innerText = viewTitles[currentView] || 'KAIST 화학과 CPRL 소개';
     } else if (currentView === 'quantum-guide') {
-      topbarTitle.innerText = '02. 양자컴퓨터: ' + (viewTitles[currentView] || '양자 컴퓨터란?');
+      topbarTitle.innerText = '02. 양자컴퓨터: ' + (viewTitles[currentView] || '[0차시] 수업 전 읽기 자료');
     } else if (currentView === 'oled-guide') {
-      topbarTitle.innerText = '01. OLED: ' + (viewTitles[currentView] || '디스플레이에 숨은 과학');
+      topbarTitle.innerText = '01. OLED: ' + (viewTitles[currentView] || '[0차시] 수업 전 읽기 자료');
     } else {
       const pkgPrefix = currentPkg === 'oled' ? '01. OLED: ' : '02. 양자컴퓨터: ';
       topbarTitle.innerText = `${pkgPrefix}${viewTitles[currentView]}`;

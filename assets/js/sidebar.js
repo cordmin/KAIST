@@ -10,12 +10,12 @@ function renderSidebar(pkg, currentKey) {
   if (!sidebarEl) return;
 
   const oledPages = [
-    { key: 'oled-guide', name: '디스플레이에 숨은 과학' },
+    { key: 'oled-guide', name: '[0차시] 수업 전 읽기 자료' },
     { key: 'lesson-plan', name: '수업 지도안' }
   ];
 
   const quantumPages = [
-    { key: 'quantum-guide', name: '양자 컴퓨터란?' },
+    { key: 'quantum-guide', name: '[0차시] 수업 전 읽기 자료' },
     { key: 'lesson-plan', name: '수업 지도안' }
   ];
 
