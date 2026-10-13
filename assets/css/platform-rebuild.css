@@ -1866,9 +1866,9 @@ header.topbar {
 #view-quantum-slides .mag-section {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
-  margin-top: 2.5rem;
-  padding-bottom: 3.5rem;
+  gap: 0 !important;
+  margin-top: 2rem;
+  padding-bottom: 0 !important;
   border-bottom: 2px solid rgba(255, 255, 255, 0.22) !important;
 }
 
@@ -1877,7 +1877,7 @@ header.topbar {
 #view-oled-slides .mag-section:last-of-type,
 #view-quantum-slides .mag-section:last-of-type {
   border-bottom: none !important;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem !important;
 }
 
 /* 2. 매거진 섹션 공통 헤더: 굵고 큰 넘버링과 헤드라인 일체형 나란히 배치 */
@@ -1889,7 +1889,7 @@ header.topbar {
   display: flex !important;
   align-items: baseline !important;
   gap: 0.95rem !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0 !important;
 }
 
 .mag-section-num,
@@ -1945,14 +1945,20 @@ header.topbar {
 }
 
 /* 3. 가상실험실 & 발표 슬라이드 쇼케이스 그리드 (사진 튀어나옴 완전 박멸) */
-.hub-showcase-grid {
+.hub-showcase-grid,
+#view-oled-lab .hub-showcase-grid,
+#view-quantum-lab .hub-showcase-grid,
+#view-oled-slides .hub-showcase-grid,
+#view-quantum-slides .hub-showcase-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
-  margin: 1.75rem 0 3.5rem;
+  margin: 0.85rem 0 0.85rem !important;
   align-items: stretch;
 }
-.hub-showcase-grid.cols-4 {
+.hub-showcase-grid.cols-4,
+#view-oled-slides .hub-showcase-grid.cols-4,
+#view-quantum-slides .hub-showcase-grid.cols-4 {
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
