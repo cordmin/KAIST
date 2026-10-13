@@ -554,49 +554,65 @@ header.topbar {
   margin-bottom: 1.5rem !important;
 }
 
-.data-table th {
+/* 머리글 셀 (기본 및 호버 고정: 음영 변화 0) */
+.data-table th,
+.data-table th:hover,
+.data-table tr:hover th,
+#oled-lesson-plan-chrome-window .data-table th,
+#quantum-lesson-plan-chrome-window .data-table th,
+#oled-lesson-plan-chrome-window .data-table th:hover,
+#quantum-lesson-plan-chrome-window .data-table th:hover,
+#oled-lesson-plan-chrome-window .data-table tr:hover th,
+#quantum-lesson-plan-chrome-window .data-table tr:hover th {
   background: #E5E5E1 !important;
+  background-color: #E5E5E1 !important;
   color: #0f172a !important;
   font-weight: 700 !important;
   font-size: 0.88rem !important;
   border: 1px solid #D1D1CD !important;
   padding: 0.75rem 0.85rem !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
-.data-table td {
+/* 본문 데이터 셀 (기본 및 호버 고정: 음영 하이라이트 원천 차단) */
+.data-table td,
+.data-table td:hover,
+.data-table tr:hover td,
+#oled-lesson-plan-chrome-window .data-table td,
+#quantum-lesson-plan-chrome-window .data-table td,
+#oled-lesson-plan-chrome-window .data-table td:hover,
+#quantum-lesson-plan-chrome-window .data-table td:hover,
+#oled-lesson-plan-chrome-window .data-table tr:hover td,
+#quantum-lesson-plan-chrome-window .data-table tr:hover td,
+#oled-lesson-plan-chrome-window tr:hover,
+#quantum-lesson-plan-chrome-window tr:hover {
   background: #F2F2F0 !important;
+  background-color: #F2F2F0 !important;
   color: #1e293b !important;
   font-size: 0.88rem !important;
   line-height: 1.65 !important;
   border: 1px solid #DCDCD8 !important;
   padding: 0.75rem 0.85rem !important;
-}
-
-/* 수업 지도안 마우스 커서 위치의 색깔 음영 강조 호버링 효과 완전 차단 */
-.data-table tr:hover td,
-.data-table tr:hover th,
-#oled-lesson-plan-chrome-window tr:hover td,
-#quantum-lesson-plan-chrome-window tr:hover td,
-#oled-lesson-plan-chrome-window tr:hover th,
-#quantum-lesson-plan-chrome-window tr:hover th,
-#oled-lesson-plan-chrome-window tr:hover,
-#quantum-lesson-plan-chrome-window tr:hover,
-#oled-lesson-plan-chrome-window td:hover,
-#quantum-lesson-plan-chrome-window td:hover,
-#oled-lesson-plan-chrome-window th:hover,
-#quantum-lesson-plan-chrome-window th:hover,
-#oled-lesson-plan-chrome-window .data-table tr:hover td,
-#quantum-lesson-plan-chrome-window .data-table tr:hover td,
-#oled-lesson-plan-chrome-window .card:hover,
-#quantum-lesson-plan-chrome-window .card:hover,
-#oled-lesson-plan-chrome-window .paper-card:hover,
-#quantum-lesson-plan-chrome-window .paper-card:hover,
-#oled-lesson-plan-chrome-window .plan-card:hover,
-#quantum-lesson-plan-chrome-window .plan-card:hover {
-  background-color: inherit !important;
   box-shadow: none !important;
   transform: none !important;
-  border-color: inherit !important;
+}
+
+/* 중간 구분행/단계 셀 (기본 및 호버 고정: 음영 변화 0) */
+.data-table tr[style*="background-color"],
+.data-table td[style*="background-color"],
+.data-table tr[style*="background-color"]:hover td,
+.data-table td[style*="background-color"]:hover,
+#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"],
+#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"],
+#oled-lesson-plan-chrome-window .data-table td[style*="background-color"],
+#quantum-lesson-plan-chrome-window .data-table td[style*="background-color"],
+#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"]:hover td,
+#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"]:hover td {
+  background: #E5E5E1 !important;
+  background-color: #E5E5E1 !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 /* 지도안 카드 내부 */
@@ -612,7 +628,7 @@ header.topbar {
   font-size: 1.45rem !important;
 }
 
-/* 지도안 내부 본문/활동 박스들 #F2F2F0 톤 조화 */
+/* 지도안 내부 본문/활동 박스들 (기본 및 호버 고정: 음영 변화 0) */
 #oled-lesson-plan-chrome-window .card,
 #oled-lesson-plan-chrome-window .plan-card,
 #oled-lesson-plan-chrome-window .step-card,
@@ -620,19 +636,31 @@ header.topbar {
 #quantum-lesson-plan-chrome-window .card,
 #quantum-lesson-plan-chrome-window .plan-card,
 #quantum-lesson-plan-chrome-window .step-card,
-#quantum-lesson-plan-chrome-window .plan-step-box {
+#quantum-lesson-plan-chrome-window .plan-step-box,
+#oled-lesson-plan-chrome-window .plan-card:hover,
+#quantum-lesson-plan-chrome-window .plan-card:hover,
+#oled-lesson-plan-chrome-window .card:hover,
+#quantum-lesson-plan-chrome-window .card:hover {
   background: #E8E8E4 !important;
+  background-color: #E8E8E4 !important;
   border: 1px solid #D1D1CD !important;
   color: #0f172a !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 #oled-lesson-plan-chrome-window .plan-card div[style*="background:#ffffff"],
 #quantum-lesson-plan-chrome-window .plan-card div[style*="background:#ffffff"],
 #oled-lesson-plan-chrome-window .plan-note-card,
-#quantum-lesson-plan-chrome-window .plan-note-card {
+#quantum-lesson-plan-chrome-window .plan-note-card,
+#oled-lesson-plan-chrome-window .plan-note-card:hover,
+#quantum-lesson-plan-chrome-window .plan-note-card:hover {
   background: #F2F2F0 !important;
+  background-color: #F2F2F0 !important;
   border: 1px solid #D5D5D1 !important;
   color: #1e293b !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 #oled-lesson-plan-chrome-window .plan-card-badge,
@@ -640,13 +668,6 @@ header.topbar {
   background: #DDDCD7 !important;
   border: 1px solid #C8C7C2 !important;
   color: #334155 !important;
-}
-
-#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"],
-#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"],
-#oled-lesson-plan-chrome-window .data-table td[style*="background-color"],
-#quantum-lesson-plan-chrome-window .data-table td[style*="background-color"] {
-  background-color: #E5E5E1 !important;
 }
 
 /* --------------------------------------------------------------------------
