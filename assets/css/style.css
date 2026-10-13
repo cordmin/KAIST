@@ -1643,25 +1643,168 @@ h3.sub-heading {
 #view-quantum-guide .step-content h4 { font-size: 1.1rem; color: #fff; font-weight: 700; margin-bottom: 6px; }
 #view-quantum-guide .step-content p { font-size: 0.94rem; color: var(--qg-text-muted); line-height: 1.7; margin: 0; }
 
-#view-quantum-guide .code-wrapper {
-  background: #060913; border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px; overflow: hidden; margin: 22px 0;
+/* ========================================================
+   Section 04: 좌우 분할 하이엔드 다크 랩 콘솔 (Split Console)
+   ======================================================== */
+#view-quantum-guide .mag-code-split-console,
+.prototype-container .mag-code-split-console,
+.mag-code-split-console {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  align-items: stretch;
 }
-#view-quantum-guide .code-bar {
-  background: #0d1222; padding: 10px 18px; display: flex; justify-content: space-between;
-  align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 0.8rem; color: #64748b; font-family: var(--font-mono);
+@media (max-width: 1100px) {
+  #view-quantum-guide .mag-code-split-console,
+  .prototype-container .mag-code-split-console,
+  .mag-code-split-console {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
-#view-quantum-guide .code-lang { color: var(--qg-cyan); font-weight: 600; }
-#view-quantum-guide pre.code-content {
-  padding: 18px; margin: 0; font-family: var(--font-mono); font-size: 0.86rem;
-  line-height: 1.65; color: #e2e8f0; overflow-x: auto;
+
+/* 좌측: 다크 파이썬 에디터 패널 */
+.console-editor-panel {
+  background: #070b16;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
-#view-quantum-guide .c-kw { color: #f43f5e; font-weight: 600; }
-#view-quantum-guide .c-fn { color: #38bdf8; }
-#view-quantum-guide .c-str { color: #a3e635; }
-#view-quantum-guide .c-com { color: #64748b; font-style: italic; }
-#view-quantum-guide .c-num { color: #fb923c; }
+.console-header {
+  background: #0e1424;
+  padding: 11px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.console-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.console-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #eab308; }
+.dot-green { background: #22c55e; }
+.console-filename {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-left: 8px;
+  font-weight: 500;
+}
+.console-badge {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+pre.console-code-body {
+  background: #070b16 !important;
+  padding: 20px 22px;
+  margin: 0;
+  flex-grow: 1;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #f1f5f9 !important;
+  overflow-x: auto;
+}
+pre.console-code-body code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: #f1f5f9 !important;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* 고휘도 문법 토큰 컬러 */
+.console-code-body .c-kw { color: #f472b6 !important; font-weight: 700; }
+.console-code-body .c-fn { color: #38bdf8 !important; font-weight: 600; }
+.console-code-body .c-str { color: #4ade80 !important; font-weight: 600; }
+.console-code-body .c-com { color: #94a3b8 !important; font-style: normal; font-weight: 500; }
+.console-code-body .c-num { color: #fb923c !important; font-weight: 700; }
+
+/* 우측: 실제 챔버 물리 현상 1:1 매핑 패널 */
+.console-mapping-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+.mapping-card {
+  background: #090e1d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 13px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.mapping-card:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: #0c1326;
+}
+.mapping-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mapping-code-chip {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.mapping-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+#view-quantum-guide .badge-step1 { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+#view-quantum-guide .badge-step2 { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+#view-quantum-guide .badge-step3 { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
+#view-quantum-guide .badge-step4 { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+
+#view-quantum-guide .mapping-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+#view-quantum-guide .mapping-desc {
+  font-size: 0.86rem;
+  color: #94a3b8;
+  line-height: 1.55;
+  margin: 0;
+}
+#view-quantum-guide .mapping-desc strong {
+  color: #e2e8f0;
+  font-weight: 600;
+}
 
 #view-quantum-guide .qa-box { margin-top: 28px; }
 #view-quantum-guide .qa-item {
@@ -2456,7 +2599,7 @@ h3.sub-heading {
     
 
     
-#view-oled-guide {
+#view-oled-guide, #view-quantum-guide {
   background: #080b11 !important;
   color: #f8fafc;
   border-radius: 16px;
@@ -2464,7 +2607,7 @@ h3.sub-heading {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
-#view-oled-guide .mag-journey-canvas {
+#view-oled-guide .mag-journey-canvas, #view-quantum-guide .mag-journey-canvas {
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
@@ -2474,13 +2617,13 @@ h3.sub-heading {
 }
 
 /* 1. Masthead */
-#view-oled-guide .mag-masthead {
+#view-oled-guide .mag-masthead, #view-quantum-guide .mag-masthead {
   padding-bottom: 2.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   margin-bottom: 0;
 }
 
-#view-oled-guide .mag-lead-tag {
+#view-oled-guide .mag-lead-tag, #view-quantum-guide .mag-lead-tag {
   color: #f59e0b;
   font-size: 0.82rem;
   font-weight: 850;
@@ -2492,7 +2635,7 @@ h3.sub-heading {
   padding-bottom: 2px;
 }
 
-#view-oled-guide .mag-main-headline {
+#view-oled-guide .mag-main-headline, #view-quantum-guide .mag-main-headline {
   font-size: clamp(2rem, 3.8vw, 3.2rem);
   font-weight: 900;
   line-height: 1.24;
@@ -2501,7 +2644,7 @@ h3.sub-heading {
   margin: 0 0 1.25rem 0;
 }
 
-#view-oled-guide .mag-deck {
+#view-oled-guide .mag-deck, #view-quantum-guide .mag-deck {
   font-size: clamp(1.02rem, 1.4vw, 1.15rem);
   color: #94a3b8;
   font-weight: 500;
@@ -2512,24 +2655,24 @@ h3.sub-heading {
 }
 
 /* Section Common */
-#view-oled-guide .mag-section {
+#view-oled-guide .mag-section, #view-quantum-guide .mag-section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 3.5rem;
 }
 
-#view-oled-guide .mag-section:first-of-type {
+#view-oled-guide .mag-section:first-of-type, #view-quantum-guide .mag-section:first-of-type {
   margin-top: 2rem;
 }
 
-#view-oled-guide .mag-section-header {
+#view-oled-guide .mag-section-header, #view-quantum-guide .mag-section-header {
   display: flex;
   align-items: baseline;
   gap: 0.9rem;
 }
 
-#view-oled-guide .mag-section-num {
+#view-oled-guide .mag-section-num, #view-quantum-guide .mag-section-num {
   font-size: 1.9rem;
   font-weight: 900;
   color: #f59e0b;
@@ -2539,7 +2682,7 @@ h3.sub-heading {
   flex-shrink: 0;
 }
 
-#view-oled-guide .mag-section-title-wrap h2 {
+#view-oled-guide .mag-section-title-wrap h2, #view-quantum-guide .mag-section-title-wrap h2 {
   font-size: clamp(1.35rem, 2.2vw, 1.85rem);
   font-weight: 900;
   color: #ffffff;
@@ -2549,7 +2692,7 @@ h3.sub-heading {
 }
 
 /* 1. Banana Discovery Section */
-#view-oled-guide .mag-story-paragraph {
+#view-oled-guide .mag-story-paragraph, #view-quantum-guide .mag-story-paragraph {
   font-size: 1.05rem;
   color: #cbd5e1;
   line-height: 1.8;
@@ -2557,12 +2700,12 @@ h3.sub-heading {
   margin: 0;
 }
 
-#view-oled-guide .mag-story-paragraph strong {
+#view-oled-guide .mag-story-paragraph strong, #view-quantum-guide .mag-story-paragraph strong {
   color: #ffffff;
   font-weight: 850;
 }
 
-#view-oled-guide .mag-figure-frame {
+#view-oled-guide .mag-figure-frame, #view-quantum-guide .mag-figure-frame {
   border-radius: 12px;
   overflow: hidden;
   background: #000;
@@ -2570,7 +2713,7 @@ h3.sub-heading {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
 }
 
-#view-oled-guide .mag-figure-frame img {
+#view-oled-guide .mag-figure-frame img, #view-quantum-guide .mag-figure-frame img {
   width: 100%;
   height: auto;
   max-height: 540px;
@@ -2579,7 +2722,7 @@ h3.sub-heading {
 }
 
 /* 2. Stage 2: Subpixels & Additive Mixing */
-#view-oled-guide .mag-stage2-grid {
+#view-oled-guide .mag-stage2-grid, #view-quantum-guide .mag-stage2-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
@@ -2588,36 +2731,36 @@ h3.sub-heading {
 }
 
 @media (max-width: 900px) {
-  #view-oled-guide .mag-stage2-grid {
+#view-oled-guide .mag-stage2-grid, #view-quantum-guide .mag-stage2-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 }
 
-#view-oled-guide .mag-stage2-visual {
+#view-oled-guide .mag-stage2-visual, #view-quantum-guide .mag-stage2-visual {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-#view-oled-guide .mag-photo-caption {
+#view-oled-guide .mag-photo-caption, #view-quantum-guide .mag-photo-caption {
   font-size: 0.82rem;
   color: #94a3b8;
   line-height: 1.5;
   word-break: keep-all;
 }
 
-#view-oled-guide .mag-stage2-narrative {
+#view-oled-guide .mag-stage2-narrative, #view-quantum-guide .mag-stage2-narrative {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-#view-oled-guide .mag-giant-stat-group {
+#view-oled-guide .mag-giant-stat-group, #view-quantum-guide .mag-giant-stat-group {
   margin-bottom: 0.5rem;
 }
 
-#view-oled-guide .mag-giant-val {
+#view-oled-guide .mag-giant-val, #view-quantum-guide .mag-giant-val {
   font-size: clamp(2.8rem, 4.5vw, 4rem);
   font-weight: 950;
   color: #ffffff;
@@ -2626,14 +2769,14 @@ h3.sub-heading {
   letter-spacing: -0.04em;
 }
 
-#view-oled-guide .mag-giant-lbl {
+#view-oled-guide .mag-giant-lbl, #view-quantum-guide .mag-giant-lbl {
   font-size: 1.05rem;
   font-weight: 850;
   color: #f59e0b;
   margin-top: 0.4rem;
 }
 
-#view-oled-guide .mag-stage2-p {
+#view-oled-guide .mag-stage2-p, #view-quantum-guide .mag-stage2-p {
   font-size: 0.98rem;
   color: #cbd5e1;
   line-height: 1.8;
@@ -2641,13 +2784,13 @@ h3.sub-heading {
   margin: 0;
 }
 
-#view-oled-guide .mag-stage2-p strong {
+#view-oled-guide .mag-stage2-p strong, #view-quantum-guide .mag-stage2-p strong {
   color: #ffffff;
   font-weight: 850;
 }
 
 /* 3. Stage 3: Cutaway Comparison (Left/Right Split) */
-#view-oled-guide .mag-comparison-grid {
+#view-oled-guide .mag-comparison-grid, #view-quantum-guide .mag-comparison-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.2rem;
@@ -2655,41 +2798,41 @@ h3.sub-heading {
 }
 
 @media (max-width: 860px) {
-  #view-oled-guide .mag-comparison-grid {
+#view-oled-guide .mag-comparison-grid, #view-quantum-guide .mag-comparison-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 }
 
-#view-oled-guide .mag-compare-col {
+#view-oled-guide .mag-compare-col, #view-quantum-guide .mag-compare-col {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-#view-oled-guide .mag-story-title-group {
+#view-oled-guide .mag-story-title-group, #view-quantum-guide .mag-story-title-group {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
   margin-bottom: 0.25rem;
 }
 
-#view-oled-guide .mag-story-tag {
+#view-oled-guide .mag-story-tag, #view-quantum-guide .mag-story-tag {
   font-size: 0.8rem;
   font-weight: 850;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-#view-oled-guide .mag-story-tag.lcd {
+#view-oled-guide .mag-story-tag.lcd, #view-quantum-guide .mag-story-tag.lcd {
   color: #f59e0b;
 }
 
-#view-oled-guide .mag-story-tag.oled {
+#view-oled-guide .mag-story-tag.oled, #view-quantum-guide .mag-story-tag.oled {
   color: #38bdf8;
 }
 
-#view-oled-guide .mag-story-sub {
+#view-oled-guide .mag-story-sub, #view-quantum-guide .mag-story-sub {
   font-size: 0.9rem;
   color: #94a3b8;
   font-weight: 500;
@@ -2697,19 +2840,19 @@ h3.sub-heading {
 }
 
 @media (max-width: 860px) {
-  #view-oled-guide .mag-narrative-columns {
+#view-oled-guide .mag-narrative-columns, #view-quantum-guide .mag-narrative-columns {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
-#view-oled-guide .mag-column-story {
+#view-oled-guide .mag-column-story, #view-quantum-guide .mag-column-story {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
 }
 
-#view-oled-guide .mag-column-story h4 {
+#view-oled-guide .mag-column-story h4, #view-quantum-guide .mag-column-story h4 {
   font-size: 1.2rem;
   font-weight: 900;
   color: #ffffff;
@@ -2718,15 +2861,15 @@ h3.sub-heading {
   margin: 0;
 }
 
-#view-oled-guide .mag-column-story.lcd h4 {
+#view-oled-guide .mag-column-story.lcd h4, #view-quantum-guide .mag-column-story.lcd h4 {
   border-color: #f59e0b;
 }
 
-#view-oled-guide .mag-column-story.oled h4 {
+#view-oled-guide .mag-column-story.oled h4, #view-quantum-guide .mag-column-story.oled h4 {
   border-color: #38bdf8;
 }
 
-#view-oled-guide .mag-column-story p {
+#view-oled-guide .mag-column-story p, #view-quantum-guide .mag-column-story p {
   font-size: 0.96rem;
   color: #cbd5e1;
   line-height: 1.85;
@@ -2734,13 +2877,13 @@ h3.sub-heading {
   margin: 0;
 }
 
-#view-oled-guide .mag-column-story p strong {
+#view-oled-guide .mag-column-story p strong, #view-quantum-guide .mag-column-story p strong {
   color: #ffffff;
   font-weight: 850;
 }
 
 /* 4. Stage 4: Evolution Visual Grid */
-#view-oled-guide .mag-evolution-visual-grid {
+#view-oled-guide .mag-evolution-visual-grid, #view-quantum-guide .mag-evolution-visual-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
@@ -2748,19 +2891,19 @@ h3.sub-heading {
 }
 
 @media (max-width: 980px) {
-  #view-oled-guide .mag-evolution-visual-grid {
+#view-oled-guide .mag-evolution-visual-grid, #view-quantum-guide .mag-evolution-visual-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 }
 
 @media (max-width: 540px) {
-  #view-oled-guide .mag-evolution-visual-grid {
+#view-oled-guide .mag-evolution-visual-grid, #view-quantum-guide .mag-evolution-visual-grid {
     grid-template-columns: 1fr;
   }
 }
 
-#view-oled-guide .evolution-card {
+#view-oled-guide .evolution-card, #view-quantum-guide .evolution-card {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -2770,7 +2913,7 @@ h3.sub-heading {
   padding: 1.1rem;
 }
 
-#view-oled-guide .evolution-card .mag-figure-frame {
+#view-oled-guide .evolution-card .mag-figure-frame, #view-quantum-guide .evolution-card .mag-figure-frame {
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 8px;
@@ -2780,20 +2923,20 @@ h3.sub-heading {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
-#view-oled-guide .evolution-card .mag-figure-frame img {
+#view-oled-guide .evolution-card .mag-figure-frame img, #view-quantum-guide .evolution-card .mag-figure-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-#view-oled-guide .evolution-text-wrap {
+#view-oled-guide .evolution-text-wrap, #view-quantum-guide .evolution-text-wrap {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-#view-oled-guide .evolution-card h4 {
+#view-oled-guide .evolution-card h4, #view-quantum-guide .evolution-card h4 {
   font-size: 1.08rem;
   font-weight: 900;
   color: #ffffff;
@@ -2802,14 +2945,14 @@ h3.sub-heading {
   letter-spacing: -0.02em;
 }
 
-#view-oled-guide .evolution-card h4 .evo-num {
+#view-oled-guide .evolution-card h4 .evo-num, #view-quantum-guide .evolution-card h4 .evo-num {
   font-family: var(--font-mono, monospace);
   font-weight: 950;
   color: #ffffff;
   margin-right: 0.45rem;
 }
 
-#view-oled-guide .evolution-card p {
+#view-oled-guide .evolution-card p, #view-quantum-guide .evolution-card p {
   font-size: 0.88rem;
   color: #cbd5e1;
   line-height: 1.65;

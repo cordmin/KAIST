@@ -882,25 +882,29 @@ header.topbar {
 /* --------------------------------------------------------------------------
    4. 과학 매거진 및 연구실 지면 다크 테마 일체화 (하얀색 여백 완전 제거)
    -------------------------------------------------------------------------- */
-#view-oled-guide {
+#view-oled-guide,
+#view-quantum-guide {
   background: var(--rebuild-content-bg) !important;
   border-radius: 0 !important;
   padding: 0.5rem 0.25rem 3rem 0.25rem !important;
   box-shadow: none !important;
 }
 
-#view-oled-guide .mag-journey-canvas {
+#view-oled-guide .mag-journey-canvas,
+#view-quantum-guide .mag-journey-canvas {
   max-width: 1400px !important;
   margin: 0 !important;
 }
 
-#view-oled-guide .mag-masthead {
+#view-oled-guide .mag-masthead,
+#view-quantum-guide .mag-masthead {
   padding-bottom: 2.25rem !important;
   border-bottom: 2px solid rgba(255, 255, 255, 0.22) !important;
   margin-bottom: 0 !important;
 }
 
-#view-oled-guide .mag-section {
+#view-oled-guide .mag-section,
+#view-quantum-guide .mag-section {
   display: flex !important;
   flex-direction: column !important;
   gap: 1.75rem !important;
@@ -909,22 +913,26 @@ header.topbar {
   border-bottom: 2px solid rgba(255, 255, 255, 0.22) !important;
 }
 
-#view-oled-guide .mag-section:first-of-type {
+#view-oled-guide .mag-section:first-of-type,
+#view-quantum-guide .mag-section:first-of-type {
   margin-top: 2.5rem !important;
 }
 
-#view-oled-guide .mag-section:last-of-type {
+#view-oled-guide .mag-section:last-of-type,
+#view-quantum-guide .mag-section:last-of-type {
   border-bottom: none !important;
   padding-bottom: 1rem !important;
 }
 
-#view-oled-guide .mag-section-header {
+#view-oled-guide .mag-section-header,
+#view-quantum-guide .mag-section-header {
   display: flex !important;
   align-items: baseline !important;
   gap: 0.9rem !important;
 }
 
-#view-oled-guide .mag-section-num {
+#view-oled-guide .mag-section-num,
+#view-quantum-guide .mag-section-num {
   font-size: 1.9rem !important;
   font-weight: 900 !important;
   color: #f59e0b !important;
@@ -937,22 +945,10 @@ header.topbar {
 }
 
 /* 04 내부의 뜬금없는 상단 구분선 제거 */
-#view-oled-guide .mag-evolution-visual-grid {
+#view-oled-guide .mag-evolution-visual-grid,
+#view-quantum-guide .mag-evolution-visual-grid {
   border-top: none !important;
   padding-top: 0 !important;
-}
-
-#view-quantum-guide {
-  background: var(--rebuild-content-bg) !important;
-  padding: 0.5rem 0.25rem 3rem 0.25rem !important;
-}
-
-#view-quantum-guide .quantum-guide-wrapper {
-  max-width: 1400px !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  border: none !important;
 }
 
 /* --------------------------------------------------------------------------
