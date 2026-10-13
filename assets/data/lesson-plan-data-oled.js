@@ -24,13 +24,17 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
 
           <!-- [탭 0]: 수업 지도안 개요 (개요 표 + 2022 성취수준 연계표) -->
           <div class="chrome-tab-panel active" role="tabpanel">
-            <div class="card-header" style="margin-bottom:1rem;">
-              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학</h2>
+            <div class="card-header" style="margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+              <h3 style="margin:0; font-size:1.2rem; font-weight:700; color:var(--color-charcoal);">1. 수업 지도안 개요</h3>
               <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
             </div>
 
             <!-- 기본 개요 정보 표 -->
             <table class="data-table">
+              <tr>
+                <th style="width:100px; white-space:nowrap; text-align:center;">프로그램명</th>
+                <td colspan="3"><strong>스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학</strong></td>
+              </tr>
               <tr>
                 <th style="width:100px; white-space:nowrap; text-align:center;">관련 단원</th>
                 <td>중학교 1학년 &lt;과학과 인류의 지속가능한 삶&gt;<br>중학교 2학년 &lt;빛과 파동&gt;, &lt;물질의 구성&gt;, &lt;전기와 자기&gt;<br>중학교 3학년 &lt;과학과 나의 미래&gt;</td>
@@ -73,9 +77,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
 
             <!-- 2022 개정 교육과정 성취수준 연계표 -->
             <div style="margin:2.25rem 0 0.85rem 0;">
-              <h3 style="font-size:1.15rem; font-weight:700; color:var(--color-charcoal); margin:0; display:flex; align-items:center; gap:0.45rem;">
-                <i data-lucide="award" style="width:20px; height:20px; color:var(--color-notion-blue);"></i> 2022 개정 교육과정 성취수준 연계
-              </h3>
+              <h3 style="margin:0; font-size:1.2rem; font-weight:700; color:var(--color-charcoal);">2. 교육과정 성취수준 연계</h3>
             </div>
 
             <table class="data-table">

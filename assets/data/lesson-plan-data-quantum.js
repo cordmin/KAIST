@@ -24,13 +24,17 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
 
           <!-- [탭 0]: 수업 지도안 개요 (개요 표 + 2022 성취수준 연계표) -->
           <div class="chrome-tab-panel active" role="tabpanel">
-            <div class="card-header" style="margin-bottom:1rem;">
-              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 양자 컴퓨터와 계산 화학의 미래</h2>
+            <div class="card-header" style="margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+              <h3 style="margin:0; font-size:1.2rem; font-weight:700; color:var(--color-charcoal);">1. 수업 지도안 개요</h3>
               <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
             </div>
 
             <!-- 기본 개요 정보 표 -->
             <table class="data-table">
+              <tr>
+                <th style="width:100px; white-space:nowrap; text-align:center;">프로그램명</th>
+                <td colspan="3"><strong>양자 컴퓨터와 계산 화학의 미래</strong></td>
+              </tr>
               <tr>
                 <th style="width:100px; white-space:nowrap; text-align:center;">관련 단원</th>
                 <td>중학교 과학 &lt;물질의 구성&gt;, &lt;화학 반응의 규칙성&gt;, &lt;과학과 사회&gt; & 정보과 &lt;데이터와 알고리즘&gt; 융합 심화</td>
@@ -68,9 +72,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
 
             <!-- 2022 개정 교육과정 성취수준 연계표 -->
             <div style="margin:2.25rem 0 0.85rem 0;">
-              <h3 style="font-size:1.15rem; font-weight:700; color:var(--color-charcoal); margin:0; display:flex; align-items:center; gap:0.45rem;">
-                <i data-lucide="award" style="width:20px; height:20px; color:#7c3aed;"></i> 2022 개정 교육과정 성취수준 연계
-              </h3>
+              <h3 style="margin:0; font-size:1.2rem; font-weight:700; color:var(--color-charcoal);">2. 교육과정 성취수준 연계</h3>
             </div>
 
             <table class="data-table">
