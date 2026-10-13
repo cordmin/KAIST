@@ -600,19 +600,34 @@ header.topbar {
   transform: none !important;
 }
 
-/* 중간 구분행/단계 셀 (검은색 테두리) */
-.data-table tr[style*="background-color"],
-.data-table td[style*="background-color"],
-.data-table tr[style*="background-color"]:hover td,
-.data-table td[style*="background-color"]:hover,
-#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"],
-#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"],
+/* 중간 구분행/단계 셀 (도입, 전개, 정리): 마우스 호버 시에도 절대 색상이 변하지 않도록 명시도 극대화 */
+#oled-lesson-plan-chrome-window .data-table tr:hover td[style*="background-color"],
+#quantum-lesson-plan-chrome-window .data-table tr:hover td[style*="background-color"],
+#oled-lesson-plan-chrome-window .data-table td[style*="background-color"]:hover,
+#quantum-lesson-plan-chrome-window .data-table td[style*="background-color"]:hover,
+#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"]:hover td,
+#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"]:hover td,
+#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"]:hover th,
+#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"]:hover th,
+#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"] td,
+#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"] td,
+#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"] th,
+#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"] th,
 #oled-lesson-plan-chrome-window .data-table td[style*="background-color"],
 #quantum-lesson-plan-chrome-window .data-table td[style*="background-color"],
-#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"]:hover td,
-#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"]:hover td {
+#oled-lesson-plan-chrome-window .data-table tr[style*="background-color"],
+#quantum-lesson-plan-chrome-window .data-table tr[style*="background-color"],
+.data-table tr:hover td[style*="background-color"],
+.data-table td[style*="background-color"]:hover,
+.data-table tr[style*="background-color"]:hover td,
+.data-table tr[style*="background-color"]:hover th,
+.data-table tr[style*="background-color"] td,
+.data-table tr[style*="background-color"] th,
+.data-table td[style*="background-color"],
+.data-table tr[style*="background-color"] {
   background: #E5E5E1 !important;
   background-color: #E5E5E1 !important;
+  color: #000000 !important;
   border: 1px solid #000000 !important;
   box-shadow: none !important;
   transform: none !important;
