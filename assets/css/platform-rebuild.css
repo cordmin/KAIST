@@ -160,19 +160,29 @@ header.topbar {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  cursor: pointer;
+  cursor: default; /* CPRL 소개 전환 등 불필요한 클릭 동작 영구 제거 */
+  user-select: none;
 }
 
 .rebuild-ws-logo {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  border-radius: 8px;
+  width: 46px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+  padding: 2px 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.rebuild-kaist-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .rebuild-ws-meta {
@@ -229,6 +239,22 @@ header.topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* 연구실 안내 및 교육과정 자료실 카드 테두리 (탐구 패키지와 통일된 카드 계층) */
+.rebuild-nav-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.3rem 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  transition: all 0.15s ease;
+}
+
+.rebuild-nav-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 /* 단일 내비게이션 링크 */
@@ -428,23 +454,9 @@ header.topbar {
   margin-right: 0.1rem;
 }
 
-/* 사이드바 하단 푸터 */
+/* 사이드바 하단 푸터 (영구 제거) */
 .rebuild-sidebar-footer {
-  padding: 0.85rem 1rem;
-  border-top: 1px solid var(--rebuild-sidebar-border);
-  background: rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.rebuild-status-dot {
-  width: 7px;
-  height: 7px;
-  background: #10b981;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+  display: none !important;
 }
 
 .rebuild-footer-text {
