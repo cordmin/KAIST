@@ -184,7 +184,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('oled', 1)">
-                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                        <i data-lucide="presentation"></i> <span>슬라이드</span>
                       </button>
                     </div>
                   </td>
@@ -412,7 +412,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('oled', 2)">
-                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                        <i data-lucide="presentation"></i> <span>슬라이드</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-virtual-lab" onclick="openVirtualLabModal()">
                         <i data-lucide="flask-conical"></i> <span>가상실험실</span>
@@ -604,7 +604,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('oled', 3)">
-                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                        <i data-lucide="presentation"></i> <span>슬라이드</span>
                       </button>
                     </div>
                   </td>
@@ -794,7 +794,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('oled', 4)">
-                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                        <i data-lucide="presentation"></i> <span>슬라이드</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-virtual-lab" onclick="openVirtualLabModal(4)">
                         <i data-lucide="flask-conical"></i> <span>가상실험실</span>

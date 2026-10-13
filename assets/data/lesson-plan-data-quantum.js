@@ -186,7 +186,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('quantum', 1)">
-                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                        <i data-lucide="presentation"></i> <span>슬라이드</span>
                       </button>
                     </div>
                   </td>
@@ -383,7 +383,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('quantum', 2)">
-                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                        <i data-lucide="presentation"></i> <span>슬라이드</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-virtual-lab" onclick="switchPackageView('quantum', 'lab')">
                         <i data-lucide="flask-conical"></i> <span>가상실험실</span>
@@ -575,7 +575,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('quantum', 3)">
-                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                        <i data-lucide="presentation"></i> <span>슬라이드</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-virtual-lab" onclick="switchPackageView('quantum', 'lab')">
                         <i data-lucide="flask-conical"></i> <span>가상실험실</span>
@@ -763,7 +763,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('quantum', 4)">
-                        <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                        <i data-lucide="presentation"></i> <span>슬라이드</span>
                       </button>
                       <button type="button" class="plan-material-btn btn-virtual-lab" onclick="switchPackageView('quantum', 'lab')">
                         <i data-lucide="flask-conical"></i> <span>가상실험실</span>
