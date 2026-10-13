@@ -125,7 +125,7 @@ function switchMediaTab(e, index) {
 
 // App State
 let currentPkg = 'oled'; // 'oled' | 'quantum'
-let currentView = 'lesson-plan'; // 'lesson-plan' | 'worksheet' | 'teacher-guide' | 'lab' | 'slides' | 'curriculum' | 'cprl-research' | 'cprl-academic'
+let currentView = 'lesson-plan'; // 'lesson-plan' | 'worksheet' | 'teacher-guide' | 'lab' | 'slides' | 'curriculum' | 'cprl-research'
 let currentLessonTabIndex = { oled: 0, quantum: 0 };
 
 const viewTitles = {
@@ -138,8 +138,7 @@ const viewTitles = {
   'curriculum': '2022 성취기준 연계표',
   'cprl-intro': 'KAIST 화학과 CPRL 소개',
   'cprl-research': 'CPRL 주요 연구 내용',
-  'quantum-guide': '[0차시] 수업 전 읽기 자료',
-  'academic': '교사용 학술 배경 자료'
+  'quantum-guide': '[0차시] 수업 전 읽기 자료'
 };
 
 function switchPackageLessonPlanTab(pkg, tabIndex) {
@@ -190,9 +189,6 @@ function syncRebuildSidebar() {
       el.classList.add('active');
       if (currentPkg === 'quantum') el.classList.add('quantum');
     }
-  } else if (currentView === 'academic') {
-    const el = document.getElementById('rb-nav-academic');
-    if (el) el.classList.add('active');
   } else if (currentView === 'lab') {
     const el = document.getElementById('rb-nav-lab');
     if (el) el.classList.add('active');
@@ -210,7 +206,7 @@ function setAppState(pkg, view) {
   currentPkg = pkg;
   let isCurriculum = (view === 'curriculum');
   let normalizedView = (view === 'overview' || isCurriculum) ? 'lesson-plan' : view;
-  if (normalizedView === 'cprl-academic') normalizedView = 'academic';
+  if (normalizedView === 'cprl-academic' || normalizedView === 'academic') normalizedView = 'lesson-plan';
   currentView = normalizedView;
   window.location.hash = normalizedView.startsWith('cprl') 
     ? normalizedView 

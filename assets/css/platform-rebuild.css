@@ -1792,9 +1792,7 @@ header.topbar {
    - 전체화면 뷰포트 비례 동적 스케일링 엔진
    ========================================================================== */
 
-/* 1. 공통 학술 배경자료 / 갤러리 캔버스 */
-#view-oled-academic,
-#view-quantum-academic,
+/* 1. 교육과정 자료실 허브 공통 캔버스 */
 #view-oled-lab,
 #view-quantum-lab,
 #view-oled-slides,
@@ -1806,8 +1804,6 @@ header.topbar {
   box-shadow: none !important;
 }
 
-#view-oled-academic .mag-journey-canvas,
-#view-quantum-academic .mag-journey-canvas,
 #view-oled-lab .mag-journey-canvas,
 #view-quantum-lab .mag-journey-canvas,
 #view-oled-slides .mag-journey-canvas,
@@ -1817,44 +1813,6 @@ header.topbar {
   margin: 0 !important;
   display: flex;
   flex-direction: column;
-}
-
-/* 2. 교사용 학술 배경자료 단정하고 정돈된 에디토리얼 레이아웃 */
-.academic-pkg-bar {
-  display: flex;
-  gap: 0.75rem;
-  margin: 1.75rem 0 2rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-.academic-pkg-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #0f172a;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #cbd5e1;
-  padding: 0.65rem 1.35rem;
-  border-radius: 8px;
-  font-size: 0.92rem;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.academic-pkg-link:hover {
-  background: #1e293b;
-  color: #ffffff;
-}
-.academic-pkg-link.active {
-  background: #0284c7;
-  border-color: #0284c7;
-  color: #ffffff;
-}
-.academic-pkg-link.quantum.active {
-  background: #7c3aed;
-  border-color: #7c3aed;
-  color: #ffffff;
 }
 
 /* KaTeX 수식 다크 테마 인라인/블록 보정 */
