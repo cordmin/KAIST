@@ -154,13 +154,14 @@ header.topbar {
   border-bottom: 1px solid var(--rebuild-sidebar-border);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: rgba(255, 255, 255, 0.02);
 }
 
 .rebuild-ws-identity {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   cursor: default; /* CPRL 소개 전환 등 불필요한 클릭 동작 영구 제거 */
   user-select: none;
