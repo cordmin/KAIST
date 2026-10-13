@@ -1853,13 +1853,11 @@ header.topbar {
   flex-direction: column;
 }
 
-#view-oled-lab .mag-masthead,
-#view-quantum-lab .mag-masthead,
-#view-oled-slides .mag-masthead,
-#view-quantum-slides .mag-masthead {
-  padding-bottom: 2.25rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.22) !important;
-  margin-bottom: 0;
+#view-oled-lab .mag-section:first-of-type,
+#view-quantum-lab .mag-section:first-of-type,
+#view-oled-slides .mag-section:first-of-type,
+#view-quantum-slides .mag-section:first-of-type {
+  margin-top: 0.5rem !important;
 }
 
 #view-oled-lab .mag-section,
