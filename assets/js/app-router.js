@@ -361,6 +361,18 @@ function renderView() {
   if (window.lucide) {
     try { lucide.createIcons(); } catch(e) {}
   }
+
+  if (window.renderMathInElement && targetEl) {
+    try {
+      renderMathInElement(targetEl, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+      });
+    } catch(err) {}
+  }
 }
 
 // CPRL Professor CV Centered Modal Controls

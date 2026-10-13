@@ -229,7 +229,28 @@ function ensureReaderModalExists() {
       changeReaderChapter(-1);
     } else if (e.key === 'Escape') {
       e.preventDefault();
-      closeReaderModal();
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      } else {
+        closeReaderModal();
+      }
+    }
+  });
+
+  document.addEventListener('fullscreenchange', function() {
+    const container = document.getElementById('reader-modal-container');
+    const isFull = !!document.fullscreenElement;
+    if (container) {
+      container.classList.toggle('is-fullscreen', isFull);
+    }
+    const btn = document.querySelector('#reader-modal .reader-header-actions button');
+    if (btn) {
+      btn.innerHTML = isFull
+        ? '<i data-lucide="minimize-2"></i> <span>전체화면 종료</span>'
+        : '<i data-lucide="maximize-2"></i> <span>전체화면</span>';
+      if (window.lucide) {
+        try { lucide.createIcons(); } catch(err) {}
+      }
     }
   });
 }

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[시안 프로토타입] 교육과정 자료실 3대 지면 매거진 에디토리얼 개편 (최종 검증)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX CDN (수식 깨짐 방지 및 정밀 학술 렌더링) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- 기존 플랫폼 스타일시트 -->
+  <link rel="stylesheet" href="assets/css/style.css?v=20261013">
+  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261013g">
+
+  <style>
+    body {
+      background-color: #070a12 !important;
+      color: #f8fafc;
+      font-family: 'Pretendard', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .proto-nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(11, 15, 23, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.9rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .proto-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .proto-brand-tag {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .proto-tab-row {
+      display: flex;
+      gap: 0.5rem;
+      background: #060911;
+      padding: 0.3rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .proto-tab-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 0.55rem 1.15rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s;
+    }
+    .proto-tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .proto-tab-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+    }
+
+    .proto-view-wrap {
+      display: none;
+      padding: 1.5rem 2.5rem 6rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .proto-view-wrap.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 시안 컨트롤러 -->
+  <header class="proto-nav-bar">
+    <div class="proto-brand">
+      <span class="proto-brand-tag">최종 검증 실측 시안</span>
+      <span style="font-size:1.05rem; font-weight:800; color:#ffffff;">교육과정 자료실 3대 지면 매거진 에디토리얼 개편</span>
+    </div>
+    <div class="proto-tab-row">
+      <button type="button" class="proto-tab-btn active" onclick="switchProtoView('academic')">
+        <i data-lucide="book-marked"></i> <span>1. 교사용 학술 배경 자료</span>
+      </button>
+      <button type="button" class="proto-tab-btn" onclick="switchProtoView('lab')">
+        <i data-lucide="monitor-play"></i> <span>2. 가상 실험실 허브</span>
+      </button>
+      <button type="button" class="proto-tab-btn" onclick="switchProtoView('slides')">
+        <i data-lucide="presentation"></i> <span>3. 수업용 발표 슬라이드 허브</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       1. 교사용 학술 배경 자료 (단정하고 질서정연한 4단계 챕터 구조)
+       ====================================================================== -->
+  <main id="view-proto-academic" class="proto-view-wrap active">
+    <div class="mag-journey-canvas">
+
+      <!-- 마스트헤드 -->
+      <header class="mag-masthead">
+        <div class="mag-lead-tag">KAIST CPRL 교재 연구 및 학술 배경 자료</div>
+        <h1 class="mag-main-headline">
+          OLED 스핀 통계 한계 극복과<br>
+          핫 엑시톤(Hot Exciton) 광물리 원천 해설
+        </h1>
+        <p class="mag-deck">
+          한국과학기술원(KAIST) 화학과 계산 광동역학 연구실(CPRL / 이영민 교수)의 분자 광물리 및 비단열 여기상태 연구를 중학교 2학년 과학(빛과 파동, 물질의 구성, 전기와 자기) 교육과정으로 전이하기 위한 교사용 전문 지침서입니다.
+        </p>
+
+        <!-- 패키지 전환 링크 바 -->
+        <div class="academic-pkg-bar">
+          <a href="javascript:void(0)" class="academic-pkg-link active">
+            <i data-lucide="sun"></i> <span>01. OLED 스핀 통계 & 핫 엑시톤</span>
+          </a>
+          <a href="javascript:void(0)" class="academic-pkg-link quantum" onclick="alert('양자컴퓨터 학술자료는 메인 플랫폼에서 패키지 스위처로 즉시 전환됩니다.')">
+            <i data-lucide="cpu"></i> <span>02. 다전자 파동함수 지수 폭발 & VQE</span>
+          </a>
+        </div>
+
+        <div class="mag-meta-strip">
+          <div class="mag-meta-item"><strong>원천 연구실:</strong> KAIST 화학과 CPRL (이영민 교수)</div>
+          <div class="mag-meta-item"><strong>연구실 공식 사이트:</strong> <a href="http://singlet.kaist.ac.kr" target="_blank" style="color:#38bdf8; text-decoration:none;">http://singlet.kaist.ac.kr</a></div>
+          <div class="mag-meta-item"><strong>수식 엔진:</strong> <span style="color:#10b981;">KaTeX 0.16.11 정밀 렌더링</span></div>
+          <div class="mag-meta-item"><strong>연계 교육과정:</strong> 2022 개정 중학교 2학년 [빛과 파동], [물질의 구성], [전기와 자기]</div>
+        </div>
+      </header>
+
+      <!-- 1. 파견 교사의 미션과 교육과정 전이 철학 -->
+      <section class="mag-section" style="margin-top:2.5rem;">
+        <div class="mag-section-header">
+          <span class="mag-section-num">01</span>
+          <div class="mag-section-title-wrap">
+            <h2>교육과정 전이 철학: "수식의 경량화, 개념의 본질화"</h2>
+          </div>
+        </div>
+
+        <div class="mag-editorial-split">
+          <div>
+            <p class="mag-story-paragraph">
+              대학원 수준의 유기 광물리는 복잡한 다체 파동함수, 비단열 원추교차(Conical Intersection), 스핀-궤도 결합 해밀토니안($\hat{H}_{\text{SO}}$)을 다룹니다. 그러나 이를 중학교 교실로 가져올 때의 핵심은 <strong>"수학적 장벽은 걷어내되, 과학적 인과관계와 자연의 규칙성은 100% 보존하는 것"</strong>입니다.
+            </p>
+            <div class="mag-giant-stat-group">
+              <div class="mag-giant-val">25% ➔ 100%</div>
+              <div class="mag-giant-lbl">스핀 통계 한계를 뛰어넘는 내부 양자 효율의 비약</div>
+            </div>
+            <p class="mag-story-paragraph" style="font-size:1.02rem; color:#94a3b8;">
+              • <strong>현상 기반 도입:</strong> 일상 속 토닉워터 자외선 형광, 스마트폰 발열 현상으로 호기심 촉발.<br>
+              • <strong>직관적 과학 은유:</strong> 원자 속 전자의 트램펄린 점프(전자 전이), 부르르 떨며 열 흘리기(진동 이완), 마주보는 팽이(단일항)와 나란한 팽이(삼중항).<br>
+              • <strong>교육과정 정합성:</strong> 2022 개정 성취기준 [9과10-03](빛의 합성) 및 [9과14-03](전기에너지의 열·빛 전환)과의 완벽한 유기적 결합.
+            </p>
+          </div>
+          <div>
+            <div class="mag-figure-frame" style="margin:0;">
+              <img src="image/oled_quantum_simulation_main.jpg" alt="KAIST CPRL 계산 광동역학 연구실 대규모 슈퍼컴퓨팅 시뮬레이션">
+              <div class="mag-figure-caption"><strong>[연구 현장 실사]</strong> KAIST CPRL의 슈퍼컴퓨팅 분자 광물리 시뮬레이션 환경</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 스핀 통계와 75% 열 손실 딜레마 -->
+      <section class="mag-section">
+        <div class="mag-section-header">
+          <span class="mag-section-num">02</span>
+          <div class="mag-section-title-wrap">
+            <h2>유기 발광 분자의 스핀 통계와 75% 열 손실 딜레마</h2>
+          </div>
+        </div>
+
+        <p class="mag-story-paragraph">
+          유기 발광 다이오드(OLED)에서 음극의 전자($e^-$)와 양극의 정공($h^+$)이 만나 형성하는 엑시톤은 전자 스핀 $s=1/2$에 의해 <strong>단일항(25%)과 삼중항(75%)</strong>으로 양자역학적으로 갈라집니다.
+        </p>
+
+        <div class="mag-comparison-grid">
+          <!-- 단일항 엑시톤 -->
+          <div class="mag-compare-col">
+            <div class="mag-figure-frame">
+              <img src="image/tools/electron_uv_absorb.jpg" alt="단일항 전자의 바닥상태 대칭 스핀 결합과 초고속 형광 방출">
+              <div class="mag-figure-caption"><strong>단일항 (Singlet, $S=0$)</strong> · 비축퇴 25% 확률</div>
+            </div>
+            <div class="mag-column-story">
+              <div class="mag-story-sub">스핀 파동함수 $\frac{1}{\sqrt{2}}(\alpha\beta - \beta\alpha)$</div>
+              <h4>$10^{-9}$초 단위 초고속 형광(Fluorescence) 방출!</h4>
+              <p>바닥 상태($S_0$)와 스핀 다중도가 같아 쌍극자 전이가 허용됩니다. 전자가 지체 없이 1층으로 착지하며 10억 분의 1초 만에 눈부신 빛을 뿜어냅니다.</p>
+            </div>
+          </div>
+
+          <!-- 삼중항 엑시톤 -->
+          <div class="mag-compare-col">
+            <div class="mag-figure-frame">
+              <img src="image/tools/smartphone_heat_demo.jpg" alt="삼중항 전자의 평행 스핀 결합으로 인한 스핀 금지 전이와 75% 발열 손실">
+              <div class="mag-figure-caption"><strong>삼중항 (Triplet, $S=1$)</strong> · 3중 축퇴 75% 확률</div>
+            </div>
+            <div class="mag-column-story">
+              <div class="mag-story-sub">스핀 파동함수 $\alpha\alpha, \frac{1}{\sqrt{2}}(\alpha\beta + \beta\alpha), \beta\beta$</div>
+              <h4>스핀 금지 전이 ➔ 상온 75% 열 손실 배터리 도둑!</h4>
+              <p>바닥 상태로의 전이가 스핀 법칙에 의해 엄격히 금지됩니다. 전자가 빛을 내지 못하고 갇혀 분자를 흔들며 열을 내뿜어 스마트폰 발열을 일으킵니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. CPRL 핫 엑시톤 원천 연구 논문 -->
+      <section class="mag-section">
+        <div class="mag-section-header">
+          <span class="mag-section-num">03</span>
+          <div class="mag-section-title-wrap">
+            <h2>CPRL 원천 연구: 핫 엑시톤(Hot Exciton) $T_2 \to S_1$ 역간교차 메커니즘</h2>
+          </div>
+        </div>
+
+        <p class="mag-story-paragraph">
+          KAIST CPRL 이영민 교수 연구진은 <strong>고에너지 들뜬 삼중항 준위($T_2$ 이상)</strong>에 주목하였습니다. 전하 재결합 시 고에너지 상태로 생성된 삼중항 전자가 최저 삼중항($T_1$)으로 가라앉기 전에, 높은 옥상 준위에서 최저 들뜬 단일항($S_1$)으로 초고속 역간교차(RISC: $T_2 \to S_1$)를 일으켜 100% 형광으로 방출시키는 통로입니다.
+        </p>
+
+        <div class="mag-figure-frame">
+          <img src="image/paper_oled_fig3.png" alt="KAIST CPRL 핫 엑시톤 역간교차 및 분자 진동 섭동 보정 실제 연구 도판">
+          <div class="mag-figure-caption">
+            <strong>[원천 연구 도판]</strong> <em>J. Phys. Chem. A</em> (2026, 130, 758–766): 핫 엑시톤 OLED 시스템에서 스핀-궤도 결합(SOC)에 분자 진동 섭동 보정을 적용하여 $T_2 \to S_1$ 역간교차 속도를 정밀하게 예측하고 분자 설계 규칙을 제안한 핵심 원천 도판.
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 교사용 수업 브릿지 전략 및 현장 발문 Q&A -->
+      <section class="mag-section" style="border-top:1px solid rgba(255,255,255,0.1); padding-top:2.5rem;">
+        <div class="mag-section-header">
+          <span class="mag-section-num">04</span>
+          <div class="mag-section-title-wrap">
+            <h2>교사용 수업 브릿지 전략 및 현장 발문 Q&A</h2>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:2rem; margin-top:1.5rem;">
+          <div>
+            <h4 style="font-size:1.18rem; font-weight:800; color:#38bdf8; margin:0 0 0.5rem 0;">Q1. 중학생이 "빛을 흡수했는데 왜 다른 색의 빛이 나와요?"라고 묻는다면?</h4>
+            <p class="mag-story-paragraph" style="margin-bottom:0;">
+              <strong>[교사 지도 팁]:</strong> "빛은 에너지를 배달하는 에너지 택배원이야. 자외선은 큰 에너지 택배를 싣고 와서 원자 속 전자를 3층으로 번쩍 올려놓았지. 그런데 3층이 너무 높아 불안해서 전자가 온몸을 부르르 떨며 일부 에너지를 <strong>'열'</strong>로 흘려버렸단다. 그래서 남은 에너지만 가지고 1층으로 내려오니까, 처음 들어간 자외선보다 에너지가 작아져서 눈에 보이는 <strong>파란색이나 초록색 가시광선(형광)</strong>으로 변해서 나온 거야! 이때도 <code>[흡수한 자외선] = [방출된 형광] + [흘린 열]</code>이라는 위대한 에너지 보존 법칙은 100% 지켜진단다."
+            </p>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem;">
+            <h4 style="font-size:1.18rem; font-weight:800; color:#10b981; margin:0 0 0.5rem 0;">Q2. 중학교 2022 개정 교육과정과의 정확한 연계 논리는 무엇인가요?</h4>
+            <p class="mag-story-paragraph" style="margin-bottom:0;">
+              <strong>[교사 지도 팁]:</strong> 중학교 2학년 <strong>[9과10-03]</strong>(빛의 합성 및 영상 장치), <strong>[9과11-02]</strong>(원자 모형과 전자), <strong>[9과14-02]</strong>(전류 모형 및 반도체 해설), <strong>[9과14-03]</strong>(전기 에너지의 열·빛 전환과 소비 전력) 성취기준과 유기적으로 결합됩니다. 교과서에 머물러 있는 도체/반도체와 RGB 화소 개념을 'KAIST 첨단 OLED 분자 공학'과 직결시켜 학생들의 융합 탐구 사고력을 비약적으로 끌어올립니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- ======================================================================
+       2. 가상 실험실 허브 (사진 튀어나옴 완전 박멸 16:9 정비율 3열 균등 그리드)
+       ====================================================================== -->
+  <main id="view-proto-lab" class="proto-view-wrap">
+    <div class="mag-journey-canvas">
+
+      <header class="mag-masthead">
+        <div class="mag-lead-tag">INTERACTIVE SIMULATION LAB</div>
+        <h1 class="mag-main-headline">KAIST CPRL 가상 실험실 쇼케이스</h1>
+        <p class="mag-deck">
+          분자의 미시 세계와 양자역학적 상태를 학생들이 브라우저에서 직접 조작하고 체감할 수 있도록 구축된 대화형 인터랙티브 가상 실험실 허브입니다. 카드를 클릭하면 즉시 시뮬레이션이 실행됩니다.
+        </p>
+      </header>
+
+      <!-- 1. OLED 패키지 가상실험실 (3열 정비율) -->
+      <section class="mag-section" style="margin-top:2.5rem;">
+        <div class="mag-section-header">
+          <span class="mag-section-num">01</span>
+          <div class="mag-section-title-wrap">
+            <h2>빛의 합성과 OLED 패키지 가상실험실</h2>
+          </div>
+        </div>
+        <div class="hub-showcase-grid">
+          <!-- 실험 1: 3D 형광빛 원리 -->
+          <div class="hub-showcase-card" onclick="openVirtualLabModal(2)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/oled_kids_macro_explorer.jpg" alt="3D 형광빛 원리 가상실험실">
+              <span class="hub-card-badge">OLED 2차시</span>
+              <span class="hub-card-tag">Three.js 3D</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">01</span>3D 형광빛의 원리</h3>
+              <p class="hub-card-desc">자외선(UV) 빛을 흡수한 전자가 3층으로 들뜬 후 열을 흘리고 파란색 형광으로 착지하는 에너지 보존 과정을 3D 공간에서 직접 조작합니다.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">[9과11-02] [9과14-03]</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>3D 실험실 실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 실험 2: 분자 고정과 에너지 효율 -->
+          <div class="hub-showcase-card" onclick="openVirtualLabModal(4)">
+            <div class="hub-card-thumb">
+              <img src="image/oled_quantum_sim_lab.jpg" alt="분자 고정 모형 가상실험실">
+              <span class="hub-card-badge">OLED 4차시</span>
+              <span class="hub-card-tag">진동판 & 분자 3D</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">02</span>스마트폰 에너지 효율 분자 연구</h3>
+              <p class="hub-card-desc">지진 진동판 건물 흔들림 비유를 통해, 분자 골격을 고정하여 75% 열 진동을 차단하고 100% 빛으로 전환하는 원천 기술을 시뮬레이션합니다.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">[9과01-02] [9과14-02]</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>3D 실험실 실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 실험 3: 100개 엑시톤 스핀 통계 -->
+          <div class="hub-showcase-card" onclick="openVirtualLabModal(4)">
+            <div class="hub-card-thumb">
+              <img src="image/paper_oled_fig3.png" alt="100개 엑시톤 스핀 분석 가상실험실">
+              <span class="hub-card-badge">OLED 심화</span>
+              <span class="hub-card-tag">스핀 통계 랩</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">03</span>100개 엑시톤 스핀 통계</h3>
+              <p class="hub-card-desc">전류 주입 시 생성되는 단일항(25%)과 삼중항(75%)의 스핀 비율을 분석하고, KAIST 핫 엑시톤 스위치로 버려지던 열을 빛으로 구출합니다.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">[9과14-02] [9과14-03]</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>스핀 실험실 실행</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 양자컴퓨터 패키지 가상실험실 (3열 정비율) -->
+      <section class="mag-section">
+        <div class="mag-section-header">
+          <span class="mag-section-num">02</span>
+          <div class="mag-section-title-wrap">
+            <h2>양자컴퓨터의 활용 패키지 가상실험실</h2>
+          </div>
+        </div>
+        <div class="hub-showcase-grid">
+          <!-- 실험 4: 동전 팽이와 큐비트 중첩 -->
+          <div class="hub-showcase-card quantum" onclick="alert('양자 큐비트 중첩 측정 시뮬레이터가 실행됩니다.')">
+            <div class="hub-card-thumb">
+              <img src="image/quantum_trapped_ion_sim.jpg" alt="양자 큐비트 중첩 측정 시뮬레이터">
+              <span class="hub-card-badge">양자 2차시</span>
+              <span class="hub-card-tag">확률 측정 랩</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">04</span>동전 팽이와 큐비트 중첩</h3>
+              <p class="hub-card-desc">정지한 동전(고전 비트)과 회전하는 동전(큐비트 중첩)을 비교하고, 중첩 각도 조절로 100회 연속 측정 확률을 검증합니다.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">[9정01-03] [9과01-02]</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>큐비트 실험실 실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 실험 5: 2인 3각 VQE -->
+          <div class="hub-showcase-card quantum" onclick="alert('2인 3각 VQE 최적화기 시뮬레이터가 실행됩니다.')">
+            <div class="hub-card-thumb">
+              <img src="image/paper_quantum_pes.png" alt="2인 3각 VQE 최적화기">
+              <span class="hub-card-badge">양자 3차시</span>
+              <span class="hub-card-tag">하이브리드 알고리즘</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">05</span>2인 3각 VQE 바닥 상태 탐색</h3>
+              <p class="hub-card-desc">수소 분자($H_2$)의 결합 거리(R)를 조절하며, 양자 컴퓨터와 일반 컴퓨터가 피드백 루프로 최저 결합 에너지를 찾아냅니다.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">[9과16-01] [9정02-02]</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>VQE 실험실 실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 실험 6: 이온트랩 심층 가이드 -->
+          <div class="hub-showcase-card quantum" onclick="window.open('quantum_deep_dive_guide.html', '_blank')">
+            <div class="hub-card-thumb">
+              <img src="image/quantum_trapped_ion_chip.jpg" alt="이온 트랩 양자 프로세서 심층 해부">
+              <span class="hub-card-badge">심화 연계</span>
+              <span class="hub-card-tag">3D 심층 인터랙티브</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">06</span>이온트랩 양자 프로세서 해부</h3>
+              <p class="hub-card-desc">원자 오븐, 폴 트랩 회전 전기장, 레이저 냉각 기술을 고해상도 3D 인터랙티브 그래픽으로 직접 회전하고 분해합니다.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">고교 심층 탐구 연계</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="external-link"></i> <span>심층 가이드 열람</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- ======================================================================
+       3. 수업용 발표 슬라이드 허브 (사진 튀어나옴 완전 박멸 4열 균등 그리드 & 비례 스케일링)
+       ====================================================================== -->
+  <main id="view-proto-slides" class="proto-view-wrap">
+    <div class="mag-journey-canvas">
+
+      <header class="mag-masthead">
+        <div class="mag-lead-tag">CLASSROOM PRESENTATION DECKS</div>
+        <h1 class="mag-main-headline">수업용 발표 슬라이드 런처 & 대화면 반응형 최적화</h1>
+        <p class="mag-deck">
+          OLED 디스플레이와 양자컴퓨터 패키지의 전 차시 슬라이드를 한눈에 조망하고 1클릭으로 실행합니다. 우측 상단의 [전체화면] 버튼을 누르면 32인치 대화면 및 전자칠판 크기에 맞춰 폰트와 레이아웃이 뷰포트 비율에 따라 웅장하게 자동 비례 확대됩니다.
+        </p>
+      </header>
+
+      <!-- 1. OLED 차시 슬라이드 (4열 정비율) -->
+      <section class="mag-section" style="margin-top:2.5rem;">
+        <div class="mag-section-header">
+          <span class="mag-section-num">01</span>
+          <div class="mag-section-title-wrap">
+            <h2>빛의 합성과 OLED 패키지 발표 슬라이드</h2>
+          </div>
+        </div>
+        <div class="hub-showcase-grid cols-4">
+          <div class="hub-showcase-card" onclick="openPresentationModal('oled', 1)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/fluorescence_apps.jpg" alt="1차시 슬라이드">
+              <span class="hub-card-badge">OLED 1차시</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">01</span>보이지 않는 자외선</h3>
+              <p class="hub-card-desc">토닉워터와 형광펜의 자외선 반응, 스펙트럼 관찰과 형광의 기초 원리를 탐구하는 슬라이드 덱.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">총 9장 슬라이드</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-showcase-card" onclick="openPresentationModal('oled', 2)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/electron_uv_absorb.jpg" alt="2차시 슬라이드">
+              <span class="hub-card-badge">OLED 2차시</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">02</span>전자의 에너지 계단</h3>
+              <p class="hub-card-desc">전자의 에너지 흡수, 진동 열이완, 형광 방출(스토크스 이동) 과정을 시각화한 슬라이드 덱.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">총 11장 슬라이드</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-showcase-card" onclick="openPresentationModal('oled', 3)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/smartphone_heat_demo.jpg" alt="3차시 슬라이드">
+              <span class="hub-card-badge">OLED 3차시</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">03</span>75% 배터리 도둑</h3>
+              <p class="hub-card-desc">OLED 디스플레이의 발광 원리와 양자역학적 스핀 통계(단일항 25% vs 삼중항 75%) 열손실 슬라이드 덱.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">총 10장 슬라이드</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-showcase-card" onclick="openPresentationModal('oled', 4)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/oled_fast_energy_transfer.jpg" alt="4차시 슬라이드">
+              <span class="hub-card-badge">OLED 4차시</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">04</span>KAIST의 분자 연구</h3>
+              <p class="hub-card-desc">분자 골격 고정화 및 핫 엑시톤 기술로 75% 열손실을 극복하는 KAIST CPRL 분자 공학 슬라이드 덱.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">총 11장 슬라이드</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 양자컴퓨터 차시 슬라이드 (4열 정비율) -->
+      <section class="mag-section">
+        <div class="mag-section-header">
+          <span class="mag-section-num">02</span>
+          <div class="mag-section-title-wrap">
+            <h2>양자컴퓨터의 활용 패키지 발표 슬라이드</h2>
+          </div>
+        </div>
+        <div class="hub-showcase-grid cols-4">
+          <div class="hub-showcase-card quantum" onclick="openPresentationModal('quantum', 1)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/quantum_tools_1.jpg" alt="양자 1차시 슬라이드">
+              <span class="hub-card-badge">양자 1차시</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">01</span>슈퍼컴퓨터의 한계</h3>
+              <p class="hub-card-desc">체스판 쌀알 퀴즈와 $2^N$ 지수 폭발, 카페인 분자조차 계산 못하는 슈퍼컴퓨터의 한계를 밝히는 슬라이드 덱.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">총 9장 슬라이드</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-showcase-card quantum" onclick="openPresentationModal('quantum', 2)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/quantum_tools_2.jpg" alt="양자 2차시 슬라이드">
+              <span class="hub-card-badge">양자 2차시</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">02</span>동전 팽이와 큐비트</h3>
+              <p class="hub-card-desc">고전 비트(0 or 1)와 회전하는 동전 팽이(0 and 1 중첩), $2^N$개의 길을 단번에 탐색하는 양자 병렬성 슬라이드 덱.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">총 10장 슬라이드</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-showcase-card quantum" onclick="openPresentationModal('quantum', 3)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/quantum_tools_3.jpg" alt="양자 3차시 슬라이드">
+              <span class="hub-card-badge">양자 3차시</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">03</span>2인 3각 VQE 알고리즘</h3>
+              <p class="hub-card-desc">양자 컴퓨터와 일반 컴퓨터가 데이터를 주고받으며 분자의 최저 결합 에너지를 찾아가는 하이브리드 VQE 슬라이드 덱.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">총 11장 슬라이드</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-showcase-card quantum" onclick="openPresentationModal('quantum', 4)">
+            <div class="hub-card-thumb">
+              <img src="image/tools/quantum_tools_4.jpg" alt="양자 4차시 슬라이드">
+              <span class="hub-card-badge">양자 4차시</span>
+            </div>
+            <div class="hub-card-body">
+              <h3 class="hub-card-title"><span class="evo-num">04</span>틴에이저 퀀텀 CEO</h3>
+              <p class="hub-card-desc">상온 비료 촉매, 전고체 배터리, 변종 바이러스 신약 설계를 주도하는 미래 양자 계산화학자 슬라이드 덱.</p>
+              <div class="hub-card-footer">
+                <span class="hub-card-meta">총 10장 슬라이드</span>
+                <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 읽기 자료 전체화면 테스트 뷰 -->
+      <section class="mag-section" style="border-top:1px solid rgba(255,255,255,0.1); padding-top:2.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem;">
+          <div>
+            <div style="font-size:0.85rem; font-weight:800; color:#38bdf8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem;">FULLSCREEN RESPONSIVE SCALING CHECK</div>
+            <h3 style="font-size:1.45rem; font-weight:800; color:#ffffff; margin:0 0 0.4rem 0;">OLED 4차시 읽기 자료 동화책 뷰어 대화면 스케일링</h3>
+            <p style="font-size:0.95rem; color:#94a3b8; margin:0;">32인치 모니터 전체화면 시 폰트(2.25rem)와 일러스트가 자동으로 대형 크기로 비례 확대됩니다.</p>
+          </div>
+          <button type="button" class="hub-card-btn" onclick="openReaderModal('oled', 4)" style="padding:0.75rem 1.4rem; font-size:0.95rem;">
+            <i data-lucide="book-open"></i> <span>읽기 자료 실행 & 전체화면 검증</span>
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 프레젠테이션 & 모달 구동용 스크립트 -->
+  <script src="assets/data/presentation-data-oled.js?v=20260922"></script>
+  <script src="assets/data/presentation-data-quantum.js"></script>
+  <script src="assets/js/presentation-modal.js"></script>
+  <script src="assets/data/reader-data-oled.js"></script>
+  <script src="assets/js/reader-modal.js"></script>
+
+  <script>
+    function switchProtoView(viewId) {
+      document.querySelectorAll('.proto-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.proto-view-wrap').forEach(v => v.classList.remove('active'));
+      
+      const targetBtn = Array.from(document.querySelectorAll('.proto-tab-btn')).find(b => b.getAttribute('onclick').includes(viewId));
+      if (targetBtn) targetBtn.classList.add('active');
+      
+      const targetView = document.getElementById('view-proto-' + viewId);
+      if (targetView) targetView.classList.add('active');
+      
+      if (window.lucide) lucide.createIcons();
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError : false
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      
+      const checkKatex = setInterval(() => {
+        if (window.renderMathInElement) {
+          clearInterval(checkKatex);
+          renderMathInElement(document.body, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false}
+            ],
+            throwOnError : false
+          });
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>
