@@ -145,7 +145,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <!-- [탭 2]: 1차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#7c3aed;">[1차시]</span> 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;">[1차시] 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발</h3>
             </div>
             
             <!-- [1차시] 통합 수업 지도안 표 -->
@@ -342,7 +342,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <!-- [탭 3]: 2차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#2563eb;">[2차시]</span> 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;">[2차시] 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트</h3>
             </div>
 
             <!-- [2차시] 통합 수업 지도안 표 -->
@@ -534,7 +534,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <!-- [탭 4]: 3차시 -->
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#059669;">[3차시]</span> 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;">[3차시] 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태</h3>
             </div>
 
             <!-- [3차시] 통합 수업 지도안 표 -->
@@ -722,7 +722,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
           <div class="chrome-tab-panel" role="tabpanel">
             <div style="margin-bottom:0.75rem;">
               <!-- 4차시 지도안 -->
-              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;"><span style="color:#d97706;">[4차시]</span> 양자 화학 시뮬레이션 기반 분자 설계 프로젝트</h3>
+              <h3 style="color:#1e293b; font-size:1.2rem; margin:0;">[4차시] 양자 화학 시뮬레이션 기반 분자 설계 프로젝트</h3>
             </div>
 
             <!-- [4차시] 통합 수업 지도안 표 -->
