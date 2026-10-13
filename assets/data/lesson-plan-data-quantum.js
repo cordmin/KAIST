@@ -3,25 +3,6 @@
  * assets/data/lesson-plan-data-quantum.js
  */
 window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-plan-chrome-window">
-          <!-- 문서철 세로 인덱스 탭 바 (개요, 1~4차시) -->
-          <div class="chrome-tab-bar" role="tablist" aria-label="수업 지도안 차시 인덱스">
-            <button type="button" class="chrome-tab-btn active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true" title="수업 지도안 개요">
-              <span>개요</span>
-            </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false" title="1차시">
-              <span>1차시</span>
-            </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 2)" role="tab" aria-selected="false" title="2차시">
-              <span>2차시</span>
-            </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 3)" role="tab" aria-selected="false" title="3차시">
-              <span>3차시</span>
-            </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false" title="4차시">
-              <span>4차시</span>
-            </button>
-          </div>
-
           <!-- [탭 0]: 수업 지도안 개요 (개요 표 + 2022 성취수준 연계표) -->
           <div class="chrome-tab-panel active" role="tabpanel">
             <div class="card-header" style="margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
