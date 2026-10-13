@@ -10,13 +10,13 @@ function renderSidebar(pkg, currentKey) {
   if (!sidebarEl) return;
 
   const oledPages = [
-    { key: 'oled-guide', name: '[0차시] 수업 전 읽기 자료' },
-    { key: 'lesson-plan', name: '수업 지도안' }
+    { key: 'lesson-plan', name: '수업 지도안 개요' },
+    { key: 'oled-guide', name: '[0차시] 수업 전 읽기 자료' }
   ];
 
   const quantumPages = [
-    { key: 'quantum-guide', name: '[0차시] 수업 전 읽기 자료' },
-    { key: 'lesson-plan', name: '수업 지도안' }
+    { key: 'lesson-plan', name: '수업 지도안 개요' },
+    { key: 'quantum-guide', name: '[0차시] 수업 전 읽기 자료' }
   ];
 
   sidebarEl.innerHTML = `
@@ -44,7 +44,7 @@ function renderSidebar(pkg, currentKey) {
       <div class="sidebar-pkg-card oled-card ${isOled ? 'active-pkg' : ''}" id="pkg-card-oled">
         <div class="pkg-card-header oled" id="pkg-btn-oled">
           <span class="pkg-card-badge oled">01</span>
-          <span class="pkg-card-title">OLED</span>
+          <span class="pkg-card-title">빛의 합성과 OLED</span>
         </div>
         <div class="pkg-card-menu">
           ${oledPages.map(p => {
@@ -62,7 +62,7 @@ function renderSidebar(pkg, currentKey) {
       <div class="sidebar-pkg-card quantum-card ${!isOled ? 'active-pkg' : ''}" id="pkg-card-quantum">
         <div class="pkg-card-header quantum" id="pkg-btn-quantum">
           <span class="pkg-card-badge quantum">02</span>
-          <span class="pkg-card-title">양자컴퓨터</span>
+          <span class="pkg-card-title">양자컴퓨터의 활용</span>
         </div>
         <div class="pkg-card-menu">
           ${quantumPages.map(p => {

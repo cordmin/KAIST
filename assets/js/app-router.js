@@ -283,7 +283,7 @@ function renderView() {
       btnQuantum.classList.remove('active');
       btnQuantum.setAttribute('aria-selected', 'false');
     }
-    if (btnQuick) btnQuick.innerText = '02. 양자컴퓨터로 전환';
+    if (btnQuick) btnQuick.innerText = '02. 양자컴퓨터의 활용으로 전환';
   } else {
     if (cardQuantum) cardQuantum.classList.add('active-pkg');
     if (cardOled) cardOled.classList.remove('active-pkg');
@@ -295,7 +295,7 @@ function renderView() {
       btnOled.classList.remove('active');
       btnOled.setAttribute('aria-selected', 'false');
     }
-    if (btnQuick) btnQuick.innerText = '01. OLED로 전환';
+    if (btnQuick) btnQuick.innerText = '01. 빛의 합성과 OLED로 전환';
   }
 
   // Show/Hide Quantum Guide Nav Button if present
@@ -323,11 +323,11 @@ function renderView() {
     if (currentView.startsWith('cprl')) {
       topbarTitle.innerText = viewTitles[currentView] || 'KAIST 화학과 CPRL 소개';
     } else if (currentView === 'quantum-guide') {
-      topbarTitle.innerText = '02. 양자컴퓨터: ' + (viewTitles[currentView] || '[0차시] 수업 전 읽기 자료');
+      topbarTitle.innerText = '02. 양자컴퓨터의 활용: ' + (viewTitles[currentView] || '[0차시] 수업 전 읽기 자료');
     } else if (currentView === 'oled-guide') {
-      topbarTitle.innerText = '01. OLED: ' + (viewTitles[currentView] || '[0차시] 수업 전 읽기 자료');
+      topbarTitle.innerText = '01. 빛의 합성과 OLED: ' + (viewTitles[currentView] || '[0차시] 수업 전 읽기 자료');
     } else {
-      const pkgPrefix = currentPkg === 'oled' ? '01. OLED: ' : '02. 양자컴퓨터: ';
+      const pkgPrefix = currentPkg === 'oled' ? '01. 빛의 합성과 OLED: ' : '02. 양자컴퓨터의 활용: ';
       topbarTitle.innerText = `${pkgPrefix}${viewTitles[currentView]}`;
     }
   }
@@ -459,3 +459,35 @@ document.addEventListener('DOMContentLoaded', initLessonPlanContainers);
 if (document.readyState === 'interactive' || document.readyState === 'complete') {
   initLessonPlanContainers();
 }
+
+// Global Image Lightbox Modal Handlers
+function openImageLightbox(src, alt, caption) {
+  const modal = document.getElementById('image-lightbox-modal');
+  const img = document.getElementById('image-lightbox-img');
+  const cap = document.getElementById('image-lightbox-caption');
+  if (!modal || !img) return;
+
+  img.src = src;
+  img.alt = alt || '';
+  if (cap) cap.innerText = caption || alt || '';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageLightbox(e) {
+  if (e && e.target && e.target.closest && e.target.closest('.img-lightbox-card') && !e.target.classList.contains('img-lightbox-close')) {
+    return;
+  }
+  const modal = document.getElementById('image-lightbox-modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  const img = document.getElementById('image-lightbox-img');
+  if (img) img.src = '';
+}
+
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeImageLightbox();
+  }
+});

@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=20261013">
-  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261013f">
+  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261013g">
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -75,33 +78,33 @@
             <div class="rebuild-pkg-head" onclick="switchPackage('oled')">
               <div class="rebuild-pkg-label">
                 <span class="rebuild-pkg-num">01</span>
-                <span>OLED</span>
+                <span>빛의 합성과 OLED</span>
               </div>
             </div>
             <div class="rebuild-tree-list">
-              <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-oled-guide" onclick="switchPackageView('oled', 'oled-guide')">
-                <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[0차시]</span>수업 전 읽기 자료</span>
-              </a>
               <a href="javascript:void(0)" class="rebuild-tree-item active" id="rb-tree-oled-tab-0" onclick="switchPackageLessonPlanTab('oled', 0)">
                 <span class="rebuild-tree-bullet"></span>
                 <span class="rebuild-tree-text">수업 지도안 개요</span>
               </a>
+              <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-oled-guide" onclick="switchPackageView('oled', 'oled-guide')">
+                <span class="rebuild-tree-bullet"></span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[0차시]</span> 수업 전 읽기 자료</span>
+              </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-oled-tab-1" onclick="switchPackageLessonPlanTab('oled', 1)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[1차시]</span>형광빛의 원리</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[1차시]</span> 형광빛의 원리</span>
               </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-oled-tab-2" onclick="switchPackageLessonPlanTab('oled', 2)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[2차시]</span>전자의 에너지 전달</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[2차시]</span> 전자의 에너지 전달</span>
               </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-oled-tab-3" onclick="switchPackageLessonPlanTab('oled', 3)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[3차시]</span>스마트폰의 에너지 낭비</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[3차시]</span> 스마트폰의 에너지 낭비</span>
               </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-oled-tab-4" onclick="switchPackageLessonPlanTab('oled', 4)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[4차시]</span>KAIST의 분자 연구</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[4차시]</span> KAIST의 분자 연구</span>
               </a>
             </div>
           </div>
@@ -111,33 +114,33 @@
             <div class="rebuild-pkg-head" onclick="switchPackage('quantum')">
               <div class="rebuild-pkg-label">
                 <span class="rebuild-pkg-num">02</span>
-                <span>양자컴퓨터</span>
+                <span>양자컴퓨터의 활용</span>
               </div>
             </div>
             <div class="rebuild-tree-list">
-              <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-guide" onclick="switchPackageView('quantum', 'quantum-guide')">
-                <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[0차시]</span>수업 전 읽기 자료</span>
-              </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-tab-0" onclick="switchPackageLessonPlanTab('quantum', 0)">
                 <span class="rebuild-tree-bullet"></span>
                 <span class="rebuild-tree-text">수업 지도안 개요</span>
               </a>
+              <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-guide" onclick="switchPackageView('quantum', 'quantum-guide')">
+                <span class="rebuild-tree-bullet"></span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[0차시]</span> 수업 전 읽기 자료</span>
+              </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-tab-1" onclick="switchPackageLessonPlanTab('quantum', 1)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[1차시]</span>지수 폭발</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[1차시]</span> 지수 폭발</span>
               </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-tab-2" onclick="switchPackageLessonPlanTab('quantum', 2)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[2차시]</span>동전과 큐비트</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[2차시]</span> 동전과 큐비트</span>
               </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-tab-3" onclick="switchPackageLessonPlanTab('quantum', 3)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[3차시]</span>VQE 알고리즘</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[3차시]</span> VQE 알고리즘</span>
               </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-tab-4" onclick="switchPackageLessonPlanTab('quantum', 4)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[4차시]</span>스타트업 CEO</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[4차시]</span> 스타트업 CEO</span>
               </a>
             </div>
           </div>
@@ -157,178 +160,149 @@
         <!-- 1. KAIST 화학과 CPRL 소개 VIEW            -->
         <!-- ========================================== -->
         <section id="view-cprl-intro" class="content-view">
-          <!-- 연구실 상세 안내 카드: 지도교수 & 연구진 소개 -->
-          <div class="card" style="margin-bottom:1.75rem; padding: 1.75rem 1.75rem 2.65rem;">
-            <div class="card-header" style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom:1.55rem; gap:0.45rem;">
-              <h2 class="card-title" style="margin:0;">
-                <span>KAIST 화학과 CPRL 소개</span>
-              </h2>
-              <p style="font-size:0.92rem; color:var(--color-graphite); margin:0; line-height:1.65;">
-                <strong>CPRL(Computational Photodynamics Research Lab)</strong>은 KAIST 화학과 산하 연구실로, 슈퍼컴퓨터와 양자역학 시뮬레이션을 통해 <strong>분자의 빛 반응과 전자 이동을 탐구하는 연구실</strong>입니다.
+          <div class="mag-journey-canvas">
+
+            <!-- 마스트헤드 -->
+            <header class="mag-masthead">
+              <div class="mag-lead-tag">연구실 안내</div>
+              <h1 class="mag-main-headline">
+                컴퓨터 시뮬레이션으로 탐구하는<br>
+                빛과 분자의 양자 동역학 연구실
+              </h1>
+              <p class="mag-deck">
+                KAIST 화학과 CPRL(Computational Photodynamics Research Lab)은 슈퍼컴퓨터와 첨단 양자역학 시뮬레이션을 통해 분자의 빛 반응과 전자 이동을 탐구하는 계산화학물리 연구실입니다.
               </p>
-            </div>
-            
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:1.35rem;">
-              <!-- 좌측: 지도교수 프로필 + 교수님 강연 및 해설 영상 통합 -->
-              <div style="background:#f8fafc; border:1px solid var(--border); border-radius:var(--radius-md); padding:1.5rem 1.35rem; display:flex; flex-direction:column; justify-content:space-between;">
-                <!-- 지도교수 정보 -->
-                <div>
-                  <div style="font-size:1.15rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.85rem;">
-                    <span>CPRL 지도교수</span>
+            </header>
+
+            <!-- 2단 에디토리얼 본문 그리드 (카드 박스 감싸기 완전 배제) -->
+            <div class="cprl-intro-grid">
+
+              <!-- 좌측 칼럼: 01 CPRL 지도교수 & 강연 영상 -->
+              <div class="cprl-intro-col">
+                <div class="cprl-col-header">
+                  <span class="cprl-col-num">01</span>
+                  <h3>CPRL 지도교수</h3>
+                </div>
+
+                <!-- 지도교수 프로필 -->
+                <div class="cprl-prof-layout">
+                  <div class="cprl-prof-avatar-wrap">
+                    <img src="image/prof_youngmin_rhee.jpg" alt="이영민 교수">
                   </div>
-                  
-                  <div class="cprl-prof-row">
-                    <div class="cprl-prof-img-wrap">
-                      <img src="image/prof_youngmin_rhee.jpg" alt="이영민 교수" class="cprl-prof-img">
-                    </div>
-                    <div class="cprl-prof-info">
-                      <div style="font-size:1.24rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.35rem; line-height:1.2;">이영민 교수</div>
-                      <p style="font-size:0.88rem; color:var(--color-graphite); line-height:1.6; margin:0 0 0.75rem 0;">
-                        KAIST 화학과 교수 (2019 ~ )<br>
-                        양자 화학 분야의 이론 및 계산 연구를 이끌고 있습니다.
-                      </p>
+                  <div class="cprl-prof-bio">
+                    <div class="cprl-prof-name">이영민 교수</div>
+                    <p class="cprl-prof-role">
+                      KAIST 화학과 교수 (2019 ~ )<br>
+                      양자 화학 분야의 이론 및 계산 연구를 이끌고 있습니다.
+                    </p>
 
-                      <!-- 학력 / 경력 / 수상 요약 카드 (클릭 시 중앙 상세 모달 팝업) -->
-                      <div class="cprl-cv-box" onclick="openCvModal()" onkeydown="if(event.key==='Enter'||event.key===' ')openCvModal()" aria-label="이영민 교수 상세 이력 보기" role="button" tabindex="0">
-                        <div style="display:flex; flex-direction:column; gap:0.42rem;">
-                          <!-- 최신 학력 -->
-                          <div style="display:flex; align-items:center; gap:0.48rem;">
-                            <span style="display:inline-flex; align-items:center; gap:0.25rem; font-size:0.71rem; font-weight:600; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:4px; padding:0.12rem 0.38rem; flex-shrink:0; line-height:1.2;">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap" style="color:#64748b;"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
-                              <span>학력</span>
-                            </span>
-                            <span style="font-size:0.8rem; color:var(--color-charcoal); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                              미국 스탠퍼드 대학교 화학과 박사 <span style="font-weight:400; color:var(--color-stone); font-size:0.73rem;">(2000–2005)</span>
-                            </span>
-                          </div>
-
-                          <!-- 최신 경력 -->
-                          <div style="display:flex; align-items:center; gap:0.48rem;">
-                            <span style="display:inline-flex; align-items:center; gap:0.25rem; font-size:0.71rem; font-weight:600; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:4px; padding:0.12rem 0.38rem; flex-shrink:0; line-height:1.2;">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase" style="color:#64748b;"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
-                              <span>경력</span>
-                            </span>
-                            <span style="font-size:0.8rem; color:var(--color-charcoal); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                              KAIST 화학과 정교수 <span style="font-weight:400; color:var(--color-stone); font-size:0.73rem;">(2019 ~ 현재)</span>
-                            </span>
-                          </div>
-
-                          <!-- 최신 수상 -->
-                          <div style="display:flex; align-items:center; gap:0.48rem;">
-                            <span style="display:inline-flex; align-items:center; gap:0.25rem; font-size:0.71rem; font-weight:600; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:4px; padding:0.12rem 0.38rem; flex-shrink:0; line-height:1.2;">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award" style="color:#64748b;"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
-                              <span>수상</span>
-                            </span>
-                            <span style="font-size:0.8rem; color:var(--color-charcoal); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                              한국화학회 IPJAE 물리화학상 <span style="font-weight:400; color:var(--color-stone); font-size:0.73rem;">(2026)</span>
-                            </span>
-                          </div>
-                        </div>
-
-                        <!-- 하단 상세 이력 안내 팁 (가운데 정렬 및 모달 팝업 아이콘) -->
-                        <div style="display:flex; align-items:center; justify-content:center; gap:0.32rem; font-size:0.75rem; color:var(--color-notion-blue); margin-top:0.45rem; padding-top:0.38rem; border-top:1px dashed #e2e8f0; font-weight:600;">
-                          <span>상세 이력</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="cprl-cv-icon"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                        </div>
+                    <!-- 학력 / 경력 / 수상 요약 (클릭 시 상세 모달) -->
+                    <div class="cprl-cv-summary" onclick="openCvModal()" onkeydown="if(event.key==='Enter'||event.key===' ')openCvModal()" aria-label="이영민 교수 상세 이력 보기" role="button" tabindex="0">
+                      <div class="cprl-cv-row">
+                        <span class="cprl-cv-tag">학력</span>
+                        <span class="cprl-cv-text">미국 스탠퍼드 대학교 화학과 박사 <span class="cprl-cv-year-inline">(2000–2005)</span></span>
+                      </div>
+                      <div class="cprl-cv-row">
+                        <span class="cprl-cv-tag">경력</span>
+                        <span class="cprl-cv-text">KAIST 화학과 정교수 <span class="cprl-cv-year-inline">(2019 ~ 현재)</span></span>
+                      </div>
+                      <div class="cprl-cv-row">
+                        <span class="cprl-cv-tag">수상</span>
+                        <span class="cprl-cv-text">한국화학회 IPJAE 물리화학상 <span class="cprl-cv-year-inline">(2026)</span></span>
+                      </div>
+                      <div class="cprl-cv-hint">
+                        <span>상세 이력 보기</span>
+                        <span>↗</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- 강연 및 인터뷰 (좌측 카드 내 통합) -->
-                <div style="border-top:1px dashed var(--border); padding-top:1.15rem;">
-                  <div style="font-size:0.95rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.75rem;">
-                    <span>강연 및 인터뷰</span>
-                  </div>
+                <!-- 강연 및 인터뷰 영상 그리드 -->
+                <div class="cprl-videos-wrap">
+                  <h4>교수 강연 및 해설 영상</h4>
 
-                  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:0.65rem;">
+                  <div class="cprl-video-cards-grid">
                     <!-- 영상 1 -->
-                    <a href="https://youtu.be/YQfs9rIG_DY" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; background:var(--color-pure-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:transform 0.15s ease, box-shadow 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                      <div style="position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden;">
-                        <img src="https://img.youtube.com/vi/YQfs9rIG_DY/mqdefault.jpg" alt="석학인터뷰 이영민" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
-                        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center;">
-                          <div style="width:28px; height:28px; background:rgba(0,0,0,0.65); border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(2px);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    <a href="https://youtu.be/YQfs9rIG_DY" target="_blank" rel="noopener noreferrer" class="cprl-video-card-item">
+                      <div class="cprl-video-thumb">
+                        <img src="https://img.youtube.com/vi/YQfs9rIG_DY/mqdefault.jpg" alt="석학인터뷰 이영민">
+                        <div class="cprl-video-play-btn">
+                          <div class="cprl-video-play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                           </div>
                         </div>
                       </div>
-                      <div style="padding:0.55rem 0.6rem; flex:1; display:flex; align-items:center;">
-                        <div style="font-size:0.78rem; font-weight:600; color:var(--color-charcoal); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
-                          세상을 지배하는 원리, 작은 세상을 통해 볼 수 있다
-                        </div>
+                      <div class="cprl-video-title">
+                        세상을 지배하는 원리, 작은 세상을 통해 볼 수 있다
                       </div>
                     </a>
 
                     <!-- 영상 2 -->
-                    <a href="https://youtu.be/u7OqkWleCOA" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; background:var(--color-pure-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:transform 0.15s ease, box-shadow 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                      <div style="position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden;">
-                        <img src="https://img.youtube.com/vi/u7OqkWleCOA/mqdefault.jpg" alt="명강리뷰 이영민" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
-                        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center;">
-                          <div style="width:28px; height:28px; background:rgba(0,0,0,0.65); border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(2px);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    <a href="https://youtu.be/u7OqkWleCOA" target="_blank" rel="noopener noreferrer" class="cprl-video-card-item">
+                      <div class="cprl-video-thumb">
+                        <img src="https://img.youtube.com/vi/u7OqkWleCOA/mqdefault.jpg" alt="명강리뷰 이영민">
+                        <div class="cprl-video-play-btn">
+                          <div class="cprl-video-play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                           </div>
                         </div>
                       </div>
-                      <div style="padding:0.55rem 0.6rem; flex:1; display:flex; align-items:center;">
-                        <div style="font-size:0.78rem; font-weight:600; color:var(--color-charcoal); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
-                          세상을 만드는 원자는 동그랄까, 길쭉할까, 우글쭈글할까?
-                        </div>
+                      <div class="cprl-video-title">
+                        세상을 만드는 원자는 동그랄까, 길쭉할까, 우글쭈글할까?
                       </div>
                     </a>
 
                     <!-- 영상 3 -->
-                    <a href="https://youtu.be/KHiNM1I1dPQ" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; background:var(--color-pure-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:transform 0.15s ease, box-shadow 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                      <div style="position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden;">
-                        <img src="https://img.youtube.com/vi/KHiNM1I1dPQ/mqdefault.jpg" alt="강연 풀영상 이영민" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
-                        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center;">
-                          <div style="width:28px; height:28px; background:rgba(0,0,0,0.65); border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(2px);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    <a href="https://youtu.be/KHiNM1I1dPQ" target="_blank" rel="noopener noreferrer" class="cprl-video-card-item">
+                      <div class="cprl-video-thumb">
+                        <img src="https://img.youtube.com/vi/KHiNM1I1dPQ/mqdefault.jpg" alt="강연 풀영상 이영민">
+                        <div class="cprl-video-play-btn">
+                          <div class="cprl-video-play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                           </div>
                         </div>
                       </div>
-                      <div style="padding:0.55rem 0.6rem; flex:1; display:flex; align-items:center;">
-                        <div style="font-size:0.78rem; font-weight:600; color:var(--color-charcoal); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
-                          세상을 만드는 원자는 동그랄까, 길쭉할까, 우글쭈글할까?
-                        </div>
+                      <div class="cprl-video-title">
+                        세상을 만드는 원자는 동그랄까, 길쭉할까, 우글쭈글할까?
                       </div>
                     </a>
 
                     <!-- 영상 4 -->
-                    <a href="https://youtu.be/MCIiTmUyl3s" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; background:var(--color-pure-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:transform 0.15s ease, box-shadow 0.15s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow-md)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
-                      <div style="position:relative; width:100%; padding-top:56.25%; background:#000; overflow:hidden;">
-                        <img src="https://img.youtube.com/vi/MCIiTmUyl3s/mqdefault.jpg" alt="질문답변 이영민" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;">
-                        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.22); display:flex; align-items:center; justify-content:center;">
-                          <div style="width:28px; height:28px; background:rgba(0,0,0,0.65); border-radius:50%; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(2px);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    <a href="https://youtu.be/MCIiTmUyl3s" target="_blank" rel="noopener noreferrer" class="cprl-video-card-item">
+                      <div class="cprl-video-thumb">
+                        <img src="https://img.youtube.com/vi/MCIiTmUyl3s/mqdefault.jpg" alt="질문답변 이영민">
+                        <div class="cprl-video-play-btn">
+                          <div class="cprl-video-play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#ffffff" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                           </div>
                         </div>
                       </div>
-                      <div style="padding:0.55rem 0.6rem; flex:1; display:flex; align-items:center;">
-                        <div style="font-size:0.78rem; font-weight:600; color:var(--color-charcoal); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
-                          수소가 전자를 잃고 이온이 되면 원자핵 크기로 작아질까?
-                        </div>
+                      <div class="cprl-video-title">
+                        수소가 전자를 잃고 이온이 되면 원자핵 크기로 작아질까?
                       </div>
                     </a>
                   </div>
                 </div>
+
               </div>
 
-              <!-- 우측: CPRL 연구진 단체 카드 -->
-              <div style="background:#f8fafc; border:1px solid var(--border); border-radius:var(--radius-md); padding:1.5rem 1.35rem; display:flex; flex-direction:column; justify-content:space-between;">
-                <div>
-                  <div style="font-size:1.15rem; font-weight:700; color:var(--color-charcoal); margin-bottom:0.85rem;">
-                    <span>CPRL 연구진</span>
-                  </div>
+              <!-- 우측 칼럼: 02 CPRL 연구진 -->
+              <div class="cprl-intro-col">
+                <div class="cprl-col-header">
+                  <span class="cprl-col-num">02</span>
+                  <h3>CPRL 연구진</h3>
+                </div>
 
-                  <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-sm); margin-bottom:0.9rem; background:#eaeaea;">
-                    <img src="image/cprl_group.jpg" alt="CPRL 연구진 단체 사진" style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; object-position:center; display:block;">
-                  </div>
+                <div class="cprl-team-visual" onclick="openImageLightbox('image/cprl_group.jpg', 'KAIST CPRL 연구진', 'KAIST 화학과 석·박사 과정 및 박사후 연구원들이 함께 모여 첨단 컴퓨터 시뮬레이션과 양자 동역학을 통해 분자의 새로운 광반응을 개척하고 있습니다.')">
+                  <img src="image/cprl_group.jpg" alt="CPRL 연구진 단체 사진">
+                </div>
 
-                  <p style="font-size:0.88rem; color:var(--color-graphite); line-height:1.65; margin:0;">
-                    KAIST 화학과 석·박사 과정 및 박사후 연구원들이 함께 모여 첨단 컴퓨터 시뮬레이션과 양자 동역학을 통해 분자의 새로운 광반응을 개척하고 있습니다.
-                  </p>
+                <div class="mag-photo-caption">
+                  KAIST 화학과 석·박사 과정 및 박사후 연구원들이 함께 모여 첨단 컴퓨터 시뮬레이션과 양자 동역학을 통해 분자의 새로운 광반응을 개척하고 있습니다.
                 </div>
               </div>
+
             </div>
 
           </div>
@@ -338,214 +312,197 @@
         <!-- 2. CPRL 주요 연구 내용 VIEW                -->
         <!-- ========================================== -->
         <section id="view-cprl-research" class="content-view">
-          <div class="theme-header-research">
-            <h1 style="font-size:1.45rem; font-weight:800; margin:0 0 0.3rem; color:var(--color-charcoal); letter-spacing:-0.5px;">
-              CPRL 주요 연구 내용
-            </h1>
-            <p style="font-size:0.95rem; color:var(--color-charcoal); margin:0 0 0.4rem; line-height:1.55; font-weight:600;">
-              "눈에 보이지 않는 작은 세계를 컴퓨터 가상 실험실에서 탐험합니다."
-            </p>
-            <p style="font-size:0.89rem; color:#2b2b2b; margin:0; line-height:1.6;">
-              KAIST 화학과 CPRL은 화학약품을 섞는 실험실이 아닌, 슈퍼컴퓨터와 양자 컴퓨터를 활용해 화학 반응 및 양자 세계를 탐구하는 연구실입니다. 우리가 매일 사용하는 스마트폰 액정 화면부터 미래 인류를 구할 신약 분자 설계까지, 컴퓨터 시뮬레이션으로 화학의 새로운 미래를 열어가고 있습니다.
-            </p>
-          </div>
+          <div class="mag-journey-canvas">
 
-          <!-- 단일 통합 크롬 탭 윈도우 컴포넌트 (사이드바 탭 헤더 스타일) -->
-          <div class="chrome-window">
-            <div class="chrome-tab-bar" role="tablist">
-              <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchResearchTab(event, 0)" role="tab" aria-selected="true">
-                <span class="tab-text-full">연구 영역 01 · 화학 반응 에너지 지형도 구축</span>
-                <span class="tab-text-mid">01. 에너지 지형도 구축</span>
-                <span class="tab-text-short">01. 에너지 지형도</span>
-              </button>
-              <button type="button" class="chrome-tab-btn tab-green" onclick="switchResearchTab(event, 1)" role="tab" aria-selected="false">
-                <span class="tab-text-full">연구 영역 02 · 양자 효과 시뮬레이션</span>
-                <span class="tab-text-mid">02. 양자 효과</span>
-                <span class="tab-text-short">02. 양자</span>
-              </button>
-              <button type="button" class="chrome-tab-btn tab-purple" onclick="switchResearchTab(event, 2)" role="tab" aria-selected="false">
-                <span class="tab-text-full">연구 영역 03 · 양자 컴퓨팅 툴 개발</span>
-                <span class="tab-text-mid">03. 양자 툴 개발</span>
-                <span class="tab-text-short">03. 툴 개발</span>
-              </button>
-            </div>
+            <!-- 마스트헤드 -->
+            <header class="mag-masthead">
+              <div class="mag-lead-tag">KAIST 화학과 CPRL 첨단 연구</div>
+              <h1 class="mag-main-headline">
+                눈에 보이지 않는 작은 세계를<br>
+                컴퓨터 가상 실험실에서 탐험합니다
+              </h1>
+              <p class="mag-deck">
+                KAIST 화학과 CPRL(화학물리연구실)은 화학약품을 섞는 실험실이 아닌, 슈퍼컴퓨터와 양자 컴퓨터를 활용해 화학 반응 및 양자 세계를 탐구하는 연구실입니다. 우리가 매일 사용하는 스마트폰 액정 화면부터 미래 인류를 구할 신약 분자 설계까지, 컴퓨터 시뮬레이션으로 화학의 새로운 미래를 열어가고 있습니다.
+              </p>
+            </header>
 
-            <!-- 패널 1: 화학 반응 에너지 지형도 구축 -->
-            <div class="chrome-tab-panel active" role="tabpanel">
-              <div class="research-panel-grid">
-                
-                <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
-                <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
-                  <div>
-                    <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
-                      "컴퓨터와 AI를 활용해, 복잡한 화학 반응의 에너지 지형을 빠르고 정확하게 계산해요"
-                    </h3>
-                    <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
-                      수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자의 화학 반응은 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다. 따라서 화학 반응이 직접 일어나는 핵심 영역은 <strong>정밀한 양자역학</strong>으로 세밀하게 계산하고, 주변을 둘러싼 방대한 물 분자나 단백질 환경은 <strong>계산 속도가 빠른 분자역학</strong>으로 효율적으로 처리하는 <strong>하이브리드 시뮬레이션 기술(IM/MM)</strong>을 CPRL 연구실에서 독자 개발했습니다. 여기에 <strong>인공지능(신경망 머신러닝)</strong>을 결합하여 중간 에너지 변화를 수학적으로 매끄럽게 보간(연결)함으로써, 복잡한 화학 반응과 분자의 움직임을 실제 실험실보다 훨씬 빠르고 정확하게 컴퓨터로 예측할 수 있습니다.
-                    </p>
-                  </div>
-
-                  <!-- 좌측 하단: 최근 대표 연구 1편 (본문 아래 여백 없이 꽉 찬 대형 카드) -->
-                  <div style="flex:1; display:flex; flex-direction:column; margin-top:0.6rem;">
-                    <a href="https://doi.org/10.1021/acs.jpclett.6c00794" target="_blank" rel="noopener noreferrer" style="flex:1; display:flex; align-items:center; gap:1.25rem; padding:1.1rem 1.25rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; transition:all 0.2s ease; box-shadow:0 1px 4px rgba(0,0,0,0.04); min-height:175px;" onmouseover="this.style.background='#f1f5f9'; this.style.borderColor='#cbd5e1';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0';">
-                      <div style="width:265px; height:152px; flex-shrink:0; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0.4rem; box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);">
-                        <img src="image/paper_130.jpg" alt="최근 대표 연구 논문 핵심 도표" style="max-width:100%; max-height:100%; object-fit:contain;">
-                      </div>
-                      <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap;">
-                          <span style="font-size:0.78rem; font-weight:800; color:#1d4ed8; background:#eff6ff; border:1px solid #dbeafe; padding:0.18rem 0.55rem; border-radius:4px;">최근 대표 연구</span>
-                          <span style="font-size:0.78rem; font-weight:700; color:#475569;">미국화학회 JPCL 2026 ↗</span>
-                        </div>
-                        <div style="font-size:1.02rem; font-weight:800; color:#0f172a; line-height:1.4; margin-bottom:0.4rem; word-break:keep-all;">
-                          자연의 빛 수확 나노 안테나: 왜 9각형 고리일까?
-                        </div>
-                        <div style="font-size:0.84rem; color:#475569; line-height:1.55;">
-                          컴퓨터 전원자 시뮬레이션으로 밝혀낸 광합성 에너지 손실 최소화의 비밀<br>
-                          <span style="font-size:0.76rem; color:#64748b; display:inline-block; margin-top:0.25rem;">(KAIST CPRL 조광현 연구원 · 장석주 교수 · 이영민 교수팀)</span>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
+            <!-- 1. 연구 영역 01: 화학 반응 에너지 지형도 구축 -->
+            <section class="mag-section">
+              <div class="mag-section-header">
+                <span class="mag-section-num">01</span>
+                <div class="mag-section-title-wrap">
+                  <h2>화학 반응 에너지 지형도 구축</h2>
                 </div>
-
-                <!-- 우측: 미디어 컨테이너 (3D 분자 구조 모델) -->
-                <div class="media-tab-container" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column; height:100%;">
-                  <!-- 3D 분자 구조 모델 사진 -->
-                  <div style="display:flex; flex-direction:column; flex:1;">
-                    <div style="flex:1; min-height:340px; background:#000000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-                      <img src="image/lh2_3d_model.jpg" alt="광합성 복합체(LH2) 3D 분자 구조 모델" style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;" onclick="window.open(this.src)">
-                    </div>
-                    <div style="padding:0.85rem 1.1rem; font-size:0.84rem; color:#475569; line-height:1.55; background:#ffffff; border-top:1px solid #f1f5f9;">
-                      <div style="font-size:0.92rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
-                        광합성 홍색세균의 세포막에 존재하는 빛 수확 복합체(LH2)의 9량체 원형 구조
-                      </div>
-                      <div>
-                        CPRL 연구진은 첨단 분자 시뮬레이션을 통해 자연이 왜 9개 고리를 선택해 에너지 손실(무질서도)을 최소화했는지를 증명했습니다. (2026)
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
-            </div>
 
-            <!-- 패널 2: 양자 효과 시뮬레이션 -->
-            <div class="chrome-tab-panel" role="tabpanel">
-              <div class="research-panel-grid">
-                
-                <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
-                <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
-                  <div>
-                    <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
-                      "스마트폰에 갇혀있던 75%의 전자를 구출하여, 보다 효율적으로 빛을 만들어요"
-                    </h3>
-                    <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
-                      분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 잘 보이지 않지만, 빛이나 전기를 받으면 높은 에너지 상태로 튀어 올랐다가 낮은 상태로 내려가면서 빛 에너지를 방출하며 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다. 그런데 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 25%의 전자들만 빛을 내고, <strong>나머지 75%의 전자는 문이 잠긴 방에 갇혀 '스마트폰 발열'</strong>로 사라지는 배터리 낭비의 한계가 있었습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 곳으로 우회시켜 <strong>100% 모두 빛으로 전환하는 혁신적인 '핫 엑시톤' 양자 효과 메커니즘</strong>을 규명했습니다.
-                    </p>
+              <div class="mag-stage2-grid">
+                <!-- 좌측: 3D 분자 구조 모델 화보 (클릭 시 라이트박스 모달) -->
+                <div class="mag-stage2-visual">
+                  <div class="mag-figure-frame" onclick="openImageLightbox('image/lh2_3d_model.jpg', '광합성 홍색세균 LH2 3D 분자 구조 모델', '광합성 홍색세균의 빛 수확 복합체(LH2) 9량체 원형 구조 (KAIST CPRL 2026)')">
+                    <img src="image/lh2_3d_model.jpg" alt="광합성 홍색세균 LH2 3D 분자 구조 모델">
                   </div>
-
-                  <!-- 좌측 하단: 최근 대표 연구 1편 (본문 아래 여백 없이 꽉 찬 대형 카드) -->
-                  <div style="flex:1; display:flex; flex-direction:column; margin-top:0.6rem;">
-                    <a href="https://doi.org/10.1021/acs.jpca.5c05378" target="_blank" rel="noopener noreferrer" style="flex:1; display:flex; align-items:center; gap:1.25rem; padding:1.1rem 1.25rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; transition:all 0.2s ease; box-shadow:0 1px 4px rgba(0,0,0,0.04); min-height:175px;" onmouseover="this.style.background='#f1f5f9'; this.style.borderColor='#cbd5e1';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0';">
-                      <div style="width:265px; height:152px; flex-shrink:0; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0.4rem; box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);">
-                        <img src="image/paper_oled_toc.png" alt="최근 대표 연구 논문 핵심 도표" style="max-width:100%; max-height:100%; object-fit:contain;">
-                      </div>
-                      <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap;">
-                          <span style="font-size:0.78rem; font-weight:800; color:#059669; background:#ecfdf5; border:1px solid #a7f3d0; padding:0.18rem 0.55rem; border-radius:4px;">최근 대표 연구</span>
-                          <span style="font-size:0.78rem; font-weight:700; color:#475569;">미국화학회 JPCA 2026 ↗</span>
-                        </div>
-                        <div style="font-size:1.02rem; font-weight:800; color:#0f172a; line-height:1.4; margin-bottom:0.4rem; word-break:keep-all;">
-                          버려지던 75% 전자를 빛으로: OLED 분자의 미세 진동 효과
-                        </div>
-                        <div style="font-size:0.84rem; color:#475569; line-height:1.55;">
-                          컴퓨터 양자 시뮬레이션으로 밝혀낸 차세대 핫 엑시톤 고효율 발광 원리<br>
-                          <span style="font-size:0.76rem; color:#64748b; display:inline-block; margin-top:0.25rem;">(KAIST CPRL 최효주 연구원 · 박수완 연구원 · 이영민 교수팀)</span>
-                        </div>
-                      </div>
-                    </a>
+                  <div class="mag-photo-caption">
+                    <strong>광합성 홍색세균의 빛 수확 복합체(LH2) 9량체 원형 구조</strong>
+                    CPRL 연구진은 첨단 분자 시뮬레이션을 통해 자연이 왜 9개 고리를 선택해 에너지 손실(무질서도)을 최소화했는지를 증명했습니다. (2026)
                   </div>
                 </div>
 
-                <!-- 우측: 미디어 컨테이너 (컴퓨터 양자 시뮬레이션 모델) -->
-                <div class="media-tab-container" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column; height:100%;">
-                  <!-- 3D 분자 양자 시뮬레이션 사진 -->
-                  <div style="display:flex; flex-direction:column; flex:1;">
-                    <div style="flex:1; min-height:340px; background:#000000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-                      <img src="image/oled_quantum_simulation_main.jpg" alt="컴퓨터 양자 시뮬레이션을 통한 스마트폰 OLED 발광 분자 연구" style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;" onclick="window.open(this.src)">
-                    </div>
-                    <div style="padding:0.85rem 1.1rem; font-size:0.84rem; color:#475569; line-height:1.55; background:#ffffff; border-top:1px solid #f1f5f9;">
-                      <div style="font-size:0.92rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
-                        컴퓨터 양자 시뮬레이션으로 밝혀내는 스마트폰 OLED 청색 발광의 비밀
-                      </div>
-                      <div>
-                        CPRL 연구실은 슈퍼컴퓨터를 이용해 분자 속 전자의 확률 분포(전자 구름 궤도)를 시뮬레이션함으로써, 스마트폰 발열로 낭비되던 75%의 전자를 활용하여 100% 빛으로 전환하는 메커니즘을 규명했습니다. (2026)
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <!-- 우측: 에디토리얼 서사 (헤드카피 + 깔끔하게 이어진 본문) -->
+                <div class="mag-stage2-narrative">
+                  <h3 class="mag-subheadline">
+                    "컴퓨터와 AI를 활용해, 복잡한 화학 반응의 에너지 지형을 빠르고 정확하게 계산해요"
+                  </h3>
 
+                  <!-- 유기적으로 이어진 단락 (중간 끊김 없이 들여쓰기와 핵심 포인트 컬러 적용) -->
+                  <p class="mag-stage2-p">
+                    수만 개의 원자가 얽혀 있는 생명체 속 단백질이나 신약 분자의 화학 반응은 슈퍼컴퓨터로도 하나하나 정밀하게 계산하기 어렵습니다. 따라서 화학 반응이 직접 일어나는 핵심 영역은 <strong>정밀한 양자역학</strong>으로 세밀하게 계산하고, 주변을 둘러싼 방대한 물 분자나 단백질 환경은 <strong>계산 속도가 빠른 분자역학</strong>으로 효율적으로 처리하는 <strong>하이브리드 시뮬레이션 기술(IM/MM)</strong>을 CPRL 연구실에서 독자 개발했습니다. 여기에 <strong>인공지능(신경망 머신러닝)</strong>을 결합하여 복잡한 에너지 변화를 수학적으로 매끄럽게 보간함으로써, 화학 반응의 전 과정을 실제 실험실보다 훨씬 빠르고 정확하게 컴퓨터 가상 공간에서 예측해 냅니다.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <!-- 패널 3: 양자 컴퓨팅 툴 개발 -->
-            <div class="chrome-tab-panel" role="tabpanel">
-              <div class="research-panel-grid">
-                
-                <!-- 좌측: 연구 내용 설명 및 대표 논문 -->
-                <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%;">
-                  <div>
-                    <h3 style="font-size:1.15rem; font-weight:800; color:var(--color-charcoal); margin-bottom:0.85rem; line-height:1.45;">
-                      "기존 슈퍼컴퓨터의 한계를 넘어, 양자 컴퓨터와 손잡고 복잡한 분자의 비밀을 풀어요"
-                    </h3>
-                    <p style="font-size:calc(0.92rem + 1px); color:#2d3139; line-height:1.75; margin-bottom:0.75rem;">
-                      분자 속 수많은 전자들은 서로를 밀어내며 복잡하게 얽혀 있어서, 분자가 조금만 커져도 계산해야 할 경우의 수가 우주 전체의 모래알 수보다 많아지는 <strong>'지수 폭발(Exponential Complexity)'</strong>이 일어납니다. 인류 최강의 슈퍼컴퓨터조차 멈춰버리는 이 난제를 해결하기 위해 CPRL 연구실은 <strong>미래의 게임체인저인 양자 컴퓨터(Quantum Computer)</strong>를 화학 계산에 도입했습니다. 현재의 초기 양자 하드웨어가 가진 물리적 노이즈 한계를 뛰어넘기 위해, 기존의 틀을 깨는 발상(Thinking Outside-of-the-Box)으로 <strong>양자 컴퓨터와 일반 컴퓨터가 역할을 나누어 협동하는 '양자-고전 하이브리드 계산 기술(VQE-PT2)'</strong>을 독자 개발하여 실제 글로벌 양자 컴퓨터(IonQ)에서 화학적 정확성을 입증했습니다.
-                    </p>
+              <!-- 챕터 하단 전폭 배치: 대표 연구 논문 카드 (챕터 내부 완결 요소) -->
+              <div class="mag-section-footer-paper">
+                <a href="https://doi.org/10.1021/acs.jpclett.6c00794" target="_blank" rel="noopener noreferrer" class="mag-paper-full-card">
+                  <div class="mag-paper-thumb">
+                    <img src="image/paper_130.jpg" alt="최근 대표 연구 논문 핵심 도표">
                   </div>
-
-                  <!-- 좌측 하단: 최근 대표 연구 1편 (본문 아래 여백 없이 꽉 찬 대형 카드) -->
-                  <div style="flex:1; display:flex; flex-direction:column; margin-top:0.6rem;">
-                    <a href="https://doi.org/10.1038/s41534-024-00871-4" target="_blank" rel="noopener noreferrer" style="flex:1; display:flex; align-items:center; gap:1.25rem; padding:1.1rem 1.25rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; text-decoration:none; transition:all 0.2s ease; box-shadow:0 1px 4px rgba(0,0,0,0.04); min-height:175px;" onmouseover="this.style.background='#f1f5f9'; this.style.borderColor='#cbd5e1';" onmouseout="this.style.background='#f8fafc'; this.style.borderColor='#e2e8f0';">
-                      <div style="width:265px; height:152px; flex-shrink:0; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0.4rem; box-shadow:inset 0 1px 2px rgba(0,0,0,0.03);">
-                        <img src="image/paper_quantum_pes.png" alt="최근 대표 연구 논문 핵심 도표" style="max-width:100%; max-height:100%; object-fit:contain;">
-                      </div>
-                      <div style="flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center;">
-                        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; flex-wrap:wrap;">
-                          <span style="font-size:0.78rem; font-weight:800; color:#7c3aed; background:#f5f3ff; border:1px solid #ddd6fe; padding:0.18rem 0.55rem; border-radius:4px;">최근 대표 연구</span>
-                          <span style="font-size:0.78rem; font-weight:700; color:#475569;">네이처 npj Quantum Inf. 2024 ↗</span>
-                        </div>
-                        <div style="font-size:1.02rem; font-weight:800; color:#0f172a; line-height:1.4; margin-bottom:0.4rem; word-break:keep-all;">
-                          양자 컴퓨터로 풀어낸 분자의 에너지: 전자쌍 근사와 섭동 보정
-                        </div>
-                        <div style="font-size:0.84rem; color:#475569; line-height:1.55;">
-                          이온트랩 양자 하드웨어에서 화학 반응 계산 오차를 90% 줄인 하이브리드 알고리즘<br>
-                          <span style="font-size:0.76rem; color:#64748b; display:inline-block; margin-top:0.25rem;">(IonQ · 현대자동차 · KAIST CPRL 이영민 교수팀)</span>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-
-                <!-- 우측: 미디어 컨테이너 (이온트랩 양자 컴퓨터 시뮬레이션 모델) -->
-                <div class="media-tab-container" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column; height:100%;">
-                  <!-- 3D 이온트랩 양자 컴퓨터 분자 시뮬레이션 사진 -->
-                  <div style="display:flex; flex-direction:column; flex:1;">
-                    <div style="flex:1; min-height:340px; background:#000000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-                      <img src="image/quantum_trapped_ion_sim.jpg" alt="이온트랩 양자 컴퓨터를 이용한 분자 전자 구조 시뮬레이션" style="width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;" onclick="window.open(this.src)">
+                  <div class="mag-paper-body">
+                    <div class="mag-paper-badge-row">
+                      <span class="mag-paper-badge blue">최근 대표 연구</span>
+                      <span class="mag-paper-journal">미국화학회 JPCL 2026 ↗</span>
                     </div>
-                    <div style="padding:0.85rem 1.1rem; font-size:0.84rem; color:#475569; line-height:1.55; background:#ffffff; border-top:1px solid #f1f5f9;">
-                      <div style="font-size:0.92rem; font-weight:800; color:#0f172a; margin-bottom:0.35rem;">
-                        이온트랩 양자 컴퓨터를 이용한 화학 분자 전자 구조 시뮬레이션
-                      </div>
-                      <div>
-                        CPRL 연구진은 글로벌 양자컴퓨터 기업(IonQ) 및 현대자동차와 협력하여, 실제 양자 하드웨어의 노이즈를 극복하고 화학 반응 에너지를 초정밀 예측하는 차세대 양자 컴퓨팅 툴을 개발했습니다. (2024)
-                      </div>
+                    <div class="mag-paper-title">자연의 빛 수확 나노 안테나: 왜 9각형 고리일까?</div>
+                    <div class="mag-paper-desc">
+                      컴퓨터 전원자 시뮬레이션으로 밝혀낸 광합성 에너지 손실 최소화의 비밀<br>
+                      <span class="mag-paper-authors">(KAIST CPRL 조광현 연구원 · 장석주 교수 · 이영민 교수팀)</span>
                     </div>
                   </div>
-                </div>
-
+                  <div class="mag-paper-action">
+                    <span>논문 보기</span>
+                    <span>↗</span>
+                  </div>
+                </a>
               </div>
-            </div>
+            </section>
+
+            <!-- 2. 연구 영역 02: 양자 효과 시뮬레이션 -->
+            <section class="mag-section">
+              <div class="mag-section-header">
+                <span class="mag-section-num">02</span>
+                <div class="mag-section-title-wrap">
+                  <h2>양자 효과 시뮬레이션</h2>
+                </div>
+              </div>
+
+              <div class="mag-stage2-grid">
+                <!-- 좌측: 양자 시뮬레이션 모델 화보 (클릭 시 라이트박스 모달) -->
+                <div class="mag-stage2-visual">
+                  <div class="mag-figure-frame" onclick="openImageLightbox('image/oled_quantum_simulation_main.jpg', '컴퓨터 양자 시뮬레이션을 통한 스마트폰 OLED 발광 분자 연구', '스마트폰 OLED 발광 분자 양자 시뮬레이션 및 전자 구름 궤도 (KAIST CPRL 2026)')">
+                    <img src="image/oled_quantum_simulation_main.jpg" alt="컴퓨터 양자 시뮬레이션을 통한 스마트폰 OLED 발광 분자 연구">
+                  </div>
+                  <div class="mag-photo-caption">
+                    <strong>컴퓨터 양자 시뮬레이션으로 밝혀내는 스마트폰 OLED 청색 발광의 비밀</strong>
+                    CPRL 연구실은 슈퍼컴퓨터를 이용해 분자 속 전자의 확률 분포(전자 구름 궤도)를 시뮬레이션함으로써, 스마트폰 발열로 낭비되던 75%의 전자를 활용하여 100% 빛으로 전환하는 메커니즘을 규명했습니다. (2026)
+                  </div>
+                </div>
+
+                <!-- 우측: 에디토리얼 서사 (헤드카피 + 깔끔하게 이어진 본문) -->
+                <div class="mag-stage2-narrative">
+                  <h3 class="mag-subheadline">
+                    "스마트폰에 갇혀있던 75%의 전자를 구출하여, 보다 효율적으로 빛을 만들어요"
+                  </h3>
+
+                  <!-- 유기적으로 이어진 단락 -->
+                  <p class="mag-stage2-p">
+                    분자 속 전자들은 주변의 열과 진동 때문에 양자적 특성이 잘 보이지 않지만, 전기를 받으면 높은 에너지 준위로 튀어 올랐다가 내려오며 빛을 방출하는 과정에서 <strong>전자 스핀과 결맞음 같은 신비로운 '양자 효과'</strong>를 강하게 드러냅니다. 그런데 우리가 매일 쓰는 스마트폰 디스플레이(OLED)에서는 단 25%의 전자들만 빛을 내고, <strong>나머지 75%의 전자는 닫힌 방에 갇혀 '발열'</strong>로 사라지는 치명적인 배터리 낭비가 존재했습니다. CPRL 연구실은 독자적인 양자 동역학 시뮬레이션을 통해 갇혀 있던 전자를 높은 에너지 상태로 우회시켜 <strong>100% 모두 빛으로 탈출시키는 혁신적인 '핫 엑시톤' 메커니즘</strong>을 세계 최초로 규명했습니다.
+                  </p>
+                </div>
+              </div>
+
+              <!-- 챕터 하단 전폭 배치: 대표 연구 논문 카드 -->
+              <div class="mag-section-footer-paper">
+                <a href="https://doi.org/10.1021/acs.jpca.5c05378" target="_blank" rel="noopener noreferrer" class="mag-paper-full-card green">
+                  <div class="mag-paper-thumb">
+                    <img src="image/paper_oled_toc.png" alt="최근 대표 연구 논문 핵심 도표">
+                  </div>
+                  <div class="mag-paper-body">
+                    <div class="mag-paper-badge-row">
+                      <span class="mag-paper-badge green">최근 대표 연구</span>
+                      <span class="mag-paper-journal">미국화학회 JPCA 2026 ↗</span>
+                    </div>
+                    <div class="mag-paper-title">버려지던 75% 전자를 빛으로: OLED 분자의 미세 진동 효과</div>
+                    <div class="mag-paper-desc">
+                      컴퓨터 양자 시뮬레이션으로 밝혀낸 차세대 핫 엑시톤 고효율 발광 원리<br>
+                      <span class="mag-paper-authors">(KAIST CPRL 최효주 연구원 · 박수완 연구원 · 이영민 교수팀)</span>
+                    </div>
+                  </div>
+                  <div class="mag-paper-action">
+                    <span>논문 보기</span>
+                    <span>↗</span>
+                  </div>
+                </a>
+              </div>
+            </section>
+
+            <!-- 3. 연구 영역 03: 양자 컴퓨팅 툴 개발 -->
+            <section class="mag-section">
+              <div class="mag-section-header">
+                <span class="mag-section-num">03</span>
+                <div class="mag-section-title-wrap">
+                  <h2>양자 컴퓨팅 툴 개발</h2>
+                </div>
+              </div>
+
+              <div class="mag-stage2-grid">
+                <!-- 좌측: 이온트랩 양자컴퓨터 시뮬레이션 화보 (클릭 시 라이트박스 모달) -->
+                <div class="mag-stage2-visual">
+                  <div class="mag-figure-frame" onclick="openImageLightbox('image/quantum_trapped_ion_sim.jpg', '이온트랩 양자 컴퓨터를 이용한 화학 분자 전자 구조 시뮬레이션', '이온트랩 양자 하드웨어를 활용한 화학 반응 예측 시뮬레이션 (KAIST CPRL 2024)')">
+                    <img src="image/quantum_trapped_ion_sim.jpg" alt="이온트랩 양자 컴퓨터를 이용한 화학 분자 전자 구조 시뮬레이션">
+                  </div>
+                  <div class="mag-photo-caption">
+                    <strong>이온트랩 양자 컴퓨터를 이용한 화학 분자 전자 구조 시뮬레이션</strong>
+                    CPRL 연구진은 글로벌 양자컴퓨터 기업(IonQ) 및 현대자동차와 협력하여, 실제 양자 하드웨어의 노이즈를 극복하고 화학 반응 에너지를 초정밀 예측하는 차세대 양자 컴퓨팅 툴을 개발했습니다. (2024)
+                  </div>
+                </div>
+
+                <!-- 우측: 에디토리얼 서사 (헤드카피 + 깔끔하게 이어진 본문) -->
+                <div class="mag-stage2-narrative">
+                  <h3 class="mag-subheadline">
+                    "기존 슈퍼컴퓨터의 한계를 넘어, 양자 컴퓨터와 손잡고 복잡한 분자의 비밀을 풀어요"
+                  </h3>
+
+                  <!-- 유기적으로 이어진 단락 -->
+                  <p class="mag-stage2-p">
+                    분자 속 수많은 전자들은 서로를 밀어내며 복잡하게 얽혀 있어, 분자가 조금만 커져도 계산해야 할 경우의 수가 우주 전체의 모래알 수보다 많아지는 이른바 <strong>'지수 폭발(Exponential Explosion)'</strong>이 일어납니다. 인류 최강의 슈퍼컴퓨터조차 멈춰버리는 이 난제를 해결하기 위해 CPRL 연구실은 <strong>차세대 게임체인저인 양자 컴퓨터</strong>를 화학 계산에 전격 도입했습니다. 특히 현재 초기 양자 하드웨어가 지닌 물리적 노이즈를 극복하기 위해, 양자 컴퓨터와 고전 컴퓨터가 정밀하게 역할을 분담하는 <strong>독창적인 '양자-고전 하이브리드 알고리즘(VQE-PT2)'</strong>을 개발하여 실제 이온트랩 양자 하드웨어에서 화학 반응 예측 오차를 90% 이상 획기적으로 줄였습니다.
+                  </p>
+                </div>
+              </div>
+
+              <!-- 챕터 하단 전폭 배치: 대표 연구 논문 카드 -->
+              <div class="mag-section-footer-paper">
+                <a href="https://doi.org/10.1038/s41534-024-00871-4" target="_blank" rel="noopener noreferrer" class="mag-paper-full-card purple">
+                  <div class="mag-paper-thumb">
+                    <img src="image/paper_quantum_pes.png" alt="최근 대표 연구 논문 핵심 도표">
+                  </div>
+                  <div class="mag-paper-body">
+                    <div class="mag-paper-badge-row">
+                      <span class="mag-paper-badge purple">최근 대표 연구</span>
+                      <span class="mag-paper-journal">네이처 npj Quantum Inf. 2024 ↗</span>
+                    </div>
+                    <div class="mag-paper-title">양자 컴퓨터로 풀어낸 분자의 에너지: 전자쌍 근사와 섭동 보정</div>
+                    <div class="mag-paper-desc">
+                      이온트랩 양자 하드웨어에서 화학 반응 계산 오차를 90% 줄인 하이브리드 알고리즘<br>
+                      <span class="mag-paper-authors">(IonQ · 현대자동차 · KAIST CPRL 이영민 교수팀)</span>
+                    </div>
+                  </div>
+                  <div class="mag-paper-action">
+                    <span>논문 보기</span>
+                    <span>↗</span>
+                  </div>
+                </a>
+              </div>
+            </section>
+
           </div>
         </section>
 
@@ -1715,6 +1672,17 @@ result = job.<span class="c-fn">result</span>()
 
       </div>
     </main>
+  </div>
+
+  <!-- 범용 고화질 이미지 라이트박스 모달 -->
+  <div id="image-lightbox-modal" class="img-lightbox-backdrop" onclick="closeImageLightbox(event)" role="dialog" aria-modal="true">
+    <div class="img-lightbox-card" onclick="event.stopPropagation()">
+      <button type="button" class="img-lightbox-close" onclick="closeImageLightbox()" aria-label="닫기 (ESC)" title="닫기 (ESC)">✕</button>
+      <div class="img-lightbox-media">
+        <img id="image-lightbox-img" src="" alt="">
+      </div>
+      <div id="image-lightbox-caption" class="img-lightbox-caption"></div>
+    </div>
   </div>
 
   <!-- CPRL 이영민 교수 상세 이력 모달 (화면 중앙 렌더링 다이얼로그) -->
