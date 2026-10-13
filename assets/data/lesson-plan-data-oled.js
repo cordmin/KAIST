@@ -180,10 +180,10 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
-                      <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 1, 'student')">
+                      <button type="button" class="plan-material-btn primary" onclick="openWorksheetModal('oled', 1, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 1)">
+                      <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('oled', 1)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
@@ -408,13 +408,13 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
-                      <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 2, 'student')">
+                      <button type="button" class="plan-material-btn primary" onclick="openWorksheetModal('oled', 2, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 2)">
+                      <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('oled', 2)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-virtual-lab" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openVirtualLabModal()">
+                      <button type="button" class="plan-material-btn btn-virtual-lab" onclick="openVirtualLabModal()">
                         <i data-lucide="flask-conical"></i> <span>가상실험실</span>
                       </button>
                     </div>
@@ -600,10 +600,10 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
-                      <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 3, 'student')">
+                      <button type="button" class="plan-material-btn primary" onclick="openWorksheetModal('oled', 3, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 3)">
+                      <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('oled', 3)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
@@ -787,16 +787,16 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
-                      <button type="button" class="topbar-btn" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem; background:#0284c7; color:#ffffff; border-color:#0284c7;" onclick="openReaderModal('oled', 4)">
+                      <button type="button" class="plan-material-btn btn-reader" onclick="openReaderModal('oled', 4)">
                         <i data-lucide="book-open"></i> <span>읽기 자료</span>
                       </button>
-                      <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('oled', 4, 'student')">
+                      <button type="button" class="plan-material-btn primary" onclick="openWorksheetModal('oled', 4, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('oled', 4)">
+                      <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('oled', 4)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
-                      <button type="button" onclick="openVirtualLabModal(4)" class="topbar-btn btn-virtual-lab" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;">
+                      <button type="button" class="plan-material-btn btn-virtual-lab" onclick="openVirtualLabModal(4)">
                         <i data-lucide="flask-conical"></i> <span>가상실험실</span>
                       </button>
                     </div>

@@ -182,10 +182,10 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
-                      <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 1, 'student')">
+                      <button type="button" class="plan-material-btn primary" onclick="openWorksheetModal('quantum', 1, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 1)">
+                      <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('quantum', 1)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
                       </button>
                     </div>
@@ -379,11 +379,14 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
-                      <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 2, 'student')">
+                      <button type="button" class="plan-material-btn primary" onclick="openWorksheetModal('quantum', 2, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 2)">
+                      <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('quantum', 2)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                      </button>
+                      <button type="button" class="plan-material-btn btn-virtual-lab" onclick="switchPackageView('quantum', 'lab')">
+                        <i data-lucide="flask-conical"></i> <span>가상실험실</span>
                       </button>
                     </div>
                   </td>
@@ -568,11 +571,14 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
-                      <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 3, 'student')">
+                      <button type="button" class="plan-material-btn primary" onclick="openWorksheetModal('quantum', 3, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 3)">
+                      <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('quantum', 3)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                      </button>
+                      <button type="button" class="plan-material-btn btn-virtual-lab" onclick="switchPackageView('quantum', 'lab')">
+                        <i data-lucide="flask-conical"></i> <span>가상실험실</span>
                       </button>
                     </div>
                   </td>
@@ -753,11 +759,14 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   <th style="text-align:center; white-space:nowrap;">수업자료</th>
                   <td colspan="2">
                     <div style="display:inline-flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">
-                      <button type="button" class="topbar-btn primary" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openWorksheetModal('quantum', 4, 'student')">
+                      <button type="button" class="plan-material-btn primary" onclick="openWorksheetModal('quantum', 4, 'student')">
                         <i data-lucide="file-text"></i> <span>활동지</span>
                       </button>
-                      <button type="button" class="topbar-btn btn-presentation" style="padding:0.35rem 0.75rem; font-size:0.84rem; display:inline-flex; align-items:center; gap:0.35rem;" onclick="openPresentationModal('quantum', 4)">
+                      <button type="button" class="plan-material-btn btn-presentation" onclick="openPresentationModal('quantum', 4)">
                         <i data-lucide="presentation"></i> <span>프리젠테이션</span>
+                      </button>
+                      <button type="button" class="plan-material-btn btn-virtual-lab" onclick="switchPackageView('quantum', 'lab')">
+                        <i data-lucide="flask-conical"></i> <span>가상실험실</span>
                       </button>
                     </div>
                   </td>
