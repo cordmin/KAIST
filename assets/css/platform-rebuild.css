@@ -159,22 +159,22 @@ header.topbar {
 .rebuild-ws-identity {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
   cursor: default; /* CPRL 소개 전환 등 불필요한 클릭 동작 영구 제거 */
   user-select: none;
   width: 100%;
 }
 
 .rebuild-ws-logo {
-  width: 80px;
-  height: 48px;
+  width: 88px;
+  height: 42px;
   background: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 6px;
+  padding: 3px 6px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
   flex-shrink: 0;
 }
