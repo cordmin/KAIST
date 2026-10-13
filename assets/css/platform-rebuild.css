@@ -231,11 +231,11 @@ header.topbar {
 }
 
 .rebuild-group-title {
-  font-size: 0.73rem;
-  font-weight: 700;
-  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #e2e8f0; /* 어두운 회색(#64748b) 탈피, 칠흑 다크 배경에서 선명하게 돋보이는 고대비 톤 */
   padding: 0.35rem 0.65rem 0.45rem 0.65rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   display: flex;
   align-items: center;
   justify-content: space-between;
