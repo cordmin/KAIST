@@ -473,52 +473,194 @@ header.topbar {
 /* --------------------------------------------------------------------------
    3. 수업 지도안 백색 문서 표준 스타일 (규칙 16)
    -------------------------------------------------------------------------- */
-.chrome-window,
-#oled-lesson-plan-chrome-window,
-#quantum-lesson-plan-chrome-window {
-  background: var(--rebuild-doc-white) !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 10px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
-  overflow: hidden !important;
+.chrome-window {
+  background: var(--rebuild-doc-white);
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
 }
 
-/* 크롬 탭 바: 백색 공문서형 탭 바 */
+/* 크롬 탭 바: 기본형 */
 .chrome-tab-bar {
-  background: #f1f5f9 !important;
-  border-bottom: 1px solid #cbd5e1 !important;
-  padding: 6px 8px 0 8px !important;
-  gap: 4px !important;
+  background: #f1f5f9;
+  border-bottom: 1px solid #cbd5e1;
+  padding: 6px 8px 0 8px;
+  gap: 4px;
 }
 
 .chrome-tab-btn {
-  background: #e2e8f0 !important;
-  color: #475569 !important;
-  border: 1px solid #cbd5e1 !important;
-  border-bottom: none !important;
-  border-radius: 6px 6px 0 0 !important;
-  font-weight: 600 !important;
-  font-size: 0.85rem !important;
-  padding: 0.55rem 1rem !important;
-  transition: all 0.12s ease !important;
+  background: #e2e8f0;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.55rem 1rem;
+  transition: all 0.12s ease;
 }
 
 .chrome-tab-btn:hover {
-  background: #f8fafc !important;
-  color: #0f172a !important;
+  background: #f8fafc;
+  color: #0f172a;
 }
 
 .chrome-tab-btn.active {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
+  border-color: #cbd5e1;
+  border-top: 3px solid #0284c7;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* --------------------------------------------------------------------------
+   수업 지도안 전용: 우측 세로 문서철 인덱스 탭 (Binder Edge Tabs)
+   -------------------------------------------------------------------------- */
+#oled-lesson-plan-chrome-window,
+#quantum-lesson-plan-chrome-window {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  position: relative !important;
+  gap: 0 !important;
+}
+
+/* 좌측 메인 백색 본문 패널 (order: 1) */
+#oled-lesson-plan-chrome-window > .chrome-tab-panel,
+#quantum-lesson-plan-chrome-window > .chrome-tab-panel {
+  order: 1 !important;
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
   background: #ffffff !important;
-  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px 0 12px 12px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05) !important;
+  padding: 2.5rem !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* 우측 세로 문서철 인덱스 탭 바 (order: 2) */
+#oled-lesson-plan-chrome-window > .chrome-tab-bar,
+#quantum-lesson-plan-chrome-window > .chrome-tab-bar {
+  order: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+  width: auto !important;
+  padding: 1.25rem 0 0 0 !important;
+  background: transparent !important;
+  border: none !important;
+  position: sticky !important;
+  top: 1.5rem !important;
+  z-index: 5 !important;
+  margin-left: -1px !important; /* 백색 문서 우측 테두리와 자연스럽게 맞물림 */
+}
+
+/* 문서철 인덱스 탭 견출지 버튼 기본 */
+#oled-lesson-plan-chrome-window .chrome-tab-btn,
+#quantum-lesson-plan-chrome-window .chrome-tab-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 62px !important;
+  height: 44px !important;
+  padding: 0 0.85rem !important;
+  border-radius: 0 8px 8px 0 !important; /* 오른쪽 모서리만 둥근 인덱스 견출지 형태 */
+  font-size: 0.92rem !important;
   font-weight: 700 !important;
-  border-color: #cbd5e1 !important;
-  border-top: 3px solid #0284c7 !important;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.03) !important;
+  letter-spacing: -0.02em !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-left: 1px solid #cbd5e1 !important;
+}
+
+/* 비활성 탭 색상: 흰색 계통 배제, 뚜렷하고 깊이 있는 인덱스 견출지 컬러 */
+#oled-lesson-plan-chrome-window .chrome-tab-btn {
+  background: #1e293b !important; /* 슬레이트 네이비 견출지 */
+  color: #cbd5e1 !important;
+}
+
+#quantum-lesson-plan-chrome-window .chrome-tab-btn {
+  background: #241c38 !important; /* 딥 퍼플 차콜 견출지 */
+  color: #d8b4fe !important;
+}
+
+#oled-lesson-plan-chrome-window .chrome-tab-btn:hover {
+  background: #334155 !important;
+  color: #ffffff !important;
+  transform: translateX(4px) !important;
+  box-shadow: 4px 3px 12px rgba(0, 0, 0, 0.35) !important;
+}
+
+#quantum-lesson-plan-chrome-window .chrome-tab-btn:hover {
+  background: #3d2c5e !important;
+  color: #ffffff !important;
+  transform: translateX(4px) !important;
+  box-shadow: 4px 3px 12px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 활성 탭 (Active Binder Tab): 백색 문서와 직결되어 선명하게 돌출되는 인덱스 라벨 */
+#oled-lesson-plan-chrome-window .chrome-tab-btn.active {
+  background: #2563eb !important; /* 선명한 코발트 블루 인덱스 */
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border: 1px solid #1d4ed8 !important;
+  border-left: 2px solid #2563eb !important;
+  transform: translateX(6px) !important;
+  box-shadow: 4px 3px 14px rgba(37, 99, 235, 0.45) !important;
+  z-index: 6 !important;
 }
 
 #quantum-lesson-plan-chrome-window .chrome-tab-btn.active {
-  border-top: 3px solid #7c3aed !important;
+  background: #7c3aed !important; /* 선명한 로열 바이올렛 인덱스 */
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border: 1px solid #6d28d9 !important;
+  border-left: 2px solid #7c3aed !important;
+  transform: translateX(6px) !important;
+  box-shadow: 4px 3px 14px rgba(124, 58, 237, 0.45) !important;
+  z-index: 6 !important;
+}
+
+/* 모바일 및 좁은 화면 (<= 768px): 상단 가로 탭으로 안전하게 전환 */
+@media (max-width: 768px) {
+  #oled-lesson-plan-chrome-window,
+  #quantum-lesson-plan-chrome-window {
+    flex-direction: column !important;
+  }
+  #oled-lesson-plan-chrome-window > .chrome-tab-bar,
+  #quantum-lesson-plan-chrome-window > .chrome-tab-bar {
+    flex-direction: row !important;
+    width: 100% !important;
+    padding: 0 0 8px 0 !important;
+    position: static !important;
+    margin-left: 0 !important;
+    overflow-x: auto !important;
+  }
+  #oled-lesson-plan-chrome-window .chrome-tab-btn,
+  #quantum-lesson-plan-chrome-window .chrome-tab-btn {
+    border-radius: 6px 6px 0 0 !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
+    transform: none !important;
+  }
+  #oled-lesson-plan-chrome-window .chrome-tab-btn.active,
+  #quantum-lesson-plan-chrome-window .chrome-tab-btn.active {
+    transform: none !important;
+  }
 }
 
 /* 탭 패널 내부 완전 백색 */
