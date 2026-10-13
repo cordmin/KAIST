@@ -3,30 +3,76 @@
  * assets/data/lesson-plan-data-quantum.js
  */
 window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-plan-chrome-window">
-          <!-- 6페이지 크롬 탭 바 (성취수준 연계 신설) -->
+          <!-- 5페이지 크롬 탭 바 (지도안 개요 + 1~4차시) -->
           <div class="chrome-tab-bar" role="tablist">
             <button type="button" class="chrome-tab-btn active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true">
-              <span><span class="tab-text-full">성취수준 연계</span><span class="tab-text-mid">성취수준</span><span class="tab-text-short">성취수준</span></span>
-            </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">수업 지도안 개요</span><span class="tab-text-mid">지도안 개요</span><span class="tab-text-short">개요</span></span>
             </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 2)" role="tab" aria-selected="false">
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">[1차시] 지수 폭발</span><span class="tab-text-mid">[1차시]</span><span class="tab-text-short">[1차시]</span></span>
             </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 3)" role="tab" aria-selected="false">
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 2)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">[2차시] 동전과 큐비트</span><span class="tab-text-mid">[2차시]</span><span class="tab-text-short">[2차시]</span></span>
             </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false">
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 3)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">[3차시] VQE 알고리즘</span><span class="tab-text-mid">[3차시]</span><span class="tab-text-short">[3차시]</span></span>
             </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 5)" role="tab" aria-selected="false">
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">[4차시] 스타트업 CEO</span><span class="tab-text-mid">[4차시]</span><span class="tab-text-short">[4차시]</span></span>
             </button>
           </div>
 
-          <!-- [탭 0]: 성취수준 연계 (2022 개정 교육과정 연계표) -->
+          <!-- [탭 0]: 수업 지도안 개요 (개요 표 + 2022 성취수준 연계표) -->
           <div class="chrome-tab-panel active" role="tabpanel">
+            <div class="card-header" style="margin-bottom:1rem;">
+              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 양자 컴퓨터와 계산 화학의 미래</h2>
+              <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
+            </div>
+
+            <!-- 기본 개요 정보 표 -->
+            <table class="data-table">
+              <tr>
+                <th style="width:100px; white-space:nowrap; text-align:center;">관련 단원</th>
+                <td>중학교 과학 &lt;물질의 구성&gt;, &lt;화학 반응의 규칙성&gt;, &lt;과학과 사회&gt; & 정보과 &lt;데이터와 알고리즘&gt; 융합 심화</td>
+                <th style="width:100px; white-space:nowrap; text-align:center;">차시</th>
+                <td><strong>총 4차시</strong> (90분 블록타임 2회 운영 가능)</td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">성취기준</th>
+                <td colspan="3">
+                  <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                  <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
+                  <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                  <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
+                  <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
+                  <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.<br>
+                  <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.<br>
+                  <strong>[정보과 연계]</strong> [9정01-03] 2진수 데이터 표현 / [9정02-02] 문제 해결 알고리즘과 시뮬레이션 모델링
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">학습 목표</th>
+                <td colspan="3">
+                  <strong>[지식·이해]</strong> 다전자 분자에서 전자 간 반발력으로 인해 발생하는 계산 복잡도와 비트 vs 큐비트 중첩의 차이를 설명할 수 있다.<br>
+                  <strong>[과정·기능]</strong> 동전 돌리기 조작 실험 및 인터랙티브 시뮬레이터를 통해 VQE 바닥 상태 탐색 과정을 시각적으로 추론할 수 있다.<br>
+                  <strong>[가치·태도]</strong> 양자 화학이 기후 위기 및 난치병 극복에 기여함을 인식하고 융합 진로에 주도적으로 참여한다.
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">탐구방법</th>
+                <td>동전 조작 실험, 가상실험실(시뮬레이션), 2인 1조 알고리즘 역할극, 스타트업 CEO 프로젝트</td>
+                <th style="text-align:center;">준비물</th>
+                <td>스마트기기, 동전(학생당 1개), 역할 카드(양자 컴퓨터 / 고전 컴퓨터), 스타트업 기획서 양식</td>
+              </tr>
+            </table>
+
+            <!-- 2022 개정 교육과정 성취수준 연계표 -->
+            <div style="margin:2.25rem 0 0.85rem 0;">
+              <h3 style="font-size:1.15rem; font-weight:700; color:var(--color-charcoal); margin:0; display:flex; align-items:center; gap:0.45rem;">
+                <i data-lucide="award" style="width:20px; height:20px; color:#7c3aed;"></i> 2022 개정 교육과정 성취수준 연계
+              </h3>
+            </div>
+
             <table class="data-table">
               <thead>
                 <tr>
@@ -107,52 +153,8 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                 </tr>
               </tbody>
             </table>
-          </div>
 
-          <!-- [탭 1]: 지도안 개요 -->
-          <div class="chrome-tab-panel" role="tabpanel">
-            <div class="card-header" style="margin-bottom:1rem;">
-              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 양자 컴퓨터와 계산 화학의 미래</h2>
-              <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
-            </div>
-
-            <table class="data-table">
-              <tr>
-                <th style="width:100px; white-space:nowrap; text-align:center;">관련 단원</th>
-                <td>중학교 과학 &lt;물질의 구성&gt;, &lt;화학 반응의 규칙성&gt;, &lt;과학과 사회&gt; & 정보과 &lt;데이터와 알고리즘&gt; 융합 심화</td>
-                <th style="width:100px; white-space:nowrap; text-align:center;">차시</th>
-                <td><strong>총 4차시</strong> (90분 블록타임 2회 운영 가능)</td>
-              </tr>
-              <tr>
-                <th style="text-align:center;">성취기준</th>
-                <td colspan="3">
-                  <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
-                  <strong>[9과11-01]</strong> 원소와 화합물의 정의를 알고, 원소와 화합물을 화학식으로 표현할 수 있다.<br>
-                  <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
-                  <strong>[9과16-01]</strong> 물리 변화와 화학 변화의 의미를 알고, 화학 변화에서 새로운 물질이 생성됨을 관찰할 수 있다.<br>
-                  <strong>[9과16-03]</strong> 화학 반응에서 질량이 보존됨을 실험을 통해 추론할 수 있다.<br>
-                  <strong>[9과16-06]</strong> 화학 반응에서 열에너지가 출입함을 알고, 생활 속 사례를 조사하여 발표할 수 있다.<br>
-                  <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.<br>
-                  <strong>[정보과 연계]</strong> [9정01-03] 2진수 데이터 표현 / [9정02-02] 문제 해결 알고리즘과 시뮬레이션 모델링
-                </td>
-              </tr>
-              <tr>
-                <th style="text-align:center;">학습 목표</th>
-                <td colspan="3">
-                  <strong>[지식·이해]</strong> 다전자 분자에서 전자 간 반발력으로 인해 발생하는 계산 복잡도와 비트 vs 큐비트 중첩의 차이를 설명할 수 있다.<br>
-                  <strong>[과정·기능]</strong> 동전 돌리기 조작 실험 및 인터랙티브 시뮬레이터를 통해 VQE 바닥 상태 탐색 과정을 시각적으로 추론할 수 있다.<br>
-                  <strong>[가치·태도]</strong> 양자 화학이 기후 위기 및 난치병 극복에 기여함을 인식하고 융합 진로에 주도적으로 참여한다.
-                </td>
-              </tr>
-              <tr>
-                <th style="text-align:center;">탐구방법</th>
-                <td>동전 조작 실험, 가상실험실(시뮬레이션), 2인 1조 알고리즘 역할극, 스타트업 CEO 프로젝트</td>
-                <th style="text-align:center;">준비물</th>
-                <td>스마트기기, 동전(학생당 1개), 역할 카드(양자 컴퓨터 / 고전 컴퓨터), 스타트업 기획서 양식</td>
-              </tr>
-            </table>
-
-            <div class="callout-box" style="margin-top:1.25rem;">
+            <div class="callout-box" style="margin-top:1.5rem;">
               <strong><i data-lucide="lightbulb"></i> [수식 없는 양자역학 지도 팁]:</strong> 수식이나 파동방정식을 지양하고, <strong>"바닥에 놓인 동전(비트) vs 도는 팽이 동전(큐비트)"</strong>과 <strong>"2인 3각 산골짜기 바닥 찾기(VQE)"</strong>라는 직관적 은유를 활용하여 지도합니다.
             </div>
           </div>

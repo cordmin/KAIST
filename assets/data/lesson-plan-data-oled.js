@@ -3,30 +3,81 @@
  * assets/data/lesson-plan-data-oled.js
  */
 window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chrome-window">
-          <!-- 6페이지 크롬 탭 바 (성취수준 연계 신설) -->
+          <!-- 5페이지 크롬 탭 바 (지도안 개요 + 1~4차시) -->
           <div class="chrome-tab-bar" role="tablist">
             <button type="button" class="chrome-tab-btn tab-blue active" onclick="switchLessonPlanTab(event, 0)" role="tab" aria-selected="true">
-              <span><span class="tab-text-full">성취수준 연계</span><span class="tab-text-mid">성취수준</span><span class="tab-text-short">성취수준</span></span>
-            </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">수업 지도안 개요</span><span class="tab-text-mid">지도안 개요</span><span class="tab-text-short">개요</span></span>
             </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 2)" role="tab" aria-selected="false">
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 1)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">[1차시] 형광빛의 원리</span><span class="tab-text-mid">[1차시]</span><span class="tab-text-short">[1차시]</span></span>
             </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 3)" role="tab" aria-selected="false">
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 2)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">[2차시] 전자의 에너지 전달</span><span class="tab-text-mid">[2차시]</span><span class="tab-text-short">[2차시]</span></span>
             </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false">
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 3)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">[3차시] 스마트폰의 에너지 낭비</span><span class="tab-text-mid">[3차시]</span><span class="tab-text-short">[3차시]</span></span>
             </button>
-            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 5)" role="tab" aria-selected="false">
+            <button type="button" class="chrome-tab-btn" onclick="switchLessonPlanTab(event, 4)" role="tab" aria-selected="false">
               <span><span class="tab-text-full">[4차시] KAIST의 분자 연구</span><span class="tab-text-mid">[4차시]</span><span class="tab-text-short">[4차시]</span></span>
             </button>
           </div>
 
-          <!-- [탭 0]: 성취수준 연계 (2022 개정 교육과정 연계표) -->
+          <!-- [탭 0]: 수업 지도안 개요 (개요 표 + 2022 성취수준 연계표) -->
           <div class="chrome-tab-panel active" role="tabpanel">
+            <div class="card-header" style="margin-bottom:1rem;">
+              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학</h2>
+              <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
+            </div>
+
+            <!-- 기본 개요 정보 표 -->
+            <table class="data-table">
+              <tr>
+                <th style="width:100px; white-space:nowrap; text-align:center;">관련 단원</th>
+                <td>중학교 1학년 &lt;과학과 인류의 지속가능한 삶&gt;<br>중학교 2학년 &lt;빛과 파동&gt;, &lt;물질의 구성&gt;, &lt;전기와 자기&gt;<br>중학교 3학년 &lt;과학과 나의 미래&gt;</td>
+                <th style="width:100px; white-space:nowrap; text-align:center;">차시</th>
+                <td><strong>총 4차시</strong> (90분 블록타임 2회 운영 가능)</td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">성취기준</th>
+                <td colspan="3">
+                  <strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.<br>
+                  <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
+                  <strong>[9과14-02]</strong> 전기 회로에서 전류를 모형으로 설명하고, 실험을 통해 저항, 전류, 전압 사이의 관계를 이끌어낼 수 있다.<br>
+                  <strong>[9과14-03]</strong> 저항의 직렬연결과 병렬연결의 특징을 비교하고, 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.<br>
+                  <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
+                  <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">학습 목표</th>
+                <td colspan="3">
+                  <strong>[지식·이해]</strong> 자외선과 가시광선의 파장 및 에너지 차이를 비교하고, 형광 물질에서 일어나는 빛과 열의 에너지 전환 과정을 설명할 수 있다.<br>
+                  <strong>[과정·기능]</strong> 스마트폰 픽셀(RGB)과 일상 속 형광 물질을 관찰하고, 가상실험실을 활용하여 스마트폰 화면(OLED)의 발광 원리와 열 손실(에너지 낭비) 원인을 탐구할 수 있다.<br>
+                  <strong>[가치·태도]</strong> 버려지는 열을 빛으로 바꾸는 첨단 기술이 일상생활에 미치는 영향을 인식하고, 미래 디스플레이를 개발하는 화학과 연구원 진로에 흥미와 호기심을 갖는다.
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">탐구방법</th>
+                <td>실물 실험, 가상실험실(인터랙티브 시뮬레이션), 디지털 분자 설계 프로젝트</td>
+                <th style="text-align:center;">준비물</th>
+                <td>스마트기기, UV-A 블랙라이트 램프, 보안경, 토닉워터, 비타민 음료, 올리브유, 형광펜, 천원권 지폐, 검은색 종이</td>
+              </tr>
+              <tr>
+                <th style="text-align:center; white-space:nowrap;">안전 수칙</th>
+                <td colspan="3">
+                  <strong>1. UV 램프 보안경 착용:</strong> 자외선(UV-A) 광원을 직접 눈으로 보거나 타인에게 비추지 않도록 보안경 착용 지도 및 암실 상자 활용.<br>
+                  <strong>2. 시약 음용 금지:</strong> 음료류(토닉워터, 비타민)는 실험용이므로 마시지 않도록 사전 지도 및 폐액 분리 수거.
+                </td>
+              </tr>
+            </table>
+
+            <!-- 2022 개정 교육과정 성취수준 연계표 -->
+            <div style="margin:2.25rem 0 0.85rem 0;">
+              <h3 style="font-size:1.15rem; font-weight:700; color:var(--color-charcoal); margin:0; display:flex; align-items:center; gap:0.45rem;">
+                <i data-lucide="award" style="width:20px; height:20px; color:var(--color-notion-blue);"></i> 2022 개정 교육과정 성취수준 연계
+              </h3>
+            </div>
+
             <table class="data-table">
               <thead>
                 <tr>
@@ -107,55 +158,6 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   </td>
                 </tr>
               </tbody>
-            </table>
-          </div>
-
-          <!-- [탭 1]: 지도안 개요 -->
-          <div class="chrome-tab-panel" role="tabpanel">
-            <div class="card-header" style="margin-bottom:1rem;">
-              <h2 class="card-title" style="margin:0; font-size:1.3rem; color:var(--color-charcoal);"><i data-lucide="clipboard-list"></i> 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학</h2>
-              <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
-            </div>
-
-            <table class="data-table">
-              <tr>
-                <th style="width:100px; white-space:nowrap; text-align:center;">관련 단원</th>
-                <td>중학교 1학년 &lt;과학과 인류의 지속가능한 삶&gt;<br>중학교 2학년 &lt;빛과 파동&gt;, &lt;물질의 구성&gt;, &lt;전기와 자기&gt;<br>중학교 3학년 &lt;과학과 나의 미래&gt;</td>
-                <th style="width:100px; white-space:nowrap; text-align:center;">차시</th>
-                <td><strong>총 4차시</strong> (90분 블록타임 2회 운영 가능)</td>
-              </tr>
-              <tr>
-                <th style="text-align:center;">성취기준</th>
-                <td colspan="3">
-                  <strong>[9과10-03]</strong> 물체의 색을 빛의 반사와 관련지어 설명하고, 영상 장치에서 빛의 합성을 이용하여 다양한 색이 표현되는 원리를 이해할 수 있다.<br>
-                  <strong>[9과11-02]</strong> 원소를 구성하는 입자인 원자는 양성자, 중성자, 전자로 구성되며, 양성자의 수에 따라 원소의 종류가 달라짐을 입자 모형을 활용하여 설명할 수 있다.<br>
-                  <strong>[9과14-02]</strong> 전기 회로에서 전류를 모형으로 설명하고, 실험을 통해 저항, 전류, 전압 사이의 관계를 이끌어낼 수 있다.<br>
-                  <strong>[9과14-03]</strong> 저항의 직렬연결과 병렬연결의 특징을 비교하고, 일상생활에서 전기 에너지가 다양한 형태의 에너지로 전환됨을 소비 전력과 관련지어 설명할 수 있다.<br>
-                  <strong>[9과01-02]</strong> 과학의 발전이 인류 문명에 미친 영향을 이해하고, 인공지능 등 첨단 과학기술이 가져올 미래 사회의 변화를 조사하여 발표할 수 있다.<br>
-                  <strong>[9과23-01]</strong> 과학과 관련된 직업의 종류와 하는 일을 조사하고, 과학기술의 발달로 생기는 미래 사회의 직업 변화를 예상할 수 있다.
-                </td>
-              </tr>
-              <tr>
-                <th style="text-align:center;">학습 목표</th>
-                <td colspan="3">
-                  <strong>[지식·이해]</strong> 자외선과 가시광선의 파장 및 에너지 차이를 비교하고, 형광 물질에서 일어나는 빛과 열의 에너지 전환 과정을 설명할 수 있다.<br>
-                  <strong>[과정·기능]</strong> 스마트폰 픽셀(RGB)과 일상 속 형광 물질을 관찰하고, 가상실험실을 활용하여 스마트폰 화면(OLED)의 발광 원리와 열 손실(에너지 낭비) 원인을 탐구할 수 있다.<br>
-                  <strong>[가치·태도]</strong> 버려지는 열을 빛으로 바꾸는 첨단 기술이 일상생활에 미치는 영향을 인식하고, 미래 디스플레이를 개발하는 화학과 연구원 진로에 흥미와 호기심을 갖는다.
-                </td>
-              </tr>
-              <tr>
-                <th style="text-align:center;">탐구방법</th>
-                <td>실물 실험, 가상실험실(인터랙티브 시뮬레이션), 디지털 분자 설계 프로젝트</td>
-                <th style="text-align:center;">준비물</th>
-                <td>스마트기기, UV-A 블랙라이트 램프, 보안경, 토닉워터, 비타민 음료, 올리브유, 형광펜, 천원권 지폐, 검은색 종이</td>
-              </tr>
-              <tr>
-                <th style="text-align:center; white-space:nowrap;">안전 수칙</th>
-                <td colspan="3">
-                  <strong>1. UV 램프 보안경 착용:</strong> 자외선(UV-A) 광원을 직접 눈으로 보거나 타인에게 비추지 않도록 보안경 착용 지도 및 암실 상자 활용.<br>
-                  <strong>2. 시약 음용 금지:</strong> 음료류(토닉워터, 비타민)는 실험용이므로 마시지 않도록 사전 지도 및 폐액 분리 수거.
-                </td>
-              </tr>
             </table>
           </div>
 
