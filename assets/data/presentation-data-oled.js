@@ -15,6 +15,16 @@ if (typeof window.presentationModalData === 'undefined') {
   window.presentationModalData = {};
 }
 
+// 1차시 8번 슬라이드: 왼쪽은 촘촘하고 오른쪽으로 갈수록 느슨해지는 빛의 물결
+function oledChirpWavePath() {
+  let d = '', phase = 0;
+  for (let x = 0; x <= 1696; x += 2) {
+    phase += 4 * Math.PI / (26 + 220 * Math.pow(x / 1696, 1.6));
+    d += (x ? 'L' : 'M') + x + ' ' + (84 + 46 * Math.sin(phase)).toFixed(1);
+  }
+  return d;
+}
+
 window.presentationModalData.oled = {
     // -----------------------------------------------------------------------
     // OLED 1차시: 자외선과 형광
@@ -22,92 +32,60 @@ window.presentationModalData.oled = {
     1: {
       lessonTitle: '[1차시] 어둠 속을 밝히는 형광빛의 원리',
       badge: 'OLED 1차시 · 자외선과 형광',
+      design: 'stage', // 1920×1080 지면형 (assets/css/presentation-stage.css)
       slides: [
         // Slide 1: 표지
         {
-          tag: '',
           title: '이번 시간에는?',
+          layout: 'cover',
           content: `
-            <div class="pres-hero-question">
-              <h1 class="hero-q-text" style="font-size:2.2rem; font-weight:800; letter-spacing:-0.5px; color:#0f172a; word-break:keep-all; line-height:1.5;">
-                어둠 속을 밝히는 형광빛의 원리
-              </h1>
+            <div class="ps-cover-bg"><img src="${getToolAsset('uv_demo_gloves.jpg')}" alt="자외선 아래에서 빛나는 흰 면장갑"></div>
+            <div class="ps-cover-txt">
+              <div class="ps-kicker">OLED 1차시 · 자외선과 형광</div>
+              <div class="ps-ask">이번 시간에는?</div>
+              <h1>어둠 속을 밝히는<br>형광빛의 원리</h1>
             </div>
           `
         },
 
         // Slide 2: UV-A(블랙라이트)를 쬐었더니? (동기 유발)
         {
-          tag: '',
           title: 'UV-A(블랙라이트)를 쬐었더니?',
           content: `
-            <div class="pres-stack">
-              <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.2rem;">
-                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1rem; text-align:center;">
-                  <div style="width:100%; aspect-ratio:4/3; border-radius:8px; overflow:hidden; margin-bottom:0.75rem; background:#0f172a;">
-                    <img src="${getToolAsset('uv_demo_shoes.jpg')}" alt="흰 운동화 끈 & 옷" style="width:100%; height:100%; object-fit:cover; display:block;">
-                  </div>
-                  <strong style="color:#0f172a; font-size:1.05rem; display:block;">흰 운동화 끈 & 옷</strong>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1rem; text-align:center;">
-                  <div style="width:100%; aspect-ratio:4/3; border-radius:8px; overflow:hidden; margin-bottom:0.75rem; background:#0f172a;">
-                    <img src="${getToolAsset('uv_demo_notes.jpg')}" alt="형광펜 메모 & 종이" style="width:100%; height:100%; object-fit:cover; display:block;">
-                  </div>
-                  <strong style="color:#0f172a; font-size:1.05rem; display:block;">형광펜 메모 & 종이</strong>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1rem; text-align:center;">
-                  <div style="width:100%; aspect-ratio:4/3; border-radius:8px; overflow:hidden; margin-bottom:0.75rem; background:#0f172a;">
-                    <img src="${getToolAsset('uv_demo_gloves.jpg')}" alt="흰색 면장갑" style="width:100%; height:100%; object-fit:cover; display:block;">
-                  </div>
-                  <strong style="color:#0f172a; font-size:1.05rem; display:block;">흰색 면장갑</strong>
-                </div>
+            <h2><span class="ps-num">02</span>UV-A(블랙라이트)를 쬐었더니?</h2>
+            <div class="ps-body">
+              <div class="ps-trio">
+                <figure><img src="${getToolAsset('uv_demo_shoes.jpg')}" alt="흰 운동화 끈과 옷"><figcaption>흰 운동화 끈 & 옷</figcaption></figure>
+                <figure><img src="${getToolAsset('uv_demo_notes.jpg')}" alt="형광펜 메모와 종이"><figcaption>형광펜 메모 & 종이</figcaption></figure>
+                <figure><img src="${getToolAsset('uv_demo_gloves.jpg')}" alt="흰색 면장갑"><figcaption>흰색 면장갑</figcaption></figure>
               </div>
-
-              <div class="pres-inquiry-box">
-                <div class="inquiry-q">
-                  "블랙라이트는 어두운 보랏빛인데, 왜 물체들은 눈부신 형광빛을 뿜어낼까?"
-                </div>
-              </div>
+              <p class="ps-question">“블랙라이트는 어두운 <span class="uv">보랏빛</span>인데, 왜 물체들은 눈부신 <span class="glow">형광빛</span>을 뿜어낼까?”</p>
             </div>
           `
         },
 
-        // Slide 3: 학습목표 (단독 슬라이드)
+        // Slide 3: 학습목표
         {
-          tag: '',
           title: '학습목표',
           content: `
-            <div class="pres-objective-box">
-              <p class="objective-main">
-                <span>자외선과 가시광선의 파장 및 에너지 차이를 비교하고,</span>
-                <span>일상 속 형광 물질을 관찰하여 빛 방출 현상을 탐구할 수 있다.</span>
-              </p>
-            </div>
+            <h2><span class="ps-num">03</span>학습목표</h2>
+            <p class="ps-goal"><u>자외선과 가시광선</u>의 파장 및 에너지 차이를 비교하고,<br>일상 속 <u>형광 물질</u>을 관찰하여 빛 방출 현상을 탐구할 수 있다.</p>
+            <div class="ps-band"></div>
           `
         },
 
         // Slide 4: 실험 준비물
         {
-          tag: '',
           title: '실험 준비물',
           content: `
-            <div class="pres-stack pres-tools-stack">
-              <div class="pres-tools-img-box">
-                <img src="${getToolAsset('oled_tools_1.jpg')}" alt="실험 준비물 실사 사진" class="pres-tools-img">
-              </div>
-              <div class="pres-tools-grid">
-                <div class="pres-tool-name-card">
-                  <strong>보안경 & UV-A 램프</strong>
-                </div>
-                <div class="pres-tool-name-card">
-                  <strong>토닉워터, 비타민음료, 올리브유</strong>
-                </div>
-                <div class="pres-tool-name-card">
-                  <strong>형광펜 & 천원권</strong>
-                </div>
-                <div class="pres-tool-name-card">
-                  <strong>암실 상자 & 검은 종이</strong>
-                </div>
+            <h2><span class="ps-num">04</span>실험 준비물</h2>
+            <div class="ps-body">
+              <div class="ps-tools-photo"><img src="${getToolAsset('oled_tools_1.jpg')}" alt="실험 준비물 실사 사진"></div>
+              <div class="ps-cols4">
+                <div><b>1</b>보안경 & UV-A 램프</div>
+                <div><b>2</b>토닉워터, 비타민음료, 올리브유</div>
+                <div><b>3</b>형광펜 & 천원권</div>
+                <div><b>4</b>암실 상자 & 검은 종이</div>
               </div>
             </div>
           `
@@ -115,65 +93,40 @@ window.presentationModalData.oled = {
 
         // Slide 5: 탐구활동 시 주의 사항
         {
-          tag: '',
           title: '탐구활동 시 주의 사항',
           content: `
-            <div class="pres-safety-grid">
-              <div class="pres-safety-card">
-                <div class="pres-safety-title">1. 보안경 상시 착용</div>
-                <div class="pres-safety-desc">
-                  자외선(UV-A) 램프를 얼굴이나 눈에 직접 비추지 마세요. <strong>실험 종료 시까지 보안경을 상시 착용</strong>합니다.
-                </div>
-                <div style="width:100%; aspect-ratio:4/3; border-radius:8px; overflow:hidden; margin-top:auto; border:1px solid #e2e8f0; background:#f1f5f9;">
-                  <img src="${getToolAsset('safety_goggles.jpg')}" alt="실험실 보안경" style="width:100%; height:100%; object-fit:cover; display:block;">
-                </div>
-              </div>
-              <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-title">2. 시약 음용 절대 금지</div>
-                <div class="pres-safety-desc">
-                  토닉워터, 비타민 음료, 올리브유는 <strong>실험용 관찰 시약</strong>입니다. 어떠한 경우에도 맛보거나 마시지 않습니다.
-                </div>
-                <div style="width:100%; aspect-ratio:4/3; border-radius:8px; overflow:hidden; margin-top:auto; border:1px solid #e2e8f0; background:#f1f5f9;">
-                  <img src="${getToolAsset('safety_no_drink.jpg')}" alt="실험용 관찰 시약 비커" style="width:100%; height:100%; object-fit:cover; display:block;">
-                </div>
-              </div>
-              <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-title">3. 암실 상자 & 폐액 분리</div>
-                <div class="pres-safety-desc">
-                  암실 상자 덮개를 밀착하고 <strong>45도 각도로 조사</strong>하며, 실험 후 시약은 <strong>지정 폐액통에 분리 수거</strong>합니다.
-                </div>
-                <div style="width:100%; aspect-ratio:4/3; border-radius:8px; overflow:hidden; margin-top:auto; border:1px solid #e2e8f0; background:#f1f5f9;">
-                  <img src="${getToolAsset('safety_darkbox_waste.jpg')}" alt="암실 상자 및 폐액 수거" style="width:100%; height:100%; object-fit:cover; display:block;">
-                </div>
-              </div>
+            <h2><span class="ps-num">05</span>탐구활동 시 주의 사항</h2>
+            <div class="ps-body ps-cols3">
+              <figure><div class="ps-ph"><img src="${getToolAsset('safety_goggles.jpg')}" alt="실험실 보안경"></div>
+                <h3><span class="n">1</span>보안경 상시 착용</h3>
+                <p>자외선(UV-A) 램프를 얼굴이나 눈에 직접 비추지 마세요. <strong>실험 종료 시까지 보안경을 상시 착용</strong>합니다.</p></figure>
+              <figure><div class="ps-ph"><img src="${getToolAsset('safety_no_drink.jpg')}" alt="실험용 관찰 시약 비커"></div>
+                <h3><span class="n">2</span>시약 음용 절대 금지</h3>
+                <p>토닉워터, 비타민 음료, 올리브유는 <strong>실험용 관찰 시약</strong>입니다. 어떠한 경우에도 맛보거나 마시지 않습니다.</p></figure>
+              <figure><div class="ps-ph"><img src="${getToolAsset('safety_darkbox_waste.jpg')}" alt="암실 상자 및 폐액 수거"></div>
+                <h3><span class="n">3</span>암실 상자 & 폐액 분리</h3>
+                <p>암실 상자 덮개를 밀착하고 <strong>45도 각도로 조사</strong>하며, 실험 후 시약은 <strong>지정 폐액통에 분리 수거</strong>합니다.</p></figure>
             </div>
           `
         },
 
         // Slide 6: 형광 물질 관찰 순서
         {
-          tag: '',
           title: '형광 물질 관찰 순서',
           content: `
-            <div class="pres-stack">
-              <div class="pres-steps-row">
-                <div class="pres-step-box">
-                  <div class="step-num">Step 1</div>
-                  <div class="step-title">시약 및 재료 준비</div>
-                  <p>3개 비커에 토닉워터, 비타민 음료, 올리브유를 <strong>각 30mL씩 담아 암실 상자에 배치</strong>하고 지폐와 메모지를 준비합니다.</p>
-                </div>
-                <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-                <div class="pres-step-box">
-                  <div class="step-num">Step 2</div>
-                  <div class="step-title">형광등 아래 기본 색상 기록</div>
-                  <p>일반 실내 조명 아래에서 4가지 관찰 대상의 <strong>본래 기본 색상을 관찰표에 객관적으로 기록</strong>합니다.</p>
-                </div>
-                <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-                <div class="pres-step-box">
-                  <div class="step-num">Step 3</div>
-                  <div class="step-title">UV-A 램프 조사 & 형광빛 기록</div>
-                  <p>보안경을 쓰고 암실 상자 안으로 UV-A 램프를 비추며 <strong>새롭게 뿜어져 나오는 형광 발광 색상을 기록</strong>합니다.</p>
-                </div>
+            <h2><span class="ps-num">06</span>형광 물질 관찰 순서</h2>
+            <div class="ps-body">
+              <div class="ps-rail"><span>1단계</span><span>2단계</span><span>3단계</span></div>
+              <div class="ps-cols3 ps-steps">
+                <figure><div class="ps-ph"><img src="${getToolAsset('safety_darkbox_waste.jpg')}" alt="암실 상자와 시약"></div>
+                  <h3>시약 및 재료 준비</h3>
+                  <p>3개 비커에 토닉워터, 비타민 음료, 올리브유를 <strong>각 30mL씩 담아 암실 상자에 배치</strong>하고 지폐와 메모지를 준비합니다.</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('oled_tools_1.jpg')}" alt="실내 조명 아래의 시약" style="object-position:72% 60%"></div>
+                  <h3>형광등 아래 기본 색상 기록</h3>
+                  <p>일반 실내 조명 아래에서 4가지 관찰 대상의 <strong>본래 기본 색상을 관찰표에 객관적으로 기록</strong>합니다.</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('uv_demo_notes.jpg')}" alt="자외선 아래에서 빛나는 형광펜 메모"></div>
+                  <h3>UV-A 램프 조사 & 형광빛 기록</h3>
+                  <p>보안경을 쓰고 암실 상자 안으로 UV-A 램프를 비추며 <strong>새롭게 뿜어져 나오는 형광 발광 색상을 기록</strong>합니다.</p></figure>
               </div>
             </div>
           `
@@ -181,72 +134,21 @@ window.presentationModalData.oled = {
 
         // Slide 7: 형광 물질 관찰 결과
         {
-          tag: '',
           title: '형광 물질 관찰 결과',
           content: `
-            <div class="pres-table-wrap">
-              <table class="pres-table">
-                <thead>
-                  <tr>
-                    <th style="width:20%;">실험 물질</th>
-                    <th style="width:24%;">포함된 핵심 분자</th>
-                    <th style="width:24%;">형광등 아래 기본 색상</th>
-                    <th style="width:32%;">자외선 조사 시 관찰 결과</th>
-                  </tr>
-                </thead>
+            <h2><span class="ps-num">07</span>형광 물질 관찰 결과</h2>
+            <div class="ps-body">
+              <table class="ps-table">
+                <thead><tr><th style="width:18%">실험 물질</th><th style="width:20%">포함된 핵심 분자</th><th style="width:32%">형광등 아래 기본 색상</th><th>자외선 조사 시 관찰 결과</th></tr></thead>
                 <tbody>
-                  <tr>
-                    <td><strong>토닉워터</strong></td>
-                    <td>퀴닌 분자 (Quinine)</td>
-                    <td>무색투명</td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#2563eb; font-size:1.02rem;">파란색 형광 발광</strong>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>비타민 음료</strong></td>
-                    <td>리보플라빈 (비타민 B2)</td>
-                    <td>맑은 노란색</td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#16a34a; font-size:1.02rem;">연두색 형광 발광</strong>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>올리브유</strong></td>
-                    <td>엽록소 분자 (Chlorophyll)</td>
-                    <td>연초록색</td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#dc2626; font-size:1.02rem;">붉은색 형광 발광</strong>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>지폐 & 형광펜</strong></td>
-                    <td>형광 염료 (위조방지)</td>
-                    <td>일반 종이색 / 기본 잉크색</td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#d97706; font-size:1.02rem;">숨겨진 형광 보안 섬유 발광</strong>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                  <tr><td>토닉워터</td><td>퀴닌 분자</td><td><span class="ps-sw" style="border:2px solid rgba(244,241,234,.6)"></span>무색투명</td>
+                    <td><div class="ps-reveal" style="--c:#5aa9ff" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>파란색 형광 발광</span></div></td></tr>
+                  <tr><td>비타민 음료</td><td>리보플라빈<small>비타민 B2</small></td><td><span class="ps-sw" style="background:#f2d64b"></span>맑은 노란색</td>
+                    <td><div class="ps-reveal" style="--c:#b8ef3c" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>연두색 형광 발광</span></div></td></tr>
+                  <tr><td>올리브유</td><td>엽록소 분자</td><td><span class="ps-sw" style="background:#b7c26a"></span>연초록색</td>
+                    <td><div class="ps-reveal" style="--c:#ff5a4a" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>붉은색 형광 발광</span></div></td></tr>
+                  <tr><td>지폐 & 형광펜</td><td>형광 염료<small>위조방지</small></td><td><span class="ps-sw" style="background:#d9cfb6"></span>일반 종이색 / 기본 잉크색</td>
+                    <td><div class="ps-reveal" style="--c:#ffb347" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>숨겨진 형광 보안 섬유 발광</span></div></td></tr>
                 </tbody>
               </table>
             </div>
@@ -255,123 +157,66 @@ window.presentationModalData.oled = {
 
         // Slide 8: 빛의 파장과 에너지
         {
-          tag: '',
           title: '빛의 파장과 에너지',
           content: `
-            <div class="pres-stack pres-spectrum-stack">
-              <div class="pres-spectrum-img-card" style="padding:1rem 1.4rem;">
-                <svg viewBox="0 0 860 215" width="100%" height="100%" style="max-height:240px; display:block; font-family:'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;">
-                  <defs>
-                    <linearGradient id="visRainbow" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#4c1d95" />
-                      <stop offset="14%" stop-color="#2563eb" />
-                      <stop offset="30%" stop-color="#06b6d4" />
-                      <stop offset="48%" stop-color="#10b981" />
-                      <stop offset="65%" stop-color="#eab308" />
-                      <stop offset="82%" stop-color="#f97316" />
-                      <stop offset="100%" stop-color="#dc2626" />
-                    </linearGradient>
-                    <linearGradient id="irGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#991b1b" />
-                      <stop offset="100%" stop-color="#580e0e" />
-                    </linearGradient>
-                    <marker id="arrowL" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                      <path d="M 10 1 L 1 5 L 10 9 z" fill="#4f46e5" />
-                    </marker>
-                    <marker id="arrowR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                      <path d="M 0 1 L 9 5 L 0 9 z" fill="#dc2626" />
-                    </marker>
-                  </defs>
-
-                  <!-- 1. 상단 대분류 헤더 -->
-                  <rect x="40" y="8" width="262" height="28" rx="7" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1.2" />
-                  <text x="171" y="27" font-size="14" font-weight="800" fill="#6d28d9" text-anchor="middle">자외선 (UV)</text>
-
-                  <rect x="310" y="8" width="310" height="28" rx="7" fill="#f0fdf4" stroke="#86efac" stroke-width="1.2" />
-                  <text x="465" y="27" font-size="14" font-weight="800" fill="#15803d" text-anchor="middle">가시광선 (Visible Light)</text>
-
-                  <rect x="628" y="8" width="192" height="28" rx="7" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.2" />
-                  <text x="724" y="27" font-size="14" font-weight="800" fill="#b91c1c" text-anchor="middle">적외선 (IR)</text>
-
-                  <!-- 2. 메인 스펙트럼 바 -->
-                  <g transform="translate(0, 44)">
-                    <!-- UVC -->
-                    <path d="M 48 0 L 130 0 L 130 64 L 48 64 A 8 8 0 0 1 40 56 L 40 8 A 8 8 0 0 1 48 0 Z" fill="#2e1065" />
-                    <text x="85" y="37" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">UVC</text>
-
-                    <!-- UVB -->
-                    <rect x="131" y="0" width="80" height="64" fill="#581c87" />
-                    <text x="171" y="37" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">UVB</text>
-
-                    <!-- UV-A -->
-                    <rect x="212" y="0" width="96" height="64" fill="#7e22ce" />
-                    <text x="260" y="37" font-size="15" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">UV-A</text>
-
-                    <!-- 가시광선 무지개 -->
-                    <rect x="310" y="0" width="310" height="64" fill="url(#visRainbow)" />
-                    <text x="465" y="37" font-size="15" font-weight="800" fill="#ffffff" text-anchor="middle" style="text-shadow:0 1px 4px rgba(0,0,0,0.8);">무지개색 (보라 ~ 빨강)</text>
-
-                    <!-- 적외선 -->
-                    <path d="M 622 0 L 812 0 A 8 8 0 0 1 820 8 L 820 56 A 8 8 0 0 1 812 64 L 622 64 Z" fill="url(#irGrad)" />
-                    <text x="721" y="37" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">적외선</text>
+            <h2><span class="ps-num">08</span>빛의 파장과 에너지</h2>
+            <div class="ps-body ps-spectrum">
+              <svg viewBox="0 0 1696 560">
+                <defs>
+                  <linearGradient id="psVis" x1="0" x2="1"><stop offset="0" stop-color="#4c1d95"/><stop offset=".14" stop-color="#2563eb"/><stop offset=".3" stop-color="#06b6d4"/><stop offset=".48" stop-color="#10b981"/><stop offset=".65" stop-color="#eab308"/><stop offset=".82" stop-color="#f97316"/><stop offset="1" stop-color="#dc2626"/></linearGradient>
+                  <linearGradient id="psIr" x1="0" x2="1"><stop offset="0" stop-color="#991b1b"/><stop offset="1" stop-color="#2a0707"/></linearGradient>
+                  <linearGradient id="psWave" x1="0" x2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset=".33" stop-color="#7e5cff"/><stop offset=".42" stop-color="#3b82f6"/><stop offset=".6" stop-color="#22c55e"/><stop offset=".72" stop-color="#eab308"/><stop offset=".8" stop-color="#ef4444"/><stop offset="1" stop-color="#7f1d1d"/></linearGradient>
+                </defs>
+                <path fill="none" stroke="url(#psWave)" stroke-width="5" stroke-linecap="round" d="${oledChirpWavePath()}"/>
+                <g font-size="34" font-weight="800" fill="#f4f1ea">
+                  <text x="294" y="196" text-anchor="middle" fill="#b794ff">자외선</text>
+                  <text x="1011" y="196" text-anchor="middle">가시광선</text>
+                  <text x="1471" y="196" text-anchor="middle" fill="#ff8a7a">적외선</text>
+                </g>
+                <g stroke="rgba(244,241,234,.35)" stroke-width="2" fill="none">
+                  <path d="M2 226 V214 H585 V226"/><path d="M587 226 V214 H1435 V226"/><path d="M1439 226 V214 H1694 V226"/>
+                </g>
+                <g transform="translate(0,240)">
+                  <rect x="0" width="196" height="130" fill="#2e1065"/>
+                  <rect x="198" width="174" height="130" fill="#581c87"/>
+                  <rect x="374" width="209" height="130" fill="#7e22ce"/>
+                  <rect x="587" width="848" height="130" fill="url(#psVis)"/>
+                  <rect x="1439" width="257" height="130" fill="url(#psIr)"/>
+                  <g font-size="30" font-weight="800" fill="#fff" text-anchor="middle">
+                    <text x="98" y="76">UVC</text><text x="285" y="76">UVB</text><text x="478" y="76">UV-A</text>
+                    <text x="1011" y="76" style="paint-order:stroke" stroke="rgba(0,0,0,.35)" stroke-width="6">무지개색 (보라 ~ 빨강)</text>
+                    <text x="1567" y="76">적외선</text>
                   </g>
-
-                  <!-- 3. 파장 눈금선 및 수치 -->
-                  <g transform="translate(0, 108)">
-                    <line x1="40" y1="0" x2="40" y2="10" stroke="#94a3b8" stroke-width="1.8" />
-                    <text x="40" y="25" font-size="13" font-weight="800" fill="#475569" text-anchor="middle">100</text>
-
-                    <line x1="130" y1="0" x2="130" y2="10" stroke="#94a3b8" stroke-width="1.8" />
-                    <text x="130" y="25" font-size="13" font-weight="800" fill="#475569" text-anchor="middle">280</text>
-
-                    <line x1="211" y1="0" x2="211" y2="10" stroke="#94a3b8" stroke-width="1.8" />
-                    <text x="211" y="25" font-size="13" font-weight="800" fill="#475569" text-anchor="middle">315</text>
-
-                    <line x1="309" y1="0" x2="309" y2="10" stroke="#94a3b8" stroke-width="1.8" />
-                    <text x="309" y="25" font-size="14" font-weight="800" fill="#2563eb" text-anchor="middle">400</text>
-
-                    <line x1="621" y1="0" x2="621" y2="10" stroke="#94a3b8" stroke-width="1.8" />
-                    <text x="621" y="25" font-size="14" font-weight="800" fill="#dc2626" text-anchor="middle">700</text>
-
-                    <text x="820" y="25" font-size="13" font-weight="800" fill="#334155" text-anchor="end">파장 (nm)</text>
-                  </g>
-
-                  <!-- 4. 하단 물리적 특성 인디케이터 -->
-                  <g transform="translate(0, 153)">
-                    <rect x="40" y="0" width="780" height="42" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2" />
-                    <path d="M 330 21 L 55 21" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#arrowL)" />
-                    <text x="195" y="16" font-size="12.5" font-weight="800" fill="#4f46e5" text-anchor="middle">에너지 큼 (진동수 높음)</text>
-                    <text x="195" y="32" font-size="11.5" font-weight="700" fill="#6366f1" text-anchor="middle">◀ 파장 짧음</text>
-
-                    <line x1="430" y1="6" x2="430" y2="36" stroke="#cbd5e1" stroke-width="1.5" />
-
-                    <path d="M 530 21 L 805 21" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowR)" />
-                    <text x="665" y="16" font-size="12.5" font-weight="800" fill="#dc2626" text-anchor="middle">에너지 작음 (진동수 낮음)</text>
-                    <text x="665" y="32" font-size="11.5" font-weight="700" fill="#ef4444" text-anchor="middle">파장 김 ▶</text>
-                  </g>
-                </svg>
-              </div>
-
-              <div class="pres-def-card">
-                <p class="pres-def-text">
-                  <strong class="pres-def-lead">형광이란?</strong> 물질 속 분자가 큰 에너지(자외선)를 흡수한 뒤, 에너지가 더 작은 가시광선으로 바꾸어 방출하는 현상
-                </p>
-              </div>
+                </g>
+                <g transform="translate(0,384)" font-size="28" font-weight="700" fill="#9d988d" text-anchor="middle">
+                  <g stroke="rgba(244,241,234,.45)" stroke-width="2"><line x1="1" x2="1" y2="14"/><line x1="197" x2="197" y2="14"/><line x1="373" x2="373" y2="14"/><line x1="585" x2="585" y2="14"/><line x1="1437" x2="1437" y2="14"/></g>
+                  <text x="1" y="50" text-anchor="start">100</text><text x="197" y="50">280</text><text x="373" y="50">315</text>
+                  <text x="585" y="50" fill="#7aa9ff">400</text><text x="1437" y="50" fill="#ff7a6a">700</text>
+                  <text x="1696" y="50" text-anchor="end" fill="#f4f1ea">파장 (nm)</text>
+                </g>
+                <g transform="translate(0,490)" font-size="30" font-weight="800">
+                  <path d="M830 0 H30" stroke="#b794ff" stroke-width="3"/><path d="M14 0 L40 -11 V11 Z" fill="#b794ff"/>
+                  <text x="0" y="52" fill="#b794ff">에너지 큼 · 파장 짧음</text>
+                  <path d="M866 0 H1666" stroke="#ff7a6a" stroke-width="3"/><path d="M1682 0 L1656 -11 V11 Z" fill="#ff7a6a"/>
+                  <text x="1696" y="52" fill="#ff7a6a" text-anchor="end">에너지 작음 · 파장 김</text>
+                </g>
+              </svg>
+              <p class="ps-def"><b>형광이란?</b>물질 속 분자가 큰 에너지(자외선)를 흡수한 뒤, 에너지가 더 작은 가시광선으로 바꾸어 방출하는 현상</p>
             </div>
           `
         },
 
         // Slide 9: 생각해보기
         {
-          tag: '',
           title: '사라진 에너지는 어디로?',
           content: `
-            <div class="pres-stack pres-inquiry-stack">
-              <div class="pres-inquiry-box">
-                <div class="inquiry-q">
-                  <span class="inquiry-line">"흡수한 자외선 에너지가 100이라면, 방출된 형광빛의 에너지는 70~80입니다.</span>
-                  <span class="inquiry-line inquiry-accent">그렇다면 나머지 20~30의 에너지는 어디로 갔을까요?"</span>
-                </div>
+            <h2><span class="ps-num">09</span>사라진 에너지는 어디로?</h2>
+            <div class="ps-body">
+              <p class="ps-q2">“흡수한 자외선 에너지가 100이라면, 방출된 형광빛의 에너지는 70~80입니다.<br>그렇다면 <em>나머지 20~30의 에너지</em>는 어디로 갔을까요?”</p>
+              <div>
+                <div class="ps-meter-top"><span>흡수한 자외선 에너지</span><span>100</span></div>
+                <div class="ps-cells">${Array.from({ length: 100 }, (_, k) => '<i class="' + (k < 70 ? '' : k < 80 ? 'fade' : 'miss') + '"></i>').join('')}</div>
+                <div class="ps-meter-scale"><span>방출된 형광빛 70~80</span><span>20~30 ?</span></div>
               </div>
             </div>
           `
@@ -379,23 +224,22 @@ window.presentationModalData.oled = {
 
         // Slide 10: 에너지 보존 법칙
         {
-          tag: '',
           title: '에너지 보존 법칙',
           content: `
-            <div class="pres-stack pres-conservation-stack">
-              <div class="pres-equation-box">
-                <div class="pres-equation-text">
-                  [ 흡수한 자외선 에너지 ] = [ 방출된 형광빛 에너지 ] + [ 열에너지 ]
+            <h2><span class="ps-num">10</span>에너지 보존 법칙</h2>
+            <div class="ps-body">
+              <div class="ps-eq">
+                <div class="ps-eq-row"><div class="ps-eq-bar" style="flex:1; background:#9b6bff">흡수한 자외선 에너지</div></div>
+                <div class="ps-eq-op">=</div>
+                <div class="ps-eq-row">
+                  <div class="ps-eq-bar" style="flex:75; background:#5aa9ff">방출된 형광빛 에너지</div>
+                  <div class="ps-eq-plus">+</div>
+                  <div class="ps-eq-bar" style="flex:25; background:#ff6a52">열에너지</div>
                 </div>
               </div>
-
-              <div class="pres-law-desc-box">
-                <p class="pres-law-desc-p">
-                  • 에너지는 사라진 것이 아니라 <strong>다른 형태의 에너지로 전환</strong>된 것입니다.
-                </p>
-                <p class="pres-law-desc-p">
-                  • 분자가 자외선을 흡수한 후 미세하게 진동하면서 일부 에너지를 <strong>'열(열에너지)'</strong> 형태로 방출합니다.
-                </p>
+              <div class="ps-two">
+                <p>에너지는 사라진 것이 아니라 <strong>다른 형태의 에너지로 전환</strong>된 것입니다.</p>
+                <p>분자가 자외선을 흡수한 후 미세하게 진동하면서 일부 에너지를 <strong>‘열(열에너지)’</strong> 형태로 방출합니다.</p>
               </div>
             </div>
           `
@@ -403,59 +247,32 @@ window.presentationModalData.oled = {
 
         // Slide 11: 일상 속 형광 기술 활용
         {
-          tag: '',
           title: '일상 속 형광 기술 활용',
           content: `
-            <div class="pres-stack">
-              <div class="pres-apps-grid">
-                <div class="pres-app-card">
-                  <div class="pres-app-img-wrap">
-                    <img src="${getToolAsset('fluo_app_money.jpg')}" alt="위조지폐 및 신분증 감별">
-                  </div>
-                  <strong class="pres-app-title">위조지폐 및 신분증 감별</strong>
-                  <p class="pres-app-desc">
-                    지폐나 여권에 자외선(UV)을 비추면 숨겨진 <strong>형광 보안 섬유와 워터마크가 발광</strong>하여 위조 여부를 즉시 판별합니다.
-                  </p>
-                </div>
-                <div class="pres-app-card">
-                  <div class="pres-app-img-wrap">
-                    <img src="${getToolAsset('fluo_app_pen.jpg')}" alt="형광펜 및 형광 염료">
-                  </div>
-                  <strong class="pres-app-title">형광펜 및 형광 염료</strong>
-                  <p class="pres-app-desc">
-                    눈에 보이지 않는 자외선을 흡수한 뒤, 사람의 눈에 매우 잘 띄는 <strong>선명하고 밝은 가시광선으로 바꾸어 방출</strong>합니다.
-                  </p>
-                </div>
-                <div class="pres-app-card">
-                  <div class="pres-app-img-wrap">
-                    <img src="${getToolAsset('fluo_app_vest.jpg')}" alt="야간 안전 조끼 및 장비">
-                  </div>
-                  <strong class="pres-app-title">야간 안전 조끼 및 장비</strong>
-                  <p class="pres-app-desc">
-                    어두운 환경에서 미세한 빛을 받아 <strong>강하게 형광빛을 방출하여 보행자와 작업자의 안전을 확보</strong>합니다.
-                  </p>
-                </div>
-              </div>
+            <h2><span class="ps-num">11</span>일상 속 형광 기술 활용</h2>
+            <div class="ps-body ps-cols3">
+              <figure><div class="ps-ph"><img src="${getToolAsset('fluo_app_money.jpg')}" alt="위조지폐 및 신분증 감별"></div>
+                <h3>위조지폐 및 신분증 감별</h3>
+                <p>지폐나 여권에 자외선(UV)을 비추면 숨겨진 <strong>형광 보안 섬유와 워터마크가 발광</strong>하여 위조 여부를 즉시 판별합니다.</p></figure>
+              <figure><div class="ps-ph"><img src="${getToolAsset('fluo_app_pen.jpg')}" alt="형광펜 및 형광 염료"></div>
+                <h3>형광펜 및 형광 염료</h3>
+                <p>눈에 보이지 않는 자외선을 흡수한 뒤, 사람의 눈에 매우 잘 띄는 <strong>선명하고 밝은 가시광선으로 바꾸어 방출</strong>합니다.</p></figure>
+              <figure><div class="ps-ph"><img src="${getToolAsset('fluo_app_vest.jpg')}" alt="야간 안전 조끼 및 장비"></div>
+                <h3>야간 안전 조끼 및 장비</h3>
+                <p>어두운 환경에서 미세한 빛을 받아 <strong>강하게 형광빛을 방출하여 보행자와 작업자의 안전을 확보</strong>합니다.</p></figure>
             </div>
           `
         },
 
         // Slide 12: 다음 시간에는? (차시 예고)
         {
-          tag: '',
           title: '다음 시간에는?',
           content: `
-            <div class="pres-stack pres-inquiry-stack" style="justify-content:center; align-items:center; min-height:280px;">
-              <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:960px; width:100%; text-align:center; box-sizing:border-box;">
-                <div class="inquiry-q" style="line-height:1.5;">
-                  <span class="pres-preview-question">
-                    "전자가 자외선 빛 에너지를 받으면 어떤 일이 일어날까?"
-                  </span>
-                  <span class="pres-preview-subtext">
-                    눈에 보이지 않는 원자 속 전자의 에너지 이동을 가상실험실로 직접 관찰합니다!
-                  </span>
-                </div>
-              </div>
+            <div class="ps-next-bg"><img src="${getToolAsset('electron_uv_absorb.jpg')}" alt="자외선을 받은 원자 속 전자"></div>
+            <div class="ps-next-txt">
+              <h2><span class="ps-num">12</span>다음 시간에는?</h2>
+              <p class="ps-q3">“전자가 자외선 빛 에너지를 받으면 어떤 일이 일어날까?”</p>
+              <p>눈에 보이지 않는 원자 속 전자의 에너지 이동을 가상실험실로 직접 관찰합니다!</p>
             </div>
           `
         }

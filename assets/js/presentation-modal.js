@@ -15,6 +15,18 @@ if (typeof window.presentationModalData === 'undefined') {
   window.presentationModalData = {};
 }
 
+// 1920×1080 지면형 덱(deck.design === 'stage') 렌더링: 지면을 담는 칸 크기에 맞춰 통째로 확대·축소
+let presStageObserver;
+function renderPresStageSlide(container, slide) {
+  container.innerHTML = `<div class="pres-stage-fit"><div class="pres-stage"><section class="pres-stage-slide ${slide.layout || ''}">${slide.content}</section></div></div>`;
+  const fit = container.firstElementChild, stage = fit.firstElementChild;
+  if (presStageObserver) presStageObserver.disconnect();
+  presStageObserver = new ResizeObserver(() => {
+    stage.style.transform = `translate(-50%,-50%) scale(${Math.min(fit.clientWidth / 1920, fit.clientHeight / 1080)})`;
+  });
+  presStageObserver.observe(fit);
+}
+
 let currentPresModule = 'oled';
 let currentPresLesson = 1;
 let currentPresSlideIndex = 0;
@@ -131,12 +143,15 @@ function renderCurrentPresentationSlide() {
   const screen = document.getElementById('presentation-slide-screen');
   if (!screen) return;
 
+  const isStage = deck.design === 'stage';
+  document.getElementById('presentation-modal-window').classList.toggle('pres-stage-deck', isStage);
   const badgeClass = currentPresModule === 'quantum' ? 'quantum-accent' : '';
 
   const tagHtml = slide.tag ? `<span class="pres-slide-tag">${slide.tag}</span>` : '';
   const titleHtml = slide.title ? `<h2 class="pres-slide-heading">${slide.title}</h2>` : '';
 
-  screen.innerHTML = `
+  if (isStage) renderPresStageSlide(screen, slide);
+  else screen.innerHTML = `
     <div class="pres-slide-card ${badgeClass}">
       ${(tagHtml || titleHtml) ? `
         <div class="pres-slide-header">

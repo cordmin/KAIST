@@ -1,0 +1,132 @@
+/* ==========================================================================
+   발표 슬라이드 - 1920×1080 지면형 덱 (deck.design === 'stage')
+   지면을 통째로 확대·축소해 어떤 모니터에서도 같은 구도로 보이게 한다.
+   ========================================================================== */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+.pres-stage-fit { position: relative; width: 100%; height: 100%; overflow: hidden; background: #070707; }
+.pres-stage {
+  --bg:#070707; --ink:#f4f1ea; --mute:#9d988d; --line:rgba(244,241,234,.14); --gold:#e2bd72; --uv:#9b6bff; --blue:#5aa9ff; --green:#b8ef3c;
+  position: absolute; top: 50%; left: 50%; width: 1920px; height: 1080px; transform: translate(-50%,-50%) scale(.5); transform-origin: center; overflow: hidden;
+  background: var(--bg); color: var(--ink); font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", system-ui, sans-serif; word-break: keep-all; text-align: left;
+}
+.pres-stage * { box-sizing: border-box; margin: 0; }
+.pres-stage img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.pres-stage strong { font-weight: 800; }
+.pres-stage button { font: inherit; color: inherit; cursor: pointer; }
+
+.pres-stage-slide { position: absolute; inset: 0; padding: 92px 112px; display: flex; flex-direction: column; animation: psFade .35s ease; }
+@keyframes psFade { from { opacity: 0; } to { opacity: 1; } }
+.pres-stage h2 { font-size: 68px; font-weight: 800; letter-spacing: -.035em; line-height: 1.1; color: var(--ink); }
+.pres-stage h2 .ps-num { color: var(--gold); font-weight: 300; margin-right: .42em; }
+.ps-body { flex: 1; min-height: 0; margin-top: 52px; display: flex; flex-direction: column; }
+
+/* 표지 */
+.pres-stage-slide.cover { padding: 0; }
+.ps-cover-bg { position: absolute; inset: 0 0 0 34%; }
+.ps-cover-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--bg) 0%, rgba(7,7,7,.55) 30%, rgba(7,7,7,0) 60%); }
+.ps-cover-txt { position: relative; margin: auto 0 auto 140px; }
+.ps-kicker { color: var(--gold); font-size: 30px; font-weight: 700; }
+.ps-ask { margin-top: 56px; color: var(--mute); font-size: 40px; font-weight: 600; }
+.pres-stage h1 { margin-top: 18px; font-size: 124px; font-weight: 800; line-height: 1.12; letter-spacing: -.045em; }
+
+/* 사진 세 장 이어 붙이기 */
+.ps-trio { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 0 -112px; }
+.ps-trio figure { position: relative; overflow: hidden; }
+.ps-trio figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 80px 40px 30px; background: linear-gradient(transparent, rgba(0,0,0,.85)); font-size: 32px; font-weight: 700; }
+.ps-question { margin-top: 48px; font-size: 52px; font-weight: 700; letter-spacing: -.03em; line-height: 1.35; }
+.ps-question .uv { color: var(--uv); } .ps-question .glow { color: var(--green); }
+
+/* 학습목표 */
+.ps-goal { margin: auto 0; font-size: 72px; font-weight: 700; line-height: 1.45; letter-spacing: -.035em; }
+.ps-goal u { text-decoration: none; background: linear-gradient(transparent 72%, rgba(226,189,114,.4) 72%); }
+.ps-band { height: 14px; margin: 0 -112px -92px; background: linear-gradient(90deg,#3b0b79 0%,#7e22ce 18%,#2563eb 30%,#06b6d4 40%,#10b981 52%,#eab308 66%,#f97316 80%,#dc2626 92%,#5a0e0e 100%); }
+
+/* 준비물 */
+.ps-tools-photo { height: 600px; margin: 0 -112px; }
+.ps-tools-photo img { object-position: center 70%; }
+.ps-cols4 { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 44px; }
+.ps-cols4 div { padding: 6px 36px 0 0; font-size: 38px; font-weight: 700; line-height: 1.3; letter-spacing: -.02em; }
+.ps-cols4 div + div { padding-left: 36px; border-left: 1px solid var(--line); }
+.ps-cols4 b { display: block; color: var(--gold); font-size: 28px; font-weight: 400; margin-bottom: 10px; }
+
+/* 사진 + 설명 세 단 */
+.ps-cols3 { flex: 1; display: grid; grid-template-columns: repeat(3,1fr); gap: 56px; }
+.ps-cols3 figure { display: flex; flex-direction: column; }
+.ps-ph { aspect-ratio: 4/3; overflow: hidden; border-radius: 4px; }
+.ps-cols3 h3 { margin-top: 34px; font-size: 40px; font-weight: 800; letter-spacing: -.03em; color: var(--ink); }
+.ps-cols3 h3 .n { color: var(--gold); font-weight: 300; margin-right: .35em; }
+.ps-cols3 p { margin-top: 16px; color: #cfcac0; font-size: 28px; line-height: 1.55; }
+.ps-cols3 p strong { color: var(--ink); }
+.ps-steps .ps-ph { aspect-ratio: 16/10; }
+.ps-rail { display: grid; grid-template-columns: repeat(3,1fr); gap: 56px; margin-bottom: 30px; }
+.ps-rail span { display: flex; align-items: center; gap: 22px; color: var(--gold); font-size: 30px; font-weight: 700; }
+.ps-rail span::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+.ps-rail span:last-child::after { display: none; }
+
+/* 관찰 결과표 */
+.ps-table { width: 100%; height: 100%; border-collapse: collapse; font-size: 38px; color: var(--ink); background: none; }
+.ps-table th { padding: 0 24px 24px 0; color: var(--mute); background: none; font-size: 26px; font-weight: 600; text-align: left; border: 0; border-bottom: 1px solid rgba(244,241,234,.4); }
+.ps-table td { padding: 0 24px 0 0; background: none; border: 0; border-bottom: 1px solid var(--line); text-align: left; }
+.ps-table td:first-child { font-weight: 800; }
+.ps-table td small { display: block; color: var(--mute); font-size: 24px; margin-top: 6px; }
+.ps-sw { display: inline-block; width: 30px; height: 30px; margin-right: 16px; border-radius: 50%; vertical-align: -4px; }
+.ps-reveal { display: flex; align-items: center; min-height: 80px; cursor: pointer; }
+.ps-reveal button { padding: 16px 34px; border: 1px solid rgba(244,241,234,.45); border-radius: 999px; background: none; font-size: 26px; font-weight: 700; }
+.ps-reveal button:hover { background: rgba(244,241,234,.08); }
+.ps-reveal .res { display: none; align-items: center; font-weight: 800; color: var(--c); }
+.ps-reveal .res i { width: 34px; height: 34px; margin-right: 18px; border-radius: 50%; background: var(--c); box-shadow: 0 0 18px var(--c), 0 0 46px var(--c); }
+.ps-reveal.revealed button { display: none; } .ps-reveal.revealed .res { display: flex; }
+
+/* 스펙트럼 */
+.ps-spectrum svg { width: 100%; height: auto; overflow: visible; font-family: inherit; }
+.ps-def { margin-top: auto; padding-top: 36px; border-top: 1px solid var(--line); font-size: 42px; font-weight: 600; line-height: 1.45; letter-spacing: -.025em; }
+.ps-def b { color: var(--gold); margin-right: 18px; }
+
+/* 사라진 에너지 */
+.ps-q2 { margin-bottom: auto; font-size: 56px; font-weight: 700; line-height: 1.45; letter-spacing: -.03em; }
+.ps-q2 em { font-style: normal; color: var(--gold); }
+.ps-meter-top { display: flex; justify-content: space-between; margin-bottom: 22px; font-size: 30px; color: var(--uv); font-weight: 700; }
+.ps-cells { display: grid; grid-template-columns: repeat(100,1fr); gap: 4px; height: 240px; }
+.ps-cells i { border-radius: 2px; background: var(--blue); box-shadow: 0 0 12px rgba(90,169,255,.5); }
+.ps-cells i.fade { opacity: .45; } .ps-cells i.miss { background: none; box-shadow: none; border: 2px dashed rgba(244,241,234,.35); }
+.ps-meter-scale { display: flex; margin-top: 26px; font-size: 34px; font-weight: 700; }
+.ps-meter-scale span:first-child { width: 75%; color: var(--blue); } .ps-meter-scale span:last-child { width: 25%; text-align: center; }
+
+/* 에너지 보존 */
+.ps-eq { margin-top: 20px; }
+.ps-eq-row { display: flex; gap: 14px; height: 180px; }
+.ps-eq-bar { display: flex; align-items: center; padding: 0 44px; font-size: 44px; font-weight: 800; border-radius: 4px; color: #0a0a0a; }
+.ps-eq-op { display: flex; justify-content: center; align-items: center; height: 96px; color: var(--mute); font-size: 64px; font-weight: 300; }
+.ps-eq-plus { width: 60px; display: flex; align-items: center; justify-content: center; color: var(--mute); font-size: 64px; font-weight: 300; }
+.ps-two { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding-top: 40px; border-top: 1px solid var(--line); }
+.ps-two p { font-size: 34px; line-height: 1.55; color: #d6d1c6; letter-spacing: -.02em; }
+.ps-two strong { color: var(--ink); }
+
+/* 다음 시간 예고 */
+.ps-next-bg { position: absolute; inset: 0 0 0 42%; }
+.ps-next-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--bg), rgba(7,7,7,0) 45%); }
+.ps-next-txt { position: relative; margin: auto 0; max-width: 1000px; }
+.ps-q3 { margin-top: 48px; font-size: 76px; font-weight: 800; line-height: 1.3; letter-spacing: -.04em; }
+.ps-next-txt > p:last-child { margin-top: 44px; color: #cfcac0; font-size: 34px; line-height: 1.55; }
+
+/* --- 발표 모달: 지면형 덱일 때 창을 넓히고 테두리 영역을 검게 --- */
+.presentation-modal .presentation-modal-window.pres-stage-deck { max-width: min(96vw, 1720px); max-height: none; height: 92vh; background: #070707; border-color: #1c1c1c; }
+.presentation-modal .presentation-modal-window.pres-stage-deck .presentation-modal-body { padding: 0 !important; background: #070707 !important; overflow: hidden; align-items: stretch !important; }
+.presentation-modal .presentation-modal-window.pres-stage-deck .presentation-slide-screen { width: 100% !important; max-width: none !important; height: 100%; margin: 0 !important; }
+.presentation-modal .presentation-modal-window.pres-stage-deck .presentation-modal-header,
+.presentation-modal .presentation-modal-window.pres-stage-deck .presentation-modal-footer { background: #070707 !important; border-color: rgba(244,241,234,.1) !important; }
+.presentation-modal .presentation-modal-window.pres-stage-deck .pres-modal-title,
+.presentation-modal .presentation-modal-window.pres-stage-deck .pres-slide-counter,
+.presentation-modal .presentation-modal-window.pres-stage-deck .modal-close-btn { color: #f4f1ea !important; }
+.presentation-modal .presentation-modal-window.pres-stage-deck .topbar-btn { background: transparent !important; color: #f4f1ea !important; border: 1px solid rgba(244,241,234,.25) !important; }
+.presentation-modal .presentation-modal-window.pres-stage-deck .topbar-btn.primary { background: #e2bd72 !important; color: #111 !important; border-color: #e2bd72 !important; }
+
+/* --- 발표 슬라이드 페이지(oled/slides.html) --- */
+.slide-viewer.is-stage { background: #070707; border-color: #070707; padding: 1rem 1.2rem; }
+.slide-viewer.is-stage #slideContentArea { flex: none !important; aspect-ratio: 16 / 9; }
+.slide-viewer.is-stage:fullscreen { background: #070707 !important; padding: 1rem 1.5rem !important; }
+.slide-viewer.is-stage:fullscreen #slideContentArea { flex: 1 !important; aspect-ratio: auto; }
+.slide-viewer.is-stage .slide-footer-nav { border-top-color: rgba(244,241,234,.1); margin-top: 1rem; padding-top: 1rem; }
+.slide-viewer.is-stage .slide-btn { background: transparent; color: #f4f1ea; border-color: rgba(244,241,234,.25); }
+.slide-viewer.is-stage .slide-btn.primary { background: #e2bd72; color: #111; border-color: #e2bd72; }
