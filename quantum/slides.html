@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[발표 슬라이드] 양자 컴퓨터와 계산 화학의 미래 - KAIST 첨단과학 탐구</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/presentation-stage.css?v=20261014k">
   <style>
     .slide-viewer {
       background: #ffffff;
@@ -140,7 +141,7 @@
             <i data-lucide="globe"></i> <span>[2차시] 블록 구와 중첩</span>
           </button>
           <button class="slide-lesson-btn purple-theme" onclick="switchSlideLesson(3)">
-            <i data-lucide="users"></i> <span>[3차시] 2인 3각 VQE</span>
+            <i data-lucide="users"></i> <span>[3차시] 2인 3각 계산</span>
           </button>
           <button class="slide-lesson-btn purple-theme" onclick="switchSlideLesson(4)">
             <i data-lucide="terminal"></i> <span>[4차시] KAIST 계산화학</span>
@@ -171,9 +172,9 @@
   </div>
 
   <script src="../assets/js/sidebar.js"></script>
-  <script src="../assets/data/presentation-data-oled.js"></script>
-  <script src="../assets/data/presentation-data-quantum.js"></script>
-  <script src="../assets/js/presentation-modal.js"></script>
+  <script src="../assets/data/presentation-data-oled.js?v=20261014k"></script>
+  <script src="../assets/data/presentation-data-quantum.js?v=20261014k"></script>
+  <script src="../assets/js/presentation-modal.js?v=20261014k"></script>
   <script>
     renderSidebar('quantum', 'slides');
 
@@ -188,7 +189,10 @@
       const total = deck.slides.length;
       const area = document.getElementById('slideContentArea');
 
-      area.innerHTML = `
+      const isStage = deck.design === 'stage';
+      document.getElementById('slideViewer').classList.toggle('is-stage', isStage);
+      if (isStage) renderPresStageSlide(area, slide);
+      else area.innerHTML = `
         <div class="slide-item active">
           <div>
             <div class="slide-tag">${slide.tag}</div>

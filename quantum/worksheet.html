@@ -57,7 +57,7 @@
               <td colspan="3">
                 1. 다전자 분자 속 전자 간 반발력으로 인해 발생하는 계산 조합 수의 지수 폭발($2^N$)을 체감하고 설명할 수 있다.<br>
                 2. 바닥에 놓인 동전(비트)과 회전하는 팽이 동전(큐비트의 '중첩')을 비교하여 동시 병렬 처리의 원리를 설명할 수 있다.<br>
-                3. 양자 컴퓨터와 일반 컴퓨터가 협력하는 VQE 알고리즘을 통해 화학 분자가 가장 안정한 바닥 상태를 찾아 결합하는 과정을 설명할 수 있다.<br>
+                3. 양자 컴퓨터와 일반 컴퓨터가 협력하는 2인 3각 계산을 통해 화학 분자가 가장 안정한 바닥 상태를 찾아 결합하는 과정을 설명할 수 있다.<br>
                 4. 양자 화학 시뮬레이션을 활용한 신물질 분자 설계 기획서를 작성할 수 있다.
               </td>
             </tr>
@@ -97,11 +97,11 @@
               <li>가상실험실(lab.html)의 [블록 구 큐비트 시뮬레이터]에 접속하여 0과 1이 섞인 중첩 상태를 직접 만들어본다.</li>
             </ol>
 
-            <p style="margin-top:0.75rem;"><strong>【탐구 3】 양자-고전 하이브리드 VQE 알고리즘</strong></p>
+            <p style="margin-top:0.75rem;"><strong>【탐구 3】 두 컴퓨터의 2인 3각 계산</strong></p>
             <ol style="margin-left:1.5rem; margin-top:0.3rem;">
               <li>2인 1조를 구성하고, 학생 A는 <strong>'양자 컴퓨터(빠른 에너지 계산)'</strong>, 학생 B는 <strong>'일반 컴퓨터(매개변수 최적화)'</strong> 역할을 맡는다.</li>
               <li>학생 A가 큐비트로 분자의 에너지 값을 계산하여 전달하면, 학생 B는 수치를 보고 분자 결합 각도를 넓히거나 좁히도록 피드백을 준다.</li>
-              <li>가상실험실(lab.html)의 [VQE 최적화 루프 시뮬레이터]를 가동하여 공이 골짜기 최저 바닥 상태(-1.137 a.u.)로 찾아 들어가는 과정을 확인한다.</li>
+              <li>가상실험실(lab.html)의 [바닥 상태 찾기 시뮬레이터]를 가동하여 공이 골짜기 최저 바닥 상태(-1.137 a.u.)로 찾아 들어가는 과정을 확인한다.</li>
             </ol>
 
             <p style="margin-top:0.75rem;"><strong>【탐구 4】 양자 화학 시뮬레이션 기반 분자 설계 기획서</strong></p>
@@ -239,13 +239,13 @@
 
           <!-- 탐구 3 활동 -->
           <div style="margin-top:2.75rem;">
-            <p><strong>【탐구 3】 양자-고전 하이브리드 VQE 알고리즘과 바닥 상태</strong></p>
+            <p><strong>【탐구 3】 두 컴퓨터의 2인 3각 계산과 바닥 상태</strong></p>
             <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 다음 빈칸에 알맞은 말을 쓰시오.</p>
             <div class="answer-box" style="line-height:1.8; padding:0.6rem 0.85rem; margin-bottom:2.25rem;">
               자연계의 모든 화학 분자는 에너지가 가장 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 상태인 최저 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )를 찾아 결합합니다.
             </div>
             
-            <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 양자 컴퓨터와 일반 컴퓨터의 협동 알고리즘(VQE) 순서도의 빈칸을 채우시오.</p>
+            <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 양자 컴퓨터와 일반 컴퓨터의 2인 3각 계산 순서도의 빈칸을 채우시오.</p>
             <div class="callout-box" style="background:#f8fafc; font-size:0.92rem; text-align:center; line-height:2.2; margin-bottom:2.25rem;">
               [ 1단계: <strong>양자 컴퓨터의 임무</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) 계산하기<br>
               ⬇ 수치 전달<br>
@@ -264,7 +264,7 @@
                 </div>
               </div>
               <div class="ws-ox-item">
-                <span class="ws-ox-statement">(2) 양자 컴퓨터(에너지 계산)와 일반 컴퓨터(파라미터 조정)가 서로 데이터를 주고받는 협력 알고리즘을 VQE라 부른다.</span>
+                <span class="ws-ox-statement">(2) 양자 컴퓨터(에너지 계산)와 일반 컴퓨터(파라미터 조정)가 서로 값을 주고받으며 함께 바닥 상태를 찾는다.</span>
                 <div class="ws-ox-group">
                   <span class="ws-ox-btn" style="pointer-events:none;">O</span>
                   <span class="ws-ox-btn" style="pointer-events:none;">X</span>

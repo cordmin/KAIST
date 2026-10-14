@@ -15,7 +15,7 @@ window.worksheetModalData.quantum = {
         <span>이름: <input type="text" class="ws-mini-input" style="width:84px;"></span>
       </div>
 
-      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 분자 속 전자 수에 따른 상태 조합의 수(2ᴺ)와 슈퍼컴퓨터 계산 시간을 정리하시오.</p>
+      <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 분자 속 전자 수에 따라 계산해야 할 경우의 수(2ᴺ)를 정리하고, 무엇보다 많은지 비교하시오.</p>
       <table class="data-table text-center" style="margin-bottom:2.25rem;">
         <thead>
           <tr>
@@ -23,37 +23,37 @@ window.worksheetModalData.quantum = {
             <th style="width:14%;">화학식</th>
             <th style="width:14%;">전자 수 (N)</th>
             <th style="width:26%;">계산해야 할 상태 수 (2ᴺ)</th>
-            <th style="width:26%;">일반 슈퍼컴퓨터 소요 시간</th>
+            <th style="width:26%;">비교해 보기</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>수소 원자</td>
-            <td>H</td>
-            <td>1개</td>
-            <td>2¹ = <input type="text" class="ws-mini-input" style="width:50px; text-align:center;" data-answer="2"> 가지</td>
-            <td>0.000001초 (즉시)</td>
+            <td>수소 분자</td>
+            <td>H₂</td>
+            <td>2개</td>
+            <td>2² = <input type="text" class="ws-mini-input" style="width:50px; text-align:center;" data-answer="4"> 가지</td>
+            <td>순식간에 계산</td>
           </tr>
           <tr>
             <td>물 분자</td>
             <td>H₂O</td>
             <td>10개</td>
             <td>2¹⁰ = <input type="text" class="ws-mini-input" style="width:65px; text-align:center;" data-answer="1024"> 가지</td>
-            <td>약 0.001초 (즉시)</td>
+            <td>순식간에 계산</td>
           </tr>
           <tr>
             <td>카페인 분자</td>
             <td>C₈H₁₀N₄O₂</td>
             <td>102개</td>
-            <td>2¹⁰² ≈ 10³⁰ 가지</td>
-            <td><input type="text" class="ws-table-input" data-answer="수백 년 이상 (모래알 수 초과)"></td>
+            <td>2¹⁰² ≈ 5×10³⁰ 가지</td>
+            <td><input type="text" class="ws-table-input" data-answer="지구의 모래알 수(약 7.5×10¹⁸개)보다 많음"></td>
           </tr>
           <tr>
             <td>페니실린</td>
             <td>C₁₆H₁₈N₂O₄S</td>
-            <td>약 280개</td>
-            <td>2²⁸⁰ ≈ 10⁸⁴ 가지</td>
-            <td><input type="text" class="ws-table-input" data-answer="우주 나이(138억 년) 동안 계산 불가"></td>
+            <td>176개</td>
+            <td>2¹⁷⁶ ≈ 10⁵³ 가지</td>
+            <td><input type="text" class="ws-table-input" data-answer="지구 전체 원자 수(약 10⁵⁰개)보다 많음"></td>
           </tr>
         </tbody>
       </table>
@@ -61,21 +61,21 @@ window.worksheetModalData.quantum = {
       <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
       <div class="ws-ox-quiz" style="margin-bottom:2.25rem;">
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(1) 분자 속 전자가 1개 늘어날 때마다 계산해야 할 양자 상태의 수는 2배씩 곱해지는 '지수 폭발(2ᴺ)'이 일어난다.</span>
+          <span class="ws-ox-statement">(1) 전자 하나가 두 가지 상태를 가진다고 단순하게 생각하면, 분자 속 전자가 1개 늘어날 때마다 계산해야 할 경우의 수는 2배씩 늘어난다.</span>
           <div class="ws-ox-group" data-answer="O">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
           </div>
         </div>
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(2) 최신 슈퍼컴퓨터를 사용하면 페니실린 분자(10⁸⁴가지)의 상태를 우주 나이(138억 년) 안에 전부 계산할 수 있다.</span>
+          <span class="ws-ox-statement">(2) 지구의 모든 원자를 메모리로 쓰면 페니실린 분자(약 10⁵³가지)의 경우의 수를 모두 적어 둘 수 있다.</span>
           <div class="ws-ox-group" data-answer="X">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
           </div>
         </div>
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(3) 작은 약품 분자 하나 속 전자들의 상태 조합 수가 전 우주의 모든 원자 수(약 10⁸⁰개)보다 훨씬 많을 수 있다.</span>
+          <span class="ws-ox-statement">(3) 작은 약품 분자 하나의 경우의 수가 지구 전체 원자 수(약 10⁵⁰개)보다 많을 수 있다.</span>
           <div class="ws-ox-group" data-answer="O">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
@@ -83,12 +83,12 @@ window.worksheetModalData.quantum = {
         </div>
       </div>
 
-      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 지구상의 모든 모래알 수는 약 10²³개이고 우주 전체 원자 수는 약 10⁸⁰개이다. 현존하는 최고 성능의 슈퍼컴퓨터로도 작은 약품 분자 하나를 계산하지 못하는 이유를 서술하시오.</p>
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 지구의 모든 모래알 수는 약 7.5×10¹⁸개이고 지구 전체 원자 수는 약 10⁵⁰개이다. 최고 성능의 슈퍼컴퓨터로도 작은 약품 분자 하나를 정확히 계산하기 어려운 이유를 서술하시오.</p>
       <div class="answer-box" style="padding:0.85rem 1rem; margin-bottom:2rem;">
         <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
           <i data-lucide="corner-down-right"></i> <span>서술:</span>
         </div>
-        <textarea class="ws-textarea-input" rows="3" data-answer="분자 속 전자가 증가함에 따라 양자 상태가 2의 거듭제곱으로 곱해지는 '지수 폭발(2ᴺ)'이 발생하기 때문입니다. 페니실린 같은 작은 분자도 계산해야 할 경우의 수가 10⁸⁴가지로 전 우주의 원자 수(10⁸⁰)를 훌쩍 뛰어넘어, 일반 컴퓨터 방식으로는 우주 나이 동안 계산해도 불가능합니다."></textarea>
+        <textarea class="ws-textarea-input" rows="3" data-answer="분자 속 전자가 늘어날수록 계산해야 할 경우의 수가 2의 거듭제곱으로 불어나는 '지수 폭발(2ᴺ)'이 일어나기 때문입니다. 페니실린 같은 작은 분자도 경우의 수가 약 10⁵³가지로 지구 전체 원자 수(약 10⁵⁰개)보다 많아, 일반 컴퓨터로는 모두 적어 두거나 계산할 수 없습니다."></textarea>
       </div>
     `,
     teacher: `
@@ -100,28 +100,28 @@ window.worksheetModalData.quantum = {
             <th style="width:14%;">화학식</th>
             <th style="width:14%;">전자 수 (N)</th>
             <th style="width:26%;">계산해야 할 상태 수 (2ᴺ)</th>
-            <th style="width:26%;">일반 슈퍼컴퓨터 소요 시간</th>
+            <th style="width:26%;">비교해 보기</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td><strong>수소 원자</strong></td><td>H</td><td>1개</td><td><strong class="model-answer">2¹ = 2 가지</strong></td><td>0.000001초 (즉시 계산)</td></tr>
-          <tr><td><strong>물 분자</strong></td><td>H₂O</td><td>10개</td><td><strong class="model-answer">2¹⁰ = 1,024 가지</strong></td><td>약 0.001초 (즉시 계산)</td></tr>
-          <tr><td><strong>카페인 분자</strong></td><td>C₈H₁₀N₄O₂</td><td>102개</td><td><strong class="model-answer">2¹⁰² ≈ 10³⁰ 가지</strong></td><td><strong class="model-answer">수백 년 이상 (모래알 수 10²³개 초과)</strong></td></tr>
-          <tr><td><strong>페니실린</strong></td><td>C₁₆H₁₈N₂O₄S</td><td>약 280개</td><td><strong class="model-answer">2²⁸⁰ ≈ 10⁸⁴ 가지</strong></td><td><strong class="model-answer">우주 나이(138억 년) 동안 계산 불가 (원자 수 10⁸⁰개 초과)</strong></td></tr>
+          <tr><td><strong>수소 분자</strong></td><td>H₂</td><td>2개</td><td><strong class="model-answer">2² = 4 가지</strong></td><td>순식간에 계산</td></tr>
+          <tr><td><strong>물 분자</strong></td><td>H₂O</td><td>10개</td><td><strong class="model-answer">2¹⁰ = 1,024 가지</strong></td><td>순식간에 계산</td></tr>
+          <tr><td><strong>카페인 분자</strong></td><td>C₈H₁₀N₄O₂</td><td>102개</td><td><strong class="model-answer">2¹⁰² ≈ 5×10³⁰ 가지</strong></td><td><strong class="model-answer">지구의 모래알 수(약 7.5×10¹⁸개)보다 많음</strong></td></tr>
+          <tr><td><strong>페니실린</strong></td><td>C₁₆H₁₈N₂O₄S</td><td>176개</td><td><strong class="model-answer">2¹⁷⁶ ≈ 10⁵³ 가지</strong></td><td><strong class="model-answer">지구 전체 원자 수(약 10⁵⁰개)보다 많음</strong></td></tr>
         </tbody>
       </table>
 
       <h4 style="color:#7c3aed; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
-        (1) <strong>O</strong> : 양자역학에 의해 전자들이 취할 수 있는 스핀 조합은 전자가 1개 추가될 때마다 2배씩 기하급수적으로 폭발합니다.<br>
-        (2) <strong>X</strong> : 계산 상태 수(10⁸⁴가지)가 관측 가능한 우주 전체 원자 수(10⁸⁰개)보다 훨씬 많아 슈퍼컴퓨터로 영원히 계산할 수 없습니다.<br>
-        (3) <strong>O</strong> : 미시 세계의 전자 스핀 조합은 거시 세계 우주 원자 총수보다 훨씬 커지는 역설적 규모를 갖습니다.
+        (1) <strong>O</strong> : 전자 하나에 두 가지 경우가 있으면 전자가 1개 늘 때마다 경우의 수가 2배가 됩니다. (실제 계산을 아주 단순하게 줄인 모형입니다.)<br>
+        (2) <strong>X</strong> : 페니실린의 경우의 수(약 10⁵³가지)가 지구 전체 원자 수(약 10⁵⁰개)보다 많아, 원자 하나에 하나씩 적어도 모자랍니다.<br>
+        (3) <strong>O</strong> : 전자가 176개인 페니실린만 해도 경우의 수가 약 10⁵³가지로 지구 전체 원자 수보다 많습니다.
       </div>
 
       <h4 style="color:#7c3aed; margin:2.25rem 0 0.8rem;">3. 서술형 문항 모범 답안</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
-        분자 속 전자가 증가함에 따라 양자 상태가 2의 거듭제곱으로 곱해지는 '지수 폭발(2ᴺ)'이 발생하기 때문입니다. 페니실린 같은 작은 분자도 계산해야 할 경우의 수가 10⁸⁴가지로 전 우주의 원자 수(10⁸⁰)를 훌쩍 뛰어넘어, 일반 컴퓨터 방식으로는 우주 나이 동안 계산해도 불가능합니다.
+        분자 속 전자가 늘어날수록 계산해야 할 경우의 수가 2의 거듭제곱으로 불어나는 '지수 폭발(2ᴺ)'이 일어나기 때문입니다. 페니실린 같은 작은 분자도 경우의 수가 약 10⁵³가지로 지구 전체 원자 수(약 10⁵⁰개)보다 많아, 일반 컴퓨터로는 모두 적어 두거나 계산할 수 없습니다.
       </div>
     `
   },
@@ -153,12 +153,12 @@ window.worksheetModalData.quantum = {
           <tr>
             <td><strong>정보의 표현</strong></td>
             <td><input type="text" class="ws-table-input" data-answer="0 또는 1 중 단 1개만"></td>
-            <td><input type="text" class="ws-table-input" data-answer="0과 1 둘 다 동시 공존(중첩)"></td>
+            <td><input type="text" class="ws-table-input" data-answer="0과 1이 섞인 중첩 (측정하면 하나로 정해짐)"></td>
           </tr>
           <tr>
             <td><strong>10개 사용 시 길 탐색</strong></td>
-            <td><input type="text" class="ws-table-input" data-answer="1,024개 길 중 1개씩 순서대로"></td>
-            <td><input type="text" class="ws-table-input" data-answer="1,024개 길 동시 탐색(초병렬)"></td>
+            <td><input type="text" class="ws-table-input" data-answer="1,024개 길을 하나씩 확인"></td>
+            <td><input type="text" class="ws-table-input" data-answer="정답 길이 나올 확률을 키워 약 25번 만에 찾음"></td>
           </tr>
         </tbody>
       </table>
@@ -166,22 +166,22 @@ window.worksheetModalData.quantum = {
       <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
       <div class="ws-ox-quiz" style="margin-bottom:2.25rem;">
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(1) 책상 위에서 빠르게 회전하는 동전은 손으로 멈춰 확인하기 전까지 앞면과 뒷면이 동시에 공존하는 상태다.</span>
+          <span class="ws-ox-statement">(1) 큐비트는 측정하기 전에는 0과 1이 섞인 중첩 상태이고, 측정하면 0 또는 1 하나로 정해진다.</span>
           <div class="ws-ox-group" data-answer="O">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
           </div>
         </div>
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(2) 일반 컴퓨터는 미로의 모든 갈래 길에 분신들을 동시에 한꺼번에 들여보내서 출구를 찾는다.</span>
+          <span class="ws-ox-statement">(2) 일반 컴퓨터는 미로의 갈래 길을 하나씩 확인해야 한다.</span>
           <div class="ws-ox-group" data-answer="X">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
           </div>
         </div>
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(3) 10개의 큐비트가 중첩되면 2¹⁰ = 1,024가지의 모든 경로를 단 한 번에 동시에 병렬 처리할 수 있다.</span>
-          <div class="ws-ox-group" data-answer="O">
+          <span class="ws-ox-statement">(3) 양자 컴퓨터는 1,024개 길을 모두 동시에 가 본 뒤, 측정 한 번으로 모든 길의 결과를 한꺼번에 알 수 있다.</span>
+          <div class="ws-ox-group" data-answer="X">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
           </div>
@@ -193,7 +193,7 @@ window.worksheetModalData.quantum = {
         <div style="display:flex; align-items:center; gap:0.25rem; margin-bottom:0.45rem; font-weight:600; color:#1e293b;">
           <i data-lucide="corner-down-right"></i> <span>서술:</span>
         </div>
-        <textarea class="ws-textarea-input" rows="3" data-answer="일반 컴퓨터는 한 갈래 길씩 가보고 막히면 되돌아 나오는 '순차 탐색' 방식을 씁니다. 반면 양자 컴퓨터는 큐비트의 '중첩' 성질을 활용하여 1,024명의 분신이 모든 갈래 길을 단 한 번에 '동시에 쏟아져 들어가는 초병렬 처리'를 수행하므로 압도적으로 빠릅니다."></textarea>
+        <textarea class="ws-textarea-input" rows="3" data-answer="일반 컴퓨터는 길을 하나씩 확인하므로 운이 나쁘면 1,024번을 가 봐야 합니다. 양자 컴퓨터는 중첩으로 1,024개 길을 한꺼번에 담은 뒤, 틀린 길이 나올 확률은 줄이고 맞는 길이 나올 확률은 키우는 과정을 약 25번 반복해 정답 길을 찾습니다. 측정하면 답은 하나만 나오므로 모든 길의 결과를 한 번에 꺼내는 것은 아닙니다."></textarea>
       </div>
     `,
     teacher: `
@@ -215,32 +215,32 @@ window.worksheetModalData.quantum = {
           <tr>
             <td><strong>정보의 표현</strong></td>
             <td>0 또는 1 중 (<strong class="model-answer">&nbsp;단 1개만&nbsp;</strong>)</td>
-            <td>0과 1 (<strong class="model-answer">&nbsp;둘 다 동시 공존(중첩)&nbsp;</strong>)</td>
+            <td>0과 1이 (<strong class="model-answer">&nbsp;섞인 중첩, 측정하면 하나로 정해짐&nbsp;</strong>)</td>
           </tr>
           <tr>
             <td><strong>10개 사용 시 길 탐색</strong></td>
-            <td>1,024개 길 중 (<strong class="model-answer">&nbsp;1개씩 순서대로&nbsp;</strong>)</td>
-            <td>1,024개 길 (<strong class="model-answer">&nbsp;1,024개 길 동시 탐색(초병렬)&nbsp;</strong>)</td>
+            <td>1,024개 길을 (<strong class="model-answer">&nbsp;하나씩 확인&nbsp;</strong>)</td>
+            <td>1,024개 길 중 (<strong class="model-answer">&nbsp;정답 길이 나올 확률을 키워 약 25번 만에 찾음&nbsp;</strong>)</td>
           </tr>
         </tbody>
       </table>
 
       <h4 style="color:#2563eb; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
-        (1) <strong>O</strong> : 회전하는 동안 동전은 앞면(1)과 뒷면(0)이 확률적으로 뒤섞여 공존하는 상태(중첩)입니다.<br>
-        (2) <strong>X</strong> : 일반 컴퓨터는 한 번에 하나의 길만 시도하는 직렬 순차 탐색을 하므로 갈래가 많아지면 극도로 느려집니다.<br>
-        (3) <strong>O</strong> : 큐비트의 중첩과 얽힘 덕분에 2ᴺ개의 모든 상태를 단 1회의 연산 단계에서 동시에 검사할 수 있습니다.
+        (1) <strong>O</strong> : 큐비트는 측정 전에는 0과 1이 일정한 비율로 섞인 중첩 상태이고, 측정하면 그 비율(확률)에 따라 0 또는 1 하나로 정해집니다. 도는 동전은 이를 이해하기 위한 비유입니다.<br>
+        (2) <strong>O</strong> : 일반 컴퓨터는 한 번에 한 길씩 확인하므로 갈래가 많아질수록 오래 걸립니다.<br>
+        (3) <strong>X</strong> : 측정하면 결과는 하나만 나옵니다. 양자 컴퓨터는 정답이 나올 확률을 키우는 과정을 반복해 답을 찾으며(1,024개 길이면 약 25번), 모든 결과를 한 번에 꺼내는 것은 오해입니다.
       </div>
 
       <h4 style="color:#2563eb; margin:2.25rem 0 0.8rem;">3. 서술형 문항 모범 답안</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2rem;">
         <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> <strong>모범 답안:</strong> 
-        일반 컴퓨터는 한 갈래 길씩 가보고 막히면 되돌아 나오는 '순차 탐색' 방식을 씁니다. 반면 양자 컴퓨터는 큐비트의 '중첩' 성질을 활용하여 1,024명의 분신이 모든 갈래 길을 단 한 번에 '동시에 쏟아져 들어가는 초병렬 처리'를 수행하므로 압도적으로 빠릅니다.
+        일반 컴퓨터는 길을 하나씩 확인하므로 운이 나쁘면 1,024번을 가 봐야 합니다. 양자 컴퓨터는 중첩으로 1,024개 길을 한꺼번에 담은 뒤, 틀린 길이 나올 확률은 줄이고 맞는 길이 나올 확률은 키우는 과정을 약 25번 반복해 정답 길을 찾습니다. 측정하면 답은 하나만 나오므로 모든 길의 결과를 한 번에 꺼내는 것은 아닙니다.
       </div>
     `
   },
   3: {
-    title: '[3차시] 양자-고전 하이브리드 VQE 알고리즘',
+    title: '[3차시] 두 컴퓨터의 2인 3각 계산',
     badge: '양자컴퓨터 모듈 3차시 | 성취기준 [9과16-01] [9과16-06] [9정02-02]',
     student: `
       <div class="ws-student-meta">
@@ -251,16 +251,16 @@ window.worksheetModalData.quantum = {
 
       <p style="font-size:0.95rem; color:#1e293b; margin:1.25rem 0 0.8rem; font-weight:700;">1. 다음 빈칸에 알맞은 말을 쓰시오.</p>
       <div class="answer-box" style="padding:0.85rem 1rem; line-height:1.8; margin-bottom:2.25rem;">
-        자연계의 모든 화학 분자는 에너지가 가장 ( <input type="text" class="ws-mini-input" style="width:70px; text-align:center;" data-answer="낮은"> ) 상태인 최저 ( <input type="text" class="ws-mini-input" style="width:130px; text-align:center;" data-answer="바닥 상태"> )를 찾아 결합합니다.
+        분자는 에너지가 가장 ( <input type="text" class="ws-mini-input" style="width:70px; text-align:center;" data-answer="낮은"> ) 상태인 ( <input type="text" class="ws-mini-input" style="width:130px; text-align:center;" data-answer="바닥 상태"> )에서 가장 안정하게 결합합니다.
       </div>
 
-      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 양자 컴퓨터와 일반 컴퓨터의 협동 알고리즘(VQE) 순서도의 빈칸을 채우시오.</p>
+      <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 양자 컴퓨터와 일반 컴퓨터의 2인 3각 계산 순서도의 빈칸을 채우시오.</p>
       <div class="answer-box" style="line-height:2.2; padding:0.85rem 1rem; margin-bottom:2.25rem;">
-        <div>[ 1단계: <strong>양자 컴퓨터의 임무</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( <input type="text" class="ws-mini-input" style="width:110px; text-align:center;" data-answer="에너지 값"> ) 계산하기</div>
+        <div>[ 1단계: <strong>양자 컴퓨터의 임무</strong> ] 큐비트로 분자의 현재 ( <input type="text" class="ws-mini-input" style="width:110px; text-align:center;" data-answer="에너지 값"> ) 계산하기</div>
         <div style="color:#64748b; font-size:0.88rem; padding-left:1.5rem;">⬇ 계산된 수치 전달</div>
-        <div>[ 2단계: <strong>일반 컴퓨터의 임무</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <input type="text" class="ws-mini-input" style="width:130px; text-align:center;" data-answer="미세 조정"> )하기</div>
+        <div>[ 2단계: <strong>일반 컴퓨터의 임무</strong> ] 골짜기 바닥으로 내려가도록 원자 사이 거리를 ( <input type="text" class="ws-mini-input" style="width:130px; text-align:center;" data-answer="조금씩 조정"> )하기</div>
         <div style="color:#64748b; font-size:0.88rem; padding-left:1.5rem;">⬇ 반복 피드백 루프</div>
-        <div>[ 3단계: <strong>최종 목표 달성</strong> ] 골짜기 최저 바닥 상태 도달! <i data-lucide="arrow-right"></i> 가장 안정한 <strong>신물질 분자 구조</strong> 완성!</div>
+        <div>[ 3단계: <strong>최종 목표 달성</strong> ] 골짜기 바닥(바닥 상태) 도달! <i data-lucide="arrow-right"></i> 가장 안정한 <strong>분자 구조</strong> 확인!</div>
       </div>
 
       <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">3. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
@@ -273,7 +273,7 @@ window.worksheetModalData.quantum = {
           </div>
         </div>
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(2) 양자 컴퓨터(에너지 계산)와 일반 컴퓨터(파라미터 조정)가 서로 데이터를 주고받는 협력 알고리즘을 VQE라 부른다.</span>
+          <span class="ws-ox-statement">(2) 양자 컴퓨터(에너지 계산)와 일반 컴퓨터(다음 걸음 결정)가 서로 값을 주고받으며 함께 바닥 상태를 찾는다.</span>
           <div class="ws-ox-group" data-answer="O">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
@@ -292,23 +292,23 @@ window.worksheetModalData.quantum = {
     teacher: `
       <h4 style="color:#059669; margin:1.25rem 0 0.8rem;">1. 문항 예시 답안</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; margin-bottom:2.25rem;">
-        <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> 자연계의 모든 화학 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 최저 (<strong class="model-answer">&nbsp;바닥 상태 (Ground State)&nbsp;</strong>)를 찾아 결합합니다.
+        <span class="answer-arrow"><i data-lucide="corner-down-right"></i></span> 분자는 에너지가 가장 (<strong class="model-answer">&nbsp;낮은&nbsp;</strong>) 상태인 (<strong class="model-answer">&nbsp;바닥 상태&nbsp;</strong>)에서 가장 안정하게 결합합니다.
       </div>
 
       <h4 style="color:#059669; margin:2.25rem 0 0.8rem;">2. 순서도 예시 답안</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; line-height:2; margin-bottom:2.25rem;">
-        [ 1단계: <strong>양자 컴퓨터</strong> ] 큐비트 중첩으로 복잡한 분자의 현재 ( <strong class="model-answer">에너지 값</strong> ) 계산<br>
-        ⬇ 수치 전달<br>
-        [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 결합 각도와 거리를 ( <strong class="model-answer">미세 조정(최적화)</strong> )<br>
-        ⬇ 반복(피드백 루프)<br>
-        [ 3단계: <strong>목표 달성</strong> ] 골짜기 최저 바닥 상태(-1.137 a.u.) 도달! <i data-lucide="arrow-right"></i> 가장 안정한 <strong>신물질 분자 구조</strong> 완성!
+        [ 1단계: <strong>양자 컴퓨터</strong> ] 큐비트로 분자의 현재 ( <strong class="model-answer">에너지 값</strong> ) 계산<br>
+        ⬇ 값 전달<br>
+        [ 2단계: <strong>일반 컴퓨터</strong> ] 골짜기 바닥으로 내려가도록 원자 사이 거리를 ( <strong class="model-answer">조금씩 조정</strong> )<br>
+        ⬇ 반복<br>
+        [ 3단계: <strong>목표 달성</strong> ] 골짜기 바닥(수소 분자: -1.137) 도달! <i data-lucide="arrow-right"></i> 가장 안정한 <strong>분자 구조</strong> 확인!
       </div>
 
       <h4 style="color:#059669; margin:2.25rem 0 0.8rem;">3. O / X 퀴즈 정답 및 해설</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2rem;">
-        (1) <strong>X</strong> : 현재의 양자 컴퓨터(NISQ)는 노이즈가 있어 일반 컴퓨터와의 하이브리드 협동(VQE)이 실용화의 핵심입니다.<br>
-        (2) <strong>O</strong> : 양자 컴퓨터는 지수 폭발이 일어나는 분자 상태 에너지만 계산하고, 경로를 찾는 네비게이션은 일반 컴퓨터가 분담합니다.<br>
-        (3) <strong>O</strong> : 분자는 에너지가 가장 낮을 때 결합이 가장 안정해지므로 골짜기 최저점(바닥 상태)을 찾는 것이 분자 설계의 최종 목표입니다.
+        (1) <strong>X</strong> : 지금의 양자 컴퓨터는 아직 작고 오류가 많아, 일반 컴퓨터와 함께 일하는 2인 3각 계산이 쓰입니다.<br>
+        (2) <strong>O</strong> : 양자 컴퓨터는 계산하기 어려운 분자의 에너지를 맡고, 다음 걸음을 정하는 일은 일반 컴퓨터가 맡습니다.<br>
+        (3) <strong>O</strong> : 분자는 에너지가 가장 낮을 때 가장 안정하므로 골짜기 바닥(바닥 상태)을 찾는 것이 목표입니다.
       </div>
     `
   },
@@ -334,19 +334,19 @@ window.worksheetModalData.quantum = {
         <tr>
           <th>해결할 과제 및 선정 이유</th>
           <td colspan="3">
-            <textarea class="ws-textarea-input" rows="2" data-answer="친환경 상온 비료 촉매 개발: 400℃ 고온과 200기압을 쓰는 전통 비료 생산 공정이 전 세계 전기의 2%를 소모하고 탄소를 배출하기 때문."></textarea>
+            <textarea class="ws-textarea-input" rows="2" data-answer="친환경 상온 비료 촉매 개발: 400~500℃의 고온과 200기압 안팎의 고압을 쓰는 지금의 비료 생산 방식이 세계 에너지의 약 1~2%를 쓰고 이산화 탄소를 많이 내보내기 때문."></textarea>
           </td>
         </tr>
         <tr>
           <th>양자 컴퓨터 기반<br>분자 설계 아이디어</th>
           <td colspan="3">
-            <textarea class="ws-textarea-input" rows="3" data-answer="뿌리혹박테리아 질소고정효소 활성 중심인 철-몰리브덴(Fe-Mo) 금속 착물의 전자 구조를 양자 컴퓨터로 정밀 계산하여 상온에서도 질소(N₂) 결합을 쉽게 끊는 인공 촉매 분자를 설계함."></textarea>
+            <textarea class="ws-textarea-input" rows="3" data-answer="콩과 식물 뿌리의 세균이 상온에서 질소의 세 겹 결합(N≡N)을 끊는 비밀을 양자 컴퓨터로 계산하여, 상온에서도 질소를 비료 원료로 바꾸는 촉매 분자를 설계함."></textarea>
           </td>
         </tr>
         <tr>
           <th>기대 효과</th>
           <td colspan="3">
-            <textarea class="ws-textarea-input" rows="2" data-answer="전 세계 온실가스 1.5% 감축, 값싸고 안전한 친환경 비료 공급으로 식량난 해결 및 농업 탄소 중립에 기여."></textarea>
+            <textarea class="ws-textarea-input" rows="2" data-answer="비료 공장의 에너지 사용과 온실가스 배출을 줄이고, 값싸고 안전한 비료 공급으로 식량 문제 해결에 기여."></textarea>
           </td>
         </tr>
       </table>
@@ -354,22 +354,22 @@ window.worksheetModalData.quantum = {
       <p style="font-size:0.95rem; color:#1e293b; margin:2.25rem 0 0.8rem; font-weight:700;">2. 다음 설명이 맞으면 O, 틀리면 X를 선택하시오.</p>
       <div class="ws-ox-quiz" style="margin-bottom:2rem;">
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(1) 위험한 화학 시약과 비커 없이도 양자 컴퓨터 시뮬레이션을 통해 수만 가지 가상 분자를 미리 합성해 볼 수 있다.</span>
+          <span class="ws-ox-statement">(1) 위험한 화학 시약과 비커 없이도 컴퓨터 속 가상 실험으로 여러 분자 후보를 미리 시험해 볼 수 있다.</span>
           <div class="ws-ox-group" data-answer="O">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
           </div>
         </div>
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(2) 전통적인 하버-보슈 비료 공정은 고온·고압을 쓰지 않는 친환경 기술이므로 대체할 필요가 없다.</span>
+          <span class="ws-ox-statement">(2) 지금의 비료 생산 방식은 높은 온도와 압력을 쓰지 않으므로 에너지를 거의 쓰지 않는다.</span>
           <div class="ws-ox-group" data-answer="X">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
           </div>
         </div>
         <div class="ws-ox-item">
-          <span class="ws-ox-statement">(3) 양자 컴퓨터를 이용하면 10년 이상 걸리던 표적 신약이나 배터리 전해질 분자 개발 기간을 수개월로 단축할 수 있다.</span>
-          <div class="ws-ox-group" data-answer="O">
+          <span class="ws-ox-statement">(3) 양자 컴퓨터는 이미 완성된 기술이어서 지금 바로 모든 신약을 컴퓨터로만 개발할 수 있다.</span>
+          <div class="ws-ox-group" data-answer="X">
             <button type="button" class="ws-ox-btn" data-choice="O">O</button>
             <button type="button" class="ws-ox-btn" data-choice="X">X</button>
           </div>
@@ -387,23 +387,23 @@ window.worksheetModalData.quantum = {
         </tr>
         <tr>
           <th>해결할 과제 및 선정 이유</th>
-          <td colspan="3"><strong class="model-answer">[친환경 상온 비료 촉매]: 400℃ 고온과 200기압을 쓰는 하버-보슈 공정을 대체하여 전 세계 전력의 2% 소비 절감</strong></td>
+          <td colspan="3"><strong class="model-answer">[친환경 상온 비료 촉매]: 400~500℃, 200기압 안팎을 쓰는 지금의 비료 생산 방식(세계 에너지의 약 1~2% 사용)을 상온 방식으로 바꾸기 위함</strong></td>
         </tr>
         <tr>
           <th>양자 컴퓨터 기반<br>분자 설계 아이디어</th>
-          <td colspan="3"><strong class="model-answer">뿌리혹박테리아 질소고정효소 활성 중심인 철-몰리브덴(Fe-Mo) 클러스터의 전자 구조를 양자 시뮬레이션하여 상온에서도 질소(N₂) 삼중 결합을 끊는 인공 촉매 분자 설계.</strong></td>
+          <td colspan="3"><strong class="model-answer">콩과 식물 뿌리의 세균이 상온에서 질소의 세 겹 결합(N≡N)을 끊는 비밀을 양자 컴퓨터로 계산하여, 상온에서도 작동하는 촉매 분자를 설계.</strong></td>
         </tr>
         <tr>
           <th>기대 효과</th>
-          <td colspan="3"><strong class="model-answer">전 세계 온실가스 1.5% 감축, 저개발국에 값싸고 안전한 친환경 비료 공급으로 농업 탄소 중립 및 인류 기아 문제 해결.</strong></td>
+          <td colspan="3"><strong class="model-answer">비료 공장의 에너지 사용과 온실가스 배출 감소, 값싸고 안전한 비료 공급으로 식량 문제 해결에 기여.</strong></td>
         </tr>
       </table>
 
       <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">2. O / X 퀴즈 정답 및 해설</h4>
       <div class="callout-box" style="background:#fff1f2; border-left-color:#e11d48; font-size:0.9rem; line-height:1.75; margin-bottom:2.25rem;">
-        (1) <strong>O</strong> : 비커 없는 '인실리코(In-silico)' 양자 화학 시뮬레이션으로 실험실 폐기물 없이 신물질을 스크리닝할 수 있습니다.<br>
-        (2) <strong>X</strong> : 하버-보슈 공정은 엄청난 화석연료와 전력을 소모하여 전 세계 온실가스의 주요 배출원으로 꼽혀 상온 대체 기술이 시급합니다.<br>
-        (3) <strong>O</strong> : 분자 후보 물질 수백만 개 중 가장 결합 에너지가 낮은 최적 구조를 양자 컴퓨터로 즉시 선별하여 R&D 기간을 획기적으로 줄입니다.
+        (1) <strong>O</strong> : 컴퓨터 속 가상 실험으로 실험실 폐기물 없이 여러 분자 후보를 미리 걸러 낼 수 있습니다.<br>
+        (2) <strong>X</strong> : 지금의 비료 생산은 높은 온도와 압력이 필요해 세계 에너지의 약 1~2%를 쓰고 이산화 탄소를 많이 내보냅니다.<br>
+        (3) <strong>X</strong> : 양자 컴퓨터는 아직 발전 중인 기술입니다. 앞으로 분자 계산이 정확해지면 개발 기간과 비용을 줄이는 데 도움을 줄 것으로 기대됩니다.
       </div>
 
       <h4 style="color:#d97706; margin:2.25rem 0 0.8rem;">3. 평가 기준표</h4>

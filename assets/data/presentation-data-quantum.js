@@ -1,10 +1,11 @@
 /**
  * KAIST CPRL - 양자컴퓨터 모듈 슬라이드 데이터 (1~4차시)
  * assets/data/presentation-data-quantum.js
+ * 1920×1080 지면형 덱 (assets/css/presentation-stage.css) · 수업지도안(lesson-plan-data-quantum.js) 흐름과 일치
  */
 if (typeof getToolAsset === 'undefined') {
   function getToolAsset(filename) {
-    const isSub = (typeof window !== 'undefined' && window.location && window.location.pathname) 
+    const isSub = (typeof window !== 'undefined' && window.location && window.location.pathname)
       ? (window.location.pathname.includes('/oled/') || window.location.pathname.includes('/quantum/'))
       : false;
     return (isSub ? '../' : '') + 'image/tools/' + filename;
@@ -15,388 +16,447 @@ if (typeof window.presentationModalData === 'undefined') {
   window.presentationModalData = {};
 }
 
+// image/ 바로 아래 사진
+function qImg(f) { return getToolAsset('../' + f); }
+const qSup = n => `<tspan baseline-shift="super" font-size="62%">${n}</tspan>`;
+
+// ---------------------------------------------------------------------------
+// 그림 (SVG)
+// ---------------------------------------------------------------------------
+
+// 체스판과 쌀알: 칸마다 2배씩
+function qChessboard() {
+  let cells = '';
+  for (let i = 0; i < 64; i++) {
+    const r = Math.floor(i / 8), c = i % 8, x = 20 + c * 100, y = 20 + r * 100;
+    cells += `<rect x="${x}" y="${y}" width="96" height="96" fill="${(r + c) % 2 ? '#1d1d1d' : '#2a2a2a'}"/>`;
+    if (i < 6) {
+      const n = 2 ** i, cols = Math.ceil(Math.sqrt(n)), step = 64 / cols;
+      for (let k = 0; k < n; k++) cells += `<ellipse cx="${x + 16 + step / 2 + (k % cols) * step}" cy="${y + 22 + step / 2 + Math.floor(k / cols) * step}" rx="${Math.min(7, step * .32)}" ry="${Math.min(4.2, step * .2)}" fill="#f1e6c8"/>`;
+      cells += `<text x="${x + 8}" y="${y + 18}" font-size="15" font-weight="700" fill="#9d988d">${n}</text>`;
+    } else {
+      cells += `<rect x="${x + 6}" y="${y + 6}" width="84" height="84" rx="4" fill="#f1e6c8" opacity="${(0.12 + 0.88 * (i - 6) / 57).toFixed(2)}"/>`;
+    }
+  }
+  return `<svg viewBox="0 0 840 840" style="width:100%;height:100%;display:block">
+    <rect width="840" height="840" fill="#111"/>${cells}
+    <rect x="720" y="720" width="96" height="96" fill="none" stroke="#e2bd72" stroke-width="5"/>
+    <text x="768" y="778" font-size="26" font-weight="800" fill="#111" text-anchor="middle">2${qSup(63)}</text>
+  </svg>`;
+}
+
+// 전자가 하나 늘 때마다 경우의 수 2배
+function qTree() {
+  let g = '', xs = [80, 420, 760, 1100, 1440];
+  const yOf = (lv, k) => 70 + (k + .5) * (440 / 2 ** lv);
+  for (let lv = 0; lv < 4; lv++)
+    for (let k = 0; k < 2 ** lv; k++)
+      for (const ch of [0, 1]) {
+        const k2 = k * 2 + ch;
+        g += `<line x1="${xs[lv]}" y1="${yOf(lv, k)}" x2="${xs[lv + 1]}" y2="${yOf(lv + 1, k2)}" stroke="${ch ? '#ff8a6a' : '#5aa9ff'}" stroke-width="${3 - lv * .5}" opacity=".85"/>`;
+      }
+  for (let lv = 0; lv <= 4; lv++)
+    for (let k = 0; k < 2 ** lv; k++)
+      g += `<circle cx="${xs[lv]}" cy="${yOf(lv, k)}" r="${lv ? 13 - lv * 2 : 16}" fill="${lv ? '#f4f1ea' : '#e2bd72'}"/>`;
+  const lab = ['', '전자 1개 · 2가지', '전자 2개 · 4가지', '전자 3개 · 8가지', '전자 4개 · 16가지'];
+  for (let lv = 1; lv <= 4; lv++) g += `<text x="${xs[lv]}" y="40" font-size="30" font-weight="800" fill="#f4f1ea" text-anchor="middle">${lab[lv]}</text>`;
+  return `<svg viewBox="0 0 1560 530" style="width:100%;height:auto;display:block">${g}
+    <g font-size="24" font-weight="700"><circle cx="1200" cy="510" r="8" fill="#5aa9ff"/><text x="1216" y="518" fill="#5aa9ff">상태 가</text><circle cx="1340" cy="510" r="8" fill="#ff8a6a"/><text x="1356" y="518" fill="#ff8a6a">상태 나</text></g>
+  </svg>`;
+}
+
+// 자릿수 사다리: 경우의 수와 비교 대상 (10의 몇 제곱)
+function qLadder() {
+  const X = e => 40 + e * 29.4;
+  let t = '';
+  for (let e = 0; e <= 55; e += 5) {
+    t += `<line x1="${X(e)}" x2="${X(e)}" y1="${e % 10 ? 292 : 284}" y2="${e % 10 ? 308 : 316}" stroke="rgba(244,241,234,.5)" stroke-width="2"/>`;
+    if (e % 10 === 0) t += `<text x="${X(e)}" y="350" font-size="26" font-weight="700" fill="#9d988d" text-anchor="middle">10${qSup(e)}</text>`;
+  }
+  const up = [[0.6, '수소 분자', '4가지', '#5aa9ff', 70], [3.0, '물 분자', '1,024가지', '#5aa9ff', 190], [30.7, '카페인', `약 5×10${qSup(30)}가지`, '#ffb347', 110], [53, '페니실린', `약 10${qSup(53)}가지`, '#ff6a52', 110]];
+  const down = [[18.9, '지구의 모든 모래알', `약 7.5×10${qSup(18)}개`], [50.1, '지구 전체 원자', `약 10${qSup(50)}개`]];
+  for (const [e, a, b, c, h] of up)
+    t += `<line x1="${X(e)}" x2="${X(e)}" y1="300" y2="${300 - h}" stroke="${c}" stroke-width="3"/><circle cx="${X(e)}" cy="300" r="11" fill="${c}"/>
+      <text x="${X(e)}" y="${300 - h - 44}" font-size="32" font-weight="800" fill="${c}" text-anchor="${e > 50 ? 'end' : e < 5 ? 'start' : 'middle'}">${a}</text>
+      <text x="${X(e)}" y="${300 - h - 10}" font-size="26" font-weight="600" fill="#f4f1ea" text-anchor="${e > 50 ? 'end' : e < 5 ? 'start' : 'middle'}">${b}</text>`;
+  for (const [e, a, b] of down)
+    t += `<line x1="${X(e)}" x2="${X(e)}" y1="300" y2="400" stroke="#cfcac0" stroke-width="2" stroke-dasharray="6 6"/><rect x="${X(e) - 9}" y="291" width="18" height="18" fill="#cfcac0" transform="rotate(45 ${X(e)} 300)"/>
+      <text x="${X(e)}" y="440" font-size="28" font-weight="700" fill="#cfcac0" text-anchor="middle">${a}</text>
+      <text x="${X(e)}" y="476" font-size="25" fill="#9d988d" text-anchor="middle">${b}</text>`;
+  return `<svg viewBox="0 0 1696 500" style="width:100%;height:auto;display:block;overflow:visible">
+    <defs><linearGradient id="qLad" x1="0" x2="1"><stop offset="0" stop-color="#5aa9ff"/><stop offset=".55" stop-color="#ffb347"/><stop offset="1" stop-color="#ff6a52"/></linearGradient></defs>
+    <rect x="40" y="296" width="1617" height="8" rx="4" fill="url(#qLad)"/>${t}
+    <text x="1657" y="30" font-size="24" fill="#9d988d" text-anchor="end">눈금 한 칸마다 0이 5개씩 더 붙습니다</text>
+  </svg>`;
+}
+
+// 누운 동전 / 도는 동전
+function qCoin(spin) {
+  const face = `<defs><radialGradient id="qCoinG${spin ? 1 : 0}" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#f4f4f2"/><stop offset=".55" stop-color="#b9bcc0"/><stop offset="1" stop-color="#7c8086"/></radialGradient>
+    <radialGradient id="qFloor" cx=".5" cy=".3" r=".9"><stop offset="0" stop-color="#2b2f36"/><stop offset="1" stop-color="#0b0c0e"/></radialGradient></defs>
+    <rect width="800" height="600" fill="url(#qFloor)"/>`;
+  if (!spin) return `<svg viewBox="0 0 800 600" style="width:100%;height:100%;display:block">${face}
+    <ellipse cx="400" cy="400" rx="230" ry="80" fill="#000" opacity=".5"/>
+    <ellipse cx="400" cy="382" rx="220" ry="78" fill="#6b6f75"/>
+    <ellipse cx="400" cy="366" rx="220" ry="78" fill="url(#qCoinG0)"/>
+    <ellipse cx="400" cy="366" rx="186" ry="64" fill="none" stroke="#8d9197" stroke-width="4"/>
+    <text x="400" y="366" font-size="120" font-weight="800" fill="#5d6167" text-anchor="middle" dominant-baseline="middle" transform="translate(0 366) scale(1 .36) translate(0 -366)">0</text>
+  </svg>`;
+  return `<svg viewBox="0 0 800 600" style="width:100%;height:100%;display:block">${face}
+    <ellipse cx="400" cy="500" rx="150" ry="22" fill="#000" opacity=".55"/>
+    <ellipse cx="400" cy="290" rx="190" ry="205" fill="url(#qCoinG1)" opacity=".08"/>
+    <ellipse cx="400" cy="290" rx="130" ry="205" fill="url(#qCoinG1)" opacity=".14"/>
+    <ellipse cx="400" cy="290" rx="72" ry="205" fill="url(#qCoinG1)" opacity=".3"/>
+    <ellipse cx="400" cy="290" rx="24" ry="205" fill="url(#qCoinG1)"/>
+    <path d="M190 160 Q400 60 610 160" fill="none" stroke="#b794ff" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+    <path d="M592 140 L612 162 L584 172" fill="none" stroke="#b794ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
+    <path d="M610 420 Q400 520 190 420" fill="none" stroke="#b794ff" stroke-width="6" stroke-linecap="round" opacity=".5"/>
+    <text x="150" y="300" font-size="88" font-weight="800" fill="#5aa9ff" text-anchor="middle" opacity=".9">0</text>
+    <text x="650" y="300" font-size="88" font-weight="800" fill="#ff8a6a" text-anchor="middle" opacity=".9">1</text>
+  </svg>`;
+}
+
+// 스위치 · 동전 · 지구본 모형
+function qQubitPanels() {
+  return `<svg viewBox="0 0 1696 560" style="width:100%;height:auto;display:block">
+    <defs><radialGradient id="qSph" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#3a3f4a"/><stop offset="1" stop-color="#121418"/></radialGradient>
+      <marker id="qArr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#e2bd72"/></marker></defs>
+    <g transform="translate(140 60)">
+      <text x="140" y="0" font-size="34" font-weight="800" fill="#f4f1ea" text-anchor="middle">비트</text>
+      <rect x="40" y="70" width="200" height="96" rx="48" fill="#2a2a2a" stroke="#555" stroke-width="2"/>
+      <circle cx="88" cy="118" r="38" fill="#5aa9ff"/><text x="88" y="130" font-size="34" font-weight="800" fill="#0a0a0a" text-anchor="middle">0</text>
+      <text x="196" y="130" font-size="34" font-weight="800" fill="#666" text-anchor="middle">1</text>
+      <rect x="40" y="220" width="200" height="96" rx="48" fill="#2a2a2a" stroke="#555" stroke-width="2"/>
+      <circle cx="192" cy="268" r="38" fill="#ff8a6a"/><text x="192" y="280" font-size="34" font-weight="800" fill="#0a0a0a" text-anchor="middle">1</text>
+      <text x="84" y="280" font-size="34" font-weight="800" fill="#666" text-anchor="middle">0</text>
+      <text x="140" y="400" font-size="30" font-weight="700" fill="#cfcac0" text-anchor="middle">0 또는 1 중 딱 하나</text>
+      <text x="140" y="444" font-size="26" fill="#9d988d" text-anchor="middle">스위치 · 누운 동전</text>
+    </g>
+    <path d="M520 290 H640" stroke="#555" stroke-width="3" stroke-dasharray="8 8"/>
+    <g transform="translate(700 60)">
+      <text x="140" y="0" font-size="34" font-weight="800" fill="#f4f1ea" text-anchor="middle">큐비트 (비유)</text>
+      <ellipse cx="140" cy="200" rx="110" ry="120" fill="#b9bcc0" opacity=".1"/>
+      <ellipse cx="140" cy="200" rx="60" ry="120" fill="#b9bcc0" opacity=".25"/>
+      <ellipse cx="140" cy="200" rx="16" ry="120" fill="#d6d8db"/>
+      <text x="20" y="214" font-size="44" font-weight="800" fill="#5aa9ff" text-anchor="middle">0</text>
+      <text x="260" y="214" font-size="44" font-weight="800" fill="#ff8a6a" text-anchor="middle">1</text>
+      <text x="140" y="400" font-size="30" font-weight="700" fill="#cfcac0" text-anchor="middle">0과 1이 섞인 중첩</text>
+      <text x="140" y="444" font-size="26" fill="#9d988d" text-anchor="middle">도는 동전에 비유</text>
+    </g>
+    <path d="M1080 290 H1200" stroke="#555" stroke-width="3" stroke-dasharray="8 8"/>
+    <g transform="translate(1260 60)">
+      <text x="160" y="0" font-size="34" font-weight="800" fill="#f4f1ea" text-anchor="middle">지구본 모형</text>
+      <circle cx="160" cy="210" r="140" fill="url(#qSph)" stroke="#6b6f75" stroke-width="2"/>
+      <ellipse cx="160" cy="210" rx="140" ry="40" fill="none" stroke="#e2bd72" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <line x1="160" y1="70" x2="160" y2="350" stroke="#6b6f75" stroke-width="2"/>
+      <circle cx="160" cy="70" r="12" fill="#5aa9ff"/><circle cx="160" cy="350" r="12" fill="#ff8a6a"/>
+      <text x="196" y="62" font-size="28" font-weight="800" fill="#5aa9ff">북극 = 0</text>
+      <text x="196" y="372" font-size="28" font-weight="800" fill="#ff8a6a">남극 = 1</text>
+      <line x1="160" y1="210" x2="292" y2="232" stroke="#e2bd72" stroke-width="6" marker-end="url(#qArr)"/>
+      <text x="160" y="410" font-size="30" font-weight="700" fill="#cfcac0" text-anchor="middle">화살표가 적도를 가리키면</text>
+      <text x="160" y="450" font-size="26" fill="#9d988d" text-anchor="middle">0과 1이 반반으로 섞인 중첩</text>
+    </g>
+  </svg>`;
+}
+
+// 미로 1,024갈래: 하나씩 확인 vs 정답 확률 키우기
+function qMaze() {
+  let grid = '';
+  for (let k = 0; k < 1024; k++) {
+    const x = 40 + (k % 32) * 17, y = 90 + Math.floor(k / 32) * 13;
+    const fill = k === 777 ? '#e2bd72' : k < 520 ? '#6b6f75' : '#2a2a2a';
+    grid += `<rect x="${x}" y="${y}" width="14" height="10" fill="${fill}"/>`;
+  }
+  let flat = '', peak = '';
+  for (let k = 0; k < 32; k++) {
+    flat += `<rect x="${830 + k * 25}" y="${206}" width="18" height="14" fill="#5aa9ff" opacity=".8"/>`;
+    const h = k === 24 ? 200 : 3;
+    peak += `<rect x="${830 + k * 25}" y="${520 - h}" width="18" height="${h}" fill="${k === 24 ? '#e2bd72' : '#5aa9ff'}"/>`;
+  }
+  return `<svg viewBox="0 0 1696 560" style="width:100%;height:auto;display:block">
+    <text x="40" y="44" font-size="32" font-weight="800" fill="#f4f1ea">일반 컴퓨터 · 하나씩 확인</text>
+    ${grid}
+    <text x="40" y="560" font-size="26" fill="#cfcac0">회색은 이미 확인한 길, 금색이 정답 길 · 운이 나쁘면 1,024번</text>
+    <text x="830" y="44" font-size="32" font-weight="800" fill="#f4f1ea">양자 컴퓨터 · 정답이 나올 확률 키우기</text>
+    <text x="830" y="140" font-size="26" fill="#9d988d">처음: 모든 길이 나올 확률이 똑같음</text>
+    <line x1="830" y1="220" x2="1630" y2="220" stroke="#444" stroke-width="2"/>${flat}
+    <text x="830" y="290" font-size="26" fill="#9d988d">약 25번 반복한 뒤: 측정하면 정답 길이 나올 확률이 매우 높음</text>
+    <line x1="830" y1="520" x2="1630" y2="520" stroke="#444" stroke-width="2"/>${peak}
+    <text x="1430" y="560" font-size="26" fill="#e2bd72" text-anchor="middle">정답 길</text>
+  </svg>`;
+}
+
+// 안개 낀 산골짜기와 공
+function qValley() {
+  return `<svg viewBox="0 0 800 600" style="width:100%;height:100%;display:block">
+    <defs><linearGradient id="qSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2433"/><stop offset="1" stop-color="#0b0d10"/></linearGradient>
+      <linearGradient id="qFog" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfd6e0" stop-opacity="0"/><stop offset=".5" stop-color="#cfd6e0" stop-opacity=".35"/><stop offset="1" stop-color="#cfd6e0" stop-opacity="0"/></linearGradient></defs>
+    <rect width="800" height="600" fill="url(#qSky)"/>
+    <path d="M0 260 L120 170 L230 240 L330 150 L470 250 L580 160 L700 230 L800 180 V600 H0Z" fill="#202938"/>
+    <path d="M0 330 C120 300 200 360 300 420 C360 460 430 470 500 430 C600 370 680 300 800 320 V600 H0Z" fill="#2c384a"/>
+    <rect y="230" width="800" height="200" fill="url(#qFog)"/>
+    <path d="M0 470 C150 430 260 520 380 548 C460 566 540 540 620 500 C700 460 760 450 800 455 V600 H0Z" fill="#3a4a60"/>
+    <path d="M118 455 C200 470 300 530 384 548" fill="none" stroke="#e2bd72" stroke-width="5" stroke-dasharray="12 12"/>
+    <circle cx="110" cy="440" r="26" fill="#ff8a6a"/>
+    <line x1="384" y1="548" x2="384" y2="490" stroke="#f4f1ea" stroke-width="4"/><path d="M384 490 L428 504 L384 518Z" fill="#e2bd72"/>
+    <text x="400" y="590" font-size="30" font-weight="800" fill="#e2bd72" text-anchor="middle">가장 낮은 곳</text>
+  </svg>`;
+}
+
+// 수소 분자의 에너지 곡선 (가상실험실과 같은 식)
+function qH2Curve() {
+  const E = r => 0.8 * (Math.exp(-3 * (r - 0.74)) - 2 * Math.exp(-1.5 * (r - 0.74))) - 0.337;
+  const X = r => 120 + (r - 0.28) / (2.6 - 0.28) * 1440, Y = e => 70 + (e + 0.2) / (-1.17 + 0.2) * 430;
+  let d = '';
+  for (let r = 0.28; r <= 2.6; r += 0.01) d += `${d ? 'L' : 'M'}${X(r).toFixed(1)} ${Y(E(r)).toFixed(1)}`;
+  const atoms = (cx, cy, gap) => `<circle cx="${cx - gap / 2}" cy="${cy}" r="22" fill="#f4f1ea"/><circle cx="${cx + gap / 2}" cy="${cy}" r="22" fill="#f4f1ea"/>
+    <text x="${cx - gap / 2}" y="${cy + 9}" font-size="24" font-weight="800" fill="#111" text-anchor="middle">H</text><text x="${cx + gap / 2}" y="${cy + 9}" font-size="24" font-weight="800" fill="#111" text-anchor="middle">H</text>`;
+  return `<svg viewBox="0 0 1696 620" style="width:100%;height:auto;display:block">
+    <line x1="120" y1="40" x2="120" y2="520" stroke="#555" stroke-width="2"/><line x1="120" y1="520" x2="1600" y2="520" stroke="#555" stroke-width="2"/>
+    <text x="120" y="24" font-size="26" fill="#9d988d">에너지 ↑</text>
+    <text x="1600" y="566" font-size="26" fill="#9d988d" text-anchor="end">두 원자 사이 거리 →</text>
+    <path d="${d}" fill="none" stroke="#5aa9ff" stroke-width="6"/>
+    <circle cx="${X(0.74)}" cy="${Y(E(0.74))}" r="16" fill="#e2bd72"/>
+    <line x1="${X(0.74)}" y1="${Y(E(0.74)) + 16}" x2="${X(0.74)}" y2="520" stroke="#e2bd72" stroke-width="2" stroke-dasharray="6 6"/>
+    <text x="${X(0.74)}" y="566" font-size="28" font-weight="800" fill="#e2bd72" text-anchor="middle">0.074 nm</text>
+    <text x="${X(0.74) + 40}" y="${Y(E(0.74)) + 8}" font-size="30" font-weight="800" fill="#e2bd72">바닥 상태 · 에너지 -1.137</text>
+    ${atoms(X(0.36), 110, 40)}
+    <text x="${X(0.36) + 60}" y="102" font-size="28" font-weight="700" fill="#ff8a6a">너무 가까우면</text>
+    <text x="${X(0.36) + 60}" y="138" font-size="26" fill="#cfcac0">원자핵끼리 밀어냄</text>
+    ${atoms(X(2.25), 210, 150)}
+    <text x="${X(2.25)}" y="160" font-size="28" font-weight="700" fill="#b794ff" text-anchor="middle">너무 멀면</text>
+    <text x="${X(2.25)}" y="268" font-size="26" fill="#cfcac0" text-anchor="middle">끌어당기는 힘이 약해 결합이 끊어짐</text>
+  </svg>`;
+}
+
+// 2인 3각 계산: 양자 컴퓨터 ↔ 일반 컴퓨터
+function qLoop() {
+  return `<svg viewBox="0 0 1696 600" style="width:100%;height:auto;display:block">
+    <defs><clipPath id="qC1"><circle cx="330" cy="300" r="190"/></clipPath><clipPath id="qC2"><circle cx="1366" cy="300" r="190"/></clipPath>
+      <marker id="qA2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#e2bd72"/></marker></defs>
+    <image href="${qImg('quantum_laser_manipulation.jpg')}" x="80" y="110" width="500" height="380" preserveAspectRatio="xMidYMid slice" clip-path="url(#qC1)"/>
+    <circle cx="330" cy="300" r="190" fill="none" stroke="#b794ff" stroke-width="5"/>
+    <image href="${qImg('classical_silicon_bit_transistor.jpg')}" x="1116" y="110" width="500" height="380" preserveAspectRatio="xMidYMid slice" clip-path="url(#qC2)"/>
+    <circle cx="1366" cy="300" r="190" fill="none" stroke="#5aa9ff" stroke-width="5"/>
+    <text x="330" y="560" font-size="36" font-weight="800" fill="#b794ff" text-anchor="middle">양자 컴퓨터 · 학생 A</text>
+    <text x="1366" y="560" font-size="36" font-weight="800" fill="#5aa9ff" text-anchor="middle">일반 컴퓨터 · 학생 B</text>
+    <path d="M540 220 C760 120 940 120 1156 220" fill="none" stroke="#e2bd72" stroke-width="5" marker-end="url(#qA2)"/>
+    <text x="848" y="128" font-size="32" font-weight="800" fill="#f4f1ea" text-anchor="middle">① 지금 자리의 에너지를 재서 알려 줌</text>
+    <path d="M1156 380 C940 480 760 480 540 380" fill="none" stroke="#e2bd72" stroke-width="5" marker-end="url(#qA2)"/>
+    <text x="848" y="500" font-size="32" font-weight="800" fill="#f4f1ea" text-anchor="middle">② 에너지가 더 낮아지는 쪽으로 한 걸음 지시</text>
+    <text x="848" y="312" font-size="30" font-weight="700" fill="#e2bd72" text-anchor="middle">③ 더는 낮아지지 않을 때까지 반복</text>
+  </svg>`;
+}
+
+// 준비물 그림: 바둑알·쌀알 / 동전 / 벨크로 밴드 / 에너지 지형도 매트 / 평가 기준표 / 3대 과제 안내 자료
+function qToolArt(kind) {
+  const bg = '<rect width="400" height="300" fill="#1a1a1a"/>';
+  if (kind === 'stones') {
+    let s = '';
+    const pts = [[90, 120, 1], [140, 100, 0], [120, 160, 1], [180, 140, 0], [70, 185, 0], [160, 200, 1], [210, 95, 1]];
+    for (const [x, y, w] of pts) s += `<ellipse cx="${x}" cy="${y + 6}" rx="26" ry="10" fill="#000" opacity=".5"/><ellipse cx="${x}" cy="${y}" rx="26" ry="18" fill="${w ? '#eceae4' : '#1f2023'}" stroke="${w ? '#bbb' : '#444'}" stroke-width="1.5"/>`;
+    for (let k = 0; k < 70; k++) { const x = 250 + (k * 37) % 120, y = 90 + (k * 53) % 150, a = (k * 47) % 180; s += `<ellipse cx="${x}" cy="${y}" rx="7" ry="3.5" fill="#f1e6c8" transform="rotate(${a} ${x} ${y})"/>`; }
+    return `<svg viewBox="0 0 400 300" style="width:100%;height:100%;display:block">${bg}${s}</svg>`;
+  }
+  if (kind === 'coin') return qCoin(false);
+  if (kind === 'band') return `<svg viewBox="0 0 400 300" style="width:100%;height:100%;display:block">${bg}
+    <path d="M60 150 C60 70 340 70 340 150 C340 230 60 230 60 150Z" fill="none" stroke="#2d6cdf" stroke-width="34"/>
+    <path d="M60 150 C60 70 340 70 340 150 C340 230 60 230 60 150Z" fill="none" stroke="#5aa9ff" stroke-width="6" stroke-dasharray="4 10"/>
+    <rect x="300" y="118" width="70" height="64" rx="8" fill="#e2bd72"/><rect x="314" y="132" width="42" height="36" rx="4" fill="#1a1a1a"/></svg>`;
+  if (kind === 'mat') {
+    let c = '';
+    for (let k = 1; k <= 7; k++) c += `<ellipse cx="230" cy="170" rx="${k * 26}" ry="${k * 17}" fill="none" stroke="${k < 3 ? '#e2bd72' : '#5aa9ff'}" stroke-width="2.5" opacity="${1 - k * .09}" transform="rotate(-12 230 170)"/>`;
+    return `<svg viewBox="0 0 400 300" style="width:100%;height:100%;display:block">${bg}<rect x="20" y="30" width="360" height="240" rx="10" fill="#14202e"/>${c}<circle cx="230" cy="170" r="9" fill="#e2bd72"/><circle cx="70" cy="80" r="11" fill="#ff8a6a"/><path d="M80 90 C120 120 170 140 222 165" fill="none" stroke="#ff8a6a" stroke-width="3" stroke-dasharray="7 7"/></svg>`;
+  }
+  if (kind === 'rubric') {
+    let r = '';
+    for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) r += `<rect x="${60 + j * 72}" y="${70 + i * 46}" width="70" height="44" fill="${i === 0 || j === 0 ? '#e9e5da' : '#fff'}" stroke="#bbb"/>`;
+    return `<svg viewBox="0 0 400 300" style="width:100%;height:100%;display:block">${bg}<rect x="40" y="40" width="330" height="240" fill="#f7f5ef" transform="rotate(-3 200 160)"/>
+      <g transform="rotate(-3 200 160)">${r}<text x="168" y="100" font-size="20" font-weight="800" fill="#333" text-anchor="middle">A</text><text x="240" y="100" font-size="20" font-weight="800" fill="#333" text-anchor="middle">B</text><text x="312" y="100" font-size="20" font-weight="800" fill="#333" text-anchor="middle">C</text>
+      <path d="M150 138 l10 10 l18 -20" fill="none" stroke="#2d6cdf" stroke-width="4"/><path d="M222 184 l10 10 l18 -20" fill="none" stroke="#2d6cdf" stroke-width="4"/></g></svg>`;
+  }
+  if (kind === 'brief') return `<svg viewBox="0 0 400 300" style="width:100%;height:100%;display:block">${bg}
+    <g transform="translate(70 150) scale(.3) translate(-300 -225)">${qChallenge('n2', true)}</g>
+    <g transform="translate(200 150) scale(.3) translate(-300 -225)">${qChallenge('li', true)}</g>
+    <g transform="translate(330 150) scale(.3) translate(-300 -225)">${qChallenge('drug', true)}</g></svg>`;
+  return '';
+}
+
+// 3대 과제 그림: 질소 → 비료 / 리튬 이온이 지나가는 고체 / 단백질 홈에 맞는 약
+function qChallenge(kind, bare) {
+  const wrap = g => bare ? g : `<svg viewBox="0 0 600 450" style="width:100%;height:100%;display:block"><rect width="600" height="450" fill="#121417"/>${g}</svg>`;
+  if (kind === 'n2') return wrap(`
+    <circle cx="150" cy="200" r="54" fill="#5aa9ff"/><circle cx="270" cy="200" r="54" fill="#5aa9ff"/>
+    <g stroke="#f4f1ea" stroke-width="7"><line x1="198" y1="182" x2="222" y2="182"/><line x1="198" y1="200" x2="222" y2="200"/><line x1="198" y1="218" x2="222" y2="218"/></g>
+    <text x="150" y="213" font-size="38" font-weight="800" fill="#0a0a0a" text-anchor="middle">N</text><text x="270" y="213" font-size="38" font-weight="800" fill="#0a0a0a" text-anchor="middle">N</text>
+    <path d="M340 200 H400" stroke="#e2bd72" stroke-width="6"/><path d="M400 186 L424 200 L400 214Z" fill="#e2bd72"/>
+    <circle cx="500" cy="200" r="46" fill="#5aa9ff"/><text x="500" y="213" font-size="34" font-weight="800" fill="#0a0a0a" text-anchor="middle">N</text>
+    <g fill="#f4f1ea"><circle cx="452" cy="150" r="24"/><circle cx="548" cy="150" r="24"/><circle cx="500" cy="265" r="24"/></g>
+    <g font-size="20" font-weight="800" fill="#111" text-anchor="middle"><text x="452" y="157">H</text><text x="548" y="157">H</text><text x="500" y="272">H</text></g>
+    <path d="M60 380 C120 330 140 360 170 320 M170 320 C190 350 230 340 250 380" fill="none" stroke="#7fd36b" stroke-width="7" stroke-linecap="round"/>
+    <path d="M160 330 C130 290 100 300 92 320 C120 330 140 330 160 330Z M180 326 C210 290 240 296 250 314 C224 328 200 330 180 326Z" fill="#7fd36b"/>`);
+  if (kind === 'li') {
+    let g = '';
+    for (let i = 0; i < 6; i++) for (let j = 0; j < 4; j++) if (j !== 2 || i % 2) g += `<circle cx="${90 + i * 84}" cy="${90 + j * 90}" r="30" fill="#3d4a5c"/>`;
+    for (const x of [130, 300, 460]) g += `<circle cx="${x}" cy="270" r="20" fill="#e2bd72"/><text x="${x}" y="277" font-size="18" font-weight="800" fill="#111" text-anchor="middle">Li${qSup('+')}</text>`;
+    return wrap(g + `<path d="M60 270 H560" stroke="#e2bd72" stroke-width="3" stroke-dasharray="10 10" opacity=".7"/><path d="M548 258 L572 270 L548 282Z" fill="#e2bd72"/>`);
+  }
+  return wrap(`
+    <path d="M70 120 C70 60 200 40 260 90 C290 115 310 115 340 90 C400 40 530 60 530 120 C560 220 520 380 300 400 C80 380 40 220 70 120Z" fill="#7a4f9c"/>
+    <path d="M250 90 C270 180 330 180 350 90" fill="#121417"/>
+    <g transform="translate(300 60)"><circle cx="0" cy="40" r="26" fill="#e2bd72"/><circle cx="-34" cy="12" r="16" fill="#ff8a6a"/><circle cx="34" cy="12" r="16" fill="#ff8a6a"/>
+    <line x1="-22" y1="22" x2="-12" y2="30" stroke="#f4f1ea" stroke-width="5"/><line x1="22" y1="22" x2="12" y2="30" stroke="#f4f1ea" stroke-width="5"/></g>
+    <path d="M300 30 V-10" stroke="#e2bd72" stroke-width="0"/>`);
+}
+
 window.presentationModalData.quantum = {
     // -----------------------------------------------------------------------
-    // Quantum 1차시: 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발
+    // 양자 1차시: 슈퍼컴퓨터도 멈춰버린 분자의 세계
     // -----------------------------------------------------------------------
     1: {
       lessonTitle: '[1차시] 슈퍼컴퓨터도 멈춰버린 분자의 세계: 원자 레고 퍼즐과 지수 폭발',
-      badge: '양자 1차시 · 지수 폭발 & 한계',
+      badge: '양자 1차시 · 지수 폭발',
+      design: 'stage',
       slides: [
-        // Slide 1: 단독 질문형 표지
         {
-          tag: '1차시 · 질문',
           title: '이번 시간에는?',
+          layout: 'cover',
           content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:280px;">
-              <div class="pres-inquiry-box" style="padding:2.8rem 2rem; max-width:880px; width:100%; text-align:center; box-sizing:border-box;">
-                <div class="inquiry-q" style="line-height:1.7;">
-                  <span style="font-size:1.3rem; font-weight:700; color:#475569; display:block; margin-bottom:0.5rem;">[1차시] 슈퍼컴퓨터도 멈춰버린 분자의 세계</span>
-                  <span style="font-size:1.65rem; font-weight:800; color:#0f172a; display:block; white-space:nowrap; letter-spacing:-0.5px;">원자 레고 퍼즐과 지수 폭발(2ᴺ)의 한계</span>
-                </div>
+            <div class="ps-cover-bg"><img src="${qImg('oled_quantum_sim_lab.jpg')}" alt="컴퓨터 화면 속 분자 모형"></div>
+            <div class="ps-cover-txt">
+              <div class="ps-kicker">양자 1차시 · 지수 폭발</div>
+              <div class="ps-ask">이번 시간에는?</div>
+              <h1 style="font-size:104px">슈퍼컴퓨터도<br>멈춰 버린<br>분자의 세계</h1>
+            </div>
+          `
+        },
+        {
+          title: '체스판과 쌀알',
+          content: `
+            <h2>체스판과 쌀알</h2>
+            <div class="ps-body ps-split" style="grid-template-columns:780px 1fr">
+              <figure>${qChessboard()}</figure>
+              <div class="txt">
+                <div><h3>한 칸 갈 때마다 2배</h3>
+                  <p>첫 칸에 쌀 1톨, 둘째 칸에 2톨, 셋째 칸에 4톨… 이렇게 2배씩 늘리면 64칸을 모두 합해 <strong>약 1,800경 톨</strong>이 됩니다. 전 세계가 수백 년 동안 거두는 쌀보다 많은 양입니다.</p></div>
+                <p class="ps-q2" style="font-size:48px">“1초에 100경 번 계산하는 슈퍼컴퓨터도 왜 커피 속 <em>카페인 분자 하나</em>를 정확히 계산하지 못할까?”</p>
               </div>
             </div>
           `
         },
-
-        // Slide 2: 동기 유발 & 핵심 질문
         {
-          tag: '1차시 도입 · 핵심 질문',
-          title: '동기 유발: 체스판 쌀알과 슈퍼컴퓨터의 한계',
+          title: '학습 목표',
           content: `
-            <div class="pres-grid-2">
-              <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="help-circle"></i> 체스판과 쌀알 퀴즈</div>
-                <ul class="pres-list">
-                  <li>첫 칸에 쌀 1톨, 둘째 칸에 2톨, 셋째 칸에 4톨... 2배씩 늘려가면?</li>
-                  <li>마지막 64번째 칸에는 <strong>전 세계 수백 년치 쌀 수확량(1800경 톨)</strong>이 필요합니다!</li>
-                  <li>이것이 바로 하나씩 늘어날 때마다 2배씩 곱해지는 <strong>'거듭제곱의 위력'</strong>입니다.</li>
-                </ul>
-              </div>
-              <div class="pres-card pres-highlight">
-                <div class="pres-card-title"><i data-lucide="cpu"></i> 오늘의 핵심 질문</div>
-                <p style="font-size:1.25rem; font-weight:700; line-height:1.7; color:#fde047;">
-                  "왜 세상에서 가장 비싼 슈퍼컴퓨터도 커피 한 잔 속 카페인 분자 하나를 계산하지 못할까?"
-                </p>
-                <div class="pres-badge-box" style="margin-top:1.2rem;">
-                  <i data-lucide="zap"></i> <strong>분자 속 전자가 늘어날 때 터지는 지수 폭발(2ᴺ)의 비밀!</strong>
-                </div>
+            <h2>학습 목표</h2>
+            <p class="ps-goal" style="font-size:64px">분자 속 전자가 늘어날수록 계산해야 할 경우의 수가 2의 거듭제곱으로 불어나는 <u>지수 폭발</u>을 계산해 보고, 슈퍼컴퓨터로도 <u>분자를 정확히 계산하기 어려운 까닭</u>을 설명할 수 있다.</p>
+          `
+        },
+        {
+          title: '탐구 준비물',
+          content: `
+            <h2>탐구 준비물</h2>
+            <div class="ps-body">
+              <div class="ps-tools4 three">
+                <figure><div class="ps-ph"><img src="${getToolAsset('tool_tablet.jpg')}" alt="스마트기기"></div><h3><span class="n">1</span>스마트기기</h3><p>계산기 기능으로 2<sup>N</sup> 계산</p></figure>
+                <figure><div class="ps-ph">${qToolArt('stones')}</div><h3><span class="n">2</span>바둑알 또는 쌀알 모형</h3><p>2배씩 늘어나는 양 체감</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('q_ws1.jpg')}" alt="지수 폭발 체험 활동지" style="object-position:top"></div><h3><span class="n">3</span>지수 폭발 체험 활동지</h3><p>분자별 경우의 수 기록</p></figure>
               </div>
             </div>
           `
         },
-
-        // Slide 3: 학습 목표
         {
-          tag: '1차시 도입 · 학습 목표',
-          title: '오늘의 학습 목표',
-          content: `
-            <div class="pres-stack">
-              <div class="pres-card" style="padding:2.2rem 2.5rem; max-width:820px; margin:0 auto; box-sizing:border-box;">
-                <div class="pres-card-title" style="font-size:1.25rem; margin-bottom:1.4rem;"><i data-lucide="target"></i> 오늘의 학습 목표</div>
-                <ul class="pres-list" style="font-size:1.12rem; line-height:2.0;">
-                  <li>분자 속 전자가 증가함에 따라 계산 조합의 수가 <strong>2의 N제곱(2ᴺ)</strong>으로 폭발함을 분석한다.</li>
-                  <li>카페인과 페니실린의 상태 수가 <strong>전 우주의 모든 원자 수(10⁸⁰)</strong>를 초과함을 이해한다.</li>
-                  <li>신약 및 신소재 개발에서 왜 기존 슈퍼컴퓨터가 멈추고 <strong>양자 컴퓨터가 필요한지</strong> 탐구한다.</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 4: 4열 실습 준비물 카드
-        {
-          tag: '1차시 준비 · 실험 교구',
-          title: '1차시 탐구 준비물',
-          content: `
-            <div class="pres-stack">
-              <div class="pres-tools-4col">
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('quantum_tool_kit.jpg')}" alt="분자 모형 키트" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">분자 구조 모형 키트</strong>
-                  <p class="tool-card-desc">수소·물·카페인 원자 결합 조립용</p>
-                </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('quantum_tool_tablet.jpg')}" alt="지수 계산 태블릿" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">지수 계산 시뮬레이터</strong>
-                  <p class="tool-card-desc">전자 수에 따른 2ᴺ 상태 수 계산 앱</p>
-                </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('quantum_tool_grains.jpg')}" alt="쌀알 모형 교구" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">거듭제곱 체감 교구</strong>
-                  <p class="tool-card-desc">지수 폭발 수치를 체감하는 비교 모형</p>
-                </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('quantum_tool_worksheet1.jpg')}" alt="지수 폭발 탐구 활동지" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">지수 폭발 활동지</strong>
-                  <p class="tool-card-desc">분자별 상태 수 및 계산 시간 분석지</p>
-                </div>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 5: 탐구활동 시 주의 사항
-        {
-          tag: '1차시 준비 · 주의 사항',
           title: '탐구활동 시 주의 사항',
           content: `
-            <div class="pres-safety-grid">
-              <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-title">1. 모형 부품 분실 방지</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  작은 결합선(본드)과 원자 구슬이 바닥에 떨어져 분실되지 않도록 트레이 안에서 조립합니다.
-                </div>
-              </div>
-              <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-title">2. 자리수 계산 주의</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  거듭제곱 계산 시 지수(N) 값이 커지면 계산기 화면에 지수 표기(E)가 나타나므로 단위에 유의합니다.
-                </div>
-              </div>
-              <div class="pres-safety-card">
-                <div class="pres-safety-title">3. 모둠 협동 분석</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  분자별 전자 수를 분담하여 계산하고, 슈퍼컴퓨터의 한계 시간에 대해 의견을 나눕니다.
-                </div>
+            <h2>탐구활동 시 주의 사항</h2>
+            <div class="ps-body ps-cols3" style="align-content:center">
+              <figure><div class="ps-bignum">1</div><h3>모형 분실 방지</h3>
+                <p>바둑알과 쌀알 모형은 바닥에 떨어지지 않도록 트레이 안에서 다룹니다.</p></figure>
+              <figure><div class="ps-bignum">2</div><h3>큰 수 읽기</h3>
+                <p>계산기에 <strong>E</strong>가 나오면 지수 표기입니다. 예를 들어 <strong>1E30은 10<sup>30</sup></strong>, 1 뒤에 0이 30개 붙은 수입니다.</p></figure>
+              <figure><div class="ps-bignum">3</div><h3>모둠 협동 계산</h3>
+                <p>분자를 나누어 맡아 계산하고, 결과를 무엇과 비교하면 크기가 실감 나는지 의견을 나눕니다.</p></figure>
+            </div>
+          `
+        },
+        {
+          title: '전자가 하나 늘 때마다 경우의 수는 2배',
+          content: `
+            <h2>전자가 하나 늘 때마다 경우의 수는 2배</h2>
+            <div class="ps-body">
+              <div style="margin:auto 0">${qTree()}</div>
+              <div class="ps-two">
+                <p><strong>서로 영향을 주고받는 전자.</strong> 음(-)전하를 띤 전자들은 서로 밀어내고 양(+)전하를 띤 원자핵에는 끌려가므로, 전자 하나씩 따로 계산할 수 없습니다.</p>
+                <p><strong>아주 단순하게 생각해도 2<sup>N</sup>.</strong> 전자 하나가 두 가지 상태 중 하나를 가진다고만 해도, 전자가 N개이면 2<sup>N</sup>가지 경우를 함께 따져야 합니다.</p>
               </div>
             </div>
           `
         },
-
-        // Slide 6: 탐구 3단계
         {
-          tag: '1차시 전개 · 탐구 절차',
-          title: '탐구 절차: 분자 조립 & 지수 폭발 수치 계산',
+          title: '분자별 전자 수와 경우의 수',
           content: `
-            <div class="pres-steps-row">
-              <div class="pres-step-box">
-                <div class="step-num">Step 1</div>
-                <div class="step-title">분자 모형 조립</div>
-                <p>수소(H), 물(H₂O), 카페인 분자 모형을 조립하며 원자핵 주위를 도는 <strong>전자(N)의 개수</strong>를 파악합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 2</div>
-                <div class="step-title">2ᴺ 상태 수 계산</div>
-                <p>전자 1개가 늘어날 때마다 상태 수가 2배씩 곱해지는 <strong>계산 상태 수(2ᴺ)</strong>를 활동지 표에 기록합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 3</div>
-                <div class="step-title">소요 시간 비교</div>
-                <p>세계 최고 슈퍼컴퓨터가 카페인과 페니실린 분자를 계산하는 데 걸리는 시간을 비교하고 한계를 분석합니다.</p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 7: 시뮬레이션 관찰 결과표
-        {
-          tag: '1차시 전개 · 결과 분석',
-          title: '분자별 전자 수와 계산 상태 수(2ᴺ) 비교표',
-          content: `
-            <div class="pres-table-wrap">
-              <table class="pres-table">
-                <thead>
-                  <tr>
-                    <th style="width:18%;">물질명</th>
-                    <th style="width:16%;">화학식</th>
-                    <th style="width:16%;">전자 수 (N)</th>
-                    <th style="width:25%;">계산해야 할 상태 수 (2ᴺ)</th>
-                    <th style="width:25%;">슈퍼컴퓨터 소요 시간</th>
-                  </tr>
-                </thead>
+            <h2>분자별 전자 수와 경우의 수</h2>
+            <div class="ps-body">
+              <table class="ps-table">
+                <thead><tr><th style="width:17%">물질</th><th style="width:17%">화학식</th><th style="width:12%">전자 수</th><th style="width:22%">경우의 수 (2<sup>N</sup>)</th><th>무엇보다 많을까?</th></tr></thead>
                 <tbody>
-                  <tr>
-                    <td><strong>수소 원자</strong></td>
-                    <td>H</td>
-                    <td>1개</td>
-                    <td>2¹ = <strong>2 가지</strong></td>
-                    <td>0.000001초 (즉시)</td>
-                  </tr>
-                  <tr>
-                    <td><strong>물 분자</strong></td>
-                    <td>H₂O</td>
-                    <td>10개</td>
-                    <td>2¹⁰ = <strong>1,024 가지</strong></td>
-                    <td>약 0.001초 (즉시)</td>
-                  </tr>
-                  <tr>
-                    <td><strong>카페인 분자</strong></td>
-                    <td>C₈H₁₀N₄O₂</td>
-                    <td>102개</td>
-                    <td>2¹⁰² ≈ <strong>10³⁰ 가지</strong></td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#ea580c; font-size:0.95rem;">지구 모든 모래알(10²³) 초과! 수백 년 소요!</strong>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>페니실린(항생제)</strong></td>
-                    <td>C₁₆H₁₈N₂O₄S</td>
-                    <td>약 280개</td>
-                    <td>2²⁸⁰ ≈ <strong>10⁸⁴ 가지</strong></td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#dc2626; font-size:0.95rem;">우주 원자 수(10⁸⁰) 초과! 우주 나이로도 불가!</strong>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                  <tr><td>수소 분자</td><td>H<sub>2</sub></td><td>2개</td><td>2<sup>2</sup> = 4가지</td><td style="color:#cfcac0">순식간에 계산</td></tr>
+                  <tr><td>물 분자</td><td>H<sub>2</sub>O</td><td>10개</td><td>2<sup>10</sup> = 1,024가지</td><td style="color:#cfcac0">순식간에 계산</td></tr>
+                  <tr><td>카페인</td><td>C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub></td><td>102개</td><td>약 5×10<sup>30</sup>가지</td>
+                    <td><div class="ps-reveal" style="--c:#ffb347" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>지구의 모든 모래알보다 많음</span></div></td></tr>
+                  <tr><td>페니실린</td><td>C<sub>16</sub>H<sub>18</sub>N<sub>2</sub>O<sub>4</sub>S</td><td>176개</td><td>약 10<sup>53</sup>가지</td>
+                    <td><div class="ps-reveal" style="--c:#ff6a52" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>지구 전체 원자 수보다 많음</span></div></td></tr>
                 </tbody>
               </table>
             </div>
           `
         },
-
-        // Slide 8: 인라인 SVG 지수 폭발 vs 우주 원자 수 비교 벡터 다이어그램
         {
-          tag: '1차시 전개 · 과학 다이어그램',
-          title: '기하급수적 지수 폭발(2ᴺ)과 물리적 한계',
+          title: '지수 폭발',
           content: `
-            <div class="pres-stack pres-spectrum-stack">
-              <div class="pres-spectrum-img-card" style="padding:0.8rem 1.2rem;">
-                <svg viewBox="0 0 860 215" width="100%" height="100%" style="max-height:240px; display:block; font-family:'Pretendard', sans-serif;">
-                  <defs>
-                    <marker id="arrowX" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                      <path d="M 0 1 L 9 5 L 0 9 z" fill="#64748b" />
-                    </marker>
-                    <marker id="arrowY" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                      <path d="M 1 10 L 5 1 L 9 10 z" fill="#dc2626" />
-                    </marker>
-                  </defs>
-
-                  <!-- 축선 -->
-                  <line x1="70" y1="180" x2="550" y2="180" stroke="#64748b" stroke-width="2" marker-end="url(#arrowX)" />
-                  <line x1="70" y1="180" x2="70" y2="20" stroke="#64748b" stroke-width="2" marker-end="url(#arrowY)" />
-                  <text x="540" y="200" font-size="12" font-weight="800" fill="#475569">전자 수 (N)</text>
-                  <text x="50" y="22" font-size="12" font-weight="800" fill="#dc2626">상태 수 (2ᴺ)</text>
-
-                  <!-- 지수 곡선 (수직으로 솟구침) -->
-                  <path d="M 70 180 Q 220 178 300 130 T 420 30" fill="none" stroke="#dc2626" stroke-width="3.5" />
-                  <text x="425" y="25" font-size="13" font-weight="900" fill="#dc2626">2ᴺ 지수 폭발 곡선</text>
-
-                  <!-- 슈퍼컴퓨터 한계 수평선 -->
-                  <line x1="70" y1="110" x2="520" y2="110" stroke="#475569" stroke-width="1.8" stroke-dasharray="4,4" />
-                  <rect x="360" y="98" width="165" height="22" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
-                  <text x="442" y="114" font-size="11" font-weight="800" fill="#334155" text-anchor="middle">슈퍼컴퓨터 계산 한계선</text>
-
-                  <!-- 포인트들 -->
-                  <!-- 1. 수소 -->
-                  <circle cx="100" cy="179" r="4" fill="#2563eb" />
-                  <text x="100" y="195" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">수소(1)</text>
-
-                  <!-- 2. 물 -->
-                  <circle cx="180" cy="176" r="4" fill="#2563eb" />
-                  <text x="180" y="195" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">물(10)</text>
-
-                  <!-- 3. 카페인 -->
-                  <circle cx="280" cy="145" r="5" fill="#ea580c" />
-                  <line x1="280" y1="145" x2="280" y2="180" stroke="#cbd5e1" stroke-dasharray="2,2" />
-                  <text x="280" y="140" font-size="11" font-weight="800" fill="#ea580c" text-anchor="middle">카페인 (10³⁰)</text>
-                  <text x="280" y="195" font-size="11" font-weight="700" fill="#ea580c" text-anchor="middle">102개</text>
-
-                  <!-- 4. 페니실린 -->
-                  <circle cx="390" cy="55" r="5" fill="#dc2626" />
-                  <line x1="390" y1="55" x2="390" y2="180" stroke="#cbd5e1" stroke-dasharray="2,2" />
-                  <text x="390" y="50" font-size="11" font-weight="900" fill="#dc2626" text-anchor="middle">페니실린 (10⁸⁴)</text>
-                  <text x="390" y="195" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">280개</text>
-
-                  <!-- 우측: 충격적 수치 비교 박스 -->
-                  <g transform="translate(560, 20)">
-                    <rect x="0" y="0" width="280" height="175" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2" />
-                    <text x="140" y="28" font-size="14" font-weight="800" fill="#0f172a" text-anchor="middle">우주의 크기와 비교</text>
-                    <line x1="15" y1="40" x2="265" y2="40" stroke="#e2e8f0" stroke-width="1" />
-                    
-                    <text x="20" y="66" font-size="12" font-weight="700" fill="#475569">• 지구 모든 모래알: 약 10²³개</text>
-                    <text x="20" y="90" font-size="12" font-weight="700" fill="#ea580c">• 카페인 상태 수: 약 10³⁰가지</text>
-                    <text x="20" y="116" font-size="12" font-weight="700" fill="#475569">• 전 우주 모든 원자: 약 10⁸⁰개</text>
-                    <text x="20" y="140" font-size="12" font-weight="900" fill="#dc2626">• 페니실린 상태 수: 약 10⁸⁴가지</text>
-                    
-                    <rect x="15" y="150" width="250" height="20" rx="4" fill="#fee2e2" />
-                    <text x="140" y="164" font-size="11" font-weight="800" fill="#991b1b" text-anchor="middle">인류 슈퍼컴퓨터로 완전 계산 불가!</text>
-                  </g>
-                </svg>
-              </div>
-
-              <div class="pres-def-card">
-                <p class="pres-def-text">
-                  <strong class="pres-def-lead">지수 폭발(Exponential Explosion)이란?</strong> 전자가 늘어날 때마다 계산해야 하는 미시세계 양자 상태 수가 2의 N제곱(2ᴺ)으로 기하급수적으로 폭발하는 물리적 현상
-                </p>
+            <h2>지수 폭발</h2>
+            <div class="ps-body">
+              <div style="margin:auto 0">${qLadder()}</div>
+              <p class="ps-def"><b>지수 폭발이란?</b>하나가 늘 때마다 2배씩 곱해져 수가 걷잡을 수 없이 커지는 현상. 지구의 모든 원자를 컴퓨터 메모리로 써도 페니실린의 경우의 수를 다 적어 둘 수 없습니다.</p>
+            </div>
+          `
+        },
+        {
+          title: '화학자의 고민과 파인만의 제안',
+          content: `
+            <h2>화학자의 고민과 파인만의 제안</h2>
+            <div class="ps-body ps-split" style="grid-template-columns:1.3fr 1fr">
+              <figure style="align-self:center;background:none"><img src="${qImg('quantum_superconducting_vs_iontrap.jpg')}" alt="오늘날 연구되는 두 가지 양자 컴퓨터" style="height:auto"></figure>
+              <div class="txt">
+                <div><h3>직접 만들어 보는 수밖에</h3>
+                  <p>분자를 정확히 계산할 수 없어, 화학자들은 수많은 물질을 직접 만들고 시험하며 실패를 거듭해 왔습니다. 신약 하나를 개발하는 데 보통 <strong>10년 이상, 수조 원</strong>이 듭니다.</p></div>
+                <div><h3>리처드 파인만, 1981년</h3>
+                  <p>“자연은 양자역학을 따르므로, 자연을 흉내 내려면 <strong>컴퓨터도 양자역학의 원리로 만들어야 한다</strong>.” 이 생각이 양자 컴퓨터 연구의 출발점이 되었습니다. 왼쪽은 오늘날 연구되는 두 가지 양자 컴퓨터입니다.</p></div>
               </div>
             </div>
           `
         },
-
-        // Slide 9: 슈퍼컴퓨터의 벽과 파인만의 통찰
         {
-          tag: '1차시 전개 · 핵심 원리',
-          title: '슈퍼컴퓨터의 벽과 리처드 파인만의 통찰',
+          title: '1차시 핵심 배움 정리',
           content: `
-            <div class="pres-stack pres-conservation-stack">
-              <div class="pres-equation-box">
-                <div class="pres-equation-text">
-                  [ 계산해야 할 분자 상태 수 ] = 2ᴺ &nbsp;(N = 분자 속 전자 수)
-                </div>
-              </div>
-
-              <div class="pres-law-desc-box">
-                <p class="pres-law-desc-p">
-                  • <strong>0과 1의 고전 컴퓨터 한계:</strong> 1개씩 순서대로 계산하는 고전 비트 컴퓨터는 전자가 100개만 넘어가도 우주 나이(138억 년) 동안 계산해도 끝나지 않습니다.
-                </p>
-                <p class="pres-law-desc-p">
-                  • <strong>리처드 파인만의 명언 (1981):</strong> <em>"자연은 고전적이지 않다. 자연을 시뮬레이션하고 싶다면 컴퓨터 자체를 양자역학의 법칙으로 만들어야 한다!"</em> ➔ <strong>양자 컴퓨터의 탄생!</strong>
-                </p>
-              </div>
+            <h2>1차시 핵심 배움 정리</h2>
+            <div class="ps-body ps-cols3" style="align-content:center">
+              <figure><div class="ps-bignum">1</div><h3>서로 얽힌 전자</h3>
+                <p>분자 속 전자들은 서로 밀어내고 원자핵에 끌려가며 영향을 주고받으므로 하나씩 따로 계산할 수 없습니다.</p></figure>
+              <figure><div class="ps-bignum">2</div><h3>지수 폭발 2<sup>N</sup></h3>
+                <p>전자가 하나 늘 때마다 경우의 수가 2배가 되어, 카페인은 모래알 수를, 페니실린은 지구 원자 수를 넘어섭니다.</p></figure>
+              <figure><div class="ps-bignum">3</div><h3>양자 컴퓨터가 필요한 까닭</h3>
+                <p>양자역학을 따르는 분자를 계산하려면 양자역학의 원리로 작동하는 새로운 컴퓨터가 필요합니다.</p></figure>
             </div>
           `
         },
-
-        // Slide 10: 1차시 핵심 배움 확인
         {
-          tag: '1차시 정리 · 배움 확인',
-          title: '1차시 핵심 배움 확인',
-          content: `
-            <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">원자의 미시세계</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  원자핵 주위를 도는 수많은 전자들의 복잡한 반발력과 상호작용
-                </p>
-              </div>
-              <div class="pres-card pres-highlight" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#dc2626; display:block; margin-bottom:0.5rem;">지수 폭발 (2ᴺ)</strong>
-                <p style="font-size:0.95rem; color:#991b1b; margin:0; line-height:1.6; word-break:keep-all;">
-                  전자가 늘어날 때마다 계산 상태 수가 우주의 원자 수(10⁸⁰)를 아득히 초과함
-                </p>
-              </div>
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">양자 컴퓨터의 필연성</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  복잡한 분자를 계산하기 위해 양자역학으로 작동하는 새로운 컴퓨터 필요
-                </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 11: 다음 시간에는?
-        {
-          tag: '1차시 정리 · 차시 예고',
           title: '다음 시간에는?',
           content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:300px;">
-              <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
-                <div style="font-size:1.15rem; font-weight:800; color:#7c3aed; margin-bottom:0.8rem;">
-                  [2차시] 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트
-                </div>
-                <div class="inquiry-q" style="line-height:1.8;">
-                  <span style="font-size:1.35rem; font-weight:800; color:#0f172a; display:block;">
-                    "0 또는 1만 쓰는 컴퓨터의 한계를 어떻게 깨부술 수 있을까?"
-                  </span>
-                  <span style="font-size:1.35rem; font-weight:800; color:#7c3aed; display:block; margin-top:0.6rem;">
-                    0과 1이 동시에 공존하는 신비로운 '양자 중첩'의 마법이 펼쳐집니다!
-                  </span>
-                </div>
-              </div>
+            <div class="ps-next-bg"><img src="${qImg('quantum_laser_manipulation.jpg')}" alt="레이저로 제어하는 양자 칩"></div>
+            <div class="ps-next-txt">
+              <h2>다음 시간에는?</h2>
+              <p class="ps-q3">“컴퓨터의 비트가 0과 1을 동시에 품을 수 있다면 무엇이 달라질까?”</p>
+              <p>도는 동전으로 큐비트의 ‘중첩’을 알아봅니다.</p>
             </div>
           `
         }
@@ -404,365 +464,152 @@ window.presentationModalData.quantum = {
     },
 
     // -----------------------------------------------------------------------
-    // Quantum 2차시: 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트
+    // 양자 2차시: 0과 1이 동시에 춤추는 마법
     // -----------------------------------------------------------------------
     2: {
       lessonTitle: '[2차시] 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트',
-      badge: '양자 2차시 · 동전과 큐비트 중첩',
+      badge: '양자 2차시 · 비트와 큐비트',
+      design: 'stage',
       slides: [
-        // Slide 1: 단독 질문형 표지
         {
-          tag: '2차시 · 질문',
           title: '이번 시간에는?',
+          layout: 'cover',
           content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:280px;">
-              <div class="pres-inquiry-box" style="padding:2.8rem 2rem; max-width:880px; width:100%; text-align:center; box-sizing:border-box;">
-                <div class="inquiry-q" style="line-height:1.7;">
-                  <span style="font-size:1.3rem; font-weight:700; color:#475569; display:block; margin-bottom:0.5rem;">[2차시] 0과 1이 동시에 춤추는 마법</span>
-                  <span style="font-size:1.65rem; font-weight:800; color:#0f172a; display:block; white-space:nowrap; letter-spacing:-0.5px;">동전 팽이와 양자 큐비트: 양자 중첩과 동시 병렬 탐색</span>
-                </div>
+            <div class="ps-cover-bg"><img src="${qImg('quantum_laser_manipulation.jpg')}" alt="레이저로 제어하는 양자 칩"></div>
+            <div class="ps-cover-txt">
+              <div class="ps-kicker">양자 2차시 · 비트와 큐비트</div>
+              <div class="ps-ask">이번 시간에는?</div>
+              <h1 style="font-size:104px">0과 1이<br>동시에 춤추는<br>동전 팽이</h1>
+            </div>
+          `
+        },
+        {
+          title: '멈춘 동전과 도는 동전',
+          content: `
+            <h2>멈춘 동전과 도는 동전</h2>
+            <div class="ps-body">
+              <div class="ps-trio duo">
+                <figure>${qCoin(false)}<figcaption>책상에 누운 동전 · 앞면(0) 아니면 뒷면(1) 중 딱 하나</figcaption></figure>
+                <figure>${qCoin(true)}<figcaption>팽이처럼 도는 동전 · 앞뒤가 섞여 아직 정해지지 않음</figcaption></figure>
+              </div>
+              <p class="ps-question">“도는 동전은 지금 앞면일까, 뒷면일까? 손으로 <span class="uv">덮는 순간</span>에는 무슨 일이 일어날까?”</p>
+            </div>
+          `
+        },
+        {
+          title: '학습 목표',
+          content: `
+            <h2>학습 목표</h2>
+            <p class="ps-goal" style="font-size:64px">누운 동전(비트)과 도는 동전(큐비트)을 비교하여 <u>비트와 큐비트의 차이</u>를 설명하고, <u>양자 컴퓨터가 문제를 푸는 방식</u>을 이해할 수 있다.</p>
+          `
+        },
+        {
+          title: '탐구 준비물',
+          content: `
+            <h2>탐구 준비물</h2>
+            <div class="ps-body">
+              <div class="ps-tools4">
+                <figure><div class="ps-ph">${qToolArt('coin')}</div><h3><span class="n">1</span>동전</h3><p>학생 1인당 1개</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('tool_tablet.jpg')}" alt="스마트기기"></div><h3><span class="n">2</span>스마트기기</h3><p>가상실험실 접속</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('q_lab_qubit.jpg')}" alt="큐비트 시뮬레이터 화면" style="object-fit:contain;background:#0b1220"></div><h3><span class="n">3</span>가상실험실</h3><p>큐비트 시뮬레이터</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('q_ws2.jpg')}" alt="2차시 활동지" style="object-position:top"></div><h3><span class="n">4</span>활동지</h3><p>비트와 큐비트 비교</p></figure>
               </div>
             </div>
           `
         },
-
-        // Slide 2: 동기 유발 & 핵심 질문
         {
-          tag: '2차시 도입 · 핵심 질문',
-          title: '동기 유발: 멈춘 동전 vs 팽이처럼 도는 동전',
-          content: `
-            <div class="pres-grid-2">
-              <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="circle-dot"></i> 책상 위에 멈춘 동전 (고전 비트)</div>
-                <ul class="pres-list">
-                  <li>바닥에 가만히 누워 있는 동전은 <strong>앞면(0) 또는 뒷면(1)</strong> 중 딱 하나만 가집니다.</li>
-                  <li>전등 스위치를 켜거나(ON) 끄는(OFF) 것과 완전히 같습니다.</li>
-                </ul>
-              </div>
-              <div class="pres-card pres-highlight">
-                <div class="pres-card-title"><i data-lucide="loader"></i> 빠르게 회전하는 동전 (양자 큐비트)</div>
-                <p style="font-size:1.15rem; line-height:1.8; color:#f8fafc;">
-                  손으로 탁 덮기 전까지 도는 동전은 지금 앞면일까요, 뒷면일까요?<br>
-                  <strong>앞면과 뒷면이 동시에 섞여 있는 '양자 중첩(Superposition)' 상태</strong>입니다!
-                </p>
-                <div class="pres-badge-box" style="margin-top:1rem;">
-                  <i data-lucide="sparkles"></i> <strong>0과 1을 동시에 품는 양자의 기적이 시작됩니다!</strong>
-                </div>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 3: 학습 목표
-        {
-          tag: '2차시 도입 · 학습 목표',
-          title: '오늘의 학습 목표',
-          content: `
-            <div class="pres-stack">
-              <div class="pres-card" style="padding:2.2rem 2.5rem; max-width:820px; margin:0 auto; box-sizing:border-box;">
-                <div class="pres-card-title" style="font-size:1.25rem; margin-bottom:1.4rem;"><i data-lucide="target"></i> 오늘의 학습 목표</div>
-                <ul class="pres-list" style="font-size:1.12rem; line-height:2.0;">
-                  <li>바닥의 동전(고전 비트)과 도는 동전(양자 큐비트)을 비교하여 <strong>양자 중첩 현상</strong>을 설명한다.</li>
-                  <li><strong>블로흐 구(Bloch Sphere) 모형</strong>을 통해 양자 상태와 관측에 의한 붕괴를 이해한다.</li>
-                  <li>10개 큐비트가 1,024개 경로를 동시에 찾는 <strong>동시 병렬 처리의 위력</strong>을 분석한다.</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 4: 4열 실습 준비물 카드
-        {
-          tag: '2차시 준비 · 실험 교구',
-          title: '2차시 탐구 준비물',
-          content: `
-            <div class="pres-stack">
-              <div class="pres-tools-4col">
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('quantum_tool_coins.jpg')}" alt="양자 중첩 실험용 금속 동전" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">중첩 실험용 동전 교구</strong>
-                  <p class="tool-card-desc">고전 비트 vs 양자 큐비트 회전 시연</p>
-                </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('quantum_tool_tray.jpg')}" alt="동전 회전 안전 트레이" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">동전 회전 안전 트레이</strong>
-                  <p class="tool-card-desc">동전 이탈을 방지하는 원형 패드</p>
-                </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('quantum_tool_bloch.jpg')}" alt="블로흐 구 가상실험실 태블릿" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">블로흐 구 시뮬레이터</strong>
-                  <p class="tool-card-desc">3차원 양자 상태 벡터 조작 앱</p>
-                </div>
-
-                <div class="pres-tool-card">
-                  <div class="tool-img-box">
-                    <img src="${getToolAsset('quantum_tool_worksheet2.jpg')}" alt="큐비트 탐구 활동지" class="tool-img-real">
-                  </div>
-                  <strong class="tool-card-title">큐비트 탐구 활동지</strong>
-                  <p class="tool-card-desc">비트 vs 큐비트 비교 및 미로 분석지</p>
-                </div>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 5: 탐구활동 시 주의 사항
-        {
-          tag: '2차시 준비 · 주의 사항',
           title: '탐구활동 시 주의 사항',
           content: `
-            <div class="pres-safety-grid">
-              <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-title">1. 동전 튕김 주의</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  동전을 너무 세게 돌려 바깥으로 튕겨 나가지 않도록 트레이 안쪽에서 부드럽게 스핀을 줍니다.
-                </div>
-              </div>
-              <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-title">2. 손바닥 측정 주의</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  돌아가는 동전을 멈출 때 손톱에 부딪히지 않도록 손바닥 면 전체로 가볍게 덮어 측정합니다.
-                </div>
-              </div>
-              <div class="pres-safety-card">
-                <div class="pres-safety-title">3. 디지털 시뮬레이션</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  가상실험실에서 3D 블로흐 구를 천천히 드래그하여 적도 지점의 확률 변화를 세심하게 관찰합니다.
-                </div>
+            <h2>탐구활동 시 주의 사항</h2>
+            <div class="ps-body ps-cols3" style="align-content:center">
+              <figure><div class="ps-bignum">1</div><h3>동전 튕김 주의</h3>
+                <p>동전이 바깥으로 튕겨 나가지 않도록 트레이 안쪽에서 부드럽게 돌립니다.</p></figure>
+              <figure><div class="ps-bignum">2</div><h3>손바닥으로 덮기</h3>
+                <p>도는 동전을 멈출 때는 손톱에 부딪히지 않도록 손바닥 전체로 가볍게 덮습니다.</p></figure>
+              <figure><div class="ps-bignum">3</div><h3>비유임을 기억하기</h3>
+                <p>도는 동전은 큐비트를 이해하기 위한 <strong>비유</strong>입니다. 실제 동전이 양자 상태인 것은 아닙니다.</p></figure>
+            </div>
+          `
+        },
+        {
+          title: '돌리고, 덮고, 100번 재 보기',
+          content: `
+            <h2>돌리고, 덮고, 100번 재 보기</h2>
+            <div class="ps-body">
+              <div class="ps-wide" style="flex:none;height:560px;background:#0b1220"><img src="${getToolAsset('q_lab_qubit.jpg')}" alt="큐비트를 100번 측정한 가상실험실 결과"></div>
+              <div class="ps-cols3" style="margin-top:8px">
+                <figure><h3>돌고 있을 때 · 중첩</h3>
+                  <p>큐비트는 측정하기 전에는 0과 1이 일정한 비율로 섞인 <strong>중첩</strong> 상태입니다.</p></figure>
+                <figure><h3>덮는 순간 · 측정</h3>
+                  <p>측정하면 0 또는 1 <strong>하나로 정해집니다</strong>. 어느 쪽이 나올지는 섞인 비율(확률)에 따릅니다.</p></figure>
+                <figure><h3>100번 재 보면</h3>
+                  <p>가상실험실에서 화살표가 적도를 가리키면 0과 1이 거의 반반씩 나옵니다.</p></figure>
               </div>
             </div>
           `
         },
-
-        // Slide 6: 탐구 3단계
         {
-          tag: '2차시 전개 · 탐구 절차',
-          title: '탐구 절차: 동전 회전 실험 & 블로흐 구 시뮬레이션',
+          title: '비트와 큐비트',
           content: `
-            <div class="pres-steps-row">
-              <div class="pres-step-box">
-                <div class="step-num">Step 1</div>
-                <div class="step-title">동전 팽이 회전 (중첩)</div>
-                <p>동전을 돌리며 0(앞)과 1(뒤)이 섞인 <strong>중첩</strong>을 관찰하고, 손으로 덮어 <strong>측정(붕괴)</strong>을 체험합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 2</div>
-                <div class="step-title">블로흐 구면 조작</div>
-                <p>북극(|0⟩), 남극(|1⟩), 그리고 둘이 정확히 50:50으로 섞인 <strong>적도면 중첩 벡터</strong>를 조작합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 3</div>
-                <div class="step-title">동시 병렬 처리 비교</div>
-                <p>큐비트 10개가 1,024개의 모든 미로 갈래 길을 <strong>단 한 번에 동시에 탐색</strong>하는 위력을 분석합니다.</p>
-              </div>
+            <h2>비트와 큐비트</h2>
+            <div class="ps-body">
+              <div style="margin:auto 0">${qQubitPanels()}</div>
+              <p class="ps-def"><b>중첩이란?</b>측정하기 전까지 0과 1이 일정한 비율로 함께 섞여 있는 상태. 측정하면 그 비율에 따라 0 또는 1 하나로 정해집니다.</p>
             </div>
           `
         },
-
-        // Slide 7: 관찰 결과표
         {
-          tag: '2차시 전개 · 결과 분석',
-          title: '비트(Bit) vs 큐비트(Qubit) 비교 관찰표',
+          title: '비트 vs 큐비트 비교표',
           content: `
-            <div class="pres-table-wrap">
-              <table class="pres-table">
-                <thead>
-                  <tr>
-                    <th style="width:24%;">비교 항목</th>
-                    <th style="width:38%;">고전 비트 (Bit)</th>
-                    <th style="width:38%;">양자 큐비트 (Qubit)</th>
-                  </tr>
-                </thead>
+            <h2>비트 vs 큐비트 비교표</h2>
+            <div class="ps-body">
+              <table class="ps-table">
+                <thead><tr><th style="width:24%">비교 항목</th><th style="width:34%">비트</th><th>큐비트</th></tr></thead>
                 <tbody>
-                  <tr>
-                    <td><strong>동전 비유</strong></td>
-                    <td>바닥에 가만히 누워 있는 동전</td>
-                    <td>책상 위에서 팽이처럼 빠르게 도는 동전</td>
-                  </tr>
-                  <tr>
-                    <td><strong>정보의 표현 상태</strong></td>
-                    <td>0 또는 1 중 <strong>단 한 개만</strong> 선택</td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#2563eb; font-size:0.95rem;">0과 1이 둘 다 동시에 섞인 '중첩(Superposition)'!</strong>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>10개 사용 시 정보 탐색</strong></td>
-                    <td>1,024개 길 중 <strong>1개씩 순서대로</strong> 검사</td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <button type="button" class="pres-reveal-btn">결과 확인</button>
-                        <div class="pres-reveal-content">
-                          <strong style="color:#2563eb; font-size:0.95rem;">1,024개 모든 경로를 '단 한 번에 동시에' 탐색!</strong>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                  <tr><td>동전 비유</td><td>책상에 누운 동전</td><td>팽이처럼 도는 동전</td></tr>
+                  <tr><td>정보의 표현</td><td>0 또는 1 중 딱 하나</td>
+                    <td><div class="ps-reveal" style="--c:#b794ff" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>0과 1이 섞인 중첩</span></div></td></tr>
+                  <tr><td>측정하면</td><td>원래 값 그대로</td>
+                    <td><div class="ps-reveal" style="--c:#5aa9ff" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>0 또는 1 하나로 정해짐</span></div></td></tr>
+                  <tr><td>10개로 1,024갈래 미로</td><td>하나씩 확인</td>
+                    <td><div class="ps-reveal" style="--c:#e2bd72" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>정답 확률을 키워 약 25번 만에</span></div></td></tr>
                 </tbody>
               </table>
             </div>
           `
         },
-
-        // Slide 8: 인라인 SVG 고전 비트 vs 양자 큐비트(블로흐 구면) 벡터 다이어그램
         {
-          tag: '2차시 전개 · 과학 다이어그램',
-          title: '고전 비트(스위치) vs 양자 큐비트(블로흐 구)',
+          title: '미로 찾기로 보는 차이',
           content: `
-            <div class="pres-stack pres-spectrum-stack">
-              <div class="pres-spectrum-img-card" style="padding:0.8rem 1.2rem;">
-                <svg viewBox="0 0 860 215" width="100%" height="100%" style="max-height:240px; display:block; font-family:'Pretendard', sans-serif;">
-                  <!-- 고전 비트 (좌측) -->
-                  <g transform="translate(30, 15)">
-                    <rect x="0" y="0" width="230" height="185" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
-                    <text x="115" y="28" font-size="13" font-weight="800" fill="#334155" text-anchor="middle">고전 비트 (Bit)</text>
-                    
-                    <!-- 스위치 모형 -->
-                    <rect x="65" y="45" width="100" height="40" rx="20" fill="#e2e8f0" />
-                    <circle cx="85" cy="65" r="16" fill="#64748b" />
-                    <text x="85" y="70" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">0</text>
-                    <text x="145" y="70" font-size="12" font-weight="800" fill="#94a3b8" text-anchor="middle">1</text>
-                    
-                    <text x="115" y="115" font-size="12.5" font-weight="800" fill="#334155" text-anchor="middle">0 또는 1 중 딱 하나</text>
-                    <text x="115" y="138" font-size="11.5" font-weight="700" fill="#64748b" text-anchor="middle">바닥에 누운 동전</text>
-                    <rect x="25" y="150" width="180" height="22" rx="4" fill="#e2e8f0" />
-                    <text x="115" y="165" font-size="11" font-weight="800" fill="#475569" text-anchor="middle">1개씩 순서대로 계산</text>
-                  </g>
-
-                  <!-- 중앙: 회전 동전 (중첩) -->
-                  <g transform="translate(290, 15)">
-                    <rect x="0" y="0" width="240" height="185" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2" />
-                    <text x="120" y="28" font-size="13" font-weight="800" fill="#1d4ed8" text-anchor="middle">회전 동전 (중첩 상태)</text>
-                    
-                    <!-- 팽이 회전 동전 모형 -->
-                    <ellipse cx="120" cy="75" rx="45" ry="25" fill="#dbeafe" stroke="#3b82f6" stroke-width="2.5" />
-                    <path d="M 95 65 Q 120 50 145 65" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="3,2" />
-                    <text x="120" y="80" font-size="15" font-weight="900" fill="#1d4ed8" text-anchor="middle">0 &amp; 1</text>
-                    
-                    <text x="120" y="120" font-size="12.5" font-weight="800" fill="#1e40af" text-anchor="middle">앞면과 뒷면의 공존</text>
-                    <text x="120" y="140" font-size="11.5" font-weight="700" fill="#3b82f6" text-anchor="middle">손으로 덮기 전까지 중첩!</text>
-                    <rect x="30" y="150" width="180" height="22" rx="4" fill="#dbeafe" />
-                    <text x="120" y="165" font-size="11" font-weight="800" fill="#1d4ed8" text-anchor="middle">측정 순간 0 또는 1로 붕괴</text>
-                  </g>
-
-                  <!-- 우측: 블로흐 구 (Bloch Sphere) -->
-                  <g transform="translate(560, 15)">
-                    <rect x="0" y="0" width="270" height="185" rx="12" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="2" />
-                    <text x="135" y="28" font-size="13" font-weight="800" fill="#6d28d9" text-anchor="middle">블로흐 구 (Bloch Sphere)</text>
-                    
-                    <!-- 3D 구면 -->
-                    <circle cx="135" cy="95" r="45" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.8" />
-                    <ellipse cx="135" cy="95" rx="45" ry="14" fill="none" stroke="#c4b5fd" stroke-width="1.2" stroke-dasharray="3,3" />
-                    <line x1="135" y1="45" x2="135" y2="145" stroke="#8b5cf6" stroke-width="1.5" />
-                    
-                    <!-- 북극 |0>, 남극 |1>, 적도 화살표 -->
-                    <text x="135" y="44" font-size="11" font-weight="900" fill="#6d28d9" text-anchor="middle">북극 |0⟩</text>
-                    <text x="135" y="156" font-size="11" font-weight="900" fill="#6d28d9" text-anchor="middle">남극 |1⟩</text>
-                    <line x1="135" y1="95" x2="165" y2="78" stroke="#dc2626" stroke-width="2.5" />
-                    <circle cx="165" cy="78" r="3" fill="#dc2626" />
-                    <text x="175" y="78" font-size="10" font-weight="800" fill="#dc2626">|ψ⟩</text>
-
-                    <rect x="25" y="152" width="220" height="22" rx="4" fill="#ede9fe" />
-                    <text x="135" y="167" font-size="11" font-weight="800" fill="#5b21b6" text-anchor="middle">적도면 = 50:50 완벽한 중첩!</text>
-                  </g>
-                </svg>
-              </div>
-
-              <div class="pres-def-card">
-                <p class="pres-def-text">
-                  <strong class="pres-def-lead">양자 중첩이란?</strong> 측정하기 전까지는 0과 1의 상태가 확률적으로 동시에 공존하며, 3차원 블로흐 구면 위의 모든 연속적 각도를 표현할 수 있는 양자의 성질
-                </p>
-              </div>
+            <h2>미로 찾기로 보는 차이</h2>
+            <div class="ps-body">
+              <div style="margin:auto 0">${qMaze()}</div>
+              <p class="ps-def"><b>오해 주의</b>측정하면 답은 하나만 나오므로 “모든 길을 동시에 가 보고 답을 한 번에 꺼낸다”는 것은 오해입니다. 양자 컴퓨터는 모든 문제가 아니라 분자 계산처럼 잘 맞는 문제에서 특히 강합니다.</p>
             </div>
           `
         },
-
-        // Slide 9: 동시 병렬 처리의 힘
         {
-          tag: '2차시 전개 · 핵심 원리',
-          title: '미로 찾기 비유: 순차 탐색 vs 동시 병렬 탐색',
+          title: '2차시 핵심 배움 정리',
           content: `
-            <div class="pres-stack pres-conservation-stack">
-              <div class="pres-equation-box">
-                <div class="pres-equation-text">
-                  [ 10개 큐비트 동시 표현 상태 ] = 2¹⁰ = 1,024개 경로 동시 탐색!
-                </div>
-              </div>
-
-              <div class="pres-law-desc-box">
-                <p class="pres-law-desc-p">
-                  • <strong>고전 컴퓨터 (순차 탐색):</strong> 복잡한 미로를 풀 때 한 갈래 길씩 가보고, 벽에 부딪히면 되돌아 나오는 과정을 1,024번 반복해야 합니다.
-                </p>
-                <p class="pres-law-desc-p">
-                  • <strong>양자 컴퓨터 (동시 병렬 탐색):</strong> 중첩의 힘으로 1,024명의 분신이 <strong>모든 갈래 길로 동시에 한꺼번에 쏟아져 들어가</strong> 막힘없이 최단 출구를 즉시 찾아냅니다!
-                </p>
-              </div>
+            <h2>2차시 핵심 배움 정리</h2>
+            <div class="ps-body ps-cols3" style="align-content:center">
+              <figure><div class="ps-bignum">1</div><h3>중첩</h3>
+                <p>큐비트는 측정하기 전까지 0과 1이 일정한 비율로 섞여 있습니다.</p></figure>
+              <figure><div class="ps-bignum">2</div><h3>측정</h3>
+                <p>측정하면 섞인 비율에 따라 0 또는 1 하나로 정해집니다.</p></figure>
+              <figure><div class="ps-bignum">3</div><h3>양자 컴퓨터가 잘하는 일</h3>
+                <p>정답이 나올 확률을 키우는 방식으로, 분자 계산처럼 잘 맞는 문제를 빠르게 풉니다.</p></figure>
             </div>
           `
         },
-
-        // Slide 10: 2차시 핵심 배움 확인
         {
-          tag: '2차시 정리 · 배움 확인',
-          title: '2차시 핵심 배움 확인',
-          content: `
-            <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">양자 중첩</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  0과 1이 동시에 섞여 있는 회전 동전 팽이 상태
-                </p>
-              </div>
-              <div class="pres-card pres-highlight" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">블로흐 구면</strong>
-                <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
-                  3차원 구면 위에서 자유롭게 각도를 조작하고 관측 시 붕괴
-                </p>
-              </div>
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">동시 병렬 처리</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  1,024개 모든 미로 경로를 단 한 번에 동시에 탐색
-                </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 11: 다음 시간에는?
-        {
-          tag: '2차시 정리 · 차시 예고',
           title: '다음 시간에는?',
           content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:300px;">
-              <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
-                <div style="font-size:1.15rem; font-weight:800; color:#2563eb; margin-bottom:0.8rem;">
-                  [3차시] 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태
-                </div>
-                <div class="inquiry-q" style="line-height:1.8;">
-                  <span style="font-size:1.35rem; font-weight:800; color:#0f172a; display:block;">
-                    "안개 자욱한 산에서 가장 깊은 골짜기(최저 에너지)를 어떻게 찾아낼까?"
-                  </span>
-                  <span style="font-size:1.35rem; font-weight:800; color:#2563eb; display:block; margin-top:0.6rem;">
-                    양자 컴퓨터와 일반 컴퓨터가 발을 묶고 함께 달리는 기적의 VQE 알고리즘이 공개됩니다!
-                  </span>
-                </div>
-              </div>
+            <div class="ps-next-bg"><img src="${qImg('quantum_trapped_ion_coulomb_crystal_hd.jpg')}" alt="분자를 계산하는 양자 컴퓨터 장치"></div>
+            <div class="ps-next-txt">
+              <h2>다음 시간에는?</h2>
+              <p class="ps-q3">“안개 낀 산에서 가장 깊은 골짜기를 어떻게 찾을까?”</p>
+              <p>양자 컴퓨터와 일반 컴퓨터가 발을 묶고 함께 걷는 2인 3각 계산법을 알아봅니다.</p>
             </div>
           `
         }
@@ -770,385 +617,152 @@ window.presentationModalData.quantum = {
     },
 
     // -----------------------------------------------------------------------
-    // Quantum 3차시: 2인 3각 VQE 알고리즘과 바닥 상태
+    // 양자 3차시: 환상의 2인 3각 달리기
     // -----------------------------------------------------------------------
     3: {
-      lessonTitle: '[3차시] 환상의 2인 3각 달리기: VQE 알고리즘과 화학 결합의 바닥 상태',
-      badge: '양자 3차시 · VQE 하이브리드 알고리즘',
+      lessonTitle: '[3차시] 환상의 2인 3각 달리기: 두 컴퓨터가 함께 찾는 화학 결합의 바닥 상태',
+      badge: '양자 3차시 · 바닥 상태와 2인 3각 계산',
+      design: 'stage',
       slides: [
-        // Slide 1: 단독 표지
         {
-          tag: '3차시 · 질문',
           title: '이번 시간에는?',
+          layout: 'cover',
           content: `
-            <div class="pres-single-cover">
-              <div class="pres-cover-tag">QUANTUM COMPUTING MODULE · SESSION 03</div>
-              <div class="pres-cover-q">
-                "안개 자욱한 산에서 가장 깊은 골짜기(최저 에너지 바닥 상태)를 어떻게 찾아낼까?"
-              </div>
-              <div class="pres-cover-sub">
-                양자 컴퓨터와 일반 컴퓨터가 발을 묶고 함께 달리는 기적의 VQE 하이브리드 알고리즘
+            <div class="ps-cover-bg"><img src="${qImg('quantum_trapped_ion_coulomb_crystal_hd.jpg')}" alt="분자를 계산하는 양자 컴퓨터 장치"></div>
+            <div class="ps-cover-txt">
+              <div class="ps-kicker">양자 3차시 · 바닥 상태와 2인 3각 계산</div>
+              <div class="ps-ask">이번 시간에는?</div>
+              <h1 style="font-size:104px">환상의<br>2인 3각 달리기</h1>
+            </div>
+          `
+        },
+        {
+          title: '안개 속 골짜기 찾기',
+          content: `
+            <h2>안개 속 골짜기 찾기</h2>
+            <div class="ps-body ps-split">
+              <figure>${qValley()}</figure>
+              <div class="txt">
+                <div><h3>언덕 위의 공</h3>
+                  <p>언덕 위에 놓인 공은 스스로 굴러 <strong>가장 낮은 곳</strong>으로 갑니다. 분자도 에너지가 가장 낮은 상태에서 가장 안정합니다.</p></div>
+                <p class="ps-q2" style="font-size:48px">“안개로 앞이 안 보이는 산에서 <em>가장 낮은 골짜기</em>를 어떻게 찾을까?”</p>
               </div>
             </div>
           `
         },
-
-        // Slide 2: 동기 유발 & 핵심 질문
         {
-          tag: '3차시 도입 · 핵심 질문',
-          title: '안개 속 골짜기 찾기: 눈을 가린 사람과 드론의 2인 3각',
+          title: '학습 목표',
           content: `
-            <div class="pres-grid-2">
-              <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="mountain"></i> 자연의 법칙: 최저 에너지 바닥 상태</div>
-                <ul class="pres-list">
-                  <li>언덕 위 공이 아래로 굴러떨어지듯, 모든 분자는 에너지가 가장 낮은 <strong>바닥 상태(Ground State)</strong>에 도달할 때 가장 편안하고 안정하게 결합합니다.</li>
-                  <li>하지만 수십 개 전자가 서로 밀어내는 복잡한 분자는 골짜기가 어디에 있는지 계산하기가 불가능에 가깝습니다.</li>
-                </ul>
-              </div>
-              <div class="pres-card pres-highlight">
-                <div class="pres-card-title"><i data-lucide="users"></i> 환상의 2인 3각 팀워크 (VQE)</div>
-                <p style="font-size:1.12rem; line-height:1.8; color:#1e40af; margin:0;">
-                  <strong>양자 컴퓨터 (QPU):</strong> 초고속 양자 중첩으로 현재 위치의 분자 에너지를 찰나의 순간에 측정!<br>
-                  <strong>고전 컴퓨터 (CPU):</strong> 측정값을 분석하여 "오른쪽으로 3도 더 내려가!" 방향을 지시!<br>
-                  둘이 발을 묶고 피드백을 반복하여 <strong>최저 에너지 바닥 상태</strong>를 찾아냅니다.
-                </p>
+            <h2>학습 목표</h2>
+            <p class="ps-goal" style="font-size:64px">분자는 에너지가 가장 낮은 <u>바닥 상태</u>에서 가장 안정함을 이해하고, 양자 컴퓨터와 일반 컴퓨터가 함께 바닥 상태를 찾아가는 <u>2인 3각 계산</u>을 역할극으로 설명할 수 있다.</p>
+          `
+        },
+        {
+          title: '탐구 준비물',
+          content: `
+            <h2>탐구 준비물</h2>
+            <div class="ps-body">
+              <div class="ps-tools4">
+                <figure><div class="ps-ph">${qToolArt('band')}</div><h3><span class="n">1</span>2인 3각 벨크로 밴드</h3><p>짝과 발을 묶는 끈</p></figure>
+                <figure><div class="ps-ph">${qToolArt('mat')}</div><h3><span class="n">2</span>에너지 지형도 매트</h3><p>골짜기 바닥 찾기 판</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('q_lab_vqe.jpg')}" alt="2인 3각 계산 시뮬레이터 화면" style="object-fit:contain;background:#0b1220"></div><h3><span class="n">3</span>태블릿 가상실험실</h3><p>바닥 상태 찾기 시뮬레이터</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('q_ws3.jpg')}" alt="3차시 활동지" style="object-position:top"></div><h3><span class="n">4</span>활동지</h3><p>2인 3각 계산 순서도 기록</p></figure>
               </div>
             </div>
           `
         },
-
-        // Slide 3: 학습 목표
         {
-          tag: '3차시 도입 · 학습 목표',
-          title: '오늘의 학습 목표',
-          content: `
-            <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.5rem;">역할 분담 이해</strong>
-                <p style="font-size:0.92rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  양자 컴퓨터(QPU)와 일반 슈퍼컴퓨터(CPU)의 상호 보완적 2인 3각 역할을 구체적으로 설명한다.
-                </p>
-              </div>
-              <div class="pres-card pres-highlight" style="text-align:center;">
-                <strong style="font-size:1.15rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">VQE 피드백 루프</strong>
-                <p style="font-size:0.92rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
-                  골짜기 지형도 모델과 인터랙티브 시뮬레이터를 통해 파라미터가 최저 에너지로 수렴하는 과정을 추론한다.
-                </p>
-              </div>
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.5rem;">변분 원리 체득</strong>
-                <p style="font-size:0.92rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  계산된 에너지가 실제 바닥 상태보다 항상 크거나 같다는 양자역학의 수학적 안전장치를 이해한다.
-                </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 4: 4열 준비물 카드
-        {
-          tag: '3차시 준비 · 탐구 도구',
-          title: '탐구 준비물 안내 (2인 3각 교구 & 시뮬레이터)',
-          content: `
-            <div class="pres-tools-4col">
-              <div class="pres-tool-card">
-                <div class="pres-tool-icon"><i data-lucide="link"></i></div>
-                <div class="pres-tool-name">2인 3각 협력 밴드</div>
-                <div class="pres-tool-desc">QPU와 CPU 발을 묶는 벨크로 스트랩</div>
-              </div>
-              <div class="pres-tool-card">
-                <div class="pres-tool-icon"><i data-lucide="mountain"></i></div>
-                <div class="pres-tool-name">3D 에너지 지형도 매트</div>
-                <div class="pres-tool-desc">포텐셜 에너지 골짜기 최적화 탐색 판</div>
-              </div>
-              <div class="pres-tool-card">
-                <div class="pres-tool-icon"><i data-lucide="tablet"></i></div>
-                <div class="pres-tool-name">VQE 수렴 시뮬레이터</div>
-                <div class="pres-tool-desc">각도(θ)별 에너지 하강 곡선 관찰 태블릿</div>
-              </div>
-              <div class="pres-tool-card">
-                <div class="pres-tool-icon"><i data-lucide="clipboard-list"></i></div>
-                <div class="pres-tool-name">VQE 수렴 기록 활동지</div>
-                <div class="pres-tool-desc">회차별 각도 및 최저 에너지 기록표</div>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 5: 탐구활동 시 주의 사항
-        {
-          tag: '3차시 준비 · 주의 사항',
           title: '탐구활동 시 주의 사항',
           content: `
-            <div class="pres-safety-grid">
-              <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-title">1. 발 걸림 및 넘어짐 방지</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  2인 3각 역할극 시 교실 통로의 가방과 의자를 정돈하고, 절대 뛰지 않으며 천천히 호흡을 맞춰 걷습니다.
-                </div>
-              </div>
-              <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-title">2. QPU와 CPU 구령 일치</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  양자 역할(에너지 측정)과 고전 컴퓨터 역할(각도 조정)이 "하나, 둘" 신호를 교환하며 협동합니다.
-                </div>
-              </div>
-              <div class="pres-safety-card">
-                <div class="pres-safety-title">3. 수렴 수치 정밀 기록</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  시뮬레이터에서 반복 회차가 늘어남에 따라 에너지가 바닥에 수렴(-1.137 Hartree)하는 수치를 정밀히 기록합니다.
-                </div>
-              </div>
+            <h2>탐구활동 시 주의 사항</h2>
+            <div class="ps-body ps-cols3" style="align-content:center">
+              <figure><div class="ps-bignum">1</div><h3>넘어짐 방지</h3>
+                <p>통로의 가방과 의자를 정리하고, 절대 뛰지 않으며 천천히 호흡을 맞춰 걷습니다.</p></figure>
+              <figure><div class="ps-bignum">2</div><h3>구령 맞추기</h3>
+                <p>양자 컴퓨터 역할(에너지 재기)과 일반 컴퓨터 역할(다음 걸음 정하기)이 “하나, 둘” 신호를 주고받습니다.</p></figure>
+              <figure><div class="ps-bignum">3</div><h3>값 기록하기</h3>
+                <p>반복할 때마다 에너지 값이 어떻게 낮아지는지 활동지에 차례로 적습니다.</p></figure>
             </div>
           `
         },
-
-        // Slide 6: VQE 최적화 3단계
         {
-          tag: '3차시 전개 · 탐구 단계',
-          title: 'VQE 2인 3각 하이브리드 최적화 3단계',
+          title: '바닥 상태',
           content: `
-            <div class="pres-steps-row">
-              <div class="pres-step-box">
-                <div class="step-num">Step 1</div>
-                <div class="step-title">초기 각도(파라미터) 설정</div>
-                <p>고전 컴퓨터(CPU)가 임의의 초기 회전 각도(θ)를 생성하여 양자 칩(QPU)으로 보냅니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 2</div>
-                <div class="step-title">양자 회로 에너지 측정</div>
-                <p>QPU가 큐비트 중첩 상태를 만들고, 해당 상태의 분자 기대 에너지값(⟨H⟩)을 찰나에 측정하여 CPU로 전달합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 3</div>
-                <div class="step-title">각도 업데이트 & 골짜기 도달</div>
-                <p>CPU가 더 낮은 에너지를 향해 각도를 미세 수정하며 루프를 20회 반복, 최저 바닥 상태에 안착합니다.</p>
-              </div>
+            <h2>바닥 상태</h2>
+            <div class="ps-body">
+              <div style="margin:auto 0">${qH2Curve()}</div>
+              <p class="ps-def"><b>바닥 상태란?</b>원자핵끼리 밀어내는 힘과, 전자와 원자핵이 끌어당기는 힘이 균형을 이루어 에너지가 가장 낮은 상태. 수소 분자는 두 원자가 약 0.074 nm 떨어졌을 때 가장 안정합니다.</p>
             </div>
           `
         },
-
-        // Slide 7: 관찰/시뮬레이션 결과표
         {
-          tag: '3차시 전개 · 실험 결과',
-          title: '활동지 VQE 수렴 기록표 (클릭하여 정답 확인)',
+          title: '2인 3각 역할극',
           content: `
-            <div class="pres-table-wrap">
-              <table class="pres-table">
-                <thead>
-                  <tr>
-                    <th style="width:22%;">반복 회수 (Iteration)</th>
-                    <th style="width:24%;">회전 각도 (θ)</th>
-                    <th style="width:27%;">계산된 에너지 (Hartree)</th>
-                    <th style="width:27%;">시스템 상태 및 판정</th>
-                  </tr>
-                </thead>
+            <h2>2인 3각 역할극</h2>
+            <div class="ps-body">
+              <div style="margin:auto 0">${qLoop()}</div>
+              <p class="ps-def"><b>2인 3각 계산이란?</b>계산하기 어려운 분자의 에너지는 양자 컴퓨터가 재고, 다음 걸음은 일반 컴퓨터가 정하며 번갈아 반복해 바닥 상태를 찾는 협동 계산법입니다.</p>
+            </div>
+          `
+        },
+        {
+          title: '2인 3각 계산 기록표',
+          content: `
+            <h2>2인 3각 계산 기록표</h2>
+            <div class="ps-body">
+              <table class="ps-table">
+                <thead><tr><th style="width:22%">반복</th><th style="width:24%">두 원자 사이 거리</th><th style="width:20%">에너지</th><th>상태</th></tr></thead>
                 <tbody>
-                  <tr>
-                    <td><strong>1회차 (초기 상태)</strong></td>
-                    <td>0.00 rad</td>
-                    <td>-0.850 Hartree</td>
-                    <td>높은 산 중턱 (불안정 상태)</td>
-                  </tr>
-                  <tr>
-                    <td><strong>10회차 (중간 탐색)</strong></td>
-                    <td>0.54 rad</td>
-                    <td>-1.100 Hartree</td>
-                    <td>에너지 경사면 하강 중</td>
-                  </tr>
-                  <tr>
-                    <td><strong>20회차 (최적 수렴)</strong></td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <span class="pres-reveal-hint">클릭</span>
-                        <span class="pres-reveal-content">0.785 rad</span>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <span class="pres-reveal-hint">클릭</span>
-                        <span class="pres-reveal-content"><strong>-1.137 Hartree</strong></span>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <span class="pres-reveal-hint">클릭</span>
-                        <span class="pres-reveal-content"><strong>바닥 상태(최저 에너지) 도달!</strong></span>
-                      </div>
-                    </td>
-                  </tr>
+                  <tr><td>처음</td><td>0.18 nm</td><td>-0.63</td><td style="color:#cfcac0">높은 산 중턱</td></tr>
+                  <tr><td>10번째</td><td>약 0.10 nm</td><td>-1.03</td><td style="color:#cfcac0">골짜기로 내려가는 중</td></tr>
+                  <tr><td>마지막</td><td>0.074 nm</td>
+                    <td><div class="ps-reveal" style="--c:#e2bd72" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>-1.137</span></div></td>
+                    <td><div class="ps-reveal" style="--c:#e2bd72" onclick="this.classList.toggle('revealed')"><button type="button">결과 확인</button><span class="res"><i></i>바닥 상태 도착</span></div></td></tr>
                 </tbody>
               </table>
+              <p class="ps-foot">가상실험실 수소 분자 기준 · 에너지 단위는 생략합니다.</p>
             </div>
           `
         },
-
-        // Slide 8: 인라인 SVG 과학 벡터 다이어그램
         {
-          tag: '3차시 전개 · 과학 원리 다이어그램',
-          title: 'VQE 하이브리드 피드백 루프 & 에너지 골짜기 메커니즘',
+          title: '2인 3각 계산의 안전장치',
           content: `
-            <div class="pres-diagram-container">
-              <div class="pres-svg-wrap">
-                <svg viewBox="0 0 860 215" width="100%" height="100%" style="display:block; max-height:240px; margin:0 auto; font-family:'Pretendard', sans-serif;">
-                  <defs>
-                    <linearGradient id="vqeLoopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#eff6ff" />
-                      <stop offset="100%" stop-color="#dbeafe" />
-                    </linearGradient>
-                    <linearGradient id="vqeQpuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#f5f3ff" />
-                      <stop offset="100%" stop-color="#ede9fe" />
-                    </linearGradient>
-                    <marker id="vqeArrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-                      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#2563eb" />
-                    </marker>
-                    <marker id="vqeArrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-                      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#7c3aed" />
-                    </marker>
-                  </defs>
-
-                  <!-- 좌측 영역: VQE 2인 3각 하이브리드 루프 (x: 15 ~ 440) -->
-                  <g transform="translate(15, 10)">
-                    <rect x="0" y="0" width="415" height="195" rx="12" fill="#fafafa" stroke="#e2e8f0" stroke-width="1.5" />
-                    <text x="207" y="24" font-size="13" font-weight="800" fill="#0f172a" text-anchor="middle">VQE 하이브리드 최적화 루프 (QPU ↔ CPU)</text>
-
-                    <!-- CPU 박스 (상단) -->
-                    <rect x="25" y="42" width="365" height="50" rx="8" fill="url(#vqeLoopGrad)" stroke="#3b82f6" stroke-width="1.8" />
-                    <text x="40" y="64" font-size="12" font-weight="900" fill="#1d4ed8">고전 컴퓨터 (CPU)</text>
-                    <text x="40" y="82" font-size="11" font-weight="700" fill="#3b82f6">파라미터(θ) 업데이트 · 경사면 하강 최적화 알고리즘</text>
-
-                    <!-- QPU 박스 (하단) -->
-                    <rect x="25" y="128" width="365" height="52" rx="8" fill="url(#vqeQpuGrad)" stroke="#8b5cf6" stroke-width="1.8" />
-                    <text x="40" y="150" font-size="12" font-weight="900" fill="#6d28d9">양자 프로세서 (QPU)</text>
-                    <text x="40" y="168" font-size="11" font-weight="700" fill="#7c3aed">양자 회로 상태 생성 |ψ(θ)⟩ · 에너지 기댓값 ⟨H⟩ 초고속 측정</text>
-
-                    <!-- 루프 화살표 1: CPU -> QPU (오른쪽 하강) -->
-                    <path d="M 330 92 L 330 120" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#vqeArrowBlue)" />
-                    <text x="340" y="110" font-size="10.5" font-weight="800" fill="#2563eb">θ 전달</text>
-
-                    <!-- 루프 화살표 2: QPU -> CPU (왼쪽 상승) -->
-                    <path d="M 85 128 L 85 100" fill="none" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#vqeArrowPurple)" />
-                    <text x="95" y="116" font-size="10.5" font-weight="800" fill="#7c3aed">⟨H⟩ 피드백</text>
-                  </g>
-
-                  <!-- 우측 영역: 포텐셜 에너지 골짜기 지형도 (x: 445 ~ 845) -->
-                  <g transform="translate(445, 10)">
-                    <rect x="0" y="0" width="400" height="195" rx="12" fill="#fafafa" stroke="#e2e8f0" stroke-width="1.5" />
-                    <text x="200" y="24" font-size="13" font-weight="800" fill="#0f172a" text-anchor="middle">에너지 지형도와 바닥 상태 (Ground State)</text>
-
-                    <!-- 축선 -->
-                    <line x1="45" y1="165" x2="370" y2="165" stroke="#94a3b8" stroke-width="1.5" />
-                    <line x1="45" y1="35" x2="45" y2="165" stroke="#94a3b8" stroke-width="1.5" />
-                    <text x="370" y="180" font-size="11" font-weight="700" fill="#64748b" text-anchor="end">각도 파라미터 (θ) →</text>
-                    <text x="45" y="32" font-size="11" font-weight="700" fill="#64748b">에너지 E(θ) ↑</text>
-
-                    <!-- U자형 포텐셜 곡선 -->
-                    <path d="M 60 55 Q 195 185 350 65" fill="none" stroke="#059669" stroke-width="3" />
-
-                    <!-- 초기 상태 (1회차) -->
-                    <circle cx="95" cy="80" r="6" fill="#ef4444" stroke="#ffffff" stroke-width="1.5" />
-                    <text x="108" y="76" font-size="10.5" font-weight="800" fill="#ef4444">1회차 (-0.85H)</text>
-
-                    <!-- 10회차 (중간) -->
-                    <circle cx="150" cy="120" r="5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" />
-                    <path d="M 103 85 Q 125 105 145 118" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2" />
-
-                    <!-- 최저 바닥 상태 (20회차) -->
-                    <circle cx="205" cy="142" r="7" fill="#10b981" stroke="#ffffff" stroke-width="2" />
-                    <text x="205" y="160" font-size="11" font-weight="900" fill="#047857" text-anchor="middle">★ 바닥 상태 (-1.137H)</text>
-
-                    <!-- 변분 원리 점선 기준선 -->
-                    <line x1="45" y1="142" x2="370" y2="142" stroke="#10b981" stroke-width="1.2" stroke-dasharray="4,3" />
-                    <rect x="230" y="42" width="150" height="24" rx="4" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
-                    <text x="305" y="58" font-size="10.5" font-weight="800" fill="#047857" text-anchor="middle">변분 원리: E(θ) ≥ E_바닥</text>
-                  </g>
-                </svg>
-              </div>
-
-              <div class="pres-def-card">
-                <p class="pres-def-text">
-                  <strong class="pres-def-lead">VQE (변분 양자 고유값 솔버)란?</strong> 복잡한 양자 상태의 에너지는 양자 컴퓨터(QPU)가 빠르게 측정하고, 최적의 각도 파라미터는 일반 컴퓨터(CPU)가 보정하며 함께 가장 낮은 에너지 바닥 상태를 찾아내는 하이브리드 알고리즘
-                </p>
+            <h2>2인 3각 계산의 안전장치</h2>
+            <div class="ps-body">
+              <div class="ps-wide" style="flex:none;height:560px;background:#0b1220"><img src="${getToolAsset('q_lab_vqe.jpg')}" alt="가상실험실에서 바닥 상태에 도착한 화면"></div>
+              <div class="ps-cols3" style="margin-top:8px">
+                <figure><h3>낮게는 나오지 않는다</h3>
+                  <p>이 방법의 계산값은 진짜 바닥 상태보다 낮게 나올 수 없어, <strong>더 낮은 값이 나올수록 정답에 가깝습니다</strong>.</p></figure>
+                <figure><h3>작은 웅덩이 조심</h3>
+                  <p>중간의 작은 웅덩이에 갇힐 수 있으므로 여러 출발점에서 시도해 봅니다.</p></figure>
+                <figure><h3>왜 2인 3각일까?</h3>
+                  <p>지금의 양자 컴퓨터는 아직 작고 오류가 많아, 일반 컴퓨터와 일을 나누어 함께 계산합니다.</p></figure>
               </div>
             </div>
           `
         },
-
-        // Slide 9: 핵심 원리 & 수식
         {
-          tag: '3차시 전개 · 핵심 원리',
-          title: '변분 원리(Variational Principle)와 바닥 상태',
+          title: '3차시 핵심 배움 정리',
           content: `
-            <div class="pres-stack pres-conservation-stack">
-              <div class="pres-equation-box">
-                <div class="pres-equation-text">
-                  [ 양자역학의 변분 원리 공식 ] : E(θ) ≥ E(실제 바닥 상태 에너지)
-                </div>
-              </div>
-
-              <div class="pres-law-desc-box">
-                <p class="pres-law-desc-p">
-                  • <strong>수학적 안전장치:</strong> 임의로 만든 가짜 파동함수로 에너지를 계산해도, 그 값은 자연계의 진짜 최저 에너지보다 <strong>절대 아래로 내려갈 수 없습니다</strong>. 따라서 컴퓨터가 에너지를 낮추기만 하면 반드시 진실의 바닥 상태에 수렴합니다!
-                </p>
-                <p class="pres-law-desc-p">
-                  • <strong>NISQ 시대의 구원투수:</strong> 잡음(Noise)이 있는 현재 양자 컴퓨터에서도 짧은 회로만 가동하고 복잡한 최적화는 슈퍼컴퓨터가 맡아 가장 실용적으로 작동하는 화학 시뮬레이션 기술입니다.
-                </p>
-              </div>
+            <h2>3차시 핵심 배움 정리</h2>
+            <div class="ps-body ps-cols3" style="align-content:center">
+              <figure><div class="ps-bignum">1</div><h3>바닥 상태</h3>
+                <p>분자는 에너지가 가장 낮은 바닥 상태에서 가장 안정하게 결합합니다.</p></figure>
+              <figure><div class="ps-bignum">2</div><h3>2인 3각 계산</h3>
+                <p>양자 컴퓨터가 에너지를 재고 일반 컴퓨터가 다음 걸음을 정하며 반복합니다.</p></figure>
+              <figure><div class="ps-bignum">3</div><h3>안전장치</h3>
+                <p>계산값은 진짜 바닥보다 낮게 나오지 않으므로, 낮아질수록 정답에 가까워집니다.</p></figure>
             </div>
           `
         },
-
-        // Slide 10: 핵심 배움 확인
         {
-          tag: '3차시 정리 · 배움 확인',
-          title: '3차시 핵심 배움 확인',
-          content: `
-            <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">2인 3각 하이브리드</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  QPU(에너지 측정)와 CPU(파라미터 보정)의 상호 피드백
-                </p>
-              </div>
-              <div class="pres-card pres-highlight" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">최저 바닥 상태</strong>
-                <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
-                  자연계 분자가 가장 편안하게 안정되는 에너지 골짜기 도달
-                </p>
-              </div>
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">변분 원리의 안전성</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  E(θ) ≥ E_0 보장으로 지속적 하강 시 무조건 최적해 보장
-                </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 11: 다음 시간에는?
-        {
-          tag: '3차시 정리 · 차시 예고',
           title: '다음 시간에는?',
           content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:300px;">
-              <div class="pres-inquiry-box" style="padding:3.2rem 2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
-                <div style="font-size:1.15rem; font-weight:800; color:#2563eb; margin-bottom:0.8rem;">
-                  [4차시] 양자 화학 시뮬레이션 기반 분자 설계 프로젝트
-                </div>
-                <div class="inquiry-q" style="line-height:1.8;">
-                  <span style="font-size:1.35rem; font-weight:800; color:#0f172a; display:block;">
-                    "비커와 시험관 없이, 양자 컴퓨터로 지구의 미래를 구할 수 있을까?"
-                  </span>
-                  <span style="font-size:1.35rem; font-weight:800; color:#2563eb; display:block; margin-top:0.6rem;">
-                    친환경 상온 비료, 전고체 배터리, 표적 신약 분자를 직접 설계해 봅니다!
-                  </span>
-                </div>
-              </div>
+            <div class="ps-next-bg"><img src="${qImg('quantum_carbon_capture_mof.jpg')}" alt="이산화 탄소를 붙잡는 분자 구조"></div>
+            <div class="ps-next-txt">
+              <h2>다음 시간에는?</h2>
+              <p class="ps-q3">“비커와 시험관 없이, 컴퓨터로 지구의 문제를 풀 분자를 설계할 수 있을까?”</p>
+              <p>비료, 배터리, 신약 중 하나를 골라 미래 분자 설계 스타트업을 기획합니다.</p>
             </div>
           `
         }
@@ -1156,397 +770,164 @@ window.presentationModalData.quantum = {
     },
 
     // -----------------------------------------------------------------------
-    // Quantum 4차시: 양자 화학 시뮬레이션 기반 분자 설계 프로젝트
+    // 양자 4차시: 분자 설계 스타트업 프로젝트
     // -----------------------------------------------------------------------
     4: {
       lessonTitle: '[4차시] 양자 화학 시뮬레이션 기반 분자 설계 프로젝트',
       badge: '양자 4차시 · 분자 설계 프로젝트',
+      design: 'stage',
       slides: [
-        // Slide 1: 단독 표지
         {
-          tag: '4차시 · 질문',
           title: '이번 시간에는?',
+          layout: 'cover',
           content: `
-            <div class="pres-single-cover">
-              <div class="pres-cover-tag">QUANTUM COMPUTING MODULE · SESSION 04</div>
-              <div class="pres-cover-q">
-                "비커와 시험관 없이, 양자 컴퓨터로 지구의 미래를 구할 수 있을까?"
-              </div>
-              <div class="pres-cover-sub">
-                인류 3대 지구 난제를 해결하는 양자 화학 시뮬레이션 기반 분자 설계 프로젝트
+            <div class="ps-cover-bg"><img src="${qImg('quantum_carbon_capture_mof.jpg')}" alt="이산화 탄소를 붙잡는 분자 구조"></div>
+            <div class="ps-cover-txt">
+              <div class="ps-kicker">양자 4차시 · 분자 설계 프로젝트</div>
+              <div class="ps-ask">이번 시간에는?</div>
+              <h1 style="font-size:104px">지구를 구할<br>분자를<br>설계하라</h1>
+            </div>
+          `
+        },
+        {
+          title: '컴퓨터 속 가상 실험실',
+          content: `
+            <h2>컴퓨터 속 가상 실험실</h2>
+            <div class="ps-body ps-split">
+              <figure><img src="${qImg('oled_quantum_sim_lab.jpg')}" alt="컴퓨터 화면 속 분자 모형"></figure>
+              <div class="txt">
+                <div><h3>지금의 화학 실험</h3>
+                  <p>수많은 물질을 직접 만들고 시험해야 해서 시간과 비용이 많이 들고, 위험한 약품도 다룹니다.</p></div>
+                <div><h3>컴퓨터 속 가상 실험</h3>
+                  <p>분자를 컴퓨터로 정확히 계산할 수 있다면, 좋은 분자 후보를 <strong>미리 골라낸 뒤</strong> 실제로 만들어 볼 수 있습니다. 양자 컴퓨터는 아직 발전 중인 기술입니다.</p></div>
+                <p class="ps-q2" style="font-size:44px">“위험한 약품 없이 컴퓨터 속에서 지구 온난화를 멈출 분자를 찾는다면?”</p>
               </div>
             </div>
           `
         },
-
-        // Slide 2: 동기 유발 & 핵심 질문
         {
-          tag: '4차시 도입 · 핵심 질문',
-          title: '비커 없는 실험실: 컴퓨터 속에서 분자를 창조하다',
+          title: '학습 목표',
           content: `
-            <div class="pres-grid-2">
-              <div class="pres-card">
-                <div class="pres-card-title"><i data-lucide="alert-octagon"></i> 전통 화학 실험의 한계</div>
-                <ul class="pres-list">
-                  <li>수만 번의 반복 합성 실험, 유독 물질 취급 및 고온·고압 폭발 위험</li>
-                  <li>신물질 개발에 10년 이상의 시간과 수천억~수조 원의 막대한 비용 소모</li>
-                  <li>나노초 단위로 일어나는 화학 반응 전이상태(Transition State) 관찰 불가능</li>
-                </ul>
-              </div>
-              <div class="pres-card pres-highlight">
-                <div class="pres-card-title"><i data-lucide="sparkles"></i> 양자 가상 실험실 (In Silico)</div>
-                <p style="font-size:1.12rem; line-height:1.8; color:#1e40af; margin:0;">
-                  분자 속 전자들의 양자역학적 상호작용을 큐비트 알고리즘으로 100% 정밀 시뮬레이션합니다. 
-                  비커 한 방울 없이 컴퓨터 화면 속에서 <strong>원하는 분자를 하루 만에 가상 합성하고 성능을 검증</strong>합니다!
-                </p>
+            <h2>학습 목표</h2>
+            <p class="ps-goal" style="font-size:64px">양자 컴퓨터를 이용한 분자 계산이 <u>3대 지구 과제</u> 해결에 도움을 줄 수 있음을 알고, 모둠별로 <u>미래 분자 설계 스타트업 기획서</u>를 작성·발표할 수 있다.</p>
+          `
+        },
+        {
+          title: '탐구 준비물',
+          content: `
+            <h2>탐구 준비물</h2>
+            <div class="ps-body">
+              <div class="ps-tools4">
+                <figure><div class="ps-ph"><img src="${getToolAsset('tool_tablet.jpg')}" alt="스마트기기"></div><h3><span class="n">1</span>스마트기기</h3><p>자료 조사</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('q_ws4.jpg')}" alt="스타트업 기획서 양식" style="object-position:top"></div><h3><span class="n">2</span>스타트업 기획서 양식</h3><p>모둠 기획서 작성</p></figure>
+                <figure><div class="ps-ph">${qToolArt('rubric')}</div><h3><span class="n">3</span>발표 평가 기준표</h3><p>모의 투자 심사</p></figure>
+                <figure><div class="ps-ph">${qToolArt('brief')}</div><h3><span class="n">4</span>3대 과제 안내 자료</h3><p>비료 · 배터리 · 신약</p></figure>
               </div>
             </div>
           `
         },
-
-        // Slide 3: 학습 목표
         {
-          tag: '4차시 도입 · 학습 목표',
-          title: '오늘의 학습 목표',
-          content: `
-            <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.5rem;">3대 지구 난제 분석</strong>
-                <p style="font-size:0.92rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  친환경 비료, 전고체 배터리, 표적 신약 개발에 가로놓인 화학 결합의 과학적 난제를 분석한다.
-                </p>
-              </div>
-              <div class="pres-card pres-highlight" style="text-align:center;">
-                <strong style="font-size:1.15rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">가상 분자 설계</strong>
-                <p style="font-size:0.92rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
-                  양자 컴퓨터 시뮬레이션을 통해 촉매, 전해질, 항암 분자를 가상으로 설계하는 아이디어를 도출한다.
-                </p>
-              </div>
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.15rem; color:#0f172a; display:block; margin-bottom:0.5rem;">CEO 창업 기획 발표</strong>
-                <p style="font-size:0.92rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  탄소 중립 및 인류 복지에 기여하는 양자 스타트업 기획서를 작성하고 동료 평가를 수행한다.
-                </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 4: 4열 준비물 카드
-        {
-          tag: '4차시 준비 · 탐구 도구',
-          title: '탐구 준비물 안내 (스타트업 창업 패키지)',
-          content: `
-            <div class="pres-tools-4col">
-              <div class="pres-tool-card">
-                <div class="pres-tool-icon"><i data-lucide="file-spreadsheet"></i></div>
-                <div class="pres-tool-name">스타트업 창업 기획서</div>
-                <div class="pres-tool-desc">회사명, 분자 아이디어, 기대 효과 양식</div>
-              </div>
-              <div class="pres-tool-card">
-                <div class="pres-tool-icon"><i data-lucide="globe"></i></div>
-                <div class="pres-tool-name">3대 난제 팩트시트</div>
-                <div class="pres-tool-desc">비료/배터리/신약 최신 화학 데이터 카드</div>
-              </div>
-              <div class="pres-tool-card">
-                <div class="pres-tool-icon"><i data-lucide="laptop"></i></div>
-                <div class="pres-tool-name">분자 모델링 스마트 패드</div>
-                <div class="pres-tool-desc">3D 화학 결합 및 구조 시각화 태블릿</div>
-              </div>
-              <div class="pres-tool-card">
-                <div class="pres-tool-icon"><i data-lucide="award"></i></div>
-                <div class="pres-tool-name">모둠 투자 심사 평가표</div>
-                <div class="pres-tool-desc">과학적 타당성 및 생태전환 루브릭 시트</div>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 5: 탐구활동 시 주의 사항
-        {
-          tag: '4차시 준비 · 주의 사항',
           title: '탐구활동 시 주의 사항',
           content: `
-            <div class="pres-safety-grid">
-              <div class="pres-safety-card safe-blue">
-                <div class="pres-safety-title">1. 역할 분담과 경청</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  대표 CEO, 수석 양자화학자, ESG 가치 평가자 등 모둠원 모두가 1개 이상의 전문 역할을 맡아 경청합니다.
-                </div>
-              </div>
-              <div class="pres-safety-card safe-amber">
-                <div class="pres-safety-title">2. 과학적 근거 기반 설계</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  단순한 상상이 아닌, 1~3차시에서 배운 전자 반발력, 큐비트 중첩, 바닥 상태 원리를 접목하여 기획합니다.
-                </div>
-              </div>
-              <div class="pres-safety-card">
-                <div class="pres-safety-title">3. 생태전환 가치 연계</div>
-                <div class="pres-safety-desc" style="word-break:keep-all;">
-                  설계한 가상 분자가 전 세계 탄소 배출 저감, 식량난 해결, 질병 극복에 어떤 사회적 파급효과를 주는지 명시합니다.
-                </div>
-              </div>
+            <h2>탐구활동 시 주의 사항</h2>
+            <div class="ps-body ps-cols3" style="align-content:center">
+              <figure><div class="ps-bignum">1</div><h3>역할 나누기와 경청</h3>
+                <p>대표, 양자 화학 연구원, 분자 설계 담당, 환경 가치 평가 담당을 나누어 맡고 서로의 의견을 경청합니다.</p></figure>
+              <figure><div class="ps-bignum">2</div><h3>과학 원리와 연결</h3>
+                <p>막연한 상상이 아니라 1~3차시에 배운 지수 폭발, 중첩, 바닥 상태와 연결하여 기획합니다.</p></figure>
+              <figure><div class="ps-bignum">3</div><h3>환경·사회 가치</h3>
+                <p>설계한 분자가 온실가스, 식량, 질병 문제에 어떤 도움을 주는지 분명히 씁니다.</p></figure>
             </div>
           `
         },
-
-        // Slide 6: 스타트업 CEO 프로젝트 3단계
         {
-          tag: '4차시 전개 · 탐구 단계',
-          title: '스타트업 CEO 프로젝트 3단계 워크플로우',
+          title: '3대 지구 과제',
           content: `
-            <div class="pres-steps-row">
-              <div class="pres-step-box">
-                <div class="step-num">Step 1</div>
-                <div class="step-title">지구 난제 선택 & 원인 분석</div>
-                <p>3대 난제(친환경 비료 / 전고체 배터리 / 표적 신약) 중 1개를 택해 기존 화학 기술의 한계를 분석합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 2</div>
-                <div class="step-title">양자 가상 분자 설계</div>
-                <p>양자 컴퓨터 가상 합성으로 삼중 결합을 끊을 촉매, 리튬 이동 경로 고체 전해질, 맞춤 항암 분자를 도출합니다.</p>
-              </div>
-              <div class="pres-step-arrow"><i data-lucide="arrow-right"></i></div>
-              <div class="pres-step-box">
-                <div class="step-num">Step 3</div>
-                <div class="step-title">IR 피칭 & 투자 심사</div>
-                <p>작성된 기획서를 발표하고 다른 모둠의 스타트업에 투자 점수를 부여하는 3차원 루브릭 평가를 진행합니다.</p>
-              </div>
+            <h2>3대 지구 과제</h2>
+            <div class="ps-body ps-cols3">
+              <figure><div class="ps-ph">${qChallenge('n2')}</div><h3 style="color:#7fd36b">친환경 비료</h3>
+                <p>지금은 400~500℃, 200기압 안팎에서 질소를 비료 원료로 바꾸며 세계 에너지의 약 1~2%를 씁니다. 콩과 식물 뿌리의 세균처럼 <strong>상온에서 질소의 세 겹 결합을 끊는 촉매</strong>를 찾습니다.</p></figure>
+              <figure><div class="ps-ph">${qChallenge('li')}</div><h3 style="color:#e2bd72">안전한 배터리</h3>
+                <p>불이 붙기 쉬운 액체 대신, <strong>리튬 이온이 잘 지나가는 고체</strong>를 찾아 화재 위험을 크게 줄입니다.</p></figure>
+              <figure><div class="ps-ph">${qChallenge('drug')}</div><h3 style="color:#c79bff">맞춤형 신약</h3>
+                <p>질병을 일으키는 단백질의 <strong>홈에 꼭 맞는 약 분자</strong>를 컴퓨터로 미리 찾아 개발 기간과 비용을 줄입니다.</p></figure>
             </div>
           `
         },
-
-        // Slide 7: 기획서 표준 템플릿 및 모범 사례
         {
-          tag: '4차시 전개 · 프로젝트 기획',
-          title: '스타트업 CEO 기획서 표준 템플릿 (클릭하여 모범 사례 확인)',
+          title: '스타트업 프로젝트 3단계',
           content: `
-            <div class="pres-table-wrap">
-              <table class="pres-table">
-                <thead>
-                  <tr>
-                    <th style="width:25%;">기획서 항목</th>
-                    <th style="width:75%;">작성 내용 및 모범 답안 예시</th>
-                  </tr>
-                </thead>
+            <h2>스타트업 프로젝트 3단계</h2>
+            <div class="ps-body">
+              <div class="ps-rail"><span>1단계</span><span>2단계</span><span>3단계</span></div>
+              <div class="ps-cols3 ps-steps" style="align-content:start">
+                <figure><div class="ps-ph">${qToolArt('brief')}</div><h3>과제 고르기</h3>
+                  <p>비료, 배터리, 신약 중 하나를 골라 지금 기술의 어려운 점을 살펴봅니다.</p></figure>
+                <figure><div class="ps-ph"><img src="${getToolAsset('q_ws4.jpg')}" alt="기획서 양식" style="object-position:top"></div><h3>분자 아이디어 설계</h3>
+                  <p>회사 이름을 짓고, 분자 아이디어의 과학 원리와 사회·환경적 기대 효과를 기획서에 씁니다.</p></figure>
+                <figure><div class="ps-ph">${qToolArt('rubric')}</div><h3>2분 발표와 모의 투자</h3>
+                  <p>모둠별로 2분 동안 발표하고, 평가 기준표로 다른 모둠에 모의 투자 점수를 줍니다.</p></figure>
+              </div>
+              <p class="ps-foot" style="margin-top:auto">4인 1조 · 대표, 양자 화학 연구원, 분자 설계 담당, 환경 가치 평가 담당</p>
+            </div>
+          `
+        },
+        {
+          title: '기획서 예시',
+          content: `
+            <h2>기획서 예시</h2>
+            <div class="ps-body">
+              <table class="ps-table">
+                <thead><tr><th style="width:24%">기획서 항목</th><th>예시 · 가상 회사 ‘퀀텀 카탈리스트’</th></tr></thead>
                 <tbody>
-                  <tr>
-                    <td><strong>스타트업 회사명 & 대표</strong></td>
-                    <td><strong>퀀텀 카탈리스트 (Quantum Catalyst)</strong> / 대표: 이양자 (양자계산화학 모둠)</td>
-                  </tr>
-                  <tr>
-                    <td><strong>해결할 지구 난제</strong></td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <span class="pres-reveal-hint">클릭하여 확인</span>
-                        <span class="pres-reveal-content">
-                          <strong>[친환경 상온 비료 합성 촉매]:</strong> 400℃ 고온과 200기압을 쓰는 하버-보슈 공정을 대체하여 전 세계 전력의 2% 소비 절감
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>양자 가상 분자 아이디어</strong></td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <span class="pres-reveal-hint">클릭하여 확인</span>
-                        <span class="pres-reveal-content">
-                          뿌리혹박테리아 질소고정효소 활성 중심인 <strong>철-몰리브덴(Fe-Mo) 클러스터</strong> 전자 구조를 양자 시뮬레이션하여 상온에서도 질소(N₂) 삼중 결합을 끊는 인공 유기금속 촉매 설계
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>사회·생태적 기대 효과</strong></td>
-                    <td>
-                      <div class="pres-reveal-cell" onclick="this.classList.toggle('revealed')">
-                        <span class="pres-reveal-hint">클릭하여 확인</span>
-                        <span class="pres-reveal-content">
-                          전 세계 온실가스 1.5% 감축, 저개발국에 값싸고 안전한 친환경 비료를 공급하여 <strong>기후 위기 극복 및 인류 기아 문제 해결</strong>
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
+                  <tr><td>해결할 과제</td>
+                    <td><div class="ps-reveal" style="--c:#7fd36b" onclick="this.classList.toggle('revealed')"><button type="button">예시 보기</button><span class="res" style="color:#f4f1ea;font-weight:600"><i></i>친환경 비료 · 고온·고압으로 에너지를 많이 쓰는 지금의 비료 생산 방식 바꾸기</span></div></td></tr>
+                  <tr><td>분자 아이디어</td>
+                    <td><div class="ps-reveal" style="--c:#5aa9ff" onclick="this.classList.toggle('revealed')"><button type="button">예시 보기</button><span class="res" style="color:#f4f1ea;font-weight:600"><i></i>콩과 식물 뿌리 세균의 비밀을 양자 컴퓨터로 계산해 상온에서 질소를 바꾸는 촉매 설계</span></div></td></tr>
+                  <tr><td>기대 효과</td>
+                    <td><div class="ps-reveal" style="--c:#e2bd72" onclick="this.classList.toggle('revealed')"><button type="button">예시 보기</button><span class="res" style="color:#f4f1ea;font-weight:600"><i></i>비료 공장의 에너지와 온실가스를 줄이고, 값싼 비료로 식량 문제 해결에 기여</span></div></td></tr>
                 </tbody>
               </table>
             </div>
           `
         },
-
-        // Slide 8: 인라인 SVG 과학 벡터 다이어그램
         {
-          tag: '4차시 전개 · 과학 원리 다이어그램',
-          title: '인류 3대 난제 해결을 위한 양자 화학 가상 실험실 구조',
+          title: '모의 투자 심사 기준',
           content: `
-            <div class="pres-diagram-container">
-              <div class="pres-svg-wrap">
-                <svg viewBox="0 0 860 215" width="100%" height="100%" style="display:block; max-height:240px; margin:0 auto; font-family:'Pretendard', sans-serif;">
-                  <defs>
-                    <linearGradient id="q4Card1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#ecfdf5" />
-                      <stop offset="100%" stop-color="#d1fae5" />
-                    </linearGradient>
-                    <linearGradient id="q4Card2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#eff6ff" />
-                      <stop offset="100%" stop-color="#dbeafe" />
-                    </linearGradient>
-                    <linearGradient id="q4Card3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#fdf4ff" />
-                      <stop offset="100%" stop-color="#fae8ff" />
-                    </linearGradient>
-                  </defs>
-
-                  <!-- 3개 난제 카드 나열 -->
-                  <!-- 1. 친환경 상온 비료 -->
-                  <g transform="translate(15, 12)">
-                    <rect x="0" y="0" width="265" height="150" rx="10" fill="url(#q4Card1Grad)" stroke="#10b981" stroke-width="1.8" />
-                    <text x="132" y="24" font-size="12.5" font-weight="900" fill="#047857" text-anchor="middle">1. 친환경 상온 비료</text>
-                    
-                    <!-- 분자 모형 그래픽 -->
-                    <circle cx="100" cy="58" r="14" fill="#3b82f6" />
-                    <text x="100" y="62" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">N</text>
-                    <line x1="114" y1="55" x2="150" y2="55" stroke="#1e293b" stroke-width="2" />
-                    <line x1="114" y1="58" x2="150" y2="58" stroke="#1e293b" stroke-width="2" />
-                    <line x1="114" y1="61" x2="150" y2="61" stroke="#1e293b" stroke-width="2" />
-                    <circle cx="164" cy="58" r="14" fill="#3b82f6" />
-                    <text x="164" y="62" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">N</text>
-                    
-                    <text x="132" y="92" font-size="11.5" font-weight="800" fill="#065f46" text-anchor="middle">질소(N≡N) 삼중 결합 절단</text>
-                    <text x="132" y="110" font-size="10.5" font-weight="700" fill="#047857" text-anchor="middle">Fe-Mo 생체 모사 인공 촉매 설계</text>
-                    <rect x="25" y="122" width="215" height="20" rx="4" fill="#a7f3d0" />
-                    <text x="132" y="136" font-size="10.5" font-weight="800" fill="#064e3b" text-anchor="middle">전 세계 전력 2% 절감 및 온실가스 감축</text>
-                  </g>
-
-                  <!-- 2. 전고체 배터리 -->
-                  <g transform="translate(295, 12)">
-                    <rect x="0" y="0" width="270" height="150" rx="10" fill="url(#q4Card2Grad)" stroke="#3b82f6" stroke-width="1.8" />
-                    <text x="135" y="24" font-size="12.5" font-weight="900" fill="#1d4ed8" text-anchor="middle">2. 화재 없는 전고체 배터리</text>
-
-                    <!-- 리튬 이온 채널 그래픽 -->
-                    <rect x="40" y="45" width="190" height="26" rx="6" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1" />
-                    <circle cx="65" cy="58" r="8" fill="#f59e0b" />
-                    <text x="65" y="62" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Li⁺</text>
-                    <path d="M 80 58 L 125 58" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="3,2" />
-                    <circle cx="140" cy="58" r="8" fill="#f59e0b" />
-                    <text x="140" y="62" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Li⁺</text>
-                    <path d="M 155 58 L 195 58" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="3,2" />
-
-                    <text x="135" y="92" font-size="11.5" font-weight="800" fill="#1e40af" text-anchor="middle">초고속 리튬 이동 고체 전해질</text>
-                    <text x="135" y="110" font-size="10.5" font-weight="700" fill="#2563eb" text-anchor="middle">결정 격자 결함 양자 제어</text>
-                    <rect x="25" y="122" width="220" height="20" rx="4" fill="#bfdbfe" />
-                    <text x="135" y="136" font-size="10.5" font-weight="800" fill="#1e3a8a" text-anchor="middle">폭발 제로 & 에너지 밀도 2배 향상</text>
-                  </g>
-
-                  <!-- 3. 표적 항암 신약 -->
-                  <g transform="translate(580, 12)">
-                    <rect x="0" y="0" width="265" height="150" rx="10" fill="url(#q4Card3Grad)" stroke="#c084fc" stroke-width="1.8" />
-                    <text x="132" y="24" font-size="12.5" font-weight="900" fill="#7e22ce" text-anchor="middle">3. 부작용 제로 표적 신약</text>
-
-                    <!-- 수용체 결합 그래픽 -->
-                    <path d="M 75 48 C 95 48 105 68 135 68 C 165 68 175 48 195 48" fill="none" stroke="#9333ea" stroke-width="3" />
-                    <circle cx="135" cy="55" r="9" fill="#ef4444" />
-                    <text x="135" y="58" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Drug</text>
-
-                    <text x="132" y="92" font-size="11.5" font-weight="800" fill="#6b21a8" text-anchor="middle">단백질 결합 포켓 맞춤 분자</text>
-                    <text x="132" y="110" font-size="10.5" font-weight="700" fill="#7e22ce" text-anchor="middle">전자 밀도 100% 양자 도킹 시뮬레이션</text>
-                    <rect x="25" y="122" width="215" height="20" rx="4" fill="#e9d5ff" />
-                    <text x="132" y="136" font-size="10.5" font-weight="800" fill="#581c87" text-anchor="middle">개발 기간 10년 → 1년 단축 혁신</text>
-                  </g>
-
-                  <!-- 하단 통합 배너 (x: 15 ~ 845) -->
-                  <g transform="translate(15, 172)">
-                    <rect x="0" y="0" width="830" height="34" rx="8" fill="#0f172a" />
-                    <text x="415" y="22" font-size="11.5" font-weight="800" fill="#f8fafc" text-anchor="middle">
-                      전통적 비커 실험 (수십 년, 수조 원 소모)  ➔  양자 가상 실험실 In Silico (수일 내 최적 분자 설계 및 지속가능 지구 실현)
-                    </text>
-                  </g>
-                </svg>
-              </div>
-
-              <div class="pres-def-card">
-                <p class="pres-def-text">
-                  <strong class="pres-def-lead">양자 가상 실험실(In Silico Chemistry)이란?</strong> 비커와 시약 없이 양자역학 컴퓨터 알고리즘으로 분자의 결합과 전자 반응을 가상 공간에서 완벽히 모사하여, 인류 3대 난제를 단기간에 해결하는 첨단 미래 과학 기술
-                </p>
-              </div>
+            <h2>모의 투자 심사 기준</h2>
+            <div class="ps-body">
+              <table class="ps-table" style="font-size:32px">
+                <thead><tr><th style="width:20%">평가 영역</th><th style="width:27%">A · 탁월</th><th style="width:27%">B · 보통</th><th>C · 노력 필요</th></tr></thead>
+                <tbody>
+                  <tr><td>과학적 타당성</td><td class="note">분자 결합과 양자 컴퓨터 계산 원리를 논리적으로 연결함</td><td class="note">과제는 이해했으나 분자 설명이 다소 막연함</td><td class="note">과학 원리 없이 아이디어만 나열함</td></tr>
+                  <tr><td>환경·사회 가치</td><td class="note">탄소 중립, 환경, 사람들의 삶과의 연결을 설득력 있게 제시함</td><td class="note">사회적 효과를 단편적으로 언급함</td><td class="note">기대 효과 분석이 부족함</td></tr>
+                </tbody>
+              </table>
             </div>
           `
         },
-
-        // Slide 9: 핵심 원리 & 비전
         {
-          tag: '4차시 전개 · 핵심 원리',
-          title: '계산 화학과 생태전환(Green Transition) 가치',
+          title: '미래 융합 진로',
           content: `
-            <div class="pres-stack pres-conservation-stack">
-              <div class="pres-equation-box">
-                <div class="pres-equation-text">
-                  [ 양자 가상 분자 설계 ] = 개발 기간 10년 → 1년 단축 + 전 지구 탄소 배출 저감
-                </div>
-              </div>
-
-              <div class="pres-law-desc-box">
-                <p class="pres-law-desc-p">
-                  • <strong>기후 위기 극복 (탄소 중립):</strong> 100년간 화석연료를 태워온 하버-보슈 비료 공정을 청정 상온 촉매로 대체하여 전 세계 온실가스의 1.5%를 즉시 감축할 수 있습니다.
-                </p>
-                <p class="pres-law-desc-p">
-                  • <strong>에너지 전환과 인류 보건:</strong> 화재 없는 전기차 배터리로 청정 에너지 전환을 앞당기고, 바이러스 변이에 맞춘 맞춤형 표적 신약을 신속히 개발하여 전 인류의 생명을 지킵니다.
-                </p>
-              </div>
+            <h2>미래 융합 진로</h2>
+            <div class="ps-body ps-cols3">
+              <figure><div class="ps-ph"><img src="${qImg('quantum_laser_manipulation.jpg')}" alt="양자 칩"></div><h3>양자 소프트웨어 개발자</h3>
+                <p>양자 컴퓨터가 풀 문제를 계산 순서로 바꾸어 프로그램을 만듭니다.</p></figure>
+              <figure><div class="ps-ph"><img src="${qImg('oled_quantum_sim_lab.jpg')}" alt="분자 계산 화면"></div><h3>계산 화학자</h3>
+                <p>컴퓨터로 분자를 계산해 새 물질과 신약 후보를 찾습니다.</p></figure>
+              <figure><div class="ps-ph"><img src="${qImg('quantum_carbon_capture_mof.jpg')}" alt="이산화 탄소를 붙잡는 분자 구조"></div><h3>녹색 기술 창업가</h3>
+                <p>환경을 살리는 기술로 회사를 세워 세상의 문제를 해결합니다.</p></figure>
             </div>
           `
         },
-
-        // Slide 10: 핵심 배움 확인
         {
-          tag: '4차시 정리 · 배움 확인',
-          title: '4차시 및 전 과정 최종 핵심 배움 확인',
+          title: '완주를 축하합니다!',
+          layout: 'light',
           content: `
-            <div class="pres-grid-3">
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">In Silico 가상 실험실</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  비커 없는 컴퓨터 속 양자 시뮬레이션으로 화학 결합 정밀 설계
-                </p>
-              </div>
-              <div class="pres-card pres-highlight" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#1d4ed8; display:block; margin-bottom:0.5rem;">3대 지구 난제 솔루션</strong>
-                <p style="font-size:0.95rem; color:#1e40af; margin:0; line-height:1.6; word-break:keep-all;">
-                  친환경 비료 촉매, 전고체 배터리, 표적 항암 분자 해결책 도출
-                </p>
-              </div>
-              <div class="pres-card" style="text-align:center;">
-                <strong style="font-size:1.2rem; color:#0f172a; display:block; margin-bottom:0.5rem;">융합 과학자 CEO</strong>
-                <p style="font-size:0.95rem; color:#475569; margin:0; line-height:1.6; word-break:keep-all;">
-                  물리·화학·정보를 융합하여 인류 지속가능 미래에 기여하는 진로 포부
-                </p>
-              </div>
-            </div>
-          `
-        },
-
-        // Slide 11: 과정 마무리 축하
-        {
-          tag: '4차시 정리 · 완주 축하',
-          title: '양자컴퓨터와 화학의 만남 4차시 완주를 축하합니다!',
-          content: `
-            <div class="pres-stack" style="justify-content:center; align-items:center; min-height:300px;">
-              <div class="pres-inquiry-box" style="padding:3rem 2rem; max-width:920px; width:100%; text-align:center; box-sizing:border-box;">
-                <div style="font-size:1.45rem; font-weight:900; color:#2563eb; margin-bottom:0.8rem;">
-                  KAIST CPRL 청소년 양자 계산 화학 아카데미 완주!
-                </div>
-                <div class="inquiry-q" style="line-height:1.8;">
-                  <span style="font-size:1.2rem; font-weight:700; color:#334155; display:block;">
-                    슈퍼컴퓨터의 지수 폭발($2^N$)부터 동전 회전 중첩(큐비트), 2인 3각 VQE 알고리즘,
-                  </span>
-                  <span style="font-size:1.2rem; font-weight:700; color:#334155; display:block;">
-                    그리고 지구 난제를 해결하는 양자 스타트업 CEO 프로젝트까지 완벽히 마쳤습니다.
-                  </span>
-                  <span style="font-size:1.25rem; font-weight:900; color:#1d4ed8; display:block; margin-top:0.8rem;">
-                    여러분이 바로 미래 양자 정보 과학과 첨단 계산 화학의 주인공입니다!
-                  </span>
-                </div>
-              </div>
+            <figure><img src="${getToolAsset('kaist_mascot_celebrate.jpg')}" alt="신나게 축하하는 KAIST 넙죽이와 거위"></figure>
+            <div class="ps-light-txt">
+              <h2>완주를 축하합니다!</h2>
+              <p class="ps-q3">지수 폭발에서 큐비트, 2인 3각 계산, 분자 설계 프로젝트까지 모두 마쳤습니다!</p>
             </div>
           `
         }

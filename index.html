@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=20261013">
-  <link rel="stylesheet" href="assets/css/presentation-stage.css">
-  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261013g">
+  <link rel="stylesheet" href="assets/css/presentation-stage.css?v=20261014k">
+  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261014k">
   <!-- KaTeX CDN (수식 정밀 렌더링) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -72,7 +72,7 @@
 
         <!-- 3. 교육과정 연계 수업 지도안 패키지 (100% 국문 & 직결 다단 트리 전개) -->
         <div class="rebuild-nav-group">
-          <div class="rebuild-group-title">교육과정 연계 수업 지도안 패키지</div>
+          <div class="rebuild-group-title">교육과정 연계 수업지도안</div>
 
           <!-- 01 OLED 패키지 다단 트리 -->
           <div class="rebuild-pkg-card oled active-pkg" id="rb-pkg-box-oled">
@@ -137,11 +137,11 @@
               </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-tab-3" onclick="switchPackageLessonPlanTab('quantum', 3)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[3차시]</span> VQE 알고리즘</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[3차시]</span> 2인 3각 계산</span>
               </a>
               <a href="javascript:void(0)" class="rebuild-tree-item" id="rb-tree-quantum-tab-4" onclick="switchPackageLessonPlanTab('quantum', 4)">
                 <span class="rebuild-tree-bullet"></span>
-                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[4차시]</span> 스타트업 CEO</span>
+                <span class="rebuild-tree-text"><span class="rebuild-session-tag">[4차시]</span> 분자 설계 스타트업</span>
               </a>
             </div>
           </div>
@@ -776,15 +776,15 @@
                   </div>
                 </div>
 
-                <!-- 실험 5: 2인 3각 VQE -->
+                <!-- 실험 5: 2인 3각 계산 -->
                 <div class="hub-showcase-card quantum" onclick="switchPackageView('quantum', 'lab')">
                   <div class="hub-card-thumb">
-                    <img src="image/paper_quantum_pes.png" alt="2인 3각 VQE 최적화기">
+                    <img src="image/paper_quantum_pes.png" alt="2인 3각 계산 시뮬레이터">
                     <span class="hub-card-badge">양자 3차시</span>
-                    <span class="hub-card-tag">하이브리드 알고리즘</span>
+                    <span class="hub-card-tag">두 컴퓨터 협동 계산</span>
                   </div>
                   <div class="hub-card-body">
-                    <h3 class="hub-card-title">2인 3각 VQE 바닥 상태 탐색</h3>
+                    <h3 class="hub-card-title">2인 3각 바닥 상태 탐색</h3>
                     <p class="hub-card-desc">수소 분자($H_2$)의 결합 거리(R)를 조절하며, 양자 컴퓨터와 일반 컴퓨터가 피드백 루프로 최저 결합 에너지를 찾아냅니다.</p>
                   </div>
                 </div>
@@ -926,8 +926,8 @@
                     <span class="hub-card-badge">양자 3차시</span>
                   </div>
                   <div class="hub-card-body">
-                    <h3 class="hub-card-title">2인 3각 VQE 알고리즘</h3>
-                    <p class="hub-card-desc">양자 컴퓨터와 일반 컴퓨터가 데이터를 주고받으며 분자의 최저 결합 에너지를 찾아가는 하이브리드 VQE 슬라이드 덱.</p>
+                    <h3 class="hub-card-title">두 컴퓨터의 2인 3각 계산</h3>
+                    <p class="hub-card-desc">양자 컴퓨터와 일반 컴퓨터가 데이터를 주고받으며 분자의 최저 결합 에너지를 찾아가는 2인 3각 계산 발표 슬라이드.</p>
                     <div class="hub-card-footer">
                       <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
@@ -1366,15 +1366,15 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                   </div>
                 </div>
 
-                <!-- 실험 5: 2인 3각 VQE -->
-                <div class="hub-showcase-card quantum" onclick="alert('2인 3각 VQE 최적화기 시뮬레이터가 실행됩니다.')">
+                <!-- 실험 5: 2인 3각 계산 -->
+                <div class="hub-showcase-card quantum" onclick="alert('2인 3각 바닥 상태 찾기 시뮬레이터가 실행됩니다.')">
                   <div class="hub-card-thumb">
-                    <img src="image/paper_quantum_pes.png" alt="2인 3각 VQE 최적화기">
+                    <img src="image/paper_quantum_pes.png" alt="2인 3각 계산 시뮬레이터">
                     <span class="hub-card-badge">양자 3차시</span>
-                    <span class="hub-card-tag">하이브리드 알고리즘</span>
+                    <span class="hub-card-tag">두 컴퓨터 협동 계산</span>
                   </div>
                   <div class="hub-card-body">
-                    <h3 class="hub-card-title">2인 3각 VQE 바닥 상태 탐색</h3>
+                    <h3 class="hub-card-title">2인 3각 바닥 상태 탐색</h3>
                     <p class="hub-card-desc">수소 분자($H_2$)의 결합 거리(R)를 조절하며, 양자 컴퓨터와 일반 컴퓨터가 피드백 루프로 최저 결합 에너지를 찾아냅니다.</p>
                   </div>
                 </div>
@@ -1516,8 +1516,8 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                     <span class="hub-card-badge">양자 3차시</span>
                   </div>
                   <div class="hub-card-body">
-                    <h3 class="hub-card-title">2인 3각 VQE 알고리즘</h3>
-                    <p class="hub-card-desc">양자 컴퓨터와 일반 컴퓨터가 데이터를 주고받으며 분자의 최저 결합 에너지를 찾아가는 하이브리드 VQE 슬라이드 덱.</p>
+                    <h3 class="hub-card-title">두 컴퓨터의 2인 3각 계산</h3>
+                    <p class="hub-card-desc">양자 컴퓨터와 일반 컴퓨터가 데이터를 주고받으며 분자의 최저 결합 에너지를 찾아가는 2인 3각 계산 발표 슬라이드.</p>
                     <div class="hub-card-footer">
                       <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
@@ -1700,7 +1700,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
 
   <!-- Core Modular Scripts -->
   <script src="assets/data/worksheet-data-oled.js"></script>
-  <script src="assets/data/worksheet-data-quantum.js"></script>
+  <script src="assets/data/worksheet-data-quantum.js?v=20261014k"></script>
   <script src="assets/js/app-router.js?v=20260911"></script>
   <script src="assets/js/simulations.js?v=20260911"></script>
   <script src="assets/js/slide-viewer.js?v=20260911"></script>
@@ -1708,9 +1708,9 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
   <script src="assets/data/reader-data-oled.js"></script>
   <script src="assets/js/reader-modal.js"></script>
   <script src="assets/data/lesson-plan-data-oled.js?v=20261013"></script>
-  <script src="assets/data/lesson-plan-data-quantum.js?v=20261013"></script>
-  <script src="assets/data/presentation-data-oled.js?v=20261014"></script>
-  <script src="assets/data/presentation-data-quantum.js"></script>
+  <script src="assets/data/lesson-plan-data-quantum.js?v=20261014k"></script>
+  <script src="assets/data/presentation-data-oled.js?v=20261014k"></script>
+  <script src="assets/data/presentation-data-quantum.js?v=20261014k"></script>
   <script src="assets/js/presentation-modal.js?v=20261014"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
