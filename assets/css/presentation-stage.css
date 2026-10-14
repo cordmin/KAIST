@@ -13,6 +13,10 @@
 .pres-stage * { box-sizing: border-box; margin: 0; }
 .pres-stage img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
 .pres-stage strong { font-weight: 800; }
+/* 위·아래 첨자: 같은 글꼴로 작게, 줄 높이는 그대로 */
+.pres-stage sup, .pres-stage sub { position: relative; font-size: .62em; line-height: 0; vertical-align: baseline; }
+.pres-stage sup { top: -.55em; }
+.pres-stage sub { top: .22em; }
 .pres-stage button { font: inherit; color: inherit; cursor: pointer; }
 
 .pres-stage-slide { position: absolute; inset: 0; padding: 92px 112px; display: flex; flex-direction: column; animation: psFade .35s ease; }
@@ -40,7 +44,6 @@
 /* 학습목표 */
 .ps-goal { margin: auto 0; font-size: 72px; font-weight: 700; line-height: 1.45; letter-spacing: -.035em; }
 .ps-goal u { text-decoration: none; background: linear-gradient(transparent 72%, rgba(226,189,114,.4) 72%); }
-.ps-band { height: 14px; margin: 0 -112px -92px; background: linear-gradient(90deg,#3b0b79 0%,#7e22ce 18%,#2563eb 30%,#06b6d4 40%,#10b981 52%,#eab308 66%,#f97316 80%,#dc2626 92%,#5a0e0e 100%); }
 
 /* 준비물 */
 .ps-tools-photo { height: 600px; margin: 0 -112px; }
@@ -110,6 +113,73 @@
 .ps-q3 { margin-top: 48px; font-size: 76px; font-weight: 800; line-height: 1.3; letter-spacing: -.04em; }
 .ps-next-txt > p:last-child { margin-top: 44px; color: #cfcac0; font-size: 34px; line-height: 1.55; }
 
+/* 준비물 네 칸: 준비물마다 사진 한 장 */
+.ps-tools4 { flex: 1; display: grid; grid-template-columns: repeat(4,1fr); gap: 36px; align-content: center; }
+.ps-tools4 figure { display: flex; flex-direction: column; }
+.ps-tools4 .ps-ph { aspect-ratio: 1; overflow: hidden; background: #1a1a1a; border: 2px solid rgba(244,241,234,.32); border-radius: 6px; }
+.ps-tools4 h3 { margin-top: 28px; font-size: 40px; font-weight: 800; line-height: 1.3; letter-spacing: -.03em; }
+.ps-tools4 h3 .n { color: var(--gold); font-weight: 300; margin-right: .35em; }
+.ps-tools4 p { margin-top: 10px; color: var(--mute); font-size: 28px; }
+
+/* 준비물 세 칸 */
+.ps-tools4.three { grid-template-columns: repeat(3,1fr); }
+.ps-tools4.three .ps-ph { aspect-ratio: 4/3; }
+
+/* 사진 두 장 */
+.ps-trio.duo { grid-template-columns: 1fr 1fr; }
+/* 준비물 칸 보조 설명 */
+.ps-cols4 small { display: block; margin-top: 12px; color: var(--mute); font-size: 26px; font-weight: 500; }
+/* 사진 없는 세 단: 큰 번호 */
+.ps-bignum { color: var(--gold); font-size: 150px; font-weight: 200; line-height: 1; letter-spacing: -.04em; }
+.ps-cols3 .ps-bignum + h3 { margin-top: 28px; }
+.ps-flow { color: var(--ink); font-weight: 800; }
+/* 단계 줄 색 (--rc) */
+.ps-rail span[style] { color: var(--rc); }
+.ps-rail span[style]::after { background: linear-gradient(90deg, var(--rc), transparent); }
+/* 넓은 그림 + 아래 설명 */
+.ps-wide { flex: 1; min-height: 0; margin: 0 -112px; background: #000; }
+.ps-wide img { object-fit: contain; }
+/* 왼쪽 사진, 오른쪽 글 */
+.ps-split { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 80px; margin-left: -112px; }
+.ps-split.portrait { grid-template-columns: 620px 1fr; }
+.ps-split > figure { min-height: 0; overflow: hidden; background: #000; }
+.ps-split > figure img.contain { object-fit: contain; }
+.ps-split .txt { display: flex; flex-direction: column; justify-content: center; gap: 56px; }
+.ps-split h3 { font-size: 44px; font-weight: 800; letter-spacing: -.03em; }
+.ps-split p { margin-top: 18px; color: #cfcac0; font-size: 32px; line-height: 1.6; }
+.ps-split p strong { color: var(--ink); }
+.ps-split .ps-q2 { margin: 0; font-size: 56px; color: var(--ink); line-height: 1.45; }
+.ps-split .ps-q2 + p { margin-top: 0; padding-top: 40px; border-top: 1px solid var(--line); font-size: 40px; font-weight: 700; color: var(--ink); line-height: 1.45; }
+/* 막대 안 숫자 */
+.ps-eq-bar .v { margin-left: auto; font-size: 56px; font-weight: 300; }
+/* 표 안 비율 막대 */
+.ps-pct { display: flex; align-items: center; gap: 22px; }
+.ps-pct span { flex: 1; height: 22px; border-radius: 2px; background: rgba(244,241,234,.1); overflow: hidden; }
+.ps-pct span i { display: block; height: 100%; background: var(--c); box-shadow: 0 0 14px var(--c); }
+.ps-pct b { width: 120px; color: var(--c); font-size: 40px; font-weight: 800; text-align: right; }
+.ps-table td.note { font-size: 30px; font-weight: 500; line-height: 1.5; }
+.ps-foot { margin-top: 36px; color: #cfcac0; font-size: 32px; line-height: 1.5; }
+/* 실제로 동작하는 실험실 열기 단추 */
+.pres-stage .ps-cta { flex: none; padding: 26px 48px; border: 0; border-radius: 999px; background: var(--gold); color: #111 !important; font-size: 32px; font-weight: 800; }
+.pres-stage .ps-cta:hover { background: #f0cd86; }
+.ps-ask-row { display: flex; align-items: center; gap: 60px; margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--line); }
+.ps-ask-row p { flex: 1; font-size: 36px; font-weight: 600; line-height: 1.45; }
+.ps-ask-row b { color: var(--gold); margin-right: 14px; }
+/* 결과 화면 두 장 비교 */
+.ps-compare { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.ps-compare figure { display: flex; flex-direction: column; min-height: 0; }
+.ps-compare .ps-ph { aspect-ratio: auto; flex: 1; min-height: 0; }
+.ps-compare figcaption { margin-top: 26px; font-size: 40px; font-weight: 800; }
+.ps-compare figcaption span { display: block; margin-top: 10px; font-size: 30px; font-weight: 600; color: #cfcac0; }
+.ps-compare img { object-fit: contain; background: #0b1220; }
+/* 밝은 지면 (수료 축하) */
+.pres-stage-slide.light { background: #fff; color: #111; padding: 0; flex-direction: row; align-items: center; }
+.pres-stage-slide.light figure { width: 58%; height: 100%; }
+.pres-stage-slide.light img { object-fit: contain; }
+.pres-stage-slide.light .ps-light-txt { flex: 1; padding-right: 120px; }
+.pres-stage-slide.light h2 { color: #111; }
+.pres-stage-slide.light .ps-q3 { color: #111; }
+
 /* --- 발표 모달: 지면형 덱일 때 창을 넓히고 테두리 영역을 검게 --- */
 .presentation-modal .presentation-modal-window.pres-stage-deck { max-width: min(96vw, 1720px); max-height: none; height: 92vh; background: #070707; border-color: #1c1c1c; }
 .presentation-modal .presentation-modal-window.pres-stage-deck .presentation-modal-body { padding: 0 !important; background: #070707 !important; overflow: hidden; align-items: stretch !important; }
@@ -119,6 +189,7 @@
 .presentation-modal .presentation-modal-window.pres-stage-deck .pres-modal-title,
 .presentation-modal .presentation-modal-window.pres-stage-deck .pres-slide-counter,
 .presentation-modal .presentation-modal-window.pres-stage-deck .modal-close-btn { color: #f4f1ea !important; }
+.presentation-modal .presentation-modal-window.pres-stage-deck .modal-close-btn:hover { background: rgba(239,68,68,.18) !important; color: #ff5a4a !important; }
 .presentation-modal .presentation-modal-window.pres-stage-deck .topbar-btn { background: transparent !important; color: #f4f1ea !important; border: 1px solid rgba(244,241,234,.25) !important; }
 .presentation-modal .presentation-modal-window.pres-stage-deck .topbar-btn.primary { background: #e2bd72 !important; color: #111 !important; border-color: #e2bd72 !important; }
 
