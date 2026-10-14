@@ -63,7 +63,7 @@
     #fire { border-color: #8b5cf6; background: #6d28d9; color: white; }
     #fire:hover { background: #7c3aed; }
     #fire:disabled { opacity: .55; cursor: wait; }
-    .legend { display: grid; gap: 1rem; font-size: clamp(calc(.82rem + 1px), calc(1.5vw + 1px), calc(.9rem + 1px)); line-height: 1.45; white-space: nowrap; color: #c2d0e1; }
+    .legend { position: absolute; left: 50%; bottom: 1.1rem; z-index: 5; transform: translateX(-50%); width: max-content; max-width: calc(100% - 2rem); display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.6rem; font-size: .9rem; line-height: 1.45; white-space: nowrap; color: #c2d0e1; pointer-events: none; }
     .legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: .5rem; background: var(--dot); box-shadow: 0 0 8px var(--dot); }
     .error { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; text-align: center; color: #fecaca; background: #030712; }
     @media (max-width: 850px) { .workspace { grid-template-columns: 1fr; } aside { grid-template-columns: repeat(2, 1fr); } .stage-card { min-height: 480px; } }
@@ -80,6 +80,7 @@
       <section class="stage-card" aria-label="삼차원 분자 관찰 화면">
         <canvas id="scene"></canvas>
         <span class="lamp-label" hidden>램프</span>
+        <div class="legend"><span style="--dot:#b8bfcc">회색: 평소 전자 분포 (π 궤도)</span><span style="--dot:#b67cff">보라 구름: 흡수 뒤 전자 분포</span><span style="--dot:#ff475e">붉은 빛: 열로 빠진 에너지</span><span style="--dot:#38bdf8">푸른 빛: 형광으로 나온 빛</span></div>
         <div class="stage-message"><div class="status-box" aria-live="polite"><span class="status-step" id="status-step" hidden></span><strong id="status-title">형광 물질에 빛을 쬐어보세요</strong></div></div>
       </section>
       <aside>
@@ -99,7 +100,6 @@
           <div class="energy-grid" id="energy-grid" aria-label="에너지 100칸 결과"></div>
           <div class="totals"><div class="red-total"><small>열로 빠진 에너지</small><strong id="heat-count">—</strong></div><div class="blue-total"><small>형광으로 나온 에너지</small><strong id="light-count">—</strong></div></div>
         </section>
-        <section class="control-card"><div class="legend"><span style="--dot:#b8bfcc">회색: 평소 전자 분포 (π 궤도)</span><span style="--dot:#b67cff">보라 구름: 흡수 뒤 전자 분포</span><span style="--dot:#ff475e">붉은 빛: 열로 빠진 에너지</span><span style="--dot:#38bdf8">푸른 빛: 형광으로 나온 빛</span></div></section>
       </aside>
     </main>
   </div>
@@ -275,7 +275,7 @@
       const t=elapsed, hit=absorbs(shotNm), active=phase==='running';
       if (phase === 'idle') showEnergy(-1, -1, '실험 전');
       else if (!hit) showEnergy(0, 0, t < 1.85 ? '빛이 지나가는 중' : '흡수되지 않음');
-      else showEnergy(Math.round(25 * smooth(1.55, 3.02, t)), Math.round(75 * smooth(3.02, 4.5, t)), t < 4.5 ? '나누어지는 중' : '실험 끝');
+      else showEnergy(Math.round(25 * clamp((t-1.58)/1.42, 0, 1)), Math.round(75 * clamp((t-3.02)/1.15, 0, 1)), t < 4.5 ? '나누어지는 중' : '실험 끝');
       const lightEnd=hit?IMPACT_TIME:1.7;
       const illumination=active&&t<lightEnd ? smooth(0,.16,t)*(1-smooth(lightEnd-.2,lightEnd,t)) : 0;
       for(const plane of beamPlanes) plane.material.uniforms.uOpacity.value=hit?illumination*.24:0;
