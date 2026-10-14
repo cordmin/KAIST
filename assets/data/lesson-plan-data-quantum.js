@@ -136,10 +136,6 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                 </tr>
               </tbody>
             </table>
-
-            <div class="callout-box" style="margin-top:1.5rem;">
-              <strong><i data-lucide="lightbulb"></i> [수식 없는 양자역학 지도 팁]:</strong> 수식과 기호(|0⟩, 파동함수 등)는 쓰지 않고, <strong>"바닥에 놓인 동전(비트) vs 도는 동전(큐비트)"</strong>과 <strong>"2인 3각 산골짜기 바닥 찾기"</strong>라는 비유로 지도합니다. 도는 동전은 이해를 돕는 비유일 뿐 실제 동전이 양자 상태인 것은 아니며, 양자 컴퓨터가 모든 문제를 한 번에 푸는 것은 아님을 함께 안내합니다.
-            </div>
           </div>
 
           <!-- [탭 2]: 1차시 -->

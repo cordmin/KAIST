@@ -499,3 +499,47 @@ window.addEventListener('keydown', function(e) {
     closeImageLightbox();
   }
 });
+
+// 아직 만들지 않은 가상실험실: 카드의 사진·차시·제목을 그대로 보여 주는 '개발 중' 안내 창
+function openComingSoonModal(card) {
+  let modal = document.getElementById('coming-soon-modal');
+  if (!modal) {
+    document.body.insertAdjacentHTML('beforeend', `
+      <div id="coming-soon-modal" class="coming-soon-modal" role="dialog" aria-modal="true" aria-labelledby="coming-soon-title">
+        <div class="coming-soon-panel">
+          <div class="coming-soon-visual"><img alt=""></div>
+          <div class="coming-soon-body">
+            <span class="coming-soon-badge"></span>
+            <h3 id="coming-soon-title"></h3>
+            <p class="coming-soon-msg">개발 중입니다</p>
+            <p class="coming-soon-sub">수업에서 바로 쓸 수 있는 가상실험실로 준비하고 있어요. 완성되면 이 자리에서 바로 열립니다.</p>
+            <button type="button" class="coming-soon-close">확인</button>
+          </div>
+        </div>
+      </div>`);
+    modal = document.getElementById('coming-soon-modal');
+    const close = () => modal.classList.remove('open');
+    modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('.coming-soon-close')) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+  }
+  const img = card.querySelector('.hub-card-thumb img');
+  modal.querySelector('.coming-soon-visual img').src = img ? img.getAttribute('src') : '';
+  modal.querySelector('.coming-soon-badge').textContent = (card.querySelector('.hub-card-badge') || {}).textContent || '';
+  modal.querySelector('#coming-soon-title').textContent = (card.querySelector('.hub-card-title') || {}).textContent || '가상실험실';
+  modal.classList.add('open');
+  modal.querySelector('.coming-soon-close').focus();
+}
+
+// 휴대폰: 화면을 아래로 내리면 메뉴(≡) 단추를 숨기고, 위로 올리면 다시 보여 줌
+(function () {
+  const lastY = new WeakMap();
+  document.addEventListener('scroll', e => {
+    const btn = document.querySelector('.rebuild-mobile-toggle');
+    if (!btn) return;
+    const el = e.target === document ? document.scrollingElement : e.target;
+    const y = el.scrollTop, prev = lastY.get(el) || 0;
+    lastY.set(el, y);
+    if (Math.abs(y - prev) < 6) return;
+    btn.classList.toggle('is-hidden', y > prev && y > 60);
+  }, true);
+})();

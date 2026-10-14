@@ -8,7 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=20261013">
   <link rel="stylesheet" href="assets/css/presentation-stage.css?v=20261014k">
-  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261014k">
+  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261014n">
+  <link rel="stylesheet" href="assets/css/mobile.css?v=20261014o">
   <!-- KaTeX CDN (수식 정밀 렌더링) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -42,7 +43,6 @@
 
         <!-- 1. 연구실 안내 (100% 국문 & 카드 테두리) -->
         <div class="rebuild-nav-group">
-          <div class="rebuild-group-title">연구실 안내</div>
           <div class="rebuild-nav-card">
             <a href="javascript:void(0)" class="rebuild-nav-item" id="rb-nav-cprl-intro" onclick="switchView('cprl-intro')">
               <span class="rebuild-nav-icon"><i data-lucide="building-2"></i></span>
@@ -57,7 +57,6 @@
 
         <!-- 2. 교육과정 자료실 (100% 국문 & 카드 테두리) -->
         <div class="rebuild-nav-group">
-          <div class="rebuild-group-title">교육과정 자료실</div>
           <div class="rebuild-nav-card">
             <a href="javascript:void(0)" class="rebuild-nav-item" id="rb-nav-lab" onclick="switchPackageView(currentPkg, 'lab')">
               <span class="rebuild-nav-icon"><i data-lucide="monitor-play"></i></span>
@@ -72,7 +71,6 @@
 
         <!-- 3. 교육과정 연계 수업 지도안 패키지 (100% 국문 & 직결 다단 트리 전개) -->
         <div class="rebuild-nav-group">
-          <div class="rebuild-group-title">교육과정 연계 수업지도안</div>
 
           <!-- 01 OLED 패키지 다단 트리 -->
           <div class="rebuild-pkg-card oled active-pkg" id="rb-pkg-box-oled">
@@ -709,7 +707,7 @@
               <div class="mag-section-header">
                 <span class="mag-section-num">01</span>
                 <div class="mag-section-title-wrap">
-                  <h2>빛의 합성과 OLED 패키지 가상실험실</h2>
+                  <h2>빛의 합성과 OLED 가상실험실</h2>
                 </div>
               </div>
               <div class="hub-showcase-grid">
@@ -740,7 +738,7 @@
                 </div>
 
                 <!-- 실험 3: 100개 엑시톤 스핀 통계 -->
-                <div class="hub-showcase-card" onclick="openVirtualLabModal(4)">
+                <div class="hub-showcase-card" onclick="openComingSoonModal(this)">
                   <div class="hub-card-thumb">
                     <img src="image/paper_oled_fig3.png" alt="100개 엑시톤 스핀 분석 가상실험실">
                     <span class="hub-card-badge">OLED 심화</span>
@@ -759,12 +757,12 @@
               <div class="mag-section-header">
                 <span class="mag-section-num">02</span>
                 <div class="mag-section-title-wrap">
-                  <h2>양자컴퓨터의 활용 패키지 가상실험실</h2>
+                  <h2>양자컴퓨터의 활용 가상실험실</h2>
                 </div>
               </div>
               <div class="hub-showcase-grid">
                 <!-- 실험 4: 동전 팽이와 큐비트 중첩 -->
-                <div class="hub-showcase-card quantum" onclick="switchPackageView('quantum', 'lab')">
+                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
                   <div class="hub-card-thumb">
                     <img src="image/quantum_trapped_ion_sim.jpg" alt="양자 큐비트 중첩 측정 시뮬레이터">
                     <span class="hub-card-badge">양자 2차시</span>
@@ -777,7 +775,7 @@
                 </div>
 
                 <!-- 실험 5: 2인 3각 계산 -->
-                <div class="hub-showcase-card quantum" onclick="switchPackageView('quantum', 'lab')">
+                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
                   <div class="hub-card-thumb">
                     <img src="image/paper_quantum_pes.png" alt="2인 3각 계산 시뮬레이터">
                     <span class="hub-card-badge">양자 3차시</span>
@@ -790,7 +788,7 @@
                 </div>
 
                 <!-- 실험 6: 이온트랩 심층 가이드 -->
-                <div class="hub-showcase-card quantum" onclick="window.open('quantum_deep_dive_guide.html', '_blank')">
+                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
                   <div class="hub-card-thumb">
                     <img src="image/quantum_trapped_ion_chip.jpg" alt="이온 트랩 양자 프로세서 심층 해부">
                     <span class="hub-card-badge">심화 연계</span>
@@ -815,7 +813,7 @@
               <div class="mag-section-header">
                 <span class="mag-section-num">01</span>
                 <div class="mag-section-title-wrap">
-                  <h2>빛의 합성과 OLED 패키지 발표 슬라이드</h2>
+                  <h2>빛의 합성과 OLED 발표 슬라이드</h2>
                 </div>
               </div>
               <div class="hub-showcase-grid cols-4">
@@ -828,7 +826,7 @@
                     <h3 class="hub-card-title">보이지 않는 자외선</h3>
                     <p class="hub-card-desc">토닉워터와 형광펜의 자외선 반응, 스펙트럼 관찰과 형광의 기초 원리를 탐구하는 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 9장 슬라이드</span>
+                      <span class="hub-card-meta">총 12장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -858,7 +856,7 @@
                     <h3 class="hub-card-title">75% 배터리 도둑</h3>
                     <p class="hub-card-desc">OLED 디스플레이의 발광 원리와 양자역학적 스핀 통계(단일항 25% vs 삼중항 75%) 열손실 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 10장 슬라이드</span>
+                      <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -873,7 +871,7 @@
                     <h3 class="hub-card-title">KAIST의 분자 연구</h3>
                     <p class="hub-card-desc">분자 골격 고정화 및 핫 엑시톤 기술로 75% 열손실을 극복하는 KAIST CPRL 분자 공학 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 11장 슬라이드</span>
+                      <span class="hub-card-meta">총 10장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -886,7 +884,7 @@
               <div class="mag-section-header">
                 <span class="mag-section-num">02</span>
                 <div class="mag-section-title-wrap">
-                  <h2>양자컴퓨터의 활용 패키지 발표 슬라이드</h2>
+                  <h2>양자컴퓨터의 활용 발표 슬라이드</h2>
                 </div>
               </div>
               <div class="hub-showcase-grid cols-4">
@@ -899,7 +897,7 @@
                     <h3 class="hub-card-title">슈퍼컴퓨터의 한계</h3>
                     <p class="hub-card-desc">체스판 쌀알 퀴즈와 $2^N$ 지수 폭발, 카페인 분자조차 계산 못하는 슈퍼컴퓨터의 한계를 밝히는 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 9장 슬라이드</span>
+                      <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -912,9 +910,9 @@
                   </div>
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">동전 팽이와 큐비트</h3>
-                    <p class="hub-card-desc">고전 비트(0 or 1)와 회전하는 동전 팽이(0 and 1 중첩), $2^N$개의 길을 단번에 탐색하는 양자 병렬성 슬라이드 덱.</p>
+                    <p class="hub-card-desc">누운 동전(비트)과 도는 동전(큐비트)을 비교하며 중첩과 측정, 양자 컴퓨터가 문제를 푸는 방식을 알아보는 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 10장 슬라이드</span>
+                      <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -941,10 +939,10 @@
                     <span class="hub-card-badge">양자 4차시</span>
                   </div>
                   <div class="hub-card-body">
-                    <h3 class="hub-card-title">틴에이저 퀀텀 CEO</h3>
-                    <p class="hub-card-desc">상온 비료 촉매, 전고체 배터리, 변종 바이러스 신약 설계를 주도하는 미래 양자 계산화학자 슬라이드 덱.</p>
+                    <h3 class="hub-card-title">분자 설계 스타트업</h3>
+                    <p class="hub-card-desc">친환경 비료, 안전한 배터리, 맞춤형 신약 중 하나를 골라 미래 분자 설계 스타트업을 기획하는 발표 슬라이드.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 10장 슬라이드</span>
+                      <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -1299,7 +1297,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
               <div class="mag-section-header">
                 <span class="mag-section-num">01</span>
                 <div class="mag-section-title-wrap">
-                  <h2>빛의 합성과 OLED 패키지 가상실험실</h2>
+                  <h2>빛의 합성과 OLED 가상실험실</h2>
                 </div>
               </div>
               <div class="hub-showcase-grid">
@@ -1330,7 +1328,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                 </div>
 
                 <!-- 실험 3: 100개 엑시톤 스핀 통계 -->
-                <div class="hub-showcase-card" onclick="openVirtualLabModal(4)">
+                <div class="hub-showcase-card" onclick="openComingSoonModal(this)">
                   <div class="hub-card-thumb">
                     <img src="image/paper_oled_fig3.png" alt="100개 엑시톤 스핀 분석 가상실험실">
                     <span class="hub-card-badge">OLED 심화</span>
@@ -1349,12 +1347,12 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
               <div class="mag-section-header">
                 <span class="mag-section-num">02</span>
                 <div class="mag-section-title-wrap">
-                  <h2>양자컴퓨터의 활용 패키지 가상실험실</h2>
+                  <h2>양자컴퓨터의 활용 가상실험실</h2>
                 </div>
               </div>
               <div class="hub-showcase-grid">
                 <!-- 실험 4: 동전 팽이와 큐비트 중첩 -->
-                <div class="hub-showcase-card quantum" onclick="alert('양자 큐비트 중첩 측정 시뮬레이터가 실행됩니다.')">
+                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
                   <div class="hub-card-thumb">
                     <img src="image/quantum_trapped_ion_sim.jpg" alt="양자 큐비트 중첩 측정 시뮬레이터">
                     <span class="hub-card-badge">양자 2차시</span>
@@ -1367,7 +1365,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                 </div>
 
                 <!-- 실험 5: 2인 3각 계산 -->
-                <div class="hub-showcase-card quantum" onclick="alert('2인 3각 바닥 상태 찾기 시뮬레이터가 실행됩니다.')">
+                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
                   <div class="hub-card-thumb">
                     <img src="image/paper_quantum_pes.png" alt="2인 3각 계산 시뮬레이터">
                     <span class="hub-card-badge">양자 3차시</span>
@@ -1380,7 +1378,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                 </div>
 
                 <!-- 실험 6: 이온트랩 심층 가이드 -->
-                <div class="hub-showcase-card quantum" onclick="window.open('quantum_deep_dive_guide.html', '_blank')">
+                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
                   <div class="hub-card-thumb">
                     <img src="image/quantum_trapped_ion_chip.jpg" alt="이온 트랩 양자 프로세서 심층 해부">
                     <span class="hub-card-badge">심화 연계</span>
@@ -1405,7 +1403,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
               <div class="mag-section-header">
                 <span class="mag-section-num">01</span>
                 <div class="mag-section-title-wrap">
-                  <h2>빛의 합성과 OLED 패키지 발표 슬라이드</h2>
+                  <h2>빛의 합성과 OLED 발표 슬라이드</h2>
                 </div>
               </div>
               <div class="hub-showcase-grid cols-4">
@@ -1418,7 +1416,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                     <h3 class="hub-card-title">보이지 않는 자외선</h3>
                     <p class="hub-card-desc">토닉워터와 형광펜의 자외선 반응, 스펙트럼 관찰과 형광의 기초 원리를 탐구하는 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 9장 슬라이드</span>
+                      <span class="hub-card-meta">총 12장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -1448,7 +1446,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                     <h3 class="hub-card-title">75% 배터리 도둑</h3>
                     <p class="hub-card-desc">OLED 디스플레이의 발광 원리와 양자역학적 스핀 통계(단일항 25% vs 삼중항 75%) 열손실 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 10장 슬라이드</span>
+                      <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -1463,7 +1461,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                     <h3 class="hub-card-title">KAIST의 분자 연구</h3>
                     <p class="hub-card-desc">분자 골격 고정화 및 핫 엑시톤 기술로 75% 열손실을 극복하는 KAIST CPRL 분자 공학 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 11장 슬라이드</span>
+                      <span class="hub-card-meta">총 10장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -1476,7 +1474,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
               <div class="mag-section-header">
                 <span class="mag-section-num">02</span>
                 <div class="mag-section-title-wrap">
-                  <h2>양자컴퓨터의 활용 패키지 발표 슬라이드</h2>
+                  <h2>양자컴퓨터의 활용 발표 슬라이드</h2>
                 </div>
               </div>
               <div class="hub-showcase-grid cols-4">
@@ -1489,7 +1487,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                     <h3 class="hub-card-title">슈퍼컴퓨터의 한계</h3>
                     <p class="hub-card-desc">체스판 쌀알 퀴즈와 $2^N$ 지수 폭발, 카페인 분자조차 계산 못하는 슈퍼컴퓨터의 한계를 밝히는 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 9장 슬라이드</span>
+                      <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -1502,9 +1500,9 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                   </div>
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">동전 팽이와 큐비트</h3>
-                    <p class="hub-card-desc">고전 비트(0 or 1)와 회전하는 동전 팽이(0 and 1 중첩), $2^N$개의 길을 단번에 탐색하는 양자 병렬성 슬라이드 덱.</p>
+                    <p class="hub-card-desc">누운 동전(비트)과 도는 동전(큐비트)을 비교하며 중첩과 측정, 양자 컴퓨터가 문제를 푸는 방식을 알아보는 슬라이드 덱.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 10장 슬라이드</span>
+                      <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -1531,10 +1529,10 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
                     <span class="hub-card-badge">양자 4차시</span>
                   </div>
                   <div class="hub-card-body">
-                    <h3 class="hub-card-title">틴에이저 퀀텀 CEO</h3>
-                    <p class="hub-card-desc">상온 비료 촉매, 전고체 배터리, 변종 바이러스 신약 설계를 주도하는 미래 양자 계산화학자 슬라이드 덱.</p>
+                    <h3 class="hub-card-title">분자 설계 스타트업</h3>
+                    <p class="hub-card-desc">친환경 비료, 안전한 배터리, 맞춤형 신약 중 하나를 골라 미래 분자 설계 스타트업을 기획하는 발표 슬라이드.</p>
                     <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 10장 슬라이드</span>
+                      <span class="hub-card-meta">총 11장 슬라이드</span>
                       <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
                     </div>
                   </div>
@@ -1701,14 +1699,14 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
   <!-- Core Modular Scripts -->
   <script src="assets/data/worksheet-data-oled.js"></script>
   <script src="assets/data/worksheet-data-quantum.js?v=20261014k"></script>
-  <script src="assets/js/app-router.js?v=20260911"></script>
+  <script src="assets/js/app-router.js?v=20261014o"></script>
   <script src="assets/js/simulations.js?v=20260911"></script>
   <script src="assets/js/slide-viewer.js?v=20260911"></script>
   <script src="assets/js/worksheet-modal.js"></script>
   <script src="assets/data/reader-data-oled.js"></script>
   <script src="assets/js/reader-modal.js"></script>
   <script src="assets/data/lesson-plan-data-oled.js?v=20261013"></script>
-  <script src="assets/data/lesson-plan-data-quantum.js?v=20261014k"></script>
+  <script src="assets/data/lesson-plan-data-quantum.js?v=20261014p"></script>
   <script src="assets/data/presentation-data-oled.js?v=20261014k"></script>
   <script src="assets/data/presentation-data-quantum.js?v=20261014k"></script>
   <script src="assets/js/presentation-modal.js?v=20261014"></script>
