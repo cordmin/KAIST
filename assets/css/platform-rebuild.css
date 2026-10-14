@@ -1864,7 +1864,7 @@ header.topbar {
   flex-direction: column;
   gap: 0 !important;
   margin-top: 2rem;
-  padding-bottom: 0 !important;
+  padding-bottom: calc(2rem - 2px) !important;
   border-bottom: 2px solid rgba(255, 255, 255, 0.22) !important;
 }
 
@@ -1873,7 +1873,7 @@ header.topbar {
 #view-oled-slides .mag-section:last-of-type,
 #view-quantum-slides .mag-section:last-of-type {
   border-bottom: none !important;
-  padding-bottom: 1.5rem !important;
+  padding-bottom: 2rem !important;
 }
 
 /* 2. 매거진 섹션 공통 헤더: 굵고 큰 넘버링과 헤드라인 일체형 나란히 배치 */
@@ -1949,7 +1949,7 @@ header.topbar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
-  margin: 0.85rem 0 0.85rem !important;
+  margin: 0.85rem 0 0 !important;
   align-items: stretch;
 }
 .hub-showcase-grid.cols-4,
@@ -2079,6 +2079,9 @@ header.topbar {
   color: #94a3b8;
   margin: 0 0 1.25rem 0;
   flex: 1;
+}
+.hub-card-desc:last-child {
+  margin-bottom: 0;
 }
 .hub-card-footer {
   display: flex;

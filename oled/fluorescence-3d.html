@@ -24,10 +24,18 @@
     .status-box { display: flex; align-items: center; justify-content: center; gap: .7rem; padding: 0.75rem 1.6rem; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 12px; background: rgba(6, 16, 30, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45); text-align: center; white-space: nowrap; }
     .status-box strong { color: #ffffff; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
     .status-step { display: inline-grid; place-items: center; flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: #0284c7; color: white; font-weight: 800; }
-    .energy-label { position: absolute; z-index: 5; transform: translate(-50%, -50%); padding: .25rem .65rem; border: 1px solid currentColor; border-radius: 999px; background: rgba(3, 7, 18, .85); font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 800; pointer-events: none; }
-    #energy-in { color: #c4b5fd; }
-    #energy-heat { color: #fb7185; }
-    #energy-out { color: #7dd3fc; }
+    .energy-title { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+    .energy-title h2 { margin: 0; }
+    #run-label { color: #a5bcd1; font-size: .82rem; font-weight: 800; white-space: nowrap; }
+    .energy-grid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; margin: 1rem 0 1.1rem; }
+    .energy-grid i { display: block; aspect-ratio: 1; border-radius: 2px; background: #32465c; transition: background .3s, box-shadow .3s; }
+    .energy-grid i.blue { background: #38bdf8; box-shadow: 0 0 6px #38bdf888; }
+    .energy-grid i.red { background: #fb786f; box-shadow: 0 0 5px #fb786f66; }
+    .totals { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: .8rem; border-top: 1px solid #26364d; }
+    .totals small { display: block; color: #b6c9dc; font-size: .8rem; }
+    .totals strong { display: block; margin-top: .2rem; font-size: 1.8rem; font-variant-numeric: tabular-nums; }
+    .blue-total strong { color: #75d9ff; }
+    .red-total strong { color: #ff9c89; }
     .lamp-label { position: absolute; z-index: 5; transform: translate(-50%, -50%); padding: .25rem .55rem; border: 1px solid #536585; border-radius: 6px; background: rgba(6, 16, 30, .85); color: #dbeafe; font-size: .85rem; font-weight: 700; pointer-events: none; }
     aside { display: grid; align-content: start; gap: 1rem; }
     .control-card { padding: 1rem; }
@@ -73,9 +81,6 @@
         <canvas id="scene"></canvas>
         <span class="lamp-label" hidden>램프</span>
         <div class="stage-message"><div class="status-box" aria-live="polite"><span class="status-step" id="status-step" hidden></span><strong id="status-title">형광 물질에 빛을 쬐어보세요</strong></div></div>
-        <span class="energy-label" id="energy-in" hidden>100%</span>
-        <span class="energy-label" id="energy-heat" hidden>25%</span>
-        <span class="energy-label" id="energy-out" hidden>75%</span>
       </section>
       <aside>
         <section class="control-card">
@@ -89,6 +94,11 @@
           <div class="scale"><span>느리게</span><span>보통</span><span>빠르게</span></div>
           <div class="buttons"><button id="fire" type="button">빛 쬐어주기</button><button id="pause" type="button" aria-pressed="false">일시정지</button></div>
         </section>
+        <section class="control-card">
+          <div class="energy-title"><h2>흡수한 빛에너지는 어디로?</h2><span id="run-label">실험 전</span></div>
+          <div class="energy-grid" id="energy-grid" aria-label="에너지 100칸 결과"></div>
+          <div class="totals"><div class="red-total"><small>열로 빠진 에너지</small><strong id="heat-count">—</strong></div><div class="blue-total"><small>형광으로 나온 에너지</small><strong id="light-count">—</strong></div></div>
+        </section>
         <section class="control-card"><div class="legend"><span style="--dot:#b8bfcc">회색: 평소 전자 분포 (π 궤도)</span><span style="--dot:#b67cff">보라 구름: 흡수 뒤 전자 분포</span><span style="--dot:#ff475e">붉은 빛: 열로 빠진 에너지</span><span style="--dot:#38bdf8">푸른 빛: 형광으로 나온 빛</span></div></section>
       </aside>
     </main>
@@ -97,7 +107,7 @@
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script>
   <script type="module">
     const canvas = document.querySelector('#scene');
-    const ui = Object.fromEntries(['wavelength','wave-value','light-name','swatch','speed','fire','pause','status-title','status-step','energy-in','energy-heat','energy-out'].map(id => [id, document.getElementById(id)]));
+    const ui = Object.fromEntries(['wavelength','wave-value','light-name','swatch','speed','fire','pause','status-title','status-step','energy-grid','run-label','heat-count','light-count'].map(id => [id, document.getElementById(id)]));
     const wavelengths = [365, 405, 450, 520, 580, 605, 650];
     const lightNames = ['자외선','보라빛','파란빛','초록빛','노란빛','주황빛','빨간빛'];
     const playbackRates = [.25, 1, 2];
@@ -151,6 +161,17 @@
       ui['status-step'].hidden = !step;
       if (step) ui['status-step'].textContent = step;
     };
+    const cells = Array.from({length:100}, () => ui['energy-grid'].appendChild(document.createElement('i')));
+    let shownHeat = -1, shownLight = -1;
+    // 앞 25칸은 열(빨강), 뒤 75칸은 형광(파랑)으로 시간에 맞춰 차례로 채운다.
+    function showEnergy(heat, light, label) {
+      ui['run-label'].textContent = label;
+      if (heat === shownHeat && light === shownLight) return;
+      shownHeat = heat; shownLight = light;
+      cells.forEach((cell, i) => cell.className = i < heat ? 'red' : i >= 25 && i < 25 + light ? 'blue' : '');
+      ui['heat-count'].textContent = heat < 0 ? '—' : `${heat}%`;
+      ui['light-count'].textContent = light < 0 ? '—' : `${light}%`;
+    }
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
     const smooth = (a, b, t) => { const x = clamp((t-a)/(b-a), 0, 1); return x*x*(3-2*x); };
 
@@ -252,9 +273,9 @@
     }
     function updateScene(dt) {
       const t=elapsed, hit=absorbs(shotNm), active=phase==='running';
-      ui['energy-in'].hidden = !active || t >= (hit ? IMPACT_TIME : 1.85);
-      ui['energy-heat'].hidden = !active || !hit || t < 1.55 || t >= 3.02;
-      ui['energy-out'].hidden = !active || !hit || t < 3.02 || t >= 4.5;
+      if (phase === 'idle') showEnergy(-1, -1, '실험 전');
+      else if (!hit) showEnergy(0, 0, t < 1.85 ? '빛이 지나가는 중' : '흡수되지 않음');
+      else showEnergy(Math.round(25 * smooth(1.55, 3.02, t)), Math.round(75 * smooth(3.02, 4.5, t)), t < 4.5 ? '나누어지는 중' : '실험 끝');
       const lightEnd=hit?IMPACT_TIME:1.7;
       const illumination=active&&t<lightEnd ? smooth(0,.16,t)*(1-smooth(lightEnd-.2,lightEnd,t)) : 0;
       for(const plane of beamPlanes) plane.material.uniforms.uOpacity.value=hit?illumination*.24:0;
@@ -320,13 +341,6 @@
     function positionLabels() {
       camera.updateMatrixWorld();
       placeLabel(lampLabel,-4.15,.65);
-      const t=elapsed, hit=absorbs(shotNm);
-      const incoming=hit ? clamp(t/IMPACT_TIME,0,1) : smooth(0,1.85,t);
-      placeLabel(ui['energy-in'],-3.6*(1-incoming),.35+.13*Math.sin(t*10),.2);
-      const heat=smooth(1.55,3.02,t)**1.4;
-      placeLabel(ui['energy-heat'],.3+1.4*heat,.45+1.7*heat+.1*Math.sin(t*12),.2);
-      const out=smooth(3.02,4.5,t);
-      placeLabel(ui['energy-out'],.3+2.4*out,.2+.15*Math.sin(t*10),.2);
     }
     function tick(now) {
       requestAnimationFrame(tick);
