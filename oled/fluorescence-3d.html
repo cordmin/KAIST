@@ -79,6 +79,12 @@
     .key .ball::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #c9ced6 0, #6b717b 38%, #2c3037 100%); box-shadow: 0 2px 6px rgba(0, 0, 0, .6); }
     /* 화면 속 구름처럼 흩어진 작은 점들 (가운데를 비우면 원자 모형처럼 보여서 채움) */
     .key .cloud { flex: none; width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 22% 30%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 48% 18%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 74% 32%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 36% 52%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 62% 48%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 84% 60%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 18% 68%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 46% 78%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 70% 82%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 54% 34%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 30% 40%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 78% 46%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle, rgba(143, 155, 179, .45) 0, rgba(143, 155, 179, .18) 55%, transparent 72%); }
+    /* 오른쪽 아래: 원자 색이 바뀌는 까닭 (오개념 막기) */
+    .key.why { left: auto; right: 24px; gap: 8px; padding: 14px 18px; }
+    .why h3 { margin: 0 0 2px; color: var(--ink); font-size: .86rem; font-weight: 800; }
+    .why div { gap: 10px; }
+    .why i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 8px var(--c); }
+    .why p { margin: 4px 0 0; padding-top: 8px; border-top: 1px solid var(--line); color: var(--dim); font-size: .76rem; line-height: 1.5; }
     @media (max-width: 1500px) { .key { bottom: 118px; } }
     @media (max-width: 640px) { .key { display: none; } }
     .error { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; text-align: center; color: #fecaca; }
@@ -109,6 +115,13 @@
       <div class="key" aria-label="모형 읽는 법">
         <div><span class="ball"></span><span><b>공</b>원자가 있는 자리</span></div>
         <div><span class="cloud"></span><span><b>구름</b>고리 전체가 함께 쓰는 전자</span></div>
+      </div>
+      <div class="key why" aria-label="원자 색이 바뀌는 까닭">
+        <h3>원자 색이 바뀌는 까닭</h3>
+        <div><i style="--c:#b085ff"></i>보라 · 빛을 흡수한 들뜬 상태</div>
+        <div><i style="--c:#ff6a4d"></i>빨강 · 분자의 떨림(진동)으로 새는 열</div>
+        <div><i style="--c:#5aa9ff"></i>파랑 · 형광으로 내보내는 빛</div>
+        <p>눈에 안 보이는 에너지를 색으로 나타냈어요.<br>실제 원자의 색이 변하는 것은 아니에요.</p>
       </div>
       <div class="dock">
         <div class="pick">
@@ -522,6 +535,9 @@
     function resize() {
       const w = canvas.clientWidth, h = canvas.clientHeight;
       renderer.setSize(w, h, false); composer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
+      // 화면이 좁을수록 조금 물러나서 아래 안내 카드에 분자가 가리지 않게 함
+      const d = Math.min(15, Math.max(10.1, 14.5 / camera.aspect));
+      camera.position.sub(controls.target).setLength(d).add(controls.target);
     }
     async function main() {
       try {

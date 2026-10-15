@@ -69,6 +69,12 @@
     .key .eh::before { left: 1px; background: #ffc861; box-shadow: 0 0 8px #ffc861; }
     .key .eh::after { right: 1px; border: 2px solid #f4f1ea; box-shadow: 0 0 6px rgba(244, 241, 234, .6); box-sizing: border-box; }
     .key .off { opacity: .35; }
+    /* 오른쪽 아래: 원자 색이 바뀌는 까닭 (오개념 막기) */
+    .key.why { left: auto; right: 24px; gap: 8px; padding: 14px 18px; }
+    .why h3 { margin: 0 0 2px; color: var(--ink); font-size: .86rem; font-weight: 800; }
+    .why div { gap: 10px; }
+    .why i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 8px var(--c); }
+    .why p { margin: 4px 0 0; padding-top: 8px; border-top: 1px solid var(--line); color: var(--dim); font-size: .76rem; }
     .next.ghost { border-color: var(--line); color: var(--ink); }
     .next.ghost[aria-pressed="true"] { border-color: rgba(226, 189, 114, .5); color: var(--gold); }
     .next:disabled { opacity: .4; cursor: default; }
@@ -142,6 +148,13 @@
         <div><span class="balls"></span><span><b>회색 · 흰색 공</b>탄소 · 수소 원자</span></div>
         <div id="key-rod"><span class="rod"></span><span><b>금빛 막대</b>두 고리를 묶는 고정대</span></div>
         <div><span class="eh"></span><span><b>전자 · 정공</b>음극에서 전자(−), 양극에서 정공(+)이 들어옴</span></div>
+      </div>
+      <div class="key why" id="why" hidden aria-label="원자 색이 바뀌는 까닭">
+        <h3>원자 색이 바뀌는 까닭</h3>
+        <div><i style="--c:#e2bd72"></i>금색 · 에너지를 받은 들뜬 상태</div>
+        <div><i style="--c:#ff6a4d"></i>빨강 · 분자의 떨림(진동)으로 새는 열</div>
+        <div><i style="--c:#5aa9ff"></i>파랑 · 빛으로 내보내는 에너지</div>
+        <p>눈에 안 보이는 에너지를 색으로 나타냈어요.<br>실제 원자의 색이 변하는 것은 아니에요.</p>
       </div>
       <div class="dock" id="dock-building">
         <button class="next ghost" id="brace" type="button" aria-pressed="false">오른쪽 건물에 고정대 달기</button>
@@ -259,7 +272,7 @@
       const b = next === 'building';
       $('ch-building').setAttribute('aria-current', String(b)); $('ch-molecule').setAttribute('aria-current', String(!b));
       $('dock-building').hidden = !b; $('dock-molecule').hidden = b;
-      $('tags-building').hidden = !b; $('tags-molecule').hidden = b; $('key').hidden = b; $('steps').hidden = b;
+      $('tags-building').hidden = !b; $('tags-molecule').hidden = b; $('key').hidden = b; $('why').hidden = b; $('steps').hidden = b;
       $('building-panel').hidden = !b; $('map').hidden = !(b && quaked && braced); $('molecule-panel').hidden = b; $('record').hidden = b;
       $('panel-title').textContent = b ? '두 건물의 흔들림' : '공급한 전기에너지는 어디로?';
       if (scene) { buildings.group.visible = b; molecule.visible = circuit.visible = !b; placeCamera(); }
@@ -634,8 +647,8 @@
         controls.minAzimuthAngle = -Math.PI / 3; controls.maxAzimuthAngle = Math.PI / 3;
         controls.minDistance = dist * .7; controls.maxDistance = dist * 1.4;
       } else {
-        const dist = Math.max(12, fit(10.4));
-        camera.position.set(0, 2.2, dist); controls.target.set(0, .7, 0);
+        const dist = Math.max(12, fit(11.5));
+        camera.position.set(0, 1.6, dist); controls.target.set(0, .1, 0);
         controls.minAzimuthAngle = -Infinity; controls.maxAzimuthAngle = Infinity;
         controls.minDistance = 7; controls.maxDistance = dist * 1.4;
       }
