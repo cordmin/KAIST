@@ -447,7 +447,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  parseHash();
+  // 홈페이지에 처음 들어오면 주소 뒤에 무엇이 붙어 있든 늘 홈 화면부터 보여 줌
+  history.replaceState(null, '', location.pathname + location.search);
+  setAppState('oled', 'home');
   if (window.lucide) {
     try { lucide.createIcons(); } catch(e) {}
   }
