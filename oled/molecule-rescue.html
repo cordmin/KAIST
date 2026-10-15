@@ -492,20 +492,22 @@
     }
 
     // 고리 위아래의 π 전자 분포 (점 하나하나가 전자는 아님). 고리 묶음에 붙여서 고리와 함께 비틀림
-    let cloudMat;
+    // 전자·정공이 들어와 들뜨면 금빛으로 부풀고, 에너지가 빛·열로 빠지면 다시 줄어듦
+    let cloudMat, cloudGold;
     function piCloud(c) {
       const n = 4500, pos = new Float32Array(n * 3), seeds = new Float32Array(n);
       for (let i = 0; i < n; i++) {
         const a = Math.random() * Math.PI * 2, r = .8 + (Math.random() + Math.random() + Math.random() - 1.5) * .33;
-        pos.set([c.x + Math.cos(a) * r, Math.sin(a) * r, (Math.random() < .5 ? -1 : 1) * (.22 + Math.random() * .32)], i * 3);
+        pos.set([Math.cos(a) * r, Math.sin(a) * r, (Math.random() < .5 ? -1 : 1) * (.22 + Math.random() * .32)], i * 3);
         seeds[i] = Math.random();
       }
       const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setAttribute('aSeed', new THREE.BufferAttribute(seeds, 1));
+      cloudGold ??= new THREE.Color('#e2bd72');
       cloudMat ??= new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-        uniforms: { uColor: { value: new THREE.Color('#8f9bb3') }, uOpacity: { value: .12 } },
-        vertexShader: `attribute float aSeed; varying float vA; void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=min(26.0,(3.0+3.0*aSeed)*42.0/-mv.z); vA=0.35+0.65*aSeed; }`,
+        uniforms: { uExpansion: { value: 0 }, uColor: { value: new THREE.Color('#8f9bb3') }, uOpacity: { value: .12 } },
+        vertexShader: `attribute float aSeed; uniform float uExpansion; varying float vA; void main(){ vec3 p=position; p.xy*=mix(1.0,1.45,uExpansion); p.z*=mix(1.0,1.6,uExpansion); vec4 mv=modelViewMatrix*vec4(p,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=min(26.0,(3.0+3.0*aSeed)*42.0/-mv.z); vA=0.35+0.65*aSeed; }`,
         fragmentShader: `uniform vec3 uColor; uniform float uOpacity; varying float vA; void main(){ float d=length(gl_PointCoord-0.5)*2.0; gl_FragColor=vec4(uColor,pow(max(0.0,1.0-d),2.2)*vA*uOpacity); }` });
-      return new THREE.Points(geo, cloudMat);
+      const pts = new THREE.Points(geo, cloudMat); pts.position.x = c.x; return pts;
     }
     // ---------- 2마당: 두 고리 분자 (고정대 = 질소 다리, 카바졸과 같은 모양) + 전극 회로 ----------
     function createMolecule() {
@@ -604,6 +606,10 @@
         const f = .75 + .25 * Math.sin(now * 23 + s), r = heatOn * f, g = charge * .8, b = lightOn * bright;
         a.mat.emissive.setRGB(GOLD[0] * g + RED[0] * r + BLUE[0] * b, GOLD[1] * g + RED[1] * r + BLUE[1] * b, GOLD[2] * g + RED[2] * r + BLUE[2] * b);
       }
+      const expansion = on ? smooth(.4, SUP, T) * (1 - smooth(SUP + .3, p.light[1], T)) : 0;
+      cloudMat.uniforms.uExpansion.value = expansion;
+      cloudMat.uniforms.uColor.value.set('#8f9bb3').lerp(cloudGold, expansion);
+      cloudMat.uniforms.uOpacity.value = .12 + expansion * .3;
       const supplyOn = on ? env(0, SUP, T, .3) : 0;
       cathodeFace.color.set('#e2bd72').multiplyScalar(.3 + 1.2 * supplyOn);
       anodeFace.color.set('#d9d4c8').multiplyScalar(.25 + 1 * supplyOn);
