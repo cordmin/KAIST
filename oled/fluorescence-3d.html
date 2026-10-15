@@ -118,7 +118,7 @@
       </div>
       <div class="key why" aria-label="원자 색이 바뀌는 까닭">
         <h3>원자 색이 바뀌는 까닭</h3>
-        <div><i style="--c:#e2bd72"></i>금색 · 빛을 흡수한 들뜬 상태</div>
+        <div><i style="--c:#b085ff"></i>보라 · 빛을 흡수한 들뜬 상태</div>
         <div><i style="--c:#ff6a4d"></i>빨강 · 분자의 떨림(진동)으로 새는 열</div>
         <div><i style="--c:#5aa9ff"></i>파랑 · 형광으로 내보내는 빛</div>
         <p>눈에 안 보이는 에너지를 색으로 나타냈어요.<br>실제 원자의 색이 변하는 것은 아니에요.</p>
@@ -391,7 +391,7 @@
         seeds[i] = Math.random();
       }
       const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setAttribute('aSeed', new THREE.BufferAttribute(seeds, 1));
-      excited = new THREE.Color('#e2bd72');
+      excited = new THREE.Color('#b67cff');
       cloudMat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
         uniforms: { uTime: { value: 0 }, uExpansion: { value: 0 }, uColor: { value: new THREE.Color('#8f9bb3') }, uOpacity: { value: .12 } },
         vertexShader: `attribute float aSeed; uniform float uTime, uExpansion; varying float vA; void main(){ vec3 p=position; float pulse=1.0+0.035*sin(uTime*2.5+aSeed*18.0); p.xy*=mix(0.93,1.62,uExpansion)*pulse; p.z*=mix(0.85,1.6,uExpansion)*pulse; vec4 mv=modelViewMatrix*vec4(p,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=min(26.0,(3.0+3.0*aSeed)*42.0/-mv.z); vA=0.35+0.65*aSeed; }`,
@@ -447,7 +447,7 @@
       photons = particles(140, '#5aa9ff', 1.5);
     }
 
-    const GOLD = [2.2, 1.4, .35], RED = [2.6, .35, .15], BLUE = [.5, 1.4, 3];
+    const VIOLET = [1.5, .8, 3], RED = [2.6, .35, .15], BLUE = [.5, 1.4, 3];
     function updateScene(T, now) {
       const hit = absorbs(shotNm), on = phase !== 'idle';
       const lightEnd = hit ? IMPACT : 1.7;
@@ -465,7 +465,7 @@
         dust.alpha[i] = illum * smooth(0, .08, ph) * (1 - smooth(.82, 1, ph)) * .9;
       });
       dust.commit();
-      // 흡수: 전자구름이 금색으로 부풀고, 에너지가 열·빛으로 빠지는 동안 천천히 원래대로 줄어듦
+      // 흡수: 전자구름이 보라색으로 부풀고, 에너지가 열·빛으로 빠지는 동안 천천히 원래대로 줄어듦
       const expansion = on && hit ? smooth(IMPACT, 1.5, T) * (1 - smooth(1.6, 4.2, T)) : 0;
       cloudMat.uniforms.uExpansion.value = expansion;
       cloudMat.uniforms.uColor.value.set('#8f9bb3').lerp(excited, expansion);
@@ -478,7 +478,7 @@
         const s = a.seed, k = .085 * vib;
         a.mesh.position.set(a.base.x + Math.sin(now * 41 + s) * k, a.base.y + Math.cos(now * 47 + s * 2) * k, a.base.z + Math.sin(now * 53 + s * 3) * k * 1.4);
         const r = vib * (.7 + .3 * Math.sin(now * 23 + s)), v = expansion * .55;
-        a.mat.emissive.setRGB(GOLD[0] * v + RED[0] * r + BLUE[0] * blue, GOLD[1] * v + RED[1] * r + BLUE[1] * blue, GOLD[2] * v + RED[2] * r + BLUE[2] * blue);
+        a.mat.emissive.setRGB(VIOLET[0] * v + RED[0] * r + BLUE[0] * blue, VIOLET[1] * v + RED[1] * r + BLUE[1] * blue, VIOLET[2] * v + RED[2] * r + BLUE[2] * blue);
       }
       updateBonds();
       heatGlow.material.opacity = vib * (.18 + .05 * Math.sin(now * 28)); heatGlow.scale.setScalar(3.2 + vib * 1.2);
