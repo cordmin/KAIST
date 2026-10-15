@@ -465,12 +465,11 @@
         dust.alpha[i] = illum * smooth(0, .08, ph) * (1 - smooth(.82, 1, ph)) * .9;
       });
       dust.commit();
-      // 흡수: 전자구름이 보라색으로 부풀어 오름
-      const expansion = on && hit ? smooth(IMPACT, IMPACT + .18, T) * (1 - .65 * smooth(1.6, 1.95, T)) * (1 - smooth(2.8, 3.16, T)) : 0;
+      // 흡수: 전자구름이 보라색으로 부풀고, 에너지가 열·빛으로 빠지는 동안 천천히 원래대로 줄어듦
+      const expansion = on && hit ? smooth(IMPACT, 1.5, T) * (1 - smooth(1.6, 4.2, T)) : 0;
       cloudMat.uniforms.uExpansion.value = expansion;
       cloudMat.uniforms.uColor.value.set('#8f9bb3').lerp(excited, expansion);
-      const fade = on && hit ? 1 - .8 * smooth(1.55, 1.85, T) * (1 - smooth(2.72, 2.98, T)) - .88 * smooth(2.98, 3.12, T) * (1 - smooth(4.08, 4.4, T)) : 1;
-      cloudMat.uniforms.uOpacity.value = (.12 + expansion * .35) * fade;
+      cloudMat.uniforms.uOpacity.value = .12 + expansion * .35;
       // 열: 원자 하나하나가 떨고, 붉은 열기가 위로 피어오름
       const vib = on && hit ? smooth(1.45, 1.75, T) * (1 - smooth(2.85, 3.1, T)) : 0;
       const burst = on && hit ? clamp((T - 3.02) / 1.15, 0, 1) : 0;
