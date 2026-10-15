@@ -367,7 +367,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   <th style="text-align:center; white-space:nowrap;">탐구방법</th>
                   <td>동전 회전 조작 실험, 가상실험실 [큐비트 시뮬레이터] 조작, 미로 찾기 비교 토의</td>
                   <th style="text-align:center; white-space:nowrap;">준비물</th>
-                  <td colspan="2">동전(학생 1인당 1개), 스마트기기, 가상실험실(lab.html), 활동지</td>
+                  <td colspan="2">동전(학생 1인당 1개), 스마트기기, 가상실험실, 활동지</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
@@ -560,7 +560,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                   <th style="text-align:center; white-space:nowrap;">탐구방법</th>
                   <td>2인 1조 협동 역할극(양자 컴퓨터 역할 + 일반 컴퓨터 역할), 가상실험실 [바닥 상태 찾기 시뮬레이터] 조작, 에너지 지형도 탐색</td>
                   <th style="text-align:center; white-space:nowrap;">준비물</th>
-                  <td colspan="2">2인 3각 벨크로 밴드, 에너지 지형도 매트, 태블릿(lab.html), 활동지</td>
+                  <td colspan="2">2인 3각 벨크로 밴드, 에너지 지형도 매트, 태블릿(가상실험실), 활동지</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>

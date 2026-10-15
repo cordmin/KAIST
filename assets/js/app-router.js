@@ -449,6 +449,12 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// OLED·양자 화면이 똑같이 쓰는 가상실험실·슬라이드 모음은 한 벌만 두고 복사해 씀
+document.querySelectorAll('[data-same-as]').forEach(view => {
+  const src = document.getElementById(view.dataset.sameAs);
+  if (src) view.innerHTML = src.innerHTML;
+});
+
 // Initialize Dynamic Lesson Plan Window Containers
 function initLessonPlanContainers() {
   const oledCont = document.getElementById('oled-lesson-plan-container');

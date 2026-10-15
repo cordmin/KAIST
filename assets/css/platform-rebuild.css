@@ -61,15 +61,6 @@ body {
 }
 
 /* 상단바 완전 제거 (규칙 15) */
-.topbar,
-header.topbar {
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  visibility: hidden !important;
-}
 
 /* 전체 앱 레이아웃 */
 .app-layout {
@@ -236,19 +227,6 @@ header.topbar {
   gap: 0.2rem;
 }
 
-.rebuild-group-title {
-  font-size: 0.76rem;
-  font-weight: 800;
-  color: #e2e8f0;
-  padding: 0.35rem 0.4rem 0.45rem 0.4rem;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
 /* 연구실 안내 및 교육과정 자료실 카드 테두리 (상시 화이트 테두리 유지, 호버 애니메이션 배제) */
 .rebuild-nav-card {
   background: rgba(255, 255, 255, 0.02);
@@ -383,9 +361,6 @@ header.topbar {
 }
 
 /* 카드 우측 상단 배지 영구 제거 */
-.rebuild-pkg-badge {
-  display: none !important;
-}
 
 /* 직결 다단 트리 서브메뉴 리스트 (규칙 17 핵심) */
 .rebuild-tree-list {
@@ -461,17 +436,6 @@ header.topbar {
 }
 
 /* 사이드바 하단 푸터 (영구 제거) */
-.rebuild-sidebar-footer {
-  display: none !important;
-}
-
-.rebuild-footer-text {
-  font-size: 0.73rem;
-  color: #94a3b8;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
 
 /* --------------------------------------------------------------------------
    3. 수업 지도안 백색 문서 표준 스타일 (규칙 16)
@@ -637,17 +601,6 @@ header.topbar {
 }
 
 /* 지도안 카드 내부 */
-.plan-session-header {
-  border-bottom: 2px solid #0f172a !important;
-  padding-bottom: 0.85rem !important;
-  margin-bottom: 1.5rem !important;
-}
-
-.plan-session-title {
-  color: #0f172a !important;
-  font-weight: 800 !important;
-  font-size: 1.45rem !important;
-}
 
 /* 지도안 내부 본문/활동 박스들: 수업지도안 배경색(#F2F2F0)과 100% 일치 */
 #oled-lesson-plan-chrome-window .card,
@@ -1329,14 +1282,6 @@ header.topbar {
 .cprl-team-visual:hover img {
   transform: scale(1.025);
   filter: brightness(1.05);
-}
-
-.cprl-team-desc {
-  font-size: 0.96rem;
-  color: #cbd5e1;
-  line-height: 1.8;
-  word-break: keep-all;
-  margin: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -2167,29 +2112,6 @@ body.presentation-fullscreen-mode .pres-slide-tag,
   padding: 0.45rem 1.2rem !important;
   border-radius: 10px !important;
   margin-bottom: 1.5rem !important;
-}
-.presentation-modal.fullscreen-active .pres-card,
-body.presentation-fullscreen-mode .pres-card,
-.is-fullscreen .pres-card,
-:fullscreen .pres-card {
-  padding: clamp(1.8rem, 2.5vh, 2.8rem) clamp(2rem, 2.5vw, 3rem) !important;
-  font-size: clamp(1.28rem, 1.65vw, 1.75rem) !important;
-  line-height: 1.85 !important;
-  border-radius: 18px !important;
-}
-.presentation-modal.fullscreen-active .pres-card-title,
-body.presentation-fullscreen-mode .pres-card-title,
-.is-fullscreen .pres-card-title,
-:fullscreen .pres-card-title {
-  font-size: clamp(1.55rem, 2.1vw, 2.2rem) !important;
-  margin-bottom: 1.4rem !important;
-}
-.presentation-modal.fullscreen-active .pres-card p,
-body.presentation-fullscreen-mode .pres-card p,
-.is-fullscreen .pres-card p,
-:fullscreen .pres-card p {
-  font-size: clamp(1.22rem, 1.6vw, 1.7rem) !important;
-  line-height: 1.85 !important;
 }
 
 /* 읽기 자료 모달 전체화면 비례 스케일링 */

@@ -10,14 +10,14 @@ KAIST 화학과 **계산 광동역학 연구실(Computational Photodynamics Rese
 
 1. **공식 성취기준 100% 원문 준수**
    - 교육부 2022 개정 교육과정 고시 원문을 토씨 하나 왜곡 없이 그대로 반영하였으며.
-2. **페이지 독립 모듈화 (Modular Architecture)**
-   - 거대 단일 HTML 파일 방식을 탈피하여 `oled/` 및 `quantum/` 하위에 각 역할별 독립된 HTML 파일(`lesson-plan.html`, `worksheet.html`, `teacher-guide.html`, `lab.html` 등)로 분리 구축하였습니다.
-3. **충남교육청 양식 기반 3대 핵심 문서 완성**
-   - **교사용 지도안 (`lesson-plan.html`):** 4차시 세부 교수·학습 과정안 (도입 5분 - 전개 32분 - 정리 8분), 실험 안전 지도 수칙
-   - **학생 활동지 (`worksheet.html`):** 충남교육청 표준 포맷 (1.탐구과정 - 2.탐구활동 - 3.안전유의사항), 순수 빈칸 관찰표, 그래프 격자, 프로젝트 기획서
-   - **교사 도움 자료 (`teacher-guide.html`):** 충남교육청 "4. 교사 도움 자료" 완벽 구현. 모든 표의 예시 데이터, 완성 그래프, 빨간색 `☞` 모범답안, 오개념 지도 팁
-4. **인터랙티브 가상실험실 (`lab.html`) 전용 페이지 탑재**
-   - 웹 브라우저에서 직접 조작하는 HTML5 Canvas 시뮬레이터: 전자의 계단 점프 및 스토크스 이동, OLED 75% 배터리 도둑 및 KAIST 핫 엑시톤 100% 구출, 큐비트 블록 구 중첩, 2인 3각 VQE 바닥 상태 탐색.
+2. **한 화면 안에서 모두 이동 (`index.html`)**
+   - 사이드바에서 지도안, 읽기 자료, 가상실험실, 발표 슬라이드로 바로 이동합니다. 활동지·슬라이드·읽기 자료는 창(모달)으로 열립니다.
+3. **충남교육청 양식 기반 핵심 문서**
+   - **교사용 지도안:** 4차시 교수·학습 과정안, 성취수준 연계표
+   - **학생 활동지 / 교사 도움 자료:** 활동지 창에서 학생용·교사용(모범답안)을 전환
+   - **발표 슬라이드:** 1920×1080 지면을 화면 크기에 맞춰 확대·축소 (휴대폰은 가로로 돌리면 꽉 차게)
+4. **가상실험실**
+   - `oled/fluorescence-3d.html`(형광빛의 원리), `oled/molecule-rescue.html`(스마트폰 에너지 효율 분자 연구). 나머지 실험실은 "개발 중" 안내 창으로 연결됩니다.
 5. **A4 인쇄 최적화 (`@media print`) 및 사이드바 내비게이션**
    - 인쇄 시 사이드바 및 불필요한 상단바가 자동으로 숨겨지며 깔끔한 A4 인쇄물로 출력됩니다.
 
@@ -27,40 +27,28 @@ KAIST 화학과 **계산 광동역학 연구실(Computational Photodynamics Rese
 
 ```
 KAIST/
-├── index.html                           # 메인 포털 허브 SPA 대시보드
-├── quantum_deep_dive_guide.html         # ⚛️ 고등학생을 위한 양자 컴퓨터 심층 완벽 해부 가이드
+├── index.html                           # 플랫폼 전체 (사이드바 + 모든 화면)
+├── oled/
+│   ├── fluorescence-3d.html             # 가상실험실: 형광빛의 원리 (3D)
+│   └── molecule-rescue.html             # 가상실험실: 스마트폰 에너지 효율 분자 연구
 ├── assets/
-│   ├── css/style.css                    # 공통 반응형 CSS, SPA 뷰, 캔버스 실험실 및 인쇄 최적화 스타일
-│   ├── data/
-│   │   ├── lesson-plan-data-oled.js     # OLED 수업 지도안 모듈 데이터 (단일 진실 공급원)
-│   │   ├── lesson-plan-data-quantum.js  # 양자컴퓨터 수업 지도안 모듈 데이터 (단일 진실 공급원)
-│   │   ├── presentation-data-oled.js    # OLED 1~4차시 슬라이드 데이터 모듈
-│   │   ├── presentation-data-quantum.js # 양자컴퓨터 1~4차시 슬라이드 데이터 모듈
-│   │   ├── worksheet-data-oled.js       # OLED 1~4차시 활동지/도움자료 데이터 모듈
-│   │   └── worksheet-data-quantum.js    # 양자컴퓨터 1~4차시 활동지/도움자료 데이터 모듈
-│   └── js/
-│       ├── app-router.js                # SPA 해시 라우팅, 패키지 전환 및 동적 모듈 렌더링
-│       ├── simulations.js               # 가상실험실 Canvas 시뮬레이션 엔진 4종 (OLED/Quantum)
-│       ├── slide-viewer.js              # 핵심 발표 슬라이드 덱 렌더러
-│       ├── sidebar.js                   # 서브 페이지 공통 사이드바 렌더링 스크립트
-│       ├── presentation-modal.js        # 차시별 프레젠테이션 모달 UI 컨트롤러 엔진 (~9KB 경량화)
-│       └── worksheet-modal.js           # 충남교육청 표준 활동지/도움자료 모달 컨트롤러
-├── oled/                                # 🌈 [패키지 01] 스마트폰 속 75% 배터리 도둑을 잡아라! 빛나는 분자와 OLED의 과학
-│   ├── index.html                       # 패키지 대시보드 (lesson-plan.html 리다이렉트)
-│   ├── lesson-plan.html                 # 📋 교사용 지도안 (성취수준 연계 + 4차시 지도안)
-│   ├── worksheet.html                   # 📝 학생 활동지 (충남교육청 표준 서식)
-│   ├── teacher-guide.html               # 💡 교사 도움 자료 (모범답안 & 지도팁)
-│   ├── lab.html                         # 🧪 가상실험실 (계단점프 & OLED 스핀 시뮬레이터)
-│   └── slides.html                      # 📽️ 발표 슬라이드 (10장 슬라이드 덱)
-├── quantum/                             # ⚛️ [패키지 02] 양자 컴퓨터와 계산 화학의 미래
-│   ├── index.html                       # 패키지 대시보드 (lesson-plan.html 리다이렉트)
-│   ├── lesson-plan.html                 # 📋 교사용 지도안 (성취수준 연계 + 4차시 지도안)
-│   ├── worksheet.html                   # 📝 학생 활동지 (충남교육청 표준 서식)
-│   ├── teacher-guide.html               # 💡 교사 도움 자료 (모범답안 & 지도팁)
-│   ├── lab.html                         # 🧪 가상실험실 (큐비트 중첩 & VQE 최적화 시뮬레이터)
-│   └── slides.html                      # 📽️ 발표 슬라이드 (10장 슬라이드 덱)
-├── 논문/                                # 📄 원천 연구 학술 논문 PDF 자료실
-└── 참고자료/                            # 📚 교육부 및 교육청 공인 원본 자료실
+│   ├── css/
+│   │   ├── style.css                    # 기본 꾸밈 (지도안·활동지 문서, 모달, 인쇄)
+│   │   ├── platform-rebuild.css         # 사이드바·어두운 화면 꾸밈
+│   │   ├── presentation-stage.css       # 1920×1080 지면형 발표 슬라이드
+│   │   ├── mobile.css                   # 휴대폰 화면 정리
+│   │   └── oled-molecule-rescue.css     # 분자 연구 실험실 전용
+│   ├── data/                            # 지도안·활동지·슬라이드·읽기 자료 내용 (OLED / 양자)
+│   ├── js/
+│   │   ├── app-router.js                # 화면 이동, 사이드바, "개발 중" 안내 창
+│   │   ├── presentation-modal.js        # 발표 슬라이드 창, 가상실험실 창
+│   │   ├── worksheet-modal.js           # 활동지 창
+│   │   ├── reader-modal.js              # 수업 전 읽기 자료 창
+│   │   └── oled-*.js                    # 분자 연구 실험실 동작
+│   └── vendor/three/                    # 3D 그리기 도구 (분자 연구 실험실용)
+├── image/                               # 사진·그림 (image/tools: 준비물·실험실 화면 사진)
+├── 논문/                                # 원천 연구 논문 PDF
+└── 참고자료/                            # 교육부·교육청 원본 자료
 ```
 
 ---
@@ -97,7 +85,7 @@ KAIST/
 
 ## 🚀 실행 및 활용 가이드
 
-1. **플랫폼 실행:** 브라우저에서 [index.html](./index.html)을 열면 전체 포털 홈이 열리며, 원하는 모듈로 즉시 진입할 수 있습니다.
-2. **수업 패키지 1-Click 이동:** 좌측 사이드바 상단의 `[🌈 01. OLED]` / `[⚛️ 02. 양자컴퓨터]` 버튼을 클릭하면 패키지 간 상호 전환이 즉시 이루어집니다.
-3. **A4 인쇄:** 교사용 지도안(`lesson-plan.html`), 학생 활동지(`worksheet.html`), 교사 도움자료(`teacher-guide.html`)는 상단의 **[인쇄]** 버튼을 누르면 A4 서식에 맞추어 출력됩니다.
-4. **가상실험실:** `oled/lab.html` 및 `quantum/lab.html`은 스마트기기, 태블릿, 전자칠판에서 학생 및 교사가 직접 인터랙티브하게 조작할 수 있습니다.
+1. **플랫폼 실행:** 브라우저에서 [index.html](./index.html)을 엽니다. 이미지·실험실이 제대로 열리려면 간단한 로컬 서버(예: `python -m http.server`)로 여는 것을 권장합니다.
+2. **패키지 이동:** 사이드바의 `01 빛의 합성과 OLED` / `02 양자컴퓨터의 활용` 아래 차시를 누르면 바로 이동합니다.
+3. **A4 인쇄:** 지도안 개요의 **[전체 지도안 인쇄]**, 활동지 창의 **[A4 인쇄]** 버튼으로 출력합니다.
+4. **휴대폰:** 지도안 표는 위아래로 쌓여 보이고, 슬라이드는 가로로 돌리면 화면을 꽉 채웁니다.

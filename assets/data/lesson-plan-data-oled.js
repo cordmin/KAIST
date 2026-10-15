@@ -592,7 +592,7 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
                   <th style="text-align:center; white-space:nowrap;">탐구방법</th>
                   <td>현미경 루페 픽셀 관찰, 가상실험실 빛·열 에너지 방출 시뮬레이션, 모둠 토의</td>
                   <th style="text-align:center; white-space:nowrap;">준비물</th>
-                  <td colspan="2">스마트폰 디스플레이, 마이크로 루페(60배), 스마트기기(lab.html), 활동지</td>
+                  <td colspan="2">스마트폰 디스플레이, 마이크로 루페(60배), 스마트기기(가상실험실), 활동지</td>
                 </tr>
                 <tr>
                   <th style="text-align:center; white-space:nowrap;">주의사항</th>
