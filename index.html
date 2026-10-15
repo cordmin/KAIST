@@ -8,8 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=20261013">
   <link rel="stylesheet" href="assets/css/presentation-stage.css?v=20261014k">
-  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261014n">
+  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261015s">
   <link rel="stylesheet" href="assets/css/mobile.css?v=20261014o">
+  <link rel="stylesheet" href="assets/css/home.css?v=20261015r">
   <!-- KaTeX CDN (수식 정밀 렌더링) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -27,7 +28,7 @@
     <aside class="sidebar" id="app-sidebar">
       <!-- 워크스페이스 헤더 -->
       <div class="rebuild-sidebar-header">
-        <div class="rebuild-ws-identity">
+        <div class="rebuild-ws-identity" onclick="switchView('home')" role="link" title="홈으로">
           <div class="rebuild-ws-logo">
             <img src="image/kaist_logo.png" alt="KAIST 로고" class="rebuild-kaist-logo-img">
           </div>
@@ -158,6 +159,38 @@
         <!-- ========================================== -->
         <!-- 1. KAIST 화학과 CPRL 소개 VIEW            -->
         <!-- ========================================== -->
+        <!-- 홈 화면 -->
+        <section id="view-home" class="content-view">
+          <canvas id="home-canvas" aria-label="자외선 램프로 분자를 비추는 장면"></canvas>
+          <div class="home-hero">
+            <div class="home-hero-text">
+              <div class="home-kicker">KAIST CPRL × 스타브릿지 2.0</div>
+              <h1>보이지 않는 빛과 분자를<br>교실에서 보다</h1>
+            </div>
+          </div>
+
+          <div class="home-sec">
+            <h2>두 가지 탐구 여정</h2>
+            <div class="home-journeys">
+              <div class="home-journey" onclick="switchPackageLessonPlanTab('oled', 0)">
+                <img src="image/home_oled.jpg" alt="블랙라이트 아래에서 루페로 스마트폰 화면을 관찰하는 학생">
+                <div class="home-journey-body">
+                  <h3>빛의 합성과 OLED</h3>
+                  <p>형광빛에서 출발해 스마트폰 화면이 버리는 75%의 열을 빛으로 되돌리는 KAIST의 분자 연구까지 탐구합니다.</p>
+                </div>
+              </div>
+              <div class="home-journey" onclick="switchPackageLessonPlanTab('quantum', 0)">
+                <img src="image/home_quantum.jpg" alt="초전도 양자컴퓨터를 올려다보는 두 학생">
+                <div class="home-journey-body">
+                  <h3>양자컴퓨터의 활용</h3>
+                  <p>슈퍼컴퓨터도 멈추는 분자의 세계에서 출발해, 양자 컴퓨터로 지구의 문제를 풀 분자를 설계합니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
         <section id="view-cprl-intro" class="content-view">
           <div class="mag-journey-canvas">
 
@@ -1451,7 +1484,8 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
   <!-- Core Modular Scripts -->
   <script src="assets/data/worksheet-data-oled.js"></script>
   <script src="assets/data/worksheet-data-quantum.js?v=20261014k"></script>
-  <script src="assets/js/app-router.js?v=20261014q"></script>
+  <script src="assets/js/app-router.js?v=20261015a"></script>
+  <script src="assets/js/home.js?v=20261015u"></script>
   <script src="assets/js/worksheet-modal.js"></script>
   <script src="assets/data/reader-data-oled.js"></script>
   <script src="assets/js/reader-modal.js"></script>

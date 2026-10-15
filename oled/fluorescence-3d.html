@@ -5,120 +5,155 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>형광빛의 원리 | KAIST 가상실험실</title>
   <style>
-    :root { color-scheme: dark; font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif; background: #030712; color: #e5eefb; }
+    :root { color-scheme: dark; font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif; --ink: #f4f1ea; --dim: #9d988d; --line: rgba(244, 241, 234, .12); --gold: #e2bd72; --uv: #b085ff; --heat: #ff6a4d; --glow: #5aa9ff; --light: #a78bfa; }
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
-    body { margin: 0; min-width: 320px; }
-    button, input { font: inherit; }
-    button { cursor: pointer; }
-    .app { min-height: 100vh; display: grid; grid-template-rows: auto minmax(500px, 1fr); }
-    header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem clamp(1rem, 2.5vw, 2.5rem); border-bottom: 1px solid #1e293b; }
-    .eyebrow { color: #7dd3fc; font-size: .74rem; font-weight: 800; letter-spacing: .13em; }
-    h1 { margin: .2rem 0 0; font-size: clamp(1.25rem, 2vw, 1.8rem); letter-spacing: -.03em; }
-    .control-card, .stage-card { border: 1px solid #26364d; border-radius: 12px; background: #0b1628; }
-    .workspace { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 1rem; padding: 1rem clamp(1rem, 2.5vw, 2.5rem); }
-    .stage-card { position: relative; min-height: 500px; overflow: hidden; background: radial-gradient(circle at 52% 46%, #14213c 0, #071121 43%, #030712 80%); }
-    #scene { width: 100%; height: 100%; display: block; touch-action: none; }
-    .stage-message { position: absolute; top: 1.25rem; left: 50%; transform: translateX(-50%); max-width: calc(100% - 2rem); pointer-events: none; z-index: 10; transition: opacity 0.4s ease, transform 0.4s ease; }
-    .stage-message.hidden { opacity: 0; transform: translateX(-50%) translateY(-8px); }
-    .status-box { display: flex; align-items: center; justify-content: center; gap: .7rem; padding: 0.75rem 1.6rem; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 12px; background: rgba(6, 16, 30, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45); text-align: center; white-space: nowrap; }
-    .status-box strong { color: #ffffff; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
-    .status-step { display: inline-grid; place-items: center; flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: #0284c7; color: white; font-weight: 800; }
-    .energy-title { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
-    .energy-title h2 { margin: 0; }
-    #run-label { color: #a5bcd1; font-size: .82rem; font-weight: 800; white-space: nowrap; }
-    .energy-grid { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; margin: 1rem 0 1.1rem; }
-    .energy-grid i { display: block; aspect-ratio: 1; border-radius: 2px; background: #32465c; transition: background .3s, box-shadow .3s; }
-    .energy-grid i.blue { background: #38bdf8; box-shadow: 0 0 6px #38bdf888; }
-    .energy-grid i.red { background: #fb786f; box-shadow: 0 0 5px #fb786f66; }
-    .totals { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: .8rem; border-top: 1px solid #26364d; }
-    .totals small { display: block; color: #b6c9dc; font-size: .8rem; }
-    .totals strong { display: block; margin-top: .2rem; font-size: 1.8rem; font-variant-numeric: tabular-nums; }
-    .blue-total strong { color: #75d9ff; }
-    .red-total strong { color: #ff9c89; }
-    .lamp-label { position: absolute; z-index: 5; transform: translate(-50%, -50%); padding: .25rem .55rem; border: 1px solid #536585; border-radius: 6px; background: rgba(6, 16, 30, .85); color: #dbeafe; font-size: .85rem; font-weight: 700; pointer-events: none; }
-    aside { display: grid; align-content: start; gap: 1rem; }
-    .control-card { padding: 1rem; }
-    .control-card h2 { margin: 0 0 1rem; font-size: 1rem; }
-    .row { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .85rem 0 .4rem; font-size: .88rem; }
-    output { color: #a5b4fc; font-weight: 800; font-variant-numeric: tabular-nums; }
-    input[type="range"] { width: 100%; accent-color: #818cf8; cursor: pointer; }
-    .scale { display: flex; justify-content: space-between; color: #7c90ab; font-size: .78rem; }
-    .spectrum { position: relative; height: 16px; margin: .9rem 0 1rem; border-radius: 99px; background: linear-gradient(90deg, #a78bfa 0%, #8b5cf6 16.67%, #2563eb 33.33%, #16a34a 50%, #eab308 66.67%, #f97316 83.33%, #dc2626 100%); }
-    .spectrum input { position: absolute; inset: -9px 0; width: 100%; height: 34px; margin: 0; appearance: none; background: transparent; }
-    .spectrum input::-webkit-slider-runnable-track { height: 16px; background: transparent; }
-    .spectrum input::-moz-range-track { height: 16px; background: transparent; }
-    .spectrum input::-webkit-slider-thumb { width: 22px; height: 22px; margin-top: -3px; appearance: none; border: 3px solid white; border-radius: 50%; background: #0b1628; box-shadow: 0 0 0 2px #334155; }
-    .spectrum input::-moz-range-thumb { width: 16px; height: 16px; border: 3px solid white; border-radius: 50%; background: #0b1628; box-shadow: 0 0 0 2px #334155; }
-    #speed { height: 34px; margin: .1rem 0; appearance: none; background: transparent; }
-    #speed::-webkit-slider-runnable-track { height: 16px; border-radius: 99px; background: #475569; }
-    #speed::-moz-range-track { height: 16px; border-radius: 99px; background: #475569; }
-    #speed::-webkit-slider-thumb { width: 22px; height: 22px; margin-top: -3px; appearance: none; border: 3px solid white; border-radius: 50%; background: #0b1628; box-shadow: 0 0 0 2px #334155; }
-    #speed::-moz-range-thumb { width: 16px; height: 16px; border: 3px solid white; border-radius: 50%; background: #0b1628; box-shadow: 0 0 0 2px #334155; }
-    .swatch { display: inline-block; width: 10px; height: 10px; margin-right: .35rem; border-radius: 50%; background: var(--light-color, #a78bfa); box-shadow: 0 0 12px var(--light-color, #a78bfa); }
-    .note { color: #afbed2; font-size: .84rem; line-height: 1.55; text-align: center; }
-    .buttons { display: flex; gap: .5rem; margin-top: 1.1rem; }
-    .buttons button { flex: 1; min-width: 0; border: 1px solid #536585; border-radius: 9px; padding: .7rem .65rem; color: #e5eefb; background: #17263d; font-weight: 800; white-space: nowrap; }
-    .buttons button:hover { background: #263b5c; }
-    #fire { border-color: #8b5cf6; background: #6d28d9; color: white; }
-    #fire:hover { background: #7c3aed; }
-    #fire:disabled { opacity: .55; cursor: wait; }
-    .legend { position: absolute; left: 50%; bottom: 1.1rem; z-index: 5; transform: translateX(-50%); width: max-content; max-width: calc(100% - 2rem); display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.6rem; font-size: .9rem; line-height: 1.45; white-space: nowrap; color: #c2d0e1; pointer-events: none; }
-    .legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: .5rem; background: var(--dot); box-shadow: 0 0 8px var(--dot); }
-    .error { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; text-align: center; color: #fecaca; background: #030712; }
-    @media (max-width: 850px) { .workspace { grid-template-columns: 1fr; } aside { grid-template-columns: repeat(2, 1fr); } .stage-card { min-height: 480px; } }
-    @media (max-width: 560px) { header { align-items: center; justify-content: space-between; flex-direction: row; flex-wrap: wrap; gap: .75rem; } aside { grid-template-columns: 1fr; } }
+    html, body { margin: 0; height: 100%; background: #05060a; color: var(--ink); }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    .app { height: 100vh; min-height: 540px; display: grid; grid-template-columns: minmax(0, 1fr) 340px; }
+
+    /* 3D 무대 */
+    .stage { position: relative; min-width: 0; overflow: hidden; }
+    #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+    .title { position: absolute; left: 28px; top: 22px; pointer-events: none; }
+    .title small { color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .04em; }
+    .title h1 { margin: .25rem 0 0; font-size: clamp(1.3rem, 2vw, 1.8rem); font-weight: 900; letter-spacing: -.04em; }
+
+    /* 진행 단계: 빛 쬐기 → 흡수 → 열 → 형광 */
+    .steps { position: absolute; left: 50%; top: 30px; transform: translateX(-50%); display: flex; align-items: center; margin: 0; padding: 0; list-style: none; pointer-events: none; color: rgba(244, 241, 234, .34); font-size: .9rem; font-weight: 800; white-space: nowrap; }
+    .steps li { display: flex; align-items: center; gap: .5rem; transition: color .3s; }
+    .steps li + li::before { content: ""; width: 30px; height: 1px; margin: 0 .7rem; background: currentColor; opacity: .5; }
+    .steps i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: box-shadow .3s; }
+    .steps li.done { color: rgba(244, 241, 234, .72); }
+    .steps li.now { color: var(--c); }
+    .steps li.now i { box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 30%, transparent), 0 0 14px var(--c); }
+    .steps li.miss { color: #ff8f7a; }
+
+    /* 아래 조작 막대 */
+    .dock { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; align-items: center; gap: 22px; padding: 12px 14px 12px 24px; border: 1px solid var(--line); border-radius: 999px; background: rgba(12, 13, 18, .8); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 20px 50px rgba(0, 0, 0, .5); }
+    .pick { display: grid; gap: 9px; }
+    .pick-label { color: var(--dim); font-size: .78rem; font-weight: 700; white-space: nowrap; }
+    .pick-label b { color: var(--ink); }
+    .chips { display: flex; gap: 9px; }
+    .chip { width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .3); transition: transform .15s, box-shadow .15s; }
+    .chip.uv { background: repeating-linear-gradient(135deg, #c9b2ff 0 3px, #6d4bd8 3px 6px); }
+    .chip:hover:not(:disabled) { transform: scale(1.18); }
+    .chip[aria-checked="true"] { box-shadow: 0 0 0 2px #0c0d12, 0 0 0 4px var(--ink), 0 0 16px var(--c); }
+    .chip:disabled { cursor: default; opacity: .4; }
+    .fire { position: relative; flex: none; width: 76px; height: 76px; border: 0; border-radius: 50%; color: #0b0b10; font-size: .95rem; font-weight: 900; background: radial-gradient(circle at 50% 32%, color-mix(in srgb, var(--light) 55%, #fff), color-mix(in srgb, var(--light) 80%, #000)); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), 0 0 28px color-mix(in srgb, var(--light) 55%, transparent); transition: transform .15s; }
+    .fire:hover:not(:disabled) { transform: scale(1.06); }
+    .fire:active:not(:disabled) { transform: scale(.95); }
+    .fire:disabled { cursor: default; }
+    .fire::after { content: ""; position: absolute; inset: -7px; border-radius: 50%; background: conic-gradient(var(--ink) calc(var(--p, 0) * 1turn), transparent 0); -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); }
+    .fire.ready::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--light); animation: ping 1.8s ease-out infinite; }
+    @keyframes ping { from { transform: scale(1); opacity: .8; } to { transform: scale(1.45); opacity: 0; } }
+    .side { display: grid; gap: 9px; justify-items: start; }
+    .seg { display: flex; padding: 3px; border-radius: 999px; background: rgba(255, 255, 255, .07); }
+    .seg button { padding: .42rem .8rem; border: 0; border-radius: 999px; background: none; color: var(--dim); font-size: .8rem; font-weight: 800; white-space: nowrap; }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: #0b0b10; }
+    .pause { display: inline-flex; align-items: center; gap: .45rem; padding: .3rem .2rem; border: 0; background: none; color: var(--dim); font-size: .8rem; font-weight: 800; white-space: nowrap; }
+    .pause:disabled { opacity: .35; cursor: default; }
+    .pause:hover:not(:disabled) { color: var(--ink); }
+    .pause svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* 오른쪽: 전자의 에너지 계단 */
+    .panel { display: flex; flex-direction: column; gap: 16px; min-height: 0; padding: 74px 26px 26px; border-left: 1px solid var(--line); background: linear-gradient(180deg, #0b0c11, #06070b); }
+    .panel h2 { margin: 0; font-size: 1.05rem; font-weight: 900; letter-spacing: -.02em; }
+    .note { min-height: 2.9em; margin: .45rem 0 0; color: var(--dim); font-size: .86rem; line-height: 1.5; word-break: keep-all; transition: color .3s; }
+    #ladder { display: block; width: 100%; flex: 1 1 auto; min-height: 220px; }
+    .grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+    .grid i { aspect-ratio: 1; border-radius: 2px; background: rgba(244, 241, 234, .08); transition: background .25s, box-shadow .25s; }
+    .grid i.red { background: var(--heat); box-shadow: 0 0 6px rgba(255, 106, 77, .55); }
+    .grid i.blue { background: var(--glow); box-shadow: 0 0 6px rgba(90, 169, 255, .55); }
+    .totals { display: flex; justify-content: space-between; margin-top: 12px; }
+    .totals small { display: block; color: var(--dim); font-size: .78rem; font-weight: 700; }
+    .totals strong { font-size: 2rem; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
+    .totals .r strong { color: #ff9c89; }
+    .totals .b { text-align: right; }
+    .totals .b strong { color: #8cc4ff; }
+    /* 왼쪽 아래 모형 읽는 법 */
+    .key { position: absolute; left: 24px; bottom: 22px; display: grid; gap: 10px; padding: 14px 18px 14px 14px; border: 1px solid var(--line); border-radius: 16px; background: rgba(12, 13, 18, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); pointer-events: none; }
+    .key div { display: flex; align-items: center; gap: 12px; font-size: .8rem; color: var(--dim); white-space: nowrap; }
+    .key b { display: block; color: var(--ink); font-size: .86rem; }
+    .key .ball { flex: none; width: 26px; height: 26px; display: grid; place-items: center; }
+    .key .ball::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #c9ced6 0, #6b717b 38%, #2c3037 100%); box-shadow: 0 2px 6px rgba(0, 0, 0, .6); }
+    /* 화면 속 구름처럼 흩어진 작은 점들 (가운데를 비우면 원자 모형처럼 보여서 채움) */
+    .key .cloud { flex: none; width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 22% 30%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 48% 18%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 74% 32%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 36% 52%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 62% 48%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 84% 60%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 18% 68%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 46% 78%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 70% 82%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 54% 34%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 30% 40%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle at 78% 46%, rgba(196,206,226,.95) 0 1.3px, transparent 1.9px), radial-gradient(circle, rgba(143, 155, 179, .45) 0, rgba(143, 155, 179, .18) 55%, transparent 72%); }
+    @media (max-width: 1500px) { .key { bottom: 118px; } }
+    @media (max-width: 640px) { .key { display: none; } }
+    .error { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; text-align: center; color: #fecaca; }
+
+    @media (max-width: 1150px) { .steps { left: 28px; top: 92px; transform: none; } }
+    @media (max-width: 900px) {
+      .app { height: auto; grid-template-columns: 1fr; grid-template-rows: minmax(520px, 70vh) auto; }
+      .panel { padding-top: 24px; border-left: 0; border-top: 1px solid var(--line); }
+      #ladder { height: 260px; flex: none; }
+    }
+    @media (max-width: 640px) {
+      .dock { left: 12px; right: 12px; transform: none; flex-wrap: wrap; justify-content: center; gap: 14px; border-radius: 22px; padding: 14px; }
+      .steps { font-size: .78rem; } .steps li + li::before { width: 14px; margin: 0 .4rem; }
+    }
   </style>
 </head>
 <body>
   <div class="app">
-    <header>
-      <div><div class="eyebrow">KAIST · OLED 가상실험실</div><h1>형광빛의 원리</h1></div>
-    </header>
-
-    <main class="workspace">
-      <section class="stage-card" aria-label="삼차원 분자 관찰 화면">
-        <canvas id="scene"></canvas>
-        <span class="lamp-label" hidden>램프</span>
-        <div class="legend"><span style="--dot:#b8bfcc">회색: 평소 전자 분포 (π 궤도)</span><span style="--dot:#b67cff">보라 구름: 흡수 뒤 전자 분포</span><span style="--dot:#ff475e">붉은 빛: 열로 빠진 에너지</span><span style="--dot:#38bdf8">푸른 빛: 형광으로 나온 빛</span></div>
-        <div class="stage-message"><div class="status-box" aria-live="polite"><span class="status-step" id="status-step" hidden></span><strong id="status-title">형광 물질에 빛을 쬐어보세요</strong></div></div>
-      </section>
-      <aside>
-        <section class="control-card">
-          <div class="row"><label for="wavelength">형광 물질에 쬐어준 빛의 파장</label><output id="wave-value" for="wavelength">365 nm</output></div>
-          <div class="spectrum"><input id="wavelength" type="range" min="0" max="6" value="0" step="1" aria-label="빛의 색상, 자외선부터 빨간빛까지 7단계"></div>
-          <p class="note"><span class="swatch" id="swatch"></span>선택한 빛: <span id="light-name">자외선</span></p>
-        </section>
-        <section class="control-card">
-          <div class="row"><label for="speed">시뮬레이션 재생 속도</label></div>
-          <input id="speed" type="range" min="0" max="2" value="1" step="1" aria-valuetext="보통">
-          <div class="scale"><span>느리게</span><span>보통</span><span>빠르게</span></div>
-          <div class="buttons"><button id="fire" type="button">빛 쬐어주기</button><button id="pause" type="button" aria-pressed="false">일시정지</button></div>
-        </section>
-        <section class="control-card">
-          <div class="energy-title"><h2>흡수한 빛에너지는 어디로?</h2><span id="run-label">실험 전</span></div>
-          <div class="energy-grid" id="energy-grid" aria-label="에너지 100칸 결과"></div>
-          <div class="totals"><div class="red-total"><small>열로 빠진 에너지</small><strong id="heat-count">—</strong></div><div class="blue-total"><small>형광으로 나온 에너지</small><strong id="light-count">—</strong></div></div>
-        </section>
-      </aside>
-    </main>
+    <section class="stage" aria-label="삼차원 분자 관찰 화면">
+      <canvas id="scene"></canvas>
+      <div class="title"><small>OLED 가상실험실</small><h1>형광빛의 원리</h1></div>
+      <ol class="steps" id="steps" aria-live="polite">
+        <li style="--c:var(--light)"><i></i>빛 쬐기</li>
+        <li style="--c:var(--uv)"><i></i><span>흡수</span></li>
+        <li style="--c:var(--heat)"><i></i>열로 조금 잃음</li>
+        <li style="--c:var(--glow)"><i></i>형광</li>
+      </ol>
+      <div class="key" aria-label="모형 읽는 법">
+        <div><span class="ball"></span><span><b>공</b>원자가 있는 자리</span></div>
+        <div><span class="cloud"></span><span><b>구름</b>고리 전체가 함께 쓰는 전자</span></div>
+      </div>
+      <div class="dock">
+        <div class="pick">
+          <div class="pick-label">쬐어줄 빛 <b id="light-name">자외선 365 nm</b></div>
+          <div class="chips" id="chips" role="radiogroup" aria-label="빛의 색깔"></div>
+        </div>
+        <button class="fire ready" id="fire" type="button">빛 쬐기</button>
+        <div class="side">
+          <div class="seg" id="speed" aria-label="재생 속도">
+            <button type="button" data-rate=".25" aria-pressed="false">느리게</button>
+            <button type="button" data-rate="1" aria-pressed="true">보통</button>
+            <button type="button" data-rate="2" aria-pressed="false">빠르게</button>
+          </div>
+          <button class="pause" id="pause" type="button" disabled></button>
+        </div>
+      </div>
+    </section>
+    <aside class="panel">
+      <div>
+        <h2>전자의 에너지 계단</h2>
+        <p class="note" id="note">빛을 쬐면 전자가 어떻게 움직이는지 지켜보세요</p>
+      </div>
+      <canvas id="ladder" aria-hidden="true"></canvas>
+      <div>
+        <div class="grid" id="grid" aria-label="에너지 100칸 결과"></div>
+        <div class="totals">
+          <div class="r"><small>열로 빠진 에너지</small><strong id="heat-count">—</strong></div>
+          <div class="b"><small>형광으로 나온 에너지</small><strong id="light-count">—</strong></div>
+        </div>
+      </div>
+    </aside>
   </div>
 
-  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script>
   <script type="module">
-    const canvas = document.querySelector('#scene');
-    const ui = Object.fromEntries(['wavelength','wave-value','light-name','swatch','speed','fire','pause','status-title','status-step','energy-grid','run-label','heat-count','light-count'].map(id => [id, document.getElementById(id)]));
-    const wavelengths = [365, 405, 450, 520, 580, 605, 650];
-    const lightNames = ['자외선','보라빛','파란빛','초록빛','노란빛','주황빛','빨간빛'];
-    const playbackRates = [.25, 1, 2];
-    const playbackRate = () => playbackRates[Number(ui.speed.value)];
-    const IMPACT_TIME = 1;
-    const ABSORB_MIN = 355, ABSORB_MAX = 375;
-    const photonEv = nm => 1240 / nm;
+    const $ = id => document.getElementById(id);
+    const canvas = $('scene'), ladder = $('ladder'), lctx = ladder.getContext('2d');
+    const LIGHTS = [[365, '자외선'], [405, '보라빛'], [450, '파란빛'], [520, '초록빛'], [580, '노란빛'], [605, '주황빛'], [650, '빨간빛']];
+    const IMPACT = 1, ABSORB_MIN = 355, ABSORB_MAX = 375;
     const absorbs = nm => nm >= ABSORB_MIN && nm <= ABSORB_MAX;
-    const splitEnergy = nm => absorbs(nm) ? { heat: photonEv(nm) * .25, light: photonEv(nm) * .75, pass: 0 } : { heat: 0, light: 0, pass: photonEv(nm) };
-    // 최소 자체 점검: 두 파장 모두 에너지가 보존되어야 한다.
-    for (const nm of [365, 520]) { const e = splitEnergy(nm); console.assert(Math.abs(e.heat + e.light + e.pass - photonEv(nm)) < 1e-10, '에너지 수지 오류'); }
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const smooth = (a, b, t) => { const x = clamp((t - a) / (b - a), 0, 1); return x * x * (3 - 2 * x); };
+    const lerp = (a, b, k) => a + (b - a) * k;
+    // 에너지 수지 점검: 흡수한 빛은 열 25 + 형광 75로 나뉜다.
+    console.assert(25 + 75 === 100, '에너지 수지 오류');
 
     function wavelengthColor(nm) {
       if (nm < 380) return '#a78bfa';
@@ -132,253 +167,394 @@
       const hex = v => Math.round(Math.max(.12, v) * 255).toString(16).padStart(2, '0');
       return `#${hex(r)}${hex(g)}${hex(b)}`;
     }
-    function updateWavelength() {
-      const index = Number(ui.wavelength.value), nm = wavelengths[index];
-      ui['wave-value'].textContent = `${nm} nm`;
-      ui['light-name'].textContent = lightNames[index];
-      ui.swatch.style.setProperty('--light-color', wavelengthColor(nm));
-      if (spotGlow) {
-        const color=wavelengthColor(nm);
-        for(const plane of [...beamPlanes,...passPlanes]) plane.material.uniforms.uColor.value.set(color);
-        spotGlow.material.color.set(color); spotLight.color.set(color);
-      }
-    }
 
-    let THREE, OrbitControls, renderer, scene, camera, controls, molecule, cloud, cloudMaterial, beamPlanes = [], passPlanes = [], spotGlow, spotLight, heatGlow, heatWaves = [], emissionGlow, emissionWaves = [], flash, burstLight, excitedColor, bonds = [], labelPoint;
-    let phase = 'idle', elapsed = 0, paused = false, lastTime = 0, shotNm = 365, statusKey = '', lastVibration = 0;
-    const stageMsgEl = document.querySelector('.stage-message');
-    const lampLabel = document.querySelector('.lamp-label');
-    const setStatus = (key, title) => {
-      if (statusKey === key) return;
-      statusKey = key;
-      if (!title || key === 'done') {
-        if (stageMsgEl) stageMsgEl.classList.add('hidden');
-        return;
-      }
-      if (stageMsgEl) stageMsgEl.classList.remove('hidden');
-      ui['status-title'].textContent = title;
-      const step = { firing: 1, excited: 2, passed: 2, heat: 3, fluorescence: 4 }[key];
-      ui['status-step'].hidden = !step;
-      if (step) ui['status-step'].textContent = step;
-    };
-    const cells = Array.from({length:100}, () => ui['energy-grid'].appendChild(document.createElement('i')));
-    let shownHeat = -1, shownLight = -1;
-    // 앞 25칸은 열(빨강), 뒤 75칸은 형광(파랑)으로 시간에 맞춰 차례로 채운다.
-    function showEnergy(heat, light, label) {
-      ui['run-label'].textContent = label;
-      if (heat === shownHeat && light === shownLight) return;
-      shownHeat = heat; shownLight = light;
-      cells.forEach((cell, i) => cell.className = i < heat ? 'red' : i >= 25 && i < 25 + light ? 'blue' : '');
-      ui['heat-count'].textContent = heat < 0 ? '—' : `${heat}%`;
-      ui['light-count'].textContent = light < 0 ? '—' : `${light}%`;
-    }
-    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-    const smooth = (a, b, t) => { const x = clamp((t-a)/(b-a), 0, 1); return x*x*(3-2*x); };
+    // ---------- 상태 ----------
+    let phase = 'idle', t = 0, paused = false, rate = 1, pick = 0, shotNm = 365;
+    const endTime = () => absorbs(shotNm) ? 5.1 : 1.9;
 
-    function glowTexture() {
-      const c = document.createElement('canvas'); c.width = c.height = 128;
-      const ctx = c.getContext('2d'), grad = ctx.createRadialGradient(64,64,0,64,64,64);
-      grad.addColorStop(0, '#fff'); grad.addColorStop(.13, '#ffffffdd'); grad.addColorStop(.35, '#ffffff88'); grad.addColorStop(1, '#ffffff00');
-      ctx.fillStyle = grad; ctx.fillRect(0,0,128,128);
-      return new THREE.CanvasTexture(c);
+    // ---------- 조작 막대 ----------
+    const chips = LIGHTS.map(([nm, name], i) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip' + (i ? '' : ' uv'); b.role = 'radio';
+      b.style.setProperty('--c', wavelengthColor(nm)); b.title = `${name} ${nm} nm`; b.setAttribute('aria-label', b.title);
+      b.addEventListener('click', () => selectLight(i));
+      return $('chips').appendChild(b);
+    });
+    function selectLight(i) {
+      pick = i;
+      const [nm, name] = LIGHTS[i];
+      chips.forEach((c, k) => c.setAttribute('aria-checked', String(k === i)));
+      $('light-name').textContent = `${name} ${nm} nm`;
+      document.documentElement.style.setProperty('--light', wavelengthColor(nm));
+      if (lightCol) setLightColor(wavelengthColor(nm));
+      if (phase === 'done') reset();
     }
-    function atom(x, y, z, radius, color, labelMaterial) {
-      const mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 32, 24), new THREE.MeshStandardMaterial({color,metalness:.12,roughness:.4}));
-      mesh.position.set(x,y,z); molecule.add(mesh);
-      const label = new THREE.Sprite(labelMaterial);
-      label.position.copy(mesh.position); label.scale.setScalar(radius*1.45); label.renderOrder=10; molecule.add(label);
-    }
-    function atomLabel(symbol, color) {
-      const canvas=document.createElement('canvas'); canvas.width=canvas.height=128;
-      const ctx=canvas.getContext('2d'); ctx.fillStyle=color; ctx.font='bold 86px system-ui'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(symbol,64,66);
-      const texture=new THREE.CanvasTexture(canvas); texture.colorSpace=THREE.SRGBColorSpace;
-      return new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false,depthWrite:false});
-    }
-    function bond(a, b, radius, color) {
-      const direction = new THREE.Vector3().subVectors(b,a), mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius,radius,direction.length(),16), new THREE.MeshStandardMaterial({ color, metalness: .3, roughness: .42 }));
-      mesh.position.copy(a).add(b).multiplyScalar(.5); mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), direction.normalize()); molecule.add(mesh);
-      mesh.userData.basePositions=mesh.geometry.attributes.position.array.slice(); bonds.push(mesh);
-    }
-    function createMolecule() {
-      molecule = new THREE.Group(); scene.add(molecule);
-      const carbons = [], hydrogens = [];
-      for (let i=0; i<6; i++) {
-        const angle = i * Math.PI / 3, x = Math.cos(angle), y = Math.sin(angle);
-        carbons.push(new THREE.Vector3(x*1.32,y*1.32,0));
-        hydrogens.push(new THREE.Vector3(x*2.12,y*2.12,0));
-      }
-      const carbonLabel=atomLabel('C','#ffffff'), hydrogenLabel=atomLabel('H','#17202b');
-      for (let i=0; i<6; i++) {
-        atom(...carbons[i].toArray(), .23, '#30343b', carbonLabel);
-        atom(...hydrogens[i].toArray(), .13, '#f4f5f7', hydrogenLabel);
-        bond(carbons[i],carbons[(i+1)%6],.065,'#647385');
-        bond(carbons[i],hydrogens[i],.047,'#748395');
-      }
-      const wire = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(carbons), new THREE.LineBasicMaterial({color:0xb0bac6,transparent:true,opacity:.2}));
-      molecule.add(wire);
-    }
-    function createCloud() {
-      const count = 6500, positions = new Float32Array(count*3), seeds = new Float32Array(count);
-      // 점은 개별 전자가 아니라 고리 위아래 π 전자 분포의 표본이다.
-      for (let i=0; i<count; i++) {
-        const a = Math.random()*Math.PI*2, r = 1.08+(Math.random()+Math.random()+Math.random()-1.5)*.45;
-        positions[i*3] = Math.cos(a)*r;
-        positions[i*3+1] = Math.sin(a)*r;
-        positions[i*3+2] = (Math.random()<.5 ? -1 : 1) * (.28 + Math.random()*.42);
-        seeds[i] = Math.random();
-      }
-      const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position',new THREE.BufferAttribute(positions,3)); geometry.setAttribute('aSeed',new THREE.BufferAttribute(seeds,1));
-      excitedColor=new THREE.Color('#b67cff');
-      cloudMaterial = new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.NormalBlending, uniforms:{uTime:{value:0},uExpansion:{value:0},uColor:{value:new THREE.Color('#b8bfcc')},uOpacity:{value:.3}}, vertexShader:`attribute float aSeed; uniform float uTime; uniform float uExpansion; varying float vAlpha; void main(){ vec3 p=position; float pulse=1.0+0.035*sin(uTime*2.5+aSeed*18.0); p.xy*=mix(0.93,1.62,uExpansion)*pulse; p.z*=mix(0.85,1.55,uExpansion)*pulse; vec4 mv=modelViewMatrix*vec4(p,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=min(26.0,(3.0+3.0*aSeed)*42.0/-mv.z); vAlpha=0.35+0.65*aSeed; }`, fragmentShader:`uniform vec3 uColor; uniform float uOpacity; varying float vAlpha; void main(){ float d=length(gl_PointCoord-0.5)*2.0; float alpha=pow(max(0.0,1.0-d),2.2)*vAlpha*uOpacity; gl_FragColor=vec4(uColor,alpha); }`});
-      cloud = new THREE.Points(geometry,cloudMaterial); scene.add(cloud);
-    }
-    function createLauncher() {
-      const group = new THREE.Group(); group.position.set(-4.5,0,0); scene.add(group);
-      const metal = new THREE.MeshStandardMaterial({color:0x6f829e,metalness:.86,roughness:.25});
-      const body = new THREE.Mesh(new THREE.CylinderGeometry(.24,.31,1.05,24),metal); body.rotation.z=-Math.PI/2; group.add(body);
-      const barrel = new THREE.Mesh(new THREE.CylinderGeometry(.17,.17,.45,24),new THREE.MeshStandardMaterial({color:0x172438,metalness:.8,roughness:.3})); barrel.rotation.z=-Math.PI/2; barrel.position.x=.65; group.add(barrel);
-      const rim = new THREE.Mesh(new THREE.TorusGeometry(.18,.035,8,32),new THREE.MeshBasicMaterial({color:0xa78bfa})); rim.rotation.y=Math.PI/2; rim.position.x=.9; group.add(rim);
-      const conePlane = (start,end,near,far,tilt) => {
-        const material=new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,
-          uniforms:{uColor:{value:new THREE.Color('#a78bfa')},uOpacity:{value:0},uNear:{value:near},uFar:{value:far}},
-          vertexShader:`varying vec2 vUv; void main(){vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
-          fragmentShader:`varying vec2 vUv; uniform vec3 uColor; uniform float uOpacity,uNear,uFar; void main(){float y=abs(vUv.y-0.5)*4.0; float radius=mix(uNear,uFar,vUv.x); float soft=1.0-smoothstep(radius*0.35,radius,y); float fade=smoothstep(0.0,0.08,vUv.x)*(1.0-smoothstep(0.68,1.0,vUv.x)); gl_FragColor=vec4(uColor,soft*fade*uOpacity);}`});
-        const plane=new THREE.Mesh(new THREE.PlaneGeometry(end-start,4),material);
-        plane.position.x=(start+end)/2; plane.rotation.x=tilt; scene.add(plane); return plane;
-      };
-      beamPlanes.push(conePlane(-3.6,.15,.15,1.12,0));
-      passPlanes.push(conePlane(-3.6,4.3,.15,1.85,0));
-      spotGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:0xa78bfa,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
-      spotGlow.scale.set(3.4,3.4,1); scene.add(spotGlow);
-      spotLight=new THREE.SpotLight(0xa78bfa,0,8,Math.PI/5,.9); spotLight.position.set(-4,0,0); spotLight.target.position.set(0,0,0); scene.add(spotLight,spotLight.target);
-    }
-    function createEffects() {
-      heatGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:0xff5b45,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(heatGlow);
-      for(let i=0;i<2;i++) {
-        const wave=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:i===0?0xff533f:0xff8a45,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
-        scene.add(wave); heatWaves.push(wave);
-      }
-      emissionGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:0x38bdf8,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(emissionGlow);
-      for(let i=0;i<3;i++) {
-        const wave=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:i===0?0xbcecff:0x38bdf8,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
-        scene.add(wave); emissionWaves.push(wave);
-      }
-      flash = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture(),color:0xbcecff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false})); flash.scale.set(4,4,1); scene.add(flash);
-      burstLight=new THREE.PointLight(0x86dfff,0,8); scene.add(burstLight);
+    const PAUSE_ICON = '<svg viewBox="0 0 12 12"><rect x="1" y="1" width="3.5" height="10"/><rect x="7.5" y="1" width="3.5" height="10"/></svg>일시정지';
+    const PLAY_ICON = '<svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg>계속 재생';
+    $('pause').innerHTML = PAUSE_ICON;
+    $('pause').addEventListener('click', () => { paused = !paused; $('pause').innerHTML = paused ? PLAY_ICON : PAUSE_ICON; });
+    $('speed').addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      rate = Number(b.dataset.rate);
+      for (const x of $('speed').children) x.setAttribute('aria-pressed', String(x === b));
+    });
+    $('fire').addEventListener('click', () => {
+      shotNm = LIGHTS[pick][0]; t = 0; phase = 'running'; paused = false;
+      $('pause').innerHTML = PAUSE_ICON; $('pause').disabled = false;
+      $('fire').disabled = true; $('fire').classList.remove('ready'); $('fire').textContent = '진행 중';
+      chips.forEach(c => c.disabled = true);
+      stepKey = '';
+    });
+    function finish() {
+      phase = 'done'; t = endTime();
+      $('fire').disabled = false; $('fire').textContent = '다시'; $('pause').disabled = true;
+      chips.forEach(c => c.disabled = false);
     }
     function reset() {
-      phase='idle'; elapsed=0; ui.fire.disabled=false; ui.wavelength.disabled=false;
-      setStatus('idle','형광 물질에 빛을 쬐어보세요');
-      updateScene(0);
+      phase = 'idle'; t = 0; stepKey = '';
+      $('fire').disabled = false; $('fire').classList.add('ready'); $('fire').textContent = '빛 쬐기'; $('fire').style.setProperty('--p', 0);
     }
-    function updateScene(dt) {
-      const t=elapsed, hit=absorbs(shotNm), active=phase==='running';
-      if (phase === 'idle') showEnergy(-1, -1, '실험 전');
-      else if (!hit) showEnergy(0, 0, t < 1.85 ? '빛이 지나가는 중' : '흡수되지 않음');
-      else showEnergy(Math.round(25 * clamp((t-1.58)/1.42, 0, 1)), Math.round(75 * clamp((t-3.02)/1.15, 0, 1)), t < 4.5 ? '나누어지는 중' : '실험 끝');
-      const lightEnd=hit?IMPACT_TIME:1.7;
-      const illumination=active&&t<lightEnd ? smooth(0,.16,t)*(1-smooth(lightEnd-.2,lightEnd,t)) : 0;
-      for(const plane of beamPlanes) plane.material.uniforms.uOpacity.value=hit?illumination*.24:0;
-      for(const plane of passPlanes) plane.material.uniforms.uOpacity.value=hit?0:illumination*.24;
-      spotGlow.material.opacity=illumination*.35;
-      spotLight.intensity=illumination*55;
-      const expansion=active && hit ? smooth(IMPACT_TIME,IMPACT_TIME+.18,t)*(1-.65*smooth(1.6,1.95,t))*(1-smooth(2.8,3.16,t)) : 0;
-      cloudMaterial.uniforms.uExpansion.value=expansion;
-      cloudMaterial.uniforms.uColor.value.set('#b8bfcc').lerp(excitedColor,expansion);
-      const cloudFade=active&&hit ? 1-.8*smooth(1.55,1.85,t)*(1-smooth(2.72,2.98,t))-.88*smooth(2.98,3.12,t)*(1-smooth(4.08,4.4,t)) : 1;
-      cloudMaterial.uniforms.uOpacity.value=(.3+expansion*.2)*cloudFade;
-      const vibration=active && hit ? smooth(1.45,1.75,t)*(1-smooth(2.52,2.85,t)) : 0;
-      molecule.position.set(Math.sin(t*67)*.035*vibration,Math.cos(t*82)*.035*vibration,Math.sin(t*91)*.035*vibration);
-      molecule.rotation.z=Math.sin(t*48)*.018*vibration;
-      if(vibration || lastVibration) {
-        for(const bondMesh of bonds) {
-          const attr=bondMesh.geometry.attributes.position, base=bondMesh.userData.basePositions;
-          for(let i=0;i<attr.count;i++) {
-            const j=i*3, wave=Math.sin(t*75+base[j+1]*7+i*.4)*.025*vibration;
-            attr.setXYZ(i,base[j]+wave,base[j+1],base[j+2]+wave);
-          }
-          attr.needsUpdate=true;
+
+    // ---------- 진행 단계 · 설명 · 100칸 ----------
+    const stepEls = [...$('steps').children];
+    const NOTES = {
+      idle: '빛을 쬐면 전자가 어떻게 움직이는지 지켜보세요',
+      firing: '빛이 분자를 향해 날아가는 중이에요',
+      excited: '전자가 빛에너지를 받아 위층으로 뛰어올랐어요',
+      heat: '분자가 떨면서 에너지를 조금 열로 잃어요',
+      fluor: '남은 에너지를 빛으로 내보내며 바닥으로 내려와요',
+      done: '받은 에너지 100 중 25는 열, 75는 형광빛이 되었어요',
+      passed: '이 분자는 자외선만 흡수해요. 이 빛은 그냥 지나가요'
+    };
+    let stepKey = '';
+    function setStep(key) {
+      if (key === stepKey) return;
+      stepKey = key;
+      const at = { idle: -1, firing: 0, excited: 1, heat: 2, fluor: 3, done: 4, passed: 2 }[key];
+      stepEls.forEach((li, i) => { li.className = i < at ? 'done' : i === at ? 'now' : ''; });
+      stepEls[1].querySelector('span').textContent = key === 'passed' ? '흡수 안 됨' : '흡수';
+      if (key === 'passed') { stepEls[1].className = 'miss'; stepEls[2].className = stepEls[3].className = ''; }
+      $('note').textContent = NOTES[key];
+      $('note').style.color = { excited: 'var(--uv)', heat: '#ff9c89', fluor: '#8cc4ff', passed: '#ff9c89' }[key] || '';
+    }
+    const cells = Array.from({ length: 100 }, () => $('grid').appendChild(document.createElement('i')));
+    let shown = '';
+    function showEnergy(heat, light) {
+      if (shown === `${heat},${light}`) return;
+      shown = `${heat},${light}`;
+      cells.forEach((c, i) => c.className = i < heat ? 'red' : i >= 25 && i < 25 + light ? 'blue' : '');
+      $('heat-count').textContent = heat < 0 ? '—' : `${heat}%`;
+      $('light-count').textContent = light < 0 ? '—' : `${light}%`;
+    }
+
+    // ---------- 에너지 계단 그림 ----------
+    // 보라 화살표(흡수) 길이 = 100, 붉은 계단(열) = 25, 파란 화살표(형광) = 75 로 비율을 맞춘다.
+    function arrowHead(x, y, dir, color) {
+      lctx.fillStyle = color; lctx.beginPath();
+      lctx.moveTo(x, y); lctx.lineTo(x - 6, y - 10 * dir); lctx.lineTo(x + 6, y - 10 * dir); lctx.closePath(); lctx.fill();
+    }
+    function drawLadder(T, hit, on) {
+      const dpr = Math.min(devicePixelRatio, 2), w = ladder.clientWidth, h = ladder.clientHeight;
+      if (ladder.width !== Math.round(w * dpr) || ladder.height !== Math.round(h * dpr)) { ladder.width = w * dpr; ladder.height = h * dpr; }
+      lctx.setTransform(dpr, 0, 0, dpr, 0, 0); lctx.clearRect(0, 0, w, h);
+      const left = 74, right = w - 6, xc = (left + right) / 2;
+      const y0 = h - 22, L = h - 54, top = y0 - L, base = y0 - .75 * L, g = .25 * L / 3;
+      const level = (y, strong) => { lctx.strokeStyle = strong ? 'rgba(244,241,234,.8)' : 'rgba(244,241,234,.22)'; lctx.lineWidth = strong ? 2 : 1; lctx.beginPath(); lctx.moveTo(left, y); lctx.lineTo(right, y); lctx.stroke(); };
+      level(y0, true); level(y0 - g); level(y0 - 2 * g);
+      level(base, true); level(base - g); level(base - 2 * g); level(top);
+      lctx.font = '700 12px Pretendard, "Noto Sans KR", sans-serif'; lctx.fillStyle = '#9d988d'; lctx.textBaseline = 'middle';
+      lctx.fillText('바닥 상태', 0, y0); lctx.fillText('들뜬 상태', 0, base);
+
+      let ey = y0, ec = '#f4f1ea';
+      if (on && hit) {
+        const up = smooth(1, 1.32, T);
+        if (up > 0) {
+          const x = xc - 34, ya = lerp(y0, top, up);
+          lctx.strokeStyle = '#b085ff'; lctx.lineWidth = 3; lctx.beginPath(); lctx.moveTo(x, y0); lctx.lineTo(x, ya + 8); lctx.stroke();
+          arrowHead(x, ya, -1, '#b085ff');
+          lctx.fillStyle = '#b085ff'; lctx.textAlign = 'right'; lctx.fillText('흡수', x - 10, lerp(y0, top, .5)); lctx.textAlign = 'left';
         }
+        for (let k = 0; k < 3; k++) {
+          const s = smooth(1.58 + k * .48 + .28, 1.58 + k * .48 + .48, T);
+          if (s <= 0) continue;
+          const y = top + g * (k + .5), x0 = xc + 8, len = 44 * s;
+          lctx.strokeStyle = `rgba(255,106,77,${.4 + .6 * s})`; lctx.lineWidth = 2; lctx.beginPath();
+          for (let d = 0; d <= len; d += 2) lctx[d ? 'lineTo' : 'moveTo'](x0 + d, y + Math.sin(d / 3.2) * 3);
+          lctx.stroke();
+        }
+        if (T > 1.9) { lctx.fillStyle = '#ff9c89'; lctx.fillText('열', xc + 58, top + g * 1.5); }
+        const down = smooth(3.02, 3.4, T);
+        if (down > 0) {
+          const x = xc + 34, yb = lerp(base, y0, down);
+          lctx.strokeStyle = '#5aa9ff'; lctx.lineWidth = 3; lctx.beginPath();
+          for (let y = base; y <= yb - 8; y += 2) lctx[y === base ? 'moveTo' : 'lineTo'](x + Math.sin((y - base) / 5) * 5, y);
+          lctx.stroke(); arrowHead(x, yb, 1, '#5aa9ff');
+          lctx.fillStyle = '#8cc4ff'; lctx.fillText('형광', x + 12, lerp(base, y0, .5));
+        }
+        // 전자 위치: 위층으로 뛰어오름 → 계단 3칸 내려옴 → 바닥으로 떨어짐
+        if (T < 1.58) ey = lerp(y0, top, up);
+        else if (T < 3.02) { const k = clamp((T - 1.58) / 1.44 * 3, 0, 3), i = Math.min(2, Math.floor(k)); ey = top + g * (i + smooth(.55, 1, k - i)); }
+        else ey = lerp(base, y0, down);
+        ec = T < 1.58 ? '#c9a8ff' : T < 3.02 ? '#ff9c89' : T < 4.4 ? '#8cc4ff' : '#f4f1ea';
+      } else if (on) {
+        // 흡수되지 않는 빛: 계단과 상관없이 옆으로 지나감
+        const p = clamp(T / 1.7, 0, 1), col = wavelengthColor(shotNm), xa = lerp(left - 40, right, p), y = (y0 + base) / 2;
+        lctx.strokeStyle = col; lctx.lineWidth = 2.5; lctx.globalAlpha = Math.sin(p * Math.PI); lctx.beginPath();
+        for (let d = 0; d <= 60; d += 2) lctx[d ? 'lineTo' : 'moveTo'](xa + d - 60, y + Math.sin((xa + d) / 4) * 5);
+        lctx.stroke(); lctx.globalAlpha = 1;
       }
-      lastVibration=vibration;
-      heatGlow.material.opacity=vibration*(.3+.06*Math.sin(t*28));
-      heatGlow.scale.setScalar(3.3+vibration*1.2);
-      for(let i=0;i<heatWaves.length;i++) {
-        const waveAge=active&&hit ? clamp((t-1.58-i*.32)/1.1,0,1) : 0;
-        heatWaves[i].scale.setScalar(1.8+waveAge*7.4);
-        heatWaves[i].material.opacity=waveAge>0&&waveAge<1 ? Math.sin(waveAge*Math.PI)*.46 : 0;
-      }
-      const burst=active&&hit ? clamp((t-3.02)/1.15,0,1) : 0;
-      for(let i=0;i<emissionWaves.length;i++) {
-        const waveAge=active&&hit ? clamp((t-3.02-i*.14)/1.1,0,1) : 0;
-        emissionWaves[i].scale.setScalar(1.6+waveAge*8);
-        emissionWaves[i].material.opacity=waveAge>0&&waveAge<1 ? Math.sin(waveAge*Math.PI)*.25 : 0;
-      }
-      emissionGlow.material.opacity=burst>0 ? Math.sin(burst*Math.PI)*.42 : 0;
-      emissionGlow.scale.setScalar(3+burst*8);
-      flash.material.opacity=burst>0 ? Math.pow(1-burst,5) : 0;
-      flash.scale.setScalar(2+burst*7);
-      burstLight.intensity=burst>0 ? 40*Math.pow(1-burst,3) : 0;
-      if(phase==='idle') return;
-      if(t<IMPACT_TIME) setStatus('firing','빛이 형광 물질에 닿는 중');
-      else if(!hit) {
-        if(t<1.85) setStatus('passed','이 빛은 흡수되지 않았어요');
-        else setStatus('done','');
-      }
-      else if(t<1.55) setStatus('excited','빛을 흡수했어요');
-      else if(t<3.02) setStatus('heat','분자가 떨며 열을 내요');
-      else if(t<4.5) setStatus('fluorescence','형광빛이 퍼져 나와요');
-      else setStatus('done','');
-      if(t>(hit?4.5:1.85)) { phase='done'; ui.fire.disabled=false; ui.wavelength.disabled=false; }
+      const glow = lctx.createRadialGradient(xc, ey, 0, xc, ey, 18);
+      glow.addColorStop(0, ec); glow.addColorStop(1, 'rgba(0,0,0,0)');
+      lctx.fillStyle = glow; lctx.beginPath(); lctx.arc(xc, ey, 18, 0, Math.PI * 2); lctx.fill();
+      lctx.fillStyle = '#fff'; lctx.beginPath(); lctx.arc(xc, ey, 5, 0, Math.PI * 2); lctx.fill();
     }
-    function placeLabel(element, x, y, z=0) {
-      if (element.hidden) return;
-      labelPoint.set(x,y,z).project(camera);
-      element.style.visibility = Math.abs(labelPoint.x)<=1 && Math.abs(labelPoint.y)<=1 && labelPoint.z>=-1 && labelPoint.z<=1 ? 'visible' : 'hidden';
-      element.style.left = `${(labelPoint.x+1)*canvas.clientWidth/2}px`;
-      element.style.top = `${(1-labelPoint.y)*canvas.clientHeight/2}px`;
+
+    // ---------- 3D 장면 ----------
+    let THREE, renderer, scene, camera, controls, composer, bloom, molecule, cloudMat, excited, lightCol, lensMat, spot, spotGlow, heatGlow, emissionGlow, flash, burstLight;
+    const atoms = [], bonds = [], beamPlanes = [], passPlanes = [], heatWaves = [], emissionWaves = [];
+    let dust, heatSparks, photons;
+
+    function setLightColor(hex) {
+      lightCol.set(hex);
+      for (const p of [...beamPlanes, ...passPlanes]) p.material.uniforms.uColor.value.set(hex);
+      dust.pts.material.uniforms.uColor.value.set(hex);
+      spotGlow.material.color.set(hex); spot.color.set(hex);
     }
-    function positionLabels() {
-      camera.updateMatrixWorld();
-      placeLabel(lampLabel,-4.15,.65);
+    function glowTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 128;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+      gr.addColorStop(0, '#fff'); gr.addColorStop(.13, '#ffffffdd'); gr.addColorStop(.35, '#ffffff77'); gr.addColorStop(1, '#ffffff00');
+      x.fillStyle = gr; x.fillRect(0, 0, 128, 128);
+      return new THREE.CanvasTexture(c);
     }
-    function tick(now) {
+    const sprite = (color, scale = 1) => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); s.scale.setScalar(scale); scene.add(s); return s; };
+    let glowTex;
+
+    function backgroundTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 512;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(256, 230, 0, 256, 256, 360);
+      gr.addColorStop(0, '#191c24'); gr.addColorStop(.55, '#0a0b10'); gr.addColorStop(1, '#040507');
+      x.fillStyle = gr; x.fillRect(0, 0, 512, 512);
+      const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; return tex;
+    }
+
+    // 공-막대 분자 모형: 탄소(짙은 회색) 6개, 수소(흰색) 6개, 이중 결합은 막대 두 개
+    function createMolecule() {
+      molecule = new THREE.Group(); scene.add(molecule);
+      const sphere = r => new THREE.SphereGeometry(r, 48, 32);
+      const addAtom = (p, r, color) => {
+        const mat = new THREE.MeshPhysicalMaterial({ color, roughness: .3, metalness: 0, clearcoat: 1, clearcoatRoughness: .1, envMapIntensity: .6 });
+        const mesh = new THREE.Mesh(sphere(r), mat); mesh.position.copy(p); molecule.add(mesh);
+        atoms.push({ mesh, mat, base: p.clone(), seed: atoms.length * 1.7 });
+      };
+      for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; addAtom(new THREE.Vector3(Math.cos(a) * 1.4, Math.sin(a) * 1.4, 0), .3, '#4a505a'); }
+      for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; addAtom(new THREE.Vector3(Math.cos(a) * 2.45, Math.sin(a) * 2.45, 0), .2, '#dfe3ea'); }
+      const bondMat = new THREE.MeshPhysicalMaterial({ color: '#a3a9b3', roughness: .35, metalness: .1, clearcoat: .6 });
+      const cyl = new THREE.CylinderGeometry(1, 1, 1, 20);
+      const addBond = (a, b, r, off = 0) => { const m = new THREE.Mesh(cyl, bondMat); m.userData = { a, b, r, off }; molecule.add(m); bonds.push(m); };
+      for (let i = 0; i < 6; i++) {
+        if (i % 2 === 0) { addBond(i, (i + 1) % 6, .045, .075); addBond(i, (i + 1) % 6, .045, -.075); }
+        else addBond(i, (i + 1) % 6, .06);
+        addBond(i, i + 6, .05);
+      }
+      updateBonds();
+    }
+    const _d = { dir: null, mid: null, perp: null, Y: null, Z: null };
+    function updateBonds() {
+      for (const m of bonds) {
+        const { a, b, r, off } = m.userData, A = atoms[a].mesh.position, B = atoms[b].mesh.position;
+        _d.dir.subVectors(B, A); const len = _d.dir.length();
+        _d.mid.addVectors(A, B).multiplyScalar(.5);
+        if (off) _d.mid.add(_d.perp.crossVectors(_d.dir, _d.Z).normalize().multiplyScalar(off));
+        m.position.copy(_d.mid); m.quaternion.setFromUnitVectors(_d.Y, _d.dir.normalize()); m.scale.set(r, len, r);
+      }
+    }
+    // 고리 위아래의 π 전자 분포 (점 하나하나가 전자는 아님)
+    function createCloud() {
+      const n = 6500, pos = new Float32Array(n * 3), seeds = new Float32Array(n);
+      for (let i = 0; i < n; i++) {
+        const a = Math.random() * Math.PI * 2, r = 1.12 + (Math.random() + Math.random() + Math.random() - 1.5) * .45;
+        pos.set([Math.cos(a) * r, Math.sin(a) * r, (Math.random() < .5 ? -1 : 1) * (.3 + Math.random() * .42)], i * 3);
+        seeds[i] = Math.random();
+      }
+      const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setAttribute('aSeed', new THREE.BufferAttribute(seeds, 1));
+      excited = new THREE.Color('#b67cff');
+      cloudMat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+        uniforms: { uTime: { value: 0 }, uExpansion: { value: 0 }, uColor: { value: new THREE.Color('#8f9bb3') }, uOpacity: { value: .12 } },
+        vertexShader: `attribute float aSeed; uniform float uTime, uExpansion; varying float vA; void main(){ vec3 p=position; float pulse=1.0+0.035*sin(uTime*2.5+aSeed*18.0); p.xy*=mix(0.93,1.62,uExpansion)*pulse; p.z*=mix(0.85,1.6,uExpansion)*pulse; vec4 mv=modelViewMatrix*vec4(p,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=min(26.0,(3.0+3.0*aSeed)*42.0/-mv.z); vA=0.35+0.65*aSeed; }`,
+        fragmentShader: `uniform vec3 uColor; uniform float uOpacity; varying float vA; void main(){ float d=length(gl_PointCoord-0.5)*2.0; gl_FragColor=vec4(uColor,pow(max(0.0,1.0-d),2.2)*vA*uOpacity); }` });
+      scene.add(new THREE.Points(geo, cloudMat));
+    }
+    // 금속 손전등 모양 자외선 램프
+    function createLamp() {
+      const lamp = new THREE.Group(); lamp.position.set(-4.5, 0, 0); scene.add(lamp);
+      const dark = new THREE.MeshPhysicalMaterial({ color: '#2a2d33', metalness: .85, roughness: .4, clearcoat: .5 });
+      const chrome = new THREE.MeshPhysicalMaterial({ color: '#8f949c', metalness: 1, roughness: .32 });
+      const along = m => { m.rotation.z = -Math.PI / 2; return m; };
+      const body = along(new THREE.Mesh(new THREE.CylinderGeometry(.25, .25, 1.4, 40), dark)); body.position.x = -.3; lamp.add(body);
+      for (const x of [-.85, -.7, -.55, -.4]) { const ring = new THREE.Mesh(new THREE.TorusGeometry(.252, .018, 8, 40), chrome); ring.rotation.y = Math.PI / 2; ring.position.x = x; lamp.add(ring); }
+      const head = along(new THREE.Mesh(new THREE.CylinderGeometry(.44, .27, .55, 48), dark)); head.position.x = .66; lamp.add(head);
+      const bezel = new THREE.Mesh(new THREE.TorusGeometry(.44, .045, 12, 48), chrome); bezel.rotation.y = Math.PI / 2; bezel.position.x = .94; lamp.add(bezel);
+      lensMat = new THREE.MeshBasicMaterial({ color: '#a78bfa', toneMapped: false });
+      const lens = new THREE.Mesh(new THREE.CircleGeometry(.41, 48), lensMat); lens.rotation.y = Math.PI / 2; lens.position.x = .93; lamp.add(lens);
+      const conePlane = (start, end, near, far) => {
+        const material = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending,
+          uniforms: { uColor: { value: new THREE.Color('#a78bfa') }, uOpacity: { value: 0 }, uNear: { value: near }, uFar: { value: far } },
+          vertexShader: `varying vec2 vUv; void main(){vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+          fragmentShader: `varying vec2 vUv; uniform vec3 uColor; uniform float uOpacity,uNear,uFar; void main(){float y=abs(vUv.y-0.5)*4.0; float radius=mix(uNear,uFar,vUv.x); float soft=1.0-smoothstep(radius*0.3,radius,y); float fade=smoothstep(0.0,0.06,vUv.x)*(1.0-smoothstep(0.7,1.0,vUv.x)); gl_FragColor=vec4(uColor,soft*fade*uOpacity);}` });
+        const plane = new THREE.Mesh(new THREE.PlaneGeometry(end - start, 4), material); plane.position.x = (start + end) / 2; scene.add(plane); return plane;
+      };
+      beamPlanes.push(conePlane(-3.55, .2, .4, 1.2));
+      passPlanes.push(conePlane(-3.55, 4.6, .4, 1.9));
+      lightCol = new THREE.Color('#a78bfa');
+      spotGlow = sprite('#a78bfa', 3.6);
+      spot = new THREE.SpotLight('#a78bfa', 0, 9, Math.PI / 5, .9); spot.position.set(-4, 0, 0); spot.target.position.set(0, 0, 0); scene.add(spot, spot.target);
+    }
+    // 빛 알갱이 묶음: 빛줄기 속 반짝임, 열기, 형광 빛 알갱이에 함께 씀
+    function particles(n, color, size) {
+      const geo = new THREE.BufferGeometry(), pos = new Float32Array(n * 3), alpha = new Float32Array(n);
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setAttribute('aAlpha', new THREE.BufferAttribute(alpha, 1));
+      const mat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, uniforms: { uColor: { value: new THREE.Color(color) }, uSize: { value: size } },
+        vertexShader: `attribute float aAlpha; uniform float uSize; varying float vA; void main(){ vA=aAlpha; vec4 mv=modelViewMatrix*vec4(position,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=uSize*60.0/-mv.z; }`,
+        fragmentShader: `uniform vec3 uColor; varying float vA; void main(){ float d=length(gl_PointCoord-0.5)*2.0; float a=pow(max(0.0,1.0-d),1.8)*vA; if(a<0.01) discard; gl_FragColor=vec4(uColor*(1.0+2.5*pow(max(0.0,1.0-d),6.0)),a); }` });
+      const pts = new THREE.Points(geo, mat); pts.frustumCulled = false; scene.add(pts);
+      const rnd = () => Math.random() * 2 - 1;
+      const data = Array.from({ length: n }, () => { const v = new THREE.Vector3(rnd(), rnd(), rnd()); if (v.lengthSq() > 1) v.normalize(); return { s: Math.random(), v, dir: v.clone().normalize(), atom: Math.floor(Math.random() * 12) }; });
+      return { pts, pos, alpha, data, n, commit() { geo.attributes.position.needsUpdate = true; geo.attributes.aAlpha.needsUpdate = true; } };
+    }
+    function createEffects() {
+      heatGlow = sprite('#ff5b45');
+      for (let i = 0; i < 2; i++) heatWaves.push(sprite(i ? '#ff8a45' : '#ff533f'));
+      emissionGlow = sprite('#5aa9ff');
+      for (let i = 0; i < 3; i++) emissionWaves.push(sprite(i ? '#5aa9ff' : '#bcdcff'));
+      flash = sprite('#d6e8ff');
+      burstLight = new THREE.PointLight('#86c0ff', 0, 9); scene.add(burstLight);
+      dust = particles(160, '#a78bfa', .9);
+      heatSparks = particles(110, '#ff5a36', 1.2);
+      photons = particles(140, '#5aa9ff', 1.5);
+    }
+
+    const VIOLET = [1.5, .8, 3], RED = [2.6, .35, .15], BLUE = [.5, 1.4, 3];
+    function updateScene(T, now) {
+      const hit = absorbs(shotNm), on = phase !== 'idle';
+      const lightEnd = hit ? IMPACT : 1.7;
+      const illum = on ? smooth(0, .16, T) * (1 - smooth(lightEnd - .2, lightEnd, T)) : 0;
+      for (const p of beamPlanes) p.material.uniforms.uOpacity.value = hit ? illum * .26 : 0;
+      for (const p of passPlanes) p.material.uniforms.uOpacity.value = hit ? 0 : illum * .26;
+      spotGlow.material.opacity = hit ? illum * .4 : 0;
+      spot.intensity = illum * 45;
+      lensMat.color.copy(lightCol).multiplyScalar(.45 + illum * 3.5);
+      // 빛줄기 속 반짝임: 램프에서 분자 쪽으로 흐름
+      const start = -3.55, end = hit ? 0 : 4.6;
+      dust.data.forEach((d, i) => {
+        const ph = (T * .9 + d.s) % 1, spread = lerp(.18, hit ? .95 : 1.6, ph);
+        dust.pos.set([lerp(start, end, ph), d.v.y * spread, d.v.z * spread], i * 3);
+        dust.alpha[i] = illum * smooth(0, .08, ph) * (1 - smooth(.82, 1, ph)) * .9;
+      });
+      dust.commit();
+      // 흡수: 전자구름이 보라색으로 부풀어 오름
+      const expansion = on && hit ? smooth(IMPACT, IMPACT + .18, T) * (1 - .65 * smooth(1.6, 1.95, T)) * (1 - smooth(2.8, 3.16, T)) : 0;
+      cloudMat.uniforms.uExpansion.value = expansion;
+      cloudMat.uniforms.uColor.value.set('#8f9bb3').lerp(excited, expansion);
+      const fade = on && hit ? 1 - .8 * smooth(1.55, 1.85, T) * (1 - smooth(2.72, 2.98, T)) - .88 * smooth(2.98, 3.12, T) * (1 - smooth(4.08, 4.4, T)) : 1;
+      cloudMat.uniforms.uOpacity.value = (.12 + expansion * .35) * fade;
+      // 열: 원자 하나하나가 떨고, 붉은 열기가 위로 피어오름
+      const vib = on && hit ? smooth(1.45, 1.75, T) * (1 - smooth(2.85, 3.1, T)) : 0;
+      const burst = on && hit ? clamp((T - 3.02) / 1.15, 0, 1) : 0;
+      const blue = burst > 0 ? Math.pow(1 - burst, 2) * 1.4 : 0;
+      for (const a of atoms) {
+        const s = a.seed, k = .085 * vib;
+        a.mesh.position.set(a.base.x + Math.sin(now * 41 + s) * k, a.base.y + Math.cos(now * 47 + s * 2) * k, a.base.z + Math.sin(now * 53 + s * 3) * k * 1.4);
+        const r = vib * (.7 + .3 * Math.sin(now * 23 + s)), v = expansion * .55;
+        a.mat.emissive.setRGB(VIOLET[0] * v + RED[0] * r + BLUE[0] * blue, VIOLET[1] * v + RED[1] * r + BLUE[1] * blue, VIOLET[2] * v + RED[2] * r + BLUE[2] * blue);
+      }
+      updateBonds();
+      heatGlow.material.opacity = vib * (.18 + .05 * Math.sin(now * 28)); heatGlow.scale.setScalar(3.2 + vib * 1.2);
+      heatWaves.forEach((w, i) => { const age = on && hit ? clamp((T - 1.58 - i * .4) / 1.1, 0, 1) : 0; w.scale.setScalar(2 + age * 7.5); w.material.opacity = age > 0 && age < 1 ? Math.sin(age * Math.PI) * .22 : 0; });
+      heatSparks.data.forEach((d, i) => {
+        const age = (T - (1.6 + i / heatSparks.n * 1.3)) / .95, p = atoms[d.atom].base;
+        if (on && hit && age > 0 && age < 1) {
+          heatSparks.pos.set([p.x + d.v.x * age * .7, p.y + age * 1.9 + d.v.y * .2, p.z + d.v.z * age * .7], i * 3);
+          heatSparks.alpha[i] = Math.sin(age * Math.PI) * .85;
+        } else heatSparks.alpha[i] = 0;
+      });
+      heatSparks.commit();
+      // 형광: 파란 빛 알갱이가 사방으로 튀어 나감
+      photons.data.forEach((d, i) => {
+        const age = (T - (3.02 + i / photons.n * .85)) / 1.3, p = atoms[d.atom].base;
+        if (on && hit && age > 0 && age < 1) {
+          photons.pos.set([p.x + d.dir.x * age * 6, p.y + d.dir.y * age * 6, p.z + d.dir.z * age * 6], i * 3);
+          photons.alpha[i] = Math.pow(1 - age, 1.3);
+        } else photons.alpha[i] = 0;
+      });
+      photons.commit();
+      emissionWaves.forEach((w, i) => { const age = on && hit ? clamp((T - 3.02 - i * .14) / 1.1, 0, 1) : 0; w.scale.setScalar(1.6 + age * 8.5); w.material.opacity = age > 0 && age < 1 ? Math.sin(age * Math.PI) * .22 : 0; });
+      emissionGlow.material.opacity = burst > 0 ? Math.sin(burst * Math.PI) * .4 : 0; emissionGlow.scale.setScalar(3 + burst * 8);
+      flash.material.opacity = burst > 0 ? Math.pow(1 - burst, 5) : 0; flash.scale.setScalar(2 + burst * 7);
+      burstLight.intensity = burst > 0 ? 40 * Math.pow(1 - burst, 3) : 0;
+
+      // 단계 표시 · 100칸
+      if (!on) { setStep('idle'); showEnergy(-1, -1); }
+      else if (!hit) { setStep(T < IMPACT ? 'firing' : 'passed'); showEnergy(0, 0); }
+      else {
+        setStep(T < IMPACT ? 'firing' : T < 1.55 ? 'excited' : T < 3.02 ? 'heat' : T < 4.4 ? 'fluor' : 'done');
+        showEnergy(Math.round(25 * clamp((T - 1.58) / 1.42, 0, 1)), Math.round(75 * clamp((T - 3.02) / 1.15, 0, 1)));
+      }
+      drawLadder(T, hit, on);
+    }
+
+    let last = 0;
+    function tick(nowMs) {
       requestAnimationFrame(tick);
-      const dt=Math.min((now-lastTime)/1000,.05); lastTime=now;
-      if(!paused) cloudMaterial.uniforms.uTime.value+=dt*(phase==='running'?playbackRate():1);
-      if(!paused && phase==='running') { elapsed+=dt*playbackRate(); updateScene(dt*playbackRate()); }
-      else if(phase==='idle') updateScene(dt);
+      const now = nowMs / 1000, dt = Math.min(now - last, .05); last = now;
+      cloudMat.uniforms.uTime.value += dt;
+      if (phase === 'running' && !paused) {
+        t += dt * rate;
+        $('fire').style.setProperty('--p', Math.min(1, t / endTime()));
+        if (t >= endTime()) finish();
+      }
       controls.update();
-      positionLabels();
-      const tilt=-Math.atan2(camera.position.y,camera.position.z);
-      for(const plane of [...beamPlanes,...passPlanes]) plane.rotation.x=tilt;
-      renderer.render(scene,camera);
+      const tilt = -Math.atan2(camera.position.y, camera.position.z);
+      for (const p of [...beamPlanes, ...passPlanes]) p.rotation.x = tilt;
+      updateScene(t, paused ? 0 : now);
+      composer.render();
     }
-    function resize() { const w=canvas.clientWidth,h=canvas.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+    function resize() {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      renderer.setSize(w, h, false); composer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
     async function main() {
       try {
-        THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js');
-        ({OrbitControls}=await import('https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/controls/OrbitControls.js'));
-        renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace;
-        scene=new THREE.Scene(); camera=new THREE.PerspectiveCamera(45,1,.05,100); camera.position.set(2.4,2.8,8.2);
-        controls=new OrbitControls(camera,canvas); controls.enableDamping=true; controls.dampingFactor=.07; controls.enableZoom=false; controls.enablePan=false; controls.target.set(0,0,0);
-        scene.add(new THREE.AmbientLight(0xdce6f2,1.2));
-        const key=new THREE.PointLight(0xffffff,52,20); key.position.set(2,3,5); scene.add(key);
-        const fill=new THREE.PointLight(0x9db8dc,25,18); fill.position.set(-3,-2,-2); scene.add(fill);
-        createMolecule(); createCloud(); createLauncher(); createEffects();
-        labelPoint=new THREE.Vector3(); lampLabel.hidden=false;
+        let OrbitControls, EffectComposer, RenderPass, UnrealBloomPass, OutputPass, RoomEnvironment;
+        [THREE, { OrbitControls }, { EffectComposer }, { RenderPass }, { UnrealBloomPass }, { OutputPass }, { RoomEnvironment }] = await Promise.all([
+          import('three'), import('three/addons/controls/OrbitControls.js'), import('three/addons/postprocessing/EffectComposer.js'),
+          import('three/addons/postprocessing/RenderPass.js'), import('three/addons/postprocessing/UnrealBloomPass.js'),
+          import('three/addons/postprocessing/OutputPass.js'), import('three/addons/environments/RoomEnvironment.js')]);
+        Object.assign(_d, { dir: new THREE.Vector3(), mid: new THREE.Vector3(), perp: new THREE.Vector3(), Y: new THREE.Vector3(0, 1, 0), Z: new THREE.Vector3(0, 0, 1) });
+        renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+        renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .9;
+        scene = new THREE.Scene(); scene.background = backgroundTexture();
+        scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(renderer), .04).texture;
+        camera = new THREE.PerspectiveCamera(40, 1, .05, 100); camera.position.set(2.2, 2.6, 9.4);
+        controls = new OrbitControls(camera, canvas); controls.enableDamping = true; controls.dampingFactor = .07; controls.enableZoom = true; controls.minDistance = 6.5; controls.maxDistance = 15; controls.enablePan = false; controls.target.set(-.7, 0, 0);
+        scene.add(new THREE.AmbientLight('#dfe4ec', .35));
+        const key = new THREE.DirectionalLight('#ffffff', 1.1); key.position.set(3, 5, 6); scene.add(key);
+        glowTex = glowTexture();
+        createMolecule(); createCloud(); createLamp(); createEffects();
+        composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        composer.addPass(new UnrealBloomPass(new THREE.Vector2(512, 512), 1, .5, 1.8));
+        composer.addPass(new OutputPass());
         resize(); new ResizeObserver(resize).observe(canvas.parentElement);
-        ui.wavelength.addEventListener('input',updateWavelength);
-        ui.speed.addEventListener('input',()=>ui.speed.setAttribute('aria-valuetext',['느리게','보통','빠르게'][Number(ui.speed.value)]));
-        ui.fire.addEventListener('click',()=>{ shotNm=wavelengths[Number(ui.wavelength.value)]; elapsed=0; phase='running'; paused=false; ui.pause.textContent='일시정지'; ui.pause.setAttribute('aria-pressed','false'); ui.fire.disabled=true; ui.wavelength.disabled=true; statusKey=''; });
-        ui.pause.addEventListener('click',()=>{ paused=!paused; ui.pause.textContent=paused?'계속 재생':'일시정지'; ui.pause.setAttribute('aria-pressed',String(paused)); });
-        updateWavelength(); reset(); requestAnimationFrame(now=>{lastTime=now;tick(now);});
-      } catch(error) {
-        console.error('3D 실험실 초기화 실패:',error);
-        const message=document.createElement('div'); message.className='error'; message.textContent=`3D 화면을 열 수 없습니다. 인터넷 연결과 WebGL 사용 가능 여부를 확인하세요. (${error.message})`; canvas.after(message);
+        selectLight(0); reset();
+        requestAnimationFrame(ms => { last = ms / 1000; tick(ms); });
+      } catch (error) {
+        console.error('3D 실험실 초기화 실패:', error);
+        const m = document.createElement('div'); m.className = 'error'; m.textContent = `3D 화면을 열 수 없습니다. 인터넷 연결과 WebGL 사용 가능 여부를 확인하세요. (${error.message})`; canvas.after(m);
       }
     }
     main();
-</script>
+  </script>
 </body>
 </html>

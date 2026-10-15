@@ -4,53 +4,568 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>스마트폰의 에너지 효율을 높이는 방법 | OLED 4차시 가상실험실</title>
-  <link rel="stylesheet" href="../assets/css/oled-molecule-rescue.css?v=8">
+  <style>
+    :root { color-scheme: dark; font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif; --ink: #f4f1ea; --dim: #9d988d; --line: rgba(244, 241, 234, .12); --gold: #e2bd72; --heat: #ff6a4d; --glow: #5aa9ff; }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html, body { margin: 0; height: 100%; background: #05060a; color: var(--ink); }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    .app { height: 100vh; min-height: 540px; display: grid; grid-template-columns: minmax(0, 1fr) 340px; }
+
+    .stage { position: relative; min-width: 0; overflow: hidden; }
+    #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+    .title { position: absolute; left: 28px; top: 22px; }
+    .title small { color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .04em; }
+    .title h1 { margin: .25rem 0 0; font-size: clamp(1.3rem, 2vw, 1.8rem); font-weight: 900; letter-spacing: -.04em; }
+    /* 두 마당: 건물로 생각하기 → 분자 실험 */
+    .chapters { display: flex; gap: 18px; margin-top: 14px; }
+    .chapters button { padding: 0 0 6px; border: 0; border-bottom: 2px solid transparent; background: none; color: rgba(244, 241, 234, .42); font-size: .9rem; font-weight: 800; transition: color .2s, border-color .2s; }
+    .chapters button b { margin-right: .4rem; font-variant-numeric: tabular-nums; }
+    .chapters button:hover:not(:disabled) { color: var(--ink); }
+    .chapters button[aria-current="true"] { color: var(--ink); border-color: var(--gold); }
+    .chapters button:disabled { cursor: default; }
+
+    .steps { position: absolute; right: 28px; top: 30px; display: flex; align-items: center; margin: 0; padding: 0; list-style: none; pointer-events: none; color: rgba(244, 241, 234, .34); font-size: .9rem; font-weight: 800; white-space: nowrap; }
+    .steps li { display: flex; align-items: center; gap: .5rem; transition: color .3s; }
+    .steps li + li::before { content: ""; width: 30px; height: 1px; margin: 0 .7rem; background: currentColor; opacity: .5; }
+    .steps i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: box-shadow .3s; }
+    .steps li.done { color: rgba(244, 241, 234, .72); }
+    .steps li.now { color: var(--c); }
+    .steps li.now i { box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 30%, transparent), 0 0 14px var(--c); }
+    .steps li.skip { color: rgba(244, 241, 234, .22); text-decoration: line-through; }
+
+    .tags span { position: absolute; transform: translate(-50%, 0); color: var(--ink); font-size: .95rem; font-weight: 800; white-space: nowrap; pointer-events: none; text-shadow: 0 2px 10px #000; }
+    .tags span.gold { color: var(--gold); }
+
+    .dock { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; align-items: center; gap: 22px; padding: 12px 14px 12px 24px; border: 1px solid var(--line); border-radius: 999px; background: rgba(12, 13, 18, .8); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 20px 50px rgba(0, 0, 0, .5); }
+    .dock-label { color: var(--dim); font-size: .78rem; font-weight: 700; white-space: nowrap; }
+    .dock-label b { display: block; margin-top: 2px; color: var(--ink); font-size: .9rem; }
+    .seg { display: flex; padding: 3px; border-radius: 999px; background: rgba(255, 255, 255, .07); }
+    .seg button { padding: .55rem 1rem; border: 0; border-radius: 999px; background: none; color: var(--dim); font-size: .86rem; font-weight: 800; white-space: nowrap; }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: #0b0b10; }
+    .seg button:disabled { cursor: default; }
+    .go { position: relative; flex: none; width: 76px; height: 76px; border: 0; border-radius: 50%; color: #0b0b10; font-size: .9rem; font-weight: 900; line-height: 1.15; background: radial-gradient(circle at 50% 32%, color-mix(in srgb, var(--btn) 55%, #fff), color-mix(in srgb, var(--btn) 80%, #000)); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), 0 0 28px color-mix(in srgb, var(--btn) 50%, transparent); transition: transform .15s; }
+    .go:hover:not(:disabled) { transform: scale(1.06); }
+    .go:active:not(:disabled) { transform: scale(.95); }
+    .go:disabled { cursor: default; }
+    .go::after { content: ""; position: absolute; inset: -7px; border-radius: 50%; background: conic-gradient(var(--ink) calc(var(--p, 0) * 1turn), transparent 0); -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); }
+    .go.ready::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--btn); animation: ping 1.8s ease-out infinite; }
+    @keyframes ping { from { transform: scale(1); opacity: .8; } to { transform: scale(1.45); opacity: 0; } }
+    .next { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.1rem; border: 1px solid rgba(226, 189, 114, .5); border-radius: 999px; background: none; color: var(--gold); font-size: .88rem; font-weight: 800; white-space: nowrap; transition: background .2s; }
+    .next:hover { background: rgba(226, 189, 114, .12); }
+    .next svg { width: 14px; height: 14px; }
+
+    .key { position: absolute; left: 24px; bottom: 22px; display: grid; gap: 10px; padding: 14px 18px 14px 14px; border: 1px solid var(--line); border-radius: 16px; background: rgba(12, 13, 18, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); pointer-events: none; }
+    .key div { display: flex; align-items: center; gap: 12px; font-size: .8rem; color: var(--dim); white-space: nowrap; transition: opacity .3s; }
+    .key b { display: block; color: var(--ink); font-size: .86rem; }
+    .key .balls { flex: none; width: 26px; height: 26px; position: relative; }
+    .key .balls::before, .key .balls::after { content: ""; position: absolute; border-radius: 50%; box-shadow: 0 2px 6px rgba(0, 0, 0, .6); }
+    .key .balls::before { left: 0; top: 4px; width: 17px; height: 17px; background: radial-gradient(circle at 34% 30%, #c9ced6 0, #6b717b 38%, #2c3037 100%); }
+    .key .balls::after { right: 0; top: 2px; width: 11px; height: 11px; background: radial-gradient(circle at 34% 30%, #fff 0, #cfd3da 45%, #868b93 100%); }
+    .key .rod { flex: none; width: 26px; height: 26px; display: grid; place-items: center; }
+    .key .rod::before { content: ""; width: 24px; height: 5px; border-radius: 3px; transform: rotate(-35deg); background: linear-gradient(180deg, #f7dc9c, #b58a35); box-shadow: 0 0 10px rgba(226, 189, 114, .7); }
+    .key .off { opacity: .35; }
+
+    .panel { display: flex; flex-direction: column; gap: 18px; min-height: 0; padding: 74px 26px 26px; border-left: 1px solid var(--line); background: linear-gradient(180deg, #0b0c11, #06070b); }
+    .panel h2 { margin: 0; font-size: 1.05rem; font-weight: 900; letter-spacing: -.02em; }
+    .note { min-height: 2.9em; margin: .45rem 0 0; color: var(--dim); font-size: .86rem; line-height: 1.5; word-break: keep-all; transition: color .3s; }
+    /* 흔들림 막대 */
+    .meters { display: grid; gap: 22px; margin-top: 8px; }
+    .meter small { display: flex; justify-content: space-between; color: var(--dim); font-size: .8rem; font-weight: 700; }
+    .meter small b { color: var(--ink); }
+    .meter .track { position: relative; height: 12px; margin-top: 8px; border-radius: 99px; background: rgba(244, 241, 234, .08); overflow: hidden; }
+    .meter .now { position: absolute; inset: 0 auto 0 0; width: 0; border-radius: inherit; background: var(--c); }
+    .meter .peak { position: absolute; top: -2px; bottom: -2px; width: 2px; left: 0; background: var(--ink); opacity: 0; transition: opacity .3s; }
+    .grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+    .grid i { aspect-ratio: 1; border-radius: 2px; background: rgba(244, 241, 234, .08); transition: background .25s, box-shadow .25s; }
+    .grid i.red { background: var(--heat); box-shadow: 0 0 6px rgba(255, 106, 77, .55); }
+    .grid i.blue { background: var(--glow); box-shadow: 0 0 6px rgba(90, 169, 255, .55); }
+    .totals { display: flex; justify-content: space-between; margin-top: 12px; }
+    .totals small { display: block; color: var(--dim); font-size: .78rem; font-weight: 700; }
+    .totals strong { font-size: 2rem; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
+    .totals .b strong { color: #8cc4ff; }
+    .totals .r { text-align: right; }
+    .totals .r strong { color: #ff9c89; }
+    /* 실험 기록: 두 분자 결과를 나란히 */
+    .record { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .record h3 { margin: 0; font-size: .82rem; color: var(--dim); font-weight: 800; }
+    .rec small { display: flex; justify-content: space-between; font-size: .8rem; font-weight: 700; color: var(--ink); }
+    .rec small span { color: var(--dim); font-variant-numeric: tabular-nums; }
+    .rec .bar { display: flex; height: 10px; margin-top: 6px; border-radius: 99px; overflow: hidden; background: rgba(244, 241, 234, .08); }
+    .rec .bar i { display: block; height: 100%; transition: width .6s; }
+    .rec .bar .bl { background: var(--glow); } .rec .bar .rd { background: var(--heat); }
+    .error { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; text-align: center; color: #fecaca; }
+
+    @media (max-width: 1500px) { .key { bottom: 118px; } }
+    @media (max-width: 1250px) { .steps { top: 128px; left: 28px; right: auto; } }
+    @media (max-width: 900px) {
+      .app { height: auto; grid-template-columns: 1fr; grid-template-rows: minmax(520px, 70vh) auto; }
+      .panel { padding-top: 24px; border-left: 0; border-top: 1px solid var(--line); }
+    }
+    @media (max-width: 640px) {
+      .dock { left: 12px; right: 12px; transform: none; flex-wrap: wrap; justify-content: center; gap: 14px; border-radius: 22px; padding: 14px; }
+      .key, .steps { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <main class="app">
-    <header class="topbar">
-      <div><p class="eyebrow">OLED 4차시 · KAIST의 분자 연구</p><h1>스마트폰의 에너지 효율을 높이는 방법</h1></div>
-    </header>
+  <div class="app">
+    <section class="stage" aria-label="삼차원 관찰 화면">
+      <canvas id="scene"></canvas>
+      <div class="title">
+        <small>OLED 4차시 가상실험실</small>
+        <h1>스마트폰의 에너지 효율을 높이는 방법</h1>
+        <nav class="chapters" aria-label="실험 순서">
+          <button type="button" id="ch-building" aria-current="true"><b>1</b>건물로 생각하기</button>
+          <button type="button" id="ch-molecule" aria-current="false"><b>2</b>분자 실험</button>
+        </nav>
+      </div>
+      <ol class="steps" id="steps" aria-live="polite" hidden>
+        <li style="--c:var(--gold)"><i></i>전기 공급</li>
+        <li style="--c:var(--heat)"><i></i>열로 빠짐</li>
+        <li style="--c:var(--glow)"><i></i>빛으로 나옴</li>
+      </ol>
+      <div class="tags" id="tags"><span>기본 구조</span><span class="gold">대각선 고정대</span></div>
+      <div class="key" id="key" hidden aria-label="모형 읽는 법">
+        <div><span class="balls"></span><span><b>회색 · 흰색 공</b>탄소 · 수소 원자</span></div>
+        <div id="key-rod"><span class="rod"></span><span><b>금빛 막대</b>두 고리를 묶는 고정대</span></div>
+      </div>
+      <div class="dock" id="dock-building">
+        <div class="dock-label">같은 진동판 위의 두 건물<b>흔들어 볼까요?</b></div>
+        <button class="go ready" id="quake" type="button" style="--btn:#f4f1ea">인공<br>지진</button>
+        <button class="next" id="to-molecule" type="button">분자 실험으로<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+      </div>
+      <div class="dock" id="dock-molecule" hidden>
+        <div class="seg" id="mode" aria-label="분자 고르기">
+          <button type="button" data-mode="basic" aria-pressed="true">기본 분자</button>
+          <button type="button" data-mode="kaist" aria-pressed="false">고정된 분자</button>
+        </div>
+        <button class="go ready" id="inject" type="button" style="--btn:#e2bd72">전기<br>공급</button>
+      </div>
+    </section>
+    <aside class="panel">
+      <div>
+        <h2 id="panel-title">얼마나 흔들렸나</h2>
+        <p class="note" id="note"></p>
+      </div>
+      <div id="building-panel" class="meters">
+        <div class="meter" style="--c:#c9ced6"><small>기본 구조<b id="m0-val">—</b></small><div class="track"><i class="now" id="m0"></i><i class="peak" id="p0"></i></div></div>
+        <div class="meter" style="--c:var(--gold)"><small>대각선 고정대<b id="m1-val">—</b></small><div class="track"><i class="now" id="m1"></i><i class="peak" id="p1"></i></div></div>
+      </div>
+      <div id="molecule-panel" hidden>
+        <div class="grid" id="grid" aria-label="에너지 100칸 결과"></div>
+        <div class="totals">
+          <div class="b"><small>빛으로 나온 에너지</small><strong id="light-count">—</strong></div>
+          <div class="r"><small>열로 빠진 에너지</small><strong id="heat-count">—</strong></div>
+        </div>
+      </div>
+      <div class="record" id="record" hidden>
+        <h3>실험 기록</h3>
+        <div class="rec"><small>기본 분자<span id="rec-basic">아직 안 함</span></small><div class="bar"><i class="bl" id="rb-basic"></i><i class="rd" id="rr-basic"></i></div></div>
+        <div class="rec"><small>고정된 분자<span id="rec-kaist">아직 안 함</span></small><div class="bar"><i class="bl" id="rb-kaist"></i><i class="rd" id="rr-kaist"></i></div></div>
+      </div>
+    </aside>
+  </div>
 
-    <div class="workspace">
-      <section class="stage-card analogy-view" id="stage-card" aria-label="건물 구조를 KAIST 분자연구에 비유하기">
-        <div class="stage-top"><strong id="scene-heading">건물 구조를 KAIST 분자연구에 비유하기</strong></div>
-        <canvas id="scene" aria-label="같은 진동판에 놓인 두 건물 모형과 분자 모형"></canvas>
-        <div class="analogy-labels" id="analogy-labels" aria-hidden="true"><span>기본 구조</span><span>대각선 고정대 추가</span></div>
-        <div class="stage-overlay" id="energy-overlay" aria-hidden="true" hidden><span class="source-label">전기 에너지 공급</span></div>
-      </section>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script>
+  <script type="module">
+    const $ = id => document.getElementById(id);
+    const canvas = $('scene');
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const smooth = (a, b, t) => { const x = clamp((t - a) / (b - a), 0, 1); return x * x * (3 - 2 * x); };
+    const lerp = (a, b, k) => a + (b - a) * k;
+    const env = (a, b, t, f = .25) => smooth(a, a + f, t) * (1 - smooth(b - f, b, t)); // a~b 사이에서만 켜짐
 
-      <aside class="controls">
-        <section class="panel analogy-panel" id="analogy-panel">
-          <h2>건물 구조에 따른 흔들림 정도 비교</h2>
-          <p>두 건물 모형이 같은 진동판 위에 서 있습니다. 오른쪽 건물 모형에 <strong>대각선 고정대</strong>를 추가하고 진동판을 흔들면 두 건물의 흔들림은 어떤 차이가 있을까요?</p>
-          <button id="start-quake" class="inject" type="button"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h3l3-5 4 10 3-7 2 2h5"/></svg>인공 지진 발생하기</button>
-        </section>
-        <section class="panel analogy-next-panel" id="analogy-next-panel">
-          <p class="instruction" id="analogy-result" role="status" aria-live="polite">흔들리는 건물의 예시처럼, 진동하는 분자를 고정하면 어떤 효과가 있을까요?</p>
-          <button id="show-molecule" class="inject go-next" type="button"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h15v18M7 5l9 1v13l-9 2V5Z"/><circle cx="13" cy="12" r=".6" fill="currentColor" stroke="none"/></svg>KAIST 분자 실험으로</button>
-        </section>
-        <section class="panel control-panel" id="molecule-panel" hidden>
-          <button id="show-analogy" class="back-button" type="button">← 건물 모형 다시 보기</button>
-          <h2>어떤 상태로 실험할까요?</h2>
-          <div class="mode-row" role="group" aria-label="분자 상태 선택">
-            <button id="basic-mode" class="mode active" type="button" aria-pressed="true">기본 분자구조</button>
-            <button id="kaist-mode" class="mode" type="button" aria-pressed="false">고정된 분자구조</button>
-          </div>
-          <button id="inject" class="inject" type="button"><svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 5 13h6l-1 9 9-12h-6V2Z"/></svg>분자에 전기 공급하기</button>
-        </section>
-        <section class="panel energy-panel" id="energy-panel" hidden>
-          <div class="panel-title"><h2>공급된 전기에너지는 어디로?</h2><span id="run-label">실험 전</span></div>
-          <div class="energy-grid" id="energy-grid" aria-label="에너지 100칸 결과"></div>
-          <div class="totals"><div class="blue-total"><small>빛으로 나온 에너지</small><strong id="light-count">—</strong></div><div class="red-total"><small>열로 빠진 에너지</small><strong id="heat-count">—</strong></div></div>
-        </section>
-      </aside>
-    </div>
+    // 시간표(초): 전기 공급 → (기본) 열 75 → 빛 25 / (고정) 빛 100
+    const SUP = 2.9;
+    const PLAN = {
+      basic: { heat: [SUP, SUP + 2.9], light: [SUP + 2.9, SUP + 5], end: SUP + 5.7, lightShare: 25, heatShare: 75 },
+      kaist: { heat: null, light: [SUP, SUP + 4.2], end: SUP + 4.9, lightShare: 100, heatShare: 0 }
+    };
+    console.assert(PLAN.basic.lightShare + PLAN.basic.heatShare === 100 && PLAN.kaist.lightShare + PLAN.kaist.heatShare === 100, '에너지 수지 오류');
 
-  </main>
-  <script defer src="../assets/vendor/three/three.min.js"></script>
-  <script defer src="../assets/vendor/three/OrbitControls.global.js"></script>
-  <script defer src="../assets/js/oled-quake-buildings.js?v=3"></script>
-  <script defer src="../assets/js/oled-molecule-rescue.js?v=18"></script>
+    let view = 'building', mode = 'basic', phase = 'idle', t = 0, quakeT = -1;
+    const peaks = [0, 0];
+
+    // ---------- 화면 글 ----------
+    const NOTES = {
+      b_idle: '같은 진동판 위에 두 건물이 서 있어요. 오른쪽 건물에만 대각선 고정대를 달았어요.',
+      b_run: '진동판이 흔들리는 중이에요.',
+      b_done: '고정대를 단 건물은 거의 흔들리지 않았어요. 분자에도 고정대를 달면 어떨까요?',
+      basic: '기본 분자는 두 고리가 가운데 막대를 축으로 계속 비틀려요.',
+      kaist: '금빛 고정대가 두 고리를 묶어서 비틀림이 거의 없어요.',
+      supply: '전극에서 전자가 들어와 분자에 에너지가 쌓여요.',
+      heat: '비틀리는 움직임 때문에 에너지가 열이 되어 빠져나가요.',
+      light_basic: '남은 에너지만 빛으로 나와요.',
+      light_kaist: '비틀림이 없으니 에너지가 거의 모두 빛으로 나와요.',
+      done_basic: '100 중 75는 열로 빠지고, 25만 빛이 되었어요.',
+      done_kaist: '100이 모두 빛이 되었어요. 같은 전기로 더 밝아요.'
+    };
+    let noteKey = '';
+    function setNote(key) {
+      if (key === noteKey) return;
+      noteKey = key;
+      $('note').textContent = NOTES[key];
+      $('note').style.color = { supply: 'var(--gold)', heat: '#ff9c89', light_basic: '#8cc4ff', light_kaist: '#8cc4ff' }[key] || '';
+    }
+    const stepEls = [...$('steps').children];
+    let stepKey = '';
+    function setStep(key) {
+      if (key === stepKey) return;
+      stepKey = key;
+      const at = { idle: -1, supply: 0, heat: 1, light: 2, done: 3 }[key];
+      stepEls.forEach((li, i) => { li.className = i < at ? 'done' : i === at ? 'now' : ''; });
+      if (mode === 'kaist') stepEls[1].className = 'skip';
+    }
+    const cells = Array.from({ length: 100 }, () => $('grid').appendChild(document.createElement('i')));
+    let shown = '';
+    function showEnergy(light, heat) {
+      if (shown === `${light},${heat}`) return;
+      shown = `${light},${heat}`;
+      cells.forEach((c, i) => c.className = i < light ? 'blue' : i >= 25 && i < 25 + heat ? 'red' : '');
+      $('light-count').textContent = light < 0 ? '—' : `${light}%`;
+      $('heat-count').textContent = heat < 0 ? '—' : `${heat}%`;
+    }
+    function record(m) {
+      const p = PLAN[m];
+      $(`rec-${m}`).textContent = `빛 ${p.lightShare} · 열 ${p.heatShare}`;
+      $(`rb-${m}`).style.width = `${p.lightShare}%`; $(`rr-${m}`).style.width = `${p.heatShare}%`;
+    }
+
+    // ---------- 조작 ----------
+    function showView(next) {
+      if (phase === 'running' || quakeT >= 0) return;
+      view = next;
+      const b = next === 'building';
+      $('ch-building').setAttribute('aria-current', String(b)); $('ch-molecule').setAttribute('aria-current', String(!b));
+      $('dock-building').hidden = !b; $('dock-molecule').hidden = b;
+      $('tags').hidden = !b; $('key').hidden = b; $('steps').hidden = b;
+      $('building-panel').hidden = !b; $('molecule-panel').hidden = b; $('record').hidden = b;
+      $('panel-title').textContent = b ? '얼마나 흔들렸나' : '공급한 전기에너지는 어디로?';
+      if (scene) { buildings.group.visible = b; molecule.visible = !b; placeCamera(); }
+      if (b) setNote(peaks[0] ? 'b_done' : 'b_idle'); else selectMode(mode);
+    }
+    function selectMode(m) {
+      if (phase === 'running') return;
+      mode = m; phase = 'idle'; t = 0; stepKey = '';
+      for (const x of $('mode').children) x.setAttribute('aria-pressed', String(x.dataset.mode === m));
+      $('key-rod').className = m === 'kaist' ? '' : 'off';
+      $('inject').classList.add('ready'); $('inject').innerHTML = '전기<br>공급'; $('inject').style.setProperty('--p', 0);
+      if (bridge) { bridge.visible = m === 'kaist'; bridgeHs.forEach(h => h.visible = m !== 'kaist'); }
+      setNote(m); setStep('idle'); showEnergy(-1, -1);
+    }
+    $('ch-building').addEventListener('click', () => showView('building'));
+    $('ch-molecule').addEventListener('click', () => showView('molecule'));
+    $('to-molecule').addEventListener('click', () => showView('molecule'));
+    $('mode').addEventListener('click', e => { const b = e.target.closest('button'); if (b) selectMode(b.dataset.mode); });
+    $('quake').addEventListener('click', () => {
+      if (quakeT >= 0) return;
+      quakeT = 0; peaks[0] = peaks[1] = 0;
+      $('quake').disabled = true; $('quake').classList.remove('ready');
+      for (const id of ['ch-building', 'ch-molecule', 'to-molecule']) $(id).disabled = true;
+      setNote('b_run');
+    });
+    $('inject').addEventListener('click', () => {
+      if (phase === 'running') return;
+      phase = 'running'; t = 0; stepKey = '';
+      $('inject').disabled = true; $('inject').classList.remove('ready'); $('inject').innerHTML = '진행 중';
+      for (const b of $('mode').children) b.disabled = true;
+      $('ch-building').disabled = true;
+    });
+    function finishRun() {
+      phase = 'done'; t = PLAN[mode].end;
+      $('inject').disabled = false; $('inject').innerHTML = '다시';
+      for (const b of $('mode').children) b.disabled = false;
+      $('ch-building').disabled = false;
+      record(mode);
+    }
+
+    // ---------- 3D 공통 ----------
+    let THREE, renderer, scene, camera, controls, composer, glowTex;
+    let buildings, molecule, ringL, ringR, bridge, electrode, electrodeFace;
+    const atoms = [], bridgeHs = [];
+    let electrons, heatSparks, photons, heatGlow, emissionGlow, flash, burstLight;
+    const emissionWaves = [], heatWaves = [];
+    const phys = (color, metalness, roughness, extra = {}) => new THREE.MeshPhysicalMaterial({ color, metalness, roughness, envMapIntensity: .45, ...extra });
+    function rod(a, b, r, mat, parent) {
+      const dir = new THREE.Vector3().subVectors(b, a);
+      const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, dir.length(), 20), mat);
+      m.position.copy(a).add(b).multiplyScalar(.5); m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.normalize());
+      parent.add(m); return m;
+    }
+    function glowTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 128;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+      gr.addColorStop(0, '#fff'); gr.addColorStop(.13, '#ffffffdd'); gr.addColorStop(.35, '#ffffff77'); gr.addColorStop(1, '#ffffff00');
+      x.fillStyle = gr; x.fillRect(0, 0, 128, 128);
+      return new THREE.CanvasTexture(c);
+    }
+    const sprite = color => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); scene.add(s); return s; };
+    function backgroundTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 512;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(256, 230, 0, 256, 256, 360);
+      gr.addColorStop(0, '#191c24'); gr.addColorStop(.55, '#0a0b10'); gr.addColorStop(1, '#040507');
+      x.fillStyle = gr; x.fillRect(0, 0, 512, 512);
+      const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; return tex;
+    }
+    function particles(n, color, size) {
+      const geo = new THREE.BufferGeometry(), pos = new Float32Array(n * 3), alpha = new Float32Array(n);
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setAttribute('aAlpha', new THREE.BufferAttribute(alpha, 1));
+      const mat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, uniforms: { uColor: { value: new THREE.Color(color) }, uSize: { value: size } },
+        vertexShader: `attribute float aAlpha; uniform float uSize; varying float vA; void main(){ vA=aAlpha; vec4 mv=modelViewMatrix*vec4(position,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=uSize*60.0/-mv.z; }`,
+        fragmentShader: `uniform vec3 uColor; varying float vA; void main(){ float d=length(gl_PointCoord-0.5)*2.0; float a=pow(max(0.0,1.0-d),1.8)*vA; if(a<0.01) discard; gl_FragColor=vec4(uColor*(1.0+2.5*pow(max(0.0,1.0-d),6.0)),a); }` });
+      const pts = new THREE.Points(geo, mat); pts.frustumCulled = false; scene.add(pts);
+      const rnd = () => Math.random() * 2 - 1;
+      const data = Array.from({ length: n }, () => { const v = new THREE.Vector3(rnd(), rnd(), rnd()); if (v.lengthSq() > 1) v.normalize(); return { s: Math.random(), v, dir: v.clone().normalize(), atom: Math.floor(Math.random() * 1e6) }; });
+      return { pos, alpha, data, n, commit() { geo.attributes.position.needsUpdate = true; geo.attributes.aAlpha.needsUpdate = true; } };
+    }
+
+    // ---------- 1마당: 진동판 위 두 건물 ----------
+    function createBuildings() {
+      const group = new THREE.Group(), platform = new THREE.Group(); group.add(platform); scene.add(group);
+      const concrete = phys('#3d4148', .1, .8), steel = phys('#8d939c', .8, .42), dark = phys('#24272d', .5, .5);
+      const glass = phys('#9cc3d8', .1, .08, { transparent: true, opacity: .55 });
+      const wall = phys('#8a929e', 0, .6, { transparent: true, opacity: .14, depthWrite: false, side: THREE.DoubleSide });
+      const brace = phys('#e2bd72', .9, .3, { emissive: '#6b4c12', emissiveIntensity: .5 });
+      const slab = new THREE.Mesh(new THREE.BoxGeometry(7.9, .18, 1.6), concrete); slab.position.y = -1.38; platform.add(slab);
+      const edge = new THREE.Mesh(new THREE.BoxGeometry(7.9, .08, 1.64), dark); edge.position.y = -1.5; platform.add(edge);
+      const base = new THREE.Mesh(new THREE.BoxGeometry(8.6, .22, 2), dark); base.position.y = -1.68; group.add(base);
+      const structures = [];
+      [-2.05, 2.05].forEach((x, index) => {
+        const frame = new THREE.Group(); frame.position.set(x, -1.27, 0); platform.add(frame);
+        const columns = [], V = (a, b, c) => new THREE.Vector3(a, b, c);
+        for (const z of [-.42, .42]) {
+          for (const side of [-1, 1]) columns.push(rod(V(side, .05, z), V(side, 2.42, z), .055, steel, frame));
+          for (const y of [.05, 1.23, 2.42]) rod(V(-1, y, z), V(1, y, z), .052, steel, frame);
+        }
+        for (const side of [-1, 1]) for (const y of [.05, 1.23, 2.42]) rod(V(side, y, -.42), V(side, y, .42), .045, steel, frame);
+        for (const y of [.63, 1.82]) for (const wx of [-.53, .53]) {
+          const w = new THREE.Mesh(new THREE.BoxGeometry(.56, .55, .02), glass); w.position.set(wx, y, .47); frame.add(w);
+        }
+        const back = new THREE.Mesh(new THREE.PlaneGeometry(2, 2.38), wall); back.position.set(0, 1.23, -.43); frame.add(back);
+        const roof = new THREE.Mesh(new THREE.BoxGeometry(2.3, .14, 1.1), dark); roof.position.set(0, 2.5, 0); frame.add(roof);
+        if (index === 1) for (const z of [-.46, .51]) { rod(V(-.94, .08, z), V(.94, 1.2, z), .065, brace, frame); rod(V(.94, 1.25, z), V(-.94, 2.39, z), .065, brace, frame); }
+        structures.push({ columns, parts: frame.children.map(mesh => ({ mesh, x: mesh.position.x, y: mesh.position.y })) });
+      });
+      const sway = (i, off) => {
+        structures[i].parts.forEach(({ mesh, x, y }) => { mesh.position.x = x + off * Math.max(0, y) / 2.5; });
+        structures[i].columns.forEach(m => { m.rotation.z = -Math.atan(off / 2.37); });
+      };
+      return { group, platform, sway };
+    }
+
+    // ---------- 2마당: 두 고리 분자 (고정대 = 질소 다리, 카바졸과 같은 모양) ----------
+    function createMolecule() {
+      molecule = new THREE.Group(); molecule.position.x = .6; scene.add(molecule);
+      const C = '#4a505a', H = '#dfe3ea', N = '#3f72ea';
+      const bondMat = phys('#a3a9b3', .1, .35, { clearcoat: .6 });
+      const goldMat = phys('#e2bd72', .9, .25, { emissive: '#7a5514', emissiveIntensity: 1.2 });
+      const ball = (p, r, color, parent) => {
+        const mat = phys(color, 0, .3, { clearcoat: 1, clearcoatRoughness: .1, envMapIntensity: .6 });
+        const m = new THREE.Mesh(new THREE.SphereGeometry(r, 48, 32), mat); m.position.copy(p); parent.add(m);
+        atoms.push({ mesh: m, mat, seed: atoms.length * 1.7 }); return m;
+      };
+      // 고리 하나: 가운데 막대 쪽 원자(join)를 원점 방향으로 두고, 비틀림 축(x축)을 따라 돌 수 있게 묶음
+      const ring = (cx, joinAngle, bridgeAngle) => {
+        const g = new THREE.Group(); molecule.add(g);
+        const pts = Array.from({ length: 6 }, (_, i) => { const a = joinAngle + i * Math.PI / 3; return new THREE.Vector3(cx + Math.cos(a), Math.sin(a), 0); });
+        pts.forEach((p, i) => {
+          ball(p, .22, C, g);
+          // 이중 결합은 고리 안쪽에 가는 막대를 하나 더
+          const q = pts[(i + 1) % 6], mid = p.clone().add(q).multiplyScalar(.5), inward = new THREE.Vector3(cx, 0, 0).sub(mid).normalize().multiplyScalar(.13);
+          rod(p, q, .045, bondMat, g);
+          if (i % 2 === 0) rod(p.clone().lerp(q, .15).add(inward), q.clone().lerp(p, .15).add(inward), .03, bondMat, g);
+          if (i === 0) return;
+          const hp = new THREE.Vector3(cx, 0, 0).add(p.clone().sub(new THREE.Vector3(cx, 0, 0)).multiplyScalar(1.75));
+          const h = ball(hp, .15, H, g); const hb = rod(p, hp, .04, bondMat, g);
+          if (i === bridgeAngle) bridgeHs.push(h, hb);
+        });
+        return g;
+      };
+      ringL = ring(-1.5, 0, 1);           // 왼쪽 고리: 오른쪽(0°) 원자가 가운데 막대, 60° 원자가 다리 자리
+      ringR = ring(1.5, Math.PI, 5);      // 오른쪽 고리: 왼쪽(180°) 원자가 가운데 막대, 120° 원자가 다리 자리
+      rod(new THREE.Vector3(-.5, 0, 0), new THREE.Vector3(.5, 0, 0), .05, bondMat, molecule);
+      // 고정대: 위쪽에서 두 고리를 묶는 질소 원자 다리
+      bridge = new THREE.Group(); molecule.add(bridge);
+      const nP = new THREE.Vector3(0, 1.45, 0), a = new THREE.Vector3(-1, .866, 0), b = new THREE.Vector3(1, .866, 0);
+      ball(nP, .21, N, bridge); rod(a, nP, .06, goldMat, bridge); rod(b, nP, .06, goldMat, bridge);
+      ball(new THREE.Vector3(0, 2.15, 0), .15, H, bridge); rod(nP, new THREE.Vector3(0, 2.15, 0), .04, bondMat, bridge);
+      // 전극: 전자가 나오는 금속판
+      electrode = new THREE.Group(); electrode.position.set(-4.6, 0, 0); molecule.add(electrode);
+      electrode.add(new THREE.Mesh(new THREE.BoxGeometry(.16, 2.6, 1.8), phys('#3a3e45', .9, .35)));
+      electrodeFace = new THREE.MeshBasicMaterial({ color: '#e2bd72', toneMapped: false });
+      const face = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 2.4), electrodeFace); face.rotation.y = Math.PI / 2; face.position.x = .085; electrode.add(face);
+    }
+    function createEffects() {
+      heatGlow = sprite('#ff5b45');
+      for (let i = 0; i < 2; i++) heatWaves.push(sprite(i ? '#ff8a45' : '#ff533f'));
+      emissionGlow = sprite('#5aa9ff');
+      for (let i = 0; i < 3; i++) emissionWaves.push(sprite(i ? '#5aa9ff' : '#bcdcff'));
+      flash = sprite('#d6e8ff');
+      burstLight = new THREE.PointLight('#86c0ff', 0, 10); scene.add(burstLight);
+      electrons = particles(120, '#ffc861', 1.1);
+      heatSparks = particles(130, '#ff5a36', 1.2);
+      photons = particles(160, '#5aa9ff', 1.5);
+    }
+
+    const GOLD = [2.2, 1.4, .35], RED = [2.6, .35, .15], BLUE = [.5, 1.4, 3];
+    let atomWorld = [];
+    function updateMolecule(T, now) {
+      const p = PLAN[mode], on = phase !== 'idle', basic = mode === 'basic';
+      const heatOn = on && p.heat ? env(p.heat[0], p.heat[1], T, .4) : 0;
+      const lightK = on ? clamp((T - p.light[0]) / (p.light[1] - p.light[0]), 0, 1) : 0;
+      const lightOn = on && T > p.light[0] && T < p.light[1] + .4 ? Math.sin(lightK * Math.PI) : 0;
+      const charge = on ? smooth(.4, SUP, T) * (1 - smooth(SUP, SUP + .9, T)) : 0;
+      // 비틀림: 기본 분자는 늘 비틀리고 열이 날 때 더 세게, 고정된 분자는 거의 그대로
+      const twist = basic ? (.32 + .5 * heatOn) * Math.sin(now * 5.5) : .02 * Math.sin(now * 5.5);
+      ringL.rotation.x = twist; ringR.rotation.x = -twist * .9;
+      molecule.position.y = basic ? Math.sin(now * 9) * (.03 + .05 * heatOn) : 0;
+      const bright = basic ? .55 : 1;
+      for (const a of atoms) {
+        const f = .75 + .25 * Math.sin(now * 23 + a.seed), r = heatOn * f, g = charge * .8, b = lightOn * bright;
+        a.mat.emissive.setRGB(GOLD[0] * g + RED[0] * r + BLUE[0] * b, GOLD[1] * g + RED[1] * r + BLUE[1] * b, GOLD[2] * g + RED[2] * r + BLUE[2] * b);
+      }
+      electrodeFace.color.set('#e2bd72').multiplyScalar(.35 + 1.4 * (on ? env(0, SUP, T, .3) : 0));
+      // 전자: 전극 → 분자
+      const ox = molecule.position.x, supplyOn = on ? env(0, SUP, T, .3) : 0;
+      electrons.data.forEach((d, i) => {
+        const ph = (T * .8 + d.s) % 1, spread = lerp(1, .15, ph);
+        electrons.pos.set([ox + lerp(-4.45, -2.6, ph), d.v.y * spread * 1.1, d.v.z * spread * .8], i * 3);
+        electrons.alpha[i] = supplyOn * smooth(0, .1, ph) * (1 - smooth(.85, 1, ph));
+      });
+      electrons.commit();
+      // 원자 실제 위치(비틀린 상태)에서 열기와 빛 알갱이가 나옴
+      if (!atomWorld.length) atomWorld = atoms.map(() => new THREE.Vector3());
+      atoms.forEach((a, i) => a.mesh.getWorldPosition(atomWorld[i]));
+      const visibleAtoms = atoms.map((a, i) => i).filter(i => atoms[i].mesh.visible && atoms[i].mesh.parent.visible);
+      heatSparks.data.forEach((d, i) => {
+        const age = p.heat ? (T - (p.heat[0] + .2 + i / heatSparks.n * (p.heat[1] - p.heat[0] - .6))) / 1 : -1, q = atomWorld[visibleAtoms[d.atom % visibleAtoms.length]];
+        if (on && age > 0 && age < 1) { heatSparks.pos.set([q.x + d.v.x * age * .7, q.y + age * 2 + d.v.y * .2, q.z + d.v.z * age * .7], i * 3); heatSparks.alpha[i] = Math.sin(age * Math.PI) * .85; }
+        else heatSparks.alpha[i] = 0;
+      });
+      heatSparks.commit();
+      const count = Math.round(photons.n * p.lightShare / 100);
+      photons.data.forEach((d, i) => {
+        const age = (T - (p.light[0] + i / count * (p.light[1] - p.light[0] - 1))) / 1.4, q = atomWorld[visibleAtoms[d.atom % visibleAtoms.length]];
+        if (on && i < count && age > 0 && age < 1) { photons.pos.set([q.x + d.dir.x * age * 6, q.y + d.dir.y * age * 6, q.z + d.dir.z * age * 6], i * 3); photons.alpha[i] = Math.pow(1 - age, 1.3); }
+        else photons.alpha[i] = 0;
+      });
+      photons.commit();
+      const c = new THREE.Vector3(ox, 0, 0);
+      for (const s of [heatGlow, ...heatWaves, emissionGlow, ...emissionWaves, flash, burstLight]) s.position.copy(c);
+      heatGlow.material.opacity = heatOn * (.16 + .05 * Math.sin(now * 28)); heatGlow.scale.setScalar(4.2);
+      heatWaves.forEach((w, i) => { const age = p.heat && on ? ((T - p.heat[0] - i * .9) % 1.8) / 1.8 : 0; w.scale.setScalar(2 + age * 8); w.material.opacity = heatOn * Math.sin(clamp(age, 0, 1) * Math.PI) * .2; });
+      emissionWaves.forEach((w, i) => { const age = on ? clamp((T - p.light[0] - i * .3) / 1.6, 0, 1) : 0; w.scale.setScalar(2 + age * 9); w.material.opacity = age > 0 && age < 1 ? Math.sin(age * Math.PI) * .25 * bright : 0; });
+      emissionGlow.material.opacity = lightOn * .38 * bright; emissionGlow.scale.setScalar(5 + lightK * 4);
+      const burst = on ? clamp((T - p.light[0]) / 1.15, 0, 1) : 0;
+      flash.material.opacity = burst > 0 && burst < 1 ? Math.pow(1 - burst, 5) * bright : 0; flash.scale.setScalar(2 + burst * 7);
+      burstLight.intensity = lightOn * 30 * bright;
+
+      if (!on) return;
+      if (T < SUP) { setStep('supply'); setNote('supply'); }
+      else if (p.heat && T < p.heat[1]) { setStep('heat'); setNote('heat'); }
+      else if (T < p.light[1]) { setStep('light'); setNote(basic ? 'light_basic' : 'light_kaist'); }
+      else { setStep('done'); setNote(basic ? 'done_basic' : 'done_kaist'); }
+      const heatPct = p.heat ? Math.round(p.heatShare * clamp((T - p.heat[0]) / (p.heat[1] - p.heat[0]), 0, 1)) : 0;
+      showEnergy(Math.round(p.lightShare * lightK), heatPct);
+    }
+
+    function updateBuildings(dt) {
+      if (quakeT < 0) return;
+      quakeT += dt;
+      const q = quakeT, ground = Math.sin(q * 17) * .09 * Math.min(q * 3, 1) * clamp((3.2 - q) * 3, 0, 1);
+      const s0 = Math.sin(q * 13) * .55 * Math.exp(-q * .22), s1 = Math.sin(q * 13) * .07 * Math.exp(-q * .35);
+      buildings.platform.position.x = ground; buildings.sway(0, s0); buildings.sway(1, s1);
+      [s0, s1].forEach((s, i) => {
+        const v = Math.abs(s) / .55; peaks[i] = Math.max(peaks[i], v);
+        $(`m${i}`).style.width = `${v * 100}%`; $(`p${i}`).style.left = `calc(${peaks[i] * 100}% - 1px)`; $(`p${i}`).style.opacity = 1;
+        $(`m${i}-val`).textContent = `${Math.round(peaks[i] * 100)}`;
+      });
+      $('quake').style.setProperty('--p', Math.min(1, q / 3.2));
+      if (q > 3.2) {
+        quakeT = -1; buildings.platform.position.x = 0; buildings.sway(0, 0); buildings.sway(1, 0);
+        $('m0').style.width = $('m1').style.width = '0';
+        $('quake').disabled = false; $('quake').classList.add('ready'); $('quake').innerHTML = '다시<br>흔들기'; $('quake').style.setProperty('--p', 0);
+        for (const id of ['ch-building', 'ch-molecule', 'to-molecule']) $(id).disabled = false;
+        setNote('b_done');
+      }
+    }
+    // 건물 아래 이름표를 3D 위치에 맞춰 둠
+    function placeTags() {
+      if (view !== 'building') return;
+      [...$('tags').children].forEach((el, i) => {
+        const v = new THREE.Vector3(i ? 2.05 : -2.05, -1.95, .8).project(camera);
+        el.style.left = `${(v.x + 1) * canvas.clientWidth / 2}px`; el.style.top = `${(1 - v.y) * canvas.clientHeight / 2}px`;
+      });
+    }
+    function placeCamera() {
+      const b = view === 'building';
+      if (b) {
+        const half = THREE.MathUtils.degToRad(camera.fov / 2), dist = Math.max(8.5, 8.6 / (2 * Math.tan(half) * camera.aspect) * 1.1);
+        camera.position.set(0, 1.2, dist); controls.target.set(0, -.1, 0);
+        controls.minAzimuthAngle = -Math.PI / 3; controls.maxAzimuthAngle = Math.PI / 3;
+        controls.minDistance = dist * .7; controls.maxDistance = dist * 1.4;
+      } else {
+        camera.position.set(1.4, 1.6, 10); controls.target.set(-.6, 0, 0);
+        controls.minAzimuthAngle = -Infinity; controls.maxAzimuthAngle = Infinity;
+        controls.minDistance = 6.5; controls.maxDistance = 15;
+      }
+      controls.update();
+    }
+
+    let last = 0;
+    function tick(ms) {
+      requestAnimationFrame(tick);
+      const now = ms / 1000, dt = Math.min(now - last, .05); last = now;
+      if (view === 'building') updateBuildings(dt);
+      else {
+        if (phase === 'running') {
+          t += dt;
+          $('inject').style.setProperty('--p', Math.min(1, t / PLAN[mode].end));
+          if (t >= PLAN[mode].end) finishRun();
+        }
+        updateMolecule(t, now);
+      }
+      controls.update(); placeTags();
+      composer.render();
+    }
+    function resize() {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      renderer.setSize(w, h, false); composer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
+      if (view === 'building' && quakeT < 0) placeCamera();
+    }
+    async function main() {
+      try {
+        let OrbitControls, EffectComposer, RenderPass, UnrealBloomPass, OutputPass, RoomEnvironment;
+        [THREE, { OrbitControls }, { EffectComposer }, { RenderPass }, { UnrealBloomPass }, { OutputPass }, { RoomEnvironment }] = await Promise.all([
+          import('three'), import('three/addons/controls/OrbitControls.js'), import('three/addons/postprocessing/EffectComposer.js'),
+          import('three/addons/postprocessing/RenderPass.js'), import('three/addons/postprocessing/UnrealBloomPass.js'),
+          import('three/addons/postprocessing/OutputPass.js'), import('three/addons/environments/RoomEnvironment.js')]);
+        renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+        renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .9;
+        scene = new THREE.Scene(); scene.background = backgroundTexture();
+        scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(renderer), .04).texture;
+        camera = new THREE.PerspectiveCamera(40, 1, .05, 100);
+        controls = new OrbitControls(camera, canvas); controls.enableDamping = true; controls.dampingFactor = .07; controls.enablePan = false;
+        controls.minPolarAngle = .5; controls.maxPolarAngle = 2.35;
+        scene.add(new THREE.AmbientLight('#dfe4ec', .35));
+        const key = new THREE.DirectionalLight('#ffffff', 1.1); key.position.set(3, 5, 6); scene.add(key);
+        glowTex = glowTexture();
+        buildings = createBuildings(); createMolecule(); createEffects();
+        composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        composer.addPass(new UnrealBloomPass(new THREE.Vector2(512, 512), 1, .5, 1.8));
+        composer.addPass(new OutputPass());
+        resize(); new ResizeObserver(resize).observe(canvas.parentElement);
+        showView('building');
+        requestAnimationFrame(ms => { last = ms / 1000; tick(ms); });
+      } catch (error) {
+        console.error('3D 실험실 초기화 실패:', error);
+        const m = document.createElement('div'); m.className = 'error'; m.textContent = `3D 화면을 열 수 없습니다. 인터넷 연결과 WebGL 사용 가능 여부를 확인하세요. (${error.message})`; canvas.after(m);
+      }
+    }
+    main();
+  </script>
 </body>
 </html>

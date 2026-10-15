@@ -125,6 +125,8 @@ function switchMediaTab(e, index) {
 
 // App State
 let currentPkg = 'oled'; // 'oled' | 'quantum'
+// OLED·양자 어느 쪽에도 속하지 않는 화면 (주소가 #home, #cprl-intro 처럼 짧음)
+const isGlobalView = v => v === 'home' || v.startsWith('cprl');
 let currentView = 'lesson-plan'; // 'lesson-plan' | 'worksheet' | 'teacher-guide' | 'lab' | 'slides' | 'curriculum' | 'cprl-research'
 let currentLessonTabIndex = { oled: 0, quantum: 0 };
 
@@ -169,7 +171,9 @@ function syncRebuildSidebar() {
     el.classList.remove('active', 'quantum');
   });
 
-  if (currentView === 'cprl-intro') {
+  if (currentView === 'home') {
+    // 홈에서는 사이드바 선택 표시 없음
+  } else if (currentView === 'cprl-intro') {
     const el = document.getElementById('rb-nav-cprl-intro');
     if (el) el.classList.add('active');
   } else if (currentView === 'cprl-research') {
@@ -208,7 +212,7 @@ function setAppState(pkg, view) {
   let normalizedView = (view === 'overview' || isCurriculum) ? 'lesson-plan' : view;
   if (normalizedView === 'cprl-academic' || normalizedView === 'academic') normalizedView = 'lesson-plan';
   currentView = normalizedView;
-  window.location.hash = normalizedView.startsWith('cprl') 
+  window.location.hash = isGlobalView(normalizedView) 
     ? normalizedView 
     : (normalizedView === 'lesson-plan' 
        ? `${pkg}/${normalizedView}/${currentLessonTabIndex[pkg] || 0}` 
@@ -230,7 +234,7 @@ function switchPackage(pkg) {
   } else if (pkg === 'quantum' && currentView === 'oled-guide') {
     targetView = 'quantum-guide';
   }
-  setAppState(pkg, targetView.startsWith('cprl') || targetView === 'overview' ? 'lesson-plan' : targetView);
+  setAppState(pkg, isGlobalView(targetView) || targetView === 'overview' ? 'lesson-plan' : targetView);
 }
 
 function switchView(view) {
@@ -332,7 +336,7 @@ function renderView() {
   document.querySelectorAll('.content-view').forEach(el => el.classList.remove('active'));
 
   let targetViewId = '';
-  if (currentView.startsWith('cprl')) {
+  if (isGlobalView(currentView)) {
     targetViewId = `view-${currentView}`;
   } else if (currentView === 'quantum-guide') {
     targetViewId = 'view-quantum-guide';
@@ -415,12 +419,12 @@ function parseHash() {
       }
       setAppState(pkg, view);
       return;
-    } else if (parts[0].startsWith('cprl')) {
+    } else if (isGlobalView(parts[0])) {
       setAppState('oled', parts[0]);
       return;
     }
   }
-  setAppState('oled', 'lesson-plan');
+  setAppState('oled', 'home');
 }
 window.addEventListener('popstate', parseHash);
 

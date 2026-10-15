@@ -2189,3 +2189,15 @@ body.presentation-fullscreen-mode .pres-slide-tag,
   background: #ffffff;
   box-shadow: none;
 }
+
+
+/* --------------------------------------------------------------------------
+   사이트 공통 커서: 홈 화면의 자외선 램프처럼 보랏빛으로 빛나는 점
+   누를 수 있는 곳 위에서는 금색 고리가 더해짐, 글 입력 칸은 원래 커서 유지
+   -------------------------------------------------------------------------- */
+html, body, *:not(input):not(textarea):not(select):not([contenteditable="true"]) {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='0' stop-color='%23d6c4ff'/%3E%3Cstop offset='.28' stop-color='%23b794ff' stop-opacity='.85'/%3E%3Cstop offset='.6' stop-color='%239b6bff' stop-opacity='.25'/%3E%3Cstop offset='1' stop-color='%239b6bff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='14' cy='14' r='14' fill='url%28%23g%29'/%3E%3Ccircle cx='14' cy='14' r='4' fill='%23f3edff'/%3E%3C/svg%3E") 14 14, auto !important;
+}
+a, a *, button, button *, [onclick], [onclick] *, [role="link"], [role="link"] *, label, summary, .rebuild-nav-item, .rebuild-tree-item, .hub-showcase-card, .ps-reveal {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='0' stop-color='%23d6c4ff'/%3E%3Cstop offset='.25' stop-color='%23b794ff' stop-opacity='.85'/%3E%3Cstop offset='.55' stop-color='%239b6bff' stop-opacity='.2'/%3E%3Cstop offset='1' stop-color='%239b6bff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='16' fill='url%28%23g%29'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23e2bd72' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23f3edff'/%3E%3C/svg%3E") 16 16, pointer !important;
+}

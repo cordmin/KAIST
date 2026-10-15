@@ -1,0 +1,67 @@
+/* ==========================================================================
+   홈 화면
+   ========================================================================== */
+#view-home { position: relative; padding: 0 !important; background: transparent; color: #f4f1ea; }
+/* 움직이는 분자 캔버스는 홈 전체 배경 (첫 화면 + 탐구 여정 뒤) */
+/* 화면 전체 뒤에 고정: 홈 칸의 너비 제약 바깥(오른쪽 빈 곳)까지 분자가 채움 */
+#home-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; z-index: 0; background: radial-gradient(90% 70% at 62% 22%, #0d1322 0%, #05070c 62%); }
+#view-home .home-hero, #view-home .home-sec { position: relative; z-index: 1; }
+#view-home.active { animation: homeFade .38s ease both; } /* 위로 떠오르는 움직임 없이 밝아지기만 (떠오를 때 생기는 8px 스크롤 방지) */
+@keyframes homeFade { from { opacity: 0; } to { opacity: 1; } }
+.content-container:has(#view-home.active) { padding: 0 !important; }
+
+/* 1. 첫 화면: 자외선 램프로 분자를 비추는 캔버스 */
+.home-hero { position: relative; height: min(92vh, 980px); min-height: 560px; }
+.home-hero-text { position: absolute; left: clamp(28px, 6vw, 96px); bottom: clamp(48px, 10vh, 120px); max-width: 980px; pointer-events: none; }
+.home-kicker { color: #e2bd72; font-size: .95rem; font-weight: 800; letter-spacing: .02em; }
+.home-hero h1 { margin: 1rem 0 0; font-size: clamp(2.6rem, 5.4vw, 5.2rem); font-weight: 900; line-height: 1.12; letter-spacing: -.045em; word-break: keep-all; }
+.home-hero p { margin: 1.3rem 0 0; color: #b9b4aa; font-size: clamp(1rem, 1.25vw, 1.2rem); line-height: 1.7; word-break: keep-all; }
+
+/* 공통 구획 */
+.home-sec { padding: clamp(56px, 8vw, 110px) clamp(24px, 6vw, 96px) 0; }
+.home-sec h2 { margin: 0; font-size: clamp(1.7rem, 2.6vw, 2.5rem); font-weight: 900; letter-spacing: -.035em; word-break: keep-all; }
+
+/* 2. 두 가지 탐구 여정 */
+.home-journeys { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 2.2rem; padding-bottom: clamp(56px, 8vw, 110px); }
+.home-journey { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 560px; overflow: hidden; border: 1px solid rgba(244, 241, 234, .14); border-radius: 18px; cursor: pointer; isolation: isolate; }
+.home-journey > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: -2; transition: transform .8s ease; }
+.home-journey::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(5, 7, 12, .05) 25%, rgba(5, 7, 12, .92) 78%); }
+.home-journey:hover > img { transform: scale(1.04); }
+.home-journey-body { padding: 2rem 2.2rem 2.2rem; }
+.home-journey h3 { margin: .5rem 0 0; font-size: clamp(1.6rem, 2.3vw, 2.2rem); font-weight: 900; letter-spacing: -.035em; }
+.home-journey p { margin: .7rem 0 0; color: #cfcac0; font-size: 1rem; line-height: 1.6; word-break: keep-all; }
+
+
+/* 사이드바 로고: 누르면 홈으로 */
+.rebuild-ws-identity { cursor: pointer; }
+
+@media (max-width: 1100px) {
+  .home-journeys { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .home-hero { height: 88vh; }
+  .home-hero-text { bottom: 64px; }
+  .home-journey { min-height: 0; background: #0c1220; }
+  .home-journey > img { position: static; aspect-ratio: 16 / 10; height: auto; }
+  .home-journey::before { display: none; }
+  .home-journey-body { padding: 1.3rem 1.2rem 1.4rem; }
+  }
+
+/* 컴퓨터 화면: 홈 전체를 화면 한 장 높이에 맞춤 (사이드바 아래 끝과 나란히) */
+@media (min-width: 769px) {
+  #view-home.active { height: 100vh; display: flex !important; flex-direction: column; overflow: hidden; }
+  /* 첫 화면은 글 높이만큼만: 머리글 위쪽을 사이드바 KAIST 로고 위쪽과 맞춤 (home.js가 --home-top을 잼) */
+  #view-home .home-hero { flex: none; height: auto; min-height: 0; padding: var(--home-top, 104px) 0 clamp(18px, 3vh, 40px); }
+  #view-home .home-hero-text { position: static; margin-left: clamp(28px, 6vw, 96px); }
+  #view-home .home-sec { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; padding: clamp(10px, 2vh, 28px) clamp(24px, 6vw, 96px) clamp(18px, 3vh, 32px); }
+  #view-home .home-journeys { grid-template-columns: 1fr 1fr; }
+  #view-home .home-sec h2 { font-size: clamp(1.4rem, 2.4vh, 2rem); }
+  /* 카드 아래 끝 = 사이드바 마지막 메뉴 상자 아래 끝 (home.js가 높이를 잼) */
+  #view-home .home-journeys { flex: none; height: var(--home-cards-h, 520px); min-height: 0; margin-top: clamp(10px, 1.8vh, 22px); padding-bottom: 0; }
+  #view-home .home-journey { min-height: 0; }
+  #view-home .home-journey-body { padding: clamp(14px, 2.4vh, 32px) 2rem; }
+  #view-home .home-journey h3 { margin-top: 0; font-size: clamp(1.3rem, 3vh, 2.1rem); }
+  #view-home .home-journey p { margin-top: .4rem; font-size: clamp(.85rem, 1.5vh, 1rem); }
+  #view-home .home-hero h1 { font-size: clamp(2.2rem, 6.4vh, 5rem); }
+  #view-home .home-hero p { margin-top: clamp(.5rem, 1.4vh, 1.3rem); }
+}
