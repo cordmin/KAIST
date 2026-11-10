@@ -200,7 +200,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 동기 유발 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">동기 유발 3분</span>
+                        <span class="plan-card-badge"><b>동기 유발</b><i>3분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 체스판과 쌀알 퀴즈 시연 (1번째 칸 1톨, 2번째 칸 2톨, 3번째 칸 4톨... 64칸을 모두 합하면 약 1,800경 톨로 전 세계가 수백 년 동안 거두는 쌀보다 많음)<br>
@@ -215,7 +215,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습 목표 안내 2분</span>
+                        <span class="plan-card-badge"><b>학습 목표 안내</b><i>2분</i></span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
@@ -246,7 +246,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 미시세계와 전자 상호작용 10분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">개념 탐구 10분</span>
+                        <span class="plan-card-badge"><b>개념 탐구</b><i>10분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>서로 영향을 주고받는 전자:</strong> 음(-)전하를 띤 전자들은 서로 밀어내고, 양(+)전하를 띤 원자핵에는 끌려가며 끊임없이 영향을 주고받으므로 전자 하나씩 따로 계산할 수 없음<br>
@@ -261,7 +261,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 지수 폭발 수치 체험 활동 12분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">체험 활동 12분</span>
+                        <span class="plan-card-badge"><b>체험 활동</b><i>12분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>활동지 지수 폭발 계산표 작성:</strong><br>
@@ -278,7 +278,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 3: 화학 발전의 병목과 파인만의 제안 10분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">심화 토의 10분</span>
+                        <span class="plan-card-badge"><b>심화 토의</b><i>10분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>화학자의 시행착오:</strong> 분자를 정확히 계산할 수 없기 때문에 화학자들은 수많은 물질을 직접 만들고 시험하며 실패를 거듭함 (신약 하나 개발에 보통 10년 이상, 수조 원 소요)<br>
@@ -305,7 +305,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 핵심 배움 정리 5분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">핵심 정리 5분</span>
+                        <span class="plan-card-badge"><b>핵심 정리</b><i>5분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • $2^N$ 지수 폭발 원리와 슈퍼컴퓨터의 한계 요약<br>
@@ -316,7 +316,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 차시 예고 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">차시 예고 3분</span>
+                        <span class="plan-card-badge"><b>차시 예고</b><i>3분</i></span>
                       </div>
                       <p style="margin:0; color:#334155;">
                         • <strong>[2차시 예고]</strong> 0과 1이 동시에 춤추는 마법: 동전 팽이와 양자 큐비트<br>
@@ -400,7 +400,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 동기 유발 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">동기 유발 3분</span>
+                        <span class="plan-card-badge"><b>동기 유발</b><i>3분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 전등 스위치 켜기/끄기 조작 vs 책상 위 팽이처럼 빠르게 도는 동전 비교 시연
@@ -414,7 +414,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습 목표 안내 2분</span>
+                        <span class="plan-card-badge"><b>학습 목표 안내</b><i>2분</i></span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
@@ -441,7 +441,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 조작 실험 10분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">조작 실험 10분</span>
+                        <span class="plan-card-badge"><b>조작 실험</b><i>10분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>[조작 실험] 도는 동전과 중첩:</strong> 학생들이 책상 트레이 위에서 동전을 돌리고 관찰<br>
@@ -456,7 +456,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 블로흐 구면과 큐비트 12분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">시뮬레이션 탐구 12분</span>
+                        <span class="plan-card-badge"><b>시뮬레이션 탐구</b><i>12분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>비트 vs 큐비트 비교:</strong><br>
@@ -469,7 +469,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 3: 미로 찾기와 동시 병렬 처리 10분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">개념 응용 10분</span>
+                        <span class="plan-card-badge"><b>개념 응용</b><i>10분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>미로 찾기 비유로 보는 차이:</strong><br>
@@ -498,7 +498,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 핵심 정리 5분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">핵심 정리 5분</span>
+                        <span class="plan-card-badge"><b>핵심 정리</b><i>5분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 활동지 1번 [비트 vs 큐비트 비교표] 및 2번 [미로 찾기 서술] 모범 답안 점검<br>
@@ -509,7 +509,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 차시 예고 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">차시 예고 3분</span>
+                        <span class="plan-card-badge"><b>차시 예고</b><i>3분</i></span>
                       </div>
                       <p style="margin:0; color:#334155;">
                         • <strong>[3차시 예고]</strong> 환상의 2인 3각 달리기: 두 컴퓨터가 함께 찾는 화학 결합의 바닥 상태<br>
@@ -593,7 +593,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 동기 유발 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">동기 유발 3분</span>
+                        <span class="plan-card-badge"><b>동기 유발</b><i>3분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 굴러가는 공과 안개 자욱한 산골짜기 비유 제시
@@ -607,7 +607,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 학습 목표 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">학습 목표 안내 2분</span>
+                        <span class="plan-card-badge"><b>학습 목표 안내</b><i>2분</i></span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
@@ -634,7 +634,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 바닥 상태와 화학 결합 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">개념 탐구 8분</span>
+                        <span class="plan-card-badge"><b>개념 탐구</b><i>8분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>바닥 상태:</strong> 원자핵끼리 밀어내는 힘과, 전자와 원자핵이 끌어당기는 힘이 균형을 이루어 에너지가 가장 낮은 상태<br>
@@ -645,7 +645,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 2인 1조 2인 3각 역할극 12분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">협동 역할극 12분</span>
+                        <span class="plan-card-badge"><b>협동 역할극</b><i>12분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>[신체 활동] 2인 3각 역할극:</strong> 벨크로 밴드로 발을 묶고 짝과 협동 (교사 참고: 전문가들은 이 계산 방법을 VQE라고 부름. 학생에게는 이름을 강조하지 않음)<br>
@@ -658,7 +658,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 3: 시뮬레이터 조작 및 변분 원리 12분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">시뮬레이션 & 원리 12분</span>
+                        <span class="plan-card-badge"><b>시뮬레이션 & 원리</b><i>12분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>가상실험실 바닥 상태 찾기 시뮬레이터 조작:</strong> 태블릿에서 수소 분자의 두 원자 사이 거리를 바꾸며 에너지 곡선의 가장 낮은 곳을 찾아가는 과정 확인<br>
@@ -685,7 +685,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 핵심 정리 5분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">핵심 정리 5분</span>
+                        <span class="plan-card-badge"><b>핵심 정리</b><i>5분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 2인 3각 계산의 반복 과정과 안전장치 요약<br>
@@ -696,7 +696,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 차시 예고 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">차시 예고 3분</span>
+                        <span class="plan-card-badge"><b>차시 예고</b><i>3분</i></span>
                       </div>
                       <p style="margin:0; color:#334155;">
                         • <strong>[4차시 예고]</strong> 양자 화학 시뮬레이션 기반 분자 설계 프로젝트<br>
@@ -781,7 +781,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 동기 유발 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">동기 유발 3분</span>
+                        <span class="plan-card-badge"><b>동기 유발</b><i>3분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 컴퓨터 속에서 분자를 미리 실험해 보는 '가상 실험실' 소개
@@ -795,7 +795,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 프로젝트 안내 2분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">프로젝트 선언 2분</span>
+                        <span class="plan-card-badge"><b>프로젝트 선언</b><i>2분</i></span>
                       </div>
                       <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:0.45rem 0.65rem; font-size:0.83rem; color:#334155; line-height:1.5;">
                         <div style="margin-bottom:0.35rem;">
@@ -822,7 +822,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 3대 지구 과제 심층 분석 10분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">해결 과제 분석 10분</span>
+                        <span class="plan-card-badge"><b>해결 과제 분석</b><i>10분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>3대 지구 과제와 화학 결합의 원리:</strong><br>
@@ -835,7 +835,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 스타트업 CEO 기획서 구안 14분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">창업 기획 14분</span>
+                        <span class="plan-card-badge"><b>창업 기획</b><i>14분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • <strong>[모둠 프로젝트] 분자 설계 스타트업 기획서 작성:</strong><br>
@@ -848,7 +848,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 3: 2분 발표하기 & 상호 투자 심사 8분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">발표하기 8분</span>
+                        <span class="plan-card-badge"><b>발표하기</b><i>8분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 모둠별 2분 발표하기<br>
@@ -875,7 +875,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 1: 종합 평가 및 진로 탐색 5분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">진로 탐색 5분</span>
+                        <span class="plan-card-badge"><b>진로 탐색</b><i>5분</i></span>
                       </div>
                       <p style="margin:0 0 0.35rem 0; color:#334155;">
                         • 모의 투자 심사 결과 공유 및 우수 스타트업 격려<br>
@@ -886,7 +886,7 @@ window.quantumLessonPlanHtml = `<div class="chrome-window" id="quantum-lesson-pl
                     <!-- 카드 2: 전 과정 완주 축하 3분 -->
                     <div class="plan-card">
                       <div class="plan-card-header">
-                        <span class="plan-card-badge">과정 완주 3분</span>
+                        <span class="plan-card-badge"><b>과정 완주</b><i>3분</i></span>
                       </div>
                       <p style="margin:0; color:#334155;">
                         • <strong>[양자 모듈 4차시 완주]</strong> 지수 폭발에서 출발하여 큐비트 중첩, 2인 3각 계산, 분자 설계 스타트업 프로젝트까지 성실히 탐구한 학생들을 축하하고 KAIST CPRL 청소년 아카데미 수료 선언

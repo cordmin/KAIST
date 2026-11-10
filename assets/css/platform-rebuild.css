@@ -617,7 +617,7 @@ body {
 #quantum-lesson-plan-chrome-window .card:hover {
   background: #F2F2F0 !important;
   background-color: #F2F2F0 !important;
-  border: 1px solid #cbd5e1 !important;
+  border: none !important; /* 활동 상자 바깥 테두리 없음 (안쪽 발문 상자·구분선만 남김) */
   color: #111827 !important;
   box-shadow: none !important;
   transform: none !important;
@@ -646,27 +646,41 @@ body {
 #quantum-lesson-plan-chrome-window .plan-card div[style*="border"],
 #oled-lesson-plan-chrome-window .substance-mini-item,
 #quantum-lesson-plan-chrome-window .substance-mini-item {
-  border: 1px solid #cbd5e1 !important;
+  border: 1px solid #64748b !important;
 }
 
 #oled-lesson-plan-chrome-window .plan-note-card,
 #quantum-lesson-plan-chrome-window .plan-note-card {
-  border: 1px solid #cbd5e1 !important;
+  border: 1px solid #64748b !important;
 }
 
 #oled-lesson-plan-chrome-window .plan-card-header,
 #quantum-lesson-plan-chrome-window .plan-card-header {
-  border-bottom: 1px solid #cbd5e1 !important;
+  border-bottom: none !important; /* 시간 표시 아래 구분선 없음 */
   background: transparent !important;
 }
 
-/* 활동 카드 상단 배지: #F2F2F0 배경 일치 */
+/* 활동 카드 상단 배지: [활동명(밝은 회색 바탕) | 시간(흰 바탕)] */
 #oled-lesson-plan-chrome-window .plan-card-badge,
 #quantum-lesson-plan-chrome-window .plan-card-badge {
-  background: #F2F2F0 !important;
-  background-color: #F2F2F0 !important;
-  border: 1px solid #94a3b8 !important;
+  display: inline-flex !important;
+  padding: 0 !important;
+  overflow: hidden;
+  background: #ffffff !important;
+  border: 1px solid #d9d6cf !important;
   color: #334155 !important;
+  font-weight: 700 !important;
+}
+#oled-lesson-plan-chrome-window .plan-card-badge b,
+#quantum-lesson-plan-chrome-window .plan-card-badge b {
+  background: #d9d6cf;
+  color: #1f2937;
+  padding: 0.12rem 0.55rem;
+}
+#oled-lesson-plan-chrome-window .plan-card-badge i,
+#quantum-lesson-plan-chrome-window .plan-card-badge i {
+  font-style: normal;
+  padding: 0.12rem 0.5rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -1373,7 +1387,7 @@ body {
   flex-direction: column;
   gap: 1.75rem;
   margin-top: 2.5rem;
-  padding-bottom: 3.5rem;
+  padding-bottom: 2.25rem;
   border-bottom: 2px solid rgba(255, 255, 255, 0.22) !important;
 }
 
@@ -1411,7 +1425,7 @@ body {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: 3rem;
-  align-items: start;
+  align-items: stretch; /* 왼쪽(사진+설명)과 오른쪽(본문+논문 카드)의 아래 끝을 맞춤 */
   margin-top: 0.5rem;
 }
 
@@ -1436,11 +1450,15 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
   cursor: zoom-in;
+  flex: 1 1 auto; /* 오른쪽 칸이 더 길면 사진이 늘어나 설명글 아래 끝이 카드 아래 끝과 맞음 */
+  min-height: 380px;
 }
 
 #view-cprl-research .mag-figure-frame img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 380px;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease, filter 0.3s ease;
@@ -1455,7 +1473,7 @@ body {
   font-size: 0.84rem;
   color: #94a3b8;
   line-height: 1.55;
-  word-break: keep-all;
+  word-break: normal; /* 긴 낱말이 통째로 넘어가 오른쪽이 비지 않게, 글자 단위로 줄바꿈 */
 }
 
 #view-cprl-research .mag-photo-caption strong {
@@ -1496,12 +1514,13 @@ body {
 }
 
 #view-cprl-research .mag-section-footer-paper {
-  margin-top: 1.25rem;
+  margin-top: auto; /* 본문 바로 아래(최소 간격은 칸의 gap), 남는 높이가 있으면 아래 끝에 붙음 */
   padding-top: 0;
 }
 
 #view-cprl-research .mag-paper-full-card {
   display: flex;
+  flex-direction: row-reverse; /* 글은 왼쪽, 논문 도표는 오른쪽 */
   align-items: center;
   gap: 1.75rem;
   padding: 1.25rem 1.6rem;
@@ -2201,3 +2220,55 @@ html, body, *:not(input):not(textarea):not(select):not([contenteditable="true"])
 a, a *, button, button *, [onclick], [onclick] *, [role="link"], [role="link"] *, label, summary, .rebuild-nav-item, .rebuild-tree-item, .hub-showcase-card, .ps-reveal {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='0' stop-color='%23d6c4ff'/%3E%3Cstop offset='.25' stop-color='%23b794ff' stop-opacity='.85'/%3E%3Cstop offset='.55' stop-color='%239b6bff' stop-opacity='.2'/%3E%3Cstop offset='1' stop-color='%239b6bff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='16' fill='url%28%23g%29'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%23e2bd72' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23f3edff'/%3E%3C/svg%3E") 16 16, pointer !important;
 }
+
+/* --------------------------------------------------------------------------
+   가상실험실 회전문 (assets/js/lab-door.js가 카드 위치를 정함)
+   -------------------------------------------------------------------------- */
+.hub-showcase-grid.lab-door {
+  display: block;
+  --door-w: clamp(250px, 34vw, 440px); /* 카드 너비 */
+  position: relative;
+  height: calc(var(--door-w) * 0.625 + 96px); /* 사진(16:10) + 제목 + 위아래 조금 */
+  margin-top: 0.5rem;
+  perspective: 1400px;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+.lab-door.dragging { cursor: grabbing; }
+.lab-door .hub-showcase-card,
+.lab-door .hub-showcase-card:hover {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--door-w);
+  height: auto;
+  background: none;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+  transition: none;
+  will-change: transform;
+}
+.lab-door .hub-card-thumb {
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
+}
+.lab-door .hub-card-thumb img { pointer-events: none; -webkit-user-drag: none; }
+.lab-door .hub-showcase-card:hover .hub-card-thumb img { transform: none; }
+.lab-door .hub-card-tag,
+.lab-door .hub-card-desc { display: none; }
+.lab-door .hub-card-body { padding: 1.1rem 0 0; }
+.lab-door .hub-card-title {
+  display: block;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  word-break: keep-all;
+}
+
+/* 발표 슬라이드 모음: 그림을 더 크게 (16:9 → 4:3) */
+.hub-showcase-grid.cols-4 .hub-card-thumb { aspect-ratio: 4 / 3; }

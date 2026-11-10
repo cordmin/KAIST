@@ -39,8 +39,9 @@
   .home-journeys { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
-  .home-hero { height: 88vh; }
-  .home-hero-text { bottom: 64px; }
+  /* 휴대폰: 제목을 메뉴 버튼 바로 아래에 둠 (화면 아래로 밀리지 않게) */
+  .home-hero { height: auto; min-height: 0; padding: 96px 0 0; }
+  .home-hero-text { position: static; margin: 0 24px; }
   .home-journey { min-height: 0; background: #0c1220; }
   .home-journey > img { position: static; aspect-ratio: 16 / 10; height: auto; }
   .home-journey::before { display: none; }
