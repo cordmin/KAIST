@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>동전 팽이와 큐비트 중첩 | 양자 2차시 가상실험실</title>
+  <style>
+    :root { color-scheme: dark; font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif; --ink: #f4f1ea; --dim: #9d988d; --line: rgba(244, 241, 234, .12); --gold: #e2bd72; --one: #8fb3e8; }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html, body { margin: 0; height: 100%; background: #05060a; color: var(--ink); }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    .app { height: 100vh; min-height: 540px; display: grid; grid-template-columns: minmax(0, 1fr) 340px; }
+
+    /* 3D 무대 */
+    .stage { position: relative; min-width: 0; overflow: hidden; }
+    #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+    .title { position: absolute; left: 28px; top: 22px; pointer-events: none; }
+    .title small { color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .04em; }
+    .title h1 { margin: .25rem 0 0; font-size: clamp(1.3rem, 2vw, 1.8rem); font-weight: 900; letter-spacing: -.04em; }
+    .sound { position: absolute; right: 24px; top: 24px; z-index: 2; display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(12, 13, 18, .7); color: var(--dim); font-size: .8rem; font-weight: 800; white-space: nowrap; }
+    .sound:hover { color: var(--ink); }
+    .sound svg { width: 12px; height: 12px; fill: currentColor; }
+
+    /* 진행 단계 */
+    .steps { position: absolute; left: 50%; top: 30px; transform: translateX(-50%); display: flex; align-items: center; margin: 0; padding: 0; list-style: none; pointer-events: none; color: rgba(244, 241, 234, .34); font-size: .9rem; font-weight: 800; white-space: nowrap; }
+    .steps li { display: flex; align-items: center; gap: .5rem; transition: color .3s; }
+    .steps li + li::before { content: ""; width: 30px; height: 1px; margin: 0 .7rem; background: currentColor; opacity: .5; }
+    .steps i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+    .steps li.done { color: rgba(244, 241, 234, .72); }
+    .steps li.now { color: var(--gold); }
+    .steps li.now i { box-shadow: 0 0 0 4px rgba(226, 189, 114, .3), 0 0 14px var(--gold); }
+
+    /* 3D 위치에 붙는 이름표 */
+    .tags span { position: absolute; transform: translate(-50%, 0); color: var(--ink); font-size: .95rem; font-weight: 800; white-space: nowrap; pointer-events: none; text-shadow: 0 2px 10px #000; }
+    .tags .zero { color: var(--gold); } .tags .one { color: var(--one); }
+
+    /* 아래 조작 막대 */
+    .dock { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; align-items: center; gap: 22px; padding: 12px 14px 12px 20px; border: 1px solid var(--line); border-radius: 999px; background: rgba(12, 13, 18, .8); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 20px 50px rgba(0, 0, 0, .5); }
+    .seg { display: flex; padding: 3px; border-radius: 999px; background: rgba(255, 255, 255, .07); }
+    .seg button { padding: .55rem 1rem; border: 0; border-radius: 999px; background: none; color: var(--dim); font-size: .86rem; font-weight: 800; white-space: nowrap; }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: #0b0b10; }
+    .seg button:disabled { cursor: default; }
+    .angle { display: grid; gap: 6px; width: 230px; }
+    .angle-label { display: flex; justify-content: space-between; color: var(--dim); font-size: .78rem; font-weight: 700; }
+    .angle-label b { color: var(--ink); font-variant-numeric: tabular-nums; }
+    .angle input { width: 100%; margin: 0; accent-color: var(--gold); cursor: pointer; }
+    .angle input:disabled { cursor: default; opacity: .5; }
+    .angle-ticks { display: flex; justify-content: space-between; font-size: .72rem; font-weight: 800; color: rgba(244, 241, 234, .45); }
+    .angle-ticks .zero { color: var(--gold); } .angle-ticks .one { color: var(--one); }
+    .go { position: relative; flex: none; width: 76px; height: 76px; border: 0; border-radius: 50%; color: #0b0b10; font-size: .9rem; font-weight: 900; line-height: 1.2; background: radial-gradient(circle at 50% 32%, #f6e2b4, #b8924a); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3), 0 0 28px rgba(226, 189, 114, .45); transition: transform .15s; }
+    .go:hover:not(:disabled) { transform: scale(1.06); }
+    .go:disabled { cursor: default; }
+    .go::after { content: ""; position: absolute; inset: -7px; border-radius: 50%; background: conic-gradient(var(--ink) calc(var(--p, 0) * 1turn), transparent 0); -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); }
+    .go.ready::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold); animation: ping 1.8s ease-out infinite; }
+    @keyframes ping { from { transform: scale(1); opacity: .8; } to { transform: scale(1.45); opacity: 0; } }
+
+    /* 왼쪽 아래: 모형 읽는 법 / 오른쪽 아래: 비유라는 것 알리기 */
+    .key { position: absolute; left: 24px; bottom: 22px; display: grid; gap: 10px; padding: 14px 18px 14px 14px; border: 1px solid var(--line); border-radius: 16px; background: rgba(12, 13, 18, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); pointer-events: none; }
+    .key div { display: flex; align-items: center; gap: 12px; font-size: .8rem; color: var(--dim); white-space: nowrap; }
+    .key b { display: block; color: var(--ink); font-size: .86rem; }
+    .key i { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: 0 0 8px var(--c); }
+    .key .arrow { flex: none; width: 22px; height: 2px; border-radius: 2px; background: var(--ink); position: relative; }
+    .key .arrow::after { content: ""; position: absolute; right: -2px; top: -4px; border: 5px solid transparent; border-left: 7px solid var(--ink); border-right: 0; }
+    .key.why { left: auto; right: 24px; max-width: 290px; gap: 6px; padding: 14px 18px; }
+    .why h3 { margin: 0; color: var(--ink); font-size: .86rem; font-weight: 800; }
+    .why p { margin: 0; color: var(--dim); font-size: .78rem; line-height: 1.55; white-space: normal; word-break: keep-all; }
+    @media (max-width: 1500px) { .key { bottom: 118px; } }
+
+    /* 오른쪽: 100번 측정 결과 */
+    .panel { display: flex; flex-direction: column; gap: 16px; min-height: 0; padding: 74px 26px 26px; border-left: 1px solid var(--line); background: linear-gradient(180deg, #0b0c11, #06070b); }
+    .panel h2 { margin: 0; font-size: 1.05rem; font-weight: 900; letter-spacing: -.02em; }
+    .note { min-height: 2.9em; margin: .45rem 0 0; color: var(--dim); font-size: .86rem; line-height: 1.5; word-break: keep-all; transition: color .3s; }
+    .grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+    .grid i { aspect-ratio: 1; border-radius: 50%; background: rgba(244, 241, 234, .08); transition: background .15s, box-shadow .15s; }
+    .grid i.z { background: var(--gold); box-shadow: 0 0 6px rgba(226, 189, 114, .55); }
+    .grid i.o { background: var(--one); box-shadow: 0 0 6px rgba(143, 179, 232, .55); }
+    .totals { display: flex; justify-content: space-between; }
+    .totals small { display: block; color: var(--dim); font-size: .78rem; font-weight: 700; }
+    .totals strong { font-size: 2rem; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
+    .totals .z strong { color: var(--gold); }
+    .totals .o { text-align: right; } .totals .o strong { color: var(--one); }
+    /* 실제 결과 막대 위에 지구본 모형이 예상한 자리 표시 */
+    .expect { position: relative; height: 10px; margin-top: 16px; border-radius: 99px; overflow: visible; background: rgba(244, 241, 234, .08); }
+    .expect .bz { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px 0 0 99px; background: var(--gold); transition: width .3s; }
+    .expect .bo { position: absolute; right: 0; top: 0; bottom: 0; border-radius: 0 99px 99px 0; background: var(--one); transition: width .3s; }
+    .expect .mark { position: absolute; top: -7px; bottom: -7px; width: 2px; margin-left: -1px; background: var(--ink); box-shadow: 0 0 6px #000; transition: left .3s; }
+    .expect .mark::after { content: "예상"; position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: .7rem; font-weight: 800; color: var(--ink); white-space: nowrap; }
+    .record { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .record h3 { margin: 0; font-size: .82rem; color: var(--dim); font-weight: 800; }
+    .rec small { display: flex; justify-content: space-between; font-size: .8rem; font-weight: 800; }
+    .rec small span { color: var(--dim); font-weight: 700; }
+    .rec .bar { display: flex; height: 8px; margin-top: 5px; border-radius: 99px; overflow: hidden; background: rgba(244, 241, 234, .08); }
+    .rec .bar i { display: block; height: 100%; } .rec .bar .bz { background: var(--gold); } .rec .bar .bo { background: var(--one); }
+    .empty { color: rgba(244, 241, 234, .35); font-size: .8rem; }
+    .error { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; text-align: center; color: #fecaca; }
+
+    @media (max-width: 1150px) { .steps { left: 28px; top: 92px; transform: none; } }
+    @media (max-width: 900px) {
+      .app { height: auto; grid-template-columns: 1fr; grid-template-rows: minmax(560px, 72vh) auto; }
+      .panel { padding-top: 24px; border-left: 0; border-top: 1px solid var(--line); }
+    }
+    @media (max-width: 640px) {
+      .dock { left: 12px; right: 12px; transform: none; flex-wrap: wrap; justify-content: center; gap: 14px; border-radius: 22px; padding: 14px; }
+      .key, .steps { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="stage" aria-label="동전과 지구본 모형 3D 화면">
+      <canvas id="scene"></canvas>
+      <button class="sound" id="sound" type="button" aria-pressed="true"></button>
+      <div class="title"><small>양자 2차시 가상실험실</small><h1>동전 팽이와 큐비트 중첩</h1></div>
+      <ol class="steps" id="steps" aria-live="polite">
+        <li><i></i>상태 정하기</li>
+        <li><i></i>100번 측정</li>
+        <li><i></i>비율 확인</li>
+      </ol>
+      <div class="tags" id="tags"><span id="tag-coin">도는 동전</span><span>지구본 모형</span><span class="zero">0 · 앞면</span><span class="one">1 · 뒷면</span></div>
+      <div class="key" aria-label="모형 읽는 법">
+        <div><i style="--c:#e2bd72"></i><span><b>북극</b>0 · 동전 앞면</span></div>
+        <div><i style="--c:#8fb3e8"></i><span><b>남극</b>1 · 동전 뒷면</span></div>
+        <div><span class="arrow"></span><span><b>화살표</b>측정하기 전 큐비트 상태</span></div>
+      </div>
+      <div class="key why" aria-label="비유라는 것">
+        <h3>동전과 지구본은 비유예요</h3>
+        <p>큐비트를 이해하려고 만든 모형이에요. 실제 큐비트가 동전처럼 도는 것은 아니에요.</p>
+        <p>측정할 때마다 같은 상태로 다시 준비해서 100번 측정해요.</p>
+      </div>
+      <div class="dock">
+        <div class="seg" id="mode" aria-label="동전 고르기">
+          <button type="button" data-mode="bit" aria-pressed="false">누운 동전 (비트)</button>
+          <button type="button" data-mode="qubit" aria-pressed="true">도는 동전 (큐비트)</button>
+        </div>
+        <div class="seg" id="face" aria-label="누운 동전의 면" hidden>
+          <button type="button" data-face="0" aria-pressed="true">앞면 0</button>
+          <button type="button" data-face="1" aria-pressed="false">뒷면 1</button>
+        </div>
+        <div class="angle" id="angle-box">
+          <div class="angle-label">화살표 기울기 <b id="angle-val">90°</b></div>
+          <input type="range" id="angle" min="0" max="180" step="5" value="90" aria-label="화살표가 북극에서 기운 각도">
+          <div class="angle-ticks"><span class="zero">0 쪽</span><span>적도</span><span class="one">1 쪽</span></div>
+        </div>
+        <button class="go ready" id="go" type="button">100번<br>측정</button>
+      </div>
+    </section>
+    <aside class="panel">
+      <div>
+        <h2>100번 측정 결과</h2>
+        <p class="note" id="note"></p>
+      </div>
+      <div class="grid" id="grid" aria-label="100번 측정 결과"></div>
+      <div>
+        <div class="totals">
+          <div class="z"><small>0 · 앞면</small><strong id="cnt-0">—</strong></div>
+          <div class="o"><small>1 · 뒷면</small><strong id="cnt-1">—</strong></div>
+        </div>
+        <div class="expect" id="expect" hidden><i class="bz" id="ex-z"></i><i class="bo" id="ex-o"></i><i class="mark" id="ex-mark"></i></div>
+      </div>
+      <div class="record">
+        <h3>실험 기록</h3>
+        <div id="records"><p class="empty">아직 측정하지 않았어요</p></div>
+      </div>
+    </aside>
+  </div>
+
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script>
+  <script type="module">
+    import { audio, setLevels, sfx, soundButton } from '../oled/lab-sound.js';
+    const $ = id => document.getElementById(id);
+    const canvas = $('scene');
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const ease = k => k * k * (3 - 2 * k);
+    // 지구본 모형: 화살표가 북극에서 θ만큼 기울면 0이 나올 확률 = cos²(θ/2)
+    const p0 = deg => Math.cos(deg * Math.PI / 360) ** 2;
+    console.assert(Math.abs(p0(0) - 1) < 1e-9 && Math.abs(p0(90) - .5) < 1e-9 && p0(180) < 1e-9, '확률 계산 오류');
+
+    // ---------- 상태 ----------
+    let mode = 'qubit', face = 0, angle = 90;
+    let phase = 'idle', runT = 0, results = [], shownN = 0;
+    const N = 100;
+    // i번째 측정 시각: 처음 3번은 천천히(동전이 '탁' 쓰러지는 모습), 다음 7번은 조금 빠르게, 나머지는 다다닥
+    const when = i => i < 3 ? .4 + i * .95 : i < 10 ? 3.25 + (i - 3) * .32 : 5.49 + (i - 10) * .042;
+    const RUN_END = when(N - 1) + 1.1;
+
+    // ---------- 조작 ----------
+    soundButton($('sound'));
+    const cells = Array.from({ length: N }, () => $('grid').appendChild(document.createElement('i')));
+    const NOTES = {
+      bit: '누운 동전은 앞면(0) 아니면 뒷면(1), 딱 하나로 정해져 있어요.',
+      qubit: '도는 동전은 아직 0도 1도 정해지지 않았어요. 화살표 기울기를 정하고 측정해 보세요.',
+      running: '측정하는 순간 0 또는 1 하나로 정해져요. 매번 같은 상태로 다시 준비해요.',
+      bitDone: '100번 모두 같은 값이 나왔어요. 비트는 측정해도 바뀌지 않아요.',
+      qubitDone: '화살표가 북극(0)에 가까울수록 0이, 남극(1)에 가까울수록 1이 많이 나와요.'
+    };
+    function setNote(k) { $('note').textContent = NOTES[k]; }
+    function setStep(i) { [...$('steps').children].forEach((li, k) => li.className = k < i ? 'done' : k === i ? 'now' : ''); }
+    function clearResult() {
+      results = []; shownN = 0; cells.forEach(c => c.className = '');
+      $('cnt-0').textContent = $('cnt-1').textContent = '—'; $('expect').hidden = true;
+      $('go').classList.add('ready'); $('go').innerHTML = '100번<br>측정'; $('go').style.setProperty('--p', 0);
+      setStep(0); setNote(mode);
+    }
+    function lock(on) {
+      for (const b of [...$('mode').children, ...$('face').children]) b.disabled = on;
+      $('angle').disabled = on; $('go').disabled = on;
+    }
+    $('mode').addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b || b.disabled || b.dataset.mode === mode) return;
+      audio(); sfx.tick();
+      mode = b.dataset.mode;
+      for (const x of $('mode').children) x.setAttribute('aria-pressed', String(x === b));
+      $('face').hidden = mode !== 'bit'; $('angle-box').hidden = mode !== 'qubit';
+      $('tag-coin').textContent = mode === 'bit' ? '누운 동전' : '도는 동전';
+      clearResult();
+    });
+    $('face').addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b || b.disabled) return;
+      audio(); sfx.tick();
+      face = Number(b.dataset.face);
+      for (const x of $('face').children) x.setAttribute('aria-pressed', String(x === b));
+      clearResult();
+    });
+    $('angle').addEventListener('input', e => {
+      angle = Number(e.target.value); $('angle-val').textContent = `${angle}°`;
+      if (results.length) clearResult();
+    });
+    $('go').addEventListener('click', () => {
+      if (phase === 'running') return;
+      audio(); sfx.click();
+      clearResult();
+      const p = mode === 'bit' ? (face ? 0 : 1) : p0(angle);
+      results = Array.from({ length: N }, () => Math.random() < p ? 0 : 1);
+      phase = 'running'; runT = 0; lock(true);
+      $('go').classList.remove('ready'); $('go').textContent = '측정 중';
+      setStep(1); setNote('running');
+    });
+    function showCount(n) {
+      for (let i = shownN; i < n; i++) cells[i].className = results[i] ? 'o' : 'z';
+      shownN = n;
+      const z = results.slice(0, n).filter(r => !r).length;
+      $('cnt-0').textContent = `${z}번`; $('cnt-1').textContent = `${n - z}번`;
+    }
+    function finishRun() {
+      phase = 'idle'; lock(false);
+      $('go').innerHTML = '다시<br>측정'; $('go').style.setProperty('--p', 0);
+      setStep(2); setNote(mode === 'bit' ? 'bitDone' : 'qubitDone');
+      const z = results.filter(r => !r).length, expect = Math.round((mode === 'bit' ? (face ? 0 : 1) : p0(angle)) * 100);
+      $('expect').hidden = false;
+      $('ex-z').style.width = `${z}%`; $('ex-o').style.width = `${100 - z}%`; $('ex-mark').style.left = `${expect}%`;
+      $('ex-mark').title = `지구본 모형이 예상한 0의 횟수: 약 ${expect}번`;
+      addRecord(mode === 'bit' ? `누운 동전 · ${face ? '뒷면' : '앞면'}` : `도는 동전 · ${angle}°`, z);
+    }
+    const log = [];
+    function addRecord(label, z) {
+      log.unshift({ label, z }); log.length = Math.min(log.length, 4);
+      $('records').innerHTML = log.map(r => `<div class="rec"><small>${r.label}<span>0이 ${r.z}번 · 1이 ${100 - r.z}번</span></small><div class="bar"><i class="bz" style="width:${r.z}%"></i><i class="bo" style="width:${100 - r.z}%"></i></div></div>`).join('');
+    }
+
+    // ---------- 3D ----------
+    let THREE, renderer, scene, camera, controls, composer, glowTex;
+    let coinPivot, coin, globe, arrow, arrowTip, poleN, poleS, flashN, flashS;
+    const V = (x, y, z) => new THREE.Vector3(x, y, z);
+    const COIN_X = -2.7, GLOBE_X = 2.5, GLOBE_Y = 1.25, R = 1.3;
+    const sprite = (color, scale = 1) => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); s.scale.setScalar(scale); scene.add(s); return s; };
+    function glowTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 128;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+      gr.addColorStop(0, '#fff'); gr.addColorStop(.2, '#ffffffaa'); gr.addColorStop(.5, '#ffffff33'); gr.addColorStop(1, '#ffffff00');
+      x.fillStyle = gr; x.fillRect(0, 0, 128, 128);
+      return new THREE.CanvasTexture(c);
+    }
+    function backgroundTexture() {
+      const c = document.createElement('canvas'); c.width = c.height = 512;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(256, 230, 0, 256, 256, 360);
+      gr.addColorStop(0, '#191c24'); gr.addColorStop(.55, '#0a0b10'); gr.addColorStop(1, '#040507');
+      x.fillStyle = gr; x.fillRect(0, 0, 512, 512);
+      const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; return tex;
+    }
+    // 동전 면: 금속 결 + 테두리 + 큰 숫자 (앞면 0, 뒷면 1)
+    function faceTexture(digit, base, edge) {
+      const c = document.createElement('canvas'); c.width = c.height = 512;
+      const x = c.getContext('2d');
+      const gr = x.createRadialGradient(200, 180, 20, 256, 256, 260); gr.addColorStop(0, base[0]); gr.addColorStop(.6, base[1]); gr.addColorStop(1, base[2]);
+      x.fillStyle = gr; x.fillRect(0, 0, 512, 512);
+      x.globalAlpha = .08; for (let r = 30; r < 256; r += 6) { x.strokeStyle = r % 12 ? '#fff' : '#000'; x.beginPath(); x.arc(256, 256, r, 0, Math.PI * 2); x.stroke(); }
+      x.globalAlpha = 1;
+      x.lineWidth = 14; x.strokeStyle = edge; x.beginPath(); x.arc(256, 256, 222, 0, Math.PI * 2); x.stroke();
+      x.lineWidth = 3; x.beginPath(); x.arc(256, 256, 196, 0, Math.PI * 2); x.stroke();
+      x.font = '900 250px Pretendard, "Noto Sans KR", sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle';
+      x.fillStyle = 'rgba(0,0,0,.35)'; x.fillText(digit, 262, 276);
+      x.fillStyle = edge; x.fillText(digit, 256, 266);
+      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+      t.center.set(.5, .5); t.rotation = Math.PI / 2;   // 원기둥 뚜껑 무늬가 옆으로 누워 있어서 세워 줌
+      return t;
+    }
+    function createCoin() {
+      // 쟁반
+      const tray = new THREE.Mesh(new THREE.CylinderGeometry(2.1, 2.2, .14, 64), new THREE.MeshPhysicalMaterial({ color: '#1a1d24', roughness: .75, metalness: .2 }));
+      tray.position.set(COIN_X, -.07, 0); scene.add(tray);
+      const rim = new THREE.Mesh(new THREE.TorusGeometry(2.12, .05, 12, 80), new THREE.MeshPhysicalMaterial({ color: '#3a3e47', metalness: .8, roughness: .35 }));
+      rim.rotation.x = Math.PI / 2; rim.position.set(COIN_X, .01, 0); scene.add(rim);
+      coinPivot = new THREE.Group(); coinPivot.position.set(COIN_X, 0, 0); scene.add(coinPivot);
+      const side = new THREE.MeshPhysicalMaterial({ color: '#b5a37a', metalness: 1, roughness: .35 });
+      const front = new THREE.MeshPhysicalMaterial({ map: faceTexture('0', ['#f7e2a8', '#d8b064', '#8d6a2b'], '#6b4f1d'), metalness: .85, roughness: .32, clearcoat: .6 });
+      const back = new THREE.MeshPhysicalMaterial({ map: faceTexture('1', ['#e7eef8', '#a9bcd6', '#56677f'], '#34445c'), metalness: .85, roughness: .3, clearcoat: .6 });
+      coin = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, .12, 72), [side, front, back]);
+      coinPivot.add(coin);
+      const shadow = new THREE.Mesh(new THREE.CircleGeometry(1.1, 48), new THREE.MeshBasicMaterial({ color: '#000', transparent: true, opacity: .35 }));
+      shadow.rotation.x = -Math.PI / 2; shadow.position.set(COIN_X, .002, 0); shadow.name = 'shadow'; scene.add(shadow);
+    }
+    function ring(radius, color, opacity, rotX = Math.PI / 2, y = 0) {
+      const pts = Array.from({ length: 97 }, (_, i) => { const a = i / 96 * Math.PI * 2; return V(Math.cos(a) * radius, Math.sin(a) * radius, 0); });
+      const l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color, transparent: true, opacity }));
+      l.rotation.x = rotX; l.position.y = y; globe.add(l); return l;
+    }
+    function createGlobe() {
+      globe = new THREE.Group(); globe.position.set(GLOBE_X, GLOBE_Y, 0); scene.add(globe);
+      globe.add(new THREE.Mesh(new THREE.SphereGeometry(R, 64, 48), new THREE.MeshPhysicalMaterial({ color: '#9fb0cc', transparent: true, opacity: .07, roughness: .1, metalness: 0, clearcoat: 1, depthWrite: false })));
+      ring(R, '#f4f1ea', .55);                                                   // 적도
+      for (const lat of [-60, -30, 30, 60]) { const a = lat * Math.PI / 180; ring(R * Math.cos(a), '#f4f1ea', .14, Math.PI / 2, R * Math.sin(a)); }
+      for (let k = 0; k < 6; k++) { const m = ring(R, '#f4f1ea', .12, 0); m.rotation.y = k * Math.PI / 6; }
+      const axis = new THREE.Mesh(new THREE.CylinderGeometry(.012, .012, R * 2.5, 8), new THREE.MeshBasicMaterial({ color: '#f4f1ea', transparent: true, opacity: .35 }));
+      globe.add(axis);
+      const pole = (y, color) => { const m = new THREE.Mesh(new THREE.SphereGeometry(.11, 24, 16), new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: .9 })); m.position.y = y; globe.add(m); return m; };
+      poleN = pole(R, '#e2bd72'); poleS = pole(-R, '#8fb3e8');
+      flashN = sprite('#ffd98a', 1.6); flashS = sprite('#a9c8ff', 1.6);
+      // 화살표 (가운데에서 표면까지)
+      arrow = new THREE.Group(); globe.add(arrow);
+      const mat = new THREE.MeshStandardMaterial({ color: '#f4f1ea', emissive: '#f4f1ea', emissiveIntensity: .35, metalness: .2, roughness: .4 });
+      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(.035, .035, R - .22, 16), mat); shaft.position.y = (R - .22) / 2; arrow.add(shaft);
+      const head = new THREE.Mesh(new THREE.ConeGeometry(.1, .24, 24), mat); head.position.y = R - .12; arrow.add(head);
+      arrow.add(new THREE.Mesh(new THREE.SphereGeometry(.07, 16, 12), mat));
+      arrowTip = sprite('#fff2cf', .7);
+    }
+
+    // 동전 자세: stand 0 = 누움, 1 = 섬. up = 누웠을 때 위로 오는 면 (0 앞면 / 1 뒷면)
+    let spinA = 0, stand = 1, up = 0, standTarget = 1, flipPulse = 0;
+    let arrowTheta = Math.PI / 2, arrowPhi = 0, snap = null, snapK = 0;
+    function updateCoin(dt, now) {
+      stand += (standTarget - stand) * Math.min(1, dt * (standTarget ? 7 : 14));
+      if (stand > .2) spinA += dt * 17 * stand;
+      const k = ease(clamp(stand, 0, 1));
+      const flatX = up ? Math.PI : 0;
+      coin.rotation.set(flatX + (Math.PI / 2 - flatX) * k, 0, .07 * Math.sin(now * 3.1) * k);
+      coin.position.y = .06 + (1 - .06) * k + flipPulse * .25;
+      coinPivot.rotation.y = k > .02 ? spinA : coinPivot.rotation.y;
+      flipPulse = Math.max(0, flipPulse - dt * 6);
+      const sh = scene.getObjectByName('shadow'); sh.scale.setScalar(.35 + .65 * (1 - k)); sh.material.opacity = .2 + .2 * (1 - k);
+    }
+    function updateGlobe(dt, now) {
+      const targetTheta = mode === 'bit' ? (face ? Math.PI : 0) : angle * Math.PI / 180;
+      if (snap !== null) { arrowTheta = snap ? Math.PI : 0; snapK = Math.max(0, snapK - dt * 5); if (snapK <= 0) snap = null; }
+      else arrowTheta += (targetTheta - arrowTheta) * Math.min(1, dt * 10);
+      if (mode === 'qubit' && phase !== 'running') arrowPhi += dt * .5;          // 옆으로 천천히 돌아도 0·1 비율은 같음
+      const dir = V(Math.sin(arrowTheta) * Math.cos(arrowPhi), Math.cos(arrowTheta), Math.sin(arrowTheta) * Math.sin(arrowPhi));
+      arrow.quaternion.setFromUnitVectors(V(0, 1, 0), dir);
+      arrowTip.position.copy(dir.clone().multiplyScalar(R).add(globe.position)); arrowTip.material.opacity = .55;
+      flashN.position.set(GLOBE_X, GLOBE_Y + R, 0); flashS.position.set(GLOBE_X, GLOBE_Y - R, 0);
+      flashN.material.opacity = Math.max(0, flashN.material.opacity - dt * 3); flashS.material.opacity = Math.max(0, flashS.material.opacity - dt * 3);
+      poleN.scale.setScalar(1 + flashN.material.opacity * .6); poleS.scale.setScalar(1 + flashS.material.opacity * .6);
+    }
+    // 측정 하나: 동전이 그 면으로 쓰러지고, 화살표가 그 극으로 순간 이동, 극이 반짝
+    function measure(i) {
+      const r = results[i];
+      up = r; standTarget = 0; if (i >= 3) { flipPulse = 1; stand = 0; }
+      snap = r; snapK = 1;
+      (r ? flashS : flashN).material.opacity = i < 10 ? 1 : .6;
+      i < 10 ? sfx.coin() : sfx.tap();
+      showCount(i + 1);
+    }
+    function updateRun(dt) {
+      if (phase !== 'running') return;
+      const before = runT; runT += dt;
+      for (let i = shownN; i < N && when(i) <= runT; i++) measure(i);
+      // 처음 3번은 측정 사이에 동전을 다시 세워 돌림 (같은 상태로 다시 준비)
+      for (let i = 0; i < 3; i++) { const back = when(i) + .55; if (before < back && runT >= back && mode === 'qubit') standTarget = 1; }
+      $('go').style.setProperty('--p', Math.min(1, runT / RUN_END));
+      if (runT >= RUN_END) { finishRun(); if (mode === 'qubit') standTarget = 1; }
+    }
+    function syncMode() {
+      if (phase === 'running') return;
+      if (mode === 'bit') { standTarget = 0; up = face; } else if (!results.length) standTarget = 1;
+    }
+
+    const TAGS = [[COIN_X, -.55, 1.9], [GLOBE_X, -.6, 1.2], [GLOBE_X, GLOBE_Y + R + .55, 0], [GLOBE_X, GLOBE_Y - R - .25, 0]];
+    function placeTags() {
+      [...$('tags').children].forEach((el, i) => {
+        const v = V(...TAGS[i]).project(camera);
+        el.style.left = `${(v.x + 1) * canvas.clientWidth / 2}px`; el.style.top = `${(1 - v.y) * canvas.clientHeight / 2}px`;
+      });
+    }
+    function placeCamera() {
+      const fit = Math.max(9.5, 11 / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect) * 1.1);
+      camera.position.set(0, 3.2, fit); controls.target.set(0, .7, 0);
+      controls.minDistance = fit * .65; controls.maxDistance = fit * 1.5; controls.update();
+    }
+
+    let last = 0;
+    function tick(ms) {
+      requestAnimationFrame(tick);
+      const now = ms / 1000, dt = Math.min(now - last, .05); last = now;
+      syncMode(); updateRun(dt); updateCoin(dt, now); updateGlobe(dt, now);
+      setLevels({ spin: mode === 'qubit' ? clamp(stand, 0, 1) * .8 : 0 });
+      controls.update(); placeTags(); composer.render();
+    }
+    function resize() {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      renderer.setSize(w, h, false); composer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); placeCamera();
+    }
+    async function main() {
+      clearResult();
+      try {
+        let OrbitControls, EffectComposer, RenderPass, UnrealBloomPass, OutputPass, RoomEnvironment;
+        [THREE, { OrbitControls }, { EffectComposer }, { RenderPass }, { UnrealBloomPass }, { OutputPass }, { RoomEnvironment }] = await Promise.all([
+          import('three'), import('three/addons/controls/OrbitControls.js'), import('three/addons/postprocessing/EffectComposer.js'),
+          import('three/addons/postprocessing/RenderPass.js'), import('three/addons/postprocessing/UnrealBloomPass.js'),
+          import('three/addons/postprocessing/OutputPass.js'), import('three/addons/environments/RoomEnvironment.js')]);
+        renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+        renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
+        scene = new THREE.Scene(); scene.background = backgroundTexture();
+        scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(renderer), .04).texture;
+        camera = new THREE.PerspectiveCamera(40, 1, .05, 100);
+        controls = new OrbitControls(camera, canvas); controls.enableDamping = true; controls.dampingFactor = .07; controls.enablePan = false;
+        controls.minPolarAngle = .3; controls.maxPolarAngle = Math.PI / 2 - .05;
+        scene.add(new THREE.AmbientLight('#dfe4ec', .4));
+        const key = new THREE.DirectionalLight('#ffffff', 1.4); key.position.set(3, 6, 6); scene.add(key);
+        const rimL = new THREE.DirectionalLight('#9fb4ff', .5); rimL.position.set(-5, 2, -4); scene.add(rimL);
+        glowTex = glowTexture();
+        createCoin(); createGlobe();
+        composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        composer.addPass(new UnrealBloomPass(new THREE.Vector2(512, 512), .55, .5, .9));
+        composer.addPass(new OutputPass());
+        resize(); new ResizeObserver(resize).observe(canvas.parentElement);
+        requestAnimationFrame(ms => { last = ms / 1000; tick(ms); });
+      } catch (error) {
+        console.error('3D 실험실 초기화 실패:', error);
+        const m = document.createElement('div'); m.className = 'error'; m.textContent = `3D 화면을 열 수 없습니다. 인터넷 연결과 WebGL 사용 가능 여부를 확인하세요. (${error.message})`; canvas.after(m);
+      }
+    }
+    main();
+  </script>
+</body>
+</html>

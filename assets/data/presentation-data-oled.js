@@ -373,6 +373,10 @@ window.presentationModalData.oled = {
                 <figure><div class="ps-ph"><img src="${getToolAsset('lab2_step3.jpg')}" alt="파란 형광빛이 퍼져 나오는 모습"></div>
                   <p>남은 에너지가 눈에 보이는 선명한 <strong>파란 형광빛(가시광선)</strong>으로 방출되는 모습을 기록합니다.</p></figure>
               </div>
+              <div class="ps-ask-row">
+                <p><b>직접 해 보기</b>자외선을 쬐어 세 단계를 가상실험실에서 확인해 봅시다.</p>
+                <button type="button" class="ps-cta" onclick="openVirtualLabModal(2)">2차시 형광빛 가상실험실 열기</button>
+              </div>
             </div>
           `
         },

@@ -312,10 +312,16 @@ function openVirtualLabModal(lessonNum = 2) {
     document.addEventListener('fullscreenchange', updateVirtualLabFullscreen);
   }
   virtualLabReturnFocus = document.activeElement;
-  const labPage = lessonNum === 4 ? 'molecule-rescue.html' : 'fluorescence-3d.html';
+  // 2·4 = OLED 2차시·4차시, 'q2' = 양자 2차시
+  const LABS = {
+    2: ['oled/fluorescence-3d.html', '형광빛의 원리 가상실험실'],
+    4: ['oled/molecule-rescue.html', '4차시 분자 가상실험실'],
+    q2: ['quantum/coin-qubit.html', '동전 팽이와 큐비트 중첩 가상실험실']
+  };
+  const [page, title] = LABS[lessonNum] || LABS[2];
   const iframe = modal.querySelector('iframe');
-  iframe.title = lessonNum === 4 ? '4차시 분자 가상실험실' : '형광빛의 원리 가상실험실';
-  iframe.src = location.pathname.includes('/oled/') ? labPage : `oled/${labPage}`;
+  iframe.title = title;
+  iframe.src = /\/(oled|quantum)\//.test(location.pathname) ? `../${page}` : page;
   if (document.fullscreenElement) document.exitFullscreen().catch(error => console.warn('전체 화면 종료 실패:', error));
   modal.classList.add('open');
   document.body.classList.add('virtual-lab-open');

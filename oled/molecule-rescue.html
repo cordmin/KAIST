@@ -17,15 +17,34 @@
     .title { position: absolute; left: 28px; top: 22px; }
     .title small { color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .04em; }
     .title h1 { margin: .25rem 0 0; font-size: clamp(1.3rem, 2vw, 1.8rem); font-weight: 900; letter-spacing: -.04em; }
-    /* 두 마당: 건물로 생각하기 → 분자 실험 */
-    .chapters { display: flex; gap: 18px; margin-top: 14px; }
-    .chapters button { padding: 0 0 6px; border: 0; border-bottom: 2px solid transparent; background: none; color: rgba(244, 241, 234, .42); font-size: .9rem; font-weight: 800; transition: color .2s, border-color .2s; }
-    .chapters button b { margin-right: .4rem; font-variant-numeric: tabular-nums; }
-    .chapters button:hover:not(:disabled) { color: var(--ink); }
-    .chapters button[aria-current="true"] { color: var(--ink); border-color: var(--gold); }
+    /* 오른쪽 위: 소리 켬/끔 */
+    .sound { position: absolute; right: 24px; top: 24px; z-index: 2; display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(12, 13, 18, .7); color: var(--dim); font-size: .8rem; font-weight: 800; white-space: nowrap; }
+    .sound:hover { color: var(--ink); }
+    .sound svg { width: 12px; height: 12px; fill: currentColor; }
+    /* 두 마당: 건물로 생각하기 → 분자 실험 (오른쪽 판 맨 아래의 큰 단추 두 개) */
+    .chapters { display: grid; gap: 10px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+    .chapters h3 { margin: 0 0 2px; font-size: .82rem; color: var(--dim); font-weight: 800; }
+    .chapters button { position: relative; overflow: hidden; display: flex; align-items: center; gap: .7rem; width: 100%; padding: .85rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 255, 255, .03); color: var(--dim); font-size: .95rem; font-weight: 800; text-align: left; transition: color .2s, border-color .2s, background .2s; }
+    .chapters button b { flex: none; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: rgba(255, 255, 255, .08); font-size: .8rem; font-variant-numeric: tabular-nums; }
+    .chapters button svg { display: none; width: 16px; height: 16px; margin-left: auto; }
+    .chapters button:hover:not(:disabled) { color: var(--ink); border-color: rgba(244, 241, 234, .3); }
     .chapters button:disabled { cursor: default; }
+    /* 지금 보고 있는 단계 */
+    .chapters button[aria-current="true"] { color: var(--ink); border-color: rgba(244, 241, 234, .35); background: rgba(255, 255, 255, .07); }
+    .chapters button[aria-current="true"] b { background: var(--ink); color: #0b0b10; }
+    /* 건물 단계에 있을 때: '2 분자 실험'이 빛나는 금색 단추가 되어 다음으로 넘어갈 수 있음을 알림 */
+    #ch-molecule[aria-current="false"] { border-color: rgba(226, 189, 114, .7); background: rgba(226, 189, 114, .12); color: var(--gold); animation: chGlow 2.4s ease-in-out infinite; }
+    #ch-molecule[aria-current="false"] b { background: var(--gold); color: #0b0b10; }
+    #ch-molecule[aria-current="false"] svg { display: block; animation: chNudge 1.2s ease-in-out infinite; }
+    #ch-molecule[aria-current="false"]::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 45%; background: linear-gradient(100deg, transparent, rgba(255, 236, 190, .35), transparent); animation: chSweep 2.4s ease-in-out infinite; }
+    #ch-molecule[aria-current="false"]:hover:not(:disabled) { color: #ffe3a3; border-color: var(--gold); background: rgba(226, 189, 114, .2); }
+    #ch-molecule[aria-current="false"]:disabled { opacity: .45; animation: none; }
+    #ch-molecule[aria-current="false"]:disabled::after, #ch-molecule[aria-current="false"]:disabled svg { animation: none; }
+    @keyframes chGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(226, 189, 114, 0); } 50% { box-shadow: 0 0 18px 2px rgba(226, 189, 114, .35); } }
+    @keyframes chNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+    @keyframes chSweep { 0% { left: -60%; } 55%, 100% { left: 120%; } }
 
-    .steps { position: absolute; right: 28px; top: 30px; display: flex; align-items: center; margin: 0; padding: 0; list-style: none; pointer-events: none; color: rgba(244, 241, 234, .34); font-size: .9rem; font-weight: 800; white-space: nowrap; }
+    .steps { position: absolute; right: 150px; top: 30px; display: flex; align-items: center; margin: 0; padding: 0; list-style: none; pointer-events: none; color: rgba(244, 241, 234, .34); font-size: .9rem; font-weight: 800; white-space: nowrap; }
     .steps li { display: flex; align-items: center; gap: .5rem; transition: color .3s; }
     .steps li + li::before { content: ""; width: 30px; height: 1px; margin: 0 .7rem; background: currentColor; opacity: .5; }
     .steps i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: box-shadow .3s; }
@@ -51,9 +70,6 @@
     .go::after { content: ""; position: absolute; inset: -7px; border-radius: 50%; background: conic-gradient(var(--ink) calc(var(--p, 0) * 1turn), transparent 0); -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px)); }
     .go.ready::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--btn); animation: ping 1.8s ease-out infinite; }
     @keyframes ping { from { transform: scale(1); opacity: .8; } to { transform: scale(1.45); opacity: 0; } }
-    .next { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.1rem; border: 1px solid rgba(226, 189, 114, .5); border-radius: 999px; background: none; color: var(--gold); font-size: .88rem; font-weight: 800; white-space: nowrap; transition: background .2s; }
-    .next:hover { background: rgba(226, 189, 114, .12); }
-    .next svg { width: 14px; height: 14px; }
 
     .key { position: absolute; left: 24px; bottom: 22px; display: grid; gap: 10px; padding: 14px 18px 14px 14px; border: 1px solid var(--line); border-radius: 16px; background: rgba(12, 13, 18, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); pointer-events: none; }
     .key div { display: flex; align-items: center; gap: 12px; font-size: .8rem; color: var(--dim); white-space: nowrap; transition: opacity .3s; }
@@ -77,9 +93,6 @@
     .why div { gap: 10px; }
     .why i { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 8px var(--c); }
     .why p { margin: 4px 0 0; padding-top: 8px; border-top: 1px solid var(--line); color: var(--dim); font-size: .76rem; }
-    .next.ghost { border-color: var(--line); color: var(--ink); }
-    .next.ghost[aria-pressed="true"] { border-color: rgba(226, 189, 114, .5); color: var(--gold); }
-    .next:disabled { opacity: .4; cursor: default; }
 
     .panel { display: flex; flex-direction: column; gap: 18px; min-height: 0; padding: 74px 26px 26px; border-left: 1px solid var(--line); background: linear-gradient(180deg, #0b0c11, #06070b); }
     .panel h2 { margin: 0; font-size: 1.05rem; font-weight: 900; letter-spacing: -.02em; }
@@ -88,7 +101,11 @@
     #seismo { display: block; width: 100%; height: 220px; }
     /* 건물 ↔ 분자 짝짓기 */
     .map { padding-top: 14px; border-top: 1px solid var(--line); }
-    .map-row { display: grid; grid-template-columns: 1fr 26px 1.25fr; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(244, 241, 234, .06); font-size: .86rem; font-weight: 700; line-height: 1.35; word-break: keep-all; animation: rise .5s ease both; animation-delay: calc(var(--i) * .12s); }
+    .map-row { display: grid; grid-template-columns: 1fr 26px 1.25fr; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(244, 241, 234, .06); font-size: .86rem; font-weight: 700; line-height: 1.35; word-break: keep-all; text-align: center; }
+    .map.filled .map-row:not(.head) { animation: rise .5s ease both; animation-delay: calc(var(--i) * .12s); }
+    /* 채워지기 전: 글자 자리에 빈 칸만 보여서 비교표가 나올 것을 알려 줌 */
+    .map:not(.filled) .map-row:not(.head) :is(span, i) { color: transparent; }
+    .map:not(.filled) .map-row:not(.head) span { justify-self: center; width: 70%; border-radius: 4px; background: rgba(244, 241, 234, .06); }
     .map-row:last-child { border-bottom: 0; }
     .map-row span:first-child { color: var(--dim); }
     .map-row i { color: var(--gold); font-style: normal; text-align: center; }
@@ -103,7 +120,7 @@
     .totals small { display: block; color: var(--dim); font-size: .78rem; font-weight: 700; }
     .totals strong { font-size: 2rem; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
     .totals .b strong { color: #8cc4ff; }
-    .totals .r { text-align: right; }
+    .totals .b { text-align: right; }
     .totals .r strong { color: #ff9c89; }
     /* 실험 기록: 두 분자 결과를 나란히 */
     .record { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
@@ -116,7 +133,7 @@
     .error { position: absolute; inset: 0; display: grid; place-content: center; padding: 2rem; text-align: center; color: #fecaca; }
 
     @media (max-width: 1500px) { .key { bottom: 118px; } }
-    @media (max-width: 1250px) { .steps { top: 128px; left: 28px; right: auto; } }
+    @media (max-width: 1250px) { .steps { top: 96px; left: 28px; right: auto; } }
     @media (max-width: 900px) {
       .app { height: auto; grid-template-columns: 1fr; grid-template-rows: minmax(520px, 70vh) auto; }
       .panel { padding-top: 24px; border-left: 0; border-top: 1px solid var(--line); }
@@ -131,13 +148,10 @@
   <div class="app">
     <section class="stage" aria-label="삼차원 관찰 화면">
       <canvas id="scene"></canvas>
+      <button class="sound" id="sound" type="button" aria-pressed="true"></button>
       <div class="title">
         <small>OLED 4차시 가상실험실</small>
         <h1>스마트폰의 에너지 효율을 높이는 방법</h1>
-        <nav class="chapters" aria-label="실험 순서">
-          <button type="button" id="ch-building" aria-current="true"><b>1</b>건물로 생각하기</button>
-          <button type="button" id="ch-molecule" aria-current="false"><b>2</b>분자 실험</button>
-        </nav>
       </div>
       <ol class="steps" id="steps" aria-live="polite" hidden>
         <li style="--c:var(--gold)"><i></i>전기 공급</li>
@@ -160,9 +174,11 @@
         <p>눈에 안 보이는 에너지를 색으로 나타냈어요.<br>실제 원자의 색이 변하는 것은 아니에요.</p>
       </div>
       <div class="dock" id="dock-building">
-        <button class="next ghost" id="brace" type="button" aria-pressed="false">오른쪽 건물에 고정대 달기</button>
+        <div class="seg" id="brace" aria-label="오른쪽 건물 고르기">
+          <button type="button" data-brace="0" aria-pressed="true">기본 건물</button>
+          <button type="button" data-brace="1" aria-pressed="false">고정된 건물</button>
+        </div>
         <button class="go ready" id="quake" type="button" style="--btn:#f4f1ea">인공<br>지진</button>
-        <button class="next" id="to-molecule" type="button">분자 실험으로<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
       </div>
       <div class="dock" id="dock-molecule" hidden>
         <div class="seg" id="mode" aria-label="분자 고르기">
@@ -190,20 +206,26 @@
       <div id="molecule-panel" hidden>
         <div class="grid" id="grid" aria-label="에너지 100칸 결과"></div>
         <div class="totals">
-          <div class="b"><small>빛으로 나온 에너지</small><strong id="light-count">—</strong></div>
           <div class="r"><small>열로 빠진 에너지</small><strong id="heat-count">—</strong></div>
+          <div class="b"><small>빛으로 나온 에너지</small><strong id="light-count">—</strong></div>
         </div>
       </div>
       <div class="record" id="record" hidden>
         <h3>실험 기록</h3>
-        <div class="rec"><small>기본 분자<span id="rec-basic">아직 안 함</span></small><div class="bar"><i class="bl" id="rb-basic"></i><i class="rd" id="rr-basic"></i></div></div>
-        <div class="rec"><small>고정된 분자<span id="rec-kaist">아직 안 함</span></small><div class="bar"><i class="bl" id="rb-kaist"></i><i class="rd" id="rr-kaist"></i></div></div>
+        <div class="rec"><small>기본 분자<span id="rec-basic">아직 안 함</span></small><div class="bar"><i class="rd" id="rr-basic"></i><i class="bl" id="rb-basic"></i></div></div>
+        <div class="rec"><small>고정된 분자<span id="rec-kaist">아직 안 함</span></small><div class="bar"><i class="rd" id="rr-kaist"></i><i class="bl" id="rb-kaist"></i></div></div>
       </div>
+      <nav class="chapters" aria-label="실험 순서">
+        <h3>실험 순서</h3>
+        <button type="button" id="ch-building" aria-current="true"><b>1</b>건물로 생각하기</button>
+        <button type="button" id="ch-molecule" aria-current="false"><b>2</b>분자 실험<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+      </nav>
     </aside>
   </div>
 
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script>
   <script type="module">
+    import { audio, setLevels, sfx, soundButton } from './lab-sound.js';
     const $ = id => document.getElementById(id);
     const canvas = $('scene');
     const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -258,13 +280,15 @@
     function showEnergy(light, heat) {
       if (shown === `${light},${heat}`) return;
       shown = `${light},${heat}`;
-      cells.forEach((c, i) => c.className = i < light ? 'blue' : i >= 25 && i < 25 + heat ? 'red' : '');
+      // 열이 먼저 빠지므로 위에서부터 빨강, 그 뒤 자리부터 파랑
+      const H = PLAN[mode].heatShare;
+      cells.forEach((c, i) => c.className = i < heat ? 'red' : i >= H && i < H + light ? 'blue' : '');
       $('light-count').textContent = light < 0 ? '—' : `${light}%`;
       $('heat-count').textContent = heat < 0 ? '—' : `${heat}%`;
     }
     function record(m) {
       const p = PLAN[m];
-      $(`rec-${m}`).textContent = `빛 ${p.lightShare} · 열 ${p.heatShare}`;
+      $(`rec-${m}`).textContent = `열 ${p.heatShare} · 빛 ${p.lightShare}`;
       $(`rb-${m}`).style.width = `${p.lightShare}%`; $(`rr-${m}`).style.width = `${p.heatShare}%`;
     }
 
@@ -276,7 +300,7 @@
       $('ch-building').setAttribute('aria-current', String(b)); $('ch-molecule').setAttribute('aria-current', String(!b));
       $('dock-building').hidden = !b; $('dock-molecule').hidden = b;
       $('tags-building').hidden = !b; $('tags-molecule').hidden = b; $('key').hidden = b; $('why').hidden = b; $('steps').hidden = b;
-      $('building-panel').hidden = !b; $('map').hidden = !(b && quaked && braced); $('molecule-panel').hidden = b; $('record').hidden = b;
+      $('building-panel').hidden = !b; $('map').hidden = !b; $('map').classList.toggle('filled', quaked && braced); $('molecule-panel').hidden = b; $('record').hidden = b;
       $('panel-title').textContent = b ? '두 건물의 흔들림' : '공급한 전기에너지는 어디로?';
       if (scene) { buildings.group.visible = b; molecule.visible = circuit.visible = !b; placeCamera(); }
       if (b) setNote(quaked ? (braced ? 'b_done' : 'b_same') : 'b_idle'); else selectMode(mode);
@@ -290,26 +314,31 @@
       if (bridge) { bridge.visible = m === 'kaist'; bridgeHs.forEach(h => h.visible = m !== 'kaist'); }
       setNote(m); setStep('idle'); showEnergy(-1, -1);
     }
-    $('ch-building').addEventListener('click', () => showView('building'));
-    $('ch-molecule').addEventListener('click', () => showView('molecule'));
-    $('to-molecule').addEventListener('click', () => showView('molecule'));
-    $('mode').addEventListener('click', e => { const b = e.target.closest('button'); if (b) selectMode(b.dataset.mode); });
-    $('brace').addEventListener('click', () => {
+    $('ch-building').addEventListener('click', () => { audio(); sfx.tick(); showView('building'); });
+    $('ch-molecule').addEventListener('click', () => { audio(); sfx.tick(); showView('molecule'); });
+    $('mode').addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.disabled) { audio(); sfx.tick(); selectMode(b.dataset.mode); } });
+    soundButton($('sound'));
+    // 오른쪽 건물: 기본 건물 / 고정된 건물 (분자 쪽 '기본 분자 / 고정된 분자'와 같은 모양)
+    $('brace').addEventListener('click', e => {
+      const btn = e.target.closest('button');
+      if (!btn || btn.disabled || (btn.dataset.brace === '1') === braced) return;
+      audio(); sfx.tick();
       braced = !braced; quaked = false; trace.length = 0; peaks[0] = peaks[1] = 0;
-      $('brace').setAttribute('aria-pressed', String(braced));
-      $('brace').textContent = braced ? '고정대 떼기' : '오른쪽 건물에 고정대 달기';
+      for (const x of $('brace').children) x.setAttribute('aria-pressed', String((x.dataset.brace === '1') === braced));
       $('tag-right').textContent = braced ? '대각선 고정대' : '기본 구조'; $('tag-right').className = braced ? 'gold' : '';
-      $('map').hidden = true; resetBalls(); setNote('b_idle');
+      $('map').classList.remove('filled'); resetBalls(); setNote('b_idle');
     });
     $('quake').addEventListener('click', () => {
       if (quakeT >= 0) return;
+      audio(); sfx.click();
       quakeT = 0; peaks[0] = peaks[1] = 0; trace.length = 0; resetBalls();
-      $('quake').disabled = true; $('quake').classList.remove('ready'); $('map').hidden = true;
-      for (const id of ['ch-building', 'ch-molecule', 'to-molecule', 'brace']) $(id).disabled = true;
+      $('quake').disabled = true; $('quake').classList.remove('ready'); $('map').classList.remove('filled');
+      for (const el of [$('ch-building'), $('ch-molecule'), ...$('brace').children]) el.disabled = true;
       setNote('b_run');
     });
     $('inject').addEventListener('click', () => {
       if (phase === 'running') return;
+      audio(); sfx.click();
       phase = 'running'; t = 0; stepKey = '';
       $('inject').disabled = true; $('inject').classList.remove('ready'); $('inject').innerHTML = '진행 중';
       for (const b of $('mode').children) b.disabled = true;
@@ -441,7 +470,7 @@
           if (Math.abs(b.rel) > 1.12) { b.falling = true; b.vx = b.v + dir * .6; b.vy = 0; }
         } else {
           b.vy -= 9.8 * dt; b.x += b.vx * dt; b.y += b.vy * dt;
-          if (b.y < FLOOR_Y) { b.y = FLOOR_Y; b.vy = Math.abs(b.vy) > .6 ? -b.vy * .35 : 0; b.vx *= .985; }
+          if (b.y < FLOOR_Y) { if (Math.abs(b.vy) > .6) sfx.thud(Math.min(1, Math.abs(b.vy) / 6)); b.y = FLOOR_Y; b.vy = Math.abs(b.vy) > .6 ? -b.vy * .35 : 0; b.vx *= .985; }
           if (Math.abs(b.x) > 3.8) { b.x = Math.sign(b.x) * 3.8; b.vx = 0; }
         }
         b.mesh.position.set(b.x, b.y, .1); b.mesh.rotation.z = -(b.x - FRAME_X[i]) / BALL_R;
@@ -463,11 +492,13 @@
         if (q > 3.2) {
           quakeT = -1; quaked = true; s0 = s1 = 0; buildings.platform.position.x = 0;
           $('quake').disabled = false; $('quake').classList.add('ready'); $('quake').innerHTML = '다시<br>흔들기'; $('quake').style.setProperty('--p', 0);
-          for (const id of ['ch-building', 'ch-molecule', 'to-molecule', 'brace']) $(id).disabled = false;
+          for (const el of [$('ch-building'), $('ch-molecule'), ...$('brace').children]) el.disabled = false;
           setNote(braced ? 'b_done' : 'b_same');
-          $('map').hidden = !braced;
+          $('map').classList.toggle('filled', braced);
         }
       }
+      const q = quakeT;
+      setLevels({ rumble: q >= 0 ? Math.min(q * 3, 1) * clamp((3.2 - q) * 3, 0, 1) : 0 });
       buildings.sway(0, s0); buildings.sway(1, s1);
       updateBalls(dt, [s0, s1]);
       drawSeismo();
@@ -482,9 +513,19 @@
         const top = i * h / 2, cy = top + 20 + (h / 2 - 28) / 2, amp = (h / 2 - 28) / 2;
         x.font = '700 12px Pretendard, "Noto Sans KR", sans-serif'; x.textBaseline = 'top';
         x.fillStyle = '#f4f1ea'; x.fillText(name, 0, top); x.fillStyle = col; x.fillText(kind, x.measureText(name).width + 8, top);
-        x.textAlign = 'right'; x.fillStyle = '#9d988d'; x.fillText(peaks[i] ? `가장 큰 흔들림 ${Math.round(peaks[i] * 100)}` : '', w, top); x.textAlign = 'left';
-        x.strokeStyle = 'rgba(244,241,234,.12)'; x.lineWidth = 1; x.beginPath(); x.moveTo(0, cy); x.lineTo(w, cy); x.stroke();
+        // 모눈: 미리 그려 두어 여기에 흔들림 그래프가 그려질 것을 알려 줌 (가로 16칸 · 세로 4칸)
+        x.lineWidth = 1; x.strokeStyle = 'rgba(244,241,234,.07)'; x.beginPath();
+        for (let k = 0; k <= 16; k++) { const gx = Math.round(k / 16 * (w - 1)) + .5; x.moveTo(gx, cy - amp); x.lineTo(gx, cy + amp); }
+        for (let k = -2; k <= 2; k++) { const gy = Math.round(cy + k / 2 * amp) + .5; x.moveTo(0, gy); x.lineTo(w, gy); }
+        x.stroke();
+        x.strokeStyle = 'rgba(244,241,234,.2)'; x.beginPath(); x.moveTo(0, Math.round(cy) + .5); x.lineTo(w, Math.round(cy) + .5); x.stroke();
         if (!trace.length) return;
+        // 가장 크게 흔들린 폭을 그래프 위에 점선으로 표시
+        if (peaks[i]) {
+          const pk = peaks[i] * amp;
+          x.save(); x.setLineDash([4, 4]); x.strokeStyle = col; x.globalAlpha = .55; x.beginPath();
+          x.moveTo(0, cy - pk); x.lineTo(w, cy - pk); x.moveTo(0, cy + pk); x.lineTo(w, cy + pk); x.stroke(); x.restore();
+        }
         x.strokeStyle = col; x.lineWidth = 2; x.beginPath();
         trace.forEach(([q, a, b], k) => { const px = q / 3.2 * w, py = cy - (i ? b : a) / .55 * amp; x[k ? 'lineTo' : 'moveTo'](px, py); });
         x.stroke();
@@ -558,8 +599,10 @@
         return mat;
       };
       cathodeFace = plate(-4.6, '#e2bd72'); anodeFace = plate(4.6, '#d9d4c8');
+      // 전선 끝 = 전지 양 끝 (왼쪽 납작한 끝 -1.08, 오른쪽 볼록한 단자 끝 +1.18)
       for (const sx of [-1, 1]) {
-        const path = new THREE.CatmullRomCurve3([V(sx * 4.6, 1.3, 0), V(sx * 4.6, 2.7, 0), V(sx * 4.3, 3.3, 0), V(sx * 1.25, 3.3, 0)]);
+        const end = sx < 0 ? -1.08 : 1.18;
+        const path = new THREE.CatmullRomCurve3([V(sx * 4.6, 1.3, 0), V(sx * 4.6, 2.7, 0), V(sx * 4.3, 3.3, 0), V(end, 3.3, 0)]);
         circuit.add(new THREE.Mesh(new THREE.TubeGeometry(path, 40, .035, 10), wireMat));
       }
       const battery = new THREE.Group(); battery.position.y = 3.3; circuit.add(battery);
@@ -646,6 +689,10 @@
       const burst = on ? clamp((T - p.light[0]) / 1.15, 0, 1) : 0;
       flash.material.opacity = burst > 0 && burst < 1 ? Math.pow(1 - burst, 5) * bright : 0; flash.scale.setScalar(2 + burst * 7);
       burstLight.intensity = lightOn * 30 * bright;
+      // 빛이 나오는 동안 내내 '부와아앙' (기본 분자는 빛이 적어서 더 작게)
+      const glow = on ? smooth(p.light[0], p.light[0] + .35, T) * (1 - smooth(p.light[1] - .6, p.light[1] + .5, T)) : 0;
+      // 전기가 들어가는 소리 = 2차시 손전등 빛줄기 소리와 같게
+      setLevels({ air: supplyOn, airFreq: 2600, heat: heatOn, glow: glow * (basic ? .6 : 1) });
 
       if (!on) return;
       if (T < SUP) { setStep('supply'); setNote('supply'); }
@@ -688,7 +735,9 @@
       if (view === 'building') updateBuildings(dt);
       else {
         if (phase === 'running') {
+          const before = t;
           t += dt;
+          if (before < SUP && t >= SUP) sfx.rise();
           $('inject').style.setProperty('--p', Math.min(1, t / PLAN[mode].end));
           if (t >= PLAN[mode].end) finishRun();
         }

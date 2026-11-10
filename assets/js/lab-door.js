@@ -9,8 +9,8 @@ document.querySelectorAll('.lab-door').forEach(door => {
   const front = () => ((Math.round(target) % n) + n) % n;
   const goTo = i => { target = Math.round(target) + wrap(i - front()); };
 
-  // 양옆 꺾쇠 단추 (차례로 켜지며 바깥쪽으로 흐름 → 옆으로 넘길 수 있다는 신호)
-  const chev = '<svg width="40" height="24" viewBox="0 0 40 24" aria-hidden="true"><path d="M4 4l8 8-8 8"/><path d="M16 4l8 8-8 8"/><path d="M28 4l8 8-8 8"/></svg>';
+  // 양옆 금색 둥근 단추 (옆으로 넘길 수 있다는 신호)
+  const chev = '<span class="lab-door-btn"><svg width="14" height="22" viewBox="0 0 14 22" aria-hidden="true"><path d="M3 3l8 8-8 8"/></svg></span>';
   door.insertAdjacentHTML('beforeend',
     `<button type="button" class="lab-door-side l" aria-label="이전 실험">${chev}</button>` +
     `<button type="button" class="lab-door-side r" aria-label="다음 실험">${chev}</button>`);

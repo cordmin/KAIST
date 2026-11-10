@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=20261013">
-  <link rel="stylesheet" href="assets/css/presentation-stage.css?v=20261014k">
-  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261110m">
+  <link rel="stylesheet" href="assets/css/presentation-stage.css?v=20261110a">
+  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261110p">
   <link rel="stylesheet" href="assets/css/mobile.css?v=20261014o">
   <link rel="stylesheet" href="assets/css/home.css?v=20261015r">
   <!-- KaTeX CDN (수식 정밀 렌더링) -->
@@ -747,8 +747,9 @@
                 </div>
 
                 <!-- 실험 3: 100개 엑시톤 스핀 통계 -->
-                <div class="hub-showcase-card" onclick="openComingSoonModal(this)">
+                <div class="hub-showcase-card soon" aria-disabled="true">
                   <div class="hub-card-thumb">
+                    <span class="hub-card-soon">개발 중</span>
                     <img src="image/paper_oled_fig3.png" alt="100개 엑시톤 스핀 분석 가상실험실">
                     <span class="hub-card-badge">OLED 심화</span>
                     <span class="hub-card-tag">스핀 통계 랩</span>
@@ -771,9 +772,9 @@
               </div>
               <div class="hub-showcase-grid lab-door">
                 <!-- 실험 4: 동전 팽이와 큐비트 중첩 -->
-                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
+                <div class="hub-showcase-card quantum" onclick="openVirtualLabModal('q2')">
                   <div class="hub-card-thumb">
-                    <img src="image/quantum_trapped_ion_sim.jpg" alt="양자 큐비트 중첩 측정 시뮬레이터">
+                    <img src="image/tools/quantum_coin_qubit_lab.jpg" alt="도는 동전과 지구본 모형으로 큐비트 중첩을 측정하는 가상실험실">
                     <span class="hub-card-badge">양자 2차시</span>
                     <span class="hub-card-tag">확률 측정 랩</span>
                   </div>
@@ -784,8 +785,9 @@
                 </div>
 
                 <!-- 실험 5: 2인 3각 계산 -->
-                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
+                <div class="hub-showcase-card quantum soon" aria-disabled="true">
                   <div class="hub-card-thumb">
+                    <span class="hub-card-soon">개발 중</span>
                     <img src="image/paper_quantum_pes.png" alt="2인 3각 계산 시뮬레이터">
                     <span class="hub-card-badge">양자 3차시</span>
                     <span class="hub-card-tag">두 컴퓨터 협동 계산</span>
@@ -797,8 +799,9 @@
                 </div>
 
                 <!-- 실험 6: 이온트랩 심층 가이드 -->
-                <div class="hub-showcase-card quantum" onclick="openComingSoonModal(this)">
+                <div class="hub-showcase-card quantum soon" aria-disabled="true">
                   <div class="hub-card-thumb">
+                    <span class="hub-card-soon">개발 중</span>
                     <img src="image/quantum_trapped_ion_chip.jpg" alt="이온 트랩 양자 프로세서 심층 해부">
                     <span class="hub-card-badge">심화 연계</span>
                     <span class="hub-card-tag">3D 심층 인터랙티브</span>
@@ -834,10 +837,6 @@
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">보이지 않는 자외선</h3>
                     <p class="hub-card-desc">토닉워터와 형광펜으로 알아보는 자외선과 형광</p>
-                    <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 12장 슬라이드</span>
-                      <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
-                    </div>
                   </div>
                 </div>
 
@@ -849,10 +848,6 @@
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">전자의 에너지 계단</h3>
                     <p class="hub-card-desc">빛을 받은 전자가 계단을 오르내리며 빛을 내는 과정</p>
-                    <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 11장 슬라이드</span>
-                      <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
-                    </div>
                   </div>
                 </div>
 
@@ -864,10 +859,6 @@
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">75% 배터리 도둑</h3>
                     <p class="hub-card-desc">OLED 화면이 열로 버리는 75% 에너지의 정체</p>
-                    <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 11장 슬라이드</span>
-                      <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
-                    </div>
                   </div>
                 </div>
 
@@ -879,10 +870,6 @@
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">KAIST의 분자 연구</h3>
                     <p class="hub-card-desc">분자를 단단히 고정해 버려지던 열을 빛으로 바꾸는 연구</p>
-                    <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 10장 슬라이드</span>
-                      <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -905,10 +892,6 @@
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">슈퍼컴퓨터의 한계</h3>
                     <p class="hub-card-desc">체스판 쌀알로 알아보는 슈퍼컴퓨터의 한계</p>
-                    <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 11장 슬라이드</span>
-                      <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
-                    </div>
                   </div>
                 </div>
 
@@ -920,10 +903,6 @@
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">동전 팽이와 큐비트</h3>
                     <p class="hub-card-desc">누운 동전과 도는 동전으로 알아보는 비트와 큐비트</p>
-                    <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 11장 슬라이드</span>
-                      <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
-                    </div>
                   </div>
                 </div>
 
@@ -935,10 +914,6 @@
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">두 컴퓨터의 2인 3각 계산</h3>
                     <p class="hub-card-desc">양자 컴퓨터와 일반 컴퓨터가 함께 푸는 분자 계산</p>
-                    <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 11장 슬라이드</span>
-                      <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
-                    </div>
                   </div>
                 </div>
 
@@ -950,10 +925,6 @@
                   <div class="hub-card-body">
                     <h3 class="hub-card-title">분자 설계 스타트업</h3>
                     <p class="hub-card-desc">비료·배터리·신약 중 하나를 골라 분자 설계 회사 기획하기</p>
-                    <div class="hub-card-footer">
-                      <span class="hub-card-meta">총 11장 슬라이드</span>
-                      <button type="button" class="hub-card-btn"><i data-lucide="play"></i> <span>실행</span></button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -1460,17 +1431,17 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
   <!-- Core Modular Scripts -->
   <script src="assets/data/worksheet-data-oled.js"></script>
   <script src="assets/data/worksheet-data-quantum.js?v=20261014k"></script>
-  <script src="assets/js/app-router.js?v=20261015b"></script>
-  <script src="assets/js/lab-door.js?v=20261110e"></script>
+  <script src="assets/js/app-router.js?v=20261110a"></script>
+  <script src="assets/js/lab-door.js?v=20261110f"></script>
   <script src="assets/js/home.js?v=20261015u"></script>
   <script src="assets/js/worksheet-modal.js"></script>
   <script src="assets/data/reader-data-oled.js"></script>
   <script src="assets/js/reader-modal.js"></script>
   <script src="assets/data/lesson-plan-data-oled.js?v=20261110a"></script>
   <script src="assets/data/lesson-plan-data-quantum.js?v=20261110a"></script>
-  <script src="assets/data/presentation-data-oled.js?v=20261014k"></script>
+  <script src="assets/data/presentation-data-oled.js?v=20261110a"></script>
   <script src="assets/data/presentation-data-quantum.js?v=20261014k"></script>
-  <script src="assets/js/presentation-modal.js?v=20261014"></script>
+  <script src="assets/js/presentation-modal.js?v=20261110a"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const checkKatex = setInterval(() => {

@@ -160,6 +160,7 @@
 
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script>
   <script type="module">
+    import { audio, setLevels, sfx, soundButton } from './lab-sound.js';
     const $ = id => document.getElementById(id);
     const canvas = $('scene'), ladder = $('ladder'), lctx = ladder.getContext('2d');
     const LIGHTS = [[365, '자외선'], [405, '보라빛'], [450, '파란빛'], [520, '초록빛'], [580, '노란빛'], [605, '주황빛'], [650, '빨간빛']];
@@ -193,7 +194,7 @@
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'chip' + (i ? '' : ' uv'); b.role = 'radio';
       b.style.setProperty('--c', wavelengthColor(nm)); b.title = `${name} ${nm} nm`; b.setAttribute('aria-label', b.title);
-      b.addEventListener('click', () => { audio(); SFX.pick(); selectLight(i); });
+      b.addEventListener('click', () => { audio(); sfx.tick(); selectLight(i); });
       return $('chips').appendChild(b);
     });
     function selectLight(i) {
@@ -216,87 +217,24 @@
     $('fire').addEventListener('click', () => {
       audio();
       if (phase === 'running') { paused = !paused; $('fire').innerHTML = paused ? PLAY_ICON.replace('계속 재생', '계속') : PAUSE_ICON; return; }
-      SFX.fire();
+      sfx.click();
       shotNm = LIGHTS[pick][0]; t = 0; phase = 'running'; paused = false;
       $('fire').classList.remove('ready'); $('fire').innerHTML = PAUSE_ICON;
       chips.forEach(c => c.disabled = true);
       stepKey = '';
     });
-    // ---------- 소리 (파일 없이 브라우저에서 직접 만듦) ----------
-    // 이어지는 소리(빛줄기 웅 소리, 열 떨림)는 화면의 밝기·떨림 값을 그대로 따라가서 속도·일시정지와 저절로 맞음.
-    // 한 번 나는 소리(흡수·형광·통과)는 시간 t가 그 순간을 지날 때 울림.
-    const SPEAKER = '<svg viewBox="0 0 12 12"><path d="M1 4h2.5L7 1v10L3.5 8H1z"/><path d="M8.6 3.6a3.4 3.4 0 0 1 0 4.8M10 2.2a5.4 5.4 0 0 1 0 7.6" fill="none" stroke="currentColor" stroke-width="1.1"/></svg>';
-    const MUTED = '<svg viewBox="0 0 12 12"><path d="M1 4h2.5L7 1v10L3.5 8H1z"/><path d="M8.5 4l3 4m0-4l-3 4" stroke="currentColor" stroke-width="1.1"/></svg>';
-    let ac = null, master, humGain, humOsc, heatGain, soundOn = true;
-    function audio() {
-      if (ac) { if (ac.state === 'suspended') ac.resume(); return ac; }
-      ac = new AudioContext();
-      master = ac.createGain(); master.gain.value = soundOn ? .55 : 0; master.connect(ac.destination);
-      // 빛줄기: 바람처럼 쉬이~ 하는 맑은 잡음 (에너지가 큰 빛일수록 조금 높은 소리)
-      humGain = ac.createGain(); humGain.gain.value = 0;
-      const air = ac.createBufferSource(); air.buffer = noiseBuffer(); air.loop = true;
-      humOsc = ac.createBiquadFilter(); humOsc.type = 'bandpass'; humOsc.Q.value = 1.4; humOsc.frequency.value = 2600;
-      air.connect(humOsc).connect(humGain).connect(master); air.start();
-      // 열: 지글지글 떨리는 잡음 (빠르게 출렁임)
-      const noise = ac.createBufferSource(); noise.buffer = noiseBuffer(); noise.loop = true;
-      const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 700; bp.Q.value = .8;
-      const trem = ac.createGain(); trem.gain.value = .5;
-      const lfo = ac.createOscillator(); lfo.frequency.value = 17; const lfoAmt = ac.createGain(); lfoAmt.gain.value = .5;
-      lfo.connect(lfoAmt).connect(trem.gain); lfo.start();
-      heatGain = ac.createGain(); heatGain.gain.value = 0;
-      noise.connect(bp).connect(trem).connect(heatGain).connect(master); noise.start();
-      return ac;
+    // ---------- 소리 (공용: lab-sound.js) ----------
+    // 이어지는 소리는 화면 값(빛줄기 밝기·떨림·형광 세기)을 그대로 따라가고, 한 번 나는 소리는 시간 t가 그 순간을 지날 때 울림.
+    function soundFrame(T, illum, vib) {
+      const hit = absorbs(shotNm), on = phase !== 'idle';
+      // 형광이 터지는 동안: 빠르게 부풀었다(3.02~3.3) 남은 빛이 사라지며 천천히 닫힘(~4.7)
+      const glow = on && hit ? smooth(3.02, 3.3, T) * (1 - smooth(3.9, 4.7, T)) : 0;
+      setLevels({ air: illum, airFreq: 2600 * 365 / shotNm, heat: vib, glow }, paused);
     }
-    function noiseBuffer() {
-      const b = ac.createBuffer(1, ac.sampleRate, ac.sampleRate), d = b.getChannelData(0);
-      for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-      return b;
-    }
-    // 한 번 울리는 음: 주파수 f0 → f1 로 미끄러지며 dur 동안 사라짐
-    function tone(f0, f1, dur, { type = 'sine', vol = .3, delay = 0, attack = .012 } = {}) {
-      if (!ac) return;
-      const t0 = ac.currentTime + delay, o = ac.createOscillator(), g = ac.createGain();
-      o.type = type; o.frequency.setValueAtTime(f0, t0); o.frequency.exponentialRampToValueAtTime(f1, t0 + dur * .8);
-      g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(vol, t0 + attack); g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
-      o.connect(g).connect(master); o.start(t0); o.stop(t0 + dur + .05);
-    }
-    function whoosh(dur, vol) {
-      if (!ac) return;
-      const t0 = ac.currentTime, n = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
-      n.buffer = noiseBuffer(); f.type = 'bandpass'; f.Q.value = 1.2;
-      f.frequency.setValueAtTime(2400, t0); f.frequency.exponentialRampToValueAtTime(300, t0 + dur);
-      g.gain.setValueAtTime(vol, t0); g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
-      n.connect(f).connect(g).connect(master); n.start(t0); n.stop(t0 + dur);
-    }
-    const SFX = {
-      pick: () => tone(1500, 1400, .05, { vol: .08 }),
-      fire: () => tone(2400, 1900, .05, { vol: .1 }),           // 손전등 켜는 '틱'
-      absorb: () => { tone(260, 1040, .5, { vol: .28 }); tone(520, 2080, .45, { type: 'triangle', vol: .08, delay: .03 }); },
-      fluor: () => [659, 988, 1319].forEach((f, i) => tone(f, f, 1.8, { vol: [.1, .07, .025][i], attack: .25 })),   // 부드럽게 부풀었다 사라지는 화음
-      passed: () => { whoosh(.7, .35); tone(200, 120, .35, { type: 'triangle', vol: .12 }); }
-    };
-    // 장면 값으로 이어지는 소리 크기를 맞춤 (매 화면마다)
-    function soundFrame(illum, vib) {
-      if (!ac) return;
-      const k = paused ? 0 : 1, now = ac.currentTime;
-      humGain.gain.setTargetAtTime(illum * .3 * k, now, .06);
-      heatGain.gain.setTargetAtTime(vib * .22 * k, now, .05);
-      humOsc.frequency.setTargetAtTime(2600 * 365 / shotNm, now, .05);   // 자외선일수록 높게
-    }
-    // 시간이 a → b 로 흐르는 사이 지나간 순간의 소리를 울림
     function soundCues(a, b) {
-      const hit = absorbs(shotNm), cross = x => a < x && b >= x;
-      if (cross(IMPACT)) (hit ? SFX.absorb : SFX.passed)();
-      if (hit && cross(3.02)) SFX.fluor();
+      if (a < IMPACT && b >= IMPACT) (absorbs(shotNm) ? sfx.rise : sfx.pass)();
     }
-    function setSound(on) {
-      soundOn = on;
-      $('sound').innerHTML = on ? SPEAKER + '소리 켬' : MUTED + '소리 끔';
-      $('sound').setAttribute('aria-pressed', String(on));
-      if (ac) master.gain.setTargetAtTime(on ? .55 : 0, ac.currentTime, .03);
-    }
-    setSound(true);
-    $('sound').addEventListener('click', () => { audio(); setSound(!soundOn); });
+    soundButton($('sound'));
 
     function finish() {
       phase = 'done'; t = endTime();
@@ -593,7 +531,7 @@
         showEnergy(Math.round(25 * clamp((T - 1.58) / 1.42, 0, 1)), Math.round(75 * clamp((T - 3.02) / 1.15, 0, 1)));
       }
       drawLadder(T, hit, on);
-      soundFrame(illum, vib);
+      soundFrame(T, illum, vib);
     }
 
     let last = 0;
