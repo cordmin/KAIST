@@ -274,21 +274,6 @@ function updateFullscreenButtonState() {
   }
 }
 
-function toggleAllPresResults(btn) {
-  const wrap = btn.closest('.pres-table-wrap');
-  if (!wrap) return;
-  const cells = wrap.querySelectorAll('.pres-reveal-cell');
-  const allRevealed = Array.from(cells).every(c => c.classList.contains('revealed'));
-  cells.forEach(c => {
-    if (allRevealed) {
-      c.classList.remove('revealed');
-    } else {
-      c.classList.add('revealed');
-    }
-  });
-  btn.innerText = allRevealed ? '전체 결과 보기' : '전체 결과 가리기';
-}
-
 let virtualLabReturnFocus;
 
 function openVirtualLabModal(lessonNum = 2) {

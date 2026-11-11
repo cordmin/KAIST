@@ -1,179 +1,89 @@
-/* 화학과 인터뷰 질문지: 다른 화면의 공통 배치는 그대로 사용한다. */
+/* 화학과 인터뷰 질문지: 홈페이지의 배경과 공통 배치를 사용한다. */
 body:has(#view-cprl-questions.active) .main-content,body:has(#view-cprl-questions.active) .sidebar,body:has(#view-cprl-questions.active) .site-home{transition:none!important}
-#view-cprl-questions{color:var(--rebuild-text-primary);--ink:var(--rebuild-text-primary);--muted:var(--rebuild-text-secondary);--accent:#c7cfd9;font-family:Pretendard,'Malgun Gothic',sans-serif}
+#view-cprl-questions{--ink:var(--rebuild-text-primary);--muted:#c2c8d0;--accent:#c7cfd9;color:var(--ink);font-family:Pretendard,'Malgun Gothic',sans-serif;animation:none!important;padding-top:var(--question-top,110px)!important}
 #interview-app{background:transparent;position:relative;color:var(--ink);box-sizing:border-box}
 #interview-app *{box-sizing:border-box}
-#interview-app button,#interview-app select{font:inherit}
-#interview-app button{cursor:pointer;min-height:48px;touch-action:manipulation;border-radius:12px}
+#interview-app button{font:inherit;cursor:pointer;min-height:48px;touch-action:manipulation;border-radius:12px}
 #interview-app button:disabled{cursor:default;opacity:.35}
 #interview-app :focus-visible{outline:3px solid var(--accent);outline-offset:5px}
-#interview-app h1,#interview-app h2,#interview-app h3,#interview-app p{margin:0;color:inherit}
+#interview-app h1,#interview-app h2,#interview-app p{margin:0;color:inherit}
+#interview-app h1{font-size:clamp(32px,3vw,44px);line-height:1.35;letter-spacing:-.055em;font-weight:800;word-break:keep-all;margin-bottom:30px}
+
+/* 선택 화면: 묶음 간격 60px, 성별과 연차 버튼 너비 동일 */
 #interview-app .setup{display:block}
-#interview-app .setup-main{padding:8px 4px 24px}
-#interview-app .eyebrow{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:700;margin-bottom:18px}
-#interview-app h1{font-size:clamp(34px,3.9vw,56px);line-height:1.2;letter-spacing:-.055em;font-weight:800;word-break:keep-all}
-#interview-app .intro{font-size:16px;line-height:1.7;margin-top:20px;color:var(--muted);word-break:keep-all}
-#interview-app fieldset{border:0;padding:0;margin:25px 0 0;min-width:0}
-#interview-app legend{font-size:13px;color:var(--muted);margin-bottom:9px;font-weight:600}
-#interview-app .choice-row{display:flex;gap:22px;flex-wrap:wrap}
-#interview-app .choice{position:relative;display:inline-flex;align-items:center;min-height:44px;border-bottom:2px solid rgba(255,255,255,.2);cursor:pointer;font-size:19px;font-weight:700;padding:0 10px 5px;border-radius:10px}
-#interview-app .choice:has(input:checked){border-color:var(--accent);color:var(--accent)}
+#interview-app .setup-main{padding:0 4px 30px;display:grid;align-items:start;--group-gap:30px;--choice-width:calc((100% - var(--group-gap) - 48px)/8);grid-template-columns:calc(var(--choice-width)*2 + 8px) calc(var(--choice-width)*4 + 24px) minmax(0,1fr);column-gap:60px}
+#interview-app .setup-main h1,#interview-app .setup-main fieldset:nth-of-type(3),#interview-app .setup-actions{grid-column:1/-1}
+#interview-app fieldset{border:0;padding:0;margin:24px 0 0;min-width:0}
+#interview-app .setup-main fieldset:nth-of-type(1),#interview-app .setup-main fieldset:nth-of-type(2){margin-top:0}
+#interview-app legend{font-size:22px;font-weight:750;line-height:1.5;color:#f8fafc;margin-bottom:12px}
+#interview-app .choice-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#interview-app .setup-main fieldset:first-of-type .choice-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+#interview-app .choice{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:64px;min-width:0;padding:12px 6px;gap:6px;border:1px solid #67717f;border-radius:12px;cursor:pointer;font-size:22px;font-weight:750;color:#f8fafc!important;white-space:nowrap}
+#interview-app .choice:has(input:checked){background:#f8fafc;color:#080c12!important;border:2px solid #f8fafc;padding:11px 5px}
 #interview-app .choice:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:4px}
-#interview-app .choice input{appearance:none;width:14px;height:14px;border:1px solid #a8a39a;border-radius:50%;margin:0 10px 0 0}
-#interview-app .choice input:checked{background:var(--accent);border-color:var(--accent);box-shadow:inset 0 0 0 3px var(--rebuild-content-bg)}
+#interview-app .choice:has(input:disabled){opacity:.4;cursor:not-allowed}
+#interview-app .choice input{appearance:none;width:18px;height:18px;border:1px solid #d8dde4;border-radius:50%;margin:0;flex-shrink:0}
+#interview-app .choice input:checked{background:#080c12;border-color:#080c12;box-shadow:inset 0 0 0 4px #f8fafc}
 #interview-app .route-options{display:flex;flex-direction:column;gap:10px}
-#interview-app .route-options button{display:block;width:100%;text-align:left;border:1px solid rgba(255,255,255,.16);background:transparent;padding:13px 18px;font-size:16px;color:var(--ink);line-height:1.5}
-#interview-app .route-options button[aria-pressed=true]{border-color:var(--accent);background:rgba(255,255,255,.05)}
-#interview-app .route-options strong{display:block;font-size:18px;color:var(--ink)}
-#interview-app .route-options small{display:block;margin-top:5px;font-size:14px;font-weight:400;color:var(--muted);word-break:keep-all}
-#interview-app .action{border:1px solid var(--ink);background:var(--ink);color:var(--rebuild-content-bg);padding:13px 25px;min-width:145px;font-weight:700;font-size:16px}
-#interview-app .ghost{background:none;color:var(--ink);border:1px solid rgba(255,255,255,.3);padding:12px 22px;font-size:16px}
-#interview-app .text-button{border:0;background:none;color:var(--muted);padding:8px 0;font-size:13px;text-decoration:underline;text-underline-offset:4px}
-#interview-app .setup-actions{margin-top:20px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-#interview-app .paper{padding:8px 4px 24px;display:flex;flex-direction:column}
-#interview-app .question-body{flex:1}
-#interview-app .question-label{font-size:14px;color:var(--accent);margin-bottom:18px;display:flex;gap:15px;align-items:baseline}
-#interview-app .qnum{font-size:50px;line-height:1;font-weight:800;letter-spacing:-.06em;color:var(--ink)}
-#interview-app h2{font-size:clamp(30px,3.8vw,51px);font-weight:750;line-height:1.4;letter-spacing:-.045em;max-width:1000px;word-break:keep-all;text-wrap:pretty}
-#interview-app .question-hint{color:var(--muted);font-size:16px;line-height:1.65;margin:18px 0 20px;max-width:800px;word-break:keep-all}
-#interview-app details{border-top:1px solid rgba(255,255,255,.18);margin-top:27px;padding-top:7px}
-#interview-app summary{cursor:pointer;min-height:50px;display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:650;list-style:none}
+#interview-app .route-options button{display:block;width:100%;text-align:left;border:1px solid #56606e;background:transparent;padding:15px 20px;font-size:16px;color:var(--ink);line-height:1.5}
+#interview-app .route-options button[aria-pressed=true]{border:2px solid #c7cfd9;padding:14px 19px;background:#181c22}
+#interview-app .route-options strong{display:block;font-size:22px;line-height:1.45;color:var(--ink)}
+#interview-app .route-options small{display:block;margin-top:5px;font-size:18px;line-height:1.65;font-weight:400;color:var(--muted);word-break:keep-all}
+#interview-app .action{border:1px solid var(--ink);background:var(--ink);color:var(--rebuild-content-bg);padding:14px 26px;min-width:145px;min-height:60px;font-size:21px;font-weight:700}
+#interview-app .setup-actions{margin-top:24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+
+/* 본문은 내부 스크롤, 진행바와 이동 버튼은 같은 위치 유지 */
+#interview-app .paper{padding:0 4px 30px;display:flex;flex-direction:column}
+#interview-app article.paper{position:relative;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:16px;height:550px;min-height:0;padding:0 4px;overflow:hidden}
+#interview-app .question-body{flex:1;display:grid;grid-template-columns:82px minmax(0,1fr);column-gap:24px;min-height:0;overflow-y:auto;overflow-x:hidden;align-content:start;padding-right:0;scrollbar-gutter:auto;scrollbar-width:none}
+#interview-app .question-body::-webkit-scrollbar{display:none}
+#interview-app .question-label{grid-column:1;grid-row:1/3;display:flex;flex-direction:column;align-items:baseline;gap:14px;font-size:17px;color:var(--accent);margin-bottom:20px}
+#interview-app .qnum{font-size:64px;line-height:1;font-weight:800;letter-spacing:-.06em;color:var(--ink)}
+#interview-app h2{grid-column:2;font-size:clamp(30px,3.2vw,44px);font-weight:750;line-height:1.4;letter-spacing:-.045em;max-width:1000px;word-break:keep-all;text-wrap:pretty}
+#interview-app .question-hint{grid-column:2;color:var(--muted);font-size:20px;line-height:1.65;margin:18px 0 20px;max-width:800px;word-break:keep-all}
+#interview-app details{grid-column:1/-1;margin-top:28px;padding:24px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+#interview-app summary{cursor:pointer;min-height:0;display:flex;align-items:center;justify-content:flex-start;gap:16px;font-size:21px;font-weight:650;line-height:1.5;list-style:none}
 #interview-app summary::-webkit-details-marker{display:none}
-#interview-app summary:after{content:'＋';font-size:24px;font-weight:400}
+#interview-app summary:after{content:'＋';font-size:24px;font-weight:400;order:-1}
 #interview-app details[open] summary:after{content:'−'}
-#interview-app .tails{list-style:none;padding:0;margin:10px 0 22px;max-width:920px}
-#interview-app .tails li{font-size:clamp(16px,1.55vw,20px);line-height:1.6;word-break:keep-all;padding-left:25px;position:relative;margin:12px 0}
-#interview-app .tails li:before{content:'↳';position:absolute;left:0;color:var(--accent)}
-#interview-app .bottom{margin-top:35px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+#interview-app .tails{list-style:none;padding:0;margin:20px 0 0;max-width:920px}
+#interview-app .tails li{font-size:21px;line-height:1.65;word-break:keep-all;position:relative;padding-left:0;margin:0 0 14px;display:grid;grid-template-columns:85px minmax(0,1fr);gap:16px;align-items:baseline}
+#interview-app .tails li:last-child{margin-bottom:0}
+#interview-app .follow-marker{font-size:18px;font-weight:700;color:#c7cfd9;line-height:1.6;white-space:nowrap}
+#interview-app .follow-text{min-width:0}
+#interview-app .bottom{margin-top:0;padding-top:0;border-top:0}
 #interview-app .progress{display:flex;gap:5px;margin-bottom:20px}
-#interview-app .progress span{height:3px;flex:1;background:rgba(255,255,255,.16)}
+#interview-app .progress span{height:9px;flex:1;background:rgba(255,255,255,.16);border-radius:0}
+#interview-app .progress span:first-child{border-radius:999px 0 0 999px}
+#interview-app .progress span:last-child{border-radius:0 999px 999px 0}
 #interview-app .progress span.done{background:#7c8798}
 #interview-app .progress span.current{background:var(--accent)}
 #interview-app .nav-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#interview-app .nav-row>.left{display:flex;gap:14px;flex-wrap:wrap}
 #interview-app .nav-row .right{margin-left:auto;display:flex;gap:10px}
+#interview-app .nav-row button{display:inline-flex;align-items:center;justify-content:center;width:120px;min-width:120px;height:64px;min-height:64px;padding:0;border:1px solid #f8fafc;border-radius:12px;background:#f8fafc;color:#080c12;font-size:21px;font-weight:700;white-space:nowrap}
+#interview-app .nav-row button:disabled{opacity:1;color:#969da7;background:#f8fafc;border-color:#f8fafc}
+#interview-app .eyebrow{font-size:13px;letter-spacing:.04em;color:var(--accent);font-weight:700;margin-bottom:18px}
 #interview-app .end-title{font-size:clamp(32px,4vw,54px);line-height:1.25;letter-spacing:-.04em}
 #interview-app .closing{font-size:clamp(23px,2.5vw,34px);line-height:1.6;word-break:keep-all;margin:25px 0}
+
 @media(max-width:1100px){
- #interview-app .setup{grid-template-columns:1fr}
- #interview-app .setup-main{padding:8px 4px 24px}
- #interview-app h2{font-size:clamp(28px,4.1vw,42px)}
+ #interview-app .setup-main{--group-gap:18px}
+ #interview-app .setup-main fieldset:nth-of-type(-n+2) .choice{font-size:20px;padding-left:4px;padding-right:4px}
+ #interview-app .setup-main fieldset:nth-of-type(-n+2) .choice:has(input:checked){padding-left:3px;padding-right:3px}
+ #interview-app .question-body{column-gap:15px;grid-template-columns:64px minmax(0,1fr)}
+ #interview-app .qnum{font-size:52px}
 }
 @media(max-width:768px){
-
- #interview-app .paper,#interview-app .setup-main{padding:8px 4px 24px}
- #interview-app h2{font-size:clamp(27px,4.9vw,40px)}
- #interview-app .qnum{font-size:40px}
-}
-@media(prefers-reduced-motion:reduce){#view-cprl-questions{animation:none!important}}
-
-
-
-#view-cprl-questions{animation:none!important;padding-top:var(--question-top,110px)!important;--muted:#c2c8d0;--accent:#c7cfd9}
-#interview-app .setup-main,#interview-app .paper{padding:0 4px 30px}
-#interview-app h1{font-size:clamp(32px,3vw,44px);line-height:1.35;margin-bottom:30px}
-#interview-app legend{font-size:22px;font-weight:750;line-height:1.5;color:#f8fafc;margin-bottom:12px}
-#interview-app fieldset{margin-top:24px}
-#interview-app .choice-row{gap:14px}
-#interview-app .choice{color:#f8fafc!important;font-size:26px;font-weight:750;min-width:146px;min-height:64px;padding:12px 22px;border:1px solid #67717f;border-radius:12px;justify-content:center;gap:10px}
-#interview-app .choice input{width:20px;height:20px;flex-shrink:0;margin:0;border-color:#d8dde4}
-#interview-app .choice:has(input:checked){background:#f8fafc;color:#080c12!important;border:2px solid #f8fafc;padding:11px 21px}
-#interview-app .choice input:checked{background:#080c12;border-color:#080c12;box-shadow:inset 0 0 0 4px #f8fafc}
-#interview-app .route-options button{border-color:#56606e;padding:15px 20px}
-#interview-app .route-options strong{font-size:22px;line-height:1.45}
-#interview-app .route-options small{font-size:18px;line-height:1.65;color:#c2c8d0}
-#interview-app .route-options button[aria-pressed=true]{border:2px solid #c7cfd9;padding:14px 19px;background:#181c22}
-#interview-app .action,#interview-app .ghost{font-size:21px;min-height:60px;padding:14px 26px}
-#interview-app .text-button{font-size:17px;padding:10px 6px}
-#interview-app .setup-actions{margin-top:24px}
-#interview-app .question-label{font-size:19px;margin-bottom:20px}
-#interview-app h2{font-size:clamp(30px,3.2vw,44px);line-height:1.4}
-#interview-app .question-hint{font-size:20px;line-height:1.65;color:#c2c8d0}
-#interview-app summary{font-size:21px;min-height:60px}
-#interview-app .tails li{font-size:21px;line-height:1.65;margin:14px 0}
-#interview-app .bottom{margin-top:26px}
-@media(max-width:768px){
- #view-cprl-questions{animation:none!important;padding-top:12px!important}
+ #view-cprl-questions{padding-top:12px!important}
  #interview-app legend{font-size:20px}
- #interview-app .choice{font-size:24px;min-width:132px}
  #interview-app .route-options small{font-size:17px}
  #interview-app .route-options strong{font-size:21px}
 }
-
-
-#interview-app .setup-main{display:grid;grid-template-columns:1fr 1fr;column-gap:30px;align-items:start}
-#interview-app .setup-main h1,#interview-app .setup-main fieldset:nth-of-type(3),#interview-app .setup-actions{grid-column:1/-1}
-#interview-app .setup-main fieldset:nth-of-type(1),#interview-app .setup-main fieldset:nth-of-type(2){margin-top:0}
-#interview-app .choice-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-#interview-app .choice{font-size:24px;min-width:0;padding:12px 10px}
-#interview-app .choice:has(input:checked){padding:11px 9px}
-#interview-app .question-body{display:grid;grid-template-columns:82px minmax(0,1fr);column-gap:24px}
-#interview-app .question-label{grid-column:1;grid-row:1/3;flex-direction:column;gap:14px;font-size:17px}
-#interview-app .qnum{font-size:64px}
-#interview-app .question-body h2,#interview-app .question-hint{grid-column:2}
-#interview-app details,#interview-app .sensitive{grid-column:1/-1}
-@media(max-width:1100px){#interview-app .setup-main{column-gap:18px}#interview-app .choice-row{grid-template-columns:1fr}#interview-app .question-body{column-gap:15px;grid-template-columns:64px minmax(0,1fr)}#interview-app .qnum{font-size:52px}}
-@media(max-width:540px){#interview-app .setup-main{display:block}#interview-app .setup-main fieldset{margin-top:24px}#interview-app .choice-row{grid-template-columns:1fr 1fr}}
-
-
-
-#interview-app details{margin-top:28px;padding:24px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
-#interview-app summary{min-height:0;line-height:1.5}
-#interview-app .tails{margin:20px 0 0}
-#interview-app .tails li{margin:0 0 14px}
-#interview-app .tails li:last-child{margin-bottom:0}
-#interview-app .bottom{border-top:0;padding-top:0;margin-top:16px}
-
-
-
-#interview-app .tails li{padding-left:0;display:grid;grid-template-columns:85px minmax(0,1fr);gap:16px;align-items:baseline}
-#interview-app .tails li:before{content:none}
-#interview-app .follow-marker{font-size:18px;font-weight:700;color:#c7cfd9;line-height:1.6;white-space:nowrap}
-#interview-app .follow-text{min-width:0}
-@media(max-width:540px){#interview-app .tails li{grid-template-columns:64px minmax(0,1fr);gap:10px}#interview-app .follow-marker{font-size:16px}}
-
-
-
-#interview-app .progress span{height:9px;border-radius:0}
-#interview-app .progress span:first-child{border-radius:999px 0 0 999px}
-#interview-app .progress span:last-child{border-radius:0 999px 999px 0}
-
-
-
-#interview-app .nav-row> .left{display:flex;gap:14px;flex-wrap:wrap}
-#interview-app .nav-row button{display:inline-flex;align-items:center;justify-content:center;width:120px;min-width:120px;height:64px;min-height:64px;padding:0;border:1px solid #f8fafc;border-radius:12px;background:#f8fafc;color:#080c12;font-size:21px;font-weight:700;white-space:nowrap}
-#interview-app .nav-row button:disabled{opacity:1;color:#969da7;background:#f8fafc;border-color:#f8fafc}
-
-
-
-#interview-app article.paper{position:relative;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:16px;height:550px;padding:0 4px 0;min-height:0;overflow:hidden}
-#interview-app article.paper .question-body{min-height:0;overflow-y:auto;overflow-x:hidden;align-content:start;scrollbar-gutter:stable;padding-right:10px}
-#interview-app article.paper .bottom{margin-top:0;padding-top:0}
-
-
-
-#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice{font-size:22px;padding:12px 6px;gap:6px;white-space:nowrap}
-#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice:has(input:checked){padding:11px 5px}
-#interview-app .setup-main fieldset:nth-of-type(-n+2) input{width:18px;height:18px}
-#interview-app .choice:has(input:disabled){opacity:.4;cursor:not-allowed}
-@media(max-width:1100px){#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice{font-size:20px;padding-left:4px;padding-right:4px}#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice:has(input:checked){padding-left:3px;padding-right:3px}}
-
-
-
-#interview-app article.paper .question-body{padding-right:0;scrollbar-gutter:auto;scrollbar-width:none}
-#interview-app article.paper .question-body::-webkit-scrollbar{display:none}
-
-
-#interview-app summary{justify-content:flex-end;gap:16px}
-
-
-
-#interview-app summary{justify-content:flex-start;gap:16px}
-#interview-app summary:after{order:-1}
-
-
-/* 선택 버튼 너비를 유지하면서 두 묶음 사이 간격을 60px로 고정한다. */
-#interview-app .setup-main{--group-gap:30px;--choice-width:calc((100% - var(--group-gap) - 48px)/8);grid-template-columns:calc(var(--choice-width)*2 + 8px) calc(var(--choice-width)*4 + 24px) minmax(0,1fr);column-gap:60px}
-#interview-app .setup-main fieldset:first-of-type .choice-row{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media(max-width:1100px){#interview-app .setup-main{--group-gap:18px}}
-@media(max-width:540px){#interview-app .setup-main fieldset:first-of-type .choice-row{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:540px){
+ #interview-app .setup-main{display:block}
+ #interview-app .setup-main fieldset{margin-top:24px}
+ #interview-app .setup-main fieldset:first-of-type .choice-row{grid-template-columns:repeat(4,minmax(0,1fr))}
+ #interview-app .tails li{grid-template-columns:64px minmax(0,1fr);gap:10px}
+ #interview-app .follow-marker{font-size:16px}
+}

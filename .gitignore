@@ -4,3 +4,12 @@
 # Ignore temporary scratch/verification directory
 scratch/
 *_preview.html
+
+# 로컬 설정, 사용자 자료, 생성 결과와 임시 시안
+/.claude/
+/인터뷰/
+/참고자료/
+/논문/
+/output/
+/tmp/
+/시안/
