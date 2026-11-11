@@ -18,7 +18,9 @@
     if (!logo || !lastBox || !cards || window.innerWidth <= 768 || !hero.offsetParent) return;
     hero.style.setProperty('--home-top', Math.round(logo.getBoundingClientRect().top) + 'px');
     requestAnimationFrame(() => {
-      const h = lastBox.getBoundingClientRect().bottom - cards.getBoundingClientRect().top;
+      // 작은 화면에서 메뉴가 사이드바 안에서 스크롤되면, 마지막 상자 대신 사이드바 아래 끝에 맞춤
+      const bottom = Math.min(lastBox.getBoundingClientRect().bottom, document.querySelector('.sidebar').getBoundingClientRect().bottom);
+      const h = bottom - cards.getBoundingClientRect().top;
       hero.style.setProperty('--home-cards-h', Math.max(280, Math.round(h)) + 'px');
     });
   }

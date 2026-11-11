@@ -7,7 +7,6 @@ window.oledLessonPlanHtml = `<div class="chrome-window" id="oled-lesson-plan-chr
           <div class="chrome-tab-panel active" role="tabpanel">
             <div style="margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
               <h3 style="margin:0; font-size:1.2rem; font-weight:700; color:var(--color-charcoal);">1. 수업 지도안 개요</h3>
-              <button class="topbar-btn primary" onclick="window.print()"><i data-lucide="printer"></i> <span>전체 지도안 인쇄</span></button>
             </div>
 
             <!-- 기본 개요 정보 표 -->

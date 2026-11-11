@@ -56,8 +56,8 @@
   #view-home.active { height: 100vh; display: flex !important; flex-direction: column; overflow: hidden; }
   /* 첫 화면은 글 높이만큼만: 머리글 위쪽을 사이드바 KAIST 로고 위쪽과 맞춤 (home.js가 --home-top을 잼) */
   #view-home .home-hero { flex: none; height: auto; min-height: 0; padding: var(--home-top, 104px) 0 clamp(18px, 3vh, 40px); }
-  #view-home .home-hero-text { position: static; margin-left: clamp(28px, 6vw, 96px); }
-  #view-home .home-sec { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; padding: clamp(10px, 2vh, 28px) clamp(24px, 6vw, 96px) clamp(18px, 3vh, 32px); }
+  #view-home .home-hero-text { position: static; margin-left: var(--rebuild-side-gap); }
+  #view-home .home-sec { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; padding: clamp(10px, 2vh, 28px) 2.5rem clamp(18px, 3vh, 32px) var(--rebuild-side-gap); }
   #view-home .home-journeys { grid-template-columns: 1fr 1fr; }
   #view-home .home-sec h2 { font-size: clamp(1.4rem, 2.4vh, 2rem); }
   /* 카드 아래 끝 = 사이드바 마지막 메뉴 상자 아래 끝 (home.js가 높이를 잼) */
