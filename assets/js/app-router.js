@@ -588,7 +588,7 @@ window.addEventListener('load', () => {
   });
 });
 
-// 화학과 연구원 인터뷰: 줄인 지면 + '‹ 1 / N ›' 넘기기 + 크게 보기. 지면+넘기기 아래 끝 = 사이드바 아래 끝
+// 화학과 연구원 인터뷰: 지도안과 같은 폭의 지면 + '‹ 1 / N ›' 넘기기
 (function () {
   const view = document.getElementById('view-cprl-interview');
   if (!view) return;
@@ -598,39 +598,22 @@ window.addEventListener('load', () => {
   let cur = 0;
   const arrow = d => `<svg viewBox="0 0 24 24"><path d="${d}"/></svg>`;
 
-  function fit() {
-    const page = wrap.querySelector('.iv-page'), pager = wrap.querySelector('.iv-pager');
-    if (!page) return;
-    if (window.innerWidth <= 768 || !view.offsetParent) { page.style.height = ''; return; }
-    const sb = document.querySelector('.sidebar').getBoundingClientRect().bottom;
-    const top = page.getBoundingClientRect().top + window.scrollY;
-    page.style.height = Math.max(360, Math.round(sb - top - pager.offsetHeight - 14)) + 'px';
-  }
   function render() {
     const p = pages[cur];
-    wrap.innerHTML = `<figure class="iv-page"><img src="${p.src}" alt="${p.alt}"><button type="button" class="zoom-btn">${ZOOM_ICON.open}크게 보기</button></figure>
+    wrap.innerHTML = `<figure class="iv-page"><img src="${p.src}" alt="${p.alt}"></figure>
       <div class="iv-pager"><button type="button" data-step="-1" aria-label="이전 인터뷰" ${cur === 0 ? 'disabled' : ''}>${arrow('m15 18-6-6 6-6')}</button><span><b>${cur + 1}</b> / ${pages.length}</span><button type="button" data-step="1" aria-label="다음 인터뷰" ${cur === pages.length - 1 ? 'disabled' : ''}>${arrow('m9 18 6-6-6-6')}</button></div>`;
-    fit();
   }
   wrap.addEventListener('click', e => {
     const b = e.target.closest('button');
     if (!b) return;
-    if (b.classList.contains('zoom-btn')) {
-      const p = pages[cur];
-      openImageLightbox(p.src, p.title || '화학과 연구원 인터뷰', `${p.title} 인터뷰 (${cur + 1} / ${pages.length})`);
-      return;
-    }
     cur = Math.min(pages.length - 1, Math.max(0, cur + Number(b.dataset.step)));
     render();
+    window.scrollTo({ top: 0 }); // 새 지면은 제목부터 보이게
   });
   document.addEventListener('keydown', e => {
-    if (!view.classList.contains('active') || document.querySelector('.img-lightbox-backdrop.open')) return;
+    if (!view.classList.contains('active')) return;
     if (e.key === 'ArrowRight' && cur < pages.length - 1) { cur++; render(); }
     if (e.key === 'ArrowLeft' && cur > 0) { cur--; render(); }
   });
-  const later = () => requestAnimationFrame(fit);
-  window.addEventListener('resize', later);
-  new MutationObserver(later).observe(view, { attributes: true, attributeFilter: ['class'] }); // 화면이 열릴 때
-  document.addEventListener('animationend', e => { if (e.target === view) fit(); }); // 떠오르는 움직임 뒤 다시 잼
   render();
 })();

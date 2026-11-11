@@ -2273,23 +2273,16 @@ body.lp-modal-open { overflow: hidden; }
 }
 
 /* --------------------------------------------------------------------------
-   화학과 연구원 인터뷰: 줄인 지면 + 가운데 '‹ 1 / 4 ›' + 오른쪽 위 '크게 보기'
-   (지면은 index.html의 .iv-src 안 <img>를 늘어놓은 순서대로, app-router.js가 높이를 정함)
+   화학과 연구원 인터뷰: 지도안과 같은 폭의 지면 + 가운데 '‹ 1 / N ›'
+   (지면은 index.html의 .iv-src 안 <img>를 늘어놓은 순서대로)
    -------------------------------------------------------------------------- */
 #view-cprl-interview .iv-src { display: none; }
-#view-cprl-interview .iv { display: inline-flex; flex-direction: column; align-items: center; gap: 14px; }
-#view-cprl-interview .iv-page { position: relative; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); background: #fff; }
-#view-cprl-interview .iv-page img { display: block; height: 100%; width: auto; }
-#view-cprl-interview .iv-page .zoom-btn { position: absolute; top: 14px; right: 14px; }
+#view-cprl-interview .iv { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+#view-cprl-interview .iv-page { position: relative; width: 100%; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); background: #fff; }
+#view-cprl-interview .iv-page img { display: block; width: 100%; height: auto; } /* 본문 폭(지도안과 같은 폭)에 맞춤 */
 #view-cprl-interview .iv-pager { display: flex; align-items: center; gap: 14px; color: #cbd5e1; font: 700 15px 'Pretendard', sans-serif; font-variant-numeric: tabular-nums; }
 #view-cprl-interview .iv-pager b { color: #ffffff; }
 #view-cprl-interview .iv-pager button { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 50%; background: transparent; color: #f4f1ea; cursor: pointer; }
 #view-cprl-interview .iv-pager button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.08); }
 #view-cprl-interview .iv-pager button:disabled { opacity: 0.3; cursor: default; }
 #view-cprl-interview .iv-pager svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-@media (max-width: 768px) {
-  #view-cprl-interview .iv { display: flex; }
-  #view-cprl-interview .iv-page { width: 100%; height: auto !important; }
-  #view-cprl-interview .iv-page img { width: 100%; height: auto; }
-  #view-cprl-interview .iv-page .zoom-btn { display: none; }
-}
