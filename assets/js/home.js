@@ -31,7 +31,8 @@
     W = canvas.clientWidth; H = canvas.clientHeight; // 캔버스는 화면 전체(사이드바 뒤 포함)에 고정
     canvas.width = W * dpr; canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.round(W * H / 26000);
+    const n = Math.round(W * H / 26000 * .7);
+    canvas.dataset.moleculeCount = String(n);
     mols = Array.from({ length: n }, () => ({
       x: Math.random() * W, y: Math.random() * H, r: 12 + Math.random() * 16,
       a: Math.random() * Math.PI, va: (Math.random() - .5) * .25,
@@ -121,4 +122,137 @@
   window.addEventListener('resize', resize);
   resize();
   requestAnimationFrame(loop);
+})();
+
+
+// 첨부 효과의 관성 포인터·탄성 복귀·연결망을 기존 Canvas 구조에 적용한다.
+(function () {
+  const overlay = document.getElementById('site-intro');
+  if (!overlay) return;
+  if (!document.documentElement.classList.contains('intro-pending')) {
+    overlay.remove();
+    return;
+  }
+  const app = document.querySelector('.app-layout');
+  const canvas = document.getElementById('intro-mesh');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pointer = { x:-2000, y:-2000, targetX:-2000, targetY:-2000 };
+  let frame = 0, nodes = [], width = 0, height = 0, reach = 160, leaving = false, prev = performance.now();
+  app.inert = true;
+  overlay.focus({ preventScroll:true });
+
+  function resizeIntro() {
+    if (!ctx) return;
+    width = innerWidth; height = innerHeight;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = Math.min(220, Math.max(75, Math.round(width * height / 14000)));
+    const cols = Math.max(4, Math.round(Math.sqrt(count * width / height)));
+    const rows = Math.max(4, Math.round(count / cols));
+    reach = Math.max(width / cols, height / rows) * 1.55;
+    nodes = Array.from({ length:cols * rows }, (_, i) => {
+      const x = ((i % cols) + .5) * width / cols + (Math.random() - .5) * 28;
+      const y = (Math.floor(i / cols) + .5) * height / rows + (Math.random() - .5) * 28;
+      return { ox:x, oy:y, x, y, vx:0, vy:0, phase:Math.random()*Math.PI*2, size:1+Math.random()*1.6 };
+    });
+    if (reduceMotion) drawIntro(performance.now());
+  }
+  function drawIntro(now) {
+    const step = Math.min(2, Math.max(.1, (now - prev) / (1000 / 60))); prev = now;
+    pointer.x += (pointer.targetX - pointer.x) * (1 - Math.pow(.92, step));
+    pointer.y += (pointer.targetY - pointer.y) * (1 - Math.pow(.92, step));
+    ctx.clearRect(0,0,width,height);
+    if (pointer.x > 0 && pointer.y > 0) {
+      const glow = ctx.createRadialGradient(pointer.x,pointer.y,0,pointer.x,pointer.y,350);
+      glow.addColorStop(0,'rgba(255,255,255,.11)'); glow.addColorStop(1,'rgba(255,255,255,0)');
+      ctx.fillStyle = glow; ctx.fillRect(0,0,width,height);
+    }
+    for (const n of nodes) {
+      const x = n.ox + Math.cos(now*.0005+n.phase)*18;
+      const y = n.oy + Math.sin(now*.00045+n.phase)*18;
+      n.vx = (n.vx+(x-n.x)*.05*step)*Math.pow(.85,step);
+      n.vy = (n.vy+(y-n.y)*.05*step)*Math.pow(.85,step);
+      n.x += n.vx*step; n.y += n.vy*step;
+      const dx = pointer.x-n.x, dy = pointer.y-n.y, distance = Math.hypot(dx,dy);
+      if (distance > 0 && distance < 180 && !reduceMotion) {
+        const force = Math.pow(1-distance/180,2)*12*step;
+        n.x -= dx/distance*force; n.y -= dy/distance*force;
+      }
+    }
+    for (let i=0; i<nodes.length; i++) {
+      const n = nodes[i];
+      for (let j=i+1; j<nodes.length; j++) {
+        const other = nodes[j], distance = Math.hypot(n.x-other.x,n.y-other.y);
+        if (distance >= reach) continue;
+        ctx.strokeStyle = `rgba(230,233,238,${(1-distance/reach)*.48})`;
+        ctx.lineWidth = .75; ctx.beginPath(); ctx.moveTo(n.x,n.y); ctx.lineTo(other.x,other.y); ctx.stroke();
+      }
+      ctx.fillStyle = 'rgba(235,237,240,.8)'; ctx.beginPath(); ctx.arc(n.x,n.y,n.size,0,Math.PI*2); ctx.fill();
+    }
+    if (!reduceMotion) frame = requestAnimationFrame(drawIntro);
+  }
+  function moveIntro(event) { pointer.targetX = event.clientX; pointer.targetY = event.clientY; }
+  function leaveIntro() { pointer.targetX = pointer.targetY = -2000; }
+  function keyIntro(event) {
+    if (['Enter',' ','Escape'].includes(event.key)) { event.preventDefault(); beginEntry(); }
+  }
+  async function beginEntry() {
+    if (leaving) return;
+    leaving = true;
+    try { sessionStorage.setItem('kaist-intro-seen','1'); }
+    catch (error) { console.warn('인트로 재생 상태를 저장하지 못했습니다.',error); }
+    overlay.classList.add('is-exiting');
+    const duration = reduceMotion ? 120 : 1200;
+    const fade = [{opacity:1},{opacity:0}];
+    overlay.querySelector('.intro-partner-full').animate(fade,{duration:180,fill:'forwards'});
+    const landings = [];
+    const flights = [
+      [overlay.querySelector('.intro-kaist-logo'),document.querySelector('.site-home .rebuild-kaist-logo-img')],
+      [overlay.querySelector('.intro-collab'),document.querySelector('.site-home-collab')],
+      [overlay.querySelector('.intro-partner-wordmark'),document.querySelector('.site-home-partner')]
+    ].map(([sourceElement,targetElement]) => {
+      const source = sourceElement.getBoundingClientRect();
+      const destination = targetElement.getBoundingClientRect();
+      // 작은 화면에서 홈 영역이 숨겨진 경우 메뉴 열기 위치로 축소한다.
+      const target = destination.width ? destination : document.querySelector('.rebuild-mobile-toggle').getBoundingClientRect();
+      const scale = Math.min(target.width/source.width,target.height/source.height);
+      const x = target.left+(target.width-source.width*scale)/2-source.left;
+      const y = target.top+(target.height-source.height*scale)/2-source.top;
+      landings.push(targetElement.animate([{opacity:0},{opacity:1}],{
+        delay:Math.max(0,duration-180),duration:Math.min(180,duration),fill:'forwards'
+      }));
+      const flight = sourceElement.animate([
+        {transform:'translate(0,0) scale(1)'},
+        {transform:reduceMotion?'none':`translate(${x}px,${y}px) scale(${scale})`}
+      ],{duration,easing:'cubic-bezier(.65,0,.2,1)',fill:'forwards'});
+      sourceElement.animate(fade,{
+        delay:Math.max(0,duration-180),duration:Math.min(180,duration),fill:'forwards'
+      });
+      return flight.finished;
+    });
+    try { await Promise.allSettled(flights); }
+    finally { finishIntro(); landings.forEach(animation => animation.cancel()); }
+  }
+
+  function finishIntro() {
+    cancelAnimationFrame(frame);
+    window.removeEventListener('resize',resizeIntro);
+    overlay.removeEventListener('keydown',keyIntro);
+    overlay.removeEventListener('pointermove',moveIntro);
+    overlay.removeEventListener('pointerleave',leaveIntro);
+    overlay.removeEventListener('click',beginEntry);
+    app.inert = false;
+    document.documentElement.classList.remove('intro-pending');
+    overlay.remove();
+    const focusTarget = innerWidth > 768 ? document.querySelector('.site-home') : document.querySelector('.rebuild-mobile-toggle');
+    focusTarget.focus({preventScroll:true});
+  }
+  overlay.addEventListener('keydown',keyIntro);
+  overlay.addEventListener('click',beginEntry);
+  overlay.addEventListener('pointermove',moveIntro);
+  overlay.addEventListener('pointerleave',leaveIntro);
+  window.addEventListener('resize',resizeIntro);
+  if (ctx) { resizeIntro(); if (!reduceMotion) frame = requestAnimationFrame(drawIntro); }
 })();

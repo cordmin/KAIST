@@ -225,6 +225,7 @@ function setAppState(pkg, view) {
     document.body.classList.remove('sidebar-open');
   }
   renderView();
+  window.scrollTo({ top: 0, behavior: 'instant' });
   if (isCurriculum) {
     const winId = (pkg === 'oled') ? 'oled-lesson-plan-chrome-window' : 'quantum-lesson-plan-chrome-window';
     switchLessonPlanTab(null, 0, winId);

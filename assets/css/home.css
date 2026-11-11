@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'SchoolSafetyStarrySky';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimByeolbichhaneulTTF-L.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SchoolSafetyStarrySky';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimByeolbichhaneulTTF-B.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
 /* ==========================================================================
    홈 화면
    ========================================================================== */
@@ -12,9 +25,9 @@
 
 /* 1. 첫 화면: 자외선 램프로 분자를 비추는 캔버스 */
 .home-hero { position: relative; height: min(92vh, 980px); min-height: 560px; }
-.home-hero-text { position: absolute; left: clamp(28px, 6vw, 96px); bottom: clamp(48px, 10vh, 120px); max-width: 980px; pointer-events: none; }
+.home-hero-text { transform: translateY(25px); position: absolute; left: clamp(28px, 6vw, 96px); bottom: clamp(48px, 10vh, 120px); max-width: 980px; pointer-events: none; }
 .home-kicker { color: #e2bd72; font-size: .95rem; font-weight: 800; letter-spacing: .02em; }
-.home-hero h1 { margin: 1rem 0 0; font-size: clamp(2.6rem, 5.4vw, 5.2rem); font-weight: 900; line-height: 1.12; letter-spacing: -.045em; word-break: keep-all; }
+.home-hero h1 { margin: 1rem 0 0; font-family: 'SchoolSafetyStarrySky', 'Pretendard', sans-serif; font-size: clamp(2.6rem, 5.4vw, 5.2rem); font-weight: 700; line-height: 1.12; letter-spacing: -.045em; word-break: keep-all; }
 .home-hero p { margin: 1.3rem 0 0; color: #b9b4aa; font-size: clamp(1rem, 1.25vw, 1.2rem); line-height: 1.7; word-break: keep-all; }
 
 /* 공통 구획 */
@@ -79,7 +92,15 @@
 .site-home .rebuild-ws-identity { cursor:pointer; }
 .site-home:hover { transform:translateY(-3px); background-color:#141923; border-color:rgba(255,255,255,.24); }
 .site-home:active { transform:translateY(-1px); }
-.site-home:focus-visible { outline:2px solid #e2bd72;outline-offset:4px; }
+.site-home:focus { outline:none; }
+.site-home::after { content:""; position:absolute; inset:12px; border:1px solid rgba(255,255,255,.45); border-radius:8px; pointer-events:none; }
+.site-home { padding:16px; }
+.site-home .rebuild-ws-identity { gap:9px; }
+.site-home .rebuild-ws-logo { width:76px; background:transparent; border:0; border-radius:0; box-shadow:none; padding:0; }
+.site-home .rebuild-kaist-logo-img { filter:url(#intro-logo-white); transform:translateY(2.8px); }
+.site-home-collab { flex:none; color:#ffffff; font:700 14px/1 Arial,sans-serif; }
+.site-home-partner { position:relative; flex:1; max-width:126px; min-width:0; aspect-ratio:1040 / 150; overflow:hidden; }
+.site-home-partner img,.intro-partner-wordmark img { position:absolute; width:160.096%; max-width:none; height:auto; left:-46.154%; top:-113.333%; filter:url(#intro-logo-white); }
 @media(min-width:769px) {
 .sidebar {top:calc(var(--rebuild-top-gap) + 102px) !important;max-height:calc(100vh - var(--rebuild-top-gap) * 2 - 102px);}
 }
@@ -90,3 +111,38 @@ body.sidebar-open .sidebar {top:114px !important;bottom:12px !important;max-heig
 }
 @media(prefers-reduced-motion:reduce) {.site-home {transition:none;} .site-home:hover {transform:none;}}
 @media print {#home-canvas,.site-home {display:none !important;}}
+
+/* 첫 접속 인트로: 클릭 후 중앙 로고가 홈 로고의 실측 위치로 이동한다. */
+#site-intro { display:none; }
+.intro-pending { overflow:hidden; }
+.intro-pending #site-intro { position:fixed; inset:0; z-index:100000; display:grid; place-items:center; cursor:pointer; outline:none; isolation:isolate; }
+#site-intro::before { content:""; position:absolute; inset:0; z-index:-1; background:#000; transition:opacity 1.1s ease; }
+.intro-filter { position:absolute; pointer-events:none; }
+#intro-mesh { position:absolute; inset:0; width:100%; height:100%; opacity:.9; animation:introMeshIn 1.1s ease both; transition:opacity .8s ease,transform 1.1s ease; }
+.intro-identity { position:relative; text-align:center; pointer-events:none; animation:introIdentityIn 1s .15s ease both; }
+.intro-identity img { display:block; height:auto; filter:url(#intro-logo-white); }
+.intro-kaist-logo { width:clamp(230px,28vw,430px); margin-bottom:calc(clamp(230px,28vw,430px) * -.033); transform-origin:top left; }
+/* 첨부 원본의 바깥 여백만 화면에서 잘라 로고 사이의 간격을 맞춘다. */
+.intro-partner { position:relative; width:clamp(230px,28vw,430px); aspect-ratio:1354 / 284; overflow:hidden; }
+.intro-partner > img { position:absolute; width:122.969%; max-width:none; left:-11.521%; top:-45.775%; }
+.intro-partner-wordmark { display:none; position:absolute; left:23.929%; top:14.084%; width:76.809%; height:52.817%; overflow:hidden; transform-origin:top left; }
+#site-intro.is-exiting .intro-partner { overflow:visible; }
+#site-intro.is-exiting .intro-partner-wordmark { display:block; }
+.intro-collab { display:block; width:max-content; margin:13px auto 12px; font:700 28px/1 Arial,sans-serif; color:#ffffff; transform-origin:top left; }
+.intro-instruction { display:block; margin-top:28px; color:#a9adb4; font-size:12px; letter-spacing:.08em; animation:introIdentityIn 1s .8s ease both; transition:opacity .25s; }
+#site-intro:focus-visible .intro-instruction { text-decoration:underline; text-underline-offset:6px; color:white; }
+.intro-pending .site-home .rebuild-kaist-logo-img,.intro-pending .site-home-partner,.intro-pending .site-home-collab { opacity:0; }
+#site-intro.is-exiting { cursor:default; }
+#site-intro.is-exiting::before { opacity:0; }
+#site-intro.is-exiting #intro-mesh { animation:none; opacity:0; transform:scale(1.08); }
+#site-intro.is-exiting .intro-identity { animation:none; }
+#site-intro.is-exiting .intro-instruction { animation:none; opacity:0; }
+@keyframes introIdentityIn { from { opacity:0; } to { opacity:1; } }
+@keyframes introMeshIn { from { opacity:0; } to { opacity:.9; } }
+@media(prefers-reduced-motion:reduce) {
+  #intro-mesh { animation:none; }
+  .intro-identity,.intro-instruction { animation:none; }
+  #site-intro::before { transition-duration:.12s; }
+  #site-intro.is-exiting #intro-mesh { transform:none;transition-duration:.12s; }
+}
+@media print { #site-intro { display:none !important; } }
