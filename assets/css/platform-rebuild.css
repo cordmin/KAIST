@@ -2269,10 +2269,7 @@ a, a *, button, button *, [onclick], [onclick] *, [role="link"], [role="link"] *
 .lp-sheet { margin: 0 auto; }
 body.lp-modal-open { overflow: hidden; }
 @media (max-width: 768px) {
-  .lp-bar { display: none; } /* 휴대폰: 지도안은 위아래로 쌓아 읽음 */
-  #oled-lesson-plan-chrome-window > .chrome-tab-panel,
-  #quantum-lesson-plan-chrome-window > .chrome-tab-panel,
-  .chrome-tab-panel { padding: 1.1rem .9rem !important; }
+  .lp-bar { display: none; } /* 휴대폰: 줄인 지도안을 손가락으로 벌려 확대해 읽음, 크게 보기 창은 화면보다 크게 못 띄워서 숨김 */
 }
 
 /* --------------------------------------------------------------------------

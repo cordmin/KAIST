@@ -18,34 +18,7 @@
   .hub-card-title { font-size: 1.1rem !important; word-break: keep-all; }
   .hub-card-desc { font-size: .9rem !important; word-break: keep-all; }
 
-  /* 3. 수업지도안: 칸을 위아래로 쌓기 */
-  .chrome-tab-panel .data-table colgroup { display: none; }
-  .chrome-tab-panel .data-table:not(:has(thead)),
-  .chrome-tab-panel .data-table:not(:has(thead)) > tbody,
-  .chrome-tab-panel .data-table:not(:has(thead)) > tbody > tr,
-  .chrome-tab-panel .data-table:not(:has(thead)) > tbody > tr > th,
-  .chrome-tab-panel .data-table:not(:has(thead)) > tbody > tr > td,
-  .chrome-tab-panel .data-table:not(:has(thead)) > tr,
-  .chrome-tab-panel .data-table:not(:has(thead)) > tr > th,
-  .chrome-tab-panel .data-table:not(:has(thead)) > tr > td {
-    display: block; width: auto !important; min-width: 0 !important; white-space: normal !important;
-  }
-  .chrome-tab-panel .data-table:not(:has(thead)) th {
-    text-align: left !important; padding: .55rem .8rem !important; border-bottom: 0 !important;
-  }
-  .chrome-tab-panel .data-table:not(:has(thead)) td { padding: .7rem .8rem !important; }
-  .chrome-tab-panel .data-table:not(:has(thead)) td[style*="background-color:#f1f5f9"] {
-    text-align: left !important; padding: .55rem .8rem !important; /* 도입·전개·정리 띠 */
-  }
-  /* "단계 | 교수·학습 활동 | 유의점" 머리줄은 쌓으면 뜻이 없어 숨김 */
-  .chrome-tab-panel .data-table tr:has(> th[colspan="3"]) { display: none !important; }
-  .chrome-tab-panel .plan-card { padding: .7rem !important; }
-
-  /* 성취수준 연계표처럼 머리줄이 있는 비교표는 옆으로 밀어 보기 */
-  .chrome-tab-panel .data-table:has(thead) { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .chrome-tab-panel .data-table:has(thead) th,
-  .chrome-tab-panel .data-table:has(thead) td { min-width: 190px; }
-  .chrome-tab-panel h3 { font-size: 1.05rem !important; word-break: keep-all; }
+  /* 3. 수업지도안: 휴대폰에서도 컴퓨터와 같은 원본 모양을 통째로 줄여 보여 줌 (app-router.js) */
 }
 
 /* 4. 슬라이드 창: 세로로 든 휴대폰 */

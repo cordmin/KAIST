@@ -536,7 +536,7 @@ const ZOOM_ICON = {
   close: '<svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>'
 };
 
-// 수업 지도안: 1400px(폭 줄이기 전 크기)로 그린 뒤 칸에 맞게 통째로 축소, '크게 보기'는 같은 지도안을 큰 창으로 옮김
+// 수업 지도안: 1400px(폭 줄이기 전 크기)로 그린 뒤 칸에 맞게 통째로 축소 (휴대폰 포함), '크게 보기'는 같은 지도안을 큰 창으로 옮김
 window.addEventListener('load', () => {
   const DOC_W = 1400, SITE_W = 1280;
   document.querySelectorAll('.chrome-window[id$="-lesson-plan-chrome-window"]').forEach(doc => {
@@ -557,7 +557,6 @@ window.addEventListener('load', () => {
     const isOpen = () => modal.isConnected;
 
     const fit = () => {
-      if (window.innerWidth <= 768) { doc.style.width = doc.style.zoom = ''; return; } // 휴대폰: 위아래로 쌓는 원래 모양
       const room = isOpen() ? Math.min(SITE_W, window.innerWidth - 48) : box.clientWidth;
       if (!room) return; // 숨어 있는 지도안
       const r = Math.min(1, room / DOC_W);
