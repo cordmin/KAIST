@@ -22,6 +22,8 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     }
     await page.locator('#rb-nav-cprl-questions').click();
     await page.locator('#interview-app .setup h1').waitFor();
+    assert.notEqual(await page.locator('#home-canvas').evaluate(element => getComputedStyle(element).display), 'none');
+    assert.equal(await page.locator('#interview-app').evaluate(element => getComputedStyle(element).backgroundColor), 'rgba(0, 0, 0, 0)');
     assert.deepEqual(await page.locator('input[name=year]').evaluateAll(inputs => inputs.map(input => ({
       value: input.value, disabled: input.disabled, label: input.parentElement.textContent.trim(),
     }))), [
@@ -45,6 +47,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
           await navigate('#rb-nav-cprl-intro');
           await navigate('#rb-nav-cprl-questions');
           await page.locator('.setup h1').waitFor();
+          const widths = await page.locator('.setup-main fieldset:nth-of-type(-n+2) .choice')
+            .evaluateAll(elements => elements.map(element => element.getBoundingClientRect().width));
+          assert.ok(widths.every(width => Math.abs(width - widths[0]) < 1), '성별과 연차 버튼 너비 통일');
           assert.equal(await page.locator('#interview-app input:checked').count(), 0);
           await page.locator(`input[name=gender][value=${track === 3 ? 'f' : 'm'}]`).check();
           await page.locator(`input[name=year][value="${year}"]`).check();

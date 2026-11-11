@@ -1,8 +1,7 @@
 /* 화학과 인터뷰 질문지: 다른 화면의 공통 배치는 그대로 사용한다. */
-body:has(#view-cprl-questions.active) #home-canvas{display:none}
 body:has(#view-cprl-questions.active) .main-content,body:has(#view-cprl-questions.active) .sidebar,body:has(#view-cprl-questions.active) .site-home{transition:none!important}
 #view-cprl-questions{color:var(--rebuild-text-primary);--ink:var(--rebuild-text-primary);--muted:var(--rebuild-text-secondary);--accent:#c7cfd9;font-family:Pretendard,'Malgun Gothic',sans-serif}
-#interview-app{background:var(--rebuild-content-bg);position:relative;color:var(--ink);box-sizing:border-box}
+#interview-app{background:transparent;position:relative;color:var(--ink);box-sizing:border-box}
 #interview-app *{box-sizing:border-box}
 #interview-app button,#interview-app select{font:inherit}
 #interview-app button{cursor:pointer;min-height:48px;touch-action:manipulation;border-radius:12px}
@@ -152,12 +151,12 @@ body:has(#view-cprl-questions.active) .main-content,body:has(#view-cprl-question
 
 
 
-#interview-app .setup-main fieldset:nth-of-type(2) .choice-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-#interview-app .setup-main fieldset:nth-of-type(2) .choice{font-size:22px;padding:12px 6px;gap:6px;white-space:nowrap}
-#interview-app .setup-main fieldset:nth-of-type(2) .choice:has(input:checked){padding:11px 5px}
-#interview-app .setup-main fieldset:nth-of-type(2) input{width:18px;height:18px}
+#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice{font-size:22px;padding:12px 6px;gap:6px;white-space:nowrap}
+#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice:has(input:checked){padding:11px 5px}
+#interview-app .setup-main fieldset:nth-of-type(-n+2) input{width:18px;height:18px}
 #interview-app .choice:has(input:disabled){opacity:.4;cursor:not-allowed}
-@media(max-width:1100px){#interview-app .setup-main fieldset:nth-of-type(2) .choice{font-size:20px;padding-left:4px;padding-right:4px}#interview-app .setup-main fieldset:nth-of-type(2) .choice:has(input:checked){padding-left:3px;padding-right:3px}}
+@media(max-width:1100px){#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice{font-size:20px;padding-left:4px;padding-right:4px}#interview-app .setup-main fieldset:nth-of-type(-n+2) .choice:has(input:checked){padding-left:3px;padding-right:3px}}
 
 
 
