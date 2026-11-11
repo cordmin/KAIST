@@ -24,6 +24,16 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     await page.locator('#interview-app .setup h1').waitFor();
     assert.notEqual(await page.locator('#home-canvas').evaluate(element => getComputedStyle(element).display), 'none');
     assert.equal(await page.locator('#interview-app').evaluate(element => getComputedStyle(element).backgroundColor), 'rgba(0, 0, 0, 0)');
+    await page.waitForTimeout(100);
+    assert.equal(await page.evaluate(() => {
+      const canvas = document.getElementById('home-canvas');
+      const bounds = document.getElementById('view-cprl-questions').getBoundingClientRect();
+      const scale = canvas.width / canvas.clientWidth;
+      return canvas.getContext('2d').getImageData(
+        Math.round((bounds.left + bounds.width / 2) * scale),
+        Math.round((bounds.top + Math.min(100, bounds.height / 2)) * scale), 1, 1,
+      ).data[3];
+    }), 0, '본문 안에는 분자를 그리지 않는다');
     assert.deepEqual(await page.locator('input[name=year]').evaluateAll(inputs => inputs.map(input => ({
       value: input.value, disabled: input.disabled, label: input.parentElement.textContent.trim(),
     }))), [
@@ -50,6 +60,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
           const widths = await page.locator('.setup-main fieldset:nth-of-type(-n+2) .choice')
             .evaluateAll(elements => elements.map(element => element.getBoundingClientRect().width));
           assert.ok(widths.every(width => Math.abs(width - widths[0]) < 1), '성별과 연차 버튼 너비 통일');
+          const female = await page.locator('input[name=gender][value=f]').locator('..').boundingBox();
+          const secondYear = await page.locator('input[name=year][value="2"]').locator('..').boundingBox();
+          assert.ok(Math.abs(secondYear.x - female.x - female.width - 16) < 1, '성별과 연차 사이 간격은 16px');
           assert.equal(await page.locator('#interview-app input:checked').count(), 0);
           await page.locator(`input[name=gender][value=${track === 3 ? 'f' : 'm'}]`).check();
           await page.locator(`input[name=year][value="${year}"]`).check();

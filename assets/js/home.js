@@ -51,6 +51,16 @@
 
   function draw(dt, now) {
     ctx.clearRect(0, 0, W, H);
+    // 배경색은 건드리지 않고, 본문 안쪽만 분자·빛의 그리기 영역에서 제외한다.
+    ctx.save();
+    const content = document.querySelector('.content-view.active');
+    if (content) {
+      const bounds = content.getBoundingClientRect();
+      ctx.beginPath();
+      ctx.rect(0, 0, W, H);
+      ctx.rect(bounds.left, bounds.top, bounds.width, bounds.height);
+      ctx.clip('evenodd');
+    }
     // 마우스가 멈추거나 터치 기기면 램프가 스스로 천천히 돌아다님
     if (lamp.auto || now - lastMove > 4000) {
       lamp.t += dt * .25;
@@ -100,25 +110,17 @@
       ctx.fillStyle = `rgba(${s.c},${Math.min(1, s.life * 1.6)})`; ctx.fill();
     }
     // 램프 중심: 마우스를 쓸 때는 사이트 공통 커서(빛나는 점)가 대신하므로, 스스로 돌아다닐 때만 그림
-    if (!(lamp.auto || now - lastMove > 4000)) return;
-    ctx.beginPath(); ctx.arc(lamp.x, lamp.y, 6, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(214,196,255,.95)'; ctx.shadowColor = '#9b6bff'; ctx.shadowBlur = 18; ctx.fill(); ctx.shadowBlur = 0;
+    if (lamp.auto || now - lastMove > 4000) {
+      ctx.beginPath(); ctx.arc(lamp.x, lamp.y, 6, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(214,196,255,.95)'; ctx.shadowColor = '#9b6bff'; ctx.shadowBlur = 18; ctx.fill(); ctx.shadowBlur = 0;
+    }
+    ctx.restore();
   }
 
   let prev = performance.now();
   function loop(now) {
     const dt = Math.min(.05, (now - prev) / 1000); prev = now;
     draw(dt, now); // 메뉴를 전환해도 같은 분자 상태로 계속 그림
-    // 본문 안에서는 분자와 빛 효과를 6%만 남겨 글·버튼과 겹치지 않게 한다.
-    const content = document.querySelector('.content-view.active');
-    if (content) {
-      const bounds = content.getBoundingClientRect();
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.fillStyle = 'rgba(0,0,0,.94)';
-      ctx.fillRect(bounds.left - 24, bounds.top - 24, bounds.width + 48, bounds.height + 48);
-      ctx.restore();
-    }
     requestAnimationFrame(loop);
   }
   // 모든 메뉴에서 화면 어디서든 마우스를 따라감
