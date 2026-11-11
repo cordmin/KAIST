@@ -529,3 +529,109 @@ window.addEventListener('keydown', function(e) {
     btn.classList.toggle('is-hidden', y > prev && y > 60);
   }, true);
 })();
+
+// 크게 보기 단추 그림 (지도안·인터뷰 공통)
+const ZOOM_ICON = {
+  open: '<svg viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>',
+  close: '<svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>'
+};
+
+// 수업 지도안: 1400px(폭 줄이기 전 크기)로 그린 뒤 칸에 맞게 통째로 축소, '크게 보기'는 같은 지도안을 큰 창으로 옮김
+window.addEventListener('load', () => {
+  const DOC_W = 1400, SITE_W = 1280;
+  document.querySelectorAll('.chrome-window[id$="-lesson-plan-chrome-window"]').forEach(doc => {
+    const box = doc.parentElement;
+    box.classList.add('lp-fit');
+    const bar = document.createElement('div');
+    bar.className = 'lp-bar';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'zoom-btn';
+    bar.append(btn);
+    box.prepend(bar);
+    const modal = document.createElement('div');
+    modal.className = 'lp-modal';
+    const sheet = document.createElement('div');
+    sheet.className = 'lp-sheet';
+    modal.append(sheet);
+    const isOpen = () => modal.isConnected;
+
+    const fit = () => {
+      if (window.innerWidth <= 768) { doc.style.width = doc.style.zoom = ''; return; } // 휴대폰: 위아래로 쌓는 원래 모양
+      const room = isOpen() ? Math.min(SITE_W, window.innerWidth - 48) : box.clientWidth;
+      if (!room) return; // 숨어 있는 지도안
+      const r = Math.min(1, room / DOC_W);
+      doc.style.width = DOC_W + 'px';
+      doc.style.zoom = r;
+      sheet.style.width = DOC_W * r + 'px';
+    };
+    const open = () => {
+      sheet.append(bar, doc); // 옮기기만 하므로 활동지·슬라이드 단추가 그대로 작동
+      document.body.append(modal);
+      document.body.classList.add('lp-modal-open');
+      modal.scrollTop = 0;
+      btn.innerHTML = ZOOM_ICON.close + '닫기';
+      fit();
+    };
+    const close = () => {
+      box.append(bar, doc);
+      modal.remove();
+      document.body.classList.remove('lp-modal-open');
+      btn.innerHTML = ZOOM_ICON.open + '크게 보기';
+      fit();
+    };
+    btn.innerHTML = ZOOM_ICON.open + '크게 보기';
+    btn.onclick = () => (isOpen() ? close() : open());
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) close(); });
+    new ResizeObserver(fit).observe(box);
+    window.addEventListener('resize', fit);
+  });
+});
+
+// 화학과 연구원 인터뷰: 줄인 지면 + '‹ 1 / N ›' 넘기기 + 크게 보기. 지면+넘기기 아래 끝 = 사이드바 아래 끝
+(function () {
+  const view = document.getElementById('view-cprl-interview');
+  if (!view) return;
+  const pages = [...view.querySelectorAll('.iv-src img')].map(img => ({ src: img.getAttribute('src'), alt: img.alt, title: img.dataset.title || '' }));
+  const wrap = view.querySelector('.iv');
+  if (!pages.length || !wrap) return;
+  let cur = 0;
+  const arrow = d => `<svg viewBox="0 0 24 24"><path d="${d}"/></svg>`;
+
+  function fit() {
+    const page = wrap.querySelector('.iv-page'), pager = wrap.querySelector('.iv-pager');
+    if (!page) return;
+    if (window.innerWidth <= 768 || !view.offsetParent) { page.style.height = ''; return; }
+    const sb = document.querySelector('.sidebar').getBoundingClientRect().bottom;
+    const top = page.getBoundingClientRect().top + window.scrollY;
+    page.style.height = Math.max(360, Math.round(sb - top - pager.offsetHeight - 14)) + 'px';
+  }
+  function render() {
+    const p = pages[cur];
+    wrap.innerHTML = `<figure class="iv-page"><img src="${p.src}" alt="${p.alt}"><button type="button" class="zoom-btn">${ZOOM_ICON.open}크게 보기</button></figure>
+      <div class="iv-pager"><button type="button" data-step="-1" aria-label="이전 인터뷰" ${cur === 0 ? 'disabled' : ''}>${arrow('m15 18-6-6 6-6')}</button><span><b>${cur + 1}</b> / ${pages.length}</span><button type="button" data-step="1" aria-label="다음 인터뷰" ${cur === pages.length - 1 ? 'disabled' : ''}>${arrow('m9 18 6-6-6-6')}</button></div>`;
+    fit();
+  }
+  wrap.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.classList.contains('zoom-btn')) {
+      const p = pages[cur];
+      openImageLightbox(p.src, p.title || '화학과 연구원 인터뷰', `${p.title} 인터뷰 (${cur + 1} / ${pages.length})`);
+      return;
+    }
+    cur = Math.min(pages.length - 1, Math.max(0, cur + Number(b.dataset.step)));
+    render();
+  });
+  document.addEventListener('keydown', e => {
+    if (!view.classList.contains('active') || document.querySelector('.img-lightbox-backdrop.open')) return;
+    if (e.key === 'ArrowRight' && cur < pages.length - 1) { cur++; render(); }
+    if (e.key === 'ArrowLeft' && cur > 0) { cur--; render(); }
+  });
+  const later = () => requestAnimationFrame(fit);
+  window.addEventListener('resize', later);
+  new MutationObserver(later).observe(view, { attributes: true, attributeFilter: ['class'] }); // 화면이 열릴 때
+  document.addEventListener('animationend', e => { if (e.target === view) fit(); }); // 떠오르는 움직임 뒤 다시 잼
+  render();
+})();

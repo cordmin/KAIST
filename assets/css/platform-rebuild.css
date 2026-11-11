@@ -2250,13 +2250,49 @@ a, a *, button, button *, [onclick], [onclick] *, [role="link"], [role="link"] *
 #view-oled-guide .mag-stage2-narrative:has(> .mag-giant-stat-group > .mag-giant-lbl:first-child),
 #view-quantum-guide .mag-stage2-narrative:has(> .mag-giant-stat-group > .mag-giant-lbl:first-child) { align-self: start; }
 
-/* 화학과 연구원 인터뷰: 인터뷰 지면 한 장을 본문 폭에 맞춰, 누르면 크게 */
-.cprl-interview-page {
-  margin: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  cursor: zoom-in;
+
+/* --------------------------------------------------------------------------
+   수업 지도안: 폭 줄이기 전 크기(1400px)로 그린 뒤 칸에 맞게 통째로 축소 + 오른쪽 위 '크게 보기'
+   (app-router.js가 축소 비율을 정함)
+   -------------------------------------------------------------------------- */
+.lp-fit, .lp-sheet { position: relative; }
+.lp-bar { position: absolute; top: 14px; right: 14px; z-index: 5; }
+.zoom-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px 7px 10px; border: 1px solid #111827; border-radius: 8px;
+  background: #ffffff; color: #111827; font: 700 13px/1 'Pretendard', sans-serif; cursor: pointer;
 }
-.cprl-interview-page img { display: block; width: 100%; height: auto; }
+.zoom-btn:hover { background: #111827; color: #ffffff; }
+.zoom-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+/* 크게 보기 창: 사이트 폭(1280px)을 넘지 않게, 원래 비율 그대로 */
+.lp-modal { position: fixed; inset: 0; z-index: 5000; overflow: auto; background: rgba(3, 5, 10, 0.86); padding: 40px 24px 56px; box-sizing: border-box; }
+.lp-sheet { margin: 0 auto; }
+body.lp-modal-open { overflow: hidden; }
+@media (max-width: 768px) {
+  .lp-bar { display: none; } /* 휴대폰: 지도안은 위아래로 쌓아 읽음 */
+  #oled-lesson-plan-chrome-window > .chrome-tab-panel,
+  #quantum-lesson-plan-chrome-window > .chrome-tab-panel,
+  .chrome-tab-panel { padding: 1.1rem .9rem !important; }
+}
+
+/* --------------------------------------------------------------------------
+   화학과 연구원 인터뷰: 줄인 지면 + 가운데 '‹ 1 / 4 ›' + 오른쪽 위 '크게 보기'
+   (지면은 index.html의 .iv-src 안 <img>를 늘어놓은 순서대로, app-router.js가 높이를 정함)
+   -------------------------------------------------------------------------- */
+#view-cprl-interview .iv-src { display: none; }
+#view-cprl-interview .iv { display: inline-flex; flex-direction: column; align-items: center; gap: 14px; }
+#view-cprl-interview .iv-page { position: relative; margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); background: #fff; }
+#view-cprl-interview .iv-page img { display: block; height: 100%; width: auto; }
+#view-cprl-interview .iv-page .zoom-btn { position: absolute; top: 14px; right: 14px; }
+#view-cprl-interview .iv-pager { display: flex; align-items: center; gap: 14px; color: #cbd5e1; font: 700 15px 'Pretendard', sans-serif; font-variant-numeric: tabular-nums; }
+#view-cprl-interview .iv-pager b { color: #ffffff; }
+#view-cprl-interview .iv-pager button { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 50%; background: transparent; color: #f4f1ea; cursor: pointer; }
+#view-cprl-interview .iv-pager button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.08); }
+#view-cprl-interview .iv-pager button:disabled { opacity: 0.3; cursor: default; }
+#view-cprl-interview .iv-pager svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 768px) {
+  #view-cprl-interview .iv { display: flex; }
+  #view-cprl-interview .iv-page { width: 100%; height: auto !important; }
+  #view-cprl-interview .iv-page img { width: 100%; height: auto; }
+  #view-cprl-interview .iv-page .zoom-btn { display: none; }
+}
