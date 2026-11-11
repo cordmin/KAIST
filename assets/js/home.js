@@ -31,7 +31,7 @@
     W = canvas.clientWidth; H = canvas.clientHeight; // 캔버스는 화면 전체(사이드바 뒤 포함)에 고정
     canvas.width = W * dpr; canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.round(W * H / 26000 * .7);
+    const n = Math.max(0, Math.round(W * H / 26000 * .7) - 20);
     canvas.dataset.moleculeCount = String(n);
     mols = Array.from({ length: n }, () => ({
       x: Math.random() * W, y: Math.random() * H, r: 12 + Math.random() * 16,
