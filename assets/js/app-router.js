@@ -140,6 +140,7 @@ const viewTitles = {
   'curriculum': '2022 성취기준 연계표',
   'cprl-intro': 'KAIST 화학과 CPRL 소개',
   'cprl-research': 'CPRL 주요 연구 내용',
+  'cprl-interview': '화학과 연구원 인터뷰',
   'quantum-guide': '[0차시] 수업 전 읽기 자료'
 };
 
@@ -178,6 +179,9 @@ function syncRebuildSidebar() {
     if (el) el.classList.add('active');
   } else if (currentView === 'cprl-research') {
     const el = document.getElementById('rb-nav-cprl-research');
+    if (el) el.classList.add('active');
+  } else if (currentView === 'cprl-interview') {
+    const el = document.getElementById('rb-nav-cprl-interview');
     if (el) el.classList.add('active');
   } else if (currentView === 'oled-guide') {
     const el = document.getElementById('rb-tree-oled-guide');

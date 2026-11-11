@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=20261013">
   <link rel="stylesheet" href="assets/css/presentation-stage.css?v=20261110a">
-  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261112w">
+  <link rel="stylesheet" href="assets/css/platform-rebuild.css?v=20261112y">
   <link rel="stylesheet" href="assets/css/mobile.css?v=20261014o">
   <link rel="stylesheet" href="assets/css/home.css?v=20261111d">
   <!-- KaTeX CDN (수식 정밀 렌더링) -->
@@ -52,6 +52,10 @@
             <a href="javascript:void(0)" class="rebuild-nav-item" id="rb-nav-cprl-research" onclick="switchView('cprl-research')">
               <span class="rebuild-nav-icon"><i data-lucide="flask-conical"></i></span>
               <span class="rebuild-nav-text">CPRL 주요 연구 내용</span>
+            </a>
+            <a href="javascript:void(0)" class="rebuild-nav-item" id="rb-nav-cprl-interview" onclick="switchView('cprl-interview')">
+              <span class="rebuild-nav-icon"><i data-lucide="mic"></i></span>
+              <span class="rebuild-nav-text">화학과 연구원 인터뷰</span>
             </a>
           </div>
         </div>
@@ -482,6 +486,13 @@
           </div>
         </section>
 
+        <!-- 화학과 연구원 인터뷰 (스타브릿지 2.0 인터뷰 지면, 누르면 크게) -->
+        <section id="view-cprl-interview" class="content-view">
+          <figure class="cprl-interview-page" onclick="openImageLightbox('image/cprl_interview_kim.jpg', 'KAIST 화학과 연구원 인터뷰', 'KAIST 석박통합 8년차 연구원 김삼환 인터뷰 (스타브릿지 2.0)')">
+            <img src="image/cprl_interview_kim.jpg" alt="KAIST 석박통합 8년차 연구원 김삼환 인터뷰 지면. 제목: 지금 과거로 되돌아 갈 수 있다면 대학원 원서 제출하던 그 날로 돌아 갈거예요. 화학과를 전공하게 된 계기와 현재 연구(전이 금속 촉매의 반응 메커니즘), 한국과학영재학교를 거쳐 카이스트에 온 과정, 대학원 생활에서 가장 힘들었던 순간에 대한 문답.">
+          </figure>
+        </section>
+
         <!-- ========================================== -->
         <!-- 3. OLED 패키지 VIEWS (0~7)                -->
         <!-- ========================================== -->
@@ -891,7 +902,6 @@
         </section>
 
 
-
         <!-- ========================================== -->
         <!-- 4. QUANTUM 패키지 VIEWS (1~7)             -->
         <!-- ========================================== -->
@@ -1233,7 +1243,6 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
         <section id="view-quantum-slides" class="content-view" data-same-as="view-oled-slides"><!-- view-oled-slides와 같은 내용을 app-router.js가 채움 --></section>
 
 
-
       </div>
     </main>
   </div>
@@ -1295,7 +1304,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
   <!-- Core Modular Scripts -->
   <script src="assets/data/worksheet-data-oled.js"></script>
   <script src="assets/data/worksheet-data-quantum.js?v=20261014k"></script>
-  <script src="assets/js/app-router.js?v=20261111d"></script>
+  <script src="assets/js/app-router.js?v=20261112a"></script>
   <script src="assets/js/home.js?v=20261111a"></script>
   <script src="assets/js/worksheet-modal.js"></script>
   <script src="assets/data/reader-data-oled.js"></script>
