@@ -201,8 +201,6 @@
   async function beginEntry() {
     if (leaving) return;
     leaving = true;
-    try { sessionStorage.setItem('kaist-intro-seen','1'); }
-    catch (error) { console.warn('인트로 재생 상태를 저장하지 못했습니다.',error); }
     overlay.classList.add('is-exiting');
     const duration = reduceMotion ? 120 : 1200;
     const fade = [{opacity:1},{opacity:0}];

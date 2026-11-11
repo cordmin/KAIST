@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <script>
     try {
-      if (new URLSearchParams(location.search).get('intro') === '1' || !sessionStorage.getItem('kaist-intro-seen')) {
+      if (new URLSearchParams(location.search).get('intro') === '1' || !location.hash || location.hash === '#home') {
         document.documentElement.classList.add('intro-pending');
       }
     } catch (error) { console.warn('인트로 표시 상태를 확인하지 못했습니다.', error); }
@@ -1330,7 +1330,7 @@ job = backend.run(qc, shots=<span class="c-num">1000</span>)
   <script src="assets/data/worksheet-data-oled.js"></script>
   <script src="assets/data/worksheet-data-quantum.js?v=20261014k"></script>
   <script src="assets/js/app-router.js?v=20261112f"></script>
-  <script src="assets/js/home.js?v=20261111j"></script>
+  <script src="assets/js/home.js?v=20261111k"></script>
   <script src="assets/js/worksheet-modal.js"></script>
   <script src="assets/data/reader-data-oled.js"></script>
   <script src="assets/js/reader-modal.js"></script>
