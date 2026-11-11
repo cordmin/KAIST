@@ -51,16 +51,6 @@
 
   function draw(dt, now) {
     ctx.clearRect(0, 0, W, H);
-    // 배경색은 건드리지 않고, 본문 안쪽만 분자·빛의 그리기 영역에서 제외한다.
-    ctx.save();
-    const content = document.querySelector('.content-view.active');
-    if (content) {
-      const bounds = content.getBoundingClientRect();
-      ctx.beginPath();
-      ctx.rect(0, 0, W, H);
-      ctx.rect(bounds.left, bounds.top, bounds.width, bounds.height);
-      ctx.clip('evenodd');
-    }
     // 마우스가 멈추거나 터치 기기면 램프가 스스로 천천히 돌아다님
     if (lamp.auto || now - lastMove > 4000) {
       lamp.t += dt * .25;
@@ -70,6 +60,17 @@
     const g = ctx.createRadialGradient(lamp.x, lamp.y, 0, lamp.x, lamp.y, R_LAMP * 1.6);
     g.addColorStop(0, 'rgba(155,107,255,.28)'); g.addColorStop(1, 'rgba(155,107,255,0)');
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+    // 분자 도형과 입자만 본문 안쪽에서 제외한다. 배경 빛은 자르지 않는다.
+    ctx.save();
+    const content = document.querySelector('.content-view.active');
+    if (content) {
+      const bounds = content.getBoundingClientRect();
+      ctx.beginPath();
+      ctx.rect(0, 0, W, H);
+      ctx.rect(bounds.left, bounds.top, bounds.width, bounds.height);
+      ctx.clip('evenodd');
+    }
 
     for (const m of mols) {
       m.x += m.vx * dt; m.y += m.vy * dt; m.a += m.va * dt;
@@ -109,12 +110,12 @@
       ctx.beginPath(); ctx.arc(s.x, s.y, 2.2, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${s.c},${Math.min(1, s.life * 1.6)})`; ctx.fill();
     }
+    ctx.restore();
     // 램프 중심: 마우스를 쓸 때는 사이트 공통 커서(빛나는 점)가 대신하므로, 스스로 돌아다닐 때만 그림
     if (lamp.auto || now - lastMove > 4000) {
       ctx.beginPath(); ctx.arc(lamp.x, lamp.y, 6, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(214,196,255,.95)'; ctx.shadowColor = '#9b6bff'; ctx.shadowBlur = 18; ctx.fill(); ctx.shadowBlur = 0;
     }
-    ctx.restore();
   }
 
   let prev = performance.now();

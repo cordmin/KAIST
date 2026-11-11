@@ -24,16 +24,37 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     await page.locator('#interview-app .setup h1').waitFor();
     assert.notEqual(await page.locator('#home-canvas').evaluate(element => getComputedStyle(element).display), 'none');
     assert.equal(await page.locator('#interview-app').evaluate(element => getComputedStyle(element).backgroundColor), 'rgba(0, 0, 0, 0)');
+    const lampPosition = await page.locator('#view-cprl-questions').evaluate(element => {
+      const bounds = element.getBoundingClientRect();
+      return { x: Math.round(bounds.left + 80), y: Math.round(bounds.top + 150) };
+    });
+    await page.mouse.move(lampPosition.x, lampPosition.y);
     await page.waitForTimeout(100);
-    assert.equal(await page.evaluate(() => {
+    const backgroundError = await page.evaluate(position => {
       const canvas = document.getElementById('home-canvas');
       const bounds = document.getElementById('view-cprl-questions').getBoundingClientRect();
       const scale = canvas.width / canvas.clientWidth;
-      return canvas.getContext('2d').getImageData(
-        Math.round((bounds.left + bounds.width / 2) * scale),
-        Math.round((bounds.top + Math.min(100, bounds.height / 2)) * scale), 1, 1,
-      ).data[3];
-    }), 0, '본문 안에는 분자를 그리지 않는다');
+      const expected = document.createElement('canvas');
+      expected.width = canvas.width; expected.height = canvas.height;
+      const context = expected.getContext('2d');
+      context.scale(scale, scale);
+      const gradient = context.createRadialGradient(position.x, position.y, 0, position.x, position.y, 240);
+      gradient.addColorStop(0, 'rgba(155,107,255,.28)');
+      gradient.addColorStop(1, 'rgba(155,107,255,0)');
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      const actual = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+      const reference = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      let error = 0;
+      for (let y = Math.ceil((bounds.top + 2) * scale); y < Math.min(canvas.height, (bounds.bottom - 2) * scale); y += 4) {
+        for (let x = Math.ceil((bounds.left + 2) * scale); x < Math.min(canvas.width, (bounds.right - 2) * scale); x += 4) {
+          const offset = (y * canvas.width + x) * 4;
+          error = Math.max(error, Math.abs(actual[offset + 3] - reference[offset + 3]));
+        }
+      }
+      return error;
+    }, lampPosition);
+    assert.ok(backgroundError <= 1, '본문의 원래 빛 효과를 보존하고 분자만 제외한다');
     assert.deepEqual(await page.locator('input[name=year]').evaluateAll(inputs => inputs.map(input => ({
       value: input.value, disabled: input.disabled, label: input.parentElement.textContent.trim(),
     }))), [
