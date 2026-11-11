@@ -1,10 +1,10 @@
-// 홈 화면 첫 장면: 마우스가 자외선 램프가 되어 분자를 비추면
+// 사이트 공통 배경: 마우스가 자외선 램프가 되어 분자를 비추면
 // 흡수(보라) → 열(빨강) → 형광(파랑) 순서로 반응한다. (OLED 1·2차시 내용과 같은 흐름)
 (function () {
   const canvas = document.getElementById('home-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  const hero = canvas.parentElement; // 홈 화면 전체 (첫 화면 + 탐구 여정)
+  const hero = document.getElementById('view-home'); // 홈 지면의 정렬만 별도로 관리
   const R_LAMP = 150, ABSORB = .35, HEAT = .9, GLOW = 1.7, REST = 3.2; // 단계 끝 시각(초)
   let W = 0, H = 0, dpr = 1, mols = [], sparks = [];
   const lamp = { x: -999, y: -999, auto: true, t: 0 };
@@ -12,7 +12,7 @@
 
   // 컴퓨터 화면: 머리글 위쪽은 사이드바 로고 위쪽, 카드 아래 끝은 사이드바 마지막 메뉴 상자 아래 끝에 맞춤
   function alignToSidebar() {
-    const logo = document.querySelector('.rebuild-ws-identity');
+    const logo = document.querySelector('.site-home');
     const lastBox = document.getElementById('rb-pkg-box-quantum');
     const cards = document.querySelector('.home-journeys');
     if (!logo || !lastBox || !cards || window.innerWidth <= 768 || !hero.offsetParent) return;
@@ -107,12 +107,12 @@
   let prev = performance.now();
   function loop(now) {
     const dt = Math.min(.05, (now - prev) / 1000); prev = now;
-    if (hero.offsetParent) draw(dt, now); // 홈이 보일 때만 그림
+    draw(dt, now); // 메뉴를 전환해도 같은 분자 상태로 계속 그림
     requestAnimationFrame(loop);
   }
-  // 홈이 보이는 동안 화면 어디서든(오른쪽 빈 곳 포함) 마우스를 따라감
+  // 모든 메뉴에서 화면 어디서든 마우스를 따라감
   window.addEventListener('pointermove', e => {
-    if (e.pointerType === 'touch' || !hero.offsetParent) return;
+    if (e.pointerType === 'touch') return;
     const r = canvas.getBoundingClientRect();
     lamp.x = e.clientX - r.left; lamp.y = e.clientY - r.top; lamp.auto = false; lastMove = performance.now();
   });

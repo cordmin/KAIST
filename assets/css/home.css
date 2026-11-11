@@ -69,3 +69,24 @@
   #view-home .home-hero h1 { font-size: clamp(2.2rem, 6.4vh, 5rem); }
   #view-home .home-hero p { margin-top: clamp(.5rem, 1.4vh, 1.3rem); }
 }
+
+/* 전체 화면 고정 분자 배경과 독립 홈 이동 영역 */
+#home-canvas { pointer-events:none; z-index:0; background:radial-gradient(ellipse at 65% 25%,#101114,#060708 75%); }
+.app-layout,.main-content,.content-container { background:transparent !important; }
+.main-content { position:relative; z-index:1; }
+.content-view:not(#view-home) { background:transparent !important; }
+.site-home { position:fixed; top:var(--rebuild-top-gap,28px); left:var(--rebuild-shift,0px); width:var(--rebuild-sidebar-w); height:86px; box-sizing:border-box; z-index:1001; padding:1.25rem 1.15rem 1rem; border:1px solid var(--rebuild-sidebar-border); border-radius:18px; background:var(--rebuild-sidebar-bg); text-decoration:none; cursor:pointer; box-shadow:4px 0 24px rgba(0,0,0,.25); transition:transform .22s ease,background-color .22s ease,border-color .22s ease; }
+.site-home .rebuild-ws-identity { cursor:pointer; }
+.site-home:hover { transform:translateY(-3px); background-color:#141923; border-color:rgba(255,255,255,.24); }
+.site-home:active { transform:translateY(-1px); }
+.site-home:focus-visible { outline:2px solid #e2bd72;outline-offset:4px; }
+@media(min-width:769px) {
+.sidebar {top:calc(var(--rebuild-top-gap) + 102px) !important;max-height:calc(100vh - var(--rebuild-top-gap) * 2 - 102px);}
+}
+@media(max-width:768px) {
+.site-home {display:none;left:10px;top:12px;width:248px;}
+body.sidebar-open .site-home {display:flex;}
+body.sidebar-open .sidebar {top:114px !important;bottom:12px !important;max-height:calc(100dvh - 126px);border-radius:18px;}
+}
+@media(prefers-reduced-motion:reduce) {.site-home {transition:none;} .site-home:hover {transform:none;}}
+@media print {#home-canvas,.site-home {display:none !important;}}
