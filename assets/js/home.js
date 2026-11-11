@@ -109,6 +109,16 @@
   function loop(now) {
     const dt = Math.min(.05, (now - prev) / 1000); prev = now;
     draw(dt, now); // 메뉴를 전환해도 같은 분자 상태로 계속 그림
+    // 본문 안에서는 분자와 빛 효과를 6%만 남겨 글·버튼과 겹치지 않게 한다.
+    const content = document.querySelector('.content-view.active');
+    if (content) {
+      const bounds = content.getBoundingClientRect();
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0,0,0,.94)';
+      ctx.fillRect(bounds.left - 24, bounds.top - 24, bounds.width + 48, bounds.height + 48);
+      ctx.restore();
+    }
     requestAnimationFrame(loop);
   }
   // 모든 메뉴에서 화면 어디서든 마우스를 따라감

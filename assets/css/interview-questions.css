@@ -170,3 +170,10 @@ body:has(#view-cprl-questions.active) .main-content,body:has(#view-cprl-question
 
 #interview-app summary{justify-content:flex-start;gap:16px}
 #interview-app summary:after{order:-1}
+
+
+/* 선택 버튼 너비를 유지하면서 두 묶음 사이의 빈 공간만 절반으로 줄인다. */
+#interview-app .setup-main{--group-gap:30px;--choice-width:calc((100% - var(--group-gap) - 48px)/8);grid-template-columns:calc(var(--choice-width)*2 + 8px) calc(var(--choice-width)*4 + 24px);column-gap:calc(var(--choice-width) + var(--group-gap)/2 + 8px)}
+#interview-app .setup-main fieldset:first-of-type .choice-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1100px){#interview-app .setup-main{--group-gap:18px}}
+@media(max-width:540px){#interview-app .setup-main fieldset:first-of-type .choice-row{grid-template-columns:repeat(4,minmax(0,1fr))}}
