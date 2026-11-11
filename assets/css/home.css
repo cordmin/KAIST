@@ -105,9 +105,9 @@
 .sidebar {top:calc(var(--rebuild-top-gap) + 102px) !important;max-height:calc(100vh - var(--rebuild-top-gap) * 2 - 102px);}
 }
 @media(max-width:768px) {
-.site-home {display:none;left:10px;top:12px;width:248px;}
+.site-home {display:none;left:0;top:64px;width:var(--rebuild-sidebar-w);}
 body.sidebar-open .site-home {display:flex;}
-body.sidebar-open .sidebar {top:114px !important;bottom:12px !important;max-height:calc(100dvh - 126px);border-radius:18px;}
+body.sidebar-open .sidebar {top:166px !important;bottom:12px !important;max-height:calc(100dvh - 178px);border-radius:18px;}
 }
 @media(prefers-reduced-motion:reduce) {.site-home {transition:none;} .site-home:hover {transform:none;}}
 @media print {#home-canvas,.site-home {display:none !important;}}
