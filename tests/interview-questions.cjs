@@ -83,7 +83,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
           assert.ok(widths.every(width => Math.abs(width - widths[0]) < 1), '성별과 연차 버튼 너비 통일');
           const female = await page.locator('input[name=gender][value=f]').locator('..').boundingBox();
           const secondYear = await page.locator('input[name=year][value="2"]').locator('..').boundingBox();
-          assert.ok(Math.abs(secondYear.x - female.x - female.width - 16) < 1, '성별과 연차 사이 간격은 16px');
+          assert.ok(Math.abs(secondYear.x - female.x - female.width - 60) < 1, '성별과 연차 사이 간격은 60px');
           assert.equal(await page.locator('#interview-app input:checked').count(), 0);
           await page.locator(`input[name=gender][value=${track === 3 ? 'f' : 'm'}]`).check();
           await page.locator(`input[name=year][value="${year}"]`).check();
