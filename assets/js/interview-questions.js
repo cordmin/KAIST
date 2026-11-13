@@ -20,7 +20,7 @@ function render(){
  const q=list[index];
  app.innerHTML=`<article class="paper"><div class="question-body"><p class="question-label"><span class="qnum">${String(index+1).padStart(2,'0')}</span></p><h2 tabindex="-1">${q.title}</h2><p class="question-hint">${q.hint}</p><details><summary>조금 더 들어가 볼까요?</summary><ul class="tails">${q.tails.map((t,i)=>`<li><span class="follow-marker">추가 ${i+1}</span><span class="follow-text">${t}</span></li>`).join('')}</ul></details></div><div class="bottom"><div class="progress" aria-label="${index+1} / ${list.length} 문항">${list.map((_,i)=>`<span class="${i===index?'current':i<index?'done':''}"></span>`).join('')}</div><div class="nav-row"><div class="left">${button('← 이전','prev','ghost',index===0?'disabled':'')}</div><div class="right">${button(index===list.length-1?'마무리 →':'다음 →','next','action')}</div></div></div></article>`;
  }else if(mode==='end'){
- app.innerHTML=`<section class="paper"><p class="eyebrow">${tracks[track].label} · 대화 마무리</p><h1 class="end-title">마지막으로,<br>질문 하나를 더 건네주세요.</h1><p class="closing">“제가 묻지 않았지만,<br>꼭 들었으면 하는 이야기가 있나요?”</p></section>`;
+ app.innerHTML=`<section class="paper"><p class="eyebrow">${tracks[track].label} · 대화 마무리</p><h1 class="end-title">마지막으로,<br>질문 하나를 더 건네주세요.</h1><p class="closing">“제가 묻지 않았지만<br>꼭 들려주고 싶은 이야기가 있나요?”</p><div class="setup-actions">${button('처음으로','reset','action')}</div></section>`;
 
  }
 }
@@ -32,6 +32,7 @@ app.addEventListener('change',e=>{
 app.addEventListener('click',e=>{
  const b=e.target.closest('button[data-action]');if(!b||b.disabled)return;
  switch(b.dataset.action){
+ case 'reset':year='';track=0;index=0;mode='setup';list=[];render();window.scrollTo(0,0);app.querySelector('input[name="year"]:not(:disabled)')?.focus({preventScroll:true});break;
  case 'track':track=Number(b.dataset.track);render();break;
  case 'start':if(!year)return;makeList();go(0);break;
  case 'prev':go(index-1);break;
