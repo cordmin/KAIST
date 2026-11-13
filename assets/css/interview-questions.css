@@ -1,6 +1,6 @@
 /* 검토 화면은 기존 사이드바 오른쪽 본문 안에서만 전환한다. */
 #view-cprl-questions { padding: 0 !important; animation: none !important; }
-#interview-review-frame { display: block; width: 100%; height: calc(100dvh - 64px); min-height: 560px; border: 0; background: #060708; color-scheme: dark; }
+#interview-review-frame { display: block; width: 100%; height: calc(100dvh - 64px); min-height: 560px; border: 0; background: transparent; color-scheme: dark; }
 body:has(#view-cprl-questions.active) .content-container { padding-bottom: 0 !important; }
 @media (max-width: 768px) {
   #interview-review-frame { height: calc(100dvh - 40px); min-height: 480px; }
