@@ -54,19 +54,22 @@ html.embedded,html.embedded body,html.embedded .access,html.embedded .entry,html
  'use strict';
 const documents=JSON.parse(document.getElementById('source-data').textContent),$=id=>document.getElementById(id);let current=0,dirty=false,notificationTimer;const escapeHTML=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function announce(text){$('notification').textContent=text;$('notification').hidden=false;clearTimeout(notificationTimer);notificationTimer=setTimeout(()=>$('notification').hidden=true,3000)}
-function key(){return 'kaist-interview-prototype-v1-'+current}function values(){return [...$('editor').children].map(p=>p.innerText)}
-function save(){try{localStorage.setItem(key(),JSON.stringify({paragraphs:values()}));dirty=false;return true}catch(e){announce('저장하지 못했습니다. 문서를 내려받아 보관해 주세요.');return false}}
+function values(){return [...$('editor').children].map(p=>p.innerText)}
+// 수정본은 Supabase에 모아 둔다. 비밀번호 확인도 Supabase 함수(load_edit, save_edit)에서 한다.
+const SUPABASE_URL='https://pomxhohleckstjeqmagu.supabase.co',SUPABASE_KEY='sb_publishable_NPhj8QFWQlTpeXzdwCI6rw_lrqmZsSC';let password='';
+async function rpc(name,body){const r=await fetch(SUPABASE_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});const text=await r.text();if(!r.ok)throw new Error(text);return text?JSON.parse(text):null}
+async function save(){$('save').disabled=true;try{await rpc('save_edit',{p_doc:current,p_pw:password,p_paragraphs:values()});dirty=false;return true}catch(e){console.error('저장 실패',e);announce('저장하지 못했습니다. 문서를 내려받아 보관해 주세요.');return false}finally{$('save').disabled=false}}
 const firstQuestion=pars=>pars.findIndex(p=>/^Q\d+\)/.test(p));
 // 제목과 첫 질문 사이의 도입 문단들을 한 칸으로 합친다.
 function mergeLead(pars){const q=firstQuestion(pars);return q>2?[pars[0],pars.slice(1,q).join(' '),...pars.slice(q)]:pars}
 function paragraphClass(p,i,q){return i===0?'article-title':/^Q\d+\)/.test(p)?'paragraph question':i<q?'paragraph lead':'paragraph'}
 function renderParagraphs(pars,base){const q=firstQuestion(base);return pars.map((p,i)=>`<${i===0?'h2':'p'} class="${paragraphClass(base[i],i,q)} editable" contenteditable="true" role="textbox" aria-label="${i===0?'원고 제목':'원고 문단 '+i}" spellcheck="false" id="p-${i}">${escapeHTML(p).replace(/^([^\s　]+)(?=　)/,'<span class="speaker" data-name="$1" contenteditable="false">$1</span>')}</${i===0?'h2':'p'}>`).join('')}
-function openDocument(n){current=n;dirty=false;let saved=null;try{saved=JSON.parse(localStorage.getItem(key()))}catch(e){announce('저장본을 읽지 못해 원문을 불러왔습니다.')}const d=documents[n],base=mergeLead(d.paragraphs);if(!saved||!Array.isArray(saved.paragraphs)||!saved.paragraphs.every(p=>typeof p==='string'))saved=null;else if(saved.paragraphs.length===d.paragraphs.length)saved.paragraphs=mergeLead(saved.paragraphs);if(saved&&saved.paragraphs.length!==base.length)saved=null;const paragraphs=(saved?.paragraphs||base).map(p=>n<2?p.replace(n===0?/^이민규[\s\u3000]+/:/^안영균[\s\u3000]+/,''):p);$('editor').innerHTML=renderParagraphs(paragraphs,base);$('doc-name').textContent=d.name.replace(', ',' · ')+' 인터뷰';$('access').classList.add('hidden');$('workspace').classList.remove('hidden');window.scrollTo(0,0)}
-$('login').onsubmit=e=>{e.preventDefault();if($('password').value!==['1109','1112','1113','0930'][Number(document.querySelector('input[name="person"]:checked').value)]){$('error').textContent='비밀번호가 일치하지 않습니다.';return}openDocument(Number(document.querySelector('input[name="person"]:checked').value));$('password').value='';$('error').textContent=''};
+function openDocument(n,saved){current=n;dirty=false;const d=documents[n],base=mergeLead(d.paragraphs);if(!Array.isArray(saved)||!saved.every(p=>typeof p==='string')||saved.length!==base.length)saved=null;const paragraphs=(saved||base).map(p=>n<2?p.replace(n===0?/^이민규[\s\u3000]+/:/^안영균[\s\u3000]+/,''):p);$('editor').innerHTML=renderParagraphs(paragraphs,base);$('doc-name').textContent=d.name.replace(', ',' · ')+' 인터뷰';$('access').classList.add('hidden');$('workspace').classList.remove('hidden');window.scrollTo(0,0)}
+$('login').onsubmit=async e=>{e.preventDefault();const n=Number(document.querySelector('input[name="person"]:checked').value),pw=$('password').value;let saved;try{saved=await rpc('load_edit',{p_doc:n,p_pw:pw})}catch(err){$('error').textContent=/bad password/.test(err.message)?'비밀번호가 일치하지 않습니다.':'연결하지 못했습니다. 잠시 뒤 다시 시도해 주세요.';if(!/bad password/.test(err.message))console.error('불러오기 실패',err);return}password=pw;openDocument(n,saved);$('password').value='';$('error').textContent=''};
 $('editor').addEventListener('input',()=>{dirty=true});
 $('editor').addEventListener('paste',e=>{e.preventDefault();const text=e.clipboardData.getData('text/plain'),selection=window.getSelection();if(!selection.rangeCount)return;const range=selection.getRangeAt(0);range.deleteContents();const node=document.createTextNode(text);range.insertNode(node);range.setStartAfter(node);range.collapse(true);selection.removeAllRanges();selection.addRange(range);e.target.dispatchEvent(new Event('input',{bubbles:true}))});
 $('editor').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();announce('문단 안에서는 그대로 이어서 입력해 주세요.')}});
-$('save').onclick=()=>{if(save())announce('수정 내용을 저장했습니다.')};
+$('save').onclick=async()=>{if(await save())announce('수정 내용을 저장했습니다.')};
 // 브라우저에서 Word의 OOXML 문서 묶음을 만든다. ZIP은 무압축으로 저장한다.
 function makeDocx(paragraphs){
  const xml=s=>s.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
@@ -88,8 +91,8 @@ function makeDocx(paragraphs){
  return new Blob([...parts,...central,end.bytes],{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
 }
 $('download').onclick=()=>{try{const url=URL.createObjectURL(makeDocx(values())),a=document.createElement('a');a.href=url;a.download=documents[current].name+' 인터뷰_수정본.docx';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}catch(e){announce('문서를 만들지 못했습니다. 다시 시도해 주세요.');console.error('DOCX 생성 실패',e)}};
-$('logout').onclick=()=>{if(dirty&&!save())return;$('workspace').classList.add('hidden');$('access').classList.remove('hidden');document.querySelector(`input[name="person"][value="${current}"]`).checked=true;$('editor').replaceChildren();$('password').focus();window.scrollTo(0,0)};
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'&&!$('workspace').classList.contains('hidden')){e.preventDefault();if(save())announce('수정 내용을 저장했습니다.')}});window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+$('logout').onclick=async()=>{if(dirty&&!await save())return;password='';$('workspace').classList.add('hidden');$('access').classList.remove('hidden');document.querySelector(`input[name="person"][value="${current}"]`).checked=true;$('editor').replaceChildren();$('password').focus();window.scrollTo(0,0)};
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'&&!$('workspace').classList.contains('hidden')){e.preventDefault();save().then(ok=>ok&&announce('수정 내용을 저장했습니다.'))}});window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
 </script>
 
 </html>
