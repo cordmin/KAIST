@@ -1132,6 +1132,8 @@ body {
   padding: 0.5rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.09);
 }
+.cprl-cv-row:first-child { grid-template-columns: 2.6rem 1fr; }
+.cprl-cv-row:first-child .cprl-cv-text { white-space: nowrap; }
 .cprl-cv-row:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.09); }
 .cprl-cv-tag { color: #7c8597; font-size: 0.8rem; font-weight: 600; }
 .cprl-cv-text {

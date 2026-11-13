@@ -9,15 +9,14 @@ body:has(#view-cprl-questions.active) .main-content,body:has(#view-cprl-question
 #interview-app h1,#interview-app h2,#interview-app p{margin:0;color:inherit}
 #interview-app h1{font-size:clamp(32px,3vw,44px);line-height:1.35;letter-spacing:-.055em;font-weight:800;word-break:keep-all;margin-bottom:30px}
 
-/* 선택 화면: 묶음 간격 60px, 성별과 연차 버튼 너비 동일 */
+/* 선택 화면: 연차와 질문 유형을 순서대로 배치 */
 #interview-app .setup{display:block}
-#interview-app .setup-main{padding:0 4px 30px;display:grid;align-items:start;--group-gap:30px;--choice-width:calc((100% - var(--group-gap) - 48px)/8);grid-template-columns:calc(var(--choice-width)*2 + 8px) calc(var(--choice-width)*4 + 24px) minmax(0,1fr);column-gap:60px}
-#interview-app .setup-main h1,#interview-app .setup-main fieldset:nth-of-type(3),#interview-app .setup-actions{grid-column:1/-1}
+#interview-app .setup-main{padding:0 4px 30px;display:block}
 #interview-app fieldset{border:0;padding:0;margin:24px 0 0;min-width:0}
-#interview-app .setup-main fieldset:nth-of-type(1),#interview-app .setup-main fieldset:nth-of-type(2){margin-top:0}
+#interview-app .setup-main fieldset:first-of-type{margin-top:0}
 #interview-app legend{font-size:22px;font-weight:750;line-height:1.5;color:#f8fafc;margin-bottom:12px}
 #interview-app .choice-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-#interview-app .setup-main fieldset:first-of-type .choice-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+#interview-app .setup-main fieldset:first-of-type .choice-row{max-width:448px}
 #interview-app .choice{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:64px;min-width:0;padding:12px 6px;gap:6px;border:1px solid #67717f;border-radius:12px;cursor:pointer;font-size:22px;font-weight:750;color:#f8fafc!important;white-space:nowrap}
 #interview-app .choice:has(input:checked){background:#f8fafc;color:#080c12!important;border:2px solid #f8fafc;padding:11px 5px}
 #interview-app .choice:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:4px}
@@ -68,7 +67,6 @@ body:has(#view-cprl-questions.active) .main-content,body:has(#view-cprl-question
 #interview-app .closing{font-size:clamp(23px,2.5vw,34px);line-height:1.6;word-break:keep-all;margin:25px 0}
 
 @media(max-width:1100px){
- #interview-app .setup-main{--group-gap:18px}
  #interview-app .setup-main fieldset:nth-of-type(-n+2) .choice{font-size:20px;padding-left:4px;padding-right:4px}
  #interview-app .setup-main fieldset:nth-of-type(-n+2) .choice:has(input:checked){padding-left:3px;padding-right:3px}
  #interview-app .question-body{column-gap:15px;grid-template-columns:64px minmax(0,1fr)}

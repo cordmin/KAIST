@@ -3,7 +3,7 @@ const root=document.getElementById('view-cprl-questions');
 root.innerHTML='<div id="interview-app"></div>';
 const app=root.firstElementChild;
 const {tracks,years,closing}=window.interviewQuestionData;
-let gender='',year='',track=0,index=0,mode='setup';
+let year='',track=0,index=0,mode='setup';
 let list=[];
 function makeList(){
  list=[...tracks[track].questions,years[year],closing];
@@ -12,10 +12,9 @@ function button(text,action,cls='text-button',extra=''){return `<button type="bu
 function render(){
  if(mode==='setup'){
  app.innerHTML=`<div class="setup"><div class="setup-main"><h1>화학과 CPRL 인터뷰 질문지</h1>
- <fieldset><legend>성별</legend><div class="choice-row">${[['m','남성'],['f','여성']].map(([v,l])=>`<label class="choice"><input type="radio" name="gender" value="${v}" ${gender===v?'checked':''}>${l}</label>`).join('')}</div></fieldset>
- <fieldset><legend>석·박사 통합과정 연차</legend><div class="choice-row">${['2','4','5','8'].map(v=>`<label class="choice"><input type="radio" name="year" value="${v}" ${year===v?'checked':''} ${v==='2'||v==='8'?'disabled':''}>${v}년</label>`).join('')}</div></fieldset>
- ${gender==='m'?`<fieldset><legend>질문 유형</legend><div class="route-options">${[0,1,2].map((n,i)=>button(`<strong>${String(i+1).padStart(2,'0')} ${tracks[n].label}</strong><small>${tracks[n].description}</small>`,'track','',`data-track="${n}" aria-pressed="${track===n}"`)).join('')}</div></fieldset>`:''}
- <div class="setup-actions">${button('인터뷰 시작 →','start','action',!gender||!year?'disabled':'')}</div></div>
+ <fieldset><legend>석·박사 통합과정 연차</legend><div class="choice-row">${['2','3','5','8'].map(v=>`<label class="choice"><input type="radio" name="year" value="${v}" ${year===v?'checked':''} ${v==='2'||v==='8'?'disabled':''}>${v}년</label>`).join('')}</div></fieldset>
+ <fieldset><legend>질문 유형</legend><div class="route-options">${[0,1,2].map((n,i)=>button(`<strong>${String(i+1).padStart(2,'0')} ${tracks[n].label}</strong><small>${tracks[n].description}</small>`,'track','',`data-track="${n}" aria-pressed="${track===n}"`)).join('')}</div></fieldset>
+ <div class="setup-actions">${button('인터뷰 시작 →','start','action',!year?'disabled':'')}</div></div>
  </div>`;
  }else if(mode==='question'){
  const q=list[index];
@@ -27,14 +26,14 @@ function render(){
 }
 function go(n){index=Math.max(0,Math.min(list.length-1,n));mode='question';render();window.scrollTo({top:0,behavior:'instant'});app.querySelector('h2')?.focus({preventScroll:true});}
 app.addEventListener('change',e=>{
- const name=e.target.name;if(name==='gender'){gender=e.target.value;track=gender==='f'?3:0;}else if(name==='year')year=e.target.value;render();
+ const name=e.target.name;if(name==='year')year=e.target.value;render();
  const radio=app.querySelector(`input[name="${name}"]:checked`);radio?.focus({preventScroll:true});
 });
 app.addEventListener('click',e=>{
  const b=e.target.closest('button[data-action]');if(!b||b.disabled)return;
  switch(b.dataset.action){
  case 'track':track=Number(b.dataset.track);render();break;
- case 'start':if(!gender||!year)return;makeList();go(0);break;
+ case 'start':if(!year)return;makeList();go(0);break;
  case 'prev':go(index-1);break;
  case 'next':if(index===list.length-1){mode='end';render();window.scrollTo(0,0);}else go(index+1);break;
  }
@@ -48,7 +47,7 @@ document.addEventListener('keydown',e=>{
 let wasActive=false;
 new MutationObserver(()=>{
  const active=root.classList.contains('active');
- if(active&&!wasActive){gender='';year='';track=0;index=0;mode='setup';list=[];render();}
+ if(active&&!wasActive){year='';track=0;index=0;mode='setup';list=[];render();}
  wasActive=active;
 }).observe(root,{attributes:true,attributeFilter:['class']});
 render();
