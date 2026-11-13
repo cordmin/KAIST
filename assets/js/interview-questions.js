@@ -4,7 +4,7 @@
   const frame = document.getElementById('interview-review-frame');
   if (!root || !frame) return;
   const activate = () => {
-    if (root.classList.contains('active') && !frame.hasAttribute('src')) frame.src = frame.dataset.src;
+    if (root.classList.contains('active') && !frame.hasAttribute('src')) frame.src = frame.dataset.src + '&v=' + Date.now(); // 검토 화면은 늘 최신 원고를 받는다.
   };
   new MutationObserver(activate).observe(root, { attributes: true, attributeFilter: ['class'] });
   activate();
